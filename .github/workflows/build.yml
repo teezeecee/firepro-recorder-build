@@ -57,6 +57,7 @@ jobs:
           if (!(Test-Path $dll)) { throw 'Recorder DLL was not produced' }
           New-Item -ItemType Directory -Force -Path out | Out-Null
           Copy-Item $dll 'out\FireProRetailFlightRecorder.dll' -Force
+          Copy-Item 'deps\BepInEx_win_x86_5.4.23.5.zip' 'out\BepInEx_win_x86_5.4.23.5.zip' -Force
 
       - name: Inspect built assembly
         shell: powershell
