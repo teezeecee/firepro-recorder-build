@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace FireProRetailFlightRecorder
 {
-    [BepInPlugin("openai.firepro.retail.flightrecorder", "Fire Pro Retail Flight Recorder", "0.4.0")]
+    [BepInPlugin("openai.firepro.retail.flightrecorder", "Fire Pro Retail Flight Recorder", "0.5.0")]
     public sealed class RecorderPlugin : BaseUnityPlugin
     {
         internal static RecorderPlugin I;
@@ -35,6 +35,16 @@ namespace FireProRetailFlightRecorder
         {
             I = this;
             Home = Environment.GetEnvironmentVariable("FIREPRO_RECORDER_HOME");
+            if (String.IsNullOrEmpty(Home))
+            {
+                try
+                {
+                    string pluginDir = Path.GetDirectoryName(typeof(RecorderPlugin).Assembly.Location);
+                    string homeFile = Path.Combine(pluginDir, "recorder_home.txt");
+                    if (File.Exists(homeFile)) Home = File.ReadAllText(homeFile).Trim();
+                }
+                catch { }
+            }
             if (String.IsNullOrEmpty(Home)) Home = Paths.PluginPath;
             Directory.CreateDirectory(Path.Combine(Home, "captures"));
             WriteStatus("READY / NOT RECORDING");
@@ -58,13 +68,15 @@ namespace FireProRetailFlightRecorder
 
         void InstallHooks()
         {
+            // Hot paths stay observational but do not emit per-call event rows.
             PatchNamed("MatchMain", "Update_Match", "MatchPrefix", "MatchPostfix");
-            foreach (var m in new[] { "AttackHitCheck", "UpdatePlayer", "ChangeState", "ReqBasicAnm", "ReqSlotAnm", "TransitStateAfterAnm", "PostprocessEachState" })
+            PatchNamed("Player", "UpdatePlayer", "SeenPrefix", null);
+
+            // Rare transition/choreography seams retain PRE/POST event tracing.
+            foreach (var m in new[] { "ChangeState", "TransitStateAfterAnm" })
                 PatchNamed("Player", m, "EventPrefix", "EventPostfix");
-            foreach (var m in new[] { "InitAnimation", "StartOpponentAnm", "StartOpponentAnmM", "UpdateAnimation" })
+            foreach (var m in new[] { "InitAnimation", "StartOpponentAnm", "StartOpponentAnmM" })
                 PatchNamed("FormAnimator", m, "EventPrefix", "EventPostfix");
-            PatchNamed("FormRen", "SetForm", "EventPrefix", "EventPostfix");
-            PatchNamed("Player", "UpdateForm", "EventPrefix", "EventPostfix");
         }
 
         void PatchNamed(string typeName, string methodName, string prefixName, string postfixName)
@@ -151,7 +163,7 @@ namespace FireProRetailFlightRecorder
             try
             {
                 File.WriteAllText(Path.Combine(SessionDir, "summary.txt"),
-                    "Fire Pro Retail Flight Recorder build-gated candidate\r\n" +
+                    "Fire Pro Retail Flight Recorder lean retail oracle\r\n" +
                     "started_utc=" + _startedUtc.ToString("o") + "\r\n" +
                     "stopped_utc=" + DateTime.UtcNow.ToString("o") + "\r\n" +
                     "final_tick=" + Tick + "\r\n" +
@@ -238,7 +250,7 @@ namespace FireProRetailFlightRecorder
                 var asm = playerType == null ? null : playerType.Assembly;
                 string loc = asm == null ? "" : asm.Location;
                 File.WriteAllText(Path.Combine(SessionDir, "metadata.json"), "{\n" +
-                    "  \"recorder_version\": \"build-gated-candidate\",\n" +
+                    "  \"recorder_version\": \"lean-retail-oracle\",\n" +
                     "  \"started_utc\": \"" + Esc(DateTime.UtcNow.ToString("o")) + "\",\n" +
                     "  \"unity_version\": \"" + Esc(Application.unityVersion) + "\",\n" +
                     "  \"product\": \"" + Esc(Application.productName) + "\",\n" +
@@ -296,11 +308,15 @@ namespace FireProRetailFlightRecorder
     {
         public static void MatchPrefix(object __instance, MethodBase __originalMethod, object[] __args)
         {
-            try { if (RecorderPlugin.I != null) { RecorderPlugin.I.BeginTick(); RecorderPlugin.I.WriteEvent("PRE", __originalMethod, __instance, __args); } } catch { }
+            try { if (RecorderPlugin.I != null) RecorderPlugin.I.BeginTick(); } catch { }
         }
         public static void MatchPostfix(object __instance, MethodBase __originalMethod, object[] __args)
         {
-            try { if (RecorderPlugin.I != null) { RecorderPlugin.I.WriteEvent("POST", __originalMethod, __instance, __args); RecorderPlugin.I.EndTick(); } } catch { }
+            try { if (RecorderPlugin.I != null) RecorderPlugin.I.EndTick(); } catch { }
+        }
+        public static void SeenPrefix(object __instance)
+        {
+            try { if (RecorderPlugin.I != null) RecorderPlugin.I.Seen(__instance); } catch { }
         }
         public static void EventPrefix(object __instance, MethodBase __originalMethod, object[] __args)
         {
