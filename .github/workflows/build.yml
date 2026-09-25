@@ -1,0 +1,92 @@
+name: build-recorder
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare pinned BepInEx 5.4.23.5 x86
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Force -Path deps | Out-Null
+          $url = 'https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x86_5.4.23.5.zip'
+          $zip = Join-Path $PWD 'deps\BepInEx_win_x86_5.4.23.5.zip'
+          Invoke-WebRequest -Uri $url -OutFile $zip
+          $hash = (Get-FileHash -Algorithm SHA256 $zip).Hash.ToLowerInvariant()
+          Write-Host "BepInEx zip sha256=$hash"
+          if ($hash -ne '37651c79e40d6f909572a4f461ac25350bb3ef8fe7fbd29f1aa8791a33b84c82') {
+            throw "Pinned BepInEx archive hash mismatch"
+          }
+          Expand-Archive -LiteralPath $zip -DestinationPath 'deps\BepInEx' -Force
+          if (!(Test-Path 'deps\BepInEx\BepInEx\core\BepInEx.dll')) { throw 'BepInEx.dll missing after extract' }
+          if (!(Test-Path 'deps\BepInEx\BepInEx\core\0Harmony.dll')) { throw '0Harmony.dll missing after extract' }
+          New-Item -ItemType Directory -Force -Path 'deps\BepInEx\core' | Out-Null
+          Copy-Item 'deps\BepInEx\BepInEx\core\BepInEx.dll' 'deps\BepInEx\core\BepInEx.dll' -Force
+          Copy-Item 'deps\BepInEx\BepInEx\core\0Harmony.dll' 'deps\BepInEx\core\0Harmony.dll' -Force
+
+      - name: Prepare UnityEngine 5.6.1 compile reference
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $pkgUrl = 'https://api.nuget.org/v3-flatcontainer/unityengine/5.6.1/unityengine.5.6.1.nupkg'
+          $pkg = Join-Path $PWD 'deps\unityengine.5.6.1.nupkg'
+          Invoke-WebRequest -Uri $pkgUrl -OutFile $pkg
+          $extract = Join-Path $PWD 'deps\unityengine_pkg'
+          if (Test-Path $extract) { Remove-Item $extract -Recurse -Force }
+          Expand-Archive -LiteralPath $pkg -DestinationPath $extract -Force
+          $dll = Get-ChildItem $extract -Recurse -Filter UnityEngine.dll | Select-Object -First 1
+          if (!$dll) { throw 'UnityEngine.dll not found in UnityEngine 5.6.1 package' }
+          Copy-Item $dll.FullName 'deps\UnityEngine.dll' -Force
+          Write-Host "UnityEngine ref=$($dll.FullName)"
+
+      - name: Build net35 recorder DLL
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          dotnet --info
+          dotnet restore .\FireProRetailFlightRecorder.csproj
+          dotnet build .\FireProRetailFlightRecorder.csproj -c Release --no-restore
+          $dll = 'bin\Release\net35\FireProRetailFlightRecorder.dll'
+          if (!(Test-Path $dll)) { throw 'Recorder DLL was not produced' }
+          New-Item -ItemType Directory -Force -Path out | Out-Null
+          Copy-Item $dll 'out\FireProRetailFlightRecorder.dll' -Force
+
+      - name: Inspect built assembly
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $dll = (Resolve-Path 'out\FireProRetailFlightRecorder.dll').Path
+          $a = [Reflection.Assembly]::ReflectionOnlyLoadFrom($dll)
+          $refs = $a.GetReferencedAssemblies() | Sort-Object Name
+          $hash = (Get-FileHash -Algorithm SHA256 $dll).Hash.ToLowerInvariant()
+          $lines = @()
+          $lines += "assembly=$($a.FullName)"
+          $lines += "sha256=$hash"
+          $lines += "runtime=$($a.ImageRuntimeVersion)"
+          $lines += "references:"
+          foreach ($r in $refs) {
+            $line = "  $($r.FullName)"
+            $lines += $line
+            Write-Host $line
+          }
+          $lines | Set-Content -Encoding ASCII 'out\ASSEMBLY_INSPECTION.txt'
+          Write-Host "sha256=$hash"
+          if ($a.ImageRuntimeVersion -notmatch '^v2\.0') { throw "Unexpected CLR runtime: $($a.ImageRuntimeVersion)" }
+          $names = @($refs | ForEach-Object { $_.Name })
+          foreach ($required in @('mscorlib','BepInEx','0Harmony','UnityEngine')) {
+            if ($names -notcontains $required) { throw "Missing expected assembly reference: $required" }
+          }
+
+      - name: Upload inspected build
+        uses: actions/upload-artifact@v4
+        with:
+          name: firepro-recorder-build-gated
+          path: out/
+          if-no-files-found: error
