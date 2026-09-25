@@ -31,18 +31,18 @@ jobs:
           Copy-Item 'deps\BepInEx\BepInEx\core\BepInEx.dll' 'deps\BepInEx\core\BepInEx.dll' -Force
           Copy-Item 'deps\BepInEx\BepInEx\core\0Harmony.dll' 'deps\BepInEx\core\0Harmony.dll' -Force
 
-      - name: Prepare UnityEngine 5.6.1 compile reference
+      - name: Prepare UnityEngine net35 compile reference
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          $pkgUrl = 'https://api.nuget.org/v3-flatcontainer/unityengine/5.6.1/unityengine.5.6.1.nupkg'
-          $pkg = Join-Path $PWD 'deps\unityengine.5.6.1.nupkg'
+          $pkgUrl = 'https://api.nuget.org/v3-flatcontainer/unityengine5/5.5.0/unityengine5.5.0.nupkg'
+          $pkg = Join-Path $PWD 'deps\unityengine5.5.5.0.nupkg'
           Invoke-WebRequest -Uri $pkgUrl -OutFile $pkg
           $extract = Join-Path $PWD 'deps\unityengine_pkg'
           if (Test-Path $extract) { Remove-Item $extract -Recurse -Force }
           Expand-Archive -LiteralPath $pkg -DestinationPath $extract -Force
           $dll = Get-ChildItem $extract -Recurse -Filter UnityEngine.dll | Select-Object -First 1
-          if (!$dll) { throw 'UnityEngine.dll not found in UnityEngine 5.6.1 package' }
+          if (!$dll) { throw 'UnityEngine.dll not found in UnityEngine5 5.5.0 package' }
           Copy-Item $dll.FullName 'deps\UnityEngine.dll' -Force
           Write-Host "UnityEngine ref=$($dll.FullName)"
 
