@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace FireProRetailFlightRecorder
 {
-    [BepInPlugin("openai.firepro.retail.flightrecorder", "Fire Pro Retail Flight Recorder", "0.5.0")]
+    [BepInPlugin("openai.firepro.retail.flightrecorder", "Fire Pro Retail Flight Recorder", "0.6.0")]
     public sealed class RecorderPlugin : BaseUnityPlugin
     {
         internal static RecorderPlugin I;
@@ -73,8 +73,7 @@ namespace FireProRetailFlightRecorder
             PatchNamed("Player", "UpdatePlayer", "SeenPrefix", null);
 
             // Rare transition/choreography seams retain PRE/POST event tracing.
-            foreach (var m in new[] { "ChangeState", "TransitStateAfterAnm" })
-                PatchNamed("Player", m, "EventPrefix", "EventPostfix");
+            PatchNamed("Player", "ChangeState", "EventPrefix", "EventPostfix");
             foreach (var m in new[] { "InitAnimation", "StartOpponentAnm", "StartOpponentAnmM" })
                 PatchNamed("FormAnimator", m, "EventPrefix", "EventPostfix");
         }
@@ -119,7 +118,14 @@ namespace FireProRetailFlightRecorder
             }
         }
 
-        internal void BeginTick() { Tick++; }
+        internal void BeginTick()
+        {
+            Tick++;
+            // Player objects can be replaced between demo/menu/match scenes.
+            // Rebuild the active set every retail match tick so EndTick never
+            // keeps sampling stale Player instances from an earlier scene.
+            lock (Gate) { Players.Clear(); }
+        }
 
         internal void EndTick()
         {
@@ -163,7 +169,7 @@ namespace FireProRetailFlightRecorder
             try
             {
                 File.WriteAllText(Path.Combine(SessionDir, "summary.txt"),
-                    "Fire Pro Retail Flight Recorder lean retail oracle\r\n" +
+                    "Fire Pro Retail Flight Recorder lean retail oracle r2\r\n" +
                     "started_utc=" + _startedUtc.ToString("o") + "\r\n" +
                     "stopped_utc=" + DateTime.UtcNow.ToString("o") + "\r\n" +
                     "final_tick=" + Tick + "\r\n" +
@@ -250,7 +256,7 @@ namespace FireProRetailFlightRecorder
                 var asm = playerType == null ? null : playerType.Assembly;
                 string loc = asm == null ? "" : asm.Location;
                 File.WriteAllText(Path.Combine(SessionDir, "metadata.json"), "{\n" +
-                    "  \"recorder_version\": \"lean-retail-oracle\",\n" +
+                    "  \"recorder_version\": \"lean-retail-oracle-r2\",\n" +
                     "  \"started_utc\": \"" + Esc(DateTime.UtcNow.ToString("o")) + "\",\n" +
                     "  \"unity_version\": \"" + Esc(Application.unityVersion) + "\",\n" +
                     "  \"product\": \"" + Esc(Application.productName) + "\",\n" +
