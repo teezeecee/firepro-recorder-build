@@ -35,8 +35,8 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          $pkgUrl = 'https://api.nuget.org/v3-flatcontainer/unityengine5/5.5.0/unityengine5.5.0.nupkg'
-          $pkg = Join-Path $PWD 'deps\unityengine5.5.5.0.nupkg'
+          $pkgUrl = 'https://www.nuget.org/api/v2/package/UnityEngine5/5.5.0'
+          $pkg = Join-Path $PWD 'deps\unityengine5.5.0.nupkg'
           Invoke-WebRequest -Uri $pkgUrl -OutFile $pkg
           $extract = Join-Path $PWD 'deps\unityengine_pkg'
           if (Test-Path $extract) { Remove-Item $extract -Recurse -Force }
