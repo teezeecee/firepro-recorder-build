@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace FireProRetailFlightRecorder
 {
-    [BepInPlugin("openai.firepro.retail.flightrecorder", "Fire Pro Retail Flight Recorder", "0.6.0")]
+    [BepInPlugin("openai.firepro.retail.flightrecorder", "Fire Pro Retail Flight Recorder", "0.7.0")]
     public sealed class RecorderPlugin : BaseUnityPlugin
     {
         internal static RecorderPlugin I;
@@ -118,14 +118,7 @@ namespace FireProRetailFlightRecorder
             }
         }
 
-        internal void BeginTick()
-        {
-            Tick++;
-            // Player objects can be replaced between demo/menu/match scenes.
-            // Rebuild the active set every retail match tick so EndTick never
-            // keeps sampling stale Player instances from an earlier scene.
-            lock (Gate) { Players.Clear(); }
-        }
+        internal void BeginTick() { Tick++; }
 
         internal void EndTick()
         {
@@ -142,13 +135,16 @@ namespace FireProRetailFlightRecorder
         void StartRecording()
         {
             if (Recording) return;
+            // F9 is pressed after the bell. Forget every Player seen in menus/demo scenes,
+            // then keep first-seen object identity stable for the whole capture.
+            lock (Gate) { Players.Clear(); }
             var stamp = DateTime.Now.ToString("yyyy-MM-dd_HHmmss", CultureInfo.InvariantCulture);
             SessionDir = Path.Combine(Path.Combine(Home, "captures"), stamp);
             Directory.CreateDirectory(SessionDir);
             TickWriter = NewWriter(Path.Combine(SessionDir, "tick_trace.tsv"));
             EventWriter = NewWriter(Path.Combine(SessionDir, "event_trace.tsv"));
             MarkerWriter = NewWriter(Path.Combine(SessionDir, "markers.tsv"));
-            TickWriter.WriteLine("tick\tseq\tplayer_slot\ttype\tState\tNextState\tPlPosX\tPlPosY\tPlPosZ\tPlDir\ttarget\tAnmHostPlayer\tCurrentSkill\tanimation\tbank\tform_index\tform_number\tFormDispDuration\tRX\tRY\tFX\tFZ\tFormRev\tisAnmPause\tisDownRequested\tDownTime\tHP\tBP\tSpirit\tWrsDP\tLastDamage\tunityX\tunityY\tunityZ");
+            TickWriter.WriteLine("tick\tseq\tplayer_slot\tplayer_id\ttype\tState\tNextState\tPlPosX\tPlPosY\tPlPosZ\tPlDir\ttarget\tAnmHostPlayer\tCurrentSkill\tanimation\tbank\tform_index\tform_number\tFormDispDuration\tRX\tRY\tFX\tFZ\tFormRev\tisAnmPause\tisDownRequested\tDownTime\tHP\tBP\tSpirit\tWrsDP\tLastDamage\tunityX\tunityY\tunityZ");
             EventWriter.WriteLine("tick\tseq\tphase\ttype\tmethod\tinstance\targs\tstate\tnext_state\tform\tanimation\tbank");
             MarkerWriter.WriteLine("tick\tseq\tutc\tlabel");
             _startedUtc = DateTime.UtcNow; _eventSeq = 0; _markers = 0; _tickRows = 0; _eventRows = 0;
@@ -169,7 +165,7 @@ namespace FireProRetailFlightRecorder
             try
             {
                 File.WriteAllText(Path.Combine(SessionDir, "summary.txt"),
-                    "Fire Pro Retail Flight Recorder lean retail oracle r2\r\n" +
+                    "Fire Pro Retail Flight Recorder lean retail oracle r3\r\n" +
                     "started_utc=" + _startedUtc.ToString("o") + "\r\n" +
                     "stopped_utc=" + DateTime.UtcNow.ToString("o") + "\r\n" +
                     "final_tick=" + Tick + "\r\n" +
@@ -226,15 +222,15 @@ namespace FireProRetailFlightRecorder
                 var unity = R.UnityPosition(p);
                 object animator = R.GetObject(p, "animator", "Animator", "mAnimator", "FormAnimator");
                 object currentForm = R.GetObject(animator, "CurrentForm", "currentForm", "mCurrentForm", "Form") ?? R.GetObject(p, "CurrentForm", "currentForm");
-                object skill = R.GetObject(p, "CurrentSkill", "currentSkill", "Waza", "WazaRequest", "Skill");
-                TickWriter.WriteLine(Tsv(Tick, ++_eventSeq, slot, p.GetType().Name,
+                object skill = R.GetObject(animator, "CurrentSkill", "currentSkill", "Waza", "WazaRequest", "Skill") ?? R.GetObject(p, "CurrentSkill", "currentSkill", "Waza", "WazaRequest", "Skill");
+                TickWriter.WriteLine(Tsv(Tick, ++_eventSeq, slot, RuntimeId(p), p.GetType().Name,
                     R.Get(p, "State", "mState", "state"), R.Get(p, "NextState", "mNextState", "nextState"),
                     pos.x, pos.y, pos.z, R.Get(p, "PlDir", "plDir", "Dir", "mPlDir"),
-                    R.Get(p, "TargetPlIdx", "targetPlIdx", "TargetIdx", "targetIdx"), R.Get(p, "AnmHostPlayer", "anmHostPlayer", "AnmHostPlIdx"),
+                    R.Get(p, "TargetPlIdx", "targetPlIdx", "TargetIdx", "targetIdx"), R.Get(animator, "AnmHostPlayer", "anmHostPlayer", "AnmHostPlIdx"),
                     SafeBrief(skill),
-                    R.Get(animator, "CurrentAnm", "currentAnm", "AnmNo", "anmNo", "AnimationNo"),
+                    R.Get(animator, "CurrentAnmIdx", "currentAnmIdx", "CurrentAnm", "currentAnm", "AnmNo", "anmNo", "AnimationNo"),
                     R.Get(animator, "CurrentBank", "currentBank", "BankNo", "bankNo", "AnmBank"),
-                    R.Get(animator, "currentFormIdx", "CurrentFormIdx", "FormIdx", "formIdx"), R.Get(currentForm, "FormNo", "formNo", "No", "ID", "id"),
+                    R.Get(animator, "currentFormIdx", "CurrentFormIdx", "FormIdx", "formIdx"), R.Get(currentForm, "formIdx", "FormIdx", "FormNo", "formNo", "No", "ID", "id"),
                     R.Get(animator, "FormDispDuration", "formDispDuration", "DispDuration", "mFormDispDuration"),
                     R.Get(currentForm, "RX", "rx"), R.Get(currentForm, "RY", "ry"), R.Get(currentForm, "FX", "fx"), R.Get(currentForm, "FZ", "fz"),
                     R.Get(currentForm, "FormRev", "formRev", "Rev", "rev", "flags", "Flag"),
@@ -256,7 +252,7 @@ namespace FireProRetailFlightRecorder
                 var asm = playerType == null ? null : playerType.Assembly;
                 string loc = asm == null ? "" : asm.Location;
                 File.WriteAllText(Path.Combine(SessionDir, "metadata.json"), "{\n" +
-                    "  \"recorder_version\": \"lean-retail-oracle-r2\",\n" +
+                    "  \"recorder_version\": \"lean-retail-oracle-r3\",\n" +
                     "  \"started_utc\": \"" + Esc(DateTime.UtcNow.ToString("o")) + "\",\n" +
                     "  \"unity_version\": \"" + Esc(Application.unityVersion) + "\",\n" +
                     "  \"product\": \"" + Esc(Application.productName) + "\",\n" +
