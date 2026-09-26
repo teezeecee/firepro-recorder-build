@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace FireProRetailFlightRecorder
 {
-    [BepInPlugin("openai.firepro.retail.flightrecorder", "Fire Pro Retail Flight Recorder", "0.7.0")]
+    [BepInPlugin("openai.firepro.retail.flightrecorder", "Fire Pro Retail Flight Recorder", "0.8.0")]
     public sealed class RecorderPlugin : BaseUnityPlugin
     {
         internal static RecorderPlugin I;
@@ -126,7 +126,7 @@ namespace FireProRetailFlightRecorder
             var ps = new List<object>();
             lock (Gate)
             {
-                for (int i = 0; i < Players.Count && ps.Count < 2; i++)
+                for (int i = 0; i < Players.Count && ps.Count < 8; i++)
                     if (Players[i] != null) ps.Add(Players[i]);
             }
             for (int i = 0; i < ps.Count; i++) WriteTickRow(i, ps[i]);
@@ -165,7 +165,7 @@ namespace FireProRetailFlightRecorder
             try
             {
                 File.WriteAllText(Path.Combine(SessionDir, "summary.txt"),
-                    "Fire Pro Retail Flight Recorder lean retail oracle r3\r\n" +
+                    "Fire Pro Retail Flight Recorder lean retail oracle r4\r\n" +
                     "started_utc=" + _startedUtc.ToString("o") + "\r\n" +
                     "stopped_utc=" + DateTime.UtcNow.ToString("o") + "\r\n" +
                     "final_tick=" + Tick + "\r\n" +
@@ -252,7 +252,7 @@ namespace FireProRetailFlightRecorder
                 var asm = playerType == null ? null : playerType.Assembly;
                 string loc = asm == null ? "" : asm.Location;
                 File.WriteAllText(Path.Combine(SessionDir, "metadata.json"), "{\n" +
-                    "  \"recorder_version\": \"lean-retail-oracle-r3\",\n" +
+                    "  \"recorder_version\": \"lean-retail-oracle-r4\",\n" +
                     "  \"started_utc\": \"" + Esc(DateTime.UtcNow.ToString("o")) + "\",\n" +
                     "  \"unity_version\": \"" + Esc(Application.unityVersion) + "\",\n" +
                     "  \"product\": \"" + Esc(Application.productName) + "\",\n" +
