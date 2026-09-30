@@ -118,3 +118,8 @@ jobs:
         run: python tests/test_critical_check_summary.py
       - name: CriticalCheck prover syntax
         run: python -m py_compile tools/prove_critical_check.py
+
+      - name: GetHealth summary
+        run: python tests/test_get_health_summary.py
+      - name: GetHealth prover syntax
+        run: python -m py_compile tools/prove_get_health.py
