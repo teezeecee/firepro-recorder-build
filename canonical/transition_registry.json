@@ -149,6 +149,27 @@
         "animation-bank semantics closure",
         "damage/aftermath closure"
       ]
+    },
+    {
+      "family_id": "R6_REQ_BASIC_ANM_CLOSURE_V1",
+      "fact_id": "FACT-0010",
+      "source_ids": [
+        "DLL-001",
+        "CAP-R6-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Matching-DLL ReqBasicAnm field initialization and optional copied-direction branch plus all 5,761 R6 calls, parent distributions, raw argument relations, and BasicSkillID before/after observations.",
+      "summary": "canonical/witnesses/CAP-R6-001/req_basic_anm.summary.json",
+      "witness_digest_sha256": "08e17ff201a4a670a28ea44cf44e1200cacb0659f4eb455a918ce1a13fb56d4f",
+      "occurrence_count": 5761,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "InitAnmWork internal closure",
+        "untraced ROOT caller attribution",
+        "packed retail choreography/data closure",
+        "animation-bank semantics closure",
+        "damage/aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
