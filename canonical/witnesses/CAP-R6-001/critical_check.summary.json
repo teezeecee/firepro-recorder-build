@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCHMISC_CRITICAL_CHECK_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchMisc",
+      "method": "CriticalCheck",
+      "token": "0x06004949",
+      "rva": "0x002AEC54",
+      "signature_blob_hex": "0002020808",
+      "return_type": "Boolean",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "atk_pl_idx",
+          "type": "Int32"
+        },
+        {
+          "sequence": 2,
+          "name": "def_pl_idx",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 678,
+      "code_sha256": "8df067018ec4101a6f4861d7fe438f0ea51a2b50b1f698a9b908698e72352466",
+      "max_stack": 3,
+      "local_signature_token": "0x11000F65",
+      "local_signature_blob_hex": "070a12a40812a78812a7881187940c0c0c0c0c0c",
+      "local_count": 10,
+      "instruction_count": 226,
+      "branch_instruction_count": 34,
+      "call_instruction_count": 10
+    },
+    "entry_gates": [
+      {
+        "il": "0x0000..0x0017",
+        "condition": "MatchSetting.CriticalRate != 0",
+        "else": "return false",
+        "field_token": "0x040057DB"
+      },
+      {
+        "il": "0x0018..0x0047",
+        "effect": "resolve attacker and defender with PlayerMan.GetPlObj; require both Player objects to convert true",
+        "get_pl_obj_token": "0x06005065",
+        "object_implicit_memberref": "0x0A00002A"
+      },
+      {
+        "il": "0x0048..0x005F",
+        "condition": "attacker.isIntruder == 0 AND defender.isIntruder == 0",
+        "else": "return false",
+        "field_token": "0x04006077"
+      },
+      {
+        "il": "0x0060..0x0077",
+        "condition": "attacker.isSecond == 0 AND defender.isSecond == 0",
+        "else": "return false",
+        "field_token": "0x04006044"
+      },
+      {
+        "il": "0x0078..0x0089",
+        "condition": "attacker.animator.isAnmLooped == 0",
+        "else": "return false",
+        "field_token": "0x04005EE6"
+      }
+    ],
+    "critical_type_gate": {
+      "il": "0x008A..0x00E5",
+      "critical_type_expression": "local3 = attacker.WresParam.criticalType",
+      "critical_type_field_token": "0x0400109E",
+      "zero_path": [
+        "require attacker.isCriticalMove != 0",
+        "require (attacker.animator.CurrentSkill.flags & 1) != 0"
+      ],
+      "nonzero_path": [
+        "require (attacker.animator.CurrentSkill.flags & MatchMisc.Critical_CheckTbl[local3]) != 0"
+      ],
+      "critical_check_table_field_token": "0x04005784",
+      "skill_flags_field_token": "0x04007C55",
+      "raw_zero_path_mask": 1
+    },
+    "three_table_factors": [
+      {
+        "il": "0x00E6..0x0104",
+        "expression": "local4 = Float32(MatchData.mCriticalTypeTbl1.Get(local3, defender.WresParam.reversalType)) / 100.0f",
+        "table_field_token": "0x04005658",
+        "second_selector_field_token": "0x0400108C",
+        "get_memberref": "0x0A000716",
+        "raw_divisor": 100
+      },
+      {
+        "il": "0x0105..0x0123",
+        "expression": "local5 = Float32(MatchData.mCriticalTypeTbl2.Get(local3, attacker.WresParam.fightStyle)) / 100.0f",
+        "table_field_token": "0x04005659",
+        "second_selector_field_token": "0x0400108B",
+        "get_memberref": "0x0A000716",
+        "raw_divisor": 100
+      },
+      {
+        "il": "0x0124..0x0142",
+        "expression": "local6 = Float32(MatchData.mCriticalRateTbl.Get(local3, GetHealth(defender.HP))) / 100.0f",
+        "table_field_token": "0x0400565A",
+        "get_health_token": "0x0600495C",
+        "get_memberref": "0x0A000716",
+        "raw_divisor": 100
+      }
+    ],
+    "fourth_factor": {
+      "il": "0x0143..0x01AF",
+      "initial_value": 1,
+      "only_when": "local3 != 0",
+      "critical_check_masks": [
+        2,
+        8,
+        32
+      ],
+      "mask_group_path": "when any of Critical_CheckTbl[local3] masks 2/8/32 is set, defender spSkillFlags mask 512 changes local7 to 0.5",
+      "alternate_path": "when none of those three Critical_CheckTbl masks is set, defender spSkillFlags mask 1024 changes local7 to 0.25",
+      "defender_sp_skill_field_token": "0x04005FBD",
+      "raw_mask_group_sp_mask": 512,
+      "raw_mask_group_factor": 0.5,
+      "raw_alternate_sp_mask": 1024,
+      "raw_alternate_factor": 0.25
+    },
+    "combined_scalar": {
+      "il": "0x01B0..0x01BC",
+      "expression": "local8 = local4 * local5 * local6 * local7"
+    },
+    "post_product_modifiers": [
+      {
+        "il": "0x01BD..0x01F3",
+        "condition": "(attacker.spSkillFlags & 4) != 0 AND attacker.HP < 6400.0f AND attacker.SP > 19456.0f",
+        "raw_mask": 4,
+        "raw_hp_threshold": 6400,
+        "raw_sp_threshold": 19456,
+        "raw_factor": 2
+      },
+      {
+        "il": "0x01F4..0x0224",
+        "condition": "MatchSetting.CriticalRate",
+        "cases": [
+          {
+            "raw_value": 1,
+            "effect": "local8 /= 2.0f"
+          },
+          {
+            "raw_value": 3,
+            "effect": "local8 *= 2.0f"
+          }
+        ]
+      },
+      {
+        "il": "0x0225..0x0287",
+        "condition": "MatchSetting.isS1Rule != 0",
+        "paths": [
+          "if (CurrentSkill.flags & 2) != 0: local8 *= 2.0f",
+          "otherwise, local8 remains unchanged only when local3 == 0, attacker.isCriticalMove != 0, and SkillDataMan.IsS1Waza(CurrentSkill) converts true",
+          "all other paths store local8 = 0.0f"
+        ],
+        "raw_skill_mask": 2,
+        "is_s1_waza_token": "0x06005266"
+      }
+    ],
+    "random_tail": {
+      "il": "0x0288..0x02A5",
+      "call": "local9 = MatchRandom.Range(0.0f, 1.0f)",
+      "range_token": "0x0600497C",
+      "comparison": "if local9 > local8 return false; otherwise return true",
+      "branch_il": "0x029D",
+      "false_target": "0x02A4"
+    },
+    "apply_damage_bridge": {
+      "fact_id": "FACT-0020",
+      "caller": "MatchMisc.ApplyDamage",
+      "caller_token": "0x0600494D",
+      "call_il": "0x01C5",
+      "callee_token": "0x06004949"
+    }
+  },
+  "limits": [
+    "No standalone CriticalCheck PRE/POST recorder event is used in this record.",
+    "Critical_CheckTbl and MatchData critical table contents are outside this record.",
+    "GetHealth, SkillDataMan.IsS1Waza, MatchRandom.Range and table Get internals are outside this record unless separately closed.",
+    "Raw masks, thresholds, factors and numeric rule values are preserved exactly."
+  ]
+}

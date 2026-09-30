@@ -113,3 +113,8 @@ jobs:
         run: python tests/test_calc_damage_summary.py
       - name: CalcDamage prover syntax
         run: python -m py_compile tools/prove_calc_damage.py
+
+      - name: CriticalCheck summary
+        run: python tests/test_critical_check_summary.py
+      - name: CriticalCheck prover syntax
+        run: python -m py_compile tools/prove_critical_check.py
