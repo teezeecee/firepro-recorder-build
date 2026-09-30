@@ -1,0 +1,13 @@
+{
+  "fact_id": "FACT-0001",
+  "claim": "The canonical retail Assembly-CSharp.dll byte identity for this reconstruction is SHA-256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "whole-file SHA-256",
+      "observation": "sha256=9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+    }
+  ],
+  "chain_edges": []
+}
