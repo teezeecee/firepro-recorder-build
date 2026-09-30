@@ -163,3 +163,8 @@ jobs:
         run: python tests/test_stun_param_rate_helpers_summary.py
       - name: Stun/param-rate helpers prover syntax
         run: python -m py_compile tools/prove_stun_param_rate_helpers.py
+
+      - name: MatchRandom Range wrappers summary
+        run: python tests/test_matchrandom_range_wrappers_summary.py
+      - name: MatchRandom Range wrappers prover syntax
+        run: python -m py_compile tools/prove_matchrandom_range_wrappers.py
