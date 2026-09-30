@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 import argparse
+import base64
 import csv
 import hashlib
 import io
 import json
 import zipfile
+import zlib
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -79,12 +81,7 @@ def mine(r6_zip, out_index, out_summary):
                     edge = (prev["State"], row["State"])
                     edge_counts[edge] += 1
                     player_counts[slot] += 1
-                    occurrences[edge].append([
-                        int(slot),
-                        prev["line"], line,
-                        int(prev["tick"]), int(row["tick"]),
-                        int(prev["seq"]), int(row["seq"]),
-                    ])
+                    occurrences[edge].append([int(slot), prev["line"], line])
                 last[slot] = {
                     "line": line,
                     "tick": row["tick"],
@@ -97,7 +94,7 @@ def mine(r6_zip, out_index, out_summary):
         "dataset_id": "R6_TICK_STATE_EDGES_V1",
         "source_id": SOURCE_ID,
         "definition": "An occurrence is emitted when the recorder-emitted State string for one stable player_slot differs between two consecutive sampled tick_trace rows for that same slot. State strings are opaque recorded values; no gameplay meaning is inferred.",
-        "occurrence_fields": ["player_slot","before_line","after_line","before_tick","after_tick","before_seq","after_seq"],
+        "occurrence_fields": ["player_slot","before_line","after_line"],
         "edges": [
             {
                 "from_State": a,
@@ -110,8 +107,11 @@ def mine(r6_zip, out_index, out_summary):
     }
     out_index = Path(out_index)
     out_index.parent.mkdir(parents=True, exist_ok=True)
-    out_index.write_text(json.dumps(index, separators=(",",":"), ensure_ascii=False) + "\n", encoding="utf-8")
-    index_sha256 = sha256_path(out_index)
+    index_json = (json.dumps(index, separators=(",",":"), ensure_ascii=False) + "\n").encode("utf-8")
+    decoded_json_sha256 = hashlib.sha256(index_json).hexdigest()
+    artifact_bytes = base64.b64encode(zlib.compress(index_json, 9)) + b"\n"
+    out_index.write_bytes(artifact_bytes)
+    artifact_sha256 = hashlib.sha256(artifact_bytes).hexdigest()
 
     summary = {
         "schema_version": 1,
@@ -130,8 +130,9 @@ def mine(r6_zip, out_index, out_summary):
         "definition": index["definition"],
         "index_file": {
             "path": out_index.name,
-            "sha256": index_sha256,
-            "format": "compact JSON",
+            "sha256": artifact_sha256,
+            "decoded_json_sha256": decoded_json_sha256,
+            "format": "base64(zlib(compact-json))",
             "occurrence_fields": index["occurrence_fields"],
             "record_count": witness_count,
         },
