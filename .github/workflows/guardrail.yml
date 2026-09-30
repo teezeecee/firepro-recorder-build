@@ -53,3 +53,8 @@ jobs:
         run: python tests/test_r6_req_slot_anm_summary.py
       - name: ReqSlotAnm prover syntax
         run: python -m py_compile tools/prove_req_slot_anm_closure.py
+
+      - name: ReqBasicAnm closure summary
+        run: python tests/test_r6_req_basic_anm_summary.py
+      - name: ReqBasicAnm prover syntax
+        run: python -m py_compile tools/prove_req_basic_anm_closure.py
