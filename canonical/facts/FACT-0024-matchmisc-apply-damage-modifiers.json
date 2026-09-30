@@ -1,0 +1,55 @@
+{
+  "fact_id": "FACT-0024",
+  "claim": "In the matching retail DLL, the two Float32 modifier helpers called by MatchMisc.ApplyDamage before its CriticalCheck split are closed together. MatchMisc.GetSkillSlotDamageMdf (0x0600494B) has parameters named slot and sd and an exact 132-byte body: raw slot -1 returns 1.0; otherwise it calls SkillSlotDataMan.GetSkillSlotData(slot), returns 1.0 when slotDamageMdf is zero, computes slotStrength - sd.primarySkillStrength, returns 1.0 when that difference is not positive, then maps slotDamageMdf/difference branches exactly to 1.2 or 1.5 for raw mode 1, 1.1 or 1.2 for raw mode 2, and 1.0 otherwise. MatchMisc.GetExchangeOfStrikingDamageMdf (0x0600494C) has Int32 parameters atk_pl_idx and def_pl_idx and an exact 239-byte body: it returns 1.0 if either Player is absent, computes attacker.HP/65535.0 and defender.HP/65535.0 plus Abs(their difference), returns 1.0 when that difference is below 0.2, then selects one of two directional threshold ladders at 0.8, 0.6 and 0.4. The local2 >= local3 path returns 0.25, 0.33000001311302185, 0.5, or 0.800000011920929; the local2 < local3 path returns 4.0, 3.0, 2.0, or 1.2000000476837158. FACT-0020 pins the first helper at ApplyDamage IL+0x0097 and the second at IL+0x00B9 under the already-recorded raw slot-24/25 branch.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.GetSkillSlotDamageMdf token 0x0600494B RVA 0x002AEFFC signature 00020c11870c12a9a8 code size 132 code sha256=224619b3628e2141649f4c24f24196c0d810edf2b2bbfeccd289e0822fb98012; exact body in canonical/witnesses/CAP-R6-001/apply_damage_modifiers.summary.json",
+      "observation": "Exact matching-DLL first modifier helper."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.GetExchangeOfStrikingDamageMdf token 0x0600494C RVA 0x002AF08C signature 00020c0808 code size 239 code sha256=2a91e3b19f7438eefaf7e3b85aa6f4cfb3c8c8a35ab64fdd1aefb71c2e7456b1; exact body in canonical/witnesses/CAP-R6-001/apply_damage_modifiers.summary.json",
+      "observation": "Exact matching-DLL second modifier helper."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0020 ApplyDamage modifier setup",
+      "to": "GetSkillSlotDamageMdf(slot, CurrentSkill)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 pins ApplyDamage IL+0x0097 call token 0x0600494B after raw slot selection and CurrentSkill load"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0020 raw slot 24/25 branch",
+      "to": "GetExchangeOfStrikingDamageMdf(atk_pl_idx, def_pl_idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 pins raw slot checks 24/25 and ApplyDamage IL+0x00B9 call token 0x0600494C"
+        }
+      ]
+    },
+    {
+      "from": "two helper Float32 returns",
+      "to": "FACT-0020 ordinary CalcDamage multipliers",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 records both helper results as the two Float32 locals multiplied into all seven ordinary CalcDamage paths"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact uses matching-DLL evidence; no standalone recorder events for either helper are used in this gate.",
+    "SkillSlotDataMan.GetSkillSlotData internals and the authored SkillSlotData records are outside this fact unless separately closed.",
+    "The MemberRef Abs implementation is outside this fact; the exact call and operands are pinned.",
+    "Raw slotDamageMdf values, thresholds and Float32 returns are retained exactly without adding gameplay interpretation."
+  ]
+}
