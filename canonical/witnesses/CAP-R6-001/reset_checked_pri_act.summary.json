@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_RESET_CHECKED_PRI_ACT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "ResetCheckedPriAct",
+      "token": "0x06005007",
+      "rva": "0x002FCE60",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 29,
+      "code_sha256": "875a2b35635251f80de9831dffb13bc94a030a2edd52a8b96e0496d68a46e9ff",
+      "max_stack": 3,
+      "local_signature_token": "0x1100003A",
+      "local_count": 1,
+      "instruction_count": 16,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 0
+    },
+    "field": {
+      "name": "checkedPriAct",
+      "token": "0x04006152"
+    },
+    "exact_loop": {
+      "initial_index": 0,
+      "condition": "index < 41",
+      "condition_opcode": "blt",
+      "body": "checkedPriAct[index] = 0 via stelem.i1",
+      "increment": 1,
+      "raw_cleared_index_range": {
+        "min_inclusive": 0,
+        "max_inclusive": 40
+      }
+    },
+    "caller_bridge": {
+      "fact_id": "FACT-0029",
+      "caller": "Player.SetLastSkill",
+      "caller_token": "0x06004EB1",
+      "call_il": "0x0014",
+      "callee_token": "0x06005007",
+      "receiver_field": "plCont_AI",
+      "receiver_field_token": "0x0400602F"
+    }
+  },
+  "limits": [
+    "No meaning is assigned to individual checkedPriAct indices.",
+    "Other AI priority-action code remains outside this record."
+  ]
+}
