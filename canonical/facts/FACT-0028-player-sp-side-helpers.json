@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0028",
+  "claim": "In the matching retail DLL, three Player SP-side helpers form one caller-connected family around the already-closed Player.AddSP method. Player.ConsumeSP (0x06004ED1) has one Float32 parameter named sp and an exact 51-byte body: it requires MatchMain.inst to convert true, MatchMain.isTimeCounting to be nonzero, and MatchMain.isMatchEnd to be zero, then calls AddSP with the negated input. Player.RecoverSP (0x06004ED2) has one Float32 parameter named sp and an exact 100-byte body: when MatchMain.inst converts true it requires isTimeCounting and not isMatchEnd, while a missing MatchMain proceeds directly; it selects WrestlerParam.spRecovery_Bleeding when isBleeding is set and WrestlerParam.spRecovery otherwise, multiplies the input by Player.SpHealTbl at that raw index, stores the product back into the argument slot, and calls AddSP. Player.InvokeUkeBonus (0x06004ED3) is parameterless with an exact 144-byte body: it returns if isInvokedUkeBonus is already set, otherwise sets it, calls AddSP after integer-dividing UkeRecoveryPoint by 2 and converting to Float32, resets UkeBonusTime to zero, then adds 1800 once for each strict UkeRecoveryPoint threshold exceeded: 7680, 15360, and 30720. FACT-0018 pins ConsumeSP(4.0f); FACT-0020 pins InvokeUkeBonus plus its ConsumeSP/RecoverSP calls; FACT-0027 pins the AddSP callee body used by all three.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.ConsumeSP token 0x06004ED1 RVA 0x002E15D4 signature 2001010c parameter sp:Float32 code size 51 code sha256=0319a9b9582c72089b9455369fa000ad2d7713ad775bcb2eb0836f21c773d243; exact body in canonical/witnesses/CAP-R6-001/player_sp_side_helpers.summary.json",
+      "observation": "Exact matching-DLL ConsumeSP body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.RecoverSP token 0x06004ED2 RVA 0x002E1614 signature 2001010c parameter sp:Float32 code size 100 code sha256=9879da28f6a20f4435ae4bb27ba85d7f920ce913279bdfd0a7df12ecfc797ddf; exact body in canonical/witnesses/CAP-R6-001/player_sp_side_helpers.summary.json",
+      "observation": "Exact matching-DLL RecoverSP body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.InvokeUkeBonus token 0x06004ED3 RVA 0x002E1684 signature 200001 code size 144 code sha256=70c0105528475fabfc6a645f2b42355b7a3063334b6ee9abe25c09f00fa6e334; exact body in canonical/witnesses/CAP-R6-001/player_sp_side_helpers.summary.json",
+      "observation": "Exact matching-DLL InvokeUkeBonus body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0018 ProcessFoxSleep",
+      "to": "Player.ConsumeSP(4.0f)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0018 pins ProcessFoxSleep IL+0x00A5..0x00B0 loading raw Float32 4.0 and calling Player.ConsumeSP token 0x06004ED1"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0020 ApplyDamage shared/ordinary branches",
+      "to": "Player.InvokeUkeBonus, ConsumeSP and RecoverSP",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 pins InvokeUkeBonus IL+0x0465, ConsumeSP IL+0x0531, RecoverSP IL+0x053E, plus RecoverSP IL+0x057D and IL+0x0593"
+        }
+      ]
+    },
+    {
+      "from": "three SP-side helpers",
+      "to": "FACT-0027 Player.AddSP",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ConsumeSP IL+0x002D, RecoverSP IL+0x005E and InvokeUkeBonus IL+0x001D all call Player.AddSP token 0x06004ECF; FACT-0027 closes that exact callee body"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact uses matching-DLL evidence; CAP-R6-001 contains no standalone PRE/POST events for these three helpers.",
+    "Player.SpHealTbl authored contents and WrestlerParam recovery-value meaning are outside this fact.",
+    "Raw thresholds, integer division, branch opcodes, and timing increment 1800 are retained exactly without additional gameplay interpretation.",
+    "Later consumers of UkeBonusTime and isInvokedUkeBonus remain outside this fact."
+  ]
+}
