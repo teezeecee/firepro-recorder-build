@@ -1,0 +1,49 @@
+{
+  "fact_id": "FACT-0017",
+  "claim": "In the matching retail DLL, four small FormAnimator form-query helpers are exact and mechanically distinct. IsAnmComplete (0x06004E79, 69 bytes) returns true only when FormDispDuration <= 0, isAnmBoot is set, and currentFormIdx is at least CurrentSkill.anmData[CurrentAnmIdx].formNum-1. IsLastForm (0x06004E7A, 55 bytes) returns true only when isAnmBoot is set and currentFormIdx equals formNum-1. IsPrevLastAnmFrame (0x06004E7B, 69 bytes) uses the same terminal-form test as IsAnmComplete but requires FormDispDuration <= 1. GetCurrentFormDispInfo (0x06004E7C, 117 bytes) returns null when CurrentSkill is absent, CurrentAnmIdx is negative or outside anmData, or currentFormIdx is negative or outside formDispList; otherwise it returns CurrentSkill.anmData[CurrentAnmIdx].formDispList[currentFormIdx]. The already-closed UpdateAnimation and PlayAnimationSE methods call this exact GetCurrentFormDispInfo helper at their pinned call sites.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator IsAnmComplete token 0x06004E79 RVA 0x002DB5A8 code sha256=766907d7d20a39e44a0af0fef66b1d47f6548b29eaa8beba381d29f1d91456c1; IsLastForm token 0x06004E7A RVA 0x002DB5FC sha256=8d7732e16017ba91bf17d733b6602560309e02121b3399203dd52964aa5d1694; IsPrevLastAnmFrame token 0x06004E7B RVA 0x002DB640 sha256=21448fc69b9fb12146af52cd1fcbb9d21ae7a3069e4647438e91f04380e78627; GetCurrentFormDispInfo token 0x06004E7C RVA 0x002DB694 sha256=7bb1c23a0880b9ebe1d997e643e069597c94c0784a03e03ba2b9a1ab207045c0; exact logic in canonical/witnesses/CAP-R6-001/form_query_helpers.summary.json; prover tools/prove_form_query_helpers.py",
+      "observation": "Exact matching-DLL bodies for all four helpers."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FormDispDuration / isAnmBoot / currentFormIdx / formNum",
+      "to": "IsAnmComplete / IsLastForm / IsPrevLastAnmFrame Boolean results",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact branch/return sequences in MethodDefs 0x06004E79, 0x06004E7A and 0x06004E7B are pinned by body hashes and offset/token checks in tools/prove_form_query_helpers.py"
+        }
+      ]
+    },
+    {
+      "from": "CurrentSkill / CurrentAnmIdx / currentFormIdx",
+      "to": "GetCurrentFormDispInfo result",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "GetCurrentFormDispInfo 0x06004E7C performs the exact null and array-bound checks listed in form_query_helpers.summary.json before returning formDispList[currentFormIdx]"
+        }
+      ]
+    },
+    {
+      "from": "closed form-processing methods",
+      "to": "GetCurrentFormDispInfo",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0014 pins UpdateAnimation IL+0x0136 call 0x06004E7C; FACT-0015 pins PlayAnimationSE IL+0x0001 call 0x06004E7C"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "These helpers are not standalone R6 recorder events, so this fact uses matching-DLL evidence.",
+    "Exact CLR identifiers and numeric thresholds are preserved without added gameplay interpretation.",
+    "Authored form data and other callers remain outside this fact."
+  ]
+}

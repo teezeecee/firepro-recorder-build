@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_FORMANIMATOR_FORM_QUERY_HELPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "methods": [
+      {
+        "method": "FormAnimator.IsAnmComplete",
+        "token": "0x06004E79",
+        "rva": "0x002DB5A8",
+        "signature_blob_hex": "200002",
+        "parameters": [],
+        "return_type": "Boolean",
+        "code_size": 69,
+        "code_sha256": "766907d7d20a39e44a0af0fef66b1d47f6548b29eaa8beba381d29f1d91456c1",
+        "exact_logic": [
+          "if FormDispDuration > 0: return false",
+          "if isAnmBoot == 0: return false",
+          "anm = CurrentSkill.anmData[CurrentAnmIdx]",
+          "if currentFormIdx < anm.formNum - 1: return false",
+          "return true"
+        ]
+      },
+      {
+        "method": "FormAnimator.IsLastForm",
+        "token": "0x06004E7A",
+        "rva": "0x002DB5FC",
+        "signature_blob_hex": "200002",
+        "parameters": [],
+        "return_type": "Boolean",
+        "code_size": 55,
+        "code_sha256": "8d7732e16017ba91bf17d733b6602560309e02121b3399203dd52964aa5d1694",
+        "exact_logic": [
+          "if isAnmBoot == 0: return false",
+          "anm = CurrentSkill.anmData[CurrentAnmIdx]",
+          "if currentFormIdx == anm.formNum - 1: return true",
+          "return false"
+        ]
+      },
+      {
+        "method": "FormAnimator.IsPrevLastAnmFrame",
+        "token": "0x06004E7B",
+        "rva": "0x002DB640",
+        "signature_blob_hex": "200002",
+        "parameters": [],
+        "return_type": "Boolean",
+        "code_size": 69,
+        "code_sha256": "21448fc69b9fb12146af52cd1fcbb9d21ae7a3069e4647438e91f04380e78627",
+        "exact_logic": [
+          "if FormDispDuration > 1: return false",
+          "if isAnmBoot == 0: return false",
+          "anm = CurrentSkill.anmData[CurrentAnmIdx]",
+          "if currentFormIdx < anm.formNum - 1: return false",
+          "return true"
+        ]
+      },
+      {
+        "method": "FormAnimator.GetCurrentFormDispInfo",
+        "token": "0x06004E7C",
+        "rva": "0x002DB694",
+        "signature_blob_hex": "200012a9cc",
+        "parameters": [],
+        "return_type": "class FormDispInfo",
+        "code_size": 117,
+        "code_sha256": "7bb1c23a0880b9ebe1d997e643e069597c94c0784a03e03ba2b9a1ab207045c0",
+        "exact_logic": [
+          "if CurrentSkill is null: return null",
+          "if CurrentAnmIdx < 0: return null",
+          "if CurrentAnmIdx >= CurrentSkill.anmData.Length: return null",
+          "anm = CurrentSkill.anmData[CurrentAnmIdx]",
+          "if currentFormIdx < 0: return null",
+          "if currentFormIdx >= anm.formDispList.Length: return null",
+          "return anm.formDispList[currentFormIdx]"
+        ]
+      }
+    ],
+    "field_tokens": {
+      "FormDispDuration": "0x04005ED4",
+      "isAnmBoot": "0x04005EEA",
+      "CurrentSkill": "0x04005ED0",
+      "CurrentAnmIdx": "0x04005ED1",
+      "currentFormIdx": "0x04005ED5",
+      "anmData": "0x04007C7A",
+      "formNum": "0x04007C93",
+      "formDispList": "0x04007C9F"
+    },
+    "closed_call_boundaries": [
+      {
+        "fact_id": "FACT-0014",
+        "caller": "FormAnimator.UpdateAnimation",
+        "call_il": "0x0136",
+        "target": "FormAnimator.GetCurrentFormDispInfo"
+      },
+      {
+        "fact_id": "FACT-0015",
+        "caller": "FormAnimator.PlayAnimationSE",
+        "call_il": "0x0001",
+        "target": "FormAnimator.GetCurrentFormDispInfo"
+      }
+    ]
+  },
+  "limits": [
+    "CAP-R6-001 contains no standalone recorder events for these four helper methods, so this bundle uses matching-DLL evidence.",
+    "The methods perform no additional validation beyond the exact null/range/field tests listed here.",
+    "Field/type/method names are retained as exact CLR identifiers without extra gameplay labels.",
+    "Authored form data and callers not already closed in canonical facts remain outside this record."
+  ]
+}
