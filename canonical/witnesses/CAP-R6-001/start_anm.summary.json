@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "dataset_id": "R6_START_ANM_CLOSURE_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "start_anm": {
+      "type": "FormAnimator",
+      "method": "StartAnm",
+      "token": "0x06004E75",
+      "rva": "0x002DAA54",
+      "signature_blob_hex": "20010108",
+      "parameter": {
+        "sequence": 1,
+        "name": "anm_idx",
+        "element_type": "I4"
+      },
+      "code_size": 328,
+      "code_sha256": "aa80c075f247570daf6d74d8d5d7140022160f98a0d3b6233cd7268236a69c94",
+      "direct_assignments": [
+        {
+          "il_offset": "0x000D",
+          "target": "FormAnimator.CurrentAnmIdx",
+          "field_token": "0x04005ED1",
+          "value_from": "arg1"
+        },
+        {
+          "il_offset": "0x0014",
+          "target": "FormAnimator.reqAnmInit",
+          "field_token": "0x04005EEC",
+          "value": 0
+        },
+        {
+          "il_offset": "0x001B",
+          "target": "FormAnimator.isAnmBoot",
+          "field_token": "0x04005EEA",
+          "value": 1
+        },
+        {
+          "il_offset": "0x0022",
+          "target": "FormAnimator.currentFormIdx",
+          "field_token": "0x04005ED5",
+          "value": -1
+        },
+        {
+          "il_offset": "0x0033",
+          "target": "FormAnimator.AnmHostPlayer",
+          "field_token": "0x04005ED7",
+          "value_from": "FormAnimator.plObj.Player.PlIdx"
+        },
+        {
+          "il_offset": "0x0044",
+          "target": "FormAnimator.anmType",
+          "field_token": "0x04005EDC",
+          "value_from": "FormAnimator.CurrentSkill.SkillData.anmType"
+        },
+        {
+          "il_offset": "0x0066",
+          "target": "Player.TerrainColType",
+          "field_token": "0x04006004",
+          "value_from": "CurrentSkill.anmData[CurrentAnmIdx].terrainColType"
+        },
+        {
+          "il_offset": "0x0083",
+          "target": "FormAnimator.AnimeEnd",
+          "field_token": "0x04005EE2",
+          "value_from": "CurrentSkill.anmData[CurrentAnmIdx].anmEndState"
+        }
+      ],
+      "numeric_terrain_filter": {
+        "ring_kind_field": "VenueSetting.ringKind",
+        "ring_kind_field_token": "0x04006468",
+        "zone_field": "Player.Zone",
+        "zone_field_token": "0x04005FEE",
+        "terrain_field": "Player.TerrainColType",
+        "terrain_field_token": "0x04006004",
+        "equivalent_logic": [
+          "if ringKind == 1 or ringKind == 3: TerrainColType = 0",
+          "if TerrainColType != 4 and (Zone == 3 or Zone == 1): TerrainColType = 0",
+          "if TerrainColType != 4 and Zone != 3 and Zone != 1 and ringKind == 2 and (TerrainColType == 1 or TerrainColType == 3): TerrainColType = 0",
+          "if final TerrainColType != 0: isIgnoreTerrainCol = 1",
+          "if final TerrainColType == 0: StartAnm performs no store to isIgnoreTerrainCol on this path"
+        ],
+        "is_ignore_field": "Player.isIgnoreTerrainCol",
+        "is_ignore_field_token": "0x0400604F"
+      },
+      "terminal_call": {
+        "il_offset": "0x0142",
+        "method": "FormAnimator.PreprocessEachAnm",
+        "token": "0x06004E78"
+      }
+    },
+    "start_slot_anm_immediately_bridge": {
+      "type": "FormAnimator",
+      "method": "StartSlotAnm_Immediately",
+      "token": "0x06004E71",
+      "rva": "0x002DA296",
+      "code_size": 38,
+      "code_sha256": "091053ea365ad855884dd6f93314dd5e1de23bda1c848c291fd2df4d8776d0b2",
+      "parameters": [
+        "skill_slot",
+        "anm_bank",
+        "rev",
+        "def_pl_idx"
+      ],
+      "start_anm_call": {
+        "il_offset": "0x0020",
+        "receiver_instruction_offset": "0x001E",
+        "argument_instruction_offset": "0x001F",
+        "argument_instruction": "ldarg.2",
+        "target_token": "0x06004E75"
+      }
+    }
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "start_anm_pre": 5333,
+    "start_anm_post": 5333,
+    "paired": 5333,
+    "traced_parent_counts": {
+      "FormAnimator.InitAnimation": 5288,
+      "FormAnimator.StartSlotAnm_Immediately": 36,
+      "ROOT": 9
+    },
+    "raw_argument_counts": {
+      "0": 5292,
+      "1": 9,
+      "2": 2,
+      "4": 26,
+      "8": 4
+    },
+    "raw_argument_counts_by_traced_parent": {
+      "FormAnimator.InitAnimation": {
+        "0": 5288
+      },
+      "FormAnimator.StartSlotAnm_Immediately": {
+        "0": 4,
+        "2": 2,
+        "4": 26,
+        "8": 4
+      },
+      "ROOT": {
+        "1": 9
+      }
+    },
+    "recorded_host_field": {
+      "pre_AnmHostPlayer_equals_owner_slot": 5089,
+      "post_AnmHostPlayer_equals_owner_slot": 5333,
+      "pre_to_post_AnmHostPlayer_changed": 244
+    },
+    "start_slot_bridge": {
+      "observed_parent_child_pairs": 36,
+      "parent_second_raw_argument_equals_child_StartAnm_raw_argument": 36
+    },
+    "traced_direct_children": {
+      "Player.ChangeState": 2
+    }
+  },
+  "witness_digest": {
+    "algorithm": "sha256",
+    "canonical_record_format": "ASCII fields joined by tab and terminated by LF",
+    "fields": [
+      "StartAnm_PRE_line",
+      "StartAnm_POST_line",
+      "direct_traced_parent_method_or_ROOT",
+      "direct_traced_parent_PRE_line_or_0",
+      "StartAnm_raw_args",
+      "owner_slot",
+      "PRE_AnmHostPlayer",
+      "POST_AnmHostPlayer",
+      "direct_Player.ChangeState_PRE_line_or_0"
+    ],
+    "record_count": 5333,
+    "byte_count": 307108,
+    "sha256": "bdc1ebb858f74602c3c364ce5ca695f7663380703770237421e50e872783f048",
+    "reproducibility_tool": "tools/prove_start_anm_closure.py"
+  },
+  "limits": [
+    "CLR metadata names and recorder strings are retained as identifiers and observations; their names are not independent proof of gameplay meaning.",
+    "The 9 R6 StartAnm calls labeled ROOT mean no parent among the recorder's traced methods was active. They are not claimed to have no retail caller and are not mapped to a specific DLL call site.",
+    "The numeric ringKind, Zone, TerrainColType, and animation-index values are preserved as raw values; this fact does not assign player-facing semantic names to them.",
+    "PreprocessEachAnm is called by StartAnm, but its downstream behavior is not closed by this fact.",
+    "Packed choreography, animation-bank meaning, damage causality, and aftermath remain outside this promotion."
+  ]
+}

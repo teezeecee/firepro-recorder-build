@@ -1,0 +1,73 @@
+{
+  "fact_id": "FACT-0006",
+  "claim": "In the matching retail DLL, FormAnimator.StartAnm (MethodDef 0x06004E75) is an instance void method with one Int32 parameter named anm_idx. Its 328-byte body stores arg1 into CurrentAnmIdx; stores 0 into reqAnmInit, 1 into isAnmBoot, and -1 into currentFormIdx; stores plObj.PlIdx into AnmHostPlayer; copies CurrentSkill.anmType into anmType; copies CurrentSkill.anmData[CurrentAnmIdx].terrainColType into plObj.TerrainColType and .anmEndState into AnimeEnd; applies exact numeric ringKind/Zone/TerrainColType filtering; stores 1 into isIgnoreTerrainCol only when the resulting TerrainColType is nonzero; and then calls PreprocessEachAnm. In verified R6 raw capture bytes, all 5333 StartAnm PRE calls pair with POST calls. The recorder's direct traced parent is InitAnimation for 5288, StartSlotAnm_Immediately for 36, and absent for 9. The recorded POST AnmHostPlayer equals recorded owner_slot in 5333/5333 calls, including 244 calls where PRE AnmHostPlayer differed. In all 36 traced StartSlotAnm_Immediately -> StartAnm pairs, the parent's second raw argument equals the child StartAnm raw argument, matching the DLL StartSlotAnm_Immediately IL sequence ldarg.2; call StartAnm.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.StartAnm token 0x06004E75, RVA 0x002DAA54, signature blob 20010108, code size 328, code sha256=aa80c075f247570daf6d74d8d5d7140022160f98a0d3b6233cd7268236a69c94; exact field stores and branch offsets recorded in canonical/witnesses/CAP-R6-001/start_anm.summary.json",
+      "observation": "Exact matching-DLL StartAnm body, assignments, numeric terrain filter, and terminal PreprocessEachAnm call."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; deterministic 5333-record StartAnm raw-line tuple digest sha256=bdc1ebb858f74602c3c364ce5ca695f7663380703770237421e50e872783f048; summary canonical/witnesses/CAP-R6-001/start_anm.summary.json; prover tools/prove_start_anm_closure.py",
+      "observation": "5333 matched StartAnm PRE/POST executions with exact traced-parent, raw-argument, owner, host-field, and traced-child line relationships."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "StartAnm arg1",
+      "to": "FormAnimator.CurrentAnmIdx",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "StartAnm IL+0x000B ldarg.0; IL+0x000C ldarg.1; IL+0x000D stfld FormAnimator.CurrentAnmIdx token 0x04005ED1"
+        }
+      ]
+    },
+    {
+      "from": "FormAnimator.plObj.Player.PlIdx",
+      "to": "FormAnimator.AnmHostPlayer",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "StartAnm IL+0x0027..0x0033 loads this.plObj, loads Player.PlIdx token 0x04005FA6, stores FormAnimator.AnmHostPlayer token 0x04005ED7"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "5333/5333 StartAnm POST rows have recorded AnmHostPlayer == recorded owner_slot; 244 of those calls changed the recorded field from a differing PRE value"
+        }
+      ]
+    },
+    {
+      "from": "StartSlotAnm_Immediately arg2",
+      "to": "StartAnm arg1",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FormAnimator.StartSlotAnm_Immediately token 0x06004E71, RVA 0x002DA296, code sha256=091053ea365ad855884dd6f93314dd5e1de23bda1c848c291fd2df4d8776d0b2; IL+0x001E ldarg.0; IL+0x001F ldarg.2; IL+0x0020 call StartAnm token 0x06004E75"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "36/36 traced StartSlotAnm_Immediately -> StartAnm parent/child records have parent raw argument 2 equal to child StartAnm raw argument under witness digest bdc1ebb858f74602c3c364ce5ca695f7663380703770237421e50e872783f048"
+        }
+      ]
+    },
+    {
+      "from": "StartAnm numeric terrain inputs",
+      "to": "final Player.TerrainColType and conditional Player.isIgnoreTerrainCol store",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "StartAnm IL+0x0088..0x0140; exact numeric branch equivalence and field tokens recorded in canonical/witnesses/CAP-R6-001/start_anm.summary.json"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The 9 R6 calls with no traced parent are not attributed to a specific retail caller.",
+    "Metadata identifiers are not interpreted beyond exact code/data identity.",
+    "No player-facing meaning is assigned to raw numeric ringKind, Zone, TerrainColType, or animation-index values.",
+    "PreprocessEachAnm behavior, packed choreography, animation-bank semantics, damage, and aftermath remain unclosed."
+  ]
+}
