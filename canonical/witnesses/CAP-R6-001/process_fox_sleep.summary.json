@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_PROCESS_FOX_SLEEP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "ProcessFoxSleep",
+      "token": "0x06004EBE",
+      "rva": "0x002DEC78",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 177,
+      "code_sha256": "1b6876147c6a2934da2daa0c1ceeaeec1952b91df7391c37ea2521d85157b16f"
+    },
+    "exact_gate_sequence": [
+      {
+        "il": "0x0000..0x000B",
+        "condition": "Player.isPossibleFoxSleep != 0",
+        "field_token": "0x04006055",
+        "else": "return"
+      },
+      {
+        "il": "0x000C..0x0018",
+        "condition": "Player.FoxSleepCnt > 0",
+        "field_token": "0x04005FBE",
+        "else": "return"
+      },
+      {
+        "il": "0x0019..0x0029",
+        "condition": "Player.animator.isAnmBoot != 0",
+        "animator_field_token": "0x04005FA8",
+        "is_anm_boot_field_token": "0x04005EEA",
+        "else": "return"
+      },
+      {
+        "il": "0x002A..0x0036",
+        "condition": "Player.StunTime > 0",
+        "field_token": "0x04005FD0",
+        "else": "return"
+      },
+      {
+        "il": "0x0037..0x005B",
+        "condition": "Player.animator.BasicSkillID == 89 OR == 90",
+        "animator_field_token": "0x04005FA8",
+        "basic_skill_field_token": "0x04005ED8",
+        "raw_values": [
+          89,
+          90
+        ],
+        "else": "return"
+      },
+      {
+        "il": "0x005C..0x006D",
+        "condition": "Player.animator.currentFormIdx == 5",
+        "animator_field_token": "0x04005FA8",
+        "form_index_field_token": "0x04005ED5",
+        "raw_value": 5,
+        "else": "return"
+      },
+      {
+        "il": "0x006E..0x007C",
+        "condition": "(Player.padOn & 48) != 0",
+        "field_token": "0x04006023",
+        "raw_mask": 48,
+        "else": "return"
+      }
+    ],
+    "effects_when_all_gates_pass": [
+      {
+        "il": "0x007D..0x0083",
+        "effect": "Player.isDisableUpdateDownTime = 0",
+        "field_token": "0x04006051"
+      },
+      {
+        "il": "0x0084..0x0096",
+        "effect": "Player.animator.FormDispDuration = Player.animator.FormDispDuration + 1",
+        "animator_field_token": "0x04005FA8",
+        "form_duration_field_token": "0x04005ED4"
+      },
+      {
+        "il": "0x0097..0x00A4",
+        "effect": "Player.FoxSleepCnt = Player.FoxSleepCnt - 1",
+        "field_token": "0x04005FBE"
+      },
+      {
+        "il": "0x00A5..0x00B0",
+        "effect": "Player.ConsumeSP(4.0f); return",
+        "callee_token": "0x06004ED1",
+        "raw_float": 4
+      }
+    ],
+    "update_animation_bridge": {
+      "fact_id": "FACT-0014",
+      "caller": "FormAnimator.UpdateAnimation",
+      "caller_token": "0x06004E7E",
+      "call_il": "0x0028",
+      "callee_token": "0x06004EBE"
+    }
+  },
+  "r6_observation_note": "CAP-R6-001 contains no standalone Player.ProcessFoxSleep PRE/POST events. The method is therefore promoted from exact matching-DLL bytes only; no R6 execution count is asserted.",
+  "limits": [
+    "Raw values 89, 90, 5, and bit mask 48 are retained exactly without assigning player-facing meaning.",
+    "CAP-R6-001 does not trace ProcessFoxSleep as a standalone method event.",
+    "The effects inside Player.ConsumeSP are outside this record.",
+    "Later rewrites of the touched fields are outside this record."
+  ]
+}

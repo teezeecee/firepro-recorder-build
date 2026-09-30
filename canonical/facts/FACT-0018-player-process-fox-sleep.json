@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0018",
+  "claim": "In the matching retail DLL, Player.ProcessFoxSleep (0x06004EBE) is a parameterless 177-byte method. It returns unless all of the following raw conditions hold in sequence: isPossibleFoxSleep is nonzero; FoxSleepCnt is greater than zero; animator.isAnmBoot is nonzero; StunTime is greater than zero; animator.BasicSkillID equals numeric 89 or 90; animator.currentFormIdx equals 5; and (padOn & 48) is nonzero. When all gates pass it stores isDisableUpdateDownTime=0, increments animator.FormDispDuration by one, decrements FoxSleepCnt by one, calls ConsumeSP with raw Float32 4.0, and returns. The already-closed FormAnimator.UpdateAnimation body calls this exact method at IL+0x0028 before its reqAnmInit gate.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.ProcessFoxSleep token 0x06004EBE RVA 0x002DEC78 signature 200001 code size 177 code sha256=1b6876147c6a2934da2daa0c1ceeaeec1952b91df7391c37ea2521d85157b16f; exact branch/effect offsets are recorded in canonical/witnesses/CAP-R6-001/process_fox_sleep.summary.json; prover tools/prove_process_fox_sleep.py",
+      "observation": "Exact matching-DLL method body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FormAnimator.UpdateAnimation",
+      "to": "Player.ProcessFoxSleep",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0014 pins UpdateAnimation token 0x06004E7E; IL+0x0028 calls Player.ProcessFoxSleep token 0x06004EBE"
+        }
+      ]
+    },
+    {
+      "from": "ProcessFoxSleep entry fields",
+      "to": "effect block",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ProcessFoxSleep IL+0x0000..0x007C applies the seven exact early-return gates on isPossibleFoxSleep, FoxSleepCnt, animator.isAnmBoot, StunTime, animator.BasicSkillID numeric 89/90, animator.currentFormIdx numeric 5, and padOn mask 48"
+        }
+      ]
+    },
+    {
+      "from": "all ProcessFoxSleep gates passing",
+      "to": "field updates and SP call",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ProcessFoxSleep IL+0x007D..0x00B0 stores isDisableUpdateDownTime=0; increments animator.FormDispDuration; decrements FoxSleepCnt; loads Float32 4.0; calls Player.ConsumeSP token 0x06004ED1; returns"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "CAP-R6-001 has no standalone ProcessFoxSleep event, so this fact uses matching-DLL evidence.",
+    "Numeric values and CLR identifiers are retained exactly without additional gameplay interpretation.",
+    "ConsumeSP internal behavior is outside this fact.",
+    "Later field mutations are outside this fact."
+  ]
+}
