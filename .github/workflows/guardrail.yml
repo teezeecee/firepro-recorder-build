@@ -25,4 +25,7 @@ jobs:
         run: python tests/test_r6_event_move_pairing_summary.py
       - name: Pairing prover syntax
         run: python -m py_compile tools/prove_r6_event_move_pairing.py
-      - name: StartOpponentAnm dispatch summary\n        run: python tests/test_r6_start_opponent_dispatch_summary.py\n      - name: StartOpponentAnm prover syntax\n        run: python -m py_compile tools/prove_start_opponent_dispatch.py\n
+      - name: StartOpponentAnm dispatch summary
+        run: python tests/test_r6_start_opponent_dispatch_summary.py
+      - name: StartOpponentAnm prover syntax
+        run: python -m py_compile tools/prove_start_opponent_dispatch.py
