@@ -158,3 +158,8 @@ jobs:
         run: python tests/test_player_down_suicide_aftermath_summary.py
       - name: Player down/suicide aftermath prover syntax
         run: python -m py_compile tools/prove_player_down_suicide_aftermath.py
+
+      - name: Down-time direct helpers summary
+        run: python tests/test_down_time_direct_helpers_summary.py
+      - name: Down-time direct helpers prover syntax
+        run: python -m py_compile tools/prove_down_time_direct_helpers.py
