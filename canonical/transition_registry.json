@@ -353,6 +353,25 @@
         "authored SkillData/MatchData table closure",
         "later field/state aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_MATCHMISC_CALC_DAMAGE_V1",
+      "fact_id": "FACT-0021",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMisc.CalcDamage parameter selection, integer adjustments, base Float32 arithmetic, table/conditional modifiers, MatchMain TagDamageRate multiplication, and S1-rule return branch reached from seven FACT-0020 ApplyDamage call sites.",
+      "summary": "canonical/witnesses/CAP-R6-001/calc_damage.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "GetHealth internal closure",
+        "form-size table Get closure",
+        "SkillDataMan.IsS1Waza internal closure",
+        "authored MatchData/WrestlerParam/SkillData closure",
+        "later field/state aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
