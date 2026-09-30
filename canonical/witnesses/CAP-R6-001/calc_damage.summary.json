@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCHMISC_CALC_DAMAGE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchMisc",
+      "method": "CalcDamage",
+      "token": "0x06004948",
+      "rva": "0x002AE858",
+      "signature_blob_hex": "00030c080808",
+      "return_type": "Float32",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "dp",
+          "type": "Int32"
+        },
+        {
+          "sequence": 2,
+          "name": "atk_pl_idx",
+          "type": "Int32"
+        },
+        {
+          "sequence": 3,
+          "name": "def_pl_idx",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 1007,
+      "code_sha256": "058a61f95c9c59f9e5d3079b2c08a1420599dcec208152325c520e26a5983d04",
+      "max_stack": 4,
+      "local_signature_token": "0x11000F64",
+      "local_signature_blob_hex": "070912a40812a78812a78812a9a8080808080c",
+      "local_count": 9,
+      "instruction_count": 380,
+      "branch_instruction_count": 32,
+      "call_instruction_count": 15
+    },
+    "entry_and_inputs": [
+      {
+        "il": "0x0000..0x0040",
+        "effect": "load MatchSetting; resolve attacker from arg1 and defender from arg2; return 0.0 when either Player compares equal to null",
+        "get_pl_obj_token": "0x06005065",
+        "object_equality_memberref": "0x0A000006"
+      },
+      {
+        "il": "0x0041..0x0058",
+        "effect": "load attacker animator.CurrentSkill; return 0.0 when null",
+        "animator_field_token": "0x04005FA8",
+        "current_skill_field_token": "0x04005ED0"
+      },
+      {
+        "il": "0x0059..0x00A8",
+        "effect": "load attacker atkParam at CurrentSkill atkPrmType_Main/Sub and defender defParam at defPrmType_Main/Sub into four Int32 locals",
+        "atk_param_field_token": "0x040010A4",
+        "def_param_field_token": "0x040010A5",
+        "selector_field_tokens": [
+          "0x04007C61",
+          "0x04007C62",
+          "0x04007C63",
+          "0x04007C64"
+        ]
+      }
+    ],
+    "integer_adjustments": [
+      {
+        "il": "0x00A9..0x00BF",
+        "effect": "add 3 to all four parameter locals",
+        "raw_add": 3
+      },
+      {
+        "il": "0x00C1..0x00D7",
+        "condition": "attacker isCriticalMove != 0",
+        "effect": "add 2 to attacker main/sub locals",
+        "raw_add": 2
+      },
+      {
+        "il": "0x00D8..0x00EE",
+        "condition": "attacker isSpecialMove != 0",
+        "effect": "add 1 to attacker main/sub locals",
+        "raw_add": 1
+      },
+      {
+        "il": "0x00EF..0x0117",
+        "condition": "(attacker spSkillFlags & 8) != 0 AND attacker HP > 45875.0f",
+        "effect": "add 1 to attacker main/sub locals",
+        "raw_mask": 8,
+        "raw_hp_threshold": 45875,
+        "raw_add": 1
+      },
+      {
+        "il": "0x0118..0x0141",
+        "condition": "(attacker spSkillFlags & 32) != 0 AND attacker HP < 1280.0f",
+        "effect": "add 2 to attacker main/sub locals",
+        "raw_mask": 32,
+        "raw_hp_threshold": 1280,
+        "raw_add": 2
+      },
+      {
+        "il": "0x0142..0x0187",
+        "condition": "attacker weaponIdx >= 0",
+        "subbranches": [
+          {
+            "condition": "attacker spSkillFlags & 256",
+            "effect": "add 3 to attacker main/sub locals"
+          },
+          {
+            "condition": "defender spSkillFlags & 256",
+            "effect": "add 3 to defender main/sub locals"
+          }
+        ],
+        "raw_mask": 256,
+        "raw_add": 3
+      }
+    ],
+    "base_scalar": {
+      "il": "0x0188..0x01B6",
+      "expression": "((((float)atkMain * 3.0f + (float)atkSub) - ((float)defMain * 3.0f + (float)defSub) + 64.0f) * 4.0f) * (float)dp",
+      "constants": [
+        3,
+        64,
+        4
+      ]
+    },
+    "table_modifiers": [
+      {
+        "il": "0x01B8..0x01CE",
+        "effect": "local8 *= MatchData.mHpDamageTbl[GetHealth(defender.HP) / 2]",
+        "table_field_token": "0x04005633",
+        "get_health_token": "0x0600495C"
+      },
+      {
+        "il": "0x01D0..0x01E6",
+        "effect": "local8 *= MatchData.mBpDamageTbl[GetHealth(attacker.BP) / 2]",
+        "table_field_token": "0x04005634",
+        "get_health_token": "0x0600495C"
+      },
+      {
+        "il": "0x01E8..0x0210",
+        "raw_flag_mask": 512,
+        "effect": "when set, local8 *= MatchData.mDamageDecTbl[GetHealth(attacker.HP_Leg) / 2]"
+      },
+      {
+        "il": "0x0211..0x0239",
+        "raw_flag_mask": 1024,
+        "effect": "when set, local8 *= MatchData.mDamageDecTbl[GetHealth(attacker.HP_Waist) / 2]"
+      },
+      {
+        "il": "0x023A..0x0262",
+        "raw_flag_mask": 2048,
+        "effect": "when set, local8 *= MatchData.mDamageDecTbl[GetHealth(attacker.HP_Arm) / 2]"
+      },
+      {
+        "il": "0x0263..0x028B",
+        "raw_flag_mask": 4096,
+        "effect": "when set, local8 *= MatchData.mDamageDecTbl[GetHealth(attacker.HP_Neck) / 2]"
+      },
+      {
+        "il": "0x028C..0x02A6",
+        "effect": "local8 *= MatchData.mDamageSizeTbl[Get(attacker.formSize, defender.formSize)]",
+        "table_field_token": "0x04005637",
+        "get_memberref": "0x0A0006E3"
+      }
+    ],
+    "conditional_float_modifiers": [
+      {
+        "il": "0x02A7..0x02D3",
+        "condition": "CurrentSkill.defPrmType_Main == 2 OR == 5, and defender.Zone != 0",
+        "raw_factor": 1.125
+      },
+      {
+        "il": "0x02D4..0x02E9",
+        "condition": "attacker.UkeBonusTime > 0",
+        "raw_factor": 1.2000000476837158
+      },
+      {
+        "il": "0x02EA..0x030F",
+        "condition": "(attacker.spSkillFlags & 128) != 0 AND attacker.isBleeding != 0",
+        "raw_mask": 128,
+        "raw_factor": 1.100000023841858
+      },
+      {
+        "il": "0x0310..0x0341",
+        "condition": "(attacker.spSkillFlags & 1) != 0 AND attacker.isStarPeformance != 0 AND attacker.HP < 2560.0f",
+        "raw_mask": 1,
+        "raw_hp_threshold": 2560,
+        "raw_factor": 1.2000000476837158
+      },
+      {
+        "il": "0x0342..0x0370",
+        "condition": "(attacker.spSkillFlags & 64) != 0 AND attacker.CriticalMoveHitCnt < 2 AND attacker.isCriticalMove != 0",
+        "raw_mask": 64,
+        "raw_count_threshold": 2,
+        "raw_factor": 2.5
+      },
+      {
+        "il": "0x0371..0x038F",
+        "condition": "MatchMain.GetInst() != null",
+        "effect": "local8 *= MatchMain.inst.TagDamageRate",
+        "get_inst_token": "0x06004907",
+        "tag_damage_rate_field_token": "0x0400573F"
+      }
+    ],
+    "s1_branch": {
+      "il": "0x0390..0x03EB",
+      "condition": "MatchSetting.isS1Rule != 0",
+      "is_s1_rule_field_token": "0x040057E6",
+      "entry_effect": "defender.SetDownTime(0)",
+      "set_down_time_token": "0x06004ED8",
+      "test": "SkillDataMan.IsS1Waza(attacker.animator.CurrentSkill)",
+      "is_s1_waza_token": "0x06005266",
+      "true_path": [
+        "defender.isS1MoveRecieved = 1",
+        "local8 *= MatchData.FightStyleParam[attacker.WresParam.fightStyle].S1Correct"
+      ],
+      "false_path": [
+        "defender.isS1MoveRecieved = 0",
+        "local8 = 0.0f"
+      ],
+      "is_s1_move_received_field_token": "0x04006074",
+      "fight_style_param_field_token": "0x04005657",
+      "s1_correct_field_token": "0x0400566F"
+    },
+    "return_tail": {
+      "il": "0x03EC..0x03EE",
+      "effect": "return local8"
+    },
+    "apply_damage_bridge": {
+      "fact_id": "FACT-0020",
+      "caller": "MatchMisc.ApplyDamage",
+      "caller_token": "0x0600494D",
+      "callee_token": "0x06004948",
+      "call_ils": [
+        "0x01E8",
+        "0x029A",
+        "0x02B9",
+        "0x02FD",
+        "0x0341",
+        "0x0385",
+        "0x03C9"
+      ],
+      "path_labels": [
+        "HP",
+        "BP",
+        "Neck",
+        "Arm",
+        "Waist",
+        "Leg",
+        "SP"
+      ]
+    }
+  },
+  "limits": [
+    "No standalone CalcDamage PRE/POST recorder event is used in this record.",
+    "Helper internals and authored table contents are outside this record unless separately closed.",
+    "Raw masks, thresholds, field names and numeric factors are preserved as exact DLL observations.",
+    "Later state aftermath is outside this record."
+  ]
+}
