@@ -516,6 +516,25 @@
         "downstream lastSkill/bleeding/down-time consumer closure",
         "authored state/data closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_DOWN_SUICIDE_AFTERMATH_V1",
+      "fact_id": "FACT-0030",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.CalcDownTime and ApplySuicideDamage bodies forming the direct UpdateAnimation down/suicide aftermath seam, with exact thresholds, raw branches, damage-table arithmetic, and bridges into already-closed Player mutation helpers.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_down_suicide_aftermath.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Player.SetStunTime internal closure",
+        "MatchMisc.GetParamRate internal closure",
+        "authored suicide-damage and damage-table contents",
+        "venue/match setting authored data",
+        "later down/stun state consumer closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
