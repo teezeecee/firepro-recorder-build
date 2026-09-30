@@ -245,6 +245,26 @@
         "packed retail form/choreography data closure",
         "damage/aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_R6_PLAY_ANIMATION_SE_V1",
+      "fact_id": "FACT-0015",
+      "source_ids": [
+        "DLL-001",
+        "CAP-R6-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Exact matching-DLL PlayAnimationSE numeric sound/action dispatch plus all 45,458 R6 PlayAnimationSE calls and the 11 observed unique EquipWeapon-branch child executions.",
+      "summary": "canonical/witnesses/CAP-R6-001/play_animation_se.summary.json",
+      "witness_digest_sha256": "269d9efa1f0bb19e53a398b53c395033084ddc30b8ea6718514911e45697f692",
+      "occurrence_count": 45458,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored FormDispInfo seID data closure",
+        "untraced special-helper observation",
+        "packed retail choreography/data closure",
+        "later aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
