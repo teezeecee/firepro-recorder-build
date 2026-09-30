@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "dataset_id": "R6_INIT_ANIMATION_CLOSURE_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "update_animation": {
+      "type": "FormAnimator",
+      "method": "UpdateAnimation",
+      "token": "0x06004E7E",
+      "rva": "0x002DB890",
+      "code_size": 738,
+      "code_sha256": "1e18c732ea0674fae8fdecc0b0d06fc976ec4494df663156925e99c4485b4c00",
+      "init_gate": [
+        {
+          "il_offset": "0x002E",
+          "instruction": "ldfld FormAnimator::reqAnmInit",
+          "field_token": "0x04005EEC"
+        },
+        {
+          "il_offset": "0x0033",
+          "instruction": "brfalse -> skip InitAnimation"
+        },
+        {
+          "il_offset": "0x0039",
+          "instruction": "call FormAnimator::InitAnimation",
+          "call_token": "0x06004E73"
+        },
+        {
+          "il_offset": "0x0040",
+          "instruction": "stfld FormAnimator::reqAnmInit",
+          "field_token": "0x04005EEC",
+          "stored_constant": 0
+        }
+      ]
+    },
+    "init_animation": {
+      "type": "FormAnimator",
+      "method": "InitAnimation",
+      "token": "0x06004E73",
+      "rva": "0x002DA2D8",
+      "signature_blob_hex": "200001",
+      "code_size": 1231,
+      "code_sha256": "88f9c7d05b183bd3ca737eaa8a23aa9e7a01547134f0caedbd3f8caa13ace396",
+      "target_lookup": [
+        {
+          "il_offset": "0x000B",
+          "instruction": "ldsfld PlayerMan::inst",
+          "field_token": "0x040061FA"
+        },
+        {
+          "il_offset": "0x0011",
+          "instruction": "ldfld FormAnimator::plObj",
+          "field_token": "0x04005ECE"
+        },
+        {
+          "il_offset": "0x0016",
+          "instruction": "ldfld Player::TargetPlIdx",
+          "field_token": "0x04005FB1"
+        },
+        {
+          "il_offset": "0x001B",
+          "instruction": "callvirt PlayerMan::GetPlObj",
+          "call_token": "0x06005065"
+        }
+      ],
+      "direct_call_sites": {
+        "FormAnimator.StartAnm": [
+          "0x01EB",
+          "0x023D",
+          "0x0453"
+        ],
+        "FormAnimator.StartOpponentAnm": [
+          "0x0215",
+          "0x02A8",
+          "0x031D",
+          "0x03BB",
+          "0x0483"
+        ],
+        "FormAnimator.StartOpponentAnmM": [
+          "0x0335",
+          "0x03D3",
+          "0x03EB"
+        ]
+      }
+    }
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "init_animation_pre": 5288,
+    "init_animation_post": 5288,
+    "paired": 5288,
+    "direct_child_triplets": [
+      {
+        "start_anm": 1,
+        "start_opponent_anm": 0,
+        "start_opponent_anm_m": 0,
+        "count": 4486
+      },
+      {
+        "start_anm": 1,
+        "start_opponent_anm": 1,
+        "start_opponent_anm_m": 0,
+        "count": 734
+      },
+      {
+        "start_anm": 1,
+        "start_opponent_anm": 1,
+        "start_opponent_anm_m": 1,
+        "count": 68
+      }
+    ],
+    "start_anm": {
+      "direct_count": 5288,
+      "raw_args": {
+        "0": 5288
+      },
+      "same_parent_instance": 5288,
+      "same_parent_owner_slot": 5288
+    },
+    "start_opponent_anm": {
+      "direct_count": 802,
+      "second_raw_arg_counts": {
+        "1": 802
+      },
+      "first_raw_arg_equals_init_parent_target": 802,
+      "same_parent_instance": 802,
+      "same_parent_owner_slot": 802,
+      "nested_request_counts": {
+        "FormAnimator.ReqBasicAnm": 585,
+        "FormAnimator.ReqSlotAnm": 217
+      },
+      "nested_request_owner_equals_init_parent_target": 802
+    },
+    "start_opponent_anm_m": {
+      "direct_count": 68,
+      "second_raw_arg_counts": {
+        "2": 68
+      },
+      "third_raw_arg_equals_init_parent_target": 68,
+      "same_parent_instance": 68,
+      "same_parent_owner_slot": 68,
+      "nested_request_counts": {
+        "FormAnimator.ReqBasicAnm": 68
+      },
+      "nested_request_owner_equals_first_raw_arg": 68
+    }
+  },
+  "witness_artifact": {
+    "path": "init_animation_witness.v2.zlib.b64",
+    "format": "base64(zlib(varint-line-index))",
+    "magic": "R6IA2",
+    "record_count": 5288,
+    "decoded_record_fields": [
+      "init_pre_line_delta",
+      "init_post_line_minus_pre",
+      "direct_StartAnm_pre_line_minus_pre",
+      "direct_StartOpponentAnm_pre_line_minus_pre_or_zero",
+      "StartOpponentAnm_nested_request_pre_line_minus_pre_or_zero",
+      "direct_StartOpponentAnmM_pre_line_minus_pre_or_zero",
+      "StartOpponentAnmM_nested_request_pre_line_minus_pre_or_zero"
+    ],
+    "sha256": "8efb91b9518589a7496589af4ab2f700ccbfae231a4b7ec2854d7b7cb71e24d7",
+    "decoded_binary_sha256": "40adf4223f65e4a373528e86aebad46b3a8145d2532fd4cdb211196272a56d98"
+  },
+  "limits": [
+    "CLR identifiers and recorder strings are preserved as identifiers/observations, not interpreted as gameplay semantics.",
+    "The matching DLL contains several possible InitAnimation call paths. R6 observed exactly one direct StartAnm in each of these 5288 executions; this record does not claim every possible retail path has exactly one StartAnm.",
+    "R6 line nesting establishes observed parent/child relationships but does not by itself identify which of multiple DLL call sites produced an individual call.",
+    "Packed choreography, animation-bank meaning, damage causality, and aftermath remain outside this promotion."
+  ]
+}
