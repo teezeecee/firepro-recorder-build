@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PROCESS_ANM_LOOP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "FormAnimator",
+      "method": "ProcessAnmLoop",
+      "token": "0x06004E74",
+      "rva": "0x002DA7B4",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 659,
+      "code_sha256": "dde8322e75ac1a7d5e5eaa9aa4b92b23791040eda59a832fa26da62d75855602",
+      "local_signature_token": "0x1100104E",
+      "local_signature_blob_hex": "070212a9b812a788",
+      "locals": [
+        "class WrestlerAnmData",
+        "class Player"
+      ]
+    },
+    "entry_gate": [
+      "anm = CurrentSkill.anmData[CurrentAnmIdx]",
+      "if anm.loopReturnPoint == 0: return",
+      "if anm.loopReturnPoint - 1 != currentFormIdx: return",
+      "target = PlayerMan.inst.GetPlObj(plObj.TargetPlIdx)"
+    ],
+    "first_loop_only": {
+      "condition": "isAnmLooped == 0",
+      "prefix": "isAnmLooped = 1",
+      "branches": [
+        {
+          "condition": "anm.fallTiming != 0",
+          "effects": [
+            "plObj.isPinfallAtk = 1",
+            "if target converts true: target.isPinfallDef = 1; target.isDecDownTime = 1; target.ForceSetDownTime()",
+            "if target converts true and target.isCriticalMoveRecieved == 0: target.SetDownTime((Int32)((Float32)target.DownTime * 0.8125f))",
+            "if target converts true and MatchMisc.GetParamRate(target.BP) is below the bge.un 1.1699999570846558f skip condition: target.AddDownTime(256)"
+          ]
+        },
+        {
+          "condition": "anm.fallTiming == 0 AND CurrentSkill.anmLoopTimes > 0",
+          "effects": [
+            "plObj.Status3 = plObj.Status3 | 8",
+            "LoopAnmCnt = CurrentSkill.anmLoopTimes"
+          ]
+        },
+        {
+          "condition": "anm.fallTiming == 0 AND CurrentSkill.anmLoopTimes <= 0",
+          "effects": [
+            "plObj.isSubmissionAtk = 1",
+            "if target converts true: target.isSubmissionDef = 1; target.isDecDownTime = 1; target.ForceSetDownTime(); target.AddDownTime(target.DownTime)",
+            "plObj.ropeEscape_MoveSpeed = 0.0f; plObj.ropeEscape_Moved = 0",
+            "if target converts true: target.ropeEscape_MoveSpeed = 0.0f; target.ropeEscape_Moved = 0"
+          ]
+        }
+      ]
+    },
+    "target_loop_end_branch": {
+      "condition": "target != null AND target.animator.isReqAnmLoopEnd != 0",
+      "effects": [
+        "plObj.isPinfallAtk = 0",
+        "plObj.isSubmissionAtk = 0",
+        "plObj.isFoul = 0",
+        "target.isPinfallDef = 0",
+        "target.isSubmissionDef = 0",
+        "target.SetDownTime(target.DownTimeBK)",
+        "target.DownTimeBK = 0"
+      ],
+      "note": "This branch skips the form-index rewind and joins the Status3/LoopAnmCnt tail."
+    },
+    "loop_rewind_branch": {
+      "condition": "target loop-end branch not taken",
+      "effects": [
+        "currentFormIdx = anm.loopReturnPoint - anm.loopReturnTo - 2",
+        "if target converts true: target.animator.currentFormIdx = anm.loopReturnPoint - anm.loopReturnTo - 2",
+        "if target converts true: target.animator.isAnmSync = 0",
+        "if target converts true: target.animator.FormDispDuration = 0"
+      ]
+    },
+    "counted_loop_tail": {
+      "condition": "(plObj.Status3 & 8) != 0 AND LoopAnmCnt > 0",
+      "effects": [
+        "LoopAnmCnt -= 1",
+        "if LoopAnmCnt becomes 0: plObj.Status3 = plObj.Status3 & -9",
+        "if LoopAnmCnt becomes 0 and target converts true: target.animator.isReqAnmLoopEnd = 1"
+      ]
+    },
+    "exact_call_sites": [
+      {
+        "il": "0x0043",
+        "target": "PlayerMan.GetPlObj",
+        "token": "0x06005065"
+      },
+      {
+        "il": "0x008C",
+        "target": "Player.ForceSetDownTime",
+        "token": "0x06004F0C"
+      },
+      {
+        "il": "0x00AB",
+        "target": "Player.SetDownTime",
+        "token": "0x06004ED8"
+      },
+      {
+        "il": "0x00B6",
+        "target": "MatchMisc.GetParamRate",
+        "token": "0x06004975"
+      },
+      {
+        "il": "0x00CB",
+        "target": "Player.AddDownTime",
+        "token": "0x06004ED9"
+      },
+      {
+        "il": "0x0135",
+        "target": "Player.ForceSetDownTime",
+        "token": "0x06004F0C"
+      },
+      {
+        "il": "0x0141",
+        "target": "Player.AddDownTime",
+        "token": "0x06004ED9"
+      },
+      {
+        "il": "0x01C9",
+        "target": "Player.SetDownTime",
+        "token": "0x06004ED8"
+      }
+    ],
+    "update_animation_bridge": {
+      "fact_id": "FACT-0014",
+      "call_site": "UpdateAnimation IL+0x00D2 calls FormAnimator.ProcessAnmLoop token 0x06004E74 when FormDispDuration == 0"
+    }
+  },
+  "limits": [
+    "CAP-R6-001 does not trace ProcessAnmLoop or the down-time helper methods as standalone events, so this record uses the matching DLL body.",
+    "Field and method names are retained as exact CLR identifiers without extra gameplay labels.",
+    "The floating-point bge.un comparison is preserved as exact code behavior rather than rewritten into a stronger semantic rule.",
+    "Authored loopReturnPoint/loopReturnTo/fallTiming/anmLoopTimes data, damage meaning, and later aftermath remain outside this record."
+  ]
+}
