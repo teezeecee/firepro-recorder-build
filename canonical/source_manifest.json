@@ -26,20 +26,25 @@
       "source_id": "CAP-R6-001",
       "kind": "RAW_RECORDER_CAPTURE",
       "filename": "2026-09-27_204320.zip",
+      "sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
       "required_dll_sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
-      "availability": "MISSING_RAW_BYTES",
-      "canonical_eligible": false,
+      "availability": "VERIFIED_RAW_CAPTURE",
+      "canonical_eligible": true,
       "raw_required": true,
-      "note": "A derived audit summary exists, but summaries and Notion are locators only. Canonical transition facts require the raw TSV/metadata bytes from this archive."
+      "member_count": 10,
+      "note": "Fresh raw ZIP re-ingested 2026-09-30. CRC PASS. metadata.json declares deathmatch-retail-oracle-r6/plugin0.9.3, observational_only=true, and pins the canonical DLL hash. Canonical facts must be mined from the raw traces, not copied from prior summaries."
     },
     {
       "source_id": "CAP-R4-001",
       "kind": "RAW_RECORDER_CAPTURE",
       "filename": "2026-09-26_123451.zip",
-      "availability": "MISSING_RAW_BYTES",
-      "canonical_eligible": false,
+      "sha256": "8c17346ed3616116c847e8641113c719b3adf0b4d237406a229a1296c2298971",
+      "required_dll_sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+      "availability": "VERIFIED_RAW_CAPTURE",
+      "canonical_eligible": true,
       "raw_required": true,
-      "note": "Optional structural cross-check corpus. No prior ledger claim is canonical until raw capture bytes are re-ingested."
+      "member_count": 5,
+      "note": "Fresh raw ZIP re-ingested 2026-09-30. CRC PASS. metadata.json declares lean-retail-oracle-r4, observational_only=true, and pins the canonical DLL hash. Use only as raw structural evidence after direct mining."
     }
   ]
 }
