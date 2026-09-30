@@ -38,3 +38,8 @@ jobs:
         run: python tests/test_r6_start_anm_summary.py
       - name: StartAnm prover syntax
         run: python -m py_compile tools/prove_start_anm_closure.py
+
+      - name: StartOpponentAnmM closure summary
+        run: python tests/test_r6_start_opponent_anm_m_summary.py
+      - name: StartOpponentAnmM prover syntax
+        run: python -m py_compile tools/prove_start_opponent_anm_m_closure.py
