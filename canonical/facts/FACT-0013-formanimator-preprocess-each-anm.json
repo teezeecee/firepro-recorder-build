@@ -1,0 +1,69 @@
+{
+  "fact_id": "FACT-0013",
+  "claim": "In the matching retail DLL, FormAnimator.PreprocessEachAnm (0x06004E78) is a parameterless 1,149-byte method. It resolves this.plObj.TargetPlIdx through PlayerMan.GetPlObj, reads this.CurrentSkill.anmData[this.CurrentAnmIdx].anmStartState, subtracts one, and dispatches through a 20-target switch for numeric values 1 through 20; other values go directly to return. The exact case effects are pinned in the provenance summary: sixteen cases call Player.ChangeState using literals 22, 34, 35, 36, or 38; selected cases also clear penaltyTime, set grappleType, or reverse target/host PlDir; the remaining cases perform the exact ring/PostPos bookkeeping, AddBP(-12288f), standing-stun/down-time initialization, ChangeRefereeGiveUpAnm store, or Poisoned call recorded there. Matching-DLL StartAnm has exactly one method call, to PreprocessEachAnm. CAP-R6-001 does not trace PreprocessEachAnm as its own event, but among 5,333 StartAnm executions it contains exactly two direct nested Player.ChangeState records, at raw line quartets 96086-96089 and 321684-321687. Both raw children carry argument string Grapple and change the recorded StartAnm state from NormalAnm to Grapple. The capture does not expose anmStartState, so neither observation is assigned to a numeric switch case.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.PreprocessEachAnm token 0x06004E78 RVA 0x002DB11C signature 200001 code size 1149 code sha256=3dd3f334be363345a7de654b8a11ec29207937ba4dc5bbbba6e2f95eddd1ac9c; exact 20-target switch and case effects in canonical/witnesses/CAP-R6-001/preprocess_each_anm.summary.json; prover tools/prove_preprocess_each_anm.py",
+      "observation": "Exact matching-DLL method body and StartAnm sole-call bridge."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; raw event lines 96086-96089 and 321684-321687; deterministic two-record digest sha256=ccb5f70b041db4574dd710212922c4d233dcf24c28d168ddf9518fcdb1d67919",
+      "observation": "Exactly two of 5,333 StartAnm call trees contain a direct Player.ChangeState child; both raw children carry argument Grapple and the StartAnm POST state is Grapple."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "StartAnm method call boundary",
+      "to": "PreprocessEachAnm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FormAnimator.StartAnm token 0x06004E75 body sha256=aa80c075f247570daf6d74d8d5d7140022160f98a0d3b6233cd7268236a69c94 contains exactly one call/callvirt instruction: IL+0x0142 call FormAnimator.PreprocessEachAnm token 0x06004E78"
+        }
+      ]
+    },
+    {
+      "from": "PreprocessEachAnm selector",
+      "to": "20 numeric case targets",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PreprocessEachAnm IL+0x0000..0x002D resolves TargetPlIdx and loads WrestlerAnmData.anmStartState field 0x04007C9D; IL+0x002E..0x008A subtracts one and switches to the 20 exact offsets stored in preprocess_each_anm.summary.json"
+        }
+      ]
+    },
+    {
+      "from": "PreprocessEachAnm switch cases",
+      "to": "Player.ChangeState / field / helper effects",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PreprocessEachAnm body sha256=3dd3f334be363345a7de654b8a11ec29207937ba4dc5bbbba6e2f95eddd1ac9c; 16 Player.ChangeState call sites and all non-ChangeState case effects are pinned by offset/token/constant in tools/prove_preprocess_each_anm.py and the canonical summary"
+        }
+      ]
+    },
+    {
+      "from": "R6 StartAnm call path",
+      "to": "two recorded Player.ChangeState children",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "StartAnm contains no method call other than PreprocessEachAnm"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "event_trace raw lines 96086 PRE StartAnm -> 96087/96088 Player.ChangeState -> 96089 POST StartAnm; and 321684 PRE StartAnm -> 321685/321686 Player.ChangeState -> 321687 POST StartAnm"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Neither R6 observation is assigned to a numeric anmStartState switch case because that field is absent from the recorder trace.",
+    "Raw recorder strings and CLR identifiers are retained exactly without using their wording as a behavior rule.",
+    "Numeric state/grapple values are preserved from exact DLL constants without added gameplay labels.",
+    "Packed choreography, animation-bank semantics, damage meaning, and later aftermath remain outside this fact."
+  ]
+}
