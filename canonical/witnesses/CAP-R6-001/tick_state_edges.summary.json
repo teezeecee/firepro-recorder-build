@@ -14,10 +14,41 @@
   },
   "definition": "An occurrence is emitted when the recorder-emitted State string for one stable player_slot differs between two consecutive sampled tick_trace rows for that same slot. State strings are opaque recorded values; no gameplay meaning is inferred.",
   "index_file": {
-    "path": "tick_state_edges.index.json.zlib.b64",
-    "sha256": "dd19d77762fc466f50b271912f37ea923dbc6f43b75204f6105d880298b55e53",
+    "parts": [
+      {
+        "path": "tick_state_edges.index.part01.b64",
+        "trimmed_sha256": "e4ef28be53b812252fafc4999a8048434c952de261c8acc246b74693cdc3a70d",
+        "trimmed_length": 10000
+      },
+      {
+        "path": "tick_state_edges.index.part02.b64",
+        "trimmed_sha256": "0a9abcf9c36d5939f0b96fc5ba98dbe03c5dce52d632436b098ba3dee904f491",
+        "trimmed_length": 10000
+      },
+      {
+        "path": "tick_state_edges.index.part03.b64",
+        "trimmed_sha256": "f7bcdf813dc7278754f1dbabbad5d912f5c7565e72b44d311878b5fa59ecf9d2",
+        "trimmed_length": 10000
+      },
+      {
+        "path": "tick_state_edges.index.part04.b64",
+        "trimmed_sha256": "2517ebd7f47aa21a44b3eb8838cdb09b383cd7b7e746e825b808881fd18f72f1",
+        "trimmed_length": 10000
+      },
+      {
+        "path": "tick_state_edges.index.part05.b64",
+        "trimmed_sha256": "54138aea6b388174e6cff9fcaa16e5c0894641f04f5000bab86f4b5672d95173",
+        "trimmed_length": 10000
+      },
+      {
+        "path": "tick_state_edges.index.part06.b64",
+        "trimmed_sha256": "599fbdba50e274ec93b65dfe3cbe4209c7c7a7d060e9a10cd66b63fa8ef1c7d6",
+        "trimmed_length": 4980
+      }
+    ],
+    "reconstructed_sha256": "dd19d77762fc466f50b271912f37ea923dbc6f43b75204f6105d880298b55e53",
     "decoded_json_sha256": "c83223175b25cc890c8706d462495243fd03adf4b1f268294a858493a928ffff",
-    "format": "base64(zlib(compact-json))",
+    "format": "ordered base64 parts -> zlib(compact-json)",
     "occurrence_fields": [
       "player_slot",
       "before_line",
