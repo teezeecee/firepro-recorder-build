@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCHMISC_APPLY_DAMAGE_MODIFIERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "MatchMisc",
+        "method": "GetSkillSlotDamageMdf",
+        "token": "0x0600494B",
+        "rva": "0x002AEFFC",
+        "signature_blob_hex": "00020c11870c12a9a8",
+        "return_type": "Float32",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "slot",
+            "type": "SkillSlotEnum"
+          },
+          {
+            "sequence": 2,
+            "name": "sd",
+            "type": "SkillData"
+          }
+        ],
+        "code_size": 132,
+        "code_sha256": "224619b3628e2141649f4c24f24196c0d810edf2b2bbfeccd289e0822fb98012",
+        "max_stack": 2,
+        "local_signature_token": "0x11000F67",
+        "local_signature_blob_hex": "070212870408",
+        "local_count": 2,
+        "instruction_count": 48,
+        "branch_instruction_count": 7,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "MatchMisc",
+        "method": "GetExchangeOfStrikingDamageMdf",
+        "token": "0x0600494C",
+        "rva": "0x002AF08C",
+        "signature_blob_hex": "00020c0808",
+        "return_type": "Float32",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "atk_pl_idx",
+            "type": "Int32"
+          },
+          {
+            "sequence": 2,
+            "name": "def_pl_idx",
+            "type": "Int32"
+          }
+        ],
+        "code_size": 239,
+        "code_sha256": "2a91e3b19f7438eefaf7e3b85aa6f4cfb3c8c8a35ab64fdd1aefb71c2e7456b1",
+        "max_stack": 2,
+        "local_signature_token": "0x11000F68",
+        "local_signature_blob_hex": "070512a78812a7880c0c0c",
+        "local_count": 5,
+        "instruction_count": 75,
+        "branch_instruction_count": 10,
+        "call_instruction_count": 5
+      }
+    ],
+    "skill_slot_modifier": {
+      "il": "0x0000..0x0083",
+      "get_skill_slot_data_token": "0x0600116D",
+      "fields": {
+        "slotDamageMdf": "0x04000EE5",
+        "slotStrength": "0x04000EE4",
+        "primarySkillStrength": "0x04007C79"
+      },
+      "entry_cases": [
+        "slot == -1 -> 1.0f",
+        "GetSkillSlotData(slot).slotDamageMdf == 0 -> 1.0f"
+      ],
+      "difference": "local1 = slotStrength - sd.primarySkillStrength; local1 <= 0 -> 1.0f",
+      "mode_cases": [
+        {
+          "raw_slotDamageMdf": 1,
+          "difference_eq_1": 1.2000000476837158,
+          "difference_other_positive": 1.5
+        },
+        {
+          "raw_slotDamageMdf": 2,
+          "difference_eq_1": 1.100000023841858,
+          "difference_other_positive": 1.2000000476837158
+        },
+        {
+          "raw_slotDamageMdf": "other",
+          "return": 1
+        }
+      ]
+    },
+    "exchange_modifier": {
+      "il": "0x0000..0x00EE",
+      "entry": "resolve attacker/defender Player; if either does not convert true return 1.0f",
+      "get_pl_obj_token": "0x06005065",
+      "object_implicit_memberref": "0x0A00002A",
+      "normalized_values": [
+        "local2 = attacker.HP / 65535.0f",
+        "local3 = defender.HP / 65535.0f",
+        "local4 = Abs(local2 - local3)"
+      ],
+      "abs_memberref": "0x0A000045",
+      "raw_divisor": 65535,
+      "difference_floor": {
+        "condition": "local4 < 0.20000000298023224f",
+        "return": 1
+      },
+      "directional_cases": [
+        {
+          "condition": "local2 >= local3",
+          "thresholds": [
+            {
+              "difference_gte": 0.800000011920929,
+              "return": 0.25
+            },
+            {
+              "difference_gte": 0.6000000238418579,
+              "return": 0.33000001311302185
+            },
+            {
+              "difference_gte": 0.4000000059604645,
+              "return": 0.5
+            },
+            {
+              "difference_gte": 0.20000000298023224,
+              "return": 0.800000011920929
+            }
+          ]
+        },
+        {
+          "condition": "local2 < local3",
+          "thresholds": [
+            {
+              "difference_gte": 0.800000011920929,
+              "return": 4
+            },
+            {
+              "difference_gte": 0.6000000238418579,
+              "return": 3
+            },
+            {
+              "difference_gte": 0.4000000059604645,
+              "return": 2
+            },
+            {
+              "difference_gte": 0.20000000298023224,
+              "return": 1.2000000476837158
+            }
+          ]
+        }
+      ]
+    },
+    "apply_damage_bridge": {
+      "fact_id": "FACT-0020",
+      "caller": "MatchMisc.ApplyDamage",
+      "caller_token": "0x0600494D",
+      "skill_slot_call_il": "0x0097",
+      "exchange_call_il": "0x00B9",
+      "exchange_raw_slot_values": [
+        24,
+        25
+      ]
+    }
+  },
+  "limits": [
+    "No standalone recorder event for either modifier helper is used in this record.",
+    "SkillSlotData lookup internals and authored slot records are outside this record.",
+    "MemberRef Abs internals are outside this record.",
+    "Raw modes, thresholds and Float32 factors are preserved exactly."
+  ]
+}
