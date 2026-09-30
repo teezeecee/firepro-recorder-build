@@ -68,6 +68,26 @@
         "animation-bank semantics closure",
         "damage/aftermath closure"
       ]
+    },
+    {
+      "family_id": "R6_START_ANM_CLOSURE_V1",
+      "fact_id": "FACT-0006",
+      "source_ids": [
+        "DLL-001",
+        "CAP-R6-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Matching-DLL StartAnm field/terrain initialization plus R6 StartAnm traced-parent, raw-argument, and host-field relationships.",
+      "summary": "canonical/witnesses/CAP-R6-001/start_anm.summary.json",
+      "witness_digest_sha256": "bdc1ebb858f74602c3c364ce5ca695f7663380703770237421e50e872783f048",
+      "occurrence_count": 5333,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "PreprocessEachAnm downstream closure",
+        "packed retail choreography/data closure",
+        "animation-bank semantics closure",
+        "damage/aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
