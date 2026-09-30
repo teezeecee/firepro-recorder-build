@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_SMALL_AFTERMATH_HELPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "name": "SetLastDamage",
+        "token": "0x06004EDC",
+        "rva": "0x002E197E",
+        "signature_blob_hex": "2001010c",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "dmg",
+            "type": "Float32"
+          }
+        ],
+        "code_size": 8,
+        "code_sha256": "aa8386105dc125796e2f61ab7fabade30391f80863d7231c8dce82017bc25826",
+        "instruction_count": 4,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0
+      },
+      {
+        "name": "SetLastSkill",
+        "token": "0x06004EB1",
+        "rva": "0x002DE4CF",
+        "signature_blob_hex": "20010111870c",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "skill",
+            "type": "SkillSlotEnum"
+          }
+        ],
+        "code_size": 26,
+        "code_sha256": "743d99df562a3f16f12fd7da264fa22386474eec9f6eee8061d83c0c690fb959",
+        "instruction_count": 10,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1
+      },
+      {
+        "name": "Bleeding",
+        "token": "0x06004F1F",
+        "rva": "0x002E828C",
+        "signature_blob_hex": "200001",
+        "return_type": "Void",
+        "parameters": [],
+        "code_size": 50,
+        "code_sha256": "2a308caf2b1dd0cb7166f4123e2a23ef24d8c3088294ddefea0f41384991c4a6",
+        "instruction_count": 18,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0
+      },
+      {
+        "name": "SetDownTime",
+        "token": "0x06004ED8",
+        "rva": "0x002E18A0",
+        "signature_blob_hex": "20010108",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "tm",
+            "type": "Int32"
+          }
+        ],
+        "code_size": 64,
+        "code_sha256": "670ac32434c8e7ed6e8fea9b78f446e73ec1a0c0c58756add4cb55f6ed6a73c2",
+        "instruction_count": 20,
+        "branch_instruction_count": 2,
+        "call_instruction_count": 2
+      }
+    ],
+    "set_last_damage": {
+      "effect": "this.LastDamage = dmg; return",
+      "last_damage_field_token": "0x04005FD1"
+    },
+    "set_last_skill": {
+      "effects": [
+        "this.lastSkill = skill",
+        "this.lastSkillHit = 0",
+        "this.plCont_AI.ResetCheckedPriAct()",
+        "return"
+      ],
+      "last_skill_field_token": "0x04006036",
+      "last_skill_hit_field_token": "0x04006037",
+      "pl_cont_ai_field_token": "0x0400602F",
+      "reset_checked_pri_act_token": "0x06005007"
+    },
+    "bleeding": {
+      "effects": [
+        "this.isBleeding = 1",
+        "this.FormRen.isBleeding = 1",
+        "MatchEvaluation.inst.PlResult[this.PlIdx].bledCnt += 1",
+        "return"
+      ],
+      "player_bleeding_field_token": "0x0400605A",
+      "form_renderer_field_token": "0x04005FA7",
+      "form_renderer_bleeding_field_token": "0x04002740",
+      "match_evaluation_field_token": "0x040056FF",
+      "pl_result_field_token": "0x04005700",
+      "plidx_field_token": "0x04005FA6",
+      "bled_count_field_token": "0x040056D7"
+    },
+    "set_down_time": {
+      "effects": [
+        "this.DownTime = tm",
+        "if DownTime < 0 then DownTime = 0",
+        "if MatchUI.inst converts true: MatchUI.inst.SetGauge_DownTime(this.PlIdx,this.DownTime)",
+        "return"
+      ],
+      "down_time_field_token": "0x04005FCE",
+      "clamp_continue_opcode": "bge",
+      "raw_min": 0,
+      "match_ui_field_token": "0x04005899",
+      "object_implicit_memberref": "0x0A00002A",
+      "plidx_field_token": "0x04005FA6",
+      "set_gauge_down_time_token": "0x060049F2"
+    },
+    "caller_bridges": [
+      {
+        "fact_id": "FACT-0020",
+        "caller": "MatchMisc.ApplyDamage",
+        "calls": [
+          [
+            "SetLastDamage",
+            "0x023A"
+          ],
+          [
+            "SetLastSkill",
+            "0x0254"
+          ],
+          [
+            "Bleeding",
+            "0x0509"
+          ]
+        ]
+      },
+      {
+        "fact_id": "FACT-0021",
+        "caller": "MatchMisc.CalcDamage",
+        "calls": [
+          [
+            "SetDownTime",
+            "0x039D"
+          ]
+        ]
+      },
+      {
+        "fact_id": "FACT-0026",
+        "caller": "Player.ProcessCritical",
+        "calls": [
+          [
+            "SetLastDamage",
+            "0x0026"
+          ]
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "The four methods are grouped by canonical caller frontier, not asserted to share an implementation template.",
+    "Called helper internals and later consumers of written fields are outside this record."
+  ]
+}
