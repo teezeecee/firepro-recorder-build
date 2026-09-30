@@ -14,137 +14,578 @@
   },
   "definition": "An occurrence is emitted when the recorder-emitted State string for one stable player_slot differs between two consecutive sampled tick_trace rows for that same slot. State strings are opaque recorded values; no gameplay meaning is inferred.",
   "index_file": {
-    "path": "tick_state_edges.index.json",
-    "sha256": "dd3eac83e3df65fd759f70a963c7af2d36cee9bfbb1e60290d4946cdd50d0b44",
-    "format": "compact JSON",
+    "path": "tick_state_edges.index.json.zlib.b64",
+    "sha256": "dd19d77762fc466f50b271912f37ea923dbc6f43b75204f6105d880298b55e53",
+    "decoded_json_sha256": "c83223175b25cc890c8706d462495243fd03adf4b1f268294a858493a928ffff",
+    "format": "base64(zlib(compact-json))",
     "occurrence_fields": [
       "player_slot",
       "before_line",
-      "after_line",
-      "before_tick",
-      "after_tick",
-      "before_seq",
-      "after_seq"
+      "after_line"
     ],
     "record_count": 5977
   },
   "distinct_state_edge_count": 105,
   "edge_counts": [
-    {"from_State":"Stand","to_State":"Walk","count":1197},
-    {"from_State":"Walk","to_State":"Stand","count":596},
-    {"from_State":"Grapple","to_State":"NormalAnm","count":425},
-    {"from_State":"Walk","to_State":"Grapple","count":350},
-    {"from_State":"NormalAnm","to_State":"Stand","count":309},
-    {"from_State":"Gloggy","to_State":"Walk","count":256},
-    {"from_State":"ReversalAnm","to_State":"Stand","count":245},
-    {"from_State":"Walk","to_State":"NormalAnm","count":228},
-    {"from_State":"NormalAnm","to_State":"Down_FaceUp","count":212},
-    {"from_State":"Walk","to_State":"Striking","count":149},
-    {"from_State":"Walk","to_State":"Gloggy","count":138},
-    {"from_State":"Down_FaceUp","to_State":"ReversalAnm","count":131},
-    {"from_State":"Down_FaceUp","to_State":"NormalAnm","count":124},
-    {"from_State":"NormalAnm","to_State":"ReversalAnm","count":118},
-    {"from_State":"NormalAnm","to_State":"Gloggy","count":81},
-    {"from_State":"NormalAnm","to_State":"Stun","count":76},
-    {"from_State":"NormalAnm","to_State":"Down_FaceDown","count":75},
-    {"from_State":"Down_FaceDown","to_State":"NormalAnm","count":69},
-    {"from_State":"Striking","to_State":"Stand","count":58},
-    {"from_State":"Stand","to_State":"Grapple","count":54},
-    {"from_State":"AttackDamage","to_State":"Stand","count":51},
-    {"from_State":"Grapple","to_State":"RopeRebound_Counter","count":44},
-    {"from_State":"Striking","to_State":"Walk","count":41},
-    {"from_State":"Down_FaceDown","to_State":"ReversalAnm","count":38},
-    {"from_State":"ReversalAnm","to_State":"Gloggy","count":38},
-    {"from_State":"S_HOLD","to_State":"NormalAnm","count":38},
-    {"from_State":"Stun","to_State":"Grapple","count":35},
-    {"from_State":"RopeRebound_Counter","to_State":"ForceRun","count":34},
-    {"from_State":"ForceRun","to_State":"AttackDamage","count":33},
-    {"from_State":"NormalAnm","to_State":"AttackDamage","count":33},
-    {"from_State":"AttackDamage","to_State":"Down_FaceUp","count":32},
-    {"from_State":"Stun","to_State":"Stand","count":30},
-    {"from_State":"AttackDamage","to_State":"Down_FaceDown","count":28},
-    {"from_State":"Striking","to_State":"Grapple","count":28},
-    {"from_State":"RopeRebound_Force","to_State":"ForceRun","count":25},
-    {"from_State":"ForceRun","to_State":"RopeRebound_Force","count":24},
-    {"from_State":"Walk","to_State":"S_HOLD","count":23},
-    {"from_State":"Performance","to_State":"Stand","count":22},
-    {"from_State":"Gloggy","to_State":"Grapple","count":18},
-    {"from_State":"Stand","to_State":"AttackDamage","count":17},
-    {"from_State":"Stand","to_State":"Performance","count":17},
-    {"from_State":"Walk","to_State":"AttackDamage","count":16},
-    {"from_State":"MoveToRing","to_State":"ReversalAnm","count":14},
-    {"from_State":"Walk","to_State":"MoveToRing","count":14},
-    {"from_State":"RecoverBreath","to_State":"Walk","count":13},
-    {"from_State":"AttackDamage","to_State":"Gloggy","count":12},
-    {"from_State":"MoveToOutOfRing","to_State":"Down_FaceUp","count":12},
-    {"from_State":"Performance","to_State":"Gloggy","count":12},
-    {"from_State":"Striking","to_State":"AttackDamage","count":12},
-    {"from_State":"Stun","to_State":"AttackDamage","count":12},
-    {"from_State":"Walk","to_State":"Performance","count":12},
-    {"from_State":"FrontHeadLockWalk","to_State":"NormalAnm","count":11},
-    {"from_State":"FrontHeadLock_Atk","to_State":"FrontHeadLockWalk","count":11},
-    {"from_State":"FrontHeadLock_Def","to_State":"NormalAnm","count":11},
-    {"from_State":"Grapple","to_State":"FrontHeadLock_Def","count":11},
-    {"from_State":"Grapple","to_State":"S_GO_FHL","count":11},
-    {"from_State":"ReversalAnm","to_State":"Stun","count":11},
-    {"from_State":"S_GO_FHL","to_State":"FrontHeadLock_Atk","count":11},
-    {"from_State":"Striking","to_State":"Gloggy","count":11},
-    {"from_State":"NormalAnm","to_State":"Grapple","count":10},
-    {"from_State":"NormalAnm","to_State":"Walk","count":10},
-    {"from_State":"ReversalAnm","to_State":"Grapple","count":10},
-    {"from_State":"Stand","to_State":"S_HOLD","count":10},
-    {"from_State":"AttackDamage","to_State":"Grapple","count":9},
-    {"from_State":"Stand","to_State":"Striking","count":9},
-    {"from_State":"AttackDamage","to_State":"Walk","count":8},
-    {"from_State":"ExchangeOfStriking","to_State":"NormalAnm","count":8},
-    {"from_State":"Gloggy","to_State":"Performance","count":8},
-    {"from_State":"Grapple","to_State":"ExchangeOfStriking","count":8},
-    {"from_State":"NormalAnm","to_State":"MoveToOutOfRing","count":8},
-    {"from_State":"Run","to_State":"Stand","count":8},
-    {"from_State":"Stand","to_State":"Run","count":8},
-    {"from_State":"Striking","to_State":"ReversalAnm","count":8},
-    {"from_State":"Walk","to_State":"Run","count":8},
-    {"from_State":"RopeRebound_Counter","to_State":"AttackDamage","count":7},
-    {"from_State":"Gloggy","to_State":"RecoverBreath","count":6},
-    {"from_State":"Grapple","to_State":"ContestOfStrength","count":6},
-    {"from_State":"Grapple","to_State":"MoveToOutOfRing","count":5},
-    {"from_State":"Stand","to_State":"NormalAnm","count":5},
-    {"from_State":"Stun","to_State":"Gloggy","count":5},
-    {"from_State":"ContestOfStrength","to_State":"S_HOLD","count":4},
-    {"from_State":"Grapple","to_State":"AttackDamage","count":4},
-    {"from_State":"ReversalAnm","to_State":"RecoverBreath","count":4},
-    {"from_State":"Stun","to_State":"NormalAnm","count":4},
-    {"from_State":"MoveToOutOfRing","to_State":"Down_FaceDown","count":3},
-    {"from_State":"RopeRebound","to_State":"Run","count":3},
-    {"from_State":"Run","to_State":"NormalAnm","count":3},
-    {"from_State":"Run","to_State":"RopeRebound","count":3},
-    {"from_State":"Run","to_State":"Walk","count":3},
-    {"from_State":"ContestOfStrength","to_State":"NormalAnm","count":2},
-    {"from_State":"ForceRun","to_State":"NormalAnm","count":2},
-    {"from_State":"Gloggy","to_State":"AttackDamage","count":2},
-    {"from_State":"Gloggy","to_State":"Striking","count":2},
-    {"from_State":"Performance","to_State":"AttackDamage","count":2},
-    {"from_State":"RopeRebound_Counter","to_State":"MoveToOutOfRing","count":2},
-    {"from_State":"Run","to_State":"AttackDamage","count":2},
-    {"from_State":"Striking","to_State":"Down_FaceDown","count":2},
-    {"from_State":"Walk","to_State":"RecoverBreath","count":2},
-    {"from_State":"Gloggy","to_State":"NormalAnm","count":1},
-    {"from_State":"Gloggy","to_State":"Run","count":1},
-    {"from_State":"Gloggy","to_State":"S_HOLD","count":1},
-    {"from_State":"Performance","to_State":"NormalAnm","count":1},
-    {"from_State":"RopeRebound_Counter","to_State":"RopeRebound_Force","count":1},
-    {"from_State":"Run","to_State":"Gloggy","count":1},
-    {"from_State":"Stun","to_State":"RecoverBreath","count":1}
+    {
+      "from_State": "Stand",
+      "to_State": "Walk",
+      "count": 1197
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "Stand",
+      "count": 596
+    },
+    {
+      "from_State": "Grapple",
+      "to_State": "NormalAnm",
+      "count": 425
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "Grapple",
+      "count": 350
+    },
+    {
+      "from_State": "NormalAnm",
+      "to_State": "Stand",
+      "count": 309
+    },
+    {
+      "from_State": "Gloggy",
+      "to_State": "Walk",
+      "count": 256
+    },
+    {
+      "from_State": "ReversalAnm",
+      "to_State": "Stand",
+      "count": 245
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "NormalAnm",
+      "count": 228
+    },
+    {
+      "from_State": "NormalAnm",
+      "to_State": "Down_FaceUp",
+      "count": 212
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "Striking",
+      "count": 149
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "Gloggy",
+      "count": 138
+    },
+    {
+      "from_State": "Down_FaceUp",
+      "to_State": "ReversalAnm",
+      "count": 131
+    },
+    {
+      "from_State": "Down_FaceUp",
+      "to_State": "NormalAnm",
+      "count": 124
+    },
+    {
+      "from_State": "NormalAnm",
+      "to_State": "ReversalAnm",
+      "count": 118
+    },
+    {
+      "from_State": "NormalAnm",
+      "to_State": "Gloggy",
+      "count": 81
+    },
+    {
+      "from_State": "NormalAnm",
+      "to_State": "Stun",
+      "count": 76
+    },
+    {
+      "from_State": "NormalAnm",
+      "to_State": "Down_FaceDown",
+      "count": 75
+    },
+    {
+      "from_State": "Down_FaceDown",
+      "to_State": "NormalAnm",
+      "count": 69
+    },
+    {
+      "from_State": "Striking",
+      "to_State": "Stand",
+      "count": 58
+    },
+    {
+      "from_State": "Stand",
+      "to_State": "Grapple",
+      "count": 54
+    },
+    {
+      "from_State": "AttackDamage",
+      "to_State": "Stand",
+      "count": 51
+    },
+    {
+      "from_State": "Grapple",
+      "to_State": "RopeRebound_Counter",
+      "count": 44
+    },
+    {
+      "from_State": "Striking",
+      "to_State": "Walk",
+      "count": 41
+    },
+    {
+      "from_State": "Down_FaceDown",
+      "to_State": "ReversalAnm",
+      "count": 38
+    },
+    {
+      "from_State": "ReversalAnm",
+      "to_State": "Gloggy",
+      "count": 38
+    },
+    {
+      "from_State": "S_HOLD",
+      "to_State": "NormalAnm",
+      "count": 38
+    },
+    {
+      "from_State": "Stun",
+      "to_State": "Grapple",
+      "count": 35
+    },
+    {
+      "from_State": "RopeRebound_Counter",
+      "to_State": "ForceRun",
+      "count": 34
+    },
+    {
+      "from_State": "ForceRun",
+      "to_State": "AttackDamage",
+      "count": 33
+    },
+    {
+      "from_State": "NormalAnm",
+      "to_State": "AttackDamage",
+      "count": 33
+    },
+    {
+      "from_State": "AttackDamage",
+      "to_State": "Down_FaceUp",
+      "count": 32
+    },
+    {
+      "from_State": "Stun",
+      "to_State": "Stand",
+      "count": 30
+    },
+    {
+      "from_State": "AttackDamage",
+      "to_State": "Down_FaceDown",
+      "count": 28
+    },
+    {
+      "from_State": "Striking",
+      "to_State": "Grapple",
+      "count": 28
+    },
+    {
+      "from_State": "RopeRebound_Force",
+      "to_State": "ForceRun",
+      "count": 25
+    },
+    {
+      "from_State": "ForceRun",
+      "to_State": "RopeRebound_Force",
+      "count": 24
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "S_HOLD",
+      "count": 23
+    },
+    {
+      "from_State": "Performance",
+      "to_State": "Stand",
+      "count": 22
+    },
+    {
+      "from_State": "Gloggy",
+      "to_State": "Grapple",
+      "count": 18
+    },
+    {
+      "from_State": "Stand",
+      "to_State": "AttackDamage",
+      "count": 17
+    },
+    {
+      "from_State": "Stand",
+      "to_State": "Performance",
+      "count": 17
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "AttackDamage",
+      "count": 16
+    },
+    {
+      "from_State": "MoveToRing",
+      "to_State": "ReversalAnm",
+      "count": 14
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "MoveToRing",
+      "count": 14
+    },
+    {
+      "from_State": "RecoverBreath",
+      "to_State": "Walk",
+      "count": 13
+    },
+    {
+      "from_State": "AttackDamage",
+      "to_State": "Gloggy",
+      "count": 12
+    },
+    {
+      "from_State": "MoveToOutOfRing",
+      "to_State": "Down_FaceUp",
+      "count": 12
+    },
+    {
+      "from_State": "Performance",
+      "to_State": "Gloggy",
+      "count": 12
+    },
+    {
+      "from_State": "Striking",
+      "to_State": "AttackDamage",
+      "count": 12
+    },
+    {
+      "from_State": "Stun",
+      "to_State": "AttackDamage",
+      "count": 12
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "Performance",
+      "count": 12
+    },
+    {
+      "from_State": "FrontHeadLockWalk",
+      "to_State": "NormalAnm",
+      "count": 11
+    },
+    {
+      "from_State": "FrontHeadLock_Atk",
+      "to_State": "FrontHeadLockWalk",
+      "count": 11
+    },
+    {
+      "from_State": "FrontHeadLock_Def",
+      "to_State": "NormalAnm",
+      "count": 11
+    },
+    {
+      "from_State": "Grapple",
+      "to_State": "FrontHeadLock_Def",
+      "count": 11
+    },
+    {
+      "from_State": "Grapple",
+      "to_State": "S_GO_FHL",
+      "count": 11
+    },
+    {
+      "from_State": "ReversalAnm",
+      "to_State": "Stun",
+      "count": 11
+    },
+    {
+      "from_State": "S_GO_FHL",
+      "to_State": "FrontHeadLock_Atk",
+      "count": 11
+    },
+    {
+      "from_State": "Striking",
+      "to_State": "Gloggy",
+      "count": 11
+    },
+    {
+      "from_State": "NormalAnm",
+      "to_State": "Grapple",
+      "count": 10
+    },
+    {
+      "from_State": "NormalAnm",
+      "to_State": "Walk",
+      "count": 10
+    },
+    {
+      "from_State": "ReversalAnm",
+      "to_State": "Grapple",
+      "count": 10
+    },
+    {
+      "from_State": "Stand",
+      "to_State": "S_HOLD",
+      "count": 10
+    },
+    {
+      "from_State": "AttackDamage",
+      "to_State": "Grapple",
+      "count": 9
+    },
+    {
+      "from_State": "Stand",
+      "to_State": "Striking",
+      "count": 9
+    },
+    {
+      "from_State": "AttackDamage",
+      "to_State": "Walk",
+      "count": 8
+    },
+    {
+      "from_State": "ExchangeOfStriking",
+      "to_State": "NormalAnm",
+      "count": 8
+    },
+    {
+      "from_State": "Gloggy",
+      "to_State": "Performance",
+      "count": 8
+    },
+    {
+      "from_State": "Grapple",
+      "to_State": "ExchangeOfStriking",
+      "count": 8
+    },
+    {
+      "from_State": "NormalAnm",
+      "to_State": "MoveToOutOfRing",
+      "count": 8
+    },
+    {
+      "from_State": "Run",
+      "to_State": "Stand",
+      "count": 8
+    },
+    {
+      "from_State": "Stand",
+      "to_State": "Run",
+      "count": 8
+    },
+    {
+      "from_State": "Striking",
+      "to_State": "ReversalAnm",
+      "count": 8
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "Run",
+      "count": 8
+    },
+    {
+      "from_State": "RopeRebound_Counter",
+      "to_State": "AttackDamage",
+      "count": 7
+    },
+    {
+      "from_State": "Gloggy",
+      "to_State": "RecoverBreath",
+      "count": 6
+    },
+    {
+      "from_State": "Grapple",
+      "to_State": "ContestOfStrength",
+      "count": 6
+    },
+    {
+      "from_State": "Grapple",
+      "to_State": "MoveToOutOfRing",
+      "count": 5
+    },
+    {
+      "from_State": "Stand",
+      "to_State": "NormalAnm",
+      "count": 5
+    },
+    {
+      "from_State": "Stun",
+      "to_State": "Gloggy",
+      "count": 5
+    },
+    {
+      "from_State": "ContestOfStrength",
+      "to_State": "S_HOLD",
+      "count": 4
+    },
+    {
+      "from_State": "Grapple",
+      "to_State": "AttackDamage",
+      "count": 4
+    },
+    {
+      "from_State": "ReversalAnm",
+      "to_State": "RecoverBreath",
+      "count": 4
+    },
+    {
+      "from_State": "Stun",
+      "to_State": "NormalAnm",
+      "count": 4
+    },
+    {
+      "from_State": "MoveToOutOfRing",
+      "to_State": "Down_FaceDown",
+      "count": 3
+    },
+    {
+      "from_State": "RopeRebound",
+      "to_State": "Run",
+      "count": 3
+    },
+    {
+      "from_State": "Run",
+      "to_State": "NormalAnm",
+      "count": 3
+    },
+    {
+      "from_State": "Run",
+      "to_State": "RopeRebound",
+      "count": 3
+    },
+    {
+      "from_State": "Run",
+      "to_State": "Walk",
+      "count": 3
+    },
+    {
+      "from_State": "ContestOfStrength",
+      "to_State": "NormalAnm",
+      "count": 2
+    },
+    {
+      "from_State": "ForceRun",
+      "to_State": "NormalAnm",
+      "count": 2
+    },
+    {
+      "from_State": "Gloggy",
+      "to_State": "AttackDamage",
+      "count": 2
+    },
+    {
+      "from_State": "Gloggy",
+      "to_State": "Striking",
+      "count": 2
+    },
+    {
+      "from_State": "Performance",
+      "to_State": "AttackDamage",
+      "count": 2
+    },
+    {
+      "from_State": "RopeRebound_Counter",
+      "to_State": "MoveToOutOfRing",
+      "count": 2
+    },
+    {
+      "from_State": "Run",
+      "to_State": "AttackDamage",
+      "count": 2
+    },
+    {
+      "from_State": "Striking",
+      "to_State": "Down_FaceDown",
+      "count": 2
+    },
+    {
+      "from_State": "Walk",
+      "to_State": "RecoverBreath",
+      "count": 2
+    },
+    {
+      "from_State": "Gloggy",
+      "to_State": "NormalAnm",
+      "count": 1
+    },
+    {
+      "from_State": "Gloggy",
+      "to_State": "Run",
+      "count": 1
+    },
+    {
+      "from_State": "Gloggy",
+      "to_State": "S_HOLD",
+      "count": 1
+    },
+    {
+      "from_State": "Performance",
+      "to_State": "NormalAnm",
+      "count": 1
+    },
+    {
+      "from_State": "RopeRebound_Counter",
+      "to_State": "RopeRebound_Force",
+      "count": 1
+    },
+    {
+      "from_State": "Run",
+      "to_State": "Gloggy",
+      "count": 1
+    },
+    {
+      "from_State": "Stun",
+      "to_State": "RecoverBreath",
+      "count": 1
+    }
   ],
   "player_transition_counts": [
-    {"player_slot":0,"count":699},
-    {"player_slot":1,"count":752},
-    {"player_slot":2,"count":685},
-    {"player_slot":3,"count":802},
-    {"player_slot":4,"count":779},
-    {"player_slot":5,"count":814},
-    {"player_slot":6,"count":716},
-    {"player_slot":7,"count":730}
+    {
+      "player_slot": 0,
+      "count": 699
+    },
+    {
+      "player_slot": 1,
+      "count": 752
+    },
+    {
+      "player_slot": 2,
+      "count": 685
+    },
+    {
+      "player_slot": 3,
+      "count": 802
+    },
+    {
+      "player_slot": 4,
+      "count": 779
+    },
+    {
+      "player_slot": 5,
+      "count": 814
+    },
+    {
+      "player_slot": 6,
+      "count": 716
+    },
+    {
+      "player_slot": 7,
+      "count": 730
+    }
   ],
   "promotion_scope": "RAW_OBSERVATION_ONLY",
   "semantic_claims": [],
