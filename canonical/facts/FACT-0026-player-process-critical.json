@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0026",
+  "claim": "In the matching retail DLL, Player.ProcessCritical (0x06004ECA) is an instance method with one SkillData parameter named sd and an exact 277-byte body. It first tests raw sd.flags mask 40; when that mask is zero it stores isKO=1 and KO_Return=320. It then always calls SetLastDamage(65535.0f) and stores KoLastDamage=65535.0f. For each nonzero sd attack-power field it applies the exact corresponding zeroing action: atkPow_HP calls SetHP(0.0f), atkPow_SP calls SetSP(0.0f), atkPow_Neck/Arm/Waist/Leg store 0.0f into the matching Player limb field, and atkPow_BP calls SetBP(0.0f). Raw sd.flags mask 64 stores isWannaGiveUp=1. Finally raw sd.flags mask 8 selects PlayMatchSE(30,1.0f,PlIdx); the alternate path loads MatchUI.inst and calls Show_Critical(1), then returns. FACT-0020 pins the exact caller boundary on the CriticalCheck-true branch: ApplyDamage IL+0x01D2 invokes defender.ProcessCritical(CurrentSkill) and then joins the shared tail at IL+0x04EA.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.ProcessCritical token 0x06004ECA RVA 0x002E11B0 signature 20010112a9a8 parameter sd:SkillData code size 277 code sha256=95fcc98f9fe079ae95ecf2d72104145a28273b1030b2fc9db039abcfb330fd30; exact branch/store/call structure is recorded in canonical/witnesses/CAP-R6-001/process_critical.summary.json; prover tools/prove_process_critical.py",
+      "observation": "Exact matching-DLL method body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0020 ApplyDamage CriticalCheck-true branch",
+      "to": "defender.Player.ProcessCritical(CurrentSkill)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 pins ApplyDamage IL+0x01D2 call token 0x06004ECA after CriticalCheck returns true; IL+0x01D7 branches to shared-tail join IL+0x04EA"
+        }
+      ]
+    },
+    {
+      "from": "ProcessCritical SkillData attack-power fields",
+      "to": "HP/SP/BP/limb zeroing actions",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ProcessCritical IL+0x0036..0x00CF tests atkPow_HP/SP/Neck/Arm/Waist/Leg/BP in that order and calls SetHP/SetSP/SetBP or stores the corresponding limb field to 0.0f"
+        }
+      ]
+    },
+    {
+      "from": "ProcessCritical raw flag branches",
+      "to": "KO/give-up/presentation side effects",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ProcessCritical IL+0x0000..0x001F tests raw flags mask 40 for isKO/KO_Return stores; IL+0x00D0..0x00E4 tests mask 64 for isWannaGiveUp; IL+0x00E5..0x0113 tests mask 8 and selects PlayMatchSE or MatchUI.Show_Critical"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact uses matching-DLL evidence; CAP-R6-001 contains no standalone ProcessCritical PRE/POST event.",
+    "SetHP, SetSP, SetBP, SetLastDamage, MatchMisc.PlayMatchSE, and MatchUI.Show_Critical internals are outside this fact unless separately closed.",
+    "Raw masks 40, 64, and 8 plus numeric constants 320, 65535, 30, and 1.0 are retained exactly without assigning additional gameplay meaning.",
+    "Authored SkillData values and later shared-tail aftermath remain governed by their own provenance."
+  ]
+}

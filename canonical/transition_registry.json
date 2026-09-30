@@ -443,6 +443,25 @@
         "authored bleedingRate data closure",
         "caller state/aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_PROCESS_CRITICAL_V1",
+      "fact_id": "FACT-0026",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.ProcessCritical raw flag gates, KO/damage-record writes, SkillData power-conditioned HP/SP/BP/limb zeroing, give-up store, and presentation split reached from the FACT-0020 CriticalCheck-true branch.",
+      "summary": "canonical/witnesses/CAP-R6-001/process_critical.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "SetHP/SetSP/SetBP internal closure",
+        "SetLastDamage internal closure",
+        "PlayMatchSE and Show_Critical internal closure",
+        "authored SkillData contents",
+        "shared ApplyDamage tail aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
