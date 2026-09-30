@@ -569,6 +569,23 @@
         "other MatchRandom method closure",
         "seed/state provenance outside these wrappers"
       ]
+    },
+    {
+      "family_id": "DLL_SKILLDATAMAN_IS_S1_WAZA_V1",
+      "fact_id": "FACT-0033",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL SkillDataMan.IsS1Waza raw skillType branch graph, with true raw set {0,1,9}, shared by FACT-0021 and FACT-0022 S1-rule paths.",
+      "summary": "canonical/witnesses/CAP-R6-001/is_s1_waza.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored SkillData skillType provenance",
+        "player-facing meaning of raw skillType values",
+        "downstream S1 state aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
