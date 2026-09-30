@@ -143,3 +143,8 @@ jobs:
         run: python tests/test_player_gauge_mutation_helpers_summary.py
       - name: Player gauge mutation helpers prover syntax
         run: python -m py_compile tools/prove_player_gauge_mutation_helpers.py
+
+      - name: Player SP-side helpers summary
+        run: python tests/test_player_sp_side_helpers_summary.py
+      - name: Player SP-side helpers prover syntax
+        run: python -m py_compile tools/prove_player_sp_side_helpers.py
