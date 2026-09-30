@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILLDATAMAN_IS_S1_WAZA_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "SkillDataMan",
+      "method": "IsS1Waza",
+      "token": "0x06005266",
+      "rva": "0x0031FF75",
+      "signature_blob_hex": "00010212a9a8",
+      "return_type": "Boolean",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "w",
+          "type": "SkillData"
+        }
+      ],
+      "code_size": 40,
+      "code_sha256": "7693ac0d94e82285e39d223199a9bae9209d6b4f75f765839ddba129cd85fbd0",
+      "max_stack": 8,
+      "local_signature_token": null,
+      "local_count": 0,
+      "instruction_count": 15,
+      "branch_instruction_count": 3,
+      "call_instruction_count": 0
+    },
+    "field": {
+      "name": "skillType",
+      "token": "0x04007C51"
+    },
+    "exact_branch_graph": [
+      {
+        "il": "0x0000..0x000A",
+        "test": "w.skillType",
+        "opcode": "brfalse",
+        "target": "0x0024",
+        "effect": "raw 0 -> true"
+      },
+      {
+        "il": "0x000B..0x0016",
+        "test": "w.skillType == 1",
+        "opcode": "beq",
+        "target": "0x0024",
+        "effect": "raw 1 -> true"
+      },
+      {
+        "il": "0x0017..0x0023",
+        "test": "w.skillType != 9",
+        "opcode": "bne.un",
+        "target": "0x0026",
+        "effect": "raw 9 falls through to true; all other remaining values -> false"
+      },
+      {
+        "il": "0x0024..0x0025",
+        "effect": "return true"
+      },
+      {
+        "il": "0x0026..0x0027",
+        "effect": "return false"
+      }
+    ],
+    "raw_true_values": [
+      0,
+      1,
+      9
+    ],
+    "caller_bridges": [
+      {
+        "fact_id": "FACT-0021",
+        "caller": "MatchMisc.CalcDamage",
+        "call_il": "0x03AD",
+        "callee_token": "0x06005266",
+        "argument": "attacker.animator.CurrentSkill"
+      },
+      {
+        "fact_id": "FACT-0022",
+        "caller": "MatchMisc.CriticalCheck",
+        "call_il": "0x0272",
+        "callee_token": "0x06005266",
+        "argument": "attacker.animator.CurrentSkill"
+      }
+    ]
+  },
+  "limits": [
+    "Raw values 0,1,9 are not assigned descriptive enum labels in this record.",
+    "Authored SkillData records and downstream S1 effects are outside this helper record."
+  ]
+}
