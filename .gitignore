@@ -1,0 +1,8 @@
+# Raw/proprietary retail sources are local-only.
+local_sources/
+*.dll
+*.zip
+*.7z
+*.rar
+__pycache__/
+*.pyc
