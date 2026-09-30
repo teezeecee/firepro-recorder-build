@@ -1,0 +1,69 @@
+{
+  "fact_id": "FACT-0016",
+  "claim": "In the matching retail DLL, FormAnimator.ProcessAnmLoop (0x06004E74) is a parameterless 659-byte method. It loads CurrentSkill.anmData[CurrentAnmIdx], returns unless loopReturnPoint is nonzero and loopReturnPoint-1 equals currentFormIdx, and resolves the target Player. On the first loop entry it sets isAnmLooped=1 and follows exact DLL branches: fallTiming nonzero sets host/target pinfall fields and applies the pinned target down-time calls and constants; otherwise positive CurrentSkill.anmLoopTimes sets Status3 bit 8 and LoopAnmCnt; otherwise it sets host/target submission fields, applies the pinned target down-time calls, and clears host/target rope-escape movement fields. If target.animator.isReqAnmLoopEnd is set, it clears the host/target pinfall/submission/foul fields and restores target DownTime from DownTimeBK before zeroing DownTimeBK. Otherwise it rewinds host currentFormIdx to loopReturnPoint-loopReturnTo-2 and, when target exists, writes the same target animator form index, clears target isAnmSync, and clears target FormDispDuration. Finally, when Status3 bit 8 is set and LoopAnmCnt is positive, it decrements LoopAnmCnt; on reaching zero it clears Status3 bit 8 with & -9 and, when target exists, sets target.animator.isReqAnmLoopEnd=1.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.ProcessAnmLoop token 0x06004E74 RVA 0x002DA7B4 signature 200001 code size 659 code sha256=dde8322e75ac1a7d5e5eaa9aa4b92b23791040eda59a832fa26da62d75855602; exact gates, first-loop branches, target-loop-end branch, rewind, counted-loop tail and call sites are recorded in canonical/witnesses/CAP-R6-001/process_anm_loop.summary.json; prover tools/prove_process_anm_loop.py",
+      "observation": "Exact matching-DLL ProcessAnmLoop body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "UpdateAnimation form-advance path",
+      "to": "ProcessAnmLoop",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0014 pins UpdateAnimation token 0x06004E7E IL+0x00D2 call ProcessAnmLoop token 0x06004E74 when FormDispDuration is zero"
+        }
+      ]
+    },
+    {
+      "from": "loopReturnPoint/currentFormIdx gate",
+      "to": "first-loop initialization",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ProcessAnmLoop IL+0x0013..0x0056 returns for loopReturnPoint=0 or loopReturnPoint-1 != currentFormIdx, resolves TargetPlIdx, tests isAnmLooped, and stores isAnmLooped=1 on first entry"
+        }
+      ]
+    },
+    {
+      "from": "first-loop data branches",
+      "to": "pinfall / counted-loop / submission field and down-time effects",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ProcessAnmLoop IL+0x005B..0x016F branches on WrestlerAnmData.fallTiming and SkillData.anmLoopTimes; exact field tokens, constants and ForceSetDownTime/SetDownTime/AddDownTime/GetParamRate calls are recorded in process_anm_loop.summary.json"
+        }
+      ]
+    },
+    {
+      "from": "target animator loop-end request",
+      "to": "cleanup or synchronized form rewind",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ProcessAnmLoop IL+0x0174..0x022F tests target.animator.isReqAnmLoopEnd; true branch clears pinned fields/restores DownTimeBK, false branch stores loopReturnPoint-loopReturnTo-2 into host and target animator currentFormIdx and clears target sync/display duration"
+        }
+      ]
+    },
+    {
+      "from": "Status3 bit 8 / LoopAnmCnt",
+      "to": "loop-count exhaustion request",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ProcessAnmLoop IL+0x0230..0x0291 tests Status3 & 8 and LoopAnmCnt, decrements count, clears bit 8 with -9 at zero, and sets target.animator.isReqAnmLoopEnd=1 when target exists"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "ProcessAnmLoop is not a standalone R6 recorder event, so this fact uses matching-DLL evidence.",
+    "Raw fields/constants are preserved exactly without added gameplay interpretation.",
+    "Authored animation-loop data values and later state aftermath are outside this fact."
+  ]
+}
