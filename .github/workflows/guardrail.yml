@@ -168,3 +168,8 @@ jobs:
         run: python tests/test_matchrandom_range_wrappers_summary.py
       - name: MatchRandom Range wrappers prover syntax
         run: python -m py_compile tools/prove_matchrandom_range_wrappers.py
+
+      - name: IsS1Waza summary
+        run: python tests/test_is_s1_waza_summary.py
+      - name: IsS1Waza prover syntax
+        run: python -m py_compile tools/prove_is_s1_waza.py
