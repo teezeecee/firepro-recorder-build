@@ -1,0 +1,55 @@
+{
+  "fact_id": "FACT-0034",
+  "claim": "In the matching retail DLL, the two FinishMoveInfo helpers used directly by the FACT-0020 ApplyDamage shared tail are exact field-copy/reset bodies. FinishMoveInfo.Clear (0x060048D1) is parameterless with an exact 29-byte body that writes raw Int32 -1 into fields category, skillID, plIdx, and skillOwnerPlIdx in that order, then returns. FinishMoveInfo.Set (0x060048D2) has one FinishMoveInfo parameter named fm and an exact 49-byte body that copies those same four fields from fm into this in the same order, then returns. FACT-0020 pins Set calls at ApplyDamage IL+0x05CD and IL+0x05E0 and the conditional Clear call at IL+0x060A.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FinishMoveInfo.Clear token 0x060048D1 RVA 0x002A4DFD signature 200001 code size 29 code sha256=12183b4682dd4873916a8e3a0305c01ed4c53de737a481b94c7f3c47ee46c1c5; exact body in canonical/witnesses/CAP-R6-001/finish_move_info_helpers.summary.json; prover tools/prove_finish_move_info_helpers.py",
+      "observation": "Exact matching-DLL Clear body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "FinishMoveInfo.Set token 0x060048D2 RVA 0x002A4E1B signature 20010112a3ac parameter fm:FinishMoveInfo code size 49 code sha256=f5ede8840d753fddbc5e58b18de45f8b9f3afefc5efcd4f1fd3666a6bd9f2476; exact body in canonical/witnesses/CAP-R6-001/finish_move_info_helpers.summary.json; prover tools/prove_finish_move_info_helpers.py",
+      "observation": "Exact matching-DLL Set body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0020 ApplyDamage shared tail",
+      "to": "FinishMoveInfo.Set / Clear",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 pins Set token 0x060048D2 at IL+0x05CD and IL+0x05E0, and Clear token 0x060048D1 at IL+0x060A"
+        }
+      ]
+    },
+    {
+      "from": "FinishMoveInfo.Set(fm)",
+      "to": "four stored fields",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Set IL+0x0000..0x0030 copies field tokens 0x040056CB category, 0x040056CC skillID, 0x040056CD plIdx, 0x040056CE skillOwnerPlIdx from fm to this"
+        }
+      ]
+    },
+    {
+      "from": "FinishMoveInfo.Clear()",
+      "to": "four reset fields",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Clear IL+0x0000..0x001C writes ldc.i4.m1 to the same four field tokens in the same order, then returns"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact uses matching-DLL evidence; CAP-R6-001 contains no standalone PRE/POST events for these helpers.",
+    "Raw -1 reset values and metadata field names are preserved exactly.",
+    "The later meaning of these fields in match-result presentation or scoring remains outside this fact.",
+    "FACT-0020 continues to govern when each Set/Clear call occurs."
+  ]
+}
