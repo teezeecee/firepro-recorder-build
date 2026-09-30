@@ -21,3 +21,7 @@ jobs:
         run: python tests/test_guardrail.py
       - name: Derived witness integrity
         run: python tests/test_r6_state_edge_index.py
+      - name: R6 event/move pairing summary
+        run: python tests/test_r6_event_move_pairing_summary.py
+      - name: Pairing prover syntax
+        run: python -m py_compile tools/prove_r6_event_move_pairing.py
