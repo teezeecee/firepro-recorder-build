@@ -151,27 +151,27 @@
       "nested_request_owner_equals_first_raw_arg": 68
     }
   },
-  "witness_artifact": {
-    "path": "init_animation_witness.v2.zlib.b64",
-    "format": "base64(zlib(varint-line-index))",
-    "magic": "R6IA2",
-    "record_count": 5288,
-    "decoded_record_fields": [
-      "init_pre_line_delta",
-      "init_post_line_minus_pre",
-      "direct_StartAnm_pre_line_minus_pre",
-      "direct_StartOpponentAnm_pre_line_minus_pre_or_zero",
-      "StartOpponentAnm_nested_request_pre_line_minus_pre_or_zero",
-      "direct_StartOpponentAnmM_pre_line_minus_pre_or_zero",
-      "StartOpponentAnmM_nested_request_pre_line_minus_pre_or_zero"
-    ],
-    "sha256": "8efb91b9518589a7496589af4ab2f700ccbfae231a4b7ec2854d7b7cb71e24d7",
-    "decoded_binary_sha256": "40adf4223f65e4a373528e86aebad46b3a8145d2532fd4cdb211196272a56d98"
-  },
   "limits": [
     "CLR identifiers and recorder strings are preserved as identifiers/observations, not interpreted as gameplay semantics.",
     "The matching DLL contains several possible InitAnimation call paths. R6 observed exactly one direct StartAnm in each of these 5288 executions; this record does not claim every possible retail path has exactly one StartAnm.",
     "R6 line nesting establishes observed parent/child relationships but does not by itself identify which of multiple DLL call sites produced an individual call.",
     "Packed choreography, animation-bank meaning, damage causality, and aftermath remain outside this promotion."
-  ]
+  ],
+  "witness_digest": {
+    "algorithm": "sha256",
+    "canonical_record_format": "ASCII decimal fields joined by tab and terminated by LF",
+    "fields": [
+      "init_pre_line",
+      "init_post_line",
+      "direct_StartAnm_pre_line",
+      "direct_StartOpponentAnm_pre_line_or_0",
+      "StartOpponentAnm_nested_request_pre_line_or_0",
+      "direct_StartOpponentAnmM_pre_line_or_0",
+      "StartOpponentAnmM_nested_request_pre_line_or_0"
+    ],
+    "record_count": 5288,
+    "byte_count": 159356,
+    "sha256": "b93ad305982a99a0771b7f833951d22ded564dd5539aeaaeae764637c7dae440",
+    "reproducibility_tool": "tools/prove_init_animation_closure.py"
+  }
 }
