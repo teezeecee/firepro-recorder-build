@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_FORMANIMATOR_REQUEST_SIBLINGS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "req_serial_anm": {
+      "type": "FormAnimator",
+      "method": "ReqSerialAnm",
+      "token": "0x06004E6D",
+      "rva": "0x002D9F13",
+      "signature_blob_hex": "20010111a97c",
+      "parameter": {
+        "sequence": 1,
+        "name": "skill_id",
+        "type": "valuetype SkillAnmEnum"
+      },
+      "code_size": 21,
+      "code_sha256": "ba11f4c9eb5c4039a8ba03055c42e707db927df9884b7e4a03d5ce45cc2b730e",
+      "exact_sequence": [
+        {
+          "il": "0x0000..0x0006",
+          "effect": "AnmReqType = 2",
+          "field_token": "0x04005ECF"
+        },
+        {
+          "il": "0x0007..0x000D",
+          "effect": "SkillAnmID = arg1",
+          "field_token": "0x04005EDA"
+        },
+        {
+          "il": "0x000E..0x0014",
+          "effect": "InitAnmWork(); return",
+          "callee_token": "0x06004E6C"
+        }
+      ]
+    },
+    "req_skill_anm": {
+      "type": "FormAnimator",
+      "method": "ReqSkillAnm",
+      "token": "0x06004E6E",
+      "rva": "0x002D9F29",
+      "signature_blob_hex": "20010111a9dc",
+      "parameter": {
+        "sequence": 1,
+        "name": "skill_id",
+        "type": "valuetype SkillID"
+      },
+      "code_size": 21,
+      "code_sha256": "ac3eec081214a41850096a738ad0778366871ea77181e1fa20c4eb73915af81e",
+      "exact_sequence": [
+        {
+          "il": "0x0000..0x0006",
+          "effect": "AnmReqType = 3",
+          "field_token": "0x04005ECF"
+        },
+        {
+          "il": "0x0007..0x000D",
+          "effect": "SkillId = arg1",
+          "field_token": "0x04005EDB"
+        },
+        {
+          "il": "0x000E..0x0014",
+          "effect": "InitAnmWork(); return",
+          "callee_token": "0x06004E6C"
+        }
+      ]
+    },
+    "closed_request_type_initializer": {
+      "0": {
+        "method": "ReqBasicAnm",
+        "token": "0x06004E6F",
+        "fact_id": "FACT-0010",
+        "note": "writes BasicSkillID then calls InitAnmWork"
+      },
+      "1": {
+        "method": "ReqSlotAnm ordinary path",
+        "token": "0x06004E70",
+        "fact_id": "FACT-0009",
+        "note": "writes SkillSlotID then calls InitAnmWork; weapon-override path instead calls ReqBasicAnm and returns"
+      },
+      "2": {
+        "method": "ReqSerialAnm",
+        "token": "0x06004E6D",
+        "fact_id": "FACT-0012",
+        "note": "writes SkillAnmID then calls InitAnmWork"
+      },
+      "3": {
+        "method": "ReqSkillAnm",
+        "token": "0x06004E6E",
+        "fact_id": "FACT-0012",
+        "note": "writes SkillId then calls InitAnmWork"
+      }
+    },
+    "common_reset_target": {
+      "method": "FormAnimator.InitAnmWork",
+      "token": "0x06004E6C",
+      "fact_id": "FACT-0011"
+    }
+  },
+  "r6_observation_note": "CAP-R6-001 contains no PRE records for FormAnimator.ReqSerialAnm or FormAnimator.ReqSkillAnm; this dataset therefore promotes their mechanics from the matching DLL only.",
+  "limits": [
+    "The ReqSlotAnm weapon-override path is not part of its AnmReqType=1 ordinary initializer because that path calls ReqBasicAnm and returns earlier.",
+    "SkillAnmEnum, SkillID, field names, and method names are retained as exact CLR identifiers without added gameplay interpretation.",
+    "No R6 execution of ReqSerialAnm or ReqSkillAnm is available in CAP-R6-001.",
+    "Packed choreography, animation-bank semantics, damage meaning, and aftermath remain outside this record."
+  ]
+}
