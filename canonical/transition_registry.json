@@ -265,6 +265,23 @@
         "packed retail choreography/data closure",
         "later aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_PROCESS_ANM_LOOP_V1",
+      "fact_id": "FACT-0016",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL ProcessAnmLoop loop-entry, pinfall/submission, down-time, synchronized rewind, counted-loop exhaustion and target-loop-end request control flow.",
+      "summary": "canonical/witnesses/CAP-R6-001/process_anm_loop.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored loopReturnPoint/loopReturnTo/fallTiming/anmLoopTimes data closure",
+        "down-time/damage semantic closure",
+        "later state aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
