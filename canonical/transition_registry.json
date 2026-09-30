@@ -18,6 +18,20 @@
       ],
       "index_summary": "canonical/witnesses/CAP-R6-001/tick_state_edges.summary.json",
       "index_parts_glob": "canonical/witnesses/CAP-R6-001/tick_state_edges.index.part*.b64"
+    },
+    {
+      "family_id": "R6_EVENT_MOVE_PAIRING_V1",
+      "fact_id": "FACT-0003",
+      "source_id": "CAP-R6-001",
+      "scope": "RAW_OBSERVATION_ONLY",
+      "definition": "One-to-one raw row pairing between move_trace and event_trace rows with recorded type FormAnimator, using same tick, event seq = move seq - 1, and equality across 19 shared raw string fields.",
+      "summary": "canonical/witnesses/CAP-R6-001/event_move_pairing.summary.json",
+      "occurrence_count": 127016,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "matching DLL control-flow/ownership closure",
+        "packed retail choreography/data closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
