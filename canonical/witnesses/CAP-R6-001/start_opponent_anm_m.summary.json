@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "dataset_id": "R6_START_OPPONENT_ANM_M_CLOSURE_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "start_opponent_anm_m": {
+      "type": "FormAnimator",
+      "method": "StartOpponentAnmM",
+      "token": "0x06004E77",
+      "rva": "0x002DAF40",
+      "signature_blob_hex": "200301080808",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "en",
+          "element_type": "I4"
+        },
+        {
+          "sequence": 2,
+          "name": "anm_idx",
+          "element_type": "I4"
+        },
+        {
+          "sequence": 3,
+          "name": "mp",
+          "element_type": "I4"
+        }
+      ],
+      "code_size": 462,
+      "code_sha256": "e4d47db13c895255bbbd2d9d112427c93491b757a4bde1ee9543265724e1b566",
+      "selected_player_lookup": [
+        {
+          "il_offset": "0x0000",
+          "instruction": "ldsfld PlayerMan::inst",
+          "field_token": "0x040061FA"
+        },
+        {
+          "il_offset": "0x0005",
+          "instruction": "ldarg.1"
+        },
+        {
+          "il_offset": "0x0006",
+          "instruction": "callvirt PlayerMan::GetPlObj",
+          "call_token": "0x06005065"
+        },
+        {
+          "il_offset": "0x0012",
+          "instruction": "brtrue -> continue; otherwise ret at 0x0017"
+        }
+      ],
+      "second_player_lookup": [
+        {
+          "il_offset": "0x0018",
+          "instruction": "ldsfld PlayerMan::inst",
+          "field_token": "0x040061FA"
+        },
+        {
+          "il_offset": "0x001D",
+          "instruction": "ldarg.3"
+        },
+        {
+          "il_offset": "0x001E",
+          "instruction": "callvirt PlayerMan::GetPlObj",
+          "call_token": "0x06005065"
+        }
+      ],
+      "request_dispatch": {
+        "receiver": "selected arg1 Player.animator",
+        "call_il_offset": "0x003D",
+        "call": "FormAnimator.ReqBasicAnm",
+        "call_token": "0x06004E6F",
+        "arguments": [
+          "this.BasicSkillID",
+          "0",
+          "-1"
+        ]
+      },
+      "selected_player_assignments": [
+        {
+          "il_offset": "0x0049",
+          "target": "selected.animator.reqAnmInit",
+          "field_token": "0x04005EEC",
+          "value": 0
+        },
+        {
+          "il_offset": "0x0055",
+          "target": "selected.animator.isAnmBoot",
+          "field_token": "0x04005EEA",
+          "value": 1
+        },
+        {
+          "il_offset": "0x0061",
+          "target": "selected.animator.currentFormIdx",
+          "field_token": "0x04005ED5",
+          "value": -1
+        },
+        {
+          "il_offset": "0x0077",
+          "target": "selected.animator.AnmHostPlayer",
+          "field_token": "0x04005ED7",
+          "value_from": "this.plObj.PlIdx"
+        },
+        {
+          "il_offset": "0x0088",
+          "target": "selected.animator.CurrentSkill",
+          "field_token": "0x04005ED0",
+          "value_from": "this.CurrentSkill"
+        },
+        {
+          "il_offset": "0x0099",
+          "target": "selected.animator.anmType",
+          "field_token": "0x04005EDC",
+          "value_from": "this.anmType"
+        },
+        {
+          "il_offset": "0x00A5",
+          "target": "selected.animator.CurrentAnmIdx",
+          "field_token": "0x04005ED1",
+          "value_from": "arg2"
+        },
+        {
+          "il_offset": "0x00CC",
+          "target": "selected.Player.TerrainColType",
+          "field_token": "0x04006004",
+          "value_from": "selected.animator.CurrentSkill.anmData[CurrentAnmIdx].terrainColType"
+        },
+        {
+          "il_offset": "0x00F8",
+          "target": "selected.animator.AnimeEnd",
+          "field_token": "0x04005EE2",
+          "value_from": "selected.animator.CurrentSkill.anmData[CurrentAnmIdx].anmEndState"
+        }
+      ],
+      "numeric_terrain_filter": {
+        "equivalent_logic": [
+          "if ringKind == 1 or ringKind == 3: selected.TerrainColType = 0",
+          "if selected.TerrainColType != 4 and (selected.Zone == 3 or selected.Zone == 1): selected.TerrainColType = 0",
+          "if selected.TerrainColType != 4 and selected.Zone != 3 and selected.Zone != 1 and ringKind == 2 and (selected.TerrainColType == 1 or selected.TerrainColType == 3): selected.TerrainColType = 0",
+          "if final selected.TerrainColType != 0: selected.isIgnoreTerrainCol = 1"
+        ],
+        "ring_kind_field_token": "0x04006468",
+        "zone_field_token": "0x04005FEE",
+        "terrain_field_token": "0x04006004",
+        "is_ignore_field_token": "0x0400604F"
+      },
+      "optional_second_player_copy": {
+        "condition": "PlayerMan.GetPlObj(arg3) converts true",
+        "copied_fields": [
+          {
+            "source": "arg3 Player.PlPos.x",
+            "target": "selected Player.PlPos.x",
+            "il_range": "0x018F..0x01A0"
+          },
+          {
+            "source": "arg3 Player.PlPos.y",
+            "target": "selected Player.PlPos.y",
+            "il_range": "0x01A5..0x01B6"
+          },
+          {
+            "source": "arg3 Player.PlDir",
+            "target": "selected Player.PlDir",
+            "field_token": "0x04005FB0",
+            "il_range": "0x01BB..0x01C2"
+          }
+        ]
+      },
+      "terminal_call": {
+        "il_offset": "0x01C8",
+        "method": "Player.DropWeapon",
+        "token": "0x06004EDF",
+        "receiver": "selected arg1 Player"
+      }
+    },
+    "known_call_sites_to_start_opponent_anm_m": [
+      {
+        "caller": "FormAnimator.InitAnimation",
+        "caller_token": "0x06004E73",
+        "caller_rva": "0x002DA2D8",
+        "call_offsets": [
+          "0x0335",
+          "0x03D3",
+          "0x03EB"
+        ],
+        "opcode": "call"
+      },
+      {
+        "caller": "Player.InitAnimation_RunningDownAtk",
+        "caller_token": "0x06004EBD",
+        "caller_rva": "0x002DEB54",
+        "call_offsets": [
+          "0x00BD"
+        ],
+        "opcode": "callvirt"
+      },
+      {
+        "caller": "Player.TransitStateAfterAnm_AutoRun",
+        "caller_token": "0x06004EC7",
+        "caller_rva": "0x002E08B8",
+        "call_offsets": [
+          "0x02C2"
+        ],
+        "opcode": "callvirt"
+      },
+      {
+        "caller": "Player.TransitStateAfterAnm",
+        "caller_token": "0x06004EC8",
+        "caller_rva": "0x002E0B8C",
+        "call_offsets": [
+          "0x039B"
+        ],
+        "opcode": "callvirt"
+      },
+      {
+        "caller": "Player.ProcessRun_SpecialRun",
+        "caller_token": "0x06004F5D",
+        "caller_rva": "0x002F03C8",
+        "call_offsets": [
+          "0x00E9"
+        ],
+        "opcode": "callvirt"
+      }
+    ]
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "start_opponent_anm_m_pre": 68,
+    "start_opponent_anm_m_post": 68,
+    "paired": 68,
+    "traced_parent_counts": {
+      "FormAnimator.InitAnimation": 68
+    },
+    "direct_child_pattern": {
+      "FormAnimator.ReqBasicAnm": 68,
+      "Player.DropWeapon": 68
+    },
+    "argument_relations": {
+      "second_raw_argument_equals_2": 68,
+      "third_raw_argument_equals_parent_InitAnimation_target": 68,
+      "first_raw_argument_equals_nested_ReqBasicAnm_owner_slot": 68,
+      "first_raw_argument_equals_direct_DropWeapon_owner_slot": 68,
+      "host_owner_arg1_arg3_pairwise_distinct": 68
+    },
+    "nested_req_basic": {
+      "exactly_one_per_parent": 68,
+      "raw_args_equal_parent_BasicSkillID_false_minus1": 68,
+      "recorded_target_equals_arg3": 54,
+      "recorded_target_differs_from_arg3": 14
+    },
+    "post_assignment_snapshot_at_drop_weapon": {
+      "recorded_AnmHostPlayer_equals_StartOpponentAnmM_owner_slot": 68,
+      "recorded_BasicSkillID_equals_parent_BasicSkillID": 68,
+      "recorded_anmType_equals_parent_anmType": 68,
+      "recorded_bank_equals_second_raw_argument": 68,
+      "nested_ReqBasicAnm_POST_to_DropWeapon_PRE_AnmHostPlayer_changed": 48
+    }
+  },
+  "witness_digest": {
+    "algorithm": "sha256",
+    "canonical_record_format": "ASCII fields joined by tab and terminated by LF",
+    "fields": [
+      "StartOpponentAnmM_PRE_line",
+      "StartOpponentAnmM_POST_line",
+      "parent_InitAnimation_PRE_line",
+      "raw_arg1",
+      "raw_arg2",
+      "raw_arg3",
+      "host_owner_slot",
+      "host_target",
+      "ReqBasicAnm_PRE_line",
+      "ReqBasicAnm_POST_line",
+      "DropWeapon_PRE_line",
+      "DropWeapon_POST_line",
+      "ReqBasicAnm_owner_slot",
+      "DropWeapon_owner_slot",
+      "DropWeapon_PRE_AnmHostPlayer"
+    ],
+    "record_count": 68,
+    "byte_count": 4259,
+    "sha256": "2c61df5bd859ed15755a4929bd3f403691667423ee33bb4d8520e86e12153713",
+    "reproducibility_tool": "tools/prove_start_opponent_anm_m_closure.py"
+  },
+  "limits": [
+    "All 68 R6 executions were traced under InitAnimation; the four matching-DLL Player call-site families were not observed in this R6 sample and are not behaviorally cross-closed here.",
+    "The nested ReqBasicAnm recorder target is not an alias for StartOpponentAnmM arg3: equality occurs in 54/68 observations and differs in 14/68.",
+    "Recorder field name bank is preserved only as a raw recorded field; this fact does not assert that bank is a semantic alias for CurrentAnmIdx.",
+    "The DLL proves the optional arg3-player X/Y/direction copy, but R6 event_trace does not record those coordinates/direction at the nested call boundary, so that copy is DLL-proven rather than recorder-correlated.",
+    "No gameplay-role names, choreography meaning, animation-bank meaning, damage, or aftermath semantics are promoted."
+  ]
+}
