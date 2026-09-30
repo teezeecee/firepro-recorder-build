@@ -78,3 +78,8 @@ jobs:
         run: python tests/test_update_animation_full_summary.py
       - name: Full UpdateAnimation prover syntax
         run: python -m py_compile tools/prove_update_animation_full.py
+
+      - name: PlayAnimationSE summary
+        run: python tests/test_play_animation_se_summary.py
+      - name: PlayAnimationSE prover syntax
+        run: python -m py_compile tools/prove_play_animation_se.py

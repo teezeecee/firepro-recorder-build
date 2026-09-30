@@ -1,0 +1,59 @@
+{
+  "fact_id": "FACT-0015",
+  "claim": "In the matching retail DLL, FormAnimator.PlayAnimationSE (0x06004E7D) is a parameterless 364-byte method. It reads the current FormDispInfo.seID and returns when that value is zero; otherwise it loads MatchSEParam, conditionally calls Ring.ShakeMat when shakeMatLevel is positive and Ring.inst is present, then dispatches exact numeric values: 60 calls ThrowInWeapon, 61 calls Process_ShakeCage and Ring.ShakeCage, 62 calls ReqRopeAction(4,0.5f), 63 searches for a weapon and when an index is found calls EquipWeapon(index) followed by SetAIActCounter(1), 1 calls PlayWrestlerVoice, 6 calls PlayStepSE, and other nonzero values call MatchMisc.PlayMatchSE(seID,1.0f,plObj.PlIdx). CAP-R6-001 contains 45,458 paired PlayAnimationSE executions. 45,447 have no traced direct child and 11 contain one direct Player.EquipWeapon child. Player.EquipWeapon has exactly one callsite in this matching PlayAnimationSE body, inside the numeric-63 dispatch. In all 11 observed child calls, parent and child PRE weaponIdx are -1, child owner_slot equals parent owner_slot, the child raw argument equals child POST weaponIdx, and parent POST weaponIdx equals that same child argument.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.PlayAnimationSE token 0x06004E7D RVA 0x002DB718 flags 0x0081 signature 200001 code size 364 code sha256=ba7c6da321b3f5632756459a8a788abd92609da056981078f5fc7bbe04824085; exact dispatch, call sites and unique EquipWeapon callsite are recorded in canonical/witnesses/CAP-R6-001/play_animation_se.summary.json; prover tools/prove_play_animation_se.py",
+      "observation": "Exact matching-DLL PlayAnimationSE body."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; deterministic 45,458-record witness digest sha256=269d9efa1f0bb19e53a398b53c395033084ddc30b8ea6718514911e45697f692; summary canonical/witnesses/CAP-R6-001/play_animation_se.summary.json",
+      "observation": "45,458 matched PlayAnimationSE PRE/POST calls; 11 contain one direct Player.EquipWeapon child and 45,447 contain no traced direct child."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FormDispInfo.seID",
+      "to": "PlayAnimationSE numeric dispatch",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayAnimationSE IL+0x0001 gets current FormDispInfo; IL+0x0008 loads seID; IL+0x005C..0x0074 switches on seID-60 to numeric 60/61/62/63 targets; default path tests seID 1 and 6 before generic PlayMatchSE. Exact targets are stored in play_animation_se.summary.json."
+        }
+      ]
+    },
+    {
+      "from": "numeric seID 63 branch",
+      "to": "Player.EquipWeapon callsite",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayAnimationSE numeric-63 target IL+0x0098 checks WeaponMan, calls FindWeapon at IL+0x00D2, tests index != -1, and has the method's only Player.EquipWeapon call at IL+0x00E9 token 0x06004EE0 followed by SetAIActCounter(1) at IL+0x00FA"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "11/45,458 PlayAnimationSE call trees contain a direct Player.EquipWeapon child; all 11 parent/child weaponIdx and owner relationships are pinned under witness digest 269d9efa1f0bb19e53a398b53c395033084ddc30b8ea6718514911e45697f692"
+        }
+      ]
+    },
+    {
+      "from": "UpdateAnimation form-advance path",
+      "to": "PlayAnimationSE",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0014 pins FormAnimator.UpdateAnimation token 0x06004E7E IL+0x01D0 call FormAnimator.PlayAnimationSE token 0x06004E7D"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "R6 does not expose the current FormDispInfo.seID field directly.",
+    "Only the EquipWeapon special branch has a traced child method in CAP-R6-001; other special helper calls are DLL-proven at this gate.",
+    "Raw strings and CLR identifiers are retained exactly without using their wording as a dispatch rule.",
+    "Sound identity, authored form meaning, choreography, and later aftermath remain outside this fact."
+  ]
+}
