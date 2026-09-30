@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_INIT_ANM_WORK_RESET_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "FormAnimator",
+      "method": "InitAnmWork",
+      "token": "0x06004E6C",
+      "rva": "0x002D9DD8",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 303,
+      "code_sha256": "cf51dba42ef7e38fee750ed4a8e5eb449511a11583f6bffbdbec3a9e2802250f"
+    },
+    "form_animator_initialization": [
+      {
+        "il": "0x0000..0x0006",
+        "field": "reqAnmInit",
+        "field_token": "0x04005EEC",
+        "value": 1
+      },
+      {
+        "il": "0x0007..0x000D",
+        "field": "InitialAnmIdx",
+        "field_token": "0x04005ED2",
+        "value": 0
+      },
+      {
+        "il": "0x000E..0x0014",
+        "field": "OpponentInitialAnmIdx",
+        "field_token": "0x04005ED3",
+        "value": 1
+      },
+      {
+        "il": "0x0015..0x001B",
+        "field": "FormDispDuration",
+        "field_token": "0x04005ED4",
+        "value": 0
+      },
+      {
+        "il": "0x001C..0x0022",
+        "field": "FrameWait",
+        "field_token": "0x04005EDE",
+        "value": 0
+      },
+      {
+        "il": "0x003F..0x0045",
+        "field": "isReqAnmLoopEnd",
+        "field_token": "0x04005EE5",
+        "value": 0
+      },
+      {
+        "il": "0x0046..0x004C",
+        "field": "isAnmLooped",
+        "field_token": "0x04005EE6",
+        "value": 0
+      },
+      {
+        "il": "0x004D..0x0053",
+        "field": "isAnmPause",
+        "field_token": "0x04005EE7",
+        "value": 0
+      },
+      {
+        "il": "0x0054..0x005A",
+        "field": "isAnmSync",
+        "field_token": "0x04005EE8",
+        "value": 0
+      },
+      {
+        "il": "0x005B..0x0061",
+        "field": "isCopiedOpponentDir",
+        "field_token": "0x04005EE9",
+        "value": 0
+      },
+      {
+        "il": "0x0062..0x0068",
+        "field": "isAtkHitOff",
+        "field_token": "0x04005EEB",
+        "value": 0
+      },
+      {
+        "il": "0x0069..0x006F",
+        "field": "isAnmBoot",
+        "field_token": "0x04005EEA",
+        "value": 0
+      },
+      {
+        "il": "0x0070..0x0076",
+        "field": "isAttackHit",
+        "field_token": "0x04005EED",
+        "value": 0
+      },
+      {
+        "il": "0x0077..0x007D",
+        "field": "isAttackHit2",
+        "field_token": "0x04005EEE",
+        "value": 0
+      }
+    ],
+    "player_initialization": [
+      {
+        "il": "0x0023..0x0032",
+        "field": "FoxSleepCnt",
+        "field_token": "0x04005FBE",
+        "value": 192
+      },
+      {
+        "il": "0x0033..0x003E",
+        "field": "ChangeRefereeGiveUpAnm",
+        "field_token": "0x04006019",
+        "value": 0
+      },
+      {
+        "il": "0x007E..0x0089",
+        "field": "isCriticalMove",
+        "field_token": "0x04006058",
+        "value": 0
+      },
+      {
+        "il": "0x008A..0x0095",
+        "field": "isSpecialMove",
+        "field_token": "0x04006059",
+        "value": 0
+      },
+      {
+        "il": "0x0096..0x00A1",
+        "field": "isVibratePlayer",
+        "field_token": "0x04006064",
+        "value": 0
+      },
+      {
+        "il": "0x00A2..0x00AD",
+        "field": "isPinfallAtk",
+        "field_token": "0x04006048",
+        "value": 0
+      },
+      {
+        "il": "0x00AE..0x00B9",
+        "field": "isPinfallDef",
+        "field_token": "0x04006049",
+        "value": 0
+      },
+      {
+        "il": "0x00BA..0x00C5",
+        "field": "isSubmissionAtk",
+        "field_token": "0x0400604B",
+        "value": 0
+      },
+      {
+        "il": "0x00C6..0x00D1",
+        "field": "isSubmissionDef",
+        "field_token": "0x0400604C",
+        "value": 0
+      },
+      {
+        "il": "0x00D2..0x00DD",
+        "field": "isIgnoreTerrainCol",
+        "field_token": "0x0400604F",
+        "value": 0
+      },
+      {
+        "il": "0x00DE..0x00E9",
+        "field": "isFoul",
+        "field_token": "0x04006053",
+        "value": 0
+      },
+      {
+        "il": "0x00EA..0x00F5",
+        "field": "isPossibleFoxSleep",
+        "field_token": "0x04006055",
+        "value": 0
+      },
+      {
+        "il": "0x00F6..0x0101",
+        "field": "isDecDownTime",
+        "field_token": "0x0400605B",
+        "value": 0
+      },
+      {
+        "il": "0x0102..0x010D",
+        "field": "isPossibleToGrapple",
+        "field_token": "0x0400605D",
+        "value": 0
+      },
+      {
+        "il": "0x010E..0x0119",
+        "field": "isWannaGiveUp",
+        "field_token": "0x04006071",
+        "value": 0
+      }
+    ],
+    "status3_mask": {
+      "il": "0x011A..0x012D",
+      "field": "Player.Status3",
+      "field_token": "0x04005FBB",
+      "operation": "Status3 = Status3 & -9",
+      "constant": -9
+    },
+    "control_flow": {
+      "branches": 0,
+      "calls": 0,
+      "terminal_il": "0x012E",
+      "terminal_instruction": "ret"
+    },
+    "proven_call_boundaries_from_previous_facts": [
+      {
+        "caller": "FormAnimator.ReqBasicAnm",
+        "caller_token": "0x06004E6F",
+        "call_il": "0x0063",
+        "fact_id": "FACT-0010"
+      },
+      {
+        "caller": "FormAnimator.ReqSlotAnm",
+        "caller_token": "0x06004E70",
+        "call_il": "0x0165",
+        "fact_id": "FACT-0009"
+      }
+    ]
+  },
+  "limits": [
+    "R6 does not trace InitAnmWork as a standalone event, so this record is based on the exact matching DLL body.",
+    "Field names are retained as CLR metadata identifiers; this record does not add player-facing interpretations to those identifiers.",
+    "The effects of later methods that rewrite any initialized field are outside this record.",
+    "Packed choreography, animation-bank semantics, damage meaning, and aftermath remain outside this record."
+  ]
+}
