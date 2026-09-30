@@ -43,3 +43,8 @@ jobs:
         run: python tests/test_r6_start_opponent_anm_m_summary.py
       - name: StartOpponentAnmM prover syntax
         run: python -m py_compile tools/prove_start_opponent_anm_m_closure.py
+
+      - name: StartSlotAnm Immediately closure summary
+        run: python tests/test_r6_start_slot_anm_immediate_summary.py
+      - name: StartSlotAnm Immediately prover syntax
+        run: python -m py_compile tools/prove_start_slot_anm_immediate_closure.py
