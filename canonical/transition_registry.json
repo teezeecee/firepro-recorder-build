@@ -426,6 +426,23 @@
         "MemberRef Abs implementation",
         "downstream authored damage-table closure"
       ]
+    },
+    {
+      "family_id": "DLL_MATCHMISC_RATE100_CHECK_V1",
+      "fact_id": "FACT-0025",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMisc.mRate100Check Int32 Range(0,100), MatchMain-null gate, raw rt/sample ble comparison, and Boolean return reached from the two FACT-0020 ApplyDamage call sites.",
+      "summary": "canonical/witnesses/CAP-R6-001/rate100_check.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "MatchRandom.Range internal closure",
+        "authored bleedingRate data closure",
+        "caller state/aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
