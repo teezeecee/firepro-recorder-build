@@ -108,6 +108,26 @@
         "animation-bank semantics closure",
         "damage/aftermath closure"
       ]
+    },
+    {
+      "family_id": "R6_START_SLOT_ANM_IMMEDIATE_CLOSURE_V1",
+      "fact_id": "FACT-0008",
+      "source_ids": [
+        "DLL-001",
+        "CAP-R6-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Matching-DLL StartSlotAnm_Immediately ReqSlotAnm/GetSkillData_Equip/StartAnm sequence plus all 36 R6 parent-child argument and resolved-skill relationships.",
+      "summary": "canonical/witnesses/CAP-R6-001/start_slot_anm_immediate.summary.json",
+      "witness_digest_sha256": "deafacce031d382aacfde3a1fdb8c7f03bd1bcc8559a70156d613a0d23c6a9a5",
+      "occurrence_count": 36,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "ReqSlotAnm internal closure",
+        "packed retail choreography/data closure",
+        "animation-bank semantics closure",
+        "damage/aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
