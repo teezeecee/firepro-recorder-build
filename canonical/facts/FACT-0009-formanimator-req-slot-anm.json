@@ -1,0 +1,82 @@
+{
+  "fact_id": "FACT-0009",
+  "claim": "In the matching retail DLL, FormAnimator.ReqSlotAnm (0x06004E70) is a 722-byte method taking SkillSlotEnum skill_slot, Boolean rev, Int32 def_pl_idx, and Boolean atk_side. It reads the equipped skill-slot id and SkillSlotData; conditionally reverses the host and def_pl_idx Player directions only when rev and isCopiedOpponentDir are both true; applies a numeric skill_slot 86/87/88/89 exception to Status3/isAddedDownTimeByPerformance clearing; unconditionally calls Player.ChangeState with literal 10; takes an early weapon-override branch when weaponIdx and SkillSlotData.weaponAnm are both nonnegative, where it selects a weapon animation, calls ReqBasicAnm(result,false,-1), increments weaponAtkCnt and returns; otherwise it writes AnmReqType=1, SkillSlotID=skill_slot, calls InitAnmWork, returns immediately when atk_side is false, and when atk_side is true performs the exact fatigue/skill-attribute/preserve-last-skill/evaluation/S1-reset tail recorded in the provenance summary. In verified R6 raw capture bytes, all 717 PRE calls pair with POST calls and all 717 directly contain Player.ChangeState with recorder argument NormalAnm. Fourteen calls additionally contain nested ReqBasicAnm and 703 do not. The observed parent/argument split is exact: 262 StartOpponentAnm-parented calls are rev=false, def_pl_idx=-1, atk_side=false; 36 StartSlotAnm_Immediately-parented calls are rev=true, def_pl_idx=recorded target, atk_side=true; and 419 recorder-root calls are atk_side=true, of which 316 are rev=false/def=-1 and 103 are rev=true/def=recorded target.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.ReqSlotAnm token 0x06004E70 RVA 0x002D9FB8 signature 20040111870c020802 code size 722 code sha256=c4c109776883423823725f70612e1a7cd7e61367d7680c206bcc838470cf88ef; exact branch graph/effects in canonical/witnesses/CAP-R6-001/req_slot_anm.summary.json",
+      "observation": "Exact matching-DLL method body."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; deterministic 717-record witness digest sha256=788630dfe7eaf98e3dfab73ba07c0e9591f9f9a4b97d842614a2b9327fc69f04; summary canonical/witnesses/CAP-R6-001/req_slot_anm.summary.json; prover tools/prove_req_slot_anm_closure.py",
+      "observation": "717 matched ReqSlotAnm call trees with exact parent, raw argument, ChangeState, weapon-override request, owner, target, weaponIdx, and post-record relationships."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "ReqSlotAnm body",
+      "to": "Player.ChangeState literal 10",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqSlotAnm IL+0x00C3 ldarg.0; IL+0x00C4 ldfld plObj; IL+0x00C9 ldc.i4.s 10; IL+0x00CB callvirt Player.ChangeState 0x06004EAE"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "717/717 direct nested Player.ChangeState records emit raw argument NormalAnm and owner_slot equal to ReqSlotAnm owner_slot"
+        }
+      ]
+    },
+    {
+      "from": "weapon override condition",
+      "to": "nested ReqBasicAnm and early return",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqSlotAnm IL+0x00D0..0x0155 checks weaponIdx >=0 and SkillSlotData.weaponAnm >=0, calls WeaponMan.GetWeaponObj/GetWeaponAnm, calls ReqBasicAnm 0x06004E6F with false,-1, increments weaponAtkCnt, then ret"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "14/717 call trees contain direct nested ReqBasicAnm; all 14 have parent weaponIdx >=0, same request owner, raw arg2 False and arg3 -1; 2 additional nonweapon call trees have weaponIdx >=0, so weaponIdx alone is not treated as sufficient"
+        }
+      ]
+    },
+    {
+      "from": "ordinary nonweapon path",
+      "to": "SkillSlotID and atk_side gate",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqSlotAnm IL+0x0156..0x016C stores AnmReqType=1 and SkillSlotID=arg1, calls InitAnmWork 0x06004E6C, then brfalse on arg4 to method return"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "703 nonweapon calls have POST SkillSlotID equal raw arg1; all 262 StartOpponentAnm-parented calls carry raw arg4 False, while all 36 StartSlotAnm_Immediately-parented and 419 recorder-root calls carry raw arg4 True"
+        }
+      ]
+    },
+    {
+      "from": "rev/def_pl_idx raw inputs",
+      "to": "DLL direction-copy branch inputs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqSlotAnm IL+0x002B..0x0082 enters direction reversal only when arg2 is true and isCopiedOpponentDir is true, resolving arg3 through PlayerMan.GetPlObj"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "Across 717 calls, all 578 raw rev=False records have def_pl_idx=-1; all 139 raw rev=True records have def_pl_idx equal the recorder target. Direction fields themselves are not recorded."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "No semantic meaning is inferred from method/field/enum names or numeric slot values.",
+    "The recorder-root 419 calls are not assigned to specific DLL callers.",
+    "The NormalAnm string is correlated only to the literal-10 ChangeState call boundary observed here, not globally promoted as an enum mapping.",
+    "Several downstream fields and services are absent from event_trace and therefore remain DLL-only evidence at this gate.",
+    "Packed choreography, animation-bank semantics, damage meaning, and aftermath remain unclosed."
+  ]
+}
