@@ -1,0 +1,21 @@
+name: canonical-guardrail
+
+on:
+  push:
+    branches: [ canonical-retail-rebuild-v1 ]
+  pull_request:
+    branches: [ canonical-retail-rebuild-v1 ]
+  workflow_dispatch:
+
+jobs:
+  prove-no-assumptions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Guardrail
+        run: python tools/prove_no_assumptions.py
+      - name: Guardrail self-test
+        run: python tests/test_guardrail.py
