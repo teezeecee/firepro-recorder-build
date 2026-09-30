@@ -1,0 +1,8 @@
+{
+  "milestone_id": "SOURCE_CONSOLIDATION_V1",
+  "objective": "Consolidate Fire Pro retail rules, data lookup/layout, animation transition grammar, raw-capture oracles, and packed choreography before any runtime construction.",
+  "runtime_locked": true,
+  "strategy_change_requires_user_approval": true,
+  "notion_is_canonical": false,
+  "old_runtime_is_canonical": false
+}
