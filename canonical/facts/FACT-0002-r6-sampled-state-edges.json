@@ -5,8 +5,8 @@
   "evidence": [
     {
       "source_id": "CAP-R6-001",
-      "locator": "2026-09-27_204320/tick_trace.tsv lines 2-278553; member sha256=4ec94be819e7a3f786cad044d8cfd0534d6c1b111e87e240b67320bdd91ad2d9; six ordered derived witness parts tick_state_edges.index.part01.b64 through part06.b64 reconstruct artifact sha256=dd19d77762fc466f50b271912f37ea923dbc6f43b75204f6105d880298b55e53; decoded compact-JSON sha256=c83223175b25cc890c8706d462495243fd03adf4b1f268294a858493a928ffff",
-      "observation": "Deterministic same-player consecutive-row comparison emitted 5977 State-string changes across 105 distinct ordered pairs."
+      "locator": "2026-09-27_204320/tick_trace.tsv lines 2-278553; member sha256=4ec94be819e7a3f786cad044d8cfd0534d6c1b111e87e240b67320bdd91ad2d9; deterministic miner tools/mine_r6_state_edges.py; compact after-line witness artifact canonical/witnesses/CAP-R6-001/tick_state_edge_after_lines.v1.zlib.b64 sha256=abf605f1ee18a78e7c81ecbfded0cc604d48cc4f1f37b7050241df28e41ec03a",
+      "observation": "Scanning raw tick_trace in line order and comparing each player's State string only with that player's immediately previous sampled row emits 5977 changes across 105 distinct ordered State-string pairs."
     }
   ],
   "chain_edges": [
@@ -21,12 +21,12 @@
       ]
     },
     {
-      "from": "consecutive sampled tick_trace rows for one stable player_slot with differing State strings",
-      "to": "R6_TICK_STATE_EDGES_V1 occurrence index",
+      "from": "same-player consecutive sampled tick_trace rows with differing State strings",
+      "to": "R6_TICK_STATE_EDGES_V1 after-line witness index",
       "evidence": [
         {
           "source_id": "CAP-R6-001",
-          "locator": "canonical/witnesses/CAP-R6-001/tick_state_edges.summary.json identifies six ordered base64 parts; each decoded occurrence stores player_slot plus exact before/after raw line locators; reconstructed artifact sha256=dd19d77762fc466f50b271912f37ea923dbc6f43b75204f6105d880298b55e53"
+          "locator": "tools/mine_r6_state_edges.py applied to the verified tick_trace; witness artifact stores 5977 strictly increasing raw after-line numbers. For each after-line, before-line is deterministically the immediately previous raw row for the same player_slot."
         }
       ]
     }
