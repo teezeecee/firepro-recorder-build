@@ -10,7 +10,7 @@
     },
     {
       "source_id": "CAP-R6-001",
-      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; canonical/witnesses/CAP-R6-001/init_animation_witness.v2.zlib.b64 sha256=8efb91b9518589a7496589af4ab2f700ccbfae231a4b7ec2854d7b7cb71e24d7; summary canonical/witnesses/CAP-R6-001/init_animation.summary.json",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; deterministic 5288-record raw-line tuple digest sha256=b93ad305982a99a0771b7f833951d22ded564dd5539aeaaeae764637c7dae440; summary canonical/witnesses/CAP-R6-001/init_animation.summary.json; prover tools/prove_init_animation_closure.py",
       "observation": "5288 exact InitAnimation parent witnesses with direct traced child/grandchild line locators; 4486 StartAnm-only, 734 StartAnm+StartOpponentAnm, 68 StartAnm+StartOpponentAnm+StartOpponentAnmM."
     }
   ],
