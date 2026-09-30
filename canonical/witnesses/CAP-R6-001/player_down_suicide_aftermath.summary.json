@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_DOWN_SUICIDE_AFTERMATH_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "name": "CalcDownTime",
+        "token": "0x06004F0D",
+        "rva": "0x002E6CD0",
+        "signature_blob_hex": "200001",
+        "parameters": [],
+        "code_size": 422,
+        "code_sha256": "f02235b113abcab029951822052639084b3692e7924ae6c3b9ac85e4c86a3a88",
+        "max_stack": 3,
+        "local_signature_token": "0x11001095",
+        "local_signature_blob_hex": "070512a8f40c080812a408",
+        "instruction_count": 133,
+        "branch_instruction_count": 21,
+        "call_instruction_count": 10
+      },
+      {
+        "name": "ApplySuicideDamage",
+        "token": "0x06004F0E",
+        "rva": "0x002E6E84",
+        "signature_blob_hex": "200001",
+        "parameters": [],
+        "code_size": 247,
+        "code_sha256": "ab7e73a9dbfa03ab3a998354ee2482425c0cce67a94c2376bb75edb06a5c7446",
+        "max_stack": 3,
+        "local_signature_token": "0x1100016E",
+        "local_signature_blob_hex": "07040c0c0c0c",
+        "instruction_count": 99,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 8
+      }
+    ],
+    "calc_down_time": {
+      "entry": [
+        "venue = Ring.inst.venueSetting",
+        "if isStandingStunOK == 0: SetStunTime(0)",
+        "if DownTime != 0 or isDisableUpdateDownTime != 0: skip primary calculation"
+      ],
+      "primary_scalar": "local1 = LastDamage + 65535.0f - HP",
+      "standing_branch": [
+        "if local1 > 49151.0f: local2 = Int32((local1 - 32767.0f) / 256.0f); cap local2 at 127; SetStunTime(local2); local1 = 40959.0f",
+        "else preserve local1"
+      ],
+      "nonstanding_branch": "if local1 > 65535.0f: local1 = 65535.0f",
+      "primary_down_time": "SetDownTime(Int32(local1 / 256.0f))",
+      "ring_kind_2_branch": [
+        "venue.ringKind == 2",
+        "GetParamRate(HP) <= 0.4000000059604645f",
+        "GetParamRate(SP) <= 0.4000000059604645f",
+        "if StunTime != 0: SetStunTime(960); else SetDownTime(1200)"
+      ],
+      "post_primary": [
+        "isDisableUpdateDownTime = 1",
+        "if (spSkillFlags & 2) != 0 AND HP > 3072.0f AND HP < 13056.0f AND SP > 39168.0f: SetDownTime(DownTime / 8)",
+        "if MatchSetting.is10CountKO != 0 AND HP >= 32768.0f: SetDownTime(0)",
+        "if MatchSetting.isS1Rule != 0 AND isS1MoveRecieved == 0: SetDownTime(0)"
+      ],
+      "exact_helpers": {
+        "set_stun_time_token": "0x06004EDA",
+        "set_down_time_token": "0x06004ED8",
+        "get_param_rate_token": "0x06004975"
+      },
+      "raw_branch_opcodes": {
+        "ring_hp_sp_continue": "bgt.un",
+        "ten_count_hp_skip": "blt.un"
+      }
+    },
+    "apply_suicide_damage": {
+      "base_factors": [
+        "local0 = MatchData.mHpDamageTbl[MatchMisc.GetHealth(HP) / 2]",
+        "local1 = MatchData.mFailureDamageRateTbl[WresParam.fightStyle]"
+      ],
+      "hp_path": [
+        "local2 = Float32(CurrentSkill.suicideDamage_HP) * local0 * local1 * 256.0f",
+        "AddHP(-local2)",
+        "SetLastDamage(local2)",
+        "KoLastDamage = 0.0f"
+      ],
+      "shared_non_hp_factor": "local3 = local0 * local1 * 256.0f",
+      "non_hp_paths": [
+        "AddSP(-Float32(CurrentSkill.suicideDamage_SP) * local3)",
+        "AddHP_Neck(-Float32(CurrentSkill.suicideDamage_Neck) * local3)",
+        "AddHP_Arm(-Float32(CurrentSkill.suicideDamage_Arm) * local3)",
+        "AddHP_Waist(-Float32(CurrentSkill.suicideDamage_Waist) * local3)",
+        "AddHP_Leg(-Float32(CurrentSkill.suicideDamage_Leg) * local3)"
+      ],
+      "tail": [
+        "isStarPeformance = 0",
+        "isS1MoveRecieved = 0",
+        "return"
+      ],
+      "table_field_tokens": {
+        "mHpDamageTbl": "0x04005633",
+        "mFailureDamageRateTbl": "0x04005644"
+      },
+      "skill_field_tokens": {
+        "HP": "0x04007C65",
+        "SP": "0x04007C66",
+        "Neck": "0x04007C67",
+        "Arm": "0x04007C68",
+        "Waist": "0x04007C69",
+        "Leg": "0x04007C6A"
+      },
+      "closed_callee_facts": [
+        "FACT-0023",
+        "FACT-0027",
+        "FACT-0029"
+      ]
+    },
+    "update_animation_bridge": {
+      "fact_id": "FACT-0014",
+      "caller": "FormAnimator.UpdateAnimation",
+      "calls": [
+        [
+          "CalcDownTime",
+          "0x0270",
+          "target"
+        ],
+        [
+          "ApplySuicideDamage",
+          "0x029A",
+          "host"
+        ],
+        [
+          "CalcDownTime",
+          "0x02A5",
+          "host"
+        ]
+      ]
+    }
+  },
+  "limits": [
+    "SetStunTime/GetParamRate internals and authored tables/settings are outside this record.",
+    "Raw comparisons/constants are preserved exactly.",
+    "The two methods are grouped by caller seam, not implementation similarity."
+  ]
+}
