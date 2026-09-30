@@ -480,6 +480,24 @@
         "remaining SP recovery/consumption helper closure",
         "later field/state aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_SP_SIDE_HELPERS_V1",
+      "fact_id": "FACT-0028",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.ConsumeSP, RecoverSP and InvokeUkeBonus match/timing gates, SP recovery-table selection, AddSP chaining, and Uke recovery/timer threshold logic reached from already-closed FACT-0018, FACT-0020 and FACT-0027 call boundaries.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_sp_side_helpers.summary.json",
+      "dll_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Player.SpHealTbl authored contents",
+        "WrestlerParam SP recovery authored data",
+        "downstream UkeBonusTime/isInvokedUkeBonus consumer closure",
+        "later field/state aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
