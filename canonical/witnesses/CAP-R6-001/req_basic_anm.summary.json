@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "dataset_id": "R6_REQ_BASIC_ANM_CLOSURE_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "FormAnimator",
+      "method": "ReqBasicAnm",
+      "token": "0x06004E6F",
+      "rva": "0x002D9F40",
+      "signature_blob_hex": "20030111a9700208",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "basic_skill_id",
+          "type": "valuetype BasicSkillEnum"
+        },
+        {
+          "sequence": 2,
+          "name": "rev",
+          "type": "Boolean"
+        },
+        {
+          "sequence": 3,
+          "name": "def_pl_idx",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 105,
+      "code_sha256": "fe75cf6bc4bc9f8915c55ace5e83feb79f2e1cf78577756b04bd7f8843d36f16"
+    },
+    "exact_sequence": [
+      {
+        "il": "0x0000..0x0006",
+        "effect": "AnmReqType = 0",
+        "field_token": "0x04005ECF"
+      },
+      {
+        "il": "0x0007..0x000D",
+        "effect": "BasicSkillID = arg1 basic_skill_id",
+        "field_token": "0x04005ED8"
+      },
+      {
+        "il": "0x000E..0x0013",
+        "effect": "if rev == false: branch to InitAnmWork"
+      },
+      {
+        "il": "0x0014..0x001E",
+        "effect": "if isCopiedOpponentDir == false: branch to InitAnmWork",
+        "field_token": "0x04005EE9"
+      },
+      {
+        "il": "0x001F..0x0039",
+        "effect": "plObj.PlDir = MatchMisc.ChangePlayerDirToLRAndReverse(plObj.PlDir)",
+        "plObj_field_token": "0x04005ECE",
+        "pldir_field_token": "0x04005FB0",
+        "helper_token": "0x06004963"
+      },
+      {
+        "il": "0x003A..0x0045",
+        "effect": "local def = PlayerMan.inst.GetPlObj(arg3 def_pl_idx)",
+        "player_man_field_token": "0x040061FA",
+        "get_pl_obj_token": "0x06005065"
+      },
+      {
+        "il": "0x0046..0x0061",
+        "effect": "if def converts true: def.PlDir = MatchMisc.ChangePlayerDirToLRAndReverse(def.PlDir)",
+        "unity_object_implicit_memberref": "0x0A00002A",
+        "pldir_field_token": "0x04005FB0",
+        "helper_token": "0x06004963"
+      },
+      {
+        "il": "0x0062..0x0068",
+        "effect": "InitAnmWork(); return",
+        "init_anm_work_token": "0x06004E6C"
+      }
+    ],
+    "branch_targets": [
+      {
+        "branch_il": "0x000F",
+        "condition": "rev == false",
+        "target_il": "0x0062"
+      },
+      {
+        "branch_il": "0x001A",
+        "condition": "isCopiedOpponentDir == false",
+        "target_il": "0x0062"
+      },
+      {
+        "branch_il": "0x004C",
+        "condition": "def Player converts false",
+        "target_il": "0x0062"
+      }
+    ]
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "req_basic_pre": 5761,
+    "req_basic_post": 5761,
+    "paired": 5761,
+    "direct_traced_children": 0,
+    "traced_parent_counts": {
+      "ROOT": 4391,
+      "Player.TransitStateAfterAnm": 590,
+      "FormAnimator.StartOpponentAnm": 585,
+      "Player.PostprocessEachState": 113,
+      "FormAnimator.StartOpponentAnmM": 68,
+      "FormAnimator.ReqSlotAnm": 14
+    },
+    "raw_argument_relations": {
+      "rev_false_and_def_pl_idx_minus1": 5714,
+      "rev_true_and_def_pl_idx_equals_recorded_target": 47,
+      "all_rev_true_calls_traced_as_ROOT": 47,
+      "distinct_basic_skill_id_strings": 168,
+      "distinct_full_argument_tuples": 201
+    },
+    "basic_skill_field_observation": {
+      "POST_BasicSkillID_equals_raw_arg1": 5761,
+      "PRE_BasicSkillID_already_equals_raw_arg1": 167,
+      "PRE_to_POST_BasicSkillID_changed": 5594
+    },
+    "known_parent_bridges": {
+      "StartOpponentAnm": {
+        "count": 585,
+        "child_arg1_equals_parent_BasicSkillID": 585,
+        "child_rev_false_and_def_minus1": 585,
+        "child_owner_slot_equals_parent_target": 585
+      },
+      "StartOpponentAnmM": {
+        "count": 68,
+        "child_arg1_equals_parent_BasicSkillID": 68,
+        "child_rev_false_and_def_minus1": 68
+      },
+      "ReqSlotAnm_weapon_override": {
+        "count": 14,
+        "child_rev_false_and_def_minus1": 14,
+        "child_owner_slot_equals_parent_owner_slot": 14
+      }
+    }
+  },
+  "witness_digest": {
+    "algorithm": "sha256",
+    "canonical_record_format": "ASCII fields joined by tab and terminated by LF",
+    "fields": [
+      "ReqBasic_PRE_line",
+      "ReqBasic_POST_line",
+      "direct_parent_method_or_ROOT",
+      "direct_parent_PRE_line_or_0",
+      "raw_arg1",
+      "raw_arg2",
+      "raw_arg3",
+      "owner_slot",
+      "target",
+      "PRE_BasicSkillID",
+      "POST_BasicSkillID"
+    ],
+    "record_count": 5761,
+    "byte_count": 482616,
+    "sha256": "08e17ff201a4a670a28ea44cf44e1200cacb0659f4eb455a918ce1a13fb56d4f",
+    "reproducibility_tool": "tools/prove_req_basic_anm_closure.py"
+  },
+  "limits": [
+    "The recorder does not emit InitAnmWork as a traced child method, so that call is established from the matching DLL body rather than an R6 nested event.",
+    "The 4391 ROOT observations mean no recorder-traced parent was active; no specific matching-DLL caller is assigned to those records.",
+    "R6 does not record PlDir or isCopiedOpponentDir, so the direction-copy branch is established from the matching DLL while R6 closes only its raw rev/def_pl_idx input pattern.",
+    "BasicSkillEnum strings and CLR field/method names are retained as exact identifiers; no broader gameplay meaning is assigned.",
+    "Packed choreography, animation-bank semantics, damage meaning, and aftermath remain unclosed."
+  ]
+}
