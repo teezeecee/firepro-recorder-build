@@ -19,3 +19,5 @@ jobs:
         run: python tools/prove_no_assumptions.py
       - name: Guardrail self-test
         run: python tests/test_guardrail.py
+      - name: Derived witness integrity
+        run: python tests/test_r6_state_edge_index.py
