@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCHRANDOM_RANGE_WRAPPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "shared": {
+      "random_count_field": {
+        "name": "randomCnt",
+        "token": "0x0400578E",
+        "type": "Int32"
+      },
+      "exact_prefix": "randomCnt = randomCnt + 1",
+      "exact_argument_forwarding": "ldarg.0; ldarg.1"
+    },
+    "methods": [
+      {
+        "type": "MatchRandom",
+        "name": "Range",
+        "overload": "Int32",
+        "token": "0x0600497B",
+        "rva": "0x002B107D",
+        "signature_blob_hex": "0002080808",
+        "return_type": "Int32",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "min",
+            "type": "Int32"
+          },
+          {
+            "sequence": 2,
+            "name": "max",
+            "type": "Int32"
+          }
+        ],
+        "code_size": 30,
+        "code_sha256": "d6ed5dd5c1cdf595ca459ddc1c740ce66543e9630786cfdc9bf3404247f643f6",
+        "max_stack": 8,
+        "local_signature_token": null,
+        "local_count": 0,
+        "instruction_count": 10,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1,
+        "memberref": {
+          "token": "0x0A0001EC",
+          "name": "Range",
+          "parent_type_ref": "UnityEngine.Random",
+          "signature_blob_hex": "0002080808"
+        },
+        "last_result_field": {
+          "name": "lastRandNum_Int",
+          "token": "0x0400578F",
+          "type": "Int32"
+        }
+      },
+      {
+        "type": "MatchRandom",
+        "name": "Range",
+        "overload": "Float32",
+        "token": "0x0600497C",
+        "rva": "0x002B109C",
+        "signature_blob_hex": "00020c0c0c",
+        "return_type": "Float32",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "min",
+            "type": "Float32"
+          },
+          {
+            "sequence": 2,
+            "name": "max",
+            "type": "Float32"
+          }
+        ],
+        "code_size": 30,
+        "code_sha256": "088e4cd8eb7a187b28b71251188f91e260b6c7189cf32a45b89f6cd38b1868dc",
+        "max_stack": 8,
+        "local_signature_token": null,
+        "local_count": 0,
+        "instruction_count": 10,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1,
+        "memberref": {
+          "token": "0x0A000804",
+          "name": "Range",
+          "parent_type_ref": "UnityEngine.Random",
+          "signature_blob_hex": "00020c0c0c"
+        },
+        "last_result_field": {
+          "name": "lastRandNum_Float",
+          "token": "0x04005790",
+          "type": "Float32"
+        }
+      }
+    ],
+    "exact_wrapper_sequence": [
+      "ldsfld randomCnt",
+      "ldc.i4.1",
+      "add",
+      "stsfld randomCnt",
+      "ldarg.0",
+      "ldarg.1",
+      "call corresponding UnityEngine.Random.Range MemberRef",
+      "stsfld corresponding lastRandNum field",
+      "ldsfld corresponding lastRandNum field",
+      "ret"
+    ],
+    "caller_bridges": [
+      {
+        "fact_id": "FACT-0025",
+        "caller": "MatchMisc.mRate100Check",
+        "call_il": "0x0003",
+        "callee_token": "0x0600497B",
+        "arguments": [
+          0,
+          100
+        ]
+      },
+      {
+        "fact_id": "FACT-0022",
+        "caller": "MatchMisc.CriticalCheck",
+        "call_il": "0x0292",
+        "callee_token": "0x0600497C",
+        "arguments": [
+          0,
+          1
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "UnityEngine.Random internals are outside Assembly-CSharp.dll and outside this record.",
+    "No random-distribution or seed behavior is asserted beyond these wrappers."
+  ]
+}

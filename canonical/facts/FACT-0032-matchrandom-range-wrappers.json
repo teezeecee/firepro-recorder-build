@@ -1,0 +1,55 @@
+{
+  "fact_id": "FACT-0032",
+  "claim": "In the matching retail DLL, the two MatchRandom.Range overloads used by already-canonical damage logic are exact 30-byte wrappers with one shared structural pattern. MatchRandom.Range(Int32 min, Int32 max) (0x0600497B) increments static Int32 field randomCnt, calls MemberRef 0x0A0001EC named Range on TypeRef UnityEngine.Random with min and max unchanged, stores the returned Int32 in lastRandNum_Int, reloads that field, and returns it. MatchRandom.Range(Float32 min, Float32 max) (0x0600497C) performs the same randomCnt increment, calls MemberRef 0x0A000804 named Range on TypeRef UnityEngine.Random with the two Float32 arguments unchanged, stores the returned Float32 in lastRandNum_Float, reloads that field, and returns it. FACT-0025 pins the Int32 overload call at mRate100Check IL+0x0003 with raw arguments 0 and 100. FACT-0022 pins the Float32 overload call at CriticalCheck IL+0x0292 with raw arguments 0.0f and 1.0f.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchRandom.Range Int32 token 0x0600497B RVA 0x002B107D signature 0002080808 params min:Int32,max:Int32 code size 30 code sha256=d6ed5dd5c1cdf595ca459ddc1c740ce66543e9630786cfdc9bf3404247f643f6; metadata resolves call MemberRef 0x0A0001EC name Range parent TypeRef UnityEngine.Random; exact body in canonical/witnesses/CAP-R6-001/matchrandom_range_wrappers.summary.json",
+      "observation": "Exact matching-DLL Int32 Range wrapper."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchRandom.Range Float32 token 0x0600497C RVA 0x002B109C signature 00020c0c0c params min:Float32,max:Float32 code size 30 code sha256=088e4cd8eb7a187b28b71251188f91e260b6c7189cf32a45b89f6cd38b1868dc; metadata resolves call MemberRef 0x0A000804 name Range parent TypeRef UnityEngine.Random; exact body in canonical/witnesses/CAP-R6-001/matchrandom_range_wrappers.summary.json",
+      "observation": "Exact matching-DLL Float32 Range wrapper."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0025 MatchMisc.mRate100Check",
+      "to": "MatchRandom.Range(Int32,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0025 pins mRate100Check IL+0x0000..0x0007 as ldc.i4.0; ldc.i4.s 100; call token 0x0600497B at IL+0x0003"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0022 MatchMisc.CriticalCheck",
+      "to": "MatchRandom.Range(Float32,Float32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0022 pins CriticalCheck raw random tail; exact caller bytes load 0.0f at IL+0x0288 and 1.0f at IL+0x028D then call token 0x0600497C at IL+0x0292"
+        }
+      ]
+    },
+    {
+      "from": "both MatchRandom.Range wrappers",
+      "to": "UnityEngine.Random.Range MemberRefs and last-result fields",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Both exact 30-byte bodies increment field 0x0400578E randomCnt; Int32 body calls MemberRef 0x0A0001EC then stores/reloads field 0x0400578F lastRandNum_Int; Float32 body calls MemberRef 0x0A000804 then stores/reloads field 0x04005790 lastRandNum_Float"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes the two MatchRandom wrapper bodies and their exact UnityEngine.Random MemberRef calls; the Unity engine implementation behind those MemberRefs is outside this DLL.",
+    "No distribution property, determinism property, seeding behavior, or independence claim is added beyond the exact wrapper code.",
+    "The methods are grouped because they are one overload pair and are both direct dependencies of already-canonical damage logic.",
+    "Other MatchRandom methods remain outside this fact unless separately closed."
+  ]
+}

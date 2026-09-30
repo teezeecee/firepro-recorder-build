@@ -552,6 +552,23 @@
         "authored HP/SP state provenance",
         "remaining CalcDownTime downstream state closure"
       ]
+    },
+    {
+      "family_id": "DLL_MATCHRANDOM_RANGE_WRAPPERS_V1",
+      "fact_id": "FACT-0032",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchRandom Range Int32/Float32 wrappers: shared randomCnt increment, argument forwarding to UnityEngine.Random.Range MemberRefs, last-result field store/reload, and return, with caller bridges from FACT-0025 and FACT-0022.",
+      "summary": "canonical/witnesses/CAP-R6-001/matchrandom_range_wrappers.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "UnityEngine.Random engine implementation",
+        "other MatchRandom method closure",
+        "seed/state provenance outside these wrappers"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
