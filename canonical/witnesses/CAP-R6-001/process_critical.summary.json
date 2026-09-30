@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_PROCESS_CRITICAL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "ProcessCritical",
+      "token": "0x06004ECA",
+      "rva": "0x002E11B0",
+      "signature_blob_hex": "20010112a9a8",
+      "return_type": "Void",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "sd",
+          "type": "SkillData"
+        }
+      ],
+      "code_size": 277,
+      "code_sha256": "95fcc98f9fe079ae95ecf2d72104145a28273b1030b2fc9db039abcfb330fd30",
+      "max_stack": 3,
+      "local_signature_token": null,
+      "local_count": 0,
+      "instruction_count": 82,
+      "branch_instruction_count": 11,
+      "call_instruction_count": 6
+    },
+    "entry_and_damage_record": {
+      "raw_flag_mask": 40,
+      "mask_zero_effects": [
+        "this.isKO = 1",
+        "this.KO_Return = 320"
+      ],
+      "always_effects": [
+        "this.SetLastDamage(65535.0f)",
+        "this.KoLastDamage = 65535.0f"
+      ],
+      "fields": {
+        "skill_flags": "0x04007C55",
+        "isKO": "0x04006047",
+        "KO_Return": "0x04005FD2",
+        "KoLastDamage": "0x04005FD6"
+      },
+      "set_last_damage_token": "0x06004EDC"
+    },
+    "power_zeroing": [
+      {
+        "skill_field": "atkPow_HP",
+        "field_token": "0x04007C5A",
+        "condition": "nonzero",
+        "action": "this.SetHP(0.0f)",
+        "call_token": "0x06004ECC"
+      },
+      {
+        "skill_field": "atkPow_SP",
+        "field_token": "0x04007C5B",
+        "condition": "nonzero",
+        "action": "this.SetSP(0.0f)",
+        "call_token": "0x06004ED0"
+      },
+      {
+        "skill_field": "atkPow_Neck",
+        "field_token": "0x04007C5D",
+        "condition": "nonzero",
+        "action": "this.HP_Neck = 0.0f",
+        "player_field_token": "0x04005FC2"
+      },
+      {
+        "skill_field": "atkPow_Arm",
+        "field_token": "0x04007C5E",
+        "condition": "nonzero",
+        "action": "this.HP_Arm = 0.0f",
+        "player_field_token": "0x04005FC3"
+      },
+      {
+        "skill_field": "atkPow_Waist",
+        "field_token": "0x04007C5F",
+        "condition": "nonzero",
+        "action": "this.HP_Waist = 0.0f",
+        "player_field_token": "0x04005FC4"
+      },
+      {
+        "skill_field": "atkPow_Leg",
+        "field_token": "0x04007C60",
+        "condition": "nonzero",
+        "action": "this.HP_Leg = 0.0f",
+        "player_field_token": "0x04005FC5"
+      },
+      {
+        "skill_field": "atkPow_BP",
+        "field_token": "0x04007C5C",
+        "condition": "nonzero",
+        "action": "this.SetBP(0.0f)",
+        "call_token": "0x06004ECE"
+      }
+    ],
+    "flag_64_branch": {
+      "raw_flag_mask": 64,
+      "effect": "this.isWannaGiveUp = 1",
+      "player_field_token": "0x04006071"
+    },
+    "flag_8_presentation": {
+      "raw_flag_mask": 8,
+      "true_path": {
+        "call": "MatchMisc.PlayMatchSE",
+        "token": "0x06004970",
+        "arguments": [
+          30,
+          1,
+          "this.PlIdx"
+        ],
+        "plidx_field_token": "0x04005FA6"
+      },
+      "false_path": {
+        "field": "MatchUI.inst",
+        "field_token": "0x04005899",
+        "call": "MatchUI.Show_Critical",
+        "token": "0x060049F3",
+        "arguments": [
+          1
+        ]
+      }
+    },
+    "apply_damage_bridge": {
+      "fact_id": "FACT-0020",
+      "caller": "MatchMisc.ApplyDamage",
+      "caller_token": "0x0600494D",
+      "call_il": "0x01D2",
+      "callee_token": "0x06004ECA",
+      "argument": "CurrentSkill",
+      "shared_tail_join_il": "0x04EA"
+    }
+  },
+  "r6_observation_note": "CAP-R6-001 contains no standalone Player.ProcessCritical PRE/POST event. This record uses the exact matching-DLL body and the already-pinned FACT-0020 caller boundary.",
+  "limits": [
+    "Called helper internals and authored SkillData contents are outside this record.",
+    "Raw masks and constants are preserved exactly.",
+    "Shared ApplyDamage tail behavior remains in FACT-0020."
+  ]
+}
