@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_UPDATE_ANIMATION_FULL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "FormAnimator",
+      "method": "UpdateAnimation",
+      "token": "0x06004E7E",
+      "rva": "0x002DB890",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 738,
+      "code_sha256": "1e18c732ea0674fae8fdecc0b0d06fc976ec4494df663156925e99c4485b4c00",
+      "local_signature_token": "0x11001054",
+      "local_signature_blob_hex": "070812a78812a9b812a82c0812a9cc0c0c02",
+      "locals": [
+        "class Player",
+        "class WrestlerAnmData",
+        "class PlayerStatusData",
+        "Int32",
+        "class FormDispInfo",
+        "Float32",
+        "Float32",
+        "Boolean"
+      ]
+    },
+    "entry_and_init": [
+      "target = PlayerMan.inst.GetPlObj(plObj.TargetPlIdx)",
+      "if isAnmPause != 0: return",
+      "plObj.ProcessFoxSleep()",
+      "if reqAnmInit != 0: InitAnimation(); reqAnmInit = 0",
+      "if CurrentSkill is null: return",
+      "if CurrentSkill.anmData[CurrentAnmIdx] is null: return",
+      "local anmData = CurrentSkill.anmData[CurrentAnmIdx]"
+    ],
+    "loop_boundary": [
+      "if FormDispDuration > 0: skip loop-boundary test",
+      "if currentFormIdx < anmData.formNum - 1: skip loop-boundary test",
+      "status = PlayerStatusDataMan.GetPlayerStatusData(plObj.State)",
+      "if status.anmLoop == 0: return",
+      "currentFormIdx = -1"
+    ],
+    "form_advance": [
+      "isAnmSync = 1",
+      "only when FormDispDuration == 0: ProcessAnmLoop()",
+      "candidate = currentFormIdx + 1",
+      "while candidate < anmData.formNum: if anmData.formDispList[candidate].dispFrm != 0 then currentFormIdx = candidate and stop scanning; otherwise candidate += 1",
+      "info = GetCurrentFormDispInfo()",
+      "FormDispDuration = info.dispFrm + FrameWait",
+      "x = info.centerPos.x; y = -info.centerPos.y",
+      "if plObj.PlDir >= 3: x = -x",
+      "plObj.PlPos.x += x * 0.0208333320915699f",
+      "plObj.PlPos.y += y * 0.0208333320915699f",
+      "FormRev = info.flags",
+      "PlayAnimationSE()"
+    ],
+    "form_flags": [
+      {
+        "mask": 4,
+        "effect": "AnmHostPlayer = plObj.PlIdx"
+      },
+      {
+        "mask": 32,
+        "effect": "MatchMisc.ApplyDamage(plObj.PlIdx, plObj.TargetPlIdx); if target Player converts true: target.CalcDownTime()"
+      },
+      {
+        "mask": 16,
+        "effect": "plObj.plCont_AI.EndPriAct(); plObj.ApplySuicideDamage(); plObj.CalcDownTime()"
+      }
+    ],
+    "ring_and_cheer": [
+      "if Ring.inst != null: local bool isOutside = 0; if plObj.Zone != 1 then isOutside = 1; Ring.ShakeRing((float)info.ringVibration, isOutside, plObj.PlPos)",
+      "plObj.ControlCheerSE()"
+    ],
+    "timer_tail": [
+      "if AnmStopTimer != 0: AnmStopTimer -= 1",
+      "else: FormDispDuration -= 1",
+      "return"
+    ],
+    "exact_call_sites": [
+      {
+        "il": "0x0010",
+        "target": "PlayerMan.GetPlObj",
+        "token": "0x06005065"
+      },
+      {
+        "il": "0x0028",
+        "target": "Player.ProcessFoxSleep",
+        "token": "0x06004EBE"
+      },
+      {
+        "il": "0x0039",
+        "target": "FormAnimator.InitAnimation",
+        "token": "0x06004E73"
+      },
+      {
+        "il": "0x00A6",
+        "target": "PlayerStatusDataMan.GetPlayerStatusData",
+        "token": "0x06005074"
+      },
+      {
+        "il": "0x00D2",
+        "target": "FormAnimator.ProcessAnmLoop",
+        "token": "0x06004E74"
+      },
+      {
+        "il": "0x0136",
+        "target": "FormAnimator.GetCurrentFormDispInfo",
+        "token": "0x06004E7C"
+      },
+      {
+        "il": "0x01D0",
+        "target": "FormAnimator.PlayAnimationSE",
+        "token": "0x06004E7D"
+      },
+      {
+        "il": "0x0235",
+        "target": "Ring.ShakeRing",
+        "token": "0x060050E1"
+      },
+      {
+        "il": "0x025F",
+        "target": "MatchMisc.ApplyDamage",
+        "token": "0x0600494D"
+      },
+      {
+        "il": "0x0270",
+        "target": "Player.CalcDownTime",
+        "token": "0x06004F0D"
+      },
+      {
+        "il": "0x028F",
+        "target": "PlayerController_AI.EndPriAct",
+        "token": "0x0600500B"
+      },
+      {
+        "il": "0x029A",
+        "target": "Player.ApplySuicideDamage",
+        "token": "0x06004F0E"
+      },
+      {
+        "il": "0x02A5",
+        "target": "Player.CalcDownTime",
+        "token": "0x06004F0D"
+      },
+      {
+        "il": "0x02B0",
+        "target": "Player.ControlCheerSE",
+        "token": "0x06004EBF"
+      }
+    ],
+    "previous_fact_bridge": {
+      "fact_id": "FACT-0005",
+      "relation": "FACT-0005 already pins the reqAnmInit -> InitAnimation -> reqAnmInit=0 gate inside this same exact body hash."
+    }
+  },
+  "limits": [
+    "CAP-R6-001 does not trace FormAnimator.UpdateAnimation as a standalone event, so this record uses the matching DLL body.",
+    "Helper methods called by UpdateAnimation are pinned only at their call boundaries here unless another canonical fact closes their internals.",
+    "Numeric flag masks, direction thresholds, zone values, and float constants are retained exactly without added gameplay labels.",
+    "Packed choreography, authored form data, damage meaning, and later state aftermath remain outside this record."
+  ]
+}
