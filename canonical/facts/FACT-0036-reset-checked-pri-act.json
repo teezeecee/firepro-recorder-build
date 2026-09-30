@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0036",
+  "claim": "In the matching retail DLL, PlayerController_AI.ResetCheckedPriAct (0x06005007) is a parameterless instance method with an exact 29-byte body. It initializes a local Int32 index to zero, branches to a signed loop test against raw upper bound 41, and for each index satisfying index < 41 loads checkedPriAct, writes raw zero to checkedPriAct[index] with stelem.i1, increments the index by one, and repeats. It therefore clears exact raw indices 0 through 40 and returns when the index reaches 41. FACT-0029 pins the sole canonical caller seam currently closed: Player.SetLastSkill writes lastSkill, clears lastSkillHit, loads plCont_AI, then callvirt ResetCheckedPriAct at SetLastSkill IL+0x0014.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.ResetCheckedPriAct token 0x06005007 RVA 0x002FCE60 signature 200001 code size 29 code sha256=875a2b35635251f80de9831dffb13bc94a030a2edd52a8b96e0496d68a46e9ff; exact loop body in canonical/witnesses/CAP-R6-001/reset_checked_pri_act.summary.json; prover tools/prove_reset_checked_pri_act.py",
+      "observation": "Exact matching-DLL ResetCheckedPriAct body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0029 Player.SetLastSkill",
+      "to": "PlayerController_AI.ResetCheckedPriAct()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "SetLastSkill token 0x06004EB1 IL+0x0014 callvirt token 0x06005007 after writes to lastSkill and lastSkillHit"
+        }
+      ]
+    },
+    {
+      "from": "ResetCheckedPriAct local index",
+      "to": "checkedPriAct zero writes",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ResetCheckedPriAct IL+0x0000..0x001C initializes local0=0, loops while local0<41 using signed blt to IL+0x0007, writes zero with stelem.i1 into field 0x04006152 checkedPriAct[local0], increments local0, then returns"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes the exact reset loop only; it does not assign meaning to individual checkedPriAct indices.",
+    "The authored or code-side mapping from indices 0..40 to AI priority actions remains outside this fact.",
+    "CAP-R6-001 contains no standalone ResetCheckedPriAct PRE/POST event.",
+    "Other callers, if any, remain outside this caller bridge until separately closed."
+  ]
+}
