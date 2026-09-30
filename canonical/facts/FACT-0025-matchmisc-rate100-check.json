@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0025",
+  "claim": "In the matching retail DLL, MatchMisc.mRate100Check (0x06004955) is a static one-Int32-parameter method returning Boolean, with parameter name rt and an exact 38-byte body. It first calls the Int32 MatchRandom.Range overload with raw arguments 0 and 100 and stores the sampled Int32. It then calls MatchMain.GetInst(), compares the result to null with the recorded Object.op_Equality MemberRef, and returns false when equal. Otherwise the exact comparison sequence is ldarg.0; ldloc.0; ble false: the true-return path is reached only when rt is greater than the sampled Int32, while rt less than or equal to the sample reaches the false-return path. FACT-0020 pins this exact helper at ApplyDamage IL+0x0498 with raw argument 5 and at IL+0x04FE with CurrentSkill.bleedingRate.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.mRate100Check token 0x06004955 RVA 0x002AFD54 signature 00010208 parameter rt:Int32 return Boolean code size 38 code sha256=6899b69e72e4f0b5853a85c1cb3796e28442d2abbd4ca2378d72dd59ce7bba58; exact body in canonical/witnesses/CAP-R6-001/rate100_check.summary.json; prover tools/prove_rate100_check.py",
+      "observation": "Exact matching-DLL method body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0020 ApplyDamage raw give-up branch",
+      "to": "MatchMisc.mRate100Check(5)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 pins ApplyDamage IL+0x0498 call token 0x06004955 with raw literal argument 5"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0020 ApplyDamage bleeding branch",
+      "to": "MatchMisc.mRate100Check(CurrentSkill.bleedingRate)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 pins ApplyDamage IL+0x04FE call token 0x06004955 after loading CurrentSkill.bleedingRate"
+        }
+      ]
+    },
+    {
+      "from": "mRate100Check rt and sampled Int32",
+      "to": "Boolean return",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "mRate100Check IL+0x001B..0x0025 executes ldarg.0; ldloc.0; ble IL+0x0024; returns 1 on the fall-through path and 0 at IL+0x0024"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact uses matching-DLL evidence; no standalone mRate100Check recorder event is used in this gate.",
+    "MatchRandom.Range internals and distribution properties are outside this fact unless separately closed.",
+    "The exact integer comparison opcode and operand order are preserved; no probabilistic interpretation beyond the method's raw control flow is promoted.",
+    "The gameplay meaning of the two caller-supplied rt values remains governed by FACT-0020 and authored SkillData provenance."
+  ]
+}

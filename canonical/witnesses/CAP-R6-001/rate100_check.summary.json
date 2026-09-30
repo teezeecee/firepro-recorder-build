@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCHMISC_RATE100_CHECK_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchMisc",
+      "method": "mRate100Check",
+      "token": "0x06004955",
+      "rva": "0x002AFD54",
+      "signature_blob_hex": "00010208",
+      "return_type": "Boolean",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "rt",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 38,
+      "code_sha256": "6899b69e72e4f0b5853a85c1cb3796e28442d2abbd4ca2378d72dd59ce7bba58",
+      "max_stack": 2,
+      "local_signature_token": "0x1100003A",
+      "local_signature_blob_hex": "070108",
+      "local_count": 1,
+      "instruction_count": 17,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 3
+    },
+    "exact_body": [
+      {
+        "il": "0x0000..0x0008",
+        "effect": "sample = MatchRandom.Range(0,100) using Int32 overload; store sample in local0",
+        "range_token": "0x0600497B",
+        "raw_min": 0,
+        "raw_max": 100
+      },
+      {
+        "il": "0x0009..0x001A",
+        "effect": "call MatchMain.GetInst(); compare to null with Object.op_Equality; if equal return false",
+        "get_inst_token": "0x06004907",
+        "object_equality_memberref": "0x0A000006"
+      },
+      {
+        "il": "0x001B..0x0025",
+        "effect": "ldarg.0; ldloc.0; ble IL_0024; fall-through returns true; IL_0024 returns false",
+        "comparison_opcode": "ble",
+        "operand_order": [
+          "rt",
+          "sample"
+        ],
+        "true_condition_int32": "rt > sample",
+        "false_condition_int32": "rt <= sample"
+      }
+    ],
+    "apply_damage_bridge": {
+      "fact_id": "FACT-0020",
+      "caller": "MatchMisc.ApplyDamage",
+      "caller_token": "0x0600494D",
+      "calls": [
+        {
+          "il": "0x0498",
+          "callee_token": "0x06004955",
+          "argument": "5"
+        },
+        {
+          "il": "0x04FE",
+          "callee_token": "0x06004955",
+          "argument": "CurrentSkill.bleedingRate"
+        }
+      ]
+    }
+  },
+  "r6_observation_note": "CAP-R6-001 contains no standalone MatchMisc.mRate100Check PRE/POST event. This record uses the exact matching-DLL body and the already-pinned FACT-0020 call boundaries.",
+  "limits": [
+    "MatchRandom.Range internals are outside this record.",
+    "No probability/distribution property is promoted from the method name or the numeric 100 argument.",
+    "Caller semantics and authored bleedingRate data remain outside this record."
+  ]
+}
