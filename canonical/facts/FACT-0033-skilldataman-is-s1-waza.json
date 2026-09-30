@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0033",
+  "claim": "In the matching retail DLL, SkillDataMan.IsS1Waza (0x06005266) is a static one-SkillData-parameter method named w returning Boolean with an exact 40-byte body. It reads w.skillType (field token 0x04007C51) three times through one ordered branch graph: the initial brfalse sends raw value 0 directly to the true return; raw value 1 reaches the same true return through beq; raw value 9 reaches true by falling through the final bne.un test; every other raw value branches to false. Therefore the exact raw true set in this method is {0,1,9}. FACT-0021 pins this helper at CalcDamage IL+0x03AD in its S1-rule path, and FACT-0022 pins it at CriticalCheck IL+0x0272 in its own S1-rule path.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SkillDataMan.IsS1Waza token 0x06005266 RVA 0x0031FF75 signature 00010212a9a8 parameter w:SkillData return Boolean code size 40 code sha256=7693ac0d94e82285e39d223199a9bae9209d6b4f75f765839ddba129cd85fbd0; exact field/branch/return graph in canonical/witnesses/CAP-R6-001/is_s1_waza.summary.json; prover tools/prove_is_s1_waza.py",
+      "observation": "Exact matching-DLL IsS1Waza body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0021 MatchMisc.CalcDamage S1 branch",
+      "to": "SkillDataMan.IsS1Waza(CurrentSkill)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0021 pins CalcDamage IL+0x03AD call token 0x06005266 after loading attacker animator.CurrentSkill"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0022 MatchMisc.CriticalCheck S1 branch",
+      "to": "SkillDataMan.IsS1Waza(CurrentSkill)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0022 pins CriticalCheck IL+0x0272 call token 0x06005266 after loading attacker animator.CurrentSkill"
+        }
+      ]
+    },
+    {
+      "from": "SkillData.skillType raw value",
+      "to": "Boolean return",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IsS1Waza IL+0x0000..0x0027: field token 0x04007C51 is tested by brfalse to IL+0x0024, beq raw 1 to IL+0x0024, then bne.un raw 9 to IL+0x0026; IL+0x0024 returns 1 and IL+0x0026 returns 0"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact preserves the exact raw skillType values and branch opcodes only; it does not assign player-facing labels to values 0, 1, or 9.",
+    "Authored SkillData.skillType values across the retail dataset remain outside this fact until their packed-data provenance is closed.",
+    "No standalone recorder event for IsS1Waza is used in this gate.",
+    "Downstream S1 branch effects remain governed by FACT-0021 and FACT-0022."
+  ]
+}
