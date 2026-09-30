@@ -8,7 +8,7 @@
       "source_id": "CAP-R6-001",
       "scope": "RAW_OBSERVATION_ONLY",
       "definition": "Consecutive sampled tick_trace rows for one stable player_slot where the recorder-emitted State string changes.",
-      "index": "canonical/witnesses/CAP-R6-001/tick_state_edges.index.json",
+      "index": "canonical/witnesses/CAP-R6-001/tick_state_edges.index.json.zlib.b64",
       "summary": "canonical/witnesses/CAP-R6-001/tick_state_edges.summary.json",
       "occurrence_count": 5977,
       "distinct_edge_count": 105,
