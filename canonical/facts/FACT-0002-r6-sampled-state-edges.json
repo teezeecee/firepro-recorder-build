@@ -1,0 +1,39 @@
+{
+  "fact_id": "FACT-0002",
+  "claim": "The verified R6 tick_trace contains 5977 instances where the recorder-emitted State string changes between two consecutive sampled rows for the same stable player_slot, spanning 105 distinct ordered State-string pairs.",
+  "status": "OBSERVED_RAW_CAPTURE",
+  "evidence": [
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "2026-09-27_204320/tick_trace.tsv lines 2-278553; member sha256=4ec94be819e7a3f786cad044d8cfd0534d6c1b111e87e240b67320bdd91ad2d9; derived index canonical/witnesses/CAP-R6-001/tick_state_edges.index.json sha256=dd3eac83e3df65fd759f70a963c7af2d36cee9bfbb1e60290d4946cdd50d0b44",
+      "observation": "Deterministic same-player consecutive-row comparison emitted 5977 State-string changes across 105 distinct ordered pairs."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "CAP-R6-001 archive bytes",
+      "to": "R6 tick_trace.tsv member bytes",
+      "evidence": [
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "ZIP member 2026-09-27_204320/tick_trace.tsv; crc32=0baf5915; sha256=4ec94be819e7a3f786cad044d8cfd0534d6c1b111e87e240b67320bdd91ad2d9; size=77917351 bytes"
+        }
+      ]
+    },
+    {
+      "from": "consecutive sampled tick_trace rows for one stable player_slot with differing State strings",
+      "to": "R6_TICK_STATE_EDGES_V1 occurrence index",
+      "evidence": [
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "canonical/witnesses/CAP-R6-001/tick_state_edges.index.json; each occurrence stores player_slot plus before/after raw line, tick and seq locators"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact proves only recorded State-string changes at the tick_trace sampling boundary.",
+    "It does not assign gameplay meaning to any State string.",
+    "It does not prove DLL control flow, animation-bank meaning, timing meaning, root/facing ownership, choreography, damage causality, or aftermath semantics."
+  ]
+}
