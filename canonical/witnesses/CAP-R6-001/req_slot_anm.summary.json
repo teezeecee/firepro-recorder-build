@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "dataset_id": "R6_REQ_SLOT_ANM_CLOSURE_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "FormAnimator",
+      "method": "ReqSlotAnm",
+      "token": "0x06004E70",
+      "rva": "0x002D9FB8",
+      "signature_blob_hex": "20040111870c020802",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "skill_slot",
+          "type": "valuetype SkillSlotEnum"
+        },
+        {
+          "sequence": 2,
+          "name": "rev",
+          "type": "Boolean"
+        },
+        {
+          "sequence": 3,
+          "name": "def_pl_idx",
+          "type": "Int32"
+        },
+        {
+          "sequence": 4,
+          "name": "atk_side",
+          "type": "Boolean"
+        }
+      ],
+      "code_size": 722,
+      "code_sha256": "c4c109776883423823725f70612e1a7cd7e61367d7680c206bcc838470cf88ef"
+    },
+    "input_lookup": [
+      "local MatchMain = MatchMain.GetInst()",
+      "local MatchSetting = GlobalWork.inst.MatchSetting",
+      "local raw skill id = plObj.WresParam.skillSlot[skill_slot]",
+      "local SkillSlotData = SkillSlotDataMan.GetSkillSlotData(skill_slot)"
+    ],
+    "direction_branch": {
+      "condition": "rev == true AND this.isCopiedOpponentDir == true",
+      "effects": [
+        "plObj.PlDir = MatchMisc.ChangePlayerDirToLRAndReverse(plObj.PlDir)",
+        "Player def = PlayerMan.inst.GetPlObj(def_pl_idx)",
+        "if UnityEngine.Object.op_Implicit(def): def.PlDir = MatchMisc.ChangePlayerDirToLRAndReverse(def.PlDir)"
+      ]
+    },
+    "numeric_slot_filter": {
+      "condition": "skill_slot is not numeric 86,87,88,89",
+      "effects": [
+        "plObj.Status3 = plObj.Status3 & -7",
+        "plObj.isAddedDownTimeByPerformance = 0"
+      ]
+    },
+    "unconditional_state_call": {
+      "il_offset": "0x00C9",
+      "method": "Player.ChangeState",
+      "token": "0x06004EAE",
+      "literal_argument": 10
+    },
+    "weapon_override": {
+      "condition": "plObj.weaponIdx >= 0 AND SkillSlotData.weaponAnm >= 0",
+      "sequence": [
+        "Weapon w = WeaponMan.inst.GetWeaponObj(plObj.weaponIdx)",
+        "BasicSkillEnum a = WeaponMan.inst.GetWeaponAnm(w.kind, SkillSlotData.weaponAnm, plObj.PlDir)",
+        "ReqBasicAnm(a, false, -1)",
+        "MatchEvaluation.inst.PlResult[plObj.PlIdx].weaponAtkCnt += 1",
+        "return"
+      ],
+      "nested_request_token": "0x06004E6F"
+    },
+    "ordinary_request_prefix": [
+      {
+        "effect": "AnmReqType = 1",
+        "field_token": "0x04005ECF"
+      },
+      {
+        "effect": "SkillSlotID = skill_slot",
+        "field_token": "0x04005ED9"
+      },
+      {
+        "effect": "InitAnmWork()",
+        "token": "0x06004E6C"
+      },
+      {
+        "effect": "if atk_side == false: return"
+      }
+    ],
+    "atk_side_true_tail": [
+      "plObj.isUke = 0",
+      "plObj.ConsumeBreath_SlotSkill(skill_slot)",
+      "if plObj.WresParam.skillAttr[skill_slot] == 2: plObj.isCriticalMove = 1",
+      "if plObj.WresParam.skillAttr[skill_slot] == 1: plObj.isSpecialMove = 1",
+      "if plObj.isOkiteYaburi: plObj.PreserveAttackMove_OkiteYaburi(plObj.PlIdx, skill_slot, plObj.TargetPlIdx); else plObj.PreserveAttackMove_EquippedSkill(plObj.PlIdx, skill_slot)",
+      "plObj.SetLastSkill(skill_slot)",
+      "if MatchMain != null: optionally Audience.Play_SkillCheer(raw skill id), evaluate GetSkillData_Equip(skill_slot,0) and skillAttr[skill_slot] through MatchEvaluation.EvaluateSkill",
+      "if MatchMain != null AND MatchSetting.isS1Rule: plObj.isS1MoveRecieved=0; plObj.SetLastDamage(0f); plObj.KoLastDamage=0f; plObj.SetDownTime(0)"
+    ]
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "req_slot_pre": 717,
+    "req_slot_post": 717,
+    "paired": 717,
+    "traced_parent_counts": {
+      "ROOT": 419,
+      "FormAnimator.StartOpponentAnm": 262,
+      "FormAnimator.StartSlotAnm_Immediately": 36
+    },
+    "direct_child_patterns": {
+      "Player.ChangeState": 703,
+      "Player.ChangeState -> FormAnimator.ReqBasicAnm": 14
+    },
+    "change_state": {
+      "direct_count": 717,
+      "recorded_raw_argument_counts": {
+        "NormalAnm": 717
+      },
+      "recorded_owner_slot_equals_ReqSlotAnm_owner_slot": 717,
+      "matching_dll_literal_argument": 10
+    },
+    "raw_argument_totals": {
+      "rev": {
+        "False": 578,
+        "True": 139
+      },
+      "def_pl_idx": {
+        "0": 21,
+        "1": 19,
+        "2": 25,
+        "3": 20,
+        "4": 12,
+        "5": 18,
+        "6": 8,
+        "7": 16,
+        "-1": 578
+      },
+      "atk_side": {
+        "True": 455,
+        "False": 262
+      }
+    },
+    "parent_argument_patterns": {
+      "StartOpponentAnm": {
+        "count": 262,
+        "rev_false": 262,
+        "def_pl_idx_minus1": 262,
+        "atk_side_false": 262
+      },
+      "StartSlotAnm_Immediately": {
+        "count": 36,
+        "rev_true": 36,
+        "def_pl_idx_equals_recorded_target": 36,
+        "atk_side_true": 36
+      },
+      "ROOT": {
+        "count": 419,
+        "atk_side_true": 419,
+        "rev_false_and_def_pl_idx_minus1": 316,
+        "rev_true_and_def_pl_idx_equals_recorded_target": 103
+      }
+    },
+    "global_rev_def_relation": {
+      "rev_false_and_def_pl_idx_minus1": 578,
+      "rev_true_and_def_pl_idx_equals_recorded_target": 139
+    },
+    "weapon_override_observation": {
+      "nested_ReqBasicAnm_count": 14,
+      "all_parent_traced_as_ROOT": 14,
+      "parent_weaponIdx_nonnegative": 14,
+      "same_owner_slot": 14,
+      "child_second_raw_argument_false": 14,
+      "child_third_raw_argument_minus1": 14,
+      "nonweapon_calls_with_weaponIdx_nonnegative": 2,
+      "note": "weaponIdx >= 0 is therefore observed as necessary but not sufficient in R6, matching the DLL's additional SkillSlotData.weaponAnm >= 0 condition"
+    },
+    "ordinary_path_observation": {
+      "no_nested_ReqBasicAnm_count": 703,
+      "POST_SkillSlotID_equals_raw_arg1": 703,
+      "weapon_override_POST_SkillSlotID_equals_raw_arg1": 0
+    }
+  },
+  "witness_digest": {
+    "algorithm": "sha256",
+    "canonical_record_format": "ASCII fields joined by tab and terminated by LF",
+    "fields": [
+      "ReqSlot_PRE_line",
+      "ReqSlot_POST_line",
+      "direct_parent_method_or_ROOT",
+      "direct_parent_PRE_line_or_0",
+      "ChangeState_PRE_line",
+      "ChangeState_POST_line",
+      "nested_ReqBasic_PRE_line_or_0",
+      "nested_ReqBasic_POST_line_or_0",
+      "raw_arg1",
+      "raw_arg2",
+      "raw_arg3",
+      "raw_arg4",
+      "owner_slot",
+      "target",
+      "weaponIdx",
+      "POST_SkillSlotID",
+      "POST_ResolvedSkillID",
+      "POST_ResolvedSkillSource"
+    ],
+    "record_count": 717,
+    "byte_count": 89986,
+    "sha256": "788630dfe7eaf98e3dfab73ba07c0e9591f9f9a4b97d842614a2b9327fc69f04",
+    "reproducibility_tool": "tools/prove_req_slot_anm_closure.py"
+  },
+  "limits": [
+    "The 419 ROOT observations have no recorder-traced parent and are not attributed to one of the many matching-DLL call sites.",
+    "The recorder emits NormalAnm for the direct ChangeState argument while the matching DLL supplies literal 10 at this call site; this fact records that call-boundary correspondence without assigning broader enum semantics.",
+    "R6 does not record isCopiedOpponentDir, directions, SkillSlotData.weaponAnm, skillAttr, MatchSetting.isS1Rule, or the evaluation side effects, so those branches are DLL-proven but not fully recorder-correlated.",
+    "The 14 weapon-override calls prove the nested request branch was taken; the exact GetWeaponAnm selection remains DLL-controlled and is not reconstructed from names.",
+    "Packed choreography, animation-bank semantics, damage meaning, and aftermath remain unclosed."
+  ]
+}

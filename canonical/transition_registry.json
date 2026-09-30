@@ -128,6 +128,27 @@
         "animation-bank semantics closure",
         "damage/aftermath closure"
       ]
+    },
+    {
+      "family_id": "R6_REQ_SLOT_ANM_CLOSURE_V1",
+      "fact_id": "FACT-0009",
+      "source_ids": [
+        "DLL-001",
+        "CAP-R6-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Matching-DLL ReqSlotAnm branch graph plus all 717 R6 call trees, including ChangeState, weapon override, atk_side split, rev/def input relations, and ordinary-path field update observations.",
+      "summary": "canonical/witnesses/CAP-R6-001/req_slot_anm.summary.json",
+      "witness_digest_sha256": "788630dfe7eaf98e3dfab73ba07c0e9591f9f9a4b97d842614a2b9327fc69f04",
+      "occurrence_count": 717,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "ReqBasicAnm internal closure",
+        "untraced ROOT caller attribution",
+        "packed retail choreography/data closure",
+        "animation-bank semantics closure",
+        "damage/aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
