@@ -103,3 +103,8 @@ jobs:
         run: python tests/test_control_cheer_se_summary.py
       - name: ControlCheerSE prover syntax
         run: python -m py_compile tools/prove_control_cheer_se.py
+
+      - name: ApplyDamage summary
+        run: python tests/test_apply_damage_summary.py
+      - name: ApplyDamage prover syntax
+        run: python -m py_compile tools/prove_apply_damage.py
