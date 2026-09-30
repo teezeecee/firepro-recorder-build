@@ -620,6 +620,23 @@
         "raw slot-to-player-facing slot mapping",
         "packed slot-strength/modifier provenance"
       ]
+    },
+    {
+      "family_id": "DLL_RESET_CHECKED_PRI_ACT_V1",
+      "fact_id": "FACT-0036",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL PlayerController_AI.ResetCheckedPriAct loop clearing checkedPriAct raw indices 0 through 40, reached from FACT-0029 Player.SetLastSkill.",
+      "summary": "canonical/witnesses/CAP-R6-001/reset_checked_pri_act.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "mapping of checkedPriAct indices to AI priority actions",
+        "other priority-action mutation/caller closure",
+        "broader PlayerController_AI scheduling closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
