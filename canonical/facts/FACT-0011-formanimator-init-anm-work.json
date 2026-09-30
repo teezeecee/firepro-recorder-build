@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0011",
+  "claim": "In the matching retail DLL, FormAnimator.InitAnmWork (0x06004E6C) is a parameterless 303-byte method with no branches and no method calls. It initializes FormAnimator fields to reqAnmInit=1, InitialAnmIdx=0, OpponentInitialAnmIdx=1, FormDispDuration=0, FrameWait=0, isReqAnmLoopEnd=0, isAnmLooped=0, isAnmPause=0, isAnmSync=0, isCopiedOpponentDir=0, isAtkHitOff=0, isAnmBoot=0, isAttackHit=0, and isAttackHit2=0. Through plObj it writes FoxSleepCnt=192 and clears ChangeRefereeGiveUpAnm, isCriticalMove, isSpecialMove, isVibratePlayer, isPinfallAtk, isPinfallDef, isSubmissionAtk, isSubmissionDef, isIgnoreTerrainCol, isFoul, isPossibleFoxSleep, isDecDownTime, isPossibleToGrapple, and isWannaGiveUp to zero, then stores Status3 = Status3 & -9 and returns. The already-closed ReqBasicAnm and ordinary ReqSlotAnm paths call this exact method at their pinned DLL call sites.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.InitAnmWork token 0x06004E6C RVA 0x002D9DD8 signature blob 200001 code size 303 code sha256=cf51dba42ef7e38fee750ed4a8e5eb449511a11583f6bffbdbec3a9e2802250f; exact field stores and Status3 mask are enumerated in canonical/witnesses/CAP-R6-001/init_anm_work.summary.json; prover tools/prove_init_anm_work.py",
+      "observation": "Exact matching-DLL method body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "InitAnmWork method entry",
+      "to": "FormAnimator initialization stores",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "InitAnmWork IL+0x0000..0x007D; exact FormAnimator field tokens, constants, and offsets are recorded in canonical/witnesses/CAP-R6-001/init_anm_work.summary.json"
+        }
+      ]
+    },
+    {
+      "from": "InitAnmWork method entry",
+      "to": "plObj Player initialization stores",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "InitAnmWork IL+0x0023..0x0119; exact Player field tokens, constants, and offsets are recorded in canonical/witnesses/CAP-R6-001/init_anm_work.summary.json"
+        }
+      ]
+    },
+    {
+      "from": "Player.Status3 before InitAnmWork",
+      "to": "Player.Status3 after bitwise mask",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "InitAnmWork IL+0x011A..0x0129 loads plObj.Status3 token 0x04005FBB, loads constant -9, executes and, and stores Status3; method returns at IL+0x012E"
+        }
+      ]
+    },
+    {
+      "from": "closed request paths",
+      "to": "InitAnmWork",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqBasicAnm token 0x06004E6F calls InitAnmWork token 0x06004E6C at IL+0x0063; ReqSlotAnm token 0x06004E70 ordinary path calls InitAnmWork at IL+0x0165"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "R6 has no standalone InitAnmWork event, so this fact uses the matching DLL as its evidence source.",
+    "CLR field names are retained as exact identifiers; no additional gameplay meaning is assigned.",
+    "Later rewrites of these fields are outside this fact.",
+    "Packed choreography, animation-bank semantics, damage meaning, and aftermath remain outside this fact."
+  ]
+}
