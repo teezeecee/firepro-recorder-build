@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "dataset_id": "R6_START_SLOT_ANM_IMMEDIATE_CLOSURE_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "FormAnimator",
+      "method": "StartSlotAnm_Immediately",
+      "token": "0x06004E71",
+      "rva": "0x002DA296",
+      "signature_blob_hex": "20040111870c080208",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "skill_slot",
+          "type": "valuetype SkillSlotEnum"
+        },
+        {
+          "sequence": 2,
+          "name": "anm_bank",
+          "type": "Int32"
+        },
+        {
+          "sequence": 3,
+          "name": "rev",
+          "type": "Boolean"
+        },
+        {
+          "sequence": 4,
+          "name": "def_pl_idx",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 38,
+      "code_sha256": "091053ea365ad855884dd6f93314dd5e1de23bda1c848c291fd2df4d8776d0b2",
+      "exact_sequence": [
+        {
+          "il": "0x0000..0x000A",
+          "operation": "call FormAnimator.ReqSlotAnm",
+          "token": "0x06004E70",
+          "arguments": [
+            "arg1 skill_slot",
+            "arg3 rev",
+            "arg4 def_pl_idx",
+            "true"
+          ]
+        },
+        {
+          "il": "0x000B..0x001D",
+          "operation": "store FormAnimator.CurrentSkill",
+          "field_token": "0x04005ED0",
+          "value_from": "this.plObj.GetSkillData_Equip(arg1 skill_slot, 0)",
+          "callee_token": "0x06004EB2"
+        },
+        {
+          "il": "0x001E..0x0024",
+          "operation": "call FormAnimator.StartAnm",
+          "token": "0x06004E75",
+          "argument": "arg2 anm_bank"
+        },
+        {
+          "il": "0x0025",
+          "operation": "ret"
+        }
+      ]
+    },
+    "called_method_metadata": {
+      "req_slot_anm": {
+        "token": "0x06004E70",
+        "signature_blob_hex": "20040111870c020802",
+        "parameters": [
+          "skill_slot",
+          "rev",
+          "def_pl_idx",
+          "atk_side"
+        ]
+      },
+      "get_skill_data_equip": {
+        "token": "0x06004EB2",
+        "name": "GetSkillData_Equip",
+        "parameters": [
+          "slot",
+          "anm_ofs"
+        ]
+      },
+      "start_anm": {
+        "token": "0x06004E75",
+        "parameter": "anm_idx"
+      }
+    }
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "start_slot_pre": 36,
+    "start_slot_post": 36,
+    "paired": 36,
+    "traced_parent_counts": {
+      "Player.PostprocessEachState": 32,
+      "ROOT": 4
+    },
+    "direct_child_sequence": {
+      "FormAnimator.ReqSlotAnm -> FormAnimator.StartAnm": 36
+    },
+    "parent_argument_relations": {
+      "child_ReqSlotAnm_arg1_equals_parent_arg1": 36,
+      "child_ReqSlotAnm_arg2_equals_parent_arg3": 36,
+      "child_ReqSlotAnm_arg3_equals_parent_arg4": 36,
+      "child_ReqSlotAnm_arg4_equals_true": 36,
+      "child_StartAnm_arg_equals_parent_arg2": 36,
+      "parent_arg4_equals_parent_recorded_target": 36,
+      "parent_arg4_equals_child_ReqSlotAnm_recorded_target": 36
+    },
+    "resolved_skill_relations": {
+      "ReqSlotAnm_POST_ResolvedSkillID_equals_StartAnm_PRE_ResolvedSkillID": 36,
+      "ReqSlotAnm_POST_ResolvedSkillSource_equals_StartAnm_PRE_ResolvedSkillSource": 36,
+      "StartSlot_POST_ResolvedSkillID_equals_ReqSlotAnm_POST_ResolvedSkillID": 36,
+      "ReqSlotAnm_POST_ResolvedSkillSource_counts": {
+        "ReqSlotAnm.owner_slot": 36
+      }
+    },
+    "post_snapshot": {
+      "StartSlot_POST_SkillSlotID_equals_parent_arg1": 36,
+      "StartSlot_POST_bank_equals_parent_arg2": 36,
+      "StartSlot_POST_AnmHostPlayer_equals_parent_owner_slot": 36
+    },
+    "parent_arg1_counts": {
+      "ExchangeOfStriking": 32,
+      "ExchangeOfStriking_Performance": 2,
+      "ExchangeOfStriking_Finish": 2
+    },
+    "parent_arg2_counts": {
+      "0": 4,
+      "2": 2,
+      "4": 26,
+      "8": 4
+    },
+    "parent_arg3_counts": {
+      "True": 36
+    }
+  },
+  "witness_digest": {
+    "algorithm": "sha256",
+    "canonical_record_format": "ASCII fields joined by tab and terminated by LF",
+    "fields": [
+      "StartSlot_PRE_line",
+      "StartSlot_POST_line",
+      "direct_parent_method_or_ROOT",
+      "direct_parent_PRE_line_or_0",
+      "ReqSlot_PRE_line",
+      "ReqSlot_POST_line",
+      "StartAnm_PRE_line",
+      "StartAnm_POST_line",
+      "parent_arg1",
+      "parent_arg2",
+      "parent_arg3",
+      "parent_arg4",
+      "owner_slot",
+      "target",
+      "ReqSlot_POST_ResolvedSkillID",
+      "ReqSlot_POST_ResolvedSkillSource"
+    ],
+    "record_count": 36,
+    "byte_count": 4822,
+    "sha256": "deafacce031d382aacfde3a1fdb8c7f03bd1bcc8559a70156d613a0d23c6a9a5",
+    "reproducibility_tool": "tools/prove_start_slot_anm_immediate_closure.py"
+  },
+  "limits": [
+    "The four ROOT records mean no recorder-traced parent was active; no retail caller is inferred.",
+    "SkillSlotEnum and method/field names are exact CLR metadata identifiers, not independently interpreted gameplay semantics.",
+    "The DLL proves GetSkillData_Equip is called and its return stored into CurrentSkill; R6 corroborates the surrounding resolved-skill record continuity but does not expose the object reference itself.",
+    "Packed choreography, animation-bank meaning, damage, and aftermath remain unclosed."
+  ]
+}
