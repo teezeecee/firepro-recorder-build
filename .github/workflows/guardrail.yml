@@ -138,3 +138,8 @@ jobs:
         run: python tests/test_process_critical_summary.py
       - name: ProcessCritical prover syntax
         run: python -m py_compile tools/prove_process_critical.py
+
+      - name: Player gauge mutation helpers summary
+        run: python tests/test_player_gauge_mutation_helpers_summary.py
+      - name: Player gauge mutation helpers prover syntax
+        run: python -m py_compile tools/prove_player_gauge_mutation_helpers.py
