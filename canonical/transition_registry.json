@@ -205,6 +205,27 @@
         "animation-bank semantics closure",
         "damage/aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_R6_PREPROCESS_EACH_ANM_V1",
+      "fact_id": "FACT-0013",
+      "source_ids": [
+        "DLL-001",
+        "CAP-R6-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Exact matching-DLL PreprocessEachAnm 20-way numeric start-state switch plus the two R6 StartAnm call trees that contain a traced Player.ChangeState child on the sole StartAnm -> PreprocessEachAnm method-call path.",
+      "summary": "canonical/witnesses/CAP-R6-001/preprocess_each_anm.summary.json",
+      "witness_digest_sha256": "ccb5f70b041db4574dd710212922c4d233dcf24c28d168ddf9518fcdb1d67919",
+      "occurrence_count": 2,
+      "dll_switch_case_count": 20,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "per-observation anmStartState value visibility",
+        "packed retail choreography/data closure",
+        "animation-bank semantics closure",
+        "damage/aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
