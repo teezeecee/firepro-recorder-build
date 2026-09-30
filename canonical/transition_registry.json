@@ -603,6 +603,23 @@
         "authored category/skill provenance",
         "later match-result aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_SLOT_DATA_LOOKUP_V1",
+      "fact_id": "FACT-0035",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL SkillSlotDataMan.GetSkillSlotData signed bounds checks and SkillSlotDataTbl element lookup, reached from FACT-0024 GetSkillSlotDamageMdf.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_slot_data_lookup.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored SkillSlotDataTbl contents",
+        "raw slot-to-player-facing slot mapping",
+        "packed slot-strength/modifier provenance"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
