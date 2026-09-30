@@ -1,0 +1,62 @@
+{
+  "fact_id": "FACT-0004",
+  "claim": "In the matching retail DLL, FormAnimator.StartOpponentAnm (MethodDef 0x06004E76) selects a Player object by passing its first Int32 argument to PlayerMan.GetPlObj, then dispatches exactly one request call on that Player's animator according to the raw FormAnimator.AnmReqType field: value 2 -> ReqSerialAnm, value 3 -> ReqSkillAnm, value 0 -> ReqBasicAnm, otherwise -> ReqSlotAnm. In verified R6 raw capture bytes, all 847 observed StartOpponentAnm invocations contain exactly one nested request; the first recorded argument, the parent row's recorded target, and the nested request owner_slot are equal in 847/847 cases. The observed branches were 585 ReqBasicAnm and 262 ReqSlotAnm; in all 262 ReqSlotAnm cases the child ResolvedSkillID equals the parent ResolvedSkillID.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator TypeDef RID 2517; StartOpponentAnm MethodDef token 0x06004E76, RVA 0x002DABA8, code size 905, code sha256=4b390293560fe3a02b12845d80419fe4d8747c637a3c94221cf2dac051ffb2cb; dispatch call sites IL+0x3B/0x5D/0x80/0x99 to MethodDef tokens 0x06004E6D/0x06004E6E/0x06004E6F/0x06004E70",
+      "observation": "The method body loads PlayerMan.inst, loads arg1, calls PlayerMan.GetPlObj, stores the selected object, then branches on FormAnimator.AnmReqType and invokes exactly one request method on selected Player.animator."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; canonical/witnesses/CAP-R6-001/start_opponent_dispatch_lines.v1.zlib.b64 sha256=f5e5761d92e72752c273bb5dd412322ffbf4eddc7625842f4e2f26f6385abcde; summary canonical/witnesses/CAP-R6-001/start_opponent_dispatch.summary.json",
+      "observation": "847 PRE/POST parent calls; exactly one nested request per parent; 585 ReqBasicAnm, 262 ReqSlotAnm; first recorded arg == parent target == child owner_slot in 847/847; parent/child ResolvedSkillID equal in 262/262 observed ReqSlotAnm branches."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "StartOpponentAnm first Int32 argument",
+      "to": "Player object selected by PlayerMan.GetPlObj",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "StartOpponentAnm token 0x06004E76 IL+0x00..0x0B: ldsfld PlayerMan::inst; ldarg.1; callvirt PlayerMan::GetPlObj token 0x06005065; stloc.0"
+        }
+      ]
+    },
+    {
+      "from": "selected Player object",
+      "to": "selected Player.animator request dispatch",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "StartOpponentAnm IL+0x23..0x99: selected local's Player::animator is receiver for ReqSerialAnm/ReqSkillAnm/ReqBasicAnm/ReqSlotAnm; dispatch keyed by FormAnimator::AnmReqType field token 0x04005ECF"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "847 exact parent/child raw event line triples in start_opponent_dispatch_lines.v1.zlib.b64; first recorded arg == parent recorded target == nested request owner_slot for every record"
+        }
+      ]
+    },
+    {
+      "from": "host-side request record",
+      "to": "observed ReqSlotAnm child ResolvedSkillID",
+      "evidence": [
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "262/262 ReqSlotAnm child records in the witness set have child ResolvedSkillID equal to parent StartOpponentAnm ResolvedSkillID; child ResolvedSkillSource string is StartOpponentAnm.host_skill for all 262"
+        },
+        {
+          "source_id": "DLL-001",
+          "locator": "After dispatch, StartOpponentAnm copies this.CurrentSkill to selected Player.animator.CurrentSkill at IL+0xD8..0xE4 and this.plObj.PlIdx to selected Player.animator.AnmHostPlayer at IL+0xC2..0xD3"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "CLR method, field, and parameter names are used only as exact metadata identifiers, not as independent proof of gameplay meaning.",
+    "R6 did not exercise the ReqSerialAnm or ReqSkillAnm branches inside StartOpponentAnm; their existence is DLL-proven only in this fact.",
+    "This fact closes request selection and host/recipient ownership at the StartOpponentAnm boundary. It does not close packed choreography, damage, animation-bank semantics, or aftermath."
+  ]
+}
