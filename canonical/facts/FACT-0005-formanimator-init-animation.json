@@ -1,0 +1,73 @@
+{
+  "fact_id": "FACT-0005",
+  "claim": "In the matching retail DLL, FormAnimator.UpdateAnimation (0x06004E7E) reads FormAnimator.reqAnmInit, conditionally calls FormAnimator.InitAnimation (0x06004E73), then stores zero back to reqAnmInit. InitAnimation reads this.plObj.TargetPlIdx and passes it to PlayerMan.GetPlObj, and its method body contains direct call sites to FormAnimator.StartAnm, FormAnimator.StartOpponentAnm, and FormAnimator.StartOpponentAnmM. In verified R6 raw capture bytes, 5288/5288 InitAnimation PRE calls pair with POST calls; every observed invocation contains exactly one direct StartAnm call with raw argument 0. 802 observed invocations also contain one direct StartOpponentAnm where the first raw argument equals the InitAnimation parent target and the nested request owner_slot equals that same target; 68 of those additionally contain one direct StartOpponentAnmM where raw argument 3 equals the InitAnimation parent target and the nested request owner_slot equals StartOpponentAnmM raw argument 1.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.UpdateAnimation token 0x06004E7E RVA 0x002DB890 code sha256=1e18c732ea0674fae8fdecc0b0d06fc976ec4494df663156925e99c4485b4c00; IL+0x002E reads field 0x04005EEC, IL+0x0039 calls 0x06004E73, IL+0x0040 stores zero to field 0x04005EEC. FormAnimator.InitAnimation token 0x06004E73 RVA 0x002DA2D8 code sha256=88f9c7d05b183bd3ca737eaa8a23aa9e7a01547134f0caedbd3f8caa13ace396; target lookup IL+0x000B..0x001F; direct call-site tokens 0x06004E75/0x06004E76/0x06004E77.",
+      "observation": "Exact matching-DLL control flow and call-site bytes."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; deterministic 5288-record raw-line tuple digest sha256=b93ad305982a99a0771b7f833951d22ded564dd5539aeaaeae764637c7dae440; summary canonical/witnesses/CAP-R6-001/init_animation.summary.json; prover tools/prove_init_animation_closure.py",
+      "observation": "5288 exact InitAnimation parent witnesses with direct traced child/grandchild line locators; 4486 StartAnm-only, 734 StartAnm+StartOpponentAnm, 68 StartAnm+StartOpponentAnm+StartOpponentAnmM."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FormAnimator.UpdateAnimation reqAnmInit field check",
+      "to": "FormAnimator.InitAnimation call",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdateAnimation IL+0x002E ldfld 0x04005EEC; IL+0x0033 brfalse; IL+0x0039 call 0x06004E73; IL+0x0040 stfld 0x04005EEC after ldc.i4.0"
+        }
+      ]
+    },
+    {
+      "from": "InitAnimation parent TargetPlIdx",
+      "to": "Player object lookup",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "InitAnimation IL+0x0011 ldfld FormAnimator::plObj; IL+0x0016 ldfld Player::TargetPlIdx 0x04005FB1; IL+0x001B callvirt PlayerMan::GetPlObj 0x06005065"
+        }
+      ]
+    },
+    {
+      "from": "R6 InitAnimation parent target",
+      "to": "R6 nested StartOpponentAnm request owner",
+      "evidence": [
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "802 exact records in init_animation_witness.v2.zlib.b64: StartOpponentAnm raw arg1 == InitAnimation parent target; its one nested request owner_slot == same parent target. Nested request split: 585 ReqBasicAnm + 217 ReqSlotAnm."
+        },
+        {
+          "source_id": "DLL-001",
+          "locator": "InitAnimation contains direct StartOpponentAnm call token 0x06004E76 at IL+0x0215/0x02A8/0x031D/0x03BB/0x0483; StartOpponentAnm token 0x06004E76 begins by passing arg1 to PlayerMan.GetPlObj token 0x06005065."
+        }
+      ]
+    },
+    {
+      "from": "R6 InitAnimation parent target and StartOpponentAnmM raw arg1",
+      "to": "R6 StartOpponentAnmM nested request owner",
+      "evidence": [
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "68 exact records in init_animation_witness.v2.zlib.b64: StartOpponentAnmM raw arg3 == InitAnimation parent target; raw arg2 == 2; its one nested ReqBasicAnm owner_slot == StartOpponentAnmM raw arg1."
+        },
+        {
+          "source_id": "DLL-001",
+          "locator": "InitAnimation contains direct StartOpponentAnmM call token 0x06004E77 at IL+0x0335/0x03D3/0x03EB."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Identifiers and enum/string labels are not promoted as gameplay definitions.",
+    "R6 observed exactly one direct StartAnm per recorded InitAnimation, but the DLL contains multiple possible call paths; no universal all-path StartAnm-count claim is made.",
+    "The raw trace does not distinguish which specific InitAnimation IL call site generated a given nested call when multiple call sites target the same method.",
+    "No choreography, damage, animation-bank semantics, or aftermath behavior is promoted."
+  ]
+}
