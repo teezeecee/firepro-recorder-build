@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "dataset_id": "R6_START_OPPONENT_DISPATCH_V1",
+  "sources": {
+    "dll": {
+      "source_id": "DLL-001",
+      "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+      "size_bytes": 8171008
+    },
+    "r6": {
+      "source_id": "CAP-R6-001",
+      "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+      "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd"
+    }
+  },
+  "dll_method": {
+    "type": "FormAnimator",
+    "method": "StartOpponentAnm",
+    "methoddef_rid": 20086,
+    "token": "0x06004E76",
+    "rva": "0x002DABA8",
+    "signature_blob_hex": "2002010808",
+    "parameters": [
+      {
+        "sequence": 1,
+        "name": "en",
+        "element_type": "I4"
+      },
+      {
+        "sequence": 2,
+        "name": "anm_idx",
+        "element_type": "I4"
+      }
+    ],
+    "code_size": 905,
+    "code_sha256": "4b390293560fe3a02b12845d80419fe4d8747c637a3c94221cf2dac051ffb2cb",
+    "object_selection": [
+      {
+        "il_offset": 0,
+        "instruction": "ldsfld PlayerMan::inst"
+      },
+      {
+        "il_offset": 5,
+        "instruction": "ldarg.1"
+      },
+      {
+        "il_offset": 6,
+        "instruction": "callvirt PlayerMan::GetPlObj",
+        "token": "0x06005065"
+      },
+      {
+        "il_offset": 11,
+        "instruction": "stloc.0"
+      }
+    ],
+    "request_dispatch": [
+      {
+        "condition": "AnmReqType == 2",
+        "field_token": "0x04005ECF",
+        "argument_field": "SkillAnmID",
+        "call_il_offset": 59,
+        "call": "FormAnimator::ReqSerialAnm",
+        "call_token": "0x06004E6D"
+      },
+      {
+        "condition": "AnmReqType == 3",
+        "field_token": "0x04005ECF",
+        "argument_field": "SkillId",
+        "call_il_offset": 93,
+        "call": "FormAnimator::ReqSkillAnm",
+        "call_token": "0x06004E6E"
+      },
+      {
+        "condition": "AnmReqType == 0",
+        "field_token": "0x04005ECF",
+        "argument_field": "BasicSkillID",
+        "constant_args": [
+          0,
+          -1
+        ],
+        "call_il_offset": 128,
+        "call": "FormAnimator::ReqBasicAnm",
+        "call_token": "0x06004E6F"
+      },
+      {
+        "condition": "otherwise",
+        "field_token": "0x04005ECF",
+        "argument_field": "SkillSlotID",
+        "constant_args": [
+          0,
+          -1,
+          0
+        ],
+        "call_il_offset": 153,
+        "call": "FormAnimator::ReqSlotAnm",
+        "call_token": "0x06004E70"
+      }
+    ],
+    "post_dispatch_copies": [
+      {
+        "target": "selected Player.animator.reqAnmInit",
+        "value": 0,
+        "il_offset": 165
+      },
+      {
+        "target": "selected Player.animator.isAnmBoot",
+        "value": 1,
+        "il_offset": 177
+      },
+      {
+        "target": "selected Player.animator.currentFormIdx",
+        "value": -1,
+        "il_offset": 189
+      },
+      {
+        "target": "selected Player.animator.AnmHostPlayer",
+        "value_from": "this.plObj.PlIdx",
+        "il_offset": 211
+      },
+      {
+        "target": "selected Player.animator.CurrentSkill",
+        "value_from": "this.CurrentSkill",
+        "il_offset": 228
+      },
+      {
+        "target": "selected Player.animator.anmType",
+        "value_from": "this.anmType",
+        "il_offset": 245
+      }
+    ]
+  },
+  "r6_observation": {
+    "start_opponent_anm_calls_pre": 847,
+    "start_opponent_anm_calls_post": 847,
+    "paired_parent_calls": 847,
+    "exactly_one_nested_request_per_parent": 847,
+    "nested_request_counts": {
+      "FormAnimator.ReqBasicAnm": 585,
+      "FormAnimator.ReqSlotAnm": 262,
+      "FormAnimator.ReqSerialAnm": 0,
+      "FormAnimator.ReqSkillAnm": 0
+    },
+    "first_recorded_arg_equals_parent_target_equals_child_owner_slot": 847,
+    "slot_branch_parent_child_resolved_skill_id_equal": 262,
+    "slot_branch_child_resolved_skill_source": {
+      "StartOpponentAnm.host_skill": 262
+    }
+  },
+  "witness_artifact": {
+    "path": "start_opponent_dispatch_lines.v1.zlib.b64",
+    "format": "base64(zlib(varint-line-index))",
+    "magic": "R6SO1",
+    "record_count": 847,
+    "decoded_record_fields": [
+      "parent_pre_line_delta",
+      "parent_post_line_minus_parent_pre_line",
+      "child_pre_line_minus_parent_pre_line"
+    ],
+    "reconstruction_rule": "Decode 847 records in parent PRE line order. Reconstruct absolute parent PRE line by cumulative delta; parent POST and child PRE are offsets from parent PRE. Read all compared fields directly from those raw event_trace lines.",
+    "sha256": "f5e5761d92e72752c273bb5dd412322ffbf4eddc7625842f4e2f26f6385abcde",
+    "decoded_binary_sha256": "73d061f42eabdde21b7f70896080cfbef4d5066c1840149028bd93f01ccd5041"
+  },
+  "limits": [
+    "Method, field, and parameter identifiers are exact CLR metadata identifiers and are not treated as gameplay descriptions.",
+    "R6 observed only the ReqBasicAnm and ReqSlotAnm dispatch branches inside StartOpponentAnm; ReqSerialAnm and ReqSkillAnm branches are proven to exist in the matching DLL but were not observed in this capture.",
+    "This record closes request ownership/dispatch at this method boundary only; it does not assign animation choreography, damage, aftermath, or move meaning."
+  ]
+}
