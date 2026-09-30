@@ -1,0 +1,65 @@
+{
+  "fact_id": "FACT-0029",
+  "claim": "In the matching retail DLL, four small Player aftermath helpers reached directly from already-canonical damage paths are closed as independent exact bodies. Player.SetLastDamage (0x06004EDC) has one Float32 parameter named dmg and an exact 8-byte body consisting only of LastDamage=dmg and return. Player.SetLastSkill (0x06004EB1) has one SkillSlotEnum parameter named skill and an exact 26-byte body: it stores lastSkill=skill, clears lastSkillHit to zero, calls plCont_AI.ResetCheckedPriAct(), then returns. Player.Bleeding (0x06004F1F) is parameterless with an exact 50-byte body: it sets Player.isBleeding=1, sets FormRen.isBleeding=1, then increments MatchEvaluation.inst.PlResult[PlIdx].bledCnt by one and returns. Player.SetDownTime (0x06004ED8) has one Int32 parameter named tm and an exact 64-byte body: it stores DownTime=tm, clamps negative values to zero using the emitted signed bge branch, and when MatchUI.inst converts true calls MatchUI.SetGauge_DownTime(PlIdx,DownTime), then returns. FACT-0020 pins SetLastDamage, SetLastSkill and Bleeding caller boundaries; FACT-0021 pins SetDownTime in its S1-rule path; FACT-0026 independently pins SetLastDamage from ProcessCritical.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.SetLastDamage token 0x06004EDC RVA 0x002E197E signature 2001010c parameter dmg:Float32 code size 8 code sha256=aa8386105dc125796e2f61ab7fabade30391f80863d7231c8dce82017bc25826; exact body in canonical/witnesses/CAP-R6-001/player_small_aftermath_helpers.summary.json",
+      "observation": "Exact matching-DLL SetLastDamage body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.SetLastSkill token 0x06004EB1 RVA 0x002DE4CF signature 20010111870c parameter skill:SkillSlotEnum code size 26 code sha256=743d99df562a3f16f12fd7da264fa22386474eec9f6eee8061d83c0c690fb959; exact body in canonical/witnesses/CAP-R6-001/player_small_aftermath_helpers.summary.json",
+      "observation": "Exact matching-DLL SetLastSkill body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.Bleeding token 0x06004F1F RVA 0x002E828C signature 200001 code size 50 code sha256=2a308caf2b1dd0cb7166f4123e2a23ef24d8c3088294ddefea0f41384991c4a6; exact body in canonical/witnesses/CAP-R6-001/player_small_aftermath_helpers.summary.json",
+      "observation": "Exact matching-DLL Bleeding body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.SetDownTime token 0x06004ED8 RVA 0x002E18A0 signature 20010108 parameter tm:Int32 code size 64 code sha256=670ac32434c8e7ed6e8fea9b78f446e73ec1a0c0c58756add4cb55f6ed6a73c2; exact body in canonical/witnesses/CAP-R6-001/player_small_aftermath_helpers.summary.json",
+      "observation": "Exact matching-DLL SetDownTime body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0020 ApplyDamage ordinary/shared paths",
+      "to": "SetLastDamage, SetLastSkill and Bleeding",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 pins Player.SetLastDamage token 0x06004EDC at ApplyDamage IL+0x023A, Player.SetLastSkill token 0x06004EB1 at IL+0x0254, and Player.Bleeding token 0x06004F1F at IL+0x0509"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0021 CalcDamage S1-rule path",
+      "to": "Player.SetDownTime(0)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0021 pins Player.SetDownTime token 0x06004ED8 at CalcDamage IL+0x039D with raw argument 0"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0026 ProcessCritical",
+      "to": "Player.SetLastDamage(65535.0f)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0026 pins Player.SetLastDamage token 0x06004EDC at ProcessCritical IL+0x0026 with raw Float32 65535.0"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact groups four caller-connected aftermath helpers but does not claim that they share one implementation template.",
+    "CAP-R6-001 contains no standalone PRE/POST events for these helpers, so this gate uses exact matching-DLL bodies and already-pinned caller boundaries.",
+    "PlayerController_AI.ResetCheckedPriAct and MatchUI.SetGauge_DownTime internals are outside this fact unless separately closed.",
+    "The semantic meaning of lastSkill, bleeding counters and down-time remains governed by caller/data provenance; this fact preserves exact field/call behavior only."
+  ]
+}

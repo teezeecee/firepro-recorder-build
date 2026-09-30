@@ -498,6 +498,24 @@
         "downstream UkeBonusTime/isInvokedUkeBonus consumer closure",
         "later field/state aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_SMALL_AFTERMATH_HELPERS_V1",
+      "fact_id": "FACT-0029",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Four exact matching-DLL Player damage-aftermath helpers reached from canonical damage paths: SetLastDamage, SetLastSkill, Bleeding and SetDownTime, each preserved as its own body with caller bridges.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_small_aftermath_helpers.summary.json",
+      "dll_method_count": 4,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "PlayerController_AI.ResetCheckedPriAct internal closure",
+        "MatchUI.SetGauge_DownTime internal closure",
+        "downstream lastSkill/bleeding/down-time consumer closure",
+        "authored state/data closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
