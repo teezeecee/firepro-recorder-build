@@ -1,0 +1,92 @@
+{
+  "fact_id": "FACT-0010",
+  "claim": "In the matching retail DLL, FormAnimator.ReqBasicAnm (0x06004E6F) is a 105-byte instance method taking BasicSkillEnum basic_skill_id, Boolean rev, and Int32 def_pl_idx. It stores AnmReqType=0 and BasicSkillID=basic_skill_id; when rev is true and isCopiedOpponentDir is true it reverses plObj.PlDir, resolves def_pl_idx through PlayerMan.GetPlObj and, when that Player is present, reverses that Player's PlDir; it then calls InitAnmWork and returns. In verified R6 raw capture bytes, all 5761 ReqBasicAnm PRE calls pair with POST calls. The POST BasicSkillID equals raw arg1 in 5761/5761 records, including 5594 records where the PRE value differed. The raw input split is 5714 calls with rev=false and def_pl_idx=-1, and 47 calls with rev=true and def_pl_idx equal to the recorded target; all 47 rev=true calls have no recorder-traced parent. The traced parent distribution is 4391 ROOT, 590 Player.TransitStateAfterAnm, 585 FormAnimator.StartOpponentAnm, 113 Player.PostprocessEachState, 68 FormAnimator.StartOpponentAnmM, and 14 FormAnimator.ReqSlotAnm.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.ReqBasicAnm token 0x06004E6F RVA 0x002D9F40 signature blob 20030111a9700208 code size 105 code sha256=fe75cf6bc4bc9f8915c55ace5e83feb79f2e1cf78577756b04bd7f8843d36f16; exact stores, direction branch, GetPlObj lookup, and InitAnmWork call are recorded in canonical/witnesses/CAP-R6-001/req_basic_anm.summary.json",
+      "observation": "Exact matching-DLL ReqBasicAnm body."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; deterministic 5761-record witness digest sha256=08e17ff201a4a670a28ea44cf44e1200cacb0659f4eb455a918ce1a13fb56d4f; summary canonical/witnesses/CAP-R6-001/req_basic_anm.summary.json; prover tools/prove_req_basic_anm_closure.py",
+      "observation": "5761 matched ReqBasicAnm PRE/POST records with exact parent, raw-argument, owner, target, and BasicSkillID before/after relationships."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "ReqBasicAnm raw arg1",
+      "to": "FormAnimator.BasicSkillID",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqBasicAnm IL+0x0007 ldarg.0; IL+0x0008 ldarg.1; IL+0x0009 stfld FormAnimator.BasicSkillID token 0x04005ED8"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "5761/5761 POST records have BasicSkillID equal to raw arg1; PRE differs in 5594 records and already matches in 167"
+        }
+      ]
+    },
+    {
+      "from": "ReqBasicAnm raw rev/def_pl_idx inputs",
+      "to": "matching-DLL direction branch inputs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqBasicAnm IL+0x000E..0x0061 enters direction reversal only when arg2 rev is true and isCopiedOpponentDir field 0x04005EE9 is true; arg3 is passed to PlayerMan.GetPlObj token 0x06005065"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "5714/5761 records carry rev=False and def_pl_idx=-1; 47/5761 carry rev=True and def_pl_idx equal to the recorded target; all 47 rev=True records are recorder-root observations"
+        }
+      ]
+    },
+    {
+      "from": "StartOpponentAnm BasicSkillID request",
+      "to": "ReqBasicAnm child arg1",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FormAnimator.StartOpponentAnm token 0x06004E76 calls ReqBasicAnm token 0x06004E6F on its selected Player animator with this.BasicSkillID, false, -1 at IL+0x0080"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "585/585 StartOpponentAnm-parented ReqBasicAnm records have child arg1 equal parent BasicSkillID, raw rev=False, raw def_pl_idx=-1, and child owner_slot equal parent target"
+        }
+      ]
+    },
+    {
+      "from": "ReqSlotAnm weapon-override request",
+      "to": "ReqBasicAnm child",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FormAnimator.ReqSlotAnm token 0x06004E70 weapon branch calls ReqBasicAnm token 0x06004E6F with selected BasicSkillEnum result, false, -1 at IL+0x012D"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "14/14 ReqSlotAnm-parented ReqBasicAnm records carry rev=False, def_pl_idx=-1 and the same owner_slot as their ReqSlotAnm parent"
+        }
+      ]
+    },
+    {
+      "from": "ReqBasicAnm control flow",
+      "to": "FormAnimator.InitAnmWork",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "All three conditional branches at IL+0x000F, IL+0x001A and IL+0x004C converge on IL+0x0062; IL+0x0063 calls FormAnimator.InitAnmWork token 0x06004E6C; IL+0x0068 returns"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The 4391 ROOT observations are not assigned to specific matching-DLL callers.",
+    "R6 does not record PlDir or isCopiedOpponentDir, so the direction mutation itself is not recorder-correlated at this gate.",
+    "BasicSkillEnum values and CLR identifiers are retained only as exact source identifiers; no broader gameplay meaning is assigned.",
+    "InitAnmWork is established from the matching DLL call boundary; its internal behavior is outside this fact.",
+    "Packed choreography, animation-bank semantics, damage meaning, and aftermath remain unclosed."
+  ]
+}
