@@ -15,6 +15,7 @@ CANON_DLL_SHA256 = "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd79
 SOURCE_ID = "CAP-R6-001"
 TICK_BASENAME = "tick_trace.tsv"
 META_BASENAME = "metadata.json"
+PART_SIZE = 10000
 
 class MineError(RuntimeError):
     pass
@@ -29,13 +30,16 @@ def sha256_path(path):
     with Path(path).open("rb") as f:
         return sha256_stream(f)
 
+def sha256_bytes(data):
+    return hashlib.sha256(data).hexdigest()
+
 def one_member(zf, basename):
     hits = [n for n in zf.namelist() if Path(n).name.lower() == basename.lower()]
     if len(hits) != 1:
         raise MineError(f"expected exactly one {basename}, found {len(hits)}")
     return hits[0]
 
-def mine(r6_zip, out_index, out_summary):
+def mine(r6_zip, out_index_prefix, out_summary):
     r6_zip = Path(r6_zip)
     got = sha256_path(r6_zip)
     if got != R6_SHA256:
@@ -105,13 +109,24 @@ def mine(r6_zip, out_index, out_summary):
             for a,b in sorted(edge_counts, key=lambda e:(-edge_counts[e], e[0], e[1]))
         ],
     }
-    out_index = Path(out_index)
-    out_index.parent.mkdir(parents=True, exist_ok=True)
     index_json = (json.dumps(index, separators=(",",":"), ensure_ascii=False) + "\n").encode("utf-8")
-    decoded_json_sha256 = hashlib.sha256(index_json).hexdigest()
-    artifact_bytes = base64.b64encode(zlib.compress(index_json, 9)) + b"\n"
-    out_index.write_bytes(artifact_bytes)
-    artifact_sha256 = hashlib.sha256(artifact_bytes).hexdigest()
+    decoded_json_sha256 = sha256_bytes(index_json)
+    b64_text = base64.b64encode(zlib.compress(index_json, 9)).decode("ascii")
+    reconstructed_bytes = (b64_text + "\n").encode("ascii")
+    reconstructed_sha256 = sha256_bytes(reconstructed_bytes)
+
+    out_prefix = Path(out_index_prefix)
+    out_prefix.parent.mkdir(parents=True, exist_ok=True)
+    parts = []
+    for i, start in enumerate(range(0, len(b64_text), PART_SIZE), start=1):
+        chunk = b64_text[start:start + PART_SIZE]
+        part_path = out_prefix.with_name(f"{out_prefix.name}.part{i:02d}.b64")
+        part_path.write_text(chunk + "\n", encoding="ascii")
+        parts.append({
+            "path": part_path.name,
+            "trimmed_sha256": sha256_bytes(chunk.encode("ascii")),
+            "trimmed_length": len(chunk),
+        })
 
     summary = {
         "schema_version": 1,
@@ -129,10 +144,10 @@ def mine(r6_zip, out_index, out_summary):
         },
         "definition": index["definition"],
         "index_file": {
-            "path": out_index.name,
-            "sha256": artifact_sha256,
+            "parts": parts,
+            "reconstructed_sha256": reconstructed_sha256,
             "decoded_json_sha256": decoded_json_sha256,
-            "format": "base64(zlib(compact-json))",
+            "format": "ordered base64 parts -> zlib(compact-json)",
             "occurrence_fields": index["occurrence_fields"],
             "record_count": witness_count,
         },
@@ -160,12 +175,12 @@ def mine(r6_zip, out_index, out_summary):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--r6", required=True)
-    ap.add_argument("--out-index", required=True)
+    ap.add_argument("--out-index-prefix", required=True)
     ap.add_argument("--out-summary", required=True)
     a = ap.parse_args()
     try:
-        s = mine(a.r6, a.out_index, a.out_summary)
-        print(f"R6 STATE EDGE MINING PASS: {s['index_file']['record_count']} witnesses / {s['distinct_state_edge_count']} distinct edges")
+        s = mine(a.r6, a.out_index_prefix, a.out_summary)
+        print(f"R6 STATE EDGE MINING PASS: {s['index_file']['record_count']} witnesses / {s['distinct_state_edge_count']} distinct edges / {len(s['index_file']['parts'])} parts")
         return 0
     except (OSError, zipfile.BadZipFile, json.JSONDecodeError, MineError, ValueError, KeyError) as e:
         print("R6 STATE EDGE MINING FAIL")
