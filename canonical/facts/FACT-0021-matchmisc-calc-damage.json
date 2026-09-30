@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0021",
+  "claim": "In the matching retail DLL, MatchMisc.CalcDamage (0x06004948) is a static three-Int32-parameter method returning Float32, with parameters named dp, atk_pl_idx, and def_pl_idx and an exact 1,007-byte body. It returns 0.0 when either resolved Player is null or the attacker CurrentSkill is null. It loads four integer parameter values from attacker atkParam and defender defParam using the current skill main/sub parameter selectors, adds 3 to all four, then applies the exact recorded critical/special/spSkillFlags/HP/weapon branches before computing local8 = ((((float)atkMain * 3 + (float)atkSub) - ((float)defMain * 3 + (float)defSub) + 64) * 4) * dp. It then multiplies local8 by the exact mHpDamageTbl, mBpDamageTbl, optional mDamageDecTbl, mDamageSizeTbl, raw defPrmType/Zone, UkeBonusTime, bleeding, star-performance, critical-hit-count, and MatchMain.TagDamageRate factors recorded in the witness. When MatchSetting.isS1Rule is set, it calls defender SetDownTime(0), gates on SkillDataMan.IsS1Waza(CurrentSkill), sets defender isS1MoveRecieved accordingly, multiplies by FightStyleParam[attacker fightStyle].S1Correct on the true path, and replaces local8 with 0.0 on the false path. It returns local8. FACT-0020 pins seven distinct ApplyDamage call sites that invoke this exact CalcDamage method before the HP, BP, Neck, Arm, Waist, Leg, and SP mutation paths.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.CalcDamage token 0x06004948 RVA 0x002AE858 signature 00030c080808 code size 1007 code sha256=058a61f95c9c59f9e5d3079b2c08a1420599dcec208152325c520e26a5983d04; exact arithmetic, branch, table, field and call structure is recorded in canonical/witnesses/CAP-R6-001/calc_damage.summary.json; prover tools/prove_calc_damage.py",
+      "observation": "Exact matching-DLL method body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0020 ApplyDamage ordinary branch",
+      "to": "MatchMisc.CalcDamage(dp, atk_pl_idx, def_pl_idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 pins MatchMisc.CalcDamage token 0x06004948 calls at ApplyDamage IL+0x01E8, 0x029A, 0x02B9, 0x02FD, 0x0341, 0x0385, and 0x03C9"
+        }
+      ]
+    },
+    {
+      "from": "CalcDamage selected attacker/defender parameters",
+      "to": "base Float32 local8",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CalcDamage IL+0x0059..0x01B6 loads atkParam/defParam through SkillData main/sub selectors, applies the exact integer adjustments, then computes ((((atkMain*3)+atkSub)-((defMain*3)+defSub)+64)*4)*dp"
+        }
+      ]
+    },
+    {
+      "from": "base Float32 local8",
+      "to": "table/conditional modifiers",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CalcDamage IL+0x01B8..0x038F applies mHpDamageTbl, mBpDamageTbl, optional mDamageDecTbl masks 512/1024/2048/4096, mDamageSizeTbl, and the exact recorded conditional Float32 multipliers through MatchMain.TagDamageRate"
+        }
+      ]
+    },
+    {
+      "from": "CalcDamage S1-rule gate",
+      "to": "returned Float32",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CalcDamage IL+0x0390..0x03EE tests MatchSetting.isS1Rule; the true path calls SetDownTime(0), tests SkillDataMan.IsS1Waza, sets isS1MoveRecieved and either multiplies by S1Correct or stores 0.0; final return is IL+0x03EE"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact uses matching-DLL evidence; no standalone CalcDamage PRE/POST recorder event is used in this gate.",
+    "Called helper internals such as GetHealth, the form-size table Get member, SetDownTime, and SkillDataMan.IsS1Waza are outside this fact unless separately closed.",
+    "Raw field names, masks, thresholds, table indices and numeric factors are retained exactly without additional gameplay interpretation.",
+    "Authored MatchData tables, WrestlerParam arrays, SkillData records, and later field/state aftermath remain outside this fact."
+  ]
+}
