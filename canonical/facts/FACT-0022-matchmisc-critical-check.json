@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0022",
+  "claim": "In the matching retail DLL, MatchMisc.CriticalCheck (0x06004949) is a static two-Int32-parameter method returning Boolean, with parameters named atk_pl_idx and def_pl_idx and an exact 678-byte body. It returns false when MatchSetting.CriticalRate is zero, either resolved Player is absent, either Player has isIntruder set, either Player has isSecond set, or the attacker animation is looped. It loads attacker WrestlerParam.criticalType. When that value is zero, it requires attacker isCriticalMove and raw CurrentSkill.flags mask 1; when nonzero, it requires CurrentSkill.flags to overlap MatchMisc.Critical_CheckTbl[criticalType]. It then builds three Float32 factors from MatchData.mCriticalTypeTbl1 using defender reversalType, MatchData.mCriticalTypeTbl2 using attacker fightStyle, and MatchData.mCriticalRateTbl using defender GetHealth(HP), each divided by 100.0. A fourth factor begins at 1.0 and, only for nonzero criticalType, can become 0.5 from defender spSkillFlags mask 512 under Critical_CheckTbl masks 2/8/32, or 0.25 from defender spSkillFlags mask 1024 on the alternate branch. The product is then modified by the exact attacker spSkillFlags-4 / HP / SP branch, MatchSetting.CriticalRate values 1 or 3, and the exact S1-rule branch. Finally it samples MatchRandom.Range(0.0f,1.0f) and returns true unless that sampled value is greater than the computed product. FACT-0020 pins the ApplyDamage call boundary at IL+0x01C5 and its true/false split around this exact method.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.CriticalCheck token 0x06004949 RVA 0x002AEC54 signature 0002020808 code size 678 code sha256=8df067018ec4101a6f4861d7fe438f0ea51a2b50b1f698a9b908698e72352466; exact gates, table factors, raw masks, S1 branch and Range comparison are recorded in canonical/witnesses/CAP-R6-001/critical_check.summary.json; prover tools/prove_critical_check.py",
+      "observation": "Exact matching-DLL method body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0020 ApplyDamage critical split",
+      "to": "MatchMisc.CriticalCheck(atk_pl_idx, def_pl_idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0020 pins ApplyDamage IL+0x01C5 call token 0x06004949; false branch target IL+0x01DC and true branch calls Player.ProcessCritical then joins at IL+0x04EA"
+        }
+      ]
+    },
+    {
+      "from": "CriticalCheck entry and eligibility",
+      "to": "four Float32 factor inputs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CriticalCheck IL+0x0000..0x01AF pins the CriticalRate/player/intruder/second/loop gates, criticalType eligibility split, three /100 table factors, and the fourth 1.0/0.5/0.25 factor"
+        }
+      ]
+    },
+    {
+      "from": "four Float32 factor inputs",
+      "to": "final threshold scalar",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CriticalCheck IL+0x01B0..0x0287 multiplies the four factors, applies raw attacker mask-4 HP/SP factor, CriticalRate 1/3 adjustment, and the exact S1 branch including mask 2 and IsS1Waza"
+        }
+      ]
+    },
+    {
+      "from": "final threshold scalar",
+      "to": "Boolean return",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CriticalCheck IL+0x0288..0x02A5 calls MatchRandom.Range(0.0f,1.0f); IL+0x029D branches to false only when sampled value is greater than local8, otherwise returns true"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact uses matching-DLL evidence; no standalone CriticalCheck PRE/POST recorder event is used in this gate.",
+    "The contents of Critical_CheckTbl and MatchData critical tables, plus GetHealth, SkillDataMan.IsS1Waza and MatchRandom.Range internals, are outside this fact unless separately closed.",
+    "Raw masks, CriticalRate numeric values, thresholds and factors are retained exactly without additional gameplay interpretation.",
+    "ApplyDamage aftermath after the Boolean result remains governed by FACT-0020 and later helper closures."
+  ]
+}
