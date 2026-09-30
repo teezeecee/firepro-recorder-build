@@ -88,3 +88,8 @@ jobs:
         run: python tests/test_process_anm_loop_summary.py
       - name: ProcessAnmLoop prover syntax
         run: python -m py_compile tools/prove_process_anm_loop.py
+
+      - name: Form query helpers summary
+        run: python tests/test_form_query_helpers_summary.py
+      - name: Form query helpers prover syntax
+        run: python -m py_compile tools/prove_form_query_helpers.py
