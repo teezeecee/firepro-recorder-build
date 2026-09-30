@@ -299,6 +299,23 @@
         "remaining caller-path closure",
         "later state aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_PROCESS_FOX_SLEEP_V1",
+      "fact_id": "FACT-0018",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.ProcessFoxSleep seven-gate condition chain and effect block reached directly from the already-closed UpdateAnimation body.",
+      "summary": "canonical/witnesses/CAP-R6-001/process_fox_sleep.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "ConsumeSP internal closure",
+        "authored BasicSkillID/data closure",
+        "later field/state aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
