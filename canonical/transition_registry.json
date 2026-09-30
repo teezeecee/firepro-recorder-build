@@ -8,6 +8,7 @@
       "source_id": "CAP-R6-001",
       "scope": "RAW_OBSERVATION_ONLY",
       "definition": "Consecutive sampled tick_trace rows for one stable player_slot where the recorder-emitted State string changes.",
+      "index": "canonical/witnesses/CAP-R6-001/tick_state_edge_after_lines.v1.zlib.b64",
       "summary": "canonical/witnesses/CAP-R6-001/tick_state_edges.summary.json",
       "occurrence_count": 5977,
       "distinct_edge_count": 105,
@@ -15,9 +16,7 @@
       "semantic_promotion_blockers": [
         "matching DLL control-flow/ownership closure",
         "packed retail choreography/data closure"
-      ],
-      "index_summary": "canonical/witnesses/CAP-R6-001/tick_state_edges.summary.json",
-      "index_parts_glob": "canonical/witnesses/CAP-R6-001/tick_state_edges.index.part*.b64"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
