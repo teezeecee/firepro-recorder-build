@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_R6_PREPROCESS_EACH_ANM_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "FormAnimator",
+      "method": "PreprocessEachAnm",
+      "token": "0x06004E78",
+      "rva": "0x002DB11C",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 1149,
+      "code_sha256": "3dd3f334be363345a7de654b8a11ec29207937ba4dc5bbbba6e2f95eddd1ac9c",
+      "local_signature_token": "0x11001051",
+      "local_signature_blob_hex": "070212a78811a9c0",
+      "locals": [
+        "class Player",
+        "valuetype AnmStartStateEnum"
+      ]
+    },
+    "selector": {
+      "target_lookup": "PlayerMan.inst.GetPlObj(this.plObj.TargetPlIdx)",
+      "target_lookup_token": "0x06005065",
+      "selected_field_path": "this.CurrentSkill.anmData[this.CurrentAnmIdx].anmStartState",
+      "anm_start_state_field_token": "0x04007C9D",
+      "operation": "subtract 1 then switch over 20 targets",
+      "switch_il": "0x0031",
+      "default_target": "0x047C",
+      "case_targets": {
+        "1": "0x008B",
+        "2": "0x0116",
+        "3": "0x00EC",
+        "4": "0x0140",
+        "5": "0x01B4",
+        "6": "0x01DF",
+        "7": "0x026C",
+        "8": "0x0297",
+        "9": "0x0324",
+        "10": "0x034F",
+        "11": "0x0152",
+        "12": "0x02C2",
+        "13": "0x037A",
+        "14": "0x038C",
+        "15": "0x039E",
+        "16": "0x041D",
+        "17": "0x020A",
+        "18": "0x0432",
+        "19": "0x045B",
+        "20": "0x046C"
+      }
+    },
+    "case_table": [
+      {
+        "value": 1,
+        "operations": [
+          "if target Player converts true: target.PlDir = ChangePlayerDirToLRAndReverse(target.PlDir)",
+          "plObj.PlDir = ChangePlayerDirToLRAndReverse(plObj.PlDir)",
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 1"
+        ]
+      },
+      {
+        "value": 2,
+        "operations": [
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 2"
+        ]
+      },
+      {
+        "value": 3,
+        "operations": [
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 1"
+        ]
+      },
+      {
+        "value": 4,
+        "operations": [
+          "plObj.ChangeState(34)"
+        ]
+      },
+      {
+        "value": 5,
+        "operations": [
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 21"
+        ]
+      },
+      {
+        "value": 6,
+        "operations": [
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 22"
+        ]
+      },
+      {
+        "value": 7,
+        "operations": [
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 23"
+        ]
+      },
+      {
+        "value": 8,
+        "operations": [
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 24"
+        ]
+      },
+      {
+        "value": 9,
+        "operations": [
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 25"
+        ]
+      },
+      {
+        "value": 10,
+        "operations": [
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 26"
+        ]
+      },
+      {
+        "value": 11,
+        "operations": [
+          "if target Player converts true: target.PlDir = ChangePlayerDirToLRAndReverse(target.PlDir)",
+          "plObj.PlDir = ChangePlayerDirToLRAndReverse(plObj.PlDir)",
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 21"
+        ]
+      },
+      {
+        "value": 12,
+        "operations": [
+          "if target Player converts true: target.PlDir = ChangePlayerDirToLRAndReverse(target.PlDir)",
+          "plObj.PlDir = ChangePlayerDirToLRAndReverse(plObj.PlDir)",
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 25"
+        ]
+      },
+      {
+        "value": 13,
+        "operations": [
+          "plObj.ChangeState(36)"
+        ]
+      },
+      {
+        "value": 14,
+        "operations": [
+          "plObj.ChangeState(35)"
+        ]
+      },
+      {
+        "value": 15,
+        "operations": [
+          "plObj.ChangeState(38)",
+          "plObj.PostPos = 0",
+          "if Ring.inst != null, compare Ring.colData_AroundRing.x2 with plObj.PlPos.x using bge.un; on fall-through set plObj.PostPos = 1 and Ring.PostUse[plObj.PostPos] = plObj.PlIdx"
+        ]
+      },
+      {
+        "value": 16,
+        "operations": [
+          "plObj.AddBP(-12288.0f)"
+        ]
+      },
+      {
+        "value": 17,
+        "operations": [
+          "if target Player converts true: target.PlDir = ChangePlayerDirToLRAndReverse(target.PlDir)",
+          "plObj.PlDir = ChangePlayerDirToLRAndReverse(plObj.PlDir)",
+          "plObj.penaltyTime = 0",
+          "plObj.ChangeState(22)",
+          "plObj.grappleType = 23"
+        ]
+      },
+      {
+        "value": 18,
+        "operations": [
+          "plObj.isStandingStunOK = 1",
+          "plObj.isDisableUpdateDownTime = 0",
+          "plObj.SetDownTime(0)"
+        ]
+      },
+      {
+        "value": 19,
+        "operations": [
+          "plObj.ChangeRefereeGiveUpAnm = 1"
+        ]
+      },
+      {
+        "value": 20,
+        "operations": [
+          "plObj.Poisoned()"
+        ]
+      }
+    ],
+    "call_site_counts": {
+      "Player.ChangeState": 16,
+      "MatchMisc.ChangePlayerDirToLRAndReverse": 8,
+      "UnityEngine.Object.op_Implicit": 4,
+      "PlayerMan.GetPlObj": 1,
+      "UnityEngine.Object.op_Inequality": 1,
+      "Player.AddBP": 1,
+      "Player.SetDownTime": 1,
+      "Player.Poisoned": 1
+    },
+    "start_anm_bridge": {
+      "method": "FormAnimator.StartAnm",
+      "token": "0x06004E75",
+      "code_sha256": "aa80c075f247570daf6d74d8d5d7140022160f98a0d3b6233cd7268236a69c94",
+      "method_call_count": 1,
+      "sole_method_call": {
+        "il_offset": "0x0142",
+        "target": "FormAnimator.PreprocessEachAnm",
+        "token": "0x06004E78"
+      }
+    }
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "preprocess_each_anm_event_count": 0,
+    "start_anm_calls": 5333,
+    "start_anm_with_direct_Player_ChangeState_child": 2,
+    "start_anm_without_direct_traced_child": 5331,
+    "observed_child_records": [
+      {
+        "start_anm_pre_line": 96086,
+        "start_anm_post_line": 96089,
+        "change_state_pre_line": 96087,
+        "change_state_post_line": 96088,
+        "start_anm_raw_arg": "0",
+        "owner_slot": "4",
+        "target": "2",
+        "change_state_raw_arg": "Grapple",
+        "start_pre_state": "NormalAnm",
+        "start_post_state": "Grapple",
+        "BasicSkillID": "Grapple_Front",
+        "SkillSlotID": "Grapple_A",
+        "ResolvedSkillID": "445"
+      },
+      {
+        "start_anm_pre_line": 321684,
+        "start_anm_post_line": 321687,
+        "change_state_pre_line": 321685,
+        "change_state_post_line": 321686,
+        "start_anm_raw_arg": "0",
+        "owner_slot": "4",
+        "target": "2",
+        "change_state_raw_arg": "Grapple",
+        "start_pre_state": "NormalAnm",
+        "start_post_state": "Grapple",
+        "BasicSkillID": "Grapple_Front",
+        "SkillSlotID": "Grapple_A",
+        "ResolvedSkillID": "445"
+      }
+    ],
+    "note": "Because PreprocessEachAnm is not recorder-traced and StartAnm has exactly one DLL method call, these two traced ChangeState children are located on the StartAnm -> PreprocessEachAnm call path. The raw capture does not expose anmStartState, so no numeric switch case is assigned to either record."
+  },
+  "witness_digest": {
+    "algorithm": "sha256",
+    "canonical_record_format": "UTF-8 fields joined by tab and terminated by LF",
+    "fields": [
+      "StartAnm_PRE_line",
+      "StartAnm_POST_line",
+      "ChangeState_PRE_line",
+      "ChangeState_POST_line",
+      "StartAnm_raw_arg",
+      "owner_slot",
+      "target",
+      "ChangeState_raw_arg",
+      "StartAnm_PRE_state",
+      "StartAnm_POST_state",
+      "BasicSkillID",
+      "SkillSlotID",
+      "ResolvedSkillID"
+    ],
+    "record_count": 2,
+    "byte_count": 172,
+    "sha256": "ccb5f70b041db4574dd710212922c4d233dcf24c28d168ddf9518fcdb1d67919",
+    "reproducibility_tool": "tools/prove_preprocess_each_anm.py"
+  },
+  "limits": [
+    "R6 does not expose the anmStartState value used by either observed StartAnm call, so the two raw ChangeState records are not assigned to a specific switch case.",
+    "The raw recorder strings Grapple, Grapple_Front, and Grapple_A are preserved as observed strings only; this record does not use their wording to select a DLL case.",
+    "The numeric ChangeState/grappleType values and CLR field/method names are preserved from the matching DLL without additional gameplay interpretation.",
+    "Packed choreography, animation-bank semantics, damage meaning, and later aftermath remain outside this record."
+  ]
+}
