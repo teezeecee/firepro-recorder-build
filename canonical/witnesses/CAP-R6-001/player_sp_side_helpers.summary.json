@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_SP_SIDE_HELPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "name": "ConsumeSP",
+        "token": "0x06004ED1",
+        "rva": "0x002E15D4",
+        "signature_blob_hex": "2001010c",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "sp",
+            "type": "Float32"
+          }
+        ],
+        "code_size": 51,
+        "code_sha256": "0319a9b9582c72089b9455369fa000ad2d7713ad775bcb2eb0836f21c773d243",
+        "max_stack": 2,
+        "local_signature_token": "0x11000F77",
+        "local_signature_blob_hex": "070112a3c8",
+        "local_count": 1,
+        "instruction_count": 19,
+        "branch_instruction_count": 3,
+        "call_instruction_count": 2
+      },
+      {
+        "name": "RecoverSP",
+        "token": "0x06004ED2",
+        "rva": "0x002E1614",
+        "signature_blob_hex": "2001010c",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "sp",
+            "type": "Float32"
+          }
+        ],
+        "code_size": 100,
+        "code_sha256": "9879da28f6a20f4435ae4bb27ba85d7f920ce913279bdfd0a7df12ecfc797ddf",
+        "max_stack": 3,
+        "local_signature_token": "0x11001071",
+        "local_signature_blob_hex": "070212a3c808",
+        "local_count": 2,
+        "instruction_count": 35,
+        "branch_instruction_count": 5,
+        "call_instruction_count": 2
+      },
+      {
+        "name": "InvokeUkeBonus",
+        "token": "0x06004ED3",
+        "rva": "0x002E1684",
+        "signature_blob_hex": "200001",
+        "parameters": [],
+        "code_size": 144,
+        "code_sha256": "70c0105528475fabfc6a645f2b42355b7a3063334b6ee9abe25c09f00fa6e334",
+        "max_stack": 3,
+        "local_signature_token": null,
+        "local_count": 0,
+        "instruction_count": 48,
+        "branch_instruction_count": 4,
+        "call_instruction_count": 1
+      }
+    ],
+    "consume_sp": {
+      "match_field_token": "0x0400576C",
+      "object_implicit_memberref": "0x0A00002A",
+      "is_time_counting_field_token": "0x04005751",
+      "is_match_end_field_token": "0x04005753",
+      "gate_sequence": [
+        "MatchMain.inst converts true",
+        "MatchMain.isTimeCounting != 0",
+        "MatchMain.isMatchEnd == 0"
+      ],
+      "final_effect": "this.AddSP(-sp)",
+      "add_sp_token": "0x06004ECF"
+    },
+    "recover_sp": {
+      "match_behavior": "if MatchMain.inst converts false, proceed directly to recovery selection; if it converts true, require isTimeCounting != 0 and isMatchEnd == 0",
+      "is_bleeding_field_token": "0x0400605A",
+      "wres_param_field_token": "0x04005FB3",
+      "sp_recovery_bleeding_field_token": "0x04001096",
+      "sp_recovery_field_token": "0x04001095",
+      "heal_table_field_token": "0x04006082",
+      "expression": "sp = sp * Player.SpHealTbl[selectedRecoveryIndex]",
+      "final_effect": "this.AddSP(sp)",
+      "add_sp_token": "0x06004ECF"
+    },
+    "invoke_uke_bonus": {
+      "invoked_field_token": "0x0400606D",
+      "recovery_point_field_token": "0x04005FC7",
+      "bonus_time_field_token": "0x04005FC9",
+      "first_effects": [
+        "if isInvokedUkeBonus != 0 return",
+        "isInvokedUkeBonus = 1",
+        "AddSP((Float32)(UkeRecoveryPoint / 2))",
+        "UkeBonusTime = 0"
+      ],
+      "raw_thresholds": [
+        7680,
+        15360,
+        30720
+      ],
+      "comparison_opcode": "ble",
+      "increment_when": "UkeRecoveryPoint > threshold",
+      "increment_each": 1800,
+      "add_sp_token": "0x06004ECF"
+    }
+  },
+  "caller_bridges": [
+    {
+      "fact_id": "FACT-0018",
+      "calls": [
+        [
+          "ConsumeSP",
+          "0x00A5..0x00B0",
+          "4.0f"
+        ]
+      ]
+    },
+    {
+      "fact_id": "FACT-0020",
+      "calls": [
+        [
+          "InvokeUkeBonus",
+          "0x0465",
+          "no args"
+        ],
+        [
+          "ConsumeSP",
+          "0x0531",
+          "-local14"
+        ],
+        [
+          "RecoverSP",
+          "0x053E",
+          "local14"
+        ],
+        [
+          "RecoverSP",
+          "0x057D",
+          "256.0f"
+        ],
+        [
+          "RecoverSP",
+          "0x0593",
+          "1024.0f"
+        ]
+      ]
+    },
+    {
+      "fact_id": "FACT-0027",
+      "callee": "Player.AddSP",
+      "callee_token": "0x06004ECF",
+      "internal_call_ils": [
+        [
+          "ConsumeSP",
+          "0x002D"
+        ],
+        [
+          "RecoverSP",
+          "0x005E"
+        ],
+        [
+          "InvokeUkeBonus",
+          "0x001D"
+        ]
+      ]
+    }
+  ],
+  "limits": [
+    "SpHealTbl contents and recovery-value semantics are outside this record.",
+    "Raw thresholds/division/timing arithmetic are preserved exactly.",
+    "Downstream uses of bonus fields are outside this record."
+  ]
+}
