@@ -178,3 +178,8 @@ jobs:
         run: python tests/test_finish_move_info_helpers_summary.py
       - name: FinishMoveInfo helpers prover syntax
         run: python -m py_compile tools/prove_finish_move_info_helpers.py
+
+      - name: SkillSlotData lookup summary
+        run: python tests/test_skill_slot_data_lookup_summary.py
+      - name: SkillSlotData lookup prover syntax
+        run: python -m py_compile tools/prove_skill_slot_data_lookup.py
