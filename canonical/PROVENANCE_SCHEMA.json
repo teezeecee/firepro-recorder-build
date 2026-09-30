@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "required_fact_fields": ["fact_id", "claim", "status", "evidence", "chain_edges"],
+  "allowed_statuses": [
+    "PROVEN_DLL",
+    "OBSERVED_RAW_CAPTURE",
+    "PROVEN_PACKED_DATA",
+    "CORROBORATED_MULTI_SOURCE"
+  ],
+  "forbidden_statuses": [
+    "ASSUMED",
+    "INFERRED",
+    "PLAUSIBLE",
+    "SYNTHETIC_ONLY",
+    "NOTION_ONLY",
+    "NAME_BASED",
+    "UNPROVEN"
+  ],
+  "evidence_rule": "Every evidence item must point to a canonical-eligible raw source in source_manifest.json and identify a reproducible locator within that source.",
+  "chain_rule": "Every semantic bridge in the claim must appear as a chain_edge with its own evidence. A missing edge blocks promotion."
+}
