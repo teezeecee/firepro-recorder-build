@@ -128,3 +128,8 @@ jobs:
         run: python tests/test_apply_damage_modifiers_summary.py
       - name: ApplyDamage modifier helpers prover syntax
         run: python -m py_compile tools/prove_apply_damage_modifiers.py
+
+      - name: mRate100Check summary
+        run: python tests/test_rate100_check_summary.py
+      - name: mRate100Check prover syntax
+        run: python -m py_compile tools/prove_rate100_check.py
