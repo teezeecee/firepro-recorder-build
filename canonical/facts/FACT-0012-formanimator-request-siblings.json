@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0012",
+  "claim": "In the matching retail DLL, FormAnimator.ReqSerialAnm (0x06004E6D) is a 21-byte method taking SkillAnmEnum skill_id; it stores AnmReqType=2, stores arg1 into SkillAnmID, calls InitAnmWork, and returns. FormAnimator.ReqSkillAnm (0x06004E6E) is a 21-byte method taking SkillID skill_id; it stores AnmReqType=3, stores arg1 into SkillId, calls InitAnmWork, and returns. Combined with the already-closed ReqBasicAnm and the ordinary non-weapon branch of ReqSlotAnm, the matching DLL therefore contains request initializer values 0, 1, 2, and 3 feeding the exact InitAnmWork reset block; ReqSlotAnm's weapon-override branch instead calls ReqBasicAnm and returns before its ordinary AnmReqType=1 initialization.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.ReqSerialAnm token 0x06004E6D RVA 0x002D9F13 signature 20010111a97c code size 21 sha256=ba11f4c9eb5c4039a8ba03055c42e707db927df9884b7e4a03d5ce45cc2b730e; FormAnimator.ReqSkillAnm token 0x06004E6E RVA 0x002D9F29 signature 20010111a9dc code size 21 sha256=ac3eec081214a41850096a738ad0778366871ea77181e1fa20c4eb73915af81e; exact instruction sequences in canonical/witnesses/CAP-R6-001/request_siblings.summary.json; prover tools/prove_request_siblings.py",
+      "observation": "Exact matching-DLL bodies for both request methods."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "ReqSerialAnm arg1",
+      "to": "AnmReqType / SkillAnmID / InitAnmWork",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqSerialAnm IL+0x0001 ldc.i4.2; IL+0x0002 stfld AnmReqType 0x04005ECF; IL+0x0008 ldarg.1; IL+0x0009 stfld SkillAnmID 0x04005EDA; IL+0x000F call InitAnmWork 0x06004E6C"
+        }
+      ]
+    },
+    {
+      "from": "ReqSkillAnm arg1",
+      "to": "AnmReqType / SkillId / InitAnmWork",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqSkillAnm IL+0x0001 ldc.i4.3; IL+0x0002 stfld AnmReqType 0x04005ECF; IL+0x0008 ldarg.1; IL+0x0009 stfld SkillId 0x04005EDB; IL+0x000F call InitAnmWork 0x06004E6C"
+        }
+      ]
+    },
+    {
+      "from": "request initializer methods",
+      "to": "AnmReqType values 0/1/2/3 before InitAnmWork",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqBasicAnm 0x06004E6F writes AnmReqType=0 and calls InitAnmWork; ReqSlotAnm 0x06004E70 ordinary path writes AnmReqType=1 and calls InitAnmWork; ReqSerialAnm 0x06004E6D writes 2; ReqSkillAnm 0x06004E6E writes 3. ReqSlotAnm weapon branch returns through ReqBasicAnm before the ordinary value-1 store."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "CAP-R6-001 contains no recorded ReqSerialAnm or ReqSkillAnm execution, so this fact uses matching-DLL evidence.",
+    "The ReqSlotAnm weapon branch follows ReqBasicAnm rather than the ordinary value-1 initializer.",
+    "CLR identifiers are retained exactly and are not assigned additional gameplay meaning.",
+    "Packed choreography, animation-bank semantics, damage meaning, and aftermath remain outside this fact."
+  ]
+}

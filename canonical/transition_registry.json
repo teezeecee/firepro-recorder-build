@@ -188,6 +188,23 @@
         "animation-bank semantics closure",
         "damage/aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_FORMANIMATOR_REQUEST_SIBLINGS_V1",
+      "fact_id": "FACT-0012",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL ReqSerialAnm and ReqSkillAnm initializers, completing the 0/1/2/3 request-type initializer set with previously closed ReqBasicAnm and ordinary ReqSlotAnm.",
+      "summary": "canonical/witnesses/CAP-R6-001/request_siblings.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "packed retail choreography/data closure",
+        "animation-bank semantics closure",
+        "damage/aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
