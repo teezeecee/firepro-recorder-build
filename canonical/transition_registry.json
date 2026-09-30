@@ -334,6 +334,25 @@
         "Audience method internals",
         "later state aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_MATCHMISC_APPLY_DAMAGE_V1",
+      "fact_id": "FACT-0020",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMisc.ApplyDamage entry gates, raw modifier setup, CriticalCheck split, seven ordinary CalcDamage paths, raw SP/KO/give-up branches, and shared bleeding/foul/recovery/weapon/finish/counter tail reached directly from UpdateAnimation.",
+      "summary": "canonical/witnesses/CAP-R6-001/apply_damage.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "CriticalCheck internal closure",
+        "CalcDamage internal closure",
+        "called Player mutation-helper closure",
+        "authored SkillData/MatchData table closure",
+        "later field/state aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
