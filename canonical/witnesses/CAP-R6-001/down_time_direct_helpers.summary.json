@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DOWN_TIME_DIRECT_HELPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "Player",
+        "name": "SetStunTime",
+        "token": "0x06004EDA",
+        "rva": "0x002E193F",
+        "signature_blob_hex": "20010108",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "tm",
+            "type": "Int32"
+          }
+        ],
+        "code_size": 27,
+        "code_sha256": "f1cf347336997ae6ca3fc68973801bfad9697cf43326c86143a6cfa7cbb96074",
+        "instruction_count": 11,
+        "branch_instruction_count": 1,
+        "call_instruction_count": 0
+      },
+      {
+        "type": "MatchMisc",
+        "name": "GetParamRate",
+        "token": "0x06004975",
+        "rva": "0x002B0D74",
+        "signature_blob_hex": "00010c0c",
+        "return_type": "Float32",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "prm",
+            "type": "Float32"
+          }
+        ],
+        "code_size": 16,
+        "code_sha256": "60de3a243171244b6e09508e9a73f00d82aa76207ad3e8dd046322bc7b849e6c",
+        "max_stack": 2,
+        "local_signature_token": "0x1100001F",
+        "local_signature_blob_hex": "07010c",
+        "instruction_count": 8,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0
+      }
+    ],
+    "set_stun_time": {
+      "effect": "StunTime = tm; if StunTime < 0 then StunTime = 0; return",
+      "field_token": "0x04005FD0",
+      "clamp_continue_opcode": "bge",
+      "raw_min": 0
+    },
+    "get_param_rate": {
+      "expression": "(prm / 65535.0f) * 100.0f",
+      "raw_divisor": 65535,
+      "raw_multiplier": 100
+    },
+    "calc_down_time_bridge": {
+      "fact_id": "FACT-0030",
+      "caller": "Player.CalcDownTime",
+      "calls": [
+        [
+          "SetStunTime",
+          "0x0018"
+        ],
+        [
+          "SetStunTime",
+          "0x0079"
+        ],
+        [
+          "GetParamRate",
+          "0x00BC",
+          "HP"
+        ],
+        [
+          "GetParamRate",
+          "0x00D1",
+          "SP"
+        ],
+        [
+          "SetStunTime",
+          "0x00F1"
+        ]
+      ]
+    }
+  },
+  "limits": [
+    "Grouped by caller frontier only.",
+    "No recorder execution count is asserted."
+  ]
+}

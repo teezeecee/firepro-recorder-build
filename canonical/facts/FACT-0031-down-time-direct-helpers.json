@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0031",
+  "claim": "In the matching retail DLL, the two direct helpers left opaque by FACT-0030 are closed as exact independent bodies. Player.SetStunTime (0x06004EDA) has one Int32 parameter named tm and an exact 27-byte body: it stores StunTime=tm, compares the stored value against zero with the emitted signed bge branch, clamps negative values to zero, then returns. MatchMisc.GetParamRate (0x06004975) has one Float32 parameter named prm, returns Float32, and has an exact 16-byte body: it computes (prm / 65535.0f) * 100.0f, stores the result in its local and returns it. FACT-0030 pins CalcDownTime calls to SetStunTime and two GetParamRate calls using HP and SP.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.SetStunTime token 0x06004EDA RVA 0x002E193F signature 20010108 parameter tm:Int32 code size 27 code sha256=f1cf347336997ae6ca3fc68973801bfad9697cf43326c86143a6cfa7cbb96074; exact body in canonical/witnesses/CAP-R6-001/down_time_direct_helpers.summary.json; prover tools/prove_down_time_direct_helpers.py",
+      "observation": "Exact matching-DLL SetStunTime body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.GetParamRate token 0x06004975 RVA 0x002B0D74 signature 00010c0c parameter prm:Float32 return Float32 code size 16 code sha256=60de3a243171244b6e09508e9a73f00d82aa76207ad3e8dd046322bc7b849e6c; exact body in canonical/witnesses/CAP-R6-001/down_time_direct_helpers.summary.json; prover tools/prove_down_time_direct_helpers.py",
+      "observation": "Exact matching-DLL GetParamRate body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0030 CalcDownTime",
+      "to": "Player.SetStunTime",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0030 pins Player.SetStunTime token 0x06004EDA at CalcDownTime IL+0x0018, 0x0079 and 0x00F1"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0030 CalcDownTime",
+      "to": "MatchMisc.GetParamRate",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0030 pins MatchMisc.GetParamRate token 0x06004975 at CalcDownTime IL+0x00BC with HP and IL+0x00D1 with SP"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The two helpers are grouped only because they close the direct helper frontier left by FACT-0030; no implementation similarity is asserted.",
+    "CAP-R6-001 contains no standalone PRE/POST events for these helpers.",
+    "Raw signed clamp behavior and Float32 constants are retained exactly without extra interpretation.",
+    "Later StunTime consumers and callers of GetParamRate outside the closed seam remain outside this fact."
+  ]
+}

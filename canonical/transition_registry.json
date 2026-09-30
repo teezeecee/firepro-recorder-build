@@ -535,6 +535,23 @@
         "venue/match setting authored data",
         "later down/stun state consumer closure"
       ]
+    },
+    {
+      "family_id": "DLL_DOWN_TIME_DIRECT_HELPERS_V1",
+      "fact_id": "FACT-0031",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.SetStunTime signed zero clamp and MatchMisc.GetParamRate Float32 normalization formula, closing the direct helper frontier left by FACT-0030.",
+      "summary": "canonical/witnesses/CAP-R6-001/down_time_direct_helpers.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "later StunTime consumer closure",
+        "other GetParamRate caller closure",
+        "authored state/data closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
