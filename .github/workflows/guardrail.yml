@@ -33,3 +33,8 @@ jobs:
         run: python tests/test_r6_init_animation_summary.py
       - name: InitAnimation prover syntax
         run: python -m py_compile tools/prove_init_animation_closure.py
+
+      - name: StartAnm closure summary
+        run: python tests/test_r6_start_anm_summary.py
+      - name: StartAnm prover syntax
+        run: python -m py_compile tools/prove_start_anm_closure.py
