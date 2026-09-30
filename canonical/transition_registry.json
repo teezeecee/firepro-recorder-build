@@ -31,6 +31,24 @@
         "matching DLL control-flow/ownership closure",
         "packed retail choreography/data closure"
       ]
+    },
+    {
+      "family_id": "R6_START_OPPONENT_DISPATCH_V1",
+      "fact_id": "FACT-0004",
+      "source_ids": [
+        "DLL-001",
+        "CAP-R6-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Exact matching-DLL StartOpponentAnm request dispatch and R6 parent/child ownership relationship at that method boundary.",
+      "summary": "canonical/witnesses/CAP-R6-001/start_opponent_dispatch.summary.json",
+      "index": "canonical/witnesses/CAP-R6-001/start_opponent_dispatch_lines.v1.zlib.b64",
+      "occurrence_count": 847,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "packed retail choreography/data closure",
+        "downstream damage/aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
