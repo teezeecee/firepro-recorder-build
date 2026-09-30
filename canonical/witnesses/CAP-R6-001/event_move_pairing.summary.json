@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "dataset_id": "R6_EVENT_MOVE_PAIRING_V1",
+  "source_id": "CAP-R6-001",
+  "definition": "For each move_trace data row, locate the event_trace row at the same tick with event seq exactly one lower; require the event row's recorded type string to equal FormAnimator and require all listed shared fields to be identical raw strings. No semantic meaning is assigned to type, method, skill, animation, bank, or state labels.",
+  "source_archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+  "members": {
+    "event_trace": {
+      "name": "2026-09-27_204320/event_trace.tsv",
+      "sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+      "crc32": "6255aa14",
+      "size_bytes": 153148151,
+      "data_rows": 840372
+    },
+    "move_trace": {
+      "name": "2026-09-27_204320/move_trace.tsv",
+      "sha256": "f424f69f1d357bc2635b38b5b01b279c904c5e0b266e24da26dd1a94c35839ee",
+      "crc32": "9ecdce27",
+      "size_bytes": 21749356,
+      "data_rows": 127016
+    }
+  },
+  "shared_fields": [
+    "AnmHostPlayer",
+    "BasicSkillID",
+    "HostSkillID",
+    "HostSkillNameEN",
+    "ResolvedSkillID",
+    "ResolvedSkillNameEN",
+    "ResolvedSkillNameJP",
+    "ResolvedSkillSource",
+    "SkillSlotID",
+    "anmType",
+    "args",
+    "bank",
+    "method",
+    "owner_label",
+    "owner_player_id",
+    "owner_slot",
+    "phase",
+    "tick",
+    "weaponIdx"
+  ],
+  "result": {
+    "event_rows_with_type_FormAnimator": 127016,
+    "move_rows": 127016,
+    "matched_pairs": 127016,
+    "missing_partner_rows": 0,
+    "shared_field_mismatch_rows": 0,
+    "seq_delta_counts": {
+      "1": 127016
+    },
+    "method_counts": {
+      "FormAnimator.InitAnimation": 10576,
+      "FormAnimator.PlayAnimationSE": 90916,
+      "FormAnimator.ReqBasicAnm": 11522,
+      "FormAnimator.ReqSlotAnm": 1434,
+      "FormAnimator.StartAnm": 10666,
+      "FormAnimator.StartOpponentAnm": 1694,
+      "FormAnimator.StartOpponentAnmM": 136,
+      "FormAnimator.StartSlotAnm_Immediately": 72
+    },
+    "pairing_digest_algorithm": "sha256 over UTF-8 compact-JSON lines [event_line,move_line,tick,event_seq,move_seq,<19 shared move-row field strings in shared_fields order>]",
+    "pairing_digest_sha256": "3d5524f74d69c87062b6155bdf65bd88c7d23854ca8db5ce8f4d0dc92169c6e5",
+    "first_pair": {
+      "event_line": 7,
+      "move_line": 2,
+      "tick": 61652,
+      "event_seq": 36,
+      "move_seq": 37,
+      "method": "FormAnimator.ReqBasicAnm"
+    },
+    "last_pair": {
+      "event_line": 840362,
+      "move_line": 127017,
+      "tick": 96470,
+      "event_seq": 2229432,
+      "move_seq": 2229433,
+      "method": "FormAnimator.PlayAnimationSE"
+    }
+  },
+  "promotion_scope": "RAW_OBSERVATION_ONLY",
+  "semantic_claims": [],
+  "limits": [
+    "This establishes only an exact raw-record relationship between two R6 trace members.",
+    "The recorded strings FormAnimator and method/skill/animation labels are not treated as semantic proof.",
+    "No gameplay behavior, control-flow ownership, authored choreography, timing rule, damage rule, or aftermath rule is promoted by this dataset."
+  ]
+}

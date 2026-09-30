@@ -1,0 +1,43 @@
+{
+  "fact_id": "FACT-0003",
+  "claim": "In verified R6 raw capture bytes, all 127016 move_trace data rows pair one-to-one with event_trace rows whose recorded type string is FormAnimator: same tick, event seq exactly one below move seq, and all 19 shared recorded fields identical as raw strings.",
+  "status": "OBSERVED_RAW_CAPTURE",
+  "evidence": [
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv lines 2-840373 sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; move_trace.tsv lines 2-127017 sha256=f424f69f1d357bc2635b38b5b01b279c904c5e0b266e24da26dd1a94c35839ee; deterministic pair digest sha256=3d5524f74d69c87062b6155bdf65bd88c7d23854ca8db5ce8f4d0dc92169c6e5",
+      "observation": "127016/127016 move rows matched, 0 missing partners, 0 shared-field mismatch rows, recorded seq delta +1 for all pairs."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "CAP-R6-001 raw archive bytes",
+      "to": "event_trace.tsv and move_trace.tsv member bytes",
+      "evidence": [
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "event_trace.tsv crc32=6255aa14 size=153148151 sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "move_trace.tsv crc32=9ecdce27 size=21749356 sha256=f424f69f1d357bc2635b38b5b01b279c904c5e0b266e24da26dd1a94c35839ee"
+        }
+      ]
+    },
+    {
+      "from": "R6 event_trace/move_trace raw rows",
+      "to": "R6_EVENT_MOVE_PAIRING_V1",
+      "evidence": [
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "canonical/witnesses/CAP-R6-001/event_move_pairing.summary.json; reproducibility tool tools/prove_r6_event_move_pairing.py; pair digest 3d5524f74d69c87062b6155bdf65bd88c7d23854ca8db5ce8f4d0dc92169c6e5"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact establishes only a raw trace-row relationship.",
+    "The strings FormAnimator, method names, skill labels, animation labels, bank values, and state labels are not assigned gameplay meaning by this fact.",
+    "No control-flow ownership, choreography, timing, damage, or aftermath rule is promoted."
+  ]
+}
