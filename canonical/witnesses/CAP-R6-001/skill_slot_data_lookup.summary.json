@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_SLOT_DATA_LOOKUP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "SkillSlotDataMan",
+      "method": "GetSkillSlotData",
+      "token": "0x0600116D",
+      "rva": "0x0006A234",
+      "signature_blob_hex": "000112870411870c",
+      "return_type": "SkillSlotData",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "slot",
+          "type": "SkillSlotEnum"
+        }
+      ],
+      "code_size": 25,
+      "code_sha256": "fd2a546fcbc44dcd97c1376e5f5ba1802555f5b7f8c21d8ab3c123b3cf7fc0f0",
+      "max_stack": 8,
+      "local_signature_token": null,
+      "local_count": 0,
+      "instruction_count": 12,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 0
+    },
+    "table_field": {
+      "name": "SkillSlotDataTbl",
+      "token": "0x04000EE7"
+    },
+    "exact_bounds": [
+      {
+        "condition": "slot < 0",
+        "opcode": "blt",
+        "effect": "return null"
+      },
+      {
+        "condition": "slot < 91 after nonnegative gate",
+        "opcode": "blt",
+        "effect": "return SkillSlotDataTbl[slot]"
+      },
+      {
+        "condition": "slot >= 91",
+        "effect": "return null"
+      }
+    ],
+    "raw_valid_range": {
+      "min_inclusive": 0,
+      "max_inclusive": 90
+    },
+    "fact_0024_bridge": {
+      "fact_id": "FACT-0024",
+      "caller": "MatchMisc.GetSkillSlotDamageMdf",
+      "call_il": "0x000E",
+      "callee_token": "0x0600116D",
+      "argument": "slot"
+    }
+  },
+  "limits": [
+    "Authored SkillSlotDataTbl contents are outside this record.",
+    "Raw slot values are preserved numerically without added labels."
+  ]
+}
