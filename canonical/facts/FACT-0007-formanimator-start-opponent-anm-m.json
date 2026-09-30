@@ -1,0 +1,68 @@
+{
+  "fact_id": "FACT-0007",
+  "claim": "In the matching retail DLL, FormAnimator.StartOpponentAnmM (MethodDef 0x06004E77) takes three Int32 parameters named en, anm_idx, and mp. It resolves arg1 through PlayerMan.GetPlObj and returns early if that selected Player is absent; separately resolves arg3 through PlayerMan.GetPlObj; invokes ReqBasicAnm(this.BasicSkillID, false, -1) on the arg1-selected Player animator; writes the host/current-skill/type/index/terrain/end fields on that selected Player/animator; applies the exact numeric terrain filter; conditionally copies arg3-selected Player X/Y position and direction when that second lookup is present; and calls DropWeapon on the arg1-selected Player. In verified R6 raw capture bytes, all 68 observed StartOpponentAnmM PRE calls pair with POST calls and are directly nested under InitAnimation. In all 68, raw arg2 is 2, raw arg3 equals the parent InitAnimation target, raw arg1 equals both the nested ReqBasicAnm owner_slot and direct DropWeapon owner_slot, and the DropWeapon snapshot records AnmHostPlayer equal to the StartOpponentAnmM host owner_slot. The three recorded slot integers host owner, arg1, and arg3 are pairwise distinct in all 68 observations.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.StartOpponentAnmM token 0x06004E77, RVA 0x002DAF40, signature blob 200301080808, code size 462, code sha256=e4d47db13c895255bbbd2d9d112427c93491b757a4bde1ee9543265724e1b566; exact field stores, lookups, numeric branches, optional position/direction copy, and DropWeapon call recorded in canonical/witnesses/CAP-R6-001/start_opponent_anm_m.summary.json",
+      "observation": "Exact matching-DLL StartOpponentAnmM body and caller surface."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; deterministic 68-record raw-line tuple digest sha256=2c61df5bd859ed15755a4929bd3f403691667423ee33bb4d8520e86e12153713; summary canonical/witnesses/CAP-R6-001/start_opponent_anm_m.summary.json; prover tools/prove_start_opponent_anm_m_closure.py",
+      "observation": "68 matched StartOpponentAnmM PRE/POST executions with exact InitAnimation parent, nested ReqBasicAnm, DropWeapon, raw-argument, owner-slot, and host-field relationships."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "StartOpponentAnmM arg1",
+      "to": "selected Player and nested ReqBasicAnm/DropWeapon receiver",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "StartOpponentAnmM IL+0x0000..0x0017 resolves arg1 through PlayerMan.GetPlObj token 0x06005065 and early-returns when absent; IL+0x002F..0x003D calls selected.animator.ReqBasicAnm token 0x06004E6F; IL+0x01C7..0x01C8 calls selected.Player.DropWeapon token 0x06004EDF"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "68/68 raw records under digest 2c61df5bd859ed15755a4929bd3f403691667423ee33bb4d8520e86e12153713 have raw arg1 == nested ReqBasicAnm owner_slot == direct DropWeapon owner_slot"
+        }
+      ]
+    },
+    {
+      "from": "StartOpponentAnmM host plObj.PlIdx",
+      "to": "selected Player.animator.AnmHostPlayer",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "StartOpponentAnmM IL+0x0066..0x0077 loads this.plObj.PlIdx field 0x04005FA6 and stores selected.animator.AnmHostPlayer field 0x04005ED7"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "68/68 direct DropWeapon PRE snapshots after the assignment record AnmHostPlayer == StartOpponentAnmM owner_slot; in 48/68 cases this differs from the immediately preceding nested ReqBasicAnm POST value"
+        }
+      ]
+    },
+    {
+      "from": "StartOpponentAnmM arg3",
+      "to": "second Player lookup and observed InitAnimation parent target",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "StartOpponentAnmM IL+0x0018..0x0023 resolves arg3 through PlayerMan.GetPlObj token 0x06005065; when non-null, IL+0x018F..0x01C2 copies that Player PlPos.x, PlPos.y, and PlDir to the arg1-selected Player"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "68/68 observed calls have raw arg3 == direct parent InitAnimation recorded target"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The matching DLL has additional Player-side call sites to StartOpponentAnmM, but R6 observed only InitAnimation-parented executions; those other caller paths remain unclosed.",
+    "The recorder target field on nested ReqBasicAnm is not treated as arg3: it differs in 14/68 observations.",
+    "No semantic participant-role labels are assigned to en, anm_idx, mp, owner_slot, target, or the three raw slot integers.",
+    "The arg3 position/direction copy is DLL-proven only at this gate because event_trace has no direct coordinate/direction witness at that boundary.",
+    "Packed choreography, animation-bank semantics, damage, and aftermath remain unclosed."
+  ]
+}
