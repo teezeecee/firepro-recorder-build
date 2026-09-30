@@ -111,7 +111,7 @@ def verify_dll(path):
             raise ProofError(f"ChangeState literal {call_off:#x}")
         tok(pre,call_off,0x6F,0x06004EAE,f"ChangeState {call_off:#x}")
 
-    tok(pre,0x041D+6,0x6F,0x06004ECD,"AddBP")
+    tok(pre,0x0428,0x6F,0x06004ECD,"AddBP")
     if struct.unpack_from("<f",pre,0x0424)[0]!=-12288.0: raise ProofError("AddBP constant")
     tok(pre,0x0451,0x6F,0x06004ED8,"SetDownTime")
     tok(pre,0x0472,0x6F,0x06004F1E,"Poisoned")
