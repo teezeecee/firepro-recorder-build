@@ -1,0 +1,63 @@
+{
+  "fact_id": "FACT-0008",
+  "claim": "In the matching retail DLL, FormAnimator.StartSlotAnm_Immediately (0x06004E71) has parameters SkillSlotEnum skill_slot, Int32 anm_bank, Boolean rev, and Int32 def_pl_idx. Its 38-byte body calls ReqSlotAnm(skill_slot, rev, def_pl_idx, true), stores this.plObj.GetSkillData_Equip(skill_slot, 0) into CurrentSkill, then calls StartAnm(anm_bank). In verified R6 raw capture bytes, all 36 observed PRE calls pair with POST calls and contain the direct child sequence ReqSlotAnm then StartAnm. In all 36, the child ReqSlotAnm arguments equal parent args 1, 3, and 4 plus literal true; the child StartAnm argument equals parent arg2; parent arg4 equals both the parent recorded target and child ReqSlotAnm recorded target; and the ReqSlotAnm POST resolved-skill record carries unchanged into the StartAnm PRE record and StartSlotAnm_Immediately POST record.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.StartSlotAnm_Immediately token 0x06004E71 RVA 0x002DA296 signature blob 20040111870c080208 code size 38 code sha256=091053ea365ad855884dd6f93314dd5e1de23bda1c848c291fd2df4d8776d0b2; IL+0x0000..0x000A call ReqSlotAnm 0x06004E70; IL+0x000B..0x001D call Player.GetSkillData_Equip 0x06004EB2 and store CurrentSkill 0x04005ED0; IL+0x001E..0x0024 call StartAnm 0x06004E75",
+      "observation": "Exact matching-DLL body and metadata."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; deterministic 36-record witness digest sha256=deafacce031d382aacfde3a1fdb8c7f03bd1bcc8559a70156d613a0d23c6a9a5; summary canonical/witnesses/CAP-R6-001/start_slot_anm_immediate.summary.json; prover tools/prove_start_slot_anm_immediate_closure.py",
+      "observation": "36 matched StartSlotAnm_Immediately executions with exact parent, ReqSlotAnm child, StartAnm child, raw-argument, target, and resolved-skill relationships."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "StartSlotAnm_Immediately args 1,3,4",
+      "to": "ReqSlotAnm args 1,2,3 plus true",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IL+0x0000 ldarg.0; +0x0001 ldarg.1; +0x0002 ldarg.3; +0x0003 ldarg.s 4; +0x0005 ldc.i4.1; +0x0006 call ReqSlotAnm 0x06004E70"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "36/36 child ReqSlotAnm raw argument tuples match parent args 1,3,4 and literal True"
+        }
+      ]
+    },
+    {
+      "from": "StartSlotAnm_Immediately arg1",
+      "to": "CurrentSkill lookup input",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IL+0x000B..0x001D loads this.plObj, arg1, ldc.i4.0, calls GetSkillData_Equip 0x06004EB2, stores CurrentSkill 0x04005ED0"
+        }
+      ]
+    },
+    {
+      "from": "StartSlotAnm_Immediately arg2",
+      "to": "StartAnm arg1",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IL+0x001E ldarg.0; +0x001F ldarg.2; +0x0020 call StartAnm 0x06004E75"
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "36/36 child StartAnm raw arguments equal parent arg2"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "No retail caller is assigned to the four R6 ROOT observations.",
+    "No semantic meaning beyond exact metadata identity is assigned to SkillSlotEnum values or recorded slot/bank names.",
+    "The object identity returned by GetSkillData_Equip is DLL-proven as the CurrentSkill assignment; R6 corroborates record continuity, not the object reference itself.",
+    "Packed choreography, animation-bank semantics, damage, and aftermath remain unclosed."
+  ]
+}
