@@ -1,6 +1,23 @@
 {
   "schema_version": 1,
   "runtime_unlocked": false,
-  "families": [],
-  "note": "Empty by design. Transition families are added only after raw evidence re-ingestion and edge-by-edge provenance closure."
+  "families": [
+    {
+      "family_id": "R6_TICK_STATE_EDGES_V1",
+      "fact_id": "FACT-0002",
+      "source_id": "CAP-R6-001",
+      "scope": "RAW_OBSERVATION_ONLY",
+      "definition": "Consecutive sampled tick_trace rows for one stable player_slot where the recorder-emitted State string changes.",
+      "index": "canonical/witnesses/CAP-R6-001/tick_state_edges.index.json",
+      "summary": "canonical/witnesses/CAP-R6-001/tick_state_edges.summary.json",
+      "occurrence_count": 5977,
+      "distinct_edge_count": 105,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "matching DLL control-flow/ownership closure",
+        "packed retail choreography/data closure"
+      ]
+    }
+  ],
+  "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
 }
