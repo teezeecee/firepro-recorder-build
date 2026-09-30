@@ -5,7 +5,7 @@
   "evidence": [
     {
       "source_id": "CAP-R6-001",
-      "locator": "2026-09-27_204320/tick_trace.tsv lines 2-278553; member sha256=4ec94be819e7a3f786cad044d8cfd0534d6c1b111e87e240b67320bdd91ad2d9; derived index canonical/witnesses/CAP-R6-001/tick_state_edges.index.json.zlib.b64 sha256=dd19d77762fc466f50b271912f37ea923dbc6f43b75204f6105d880298b55e53; decoded compact-JSON sha256=c83223175b25cc890c8706d462495243fd03adf4b1f268294a858493a928ffff",
+      "locator": "2026-09-27_204320/tick_trace.tsv lines 2-278553; member sha256=4ec94be819e7a3f786cad044d8cfd0534d6c1b111e87e240b67320bdd91ad2d9; six ordered derived witness parts tick_state_edges.index.part01.b64 through part06.b64 reconstruct artifact sha256=dd19d77762fc466f50b271912f37ea923dbc6f43b75204f6105d880298b55e53; decoded compact-JSON sha256=c83223175b25cc890c8706d462495243fd03adf4b1f268294a858493a928ffff",
       "observation": "Deterministic same-player consecutive-row comparison emitted 5977 State-string changes across 105 distinct ordered pairs."
     }
   ],
@@ -26,7 +26,7 @@
       "evidence": [
         {
           "source_id": "CAP-R6-001",
-          "locator": "canonical/witnesses/CAP-R6-001/tick_state_edges.index.json.zlib.b64; base64(zlib(compact-json)); each occurrence stores player_slot plus exact before/after raw line locators"
+          "locator": "canonical/witnesses/CAP-R6-001/tick_state_edges.summary.json identifies six ordered base64 parts; each decoded occurrence stores player_slot plus exact before/after raw line locators; reconstructed artifact sha256=dd19d77762fc466f50b271912f37ea923dbc6f43b75204f6105d880298b55e53"
         }
       ]
     }
