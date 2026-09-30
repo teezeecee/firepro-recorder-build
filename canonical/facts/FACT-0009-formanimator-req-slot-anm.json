@@ -73,7 +73,7 @@
     }
   ],
   "limits": [
-    "No semantic meaning is inferred from method/field/enum names or numeric slot values.",
+    "Method/field/enum names and numeric slot values are retained only as exact recorded or CLR identifiers; no broader gameplay meaning is assigned.",
     "The recorder-root 419 calls are not assigned to specific DLL callers.",
     "The NormalAnm string is correlated only to the literal-10 ChangeState call boundary observed here, not globally promoted as an enum mapping.",
     "Several downstream fields and services are absent from event_trace and therefore remain DLL-only evidence at this gate.",
