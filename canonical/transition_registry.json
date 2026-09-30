@@ -226,6 +226,25 @@
         "animation-bank semantics closure",
         "damage/aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_UPDATE_ANIMATION_FULL_V1",
+      "fact_id": "FACT-0014",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL full UpdateAnimation form-progression, positional-offset, flag-effect, ring, damage/AI, and timer control flow, extending the reqAnmInit gate already pinned in FACT-0005.",
+      "summary": "canonical/witnesses/CAP-R6-001/update_animation_full.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "ProcessAnmLoop internal closure",
+        "GetCurrentFormDispInfo internal closure",
+        "PlayAnimationSE internal closure",
+        "packed retail form/choreography data closure",
+        "damage/aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

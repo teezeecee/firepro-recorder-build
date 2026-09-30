@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0014",
+  "claim": "In the matching retail DLL, FormAnimator.UpdateAnimation (0x06004E7E) is a parameterless 738-byte method that resolves the current target Player, returns immediately when isAnmPause is set, calls ProcessFoxSleep, consumes reqAnmInit by calling InitAnimation and clearing reqAnmInit, and returns when CurrentSkill or CurrentSkill.anmData[CurrentAnmIdx] is absent. It then controls form progression: when the display duration is exhausted at the final form it checks PlayerStatusData.anmLoop and either returns or resets currentFormIdx to -1; it sets isAnmSync=1; when FormDispDuration is zero it calls ProcessAnmLoop, scans forward for the next formDispList entry whose dispFrm is nonzero, loads GetCurrentFormDispInfo, computes FormDispDuration=dispFrm+FrameWait, applies the exact centerPos-derived PlPos offsets and direction sign rule, stores FormRev=flags, and calls PlayAnimationSE. Exact flag masks then control AnmHostPlayer reassignment (4), ApplyDamage plus target CalcDownTime (32), and EndPriAct plus ApplySuicideDamage plus host CalcDownTime (16). When Ring.inst is present it calls ShakeRing with info.ringVibration, a Boolean derived from Zone != 1, and plObj.PlPos; it then calls ControlCheerSE. Finally it decrements AnmStopTimer when nonzero, otherwise decrements FormDispDuration, and returns.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "FormAnimator.UpdateAnimation token 0x06004E7E RVA 0x002DB890 signature 200001 code size 738 code sha256=1e18c732ea0674fae8fdecc0b0d06fc976ec4494df663156925e99c4485b4c00; exact guards, form scan, position arithmetic, flag branches, call sites, ring call and timer tail are recorded in canonical/witnesses/CAP-R6-001/update_animation_full.summary.json; prover tools/prove_update_animation_full.py",
+      "observation": "Exact matching-DLL UpdateAnimation body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "reqAnmInit",
+      "to": "InitAnimation and reqAnmInit clear",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdateAnimation IL+0x002E reads FormAnimator.reqAnmInit 0x04005EEC; IL+0x0039 calls InitAnimation 0x06004E73; IL+0x0040 stores zero back to reqAnmInit. This gate is also recorded in FACT-0005."
+        }
+      ]
+    },
+    {
+      "from": "current form/display fields",
+      "to": "next form selection and FormDispDuration",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdateAnimation IL+0x007C..0x014C tests FormDispDuration/currentFormIdx/formNum, optionally resets currentFormIdx, calls ProcessAnmLoop 0x06004E74, scans formDispList.dispFrm, calls GetCurrentFormDispInfo 0x06004E7C, then stores dispFrm+FrameWait into FormDispDuration"
+        }
+      ]
+    },
+    {
+      "from": "current FormDispInfo centerPos/flags",
+      "to": "position, host, ring, damage and AI side effects",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdateAnimation IL+0x0151..0x02AA applies centerPos x/y with raw float 0.0208333320915699, stores FormRev=flags, calls PlayAnimationSE, tests flags masks 4/32/16, calls Ring.ShakeRing, MatchMisc.ApplyDamage, Player.CalcDownTime, PlayerController_AI.EndPriAct and Player.ApplySuicideDamage at the exact offsets listed in update_animation_full.summary.json"
+        }
+      ]
+    },
+    {
+      "from": "animation timers",
+      "to": "per-call decrement",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdateAnimation IL+0x02B5..0x02E0: if AnmStopTimer != 0 decrement AnmStopTimer; otherwise decrement FormDispDuration; return at IL+0x02E1"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "UpdateAnimation is not a standalone R6 recorder event, so this fact uses matching-DLL evidence.",
+    "Called helper internals are outside this fact unless separately closed.",
+    "Raw numeric masks and constants are preserved without additional gameplay interpretation.",
+    "Packed choreography, authored form data, damage meaning, and later state aftermath remain outside this fact."
+  ]
+}
