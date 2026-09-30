@@ -408,6 +408,24 @@
         "semantic interpretation of returned raw indices",
         "downstream field/state aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_MATCHMISC_APPLY_DAMAGE_MODIFIERS_V1",
+      "fact_id": "FACT-0024",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL GetSkillSlotDamageMdf and GetExchangeOfStrikingDamageMdf Float32 helper bodies feeding the two pre-split ApplyDamage modifier locals.",
+      "summary": "canonical/witnesses/CAP-R6-001/apply_damage_modifiers.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "SkillSlotDataMan.GetSkillSlotData internal closure",
+        "authored SkillSlotData contents",
+        "MemberRef Abs implementation",
+        "downstream authored damage-table closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
