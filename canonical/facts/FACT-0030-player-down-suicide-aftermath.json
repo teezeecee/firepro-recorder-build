@@ -1,0 +1,66 @@
+{
+  "fact_id": "FACT-0030",
+  "claim": "In the matching retail DLL, the two parameterless Player aftermath methods called directly by FormAnimator.UpdateAnimation are closed as one caller-connected seam. Player.CalcDownTime (0x06004F0D) has an exact 422-byte body. It loads Ring.venueSetting, conditionally clears stun time, skips its primary calculation when DownTime or isDisableUpdateDownTime is already nonzero, otherwise computes LastDamage + 65535 - HP, applies exact standing/non-standing threshold branches, converts through division by 256 into SetDownTime, then applies the exact ringKind-2 HP/SP-rate branch, stores isDisableUpdateDownTime=1, applies the raw spSkillFlags mask-2 HP/SP window that can divide DownTime by 8, and finally applies exact is10CountKO and isS1Rule overrides. Player.ApplySuicideDamage (0x06004F0E) has an exact 247-byte branchless body. It combines mHpDamageTbl[GetHealth(HP)/2], mFailureDamageRateTbl[fightStyle], raw factor 256 and CurrentSkill suicideDamage fields; applies negative HP/SP/Neck/Arm/Waist/Leg mutations through already-closed Player helpers; stores LastDamage from the HP scalar, clears KoLastDamage, then clears isStarPeformance and isS1MoveRecieved. FACT-0014 pins target CalcDownTime after raw form flag 32 and host ApplySuicideDamage followed by host CalcDownTime after raw form flag 16.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.CalcDownTime token 0x06004F0D RVA 0x002E6CD0 signature 200001 code size 422 code sha256=f02235b113abcab029951822052639084b3692e7924ae6c3b9ac85e4c86a3a88; exact body in canonical/witnesses/CAP-R6-001/player_down_suicide_aftermath.summary.json; prover tools/prove_player_down_suicide_aftermath.py",
+      "observation": "Exact matching-DLL CalcDownTime body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.ApplySuicideDamage token 0x06004F0E RVA 0x002E6E84 signature 200001 code size 247 code sha256=ab7e73a9dbfa03ab3a998354ee2482425c0cce67a94c2376bb75edb06a5c7446; exact body in canonical/witnesses/CAP-R6-001/player_down_suicide_aftermath.summary.json; prover tools/prove_player_down_suicide_aftermath.py",
+      "observation": "Exact matching-DLL ApplySuicideDamage body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0014 UpdateAnimation raw flag-32 branch",
+      "to": "target.Player.CalcDownTime()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0014 pins UpdateAnimation IL+0x0270 call token 0x06004F0D after ApplyDamage and target existence check"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0014 UpdateAnimation raw flag-16 branch",
+      "to": "host ApplySuicideDamage() then host CalcDownTime()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0014 pins UpdateAnimation IL+0x029A call Player.ApplySuicideDamage token 0x06004F0E followed by IL+0x02A5 Player.CalcDownTime token 0x06004F0D"
+        }
+      ]
+    },
+    {
+      "from": "ApplySuicideDamage outputs",
+      "to": "FACT-0027/0029 closed mutation helpers",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ApplySuicideDamage calls AddHP/AddSP/AddHP_Neck/Arm/Waist/Leg and SetLastDamage; those exact callees are closed by FACT-0027 and FACT-0029"
+        }
+      ]
+    },
+    {
+      "from": "CalcDownTime down-time writes",
+      "to": "FACT-0029 Player.SetDownTime",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CalcDownTime calls Player.SetDownTime token 0x06004ED8 at IL+0x00A5, 0x0101, 0x0153, 0x0182 and 0x01A0; FACT-0029 closes that exact helper"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The two methods are grouped by their direct UpdateAnimation aftermath seam, not by implementation similarity.",
+    "CAP-R6-001 contains no standalone PRE/POST events for either method.",
+    "Player.SetStunTime and MatchMisc.GetParamRate internals are outside this fact unless separately closed.",
+    "Authored damage tables, suicideDamage SkillData, venue/match settings and later consumers remain outside this fact.",
+    "Raw branch opcodes, thresholds and constants are retained exactly without additional gameplay interpretation."
+  ]
+}
