@@ -462,6 +462,24 @@
         "authored SkillData contents",
         "shared ApplyDamage tail aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_GAUGE_MUTATION_HELPERS_V1",
+      "fact_id": "FACT-0027",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player HP/BP/SP Add/Set helpers plus four limb Add helpers: shared isImmortal gate, raw 0..65535 Float32 clamp, optional MatchUI gauge dispatch for HP/BP/SP, and caller bridges from FACT-0020 and FACT-0026.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_gauge_mutation_helpers.summary.json",
+      "dll_method_count": 10,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "MatchUI gauge method internals",
+        "caller-authored damage magnitude closure",
+        "remaining SP recovery/consumption helper closure",
+        "later field/state aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
