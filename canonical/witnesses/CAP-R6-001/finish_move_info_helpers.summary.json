@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_FINISH_MOVE_INFO_HELPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "fields": [
+      {
+        "name": "category",
+        "token": "0x040056CB"
+      },
+      {
+        "name": "skillID",
+        "token": "0x040056CC"
+      },
+      {
+        "name": "plIdx",
+        "token": "0x040056CD"
+      },
+      {
+        "name": "skillOwnerPlIdx",
+        "token": "0x040056CE"
+      }
+    ],
+    "methods": [
+      {
+        "type": "FinishMoveInfo",
+        "name": "Clear",
+        "token": "0x060048D1",
+        "rva": "0x002A4DFD",
+        "signature_blob_hex": "200001",
+        "return_type": "Void",
+        "parameters": [],
+        "code_size": 29,
+        "code_sha256": "12183b4682dd4873916a8e3a0305c01ed4c53de737a481b94c7f3c47ee46c1c5",
+        "max_stack": 8,
+        "local_signature_token": null,
+        "local_count": 0,
+        "instruction_count": 13,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0
+      },
+      {
+        "type": "FinishMoveInfo",
+        "name": "Set",
+        "token": "0x060048D2",
+        "rva": "0x002A4E1B",
+        "signature_blob_hex": "20010112a3ac",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "fm",
+            "type": "FinishMoveInfo"
+          }
+        ],
+        "code_size": 49,
+        "code_sha256": "f5ede8840d753fddbc5e58b18de45f8b9f3afefc5efcd4f1fd3666a6bd9f2476",
+        "max_stack": 8,
+        "local_signature_token": null,
+        "local_count": 0,
+        "instruction_count": 17,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0
+      }
+    ],
+    "clear": {
+      "raw_reset_value": -1,
+      "field_order": [
+        "category",
+        "skillID",
+        "plIdx",
+        "skillOwnerPlIdx"
+      ]
+    },
+    "set": {
+      "effect": "copy fm fields into this",
+      "field_order": [
+        "category",
+        "skillID",
+        "plIdx",
+        "skillOwnerPlIdx"
+      ]
+    },
+    "apply_damage_bridge": {
+      "fact_id": "FACT-0020",
+      "caller": "MatchMisc.ApplyDamage",
+      "calls": [
+        {
+          "method": "Set",
+          "il": "0x05CD"
+        },
+        {
+          "method": "Set",
+          "il": "0x05E0"
+        },
+        {
+          "method": "Clear",
+          "il": "0x060A"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "No standalone recorder event for these helpers is used in this record.",
+    "Downstream consumers of the four fields remain outside this record."
+  ]
+}

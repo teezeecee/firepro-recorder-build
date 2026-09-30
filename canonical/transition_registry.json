@@ -586,6 +586,23 @@
         "player-facing meaning of raw skillType values",
         "downstream S1 state aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_FINISH_MOVE_INFO_HELPERS_V1",
+      "fact_id": "FACT-0034",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL FinishMoveInfo.Clear four-field -1 reset and FinishMoveInfo.Set four-field copy helpers used by the FACT-0020 ApplyDamage shared tail.",
+      "summary": "canonical/witnesses/CAP-R6-001/finish_move_info_helpers.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "downstream result/presentation consumers of FinishMoveInfo fields",
+        "authored category/skill provenance",
+        "later match-result aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
