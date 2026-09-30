@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0019",
+  "claim": "In the matching retail DLL, Player.ControlCheerSE (0x06004EBF) is a parameterless 225-byte method. It returns unless MatchMain.inst converts true and the current FormDispInfo flags contain raw bit mask 2. It then loads an integer level from Player.cheer_lv_tbl at animator.CurrentSkill.cheerLevel. If isCriticalMove is set it adds 2; otherwise if isSpecialMove is set it adds 1; otherwise, when the target Player exists, it adds (target wrestlerRank - host wrestlerRank) / 2 using integer arithmetic. It returns when the resulting level is zero or less, otherwise subtracts one and caps the result at 4. When Audience.inst is non-null it calls Audience.PlayLoopCheerVoice(level,false) followed by Audience.PlayCheerVoice(5,level), then returns. The already-closed FormAnimator.UpdateAnimation body calls this exact method at IL+0x02B0, and ControlCheerSE calls the already-closed GetCurrentFormDispInfo helper at IL+0x0018.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.ControlCheerSE token 0x06004EBF RVA 0x002DED38 signature 200001 code size 225 code sha256=9f48dfc674cd2b0e1bfde5d807f76c9410dfadf6bf13d0e3fe8a1da481dcf6ce; exact gate/arithmetic/call offsets are recorded in canonical/witnesses/CAP-R6-001/control_cheer_se.summary.json; prover tools/prove_control_cheer_se.py",
+      "observation": "Exact matching-DLL method body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FormAnimator.UpdateAnimation",
+      "to": "Player.ControlCheerSE",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0014 pins UpdateAnimation token 0x06004E7E; IL+0x02B0 calls Player.ControlCheerSE token 0x06004EBF"
+        }
+      ]
+    },
+    {
+      "from": "ControlCheerSE current form",
+      "to": "raw flag-2 gate",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ControlCheerSE IL+0x0012..0x0026 loads this.animator, calls GetCurrentFormDispInfo token 0x06004E7C, loads FormDispInfo.flags token 0x04007CE6, ANDs raw mask 2, and returns when zero"
+        }
+      ]
+    },
+    {
+      "from": "raw cheer level inputs",
+      "to": "final capped level",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ControlCheerSE IL+0x002C..0x00B7 loads Player.cheer_lv_tbl[CurrentSkill.cheerLevel], applies +2 critical / +1 special / otherwise target-host wrestlerRank delta divided by 2, requires result >0, subtracts 1, caps at 4"
+        }
+      ]
+    },
+    {
+      "from": "final capped level",
+      "to": "Audience calls",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ControlCheerSE IL+0x00B8..0x00DF checks Audience.inst != null via MemberRef 0x0A00000F, calls PlayLoopCheerVoice token 0x060047DA with level,false, then PlayCheerVoice token 0x060047D9 with literal 5 and level"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "CAP-R6-001 has no standalone ControlCheerSE event, so this fact uses matching-DLL evidence.",
+    "The cheer-level lookup table contents and authored skill/form data are outside this fact.",
+    "Numeric masks/levels/ranks are retained exactly without additional gameplay interpretation.",
+    "Audience method internals are outside this fact."
+  ]
+}

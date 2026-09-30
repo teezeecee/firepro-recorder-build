@@ -98,3 +98,8 @@ jobs:
         run: python tests/test_process_fox_sleep_summary.py
       - name: ProcessFoxSleep prover syntax
         run: python -m py_compile tools/prove_process_fox_sleep.py
+
+      - name: ControlCheerSE summary
+        run: python tests/test_control_cheer_se_summary.py
+      - name: ControlCheerSE prover syntax
+        run: python -m py_compile tools/prove_control_cheer_se.py

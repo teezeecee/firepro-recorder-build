@@ -316,6 +316,24 @@
         "authored BasicSkillID/data closure",
         "later field/state aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_CONTROL_CHEER_SE_V1",
+      "fact_id": "FACT-0019",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.ControlCheerSE form-flag gate, raw cheer-level lookup/arithmetic, target-rank adjustment, cap, and Audience dispatch reached directly from UpdateAnimation.",
+      "summary": "canonical/witnesses/CAP-R6-001/control_cheer_se.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Player.cheer_lv_tbl authored contents",
+        "authored skill/form cheer data closure",
+        "Audience method internals",
+        "later state aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
