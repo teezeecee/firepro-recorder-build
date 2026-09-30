@@ -372,6 +372,25 @@
         "authored MatchData/WrestlerParam/SkillData closure",
         "later field/state aftermath closure"
       ]
+    },
+    {
+      "family_id": "DLL_MATCHMISC_CRITICAL_CHECK_V1",
+      "fact_id": "FACT-0022",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMisc.CriticalCheck entry/eligibility gates, critical-type table factors, raw flag modifiers, CriticalRate adjustment, S1-rule branch, and final MatchRandom.Range comparison reached from the FACT-0020 ApplyDamage critical split.",
+      "summary": "canonical/witnesses/CAP-R6-001/critical_check.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Critical_CheckTbl authored contents",
+        "MatchData critical-table authored contents",
+        "GetHealth internal closure",
+        "SkillDataMan.IsS1Waza internal closure",
+        "MatchRandom.Range internal closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
