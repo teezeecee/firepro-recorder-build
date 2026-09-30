@@ -158,3 +158,8 @@ jobs:
         run: python tests/test_player_down_suicide_aftermath_summary.py
       - name: Player down/suicide aftermath prover syntax
         run: python -m py_compile tools/prove_player_down_suicide_aftermath.py
+
+      - name: Stun/param-rate helpers summary
+        run: python tests/test_stun_param_rate_helpers_summary.py
+      - name: Stun/param-rate helpers prover syntax
+        run: python -m py_compile tools/prove_stun_param_rate_helpers.py

@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_STUN_PARAM_RATE_HELPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "Player",
+        "name": "SetStunTime",
+        "token": "0x06004EDA",
+        "rva": "0x002E193F",
+        "signature_blob_hex": "20010108",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "tm",
+            "type": "Int32"
+          }
+        ],
+        "code_size": 27,
+        "code_sha256": "f1cf347336997ae6ca3fc68973801bfad9697cf43326c86143a6cfa7cbb96074",
+        "max_stack": 8,
+        "local_signature_token": null,
+        "local_count": 0,
+        "instruction_count": 11,
+        "branch_instruction_count": 1,
+        "call_instruction_count": 0
+      },
+      {
+        "type": "MatchMisc",
+        "name": "GetParamRate",
+        "token": "0x06004975",
+        "rva": "0x002B0D74",
+        "signature_blob_hex": "00010c0c",
+        "return_type": "Float32",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "prm",
+            "type": "Float32"
+          }
+        ],
+        "code_size": 16,
+        "code_sha256": "60de3a243171244b6e09508e9a73f00d82aa76207ad3e8dd046322bc7b849e6c",
+        "max_stack": 2,
+        "local_signature_token": "0x1100001F",
+        "local_count": 1,
+        "instruction_count": 8,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0
+      }
+    ],
+    "set_stun_time": {
+      "field": "Player.StunTime",
+      "field_token": "0x04005FD0",
+      "exact_sequence": [
+        "this.StunTime = tm",
+        "load this.StunTime and raw Int32 zero",
+        "signed bge to return when StunTime >= 0",
+        "otherwise this.StunTime = 0",
+        "return"
+      ],
+      "comparison_opcode": "bge",
+      "raw_min": 0
+    },
+    "get_param_rate": {
+      "exact_expression": "prm / 65535.0f * 100.0f",
+      "raw_divisor": 65535,
+      "raw_multiplier": 100,
+      "exact_sequence": [
+        "ldarg.0",
+        "ldc.r4 65535.0",
+        "div",
+        "ldc.r4 100.0",
+        "mul",
+        "stloc.0",
+        "ldloc.0",
+        "ret"
+      ]
+    },
+    "fact_0030_bridge": {
+      "fact_id": "FACT-0030",
+      "caller": "Player.CalcDownTime",
+      "caller_token": "0x06004F0D",
+      "set_stun_time_calls": [
+        {
+          "il": "0x0018",
+          "argument": "0"
+        },
+        {
+          "il": "0x0079",
+          "argument": "local2"
+        },
+        {
+          "il": "0x00F1",
+          "argument": "960"
+        }
+      ],
+      "get_param_rate_calls": [
+        {
+          "il": "0x00BC",
+          "argument": "this.HP",
+          "field_token": "0x04005FBF"
+        },
+        {
+          "il": "0x00D1",
+          "argument": "this.SP",
+          "field_token": "0x04005FC0"
+        }
+      ],
+      "caller_comparison_threshold": 0.4000000059604645
+    }
+  },
+  "r6_observation_note": "CAP-R6-001 contains no standalone SetStunTime or GetParamRate PRE/POST event. This record uses exact matching-DLL bodies and the already-pinned FACT-0030 caller boundary.",
+  "limits": [
+    "Later consumers of StunTime are outside this record.",
+    "The raw HP/SP values supplied by CalcDownTime and later state aftermath are outside this record."
+  ]
+}
