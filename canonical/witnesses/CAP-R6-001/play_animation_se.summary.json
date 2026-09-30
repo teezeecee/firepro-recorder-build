@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_R6_PLAY_ANIMATION_SE_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "FormAnimator",
+      "method": "PlayAnimationSE",
+      "token": "0x06004E7D",
+      "rva": "0x002DB718",
+      "method_flags": "0x0081",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 364,
+      "code_sha256": "ba7c6da321b3f5632756459a8a788abd92609da056981078f5fc7bbe04824085",
+      "local_signature_token": "0x11001053",
+      "local_signature_blob_hex": "070512a9cc11aa0c12aa040c08",
+      "locals": [
+        "class FormDispInfo",
+        "valuetype MatchSEEnum",
+        "class MatchSEParam",
+        "Float32",
+        "Int32"
+      ]
+    },
+    "prefix": [
+      "info = GetCurrentFormDispInfo()",
+      "seID = info.seID",
+      "if seID == 0: return",
+      "param = MatchSEData.GetMatchSEParam(seID)",
+      "if param.shakeMatLevel > 0 and Ring.inst converts true: Ring.ShakeMat(param.shakeMatLevel, plObj.PlPos)",
+      "local volume = 1.0f"
+    ],
+    "dispatch": {
+      "operation": "switch on seID - 60 for four targets; otherwise test seID == 1, then seID == 6, then generic PlayMatchSE",
+      "numeric_cases": [
+        {
+          "seID": 60,
+          "target_il": "0x0134",
+          "effects": [
+            "plObj.ThrowInWeapon()"
+          ]
+        },
+        {
+          "seID": 61,
+          "target_il": "0x011A",
+          "effects": [
+            "plObj.Process_ShakeCage()",
+            "Ring.inst.ShakeCage()"
+          ]
+        },
+        {
+          "seID": 62,
+          "target_il": "0x0104",
+          "effects": [
+            "plObj.ReqRopeAction(4, 0.5f)"
+          ]
+        },
+        {
+          "seID": 63,
+          "target_il": "0x0098",
+          "effects": [
+            "if WeaponMan.GetInst() != null: idx = WeaponMan.inst.FindWeapon(plObj.PlPos.x, plObj.PlPos.y, 1.0f)",
+            "if idx != -1: plObj.EquipWeapon(idx); plObj.plCont_AI.SetAIActCounter(1)"
+          ]
+        },
+        {
+          "seID": 1,
+          "target_il": "0x0088",
+          "effects": [
+            "plObj.PlayWrestlerVoice()"
+          ]
+        },
+        {
+          "seID": 6,
+          "target_il": "0x0144",
+          "effects": [
+            "plObj.PlayStepSE()"
+          ]
+        }
+      ],
+      "generic_effect": "MatchMisc.PlayMatchSE(seID, 1.0f, plObj.PlIdx)"
+    },
+    "exact_call_sites": [
+      {
+        "il": "0x0001",
+        "target": "FormAnimator.GetCurrentFormDispInfo",
+        "token": "0x06004E7C"
+      },
+      {
+        "il": "0x0016",
+        "target": "MatchSEData.GetMatchSEParam",
+        "token": "0x06005273"
+      },
+      {
+        "il": "0x0051",
+        "target": "Ring.ShakeMat",
+        "token": "0x060050E2"
+      },
+      {
+        "il": "0x008E",
+        "target": "Player.PlayWrestlerVoice",
+        "token": "0x06004EB4"
+      },
+      {
+        "il": "0x0098",
+        "target": "WeaponMan.GetInst",
+        "token": "0x06006AC0"
+      },
+      {
+        "il": "0x00D2",
+        "target": "WeaponMan.FindWeapon",
+        "token": "0x06006ACB"
+      },
+      {
+        "il": "0x00E9",
+        "target": "Player.EquipWeapon",
+        "token": "0x06004EE0"
+      },
+      {
+        "il": "0x00FA",
+        "target": "PlayerController_AI.SetAIActCounter",
+        "token": "0x06004FAC"
+      },
+      {
+        "il": "0x0110",
+        "target": "Player.ReqRopeAction",
+        "token": "0x06004F32"
+      },
+      {
+        "il": "0x0120",
+        "target": "Player.Process_ShakeCage",
+        "token": "0x06004F0A"
+      },
+      {
+        "il": "0x012A",
+        "target": "Ring.ShakeCage",
+        "token": "0x0600510A"
+      },
+      {
+        "il": "0x013A",
+        "target": "Player.ThrowInWeapon",
+        "token": "0x06004EDE"
+      },
+      {
+        "il": "0x014A",
+        "target": "Player.PlayStepSE",
+        "token": "0x06004EB5"
+      },
+      {
+        "il": "0x0161",
+        "target": "MatchMisc.PlayMatchSE",
+        "token": "0x06004970"
+      }
+    ],
+    "update_animation_bridge": {
+      "fact_id": "FACT-0014",
+      "call_site": "UpdateAnimation IL+0x01D0 calls FormAnimator.PlayAnimationSE token 0x06004E7D"
+    }
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "play_animation_se_pre": 45458,
+    "play_animation_se_post": 45458,
+    "paired": 45458,
+    "traced_parent_counts": {
+      "ROOT": 45458
+    },
+    "owner_slot_counts": {
+      "0": 5354,
+      "1": 5277,
+      "2": 5481,
+      "3": 6287,
+      "4": 5453,
+      "5": 5703,
+      "6": 5307,
+      "7": 6596
+    },
+    "direct_child_patterns": {
+      "no traced child": 45447,
+      "Player.EquipWeapon": 11
+    },
+    "equip_weapon_branch_observation": {
+      "count": 11,
+      "parent_PRE_weaponIdx_minus1": 11,
+      "child_PRE_weaponIdx_minus1": 11,
+      "child_owner_slot_equals_parent_owner_slot": 11,
+      "child_raw_arg_equals_child_POST_weaponIdx": 11,
+      "parent_POST_weaponIdx_equals_child_raw_arg": 11,
+      "raw_child_argument_counts": {
+        "0": 1,
+        "2": 2,
+        "3": 3,
+        "5": 2,
+        "6": 1,
+        "7": 2
+      },
+      "note": "Player.EquipWeapon has exactly one callsite in PlayAnimationSE, inside numeric seID 63 dispatch. These 11 traced child calls therefore locate those executions on that branch far enough to execute EquipWeapon."
+    }
+  },
+  "witness_digest": {
+    "algorithm": "sha256",
+    "canonical_record_format": "UTF-8 fields joined by tab and terminated by LF",
+    "fields": [
+      "PlayAnimationSE_PRE_line",
+      "PlayAnimationSE_POST_line",
+      "owner_slot",
+      "instance",
+      "state",
+      "BasicSkillID",
+      "SkillSlotID",
+      "ResolvedSkillID",
+      "bank",
+      "AnmHostPlayer",
+      "parent_PRE_weaponIdx",
+      "parent_POST_weaponIdx",
+      "EquipWeapon_PRE_line_or_0",
+      "EquipWeapon_POST_line_or_0",
+      "EquipWeapon_raw_arg_or_empty",
+      "EquipWeapon_PRE_weaponIdx_or_empty",
+      "EquipWeapon_POST_weaponIdx_or_empty"
+    ],
+    "record_count": 45458,
+    "byte_count": 4314316,
+    "sha256": "269d9efa1f0bb19e53a398b53c395033084ddc30b8ea6718514911e45697f692",
+    "reproducibility_tool": "tools/prove_play_animation_se.py"
+  },
+  "limits": [
+    "R6 does not record FormDispInfo.seID, MatchSEParam.shakeMatLevel, or the untraced special helper calls other than Player.EquipWeapon.",
+    "The 11 EquipWeapon observations locate the unique EquipWeapon callsite inside the numeric-63 branch; they do not expose the preceding FindWeapon search result by a separate recorder field beyond the child argument.",
+    "Raw recorder strings and CLR identifiers are retained exactly without using their wording to select a dispatch case.",
+    "Sound identity, authored form meaning, choreography, and later aftermath remain outside this record."
+  ]
+}
