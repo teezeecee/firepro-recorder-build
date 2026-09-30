@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0035",
+  "claim": "In the matching retail DLL, SkillSlotDataMan.GetSkillSlotData (0x0600116D) is a static one-SkillSlotEnum-parameter method named slot returning SkillSlotData with an exact 25-byte body. It returns null when slot is negative using the emitted signed blt branch, returns null when slot is 91 or greater, and only for raw values 0 through 90 loads static SkillSlotDataTbl and returns SkillSlotDataTbl[slot]. FACT-0024 pins this exact helper at MatchMisc.GetSkillSlotDamageMdf IL+0x000E.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SkillSlotDataMan.GetSkillSlotData token 0x0600116D RVA 0x0006A234 signature 000112870411870c parameter slot:SkillSlotEnum return SkillSlotData code size 25 code sha256=fd2a546fcbc44dcd97c1376e5f5ba1802555f5b7f8c21d8ab3c123b3cf7fc0f0; exact bounds/table body in canonical/witnesses/CAP-R6-001/skill_slot_data_lookup.summary.json; prover tools/prove_skill_slot_data_lookup.py",
+      "observation": "Exact matching-DLL SkillSlotData lookup body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0024 GetSkillSlotDamageMdf",
+      "to": "SkillSlotDataMan.GetSkillSlotData(slot)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0024 pins call token 0x0600116D at GetSkillSlotDamageMdf IL+0x000E"
+        }
+      ]
+    },
+    {
+      "from": "raw slot",
+      "to": "null or SkillSlotDataTbl element",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "GetSkillSlotData IL+0x0000..0x0018: signed blt slot<0 to null at IL+0x000F; signed blt slot<91 to table path at IL+0x0011; fall-through slot>=91 returns null; table path loads field 0x04000EE7 and ldelem.ref at slot"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the lookup code and exact raw bounds; it does not establish the authored contents of SkillSlotDataTbl.",
+    "Raw slot values are not assigned player-facing slot names here.",
+    "FACT-0024 continues to govern how returned slotDamageMdf and slotStrength fields affect the ApplyDamage modifier.",
+    "CAP-R6-001 contains no standalone GetSkillSlotData PRE/POST event."
+  ]
+}
