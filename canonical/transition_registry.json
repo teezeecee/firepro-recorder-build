@@ -535,6 +535,23 @@
         "venue/match setting authored data",
         "later down/stun state consumer closure"
       ]
+    },
+    {
+      "family_id": "DLL_STUN_PARAM_RATE_HELPERS_V1",
+      "fact_id": "FACT-0031",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.SetStunTime signed lower clamp and MatchMisc.GetParamRate Float32 normalization helper bodies, both reached directly from FACT-0030 Player.CalcDownTime.",
+      "summary": "canonical/witnesses/CAP-R6-001/stun_param_rate_helpers.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "later StunTime consumer closure",
+        "authored HP/SP state provenance",
+        "remaining CalcDownTime downstream state closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
