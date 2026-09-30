@@ -10,7 +10,9 @@
       "availability": "VERIFIED_LOCAL_BYTES",
       "canonical_eligible": true,
       "raw_required": true,
-      "git_storage": "HASH_AND_EXTRACTED_FACTS_ONLY"
+      "git_storage": "HASH_AND_EXTRACTED_FACTS_ONLY",
+      "size_bytes": 8171008,
+      "note": "Fresh raw DLL bytes re-uploaded and re-hashed 2026-09-30 from the live Fire Pro Managed folder. SHA-256 matches the canonical identity exactly. A different 9,686,016-byte Assembly-CSharp.dll uploaded earlier that day hashed differently and was quarantined as unrelated."
     },
     {
       "source_id": "VAULT-001",
