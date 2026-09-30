@@ -68,3 +68,8 @@ jobs:
         run: python tests/test_request_siblings_summary.py
       - name: Request siblings prover syntax
         run: python -m py_compile tools/prove_request_siblings.py
+
+      - name: PreprocessEachAnm summary
+        run: python tests/test_preprocess_each_anm_summary.py
+      - name: PreprocessEachAnm prover syntax
+        run: python -m py_compile tools/prove_preprocess_each_anm.py
