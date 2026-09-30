@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0023",
+  "claim": "In the matching retail DLL, MatchMisc.GetHealth (0x0600495C) is a static one-Float32-parameter method returning Int32, with parameter name prm and an exact 204-byte body. It contains no calls and implements a 15-step ordered threshold ladder. At each rung it loads prm, loads the next Float32 threshold 4096, 8192, 12288, 16384, 20480, 24576, 28672, 32768, 36864, 40960, 45056, 49152, 53248, 57344, or 61440, then uses bge.un to continue to the next rung; otherwise it returns the corresponding raw integer 0 through 14. If all 15 branches continue, it returns raw integer 15. FACT-0021 pins six CalcDamage calls to this helper and FACT-0022 pins one CriticalCheck call.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.GetHealth token 0x0600495C RVA 0x002B0270 signature 0001080c code size 204 code sha256=54a177d606676d55511eb6a20680babd8298b5f520b47aa6109a77df9eac50ec; exact threshold/branch/return ladder is recorded in canonical/witnesses/CAP-R6-001/get_health.summary.json; prover tools/prove_get_health.py",
+      "observation": "Exact matching-DLL method body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0021 CalcDamage",
+      "to": "MatchMisc.GetHealth(prm)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0021 pins GetHealth token 0x0600495C calls at CalcDamage IL+0x01C5, 0x01DD, 0x0206, 0x022F, 0x0258, and 0x0281 for defender HP, attacker BP, and attacker Leg/Waist/Arm/Neck fields respectively"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0022 CriticalCheck",
+      "to": "MatchMisc.GetHealth(prm)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0022 pins GetHealth token 0x0600495C at CriticalCheck IL+0x0130 with defender HP before the mCriticalRateTbl Get call"
+        }
+      ]
+    },
+    {
+      "from": "GetHealth input prm",
+      "to": "raw Int32 return",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "GetHealth IL+0x0000..0x00CB is the exact 15-threshold bge.un ladder with raw returns 0..15 and no calls"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact uses matching-DLL evidence; no standalone GetHealth recorder event is used in this gate.",
+    "The downstream meaning of returned integers as indices into particular authored tables is governed by the caller facts and table provenance, not this helper alone.",
+    "The exact bge.un opcodes are preserved; no additional behavior is assigned for unordered Float32 inputs.",
+    "Authored table contents remain outside this fact."
+  ]
+}

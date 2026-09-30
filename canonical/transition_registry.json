@@ -391,6 +391,23 @@
         "SkillDataMan.IsS1Waza internal closure",
         "MatchRandom.Range internal closure"
       ]
+    },
+    {
+      "family_id": "DLL_MATCHMISC_GET_HEALTH_V1",
+      "fact_id": "FACT-0023",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMisc.GetHealth 15-step Float32 threshold ladder with bge.un continuation and raw Int32 returns 0 through 15, shared by FACT-0021 CalcDamage and FACT-0022 CriticalCheck.",
+      "summary": "canonical/witnesses/CAP-R6-001/get_health.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "caller authored table contents",
+        "semantic interpretation of returned raw indices",
+        "downstream field/state aftermath closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

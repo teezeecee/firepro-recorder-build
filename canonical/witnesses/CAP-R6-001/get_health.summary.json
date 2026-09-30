@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCHMISC_GET_HEALTH_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchMisc",
+      "method": "GetHealth",
+      "token": "0x0600495C",
+      "rva": "0x002B0270",
+      "signature_blob_hex": "0001080c",
+      "return_type": "Int32",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "prm",
+          "type": "Float32"
+        }
+      ],
+      "code_size": 204,
+      "code_sha256": "54a177d606676d55511eb6a20680babd8298b5f520b47aa6109a77df9eac50ec",
+      "max_stack": 2,
+      "local_signature_token": "0x00000000",
+      "local_count": 0,
+      "instruction_count": 77,
+      "branch_instruction_count": 15,
+      "call_instruction_count": 0
+    },
+    "ladder": {
+      "branch_opcode": "bge.un",
+      "rungs": [
+        {
+          "threshold": 4096,
+          "fallthrough_return": 0
+        },
+        {
+          "threshold": 8192,
+          "fallthrough_return": 1
+        },
+        {
+          "threshold": 12288,
+          "fallthrough_return": 2
+        },
+        {
+          "threshold": 16384,
+          "fallthrough_return": 3
+        },
+        {
+          "threshold": 20480,
+          "fallthrough_return": 4
+        },
+        {
+          "threshold": 24576,
+          "fallthrough_return": 5
+        },
+        {
+          "threshold": 28672,
+          "fallthrough_return": 6
+        },
+        {
+          "threshold": 32768,
+          "fallthrough_return": 7
+        },
+        {
+          "threshold": 36864,
+          "fallthrough_return": 8
+        },
+        {
+          "threshold": 40960,
+          "fallthrough_return": 9
+        },
+        {
+          "threshold": 45056,
+          "fallthrough_return": 10
+        },
+        {
+          "threshold": 49152,
+          "fallthrough_return": 11
+        },
+        {
+          "threshold": 53248,
+          "fallthrough_return": 12
+        },
+        {
+          "threshold": 57344,
+          "fallthrough_return": 13
+        },
+        {
+          "threshold": 61440,
+          "fallthrough_return": 14
+        }
+      ],
+      "final_return": 15,
+      "il_span": "0x0000..0x00CB"
+    },
+    "caller_bridges": [
+      {
+        "fact_id": "FACT-0021",
+        "caller": "MatchMisc.CalcDamage",
+        "call_ils": [
+          "0x01C5",
+          "0x01DD",
+          "0x0206",
+          "0x022F",
+          "0x0258",
+          "0x0281"
+        ],
+        "raw_inputs": [
+          "defender.HP",
+          "attacker.BP",
+          "attacker.HP_Leg",
+          "attacker.HP_Waist",
+          "attacker.HP_Arm",
+          "attacker.HP_Neck"
+        ]
+      },
+      {
+        "fact_id": "FACT-0022",
+        "caller": "MatchMisc.CriticalCheck",
+        "call_ils": [
+          "0x0130"
+        ],
+        "raw_inputs": [
+          "defender.HP"
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "No standalone GetHealth recorder event is used in this record.",
+    "The exact bge.un ladder is recorded without assigning extra behavior for unordered Float32 values.",
+    "Authored table contents indexed by caller results are outside this record."
+  ]
+}
