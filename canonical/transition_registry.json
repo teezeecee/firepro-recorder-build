@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "runtime_unlocked": false,
+  "families": [],
+  "note": "Empty by design. Transition families are added only after raw evidence re-ingestion and edge-by-edge provenance closure."
+}
