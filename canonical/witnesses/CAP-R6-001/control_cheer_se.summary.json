@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_CONTROL_CHEER_SE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "ControlCheerSE",
+      "token": "0x06004EBF",
+      "rva": "0x002DED38",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 225,
+      "code_sha256": "9f48dfc674cd2b0e1bfde5d807f76c9410dfadf6bf13d0e3fe8a1da481dcf6ce"
+    },
+    "entry_gates": [
+      {
+        "il": "0x0000..0x0011",
+        "condition": "MatchMain.inst converts true",
+        "field_token": "0x0400576C",
+        "object_implicit_memberref": "0x0A00002A",
+        "else": "return"
+      },
+      {
+        "il": "0x0012..0x002B",
+        "condition": "(animator.GetCurrentFormDispInfo().flags & 2) != 0",
+        "animator_field_token": "0x04005FA8",
+        "helper_token": "0x06004E7C",
+        "flags_field_token": "0x04007CE6",
+        "raw_mask": 2,
+        "else": "return"
+      }
+    ],
+    "initial_level": {
+      "il": "0x002C..0x0042",
+      "expression": "local level = Player.cheer_lv_tbl[animator.CurrentSkill.cheerLevel]",
+      "table_field_token": "0x0400607E",
+      "current_skill_field_token": "0x04005ED0",
+      "cheer_level_field_token": "0x04007C74"
+    },
+    "adjustment_tree": [
+      {
+        "il": "0x0043..0x0056",
+        "condition": "isCriticalMove != 0",
+        "effect": "level += 2; jump to positivity test",
+        "field_token": "0x04006058",
+        "raw_add": 2
+      },
+      {
+        "il": "0x0057..0x006A",
+        "condition": "isCriticalMove == 0 AND isSpecialMove != 0",
+        "effect": "level += 1; jump to positivity test",
+        "field_token": "0x04006059",
+        "raw_add": 1
+      },
+      {
+        "il": "0x006B..0x00A2",
+        "condition": "neither move flag set AND target Player converts true",
+        "effect": "level += (target.WresParam.wrestlerRank - this.WresParam.wrestlerRank) / 2",
+        "player_man_field_token": "0x040061FA",
+        "target_field_token": "0x04005FB1",
+        "get_pl_obj_token": "0x06005065",
+        "wres_field_token": "0x04005FB3",
+        "rank_field_token": "0x0400108E",
+        "raw_divisor": 2
+      }
+    ],
+    "final_level_filter": [
+      {
+        "il": "0x00A3..0x00AA",
+        "condition": "level > 0",
+        "else": "return"
+      },
+      {
+        "il": "0x00AB..0x00B7",
+        "effect": "level -= 1; if level > 4 then level = 4",
+        "raw_cap": 4
+      }
+    ],
+    "audience_dispatch": {
+      "condition": "Audience.inst != null",
+      "audience_field_token": "0x040054C9",
+      "object_inequality_memberref": "0x0A00000F",
+      "calls": [
+        {
+          "il": "0x00C8..0x00D3",
+          "method": "Audience.PlayLoopCheerVoice",
+          "token": "0x060047DA",
+          "arguments": [
+            "level",
+            "false"
+          ]
+        },
+        {
+          "il": "0x00D4..0x00DF",
+          "method": "Audience.PlayCheerVoice",
+          "token": "0x060047D9",
+          "arguments": [
+            "5",
+            "level"
+          ]
+        }
+      ]
+    },
+    "update_animation_bridge": {
+      "fact_id": "FACT-0014",
+      "caller": "FormAnimator.UpdateAnimation",
+      "caller_token": "0x06004E7E",
+      "call_il": "0x02B0",
+      "callee_token": "0x06004EBF"
+    },
+    "form_query_bridge": {
+      "fact_id": "FACT-0017",
+      "caller": "Player.ControlCheerSE",
+      "call_il": "0x0018",
+      "callee": "FormAnimator.GetCurrentFormDispInfo",
+      "callee_token": "0x06004E7C"
+    }
+  },
+  "r6_observation_note": "CAP-R6-001 contains no standalone Player.ControlCheerSE PRE/POST events. This record therefore uses exact matching-DLL bytes and already-pinned call boundaries only.",
+  "limits": [
+    "The contents of Player.cheer_lv_tbl are not closed by this fact.",
+    "Raw form flag mask 2, cheer levels, rank arithmetic, and Audience numeric argument 5 are retained exactly without player-facing interpretation.",
+    "CAP-R6-001 does not trace ControlCheerSE as a standalone method event.",
+    "Audience method internals and authored current-skill/form data are outside this record."
+  ]
+}
