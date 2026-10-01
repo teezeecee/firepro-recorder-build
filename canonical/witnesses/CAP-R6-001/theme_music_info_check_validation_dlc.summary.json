@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_THEME_MUSIC_INFO_CHECK_VALIDATION_DLC_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "ThemeMusicInfo",
+      "method": "CheckValidationDLC",
+      "token": "0x06001191",
+      "rva": "0x0006CA54",
+      "signature_blob_hex": "200002",
+      "return_type": "Boolean",
+      "parameters": [],
+      "code_size": 132,
+      "code_sha256": "f49006bbea8bcc23f4ac9019fc646d7fd2dc09edad531bc204b027a920bcc8c2",
+      "max_stack": 2,
+      "local_signature_token": "0x110002E1",
+      "instruction_count": 50,
+      "branch_instruction_count": 11,
+      "call_instruction_count": 4
+    },
+    "fields": {
+      "dlc": {"name":"ThemeMusicInfo.dlc","token":"0x04000FB8","signature_blob_hex":"061d02","type":"Boolean[]"},
+      "save_data_inst": {"name":"SaveData.inst","token":"0x040064EC"},
+      "story_manager_inst": {"name":"StorySaveDataManager.inst","token":"0x0400497D"},
+      "story_root_clear": {"name":"StoryWork.m_root_clear","token":"0x0400485A","signature_blob_hex":"0602","type":"Boolean"},
+      "story_scenario": {"name":"StoryWork.storyScenario","token":"0x04004856","signature_blob_hex":"06119cd0","type":"StoryScenario"}
+    },
+    "calls": {
+      "is_dlc": {"method":"ThemeMusicInfo.IsDLC","token":"0x06001192","call_il":"0x0001","fact_id":"FACT-0114"},
+      "is_dlc_installed": {"method":"SaveData.IsDLCInstalled","token":"0x060051C9","call_il":"0x0027","parameter_type":"DLCEnum"},
+      "get_story_data": {"method":"StorySaveDataManager.GetStoryData(StoryScenario)","token":"0x06003C25","call_il":"0x003F","raw_argument":2,"fact_id":"FACT-0104"},
+      "is_story_mode": {"method":"GlobalParam.IsStoryMode","token":"0x06001FC1","call_il":"0x0058"}
+    },
+    "exact_flow": [
+      "if this.IsDLC() is false: return true",
+      "index = 0",
+      "while signed index < 13:",
+      "  if this.dlc[index] is zero: index += 1; continue",
+      "  if SaveData.inst.IsDLCInstalled(index) is false: index += 1; continue",
+      "  if index != 9: return true",
+      "  story = StorySaveDataManager.inst.GetStoryData(raw 2)",
+      "  if story is non-null and story.m_root_clear is nonzero: return true",
+      "  if GlobalParam.IsStoryMode() is true and StoryWork.storyScenario == raw 2: return true",
+      "  index += 1",
+      "return false"
+    ],
+    "raw_scan_range": {"minimum":0,"maximum":12,"exclusive_upper_bound":13},
+    "raw_special_index": 9,
+    "raw_story_value": 2,
+    "fact_0111_bridge": {"fact_id":"FACT-0111","call_il":"0x0025","callee_token":"0x06001191"}
+  },
+  "limits": [
+    "IsDLCInstalled, IsStoryMode, authored DLC state and StoryWork data remain outside this record."
+  ]
+}
