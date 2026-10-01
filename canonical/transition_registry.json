@@ -1609,6 +1609,24 @@
         "raw BattleRoyalKind 4 meaning",
         "player sleep-state producer closure"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_PROCESS_MATCH_END_NORMAL_V1",
+      "fact_id": "FACT-0093",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Referee.ProcesskMatchEnd_Normal raw player 0..7 scan, first passing CheckRight selection, ordered MatchMain/Audience calls, matchResult dispatch, and exact sole FACT-0091 caller.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_process_match_end_normal.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Player.CheckRight internal closure",
+        "MatchMain.SetAfterMatchBGM internal closure",
+        "Audience.SetBaseCheerLevel internal closure",
+        "MatchMain.ProcessMatchEnd_Normal internal closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
