@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0071",
+  "claim": "In the matching retail DLL, Referee.GetCurrentFormDispInfo (0x06005098) is a parameterless instance method with an exact 104-byte body. It first tests CurrentAnmIdx with signed bounds: CurrentAnmIdx < 0 returns null, and CurrentAnmIdx >= CurrentSkill.anmData.Length returns null. For an in-range animation index it loads CurrentSkill.anmData[CurrentAnmIdx]. It then tests currentFormIdx with signed bounds: currentFormIdx < 0 returns null, and currentFormIdx >= that animation record's formDispList.Length returns null. Only when both indices are in range does it return formDispList[currentFormIdx]. FACT-0070 pins two direct calls to this helper at UpdateRefereeAnm IL+0x00DF and IL+0x0109.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.GetCurrentFormDispInfo token 0x06005098 RVA 0x00308040 signature blob 200012a9cc code size 104 code sha256=edf4f6904d007e70cf4d2cec22ab4c31f61d4898d18fd3107d886d2239a5a964; exact two-level signed-bounds/null-return lookup in canonical/witnesses/CAP-R6-001/referee_form_disp_lookup.summary.json; prover tools/prove_referee_form_disp_lookup.py",
+      "observation": "Exact matching-DLL Referee.GetCurrentFormDispInfo body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0070 Referee.UpdateRefereeAnm",
+      "to": "Referee.GetCurrentFormDispInfo",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0070 pins call token 0x06005098 at UpdateRefereeAnm IL+0x00DF and retry call at IL+0x0109."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact lookup body and the two FACT-0070 call sites.",
+    "Authored CurrentSkill.anmData and formDispList contents remain outside this fact.",
+    "No fallback, clamping, wrapping or semantic meaning is added beyond the emitted signed bounds and null returns."
+  ]
+}
