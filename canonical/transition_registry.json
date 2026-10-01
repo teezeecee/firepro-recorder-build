@@ -1793,6 +1793,23 @@
         "authored story-data closure",
         "StoryScenario semantic closure"
       ]
+    },
+    {
+      "family_id": "DLL_STORY_SAVE_DATA_MANAGER_GET_STORY_DATA_SCENARIO_V1",
+      "fact_id": "FACT-0104",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL StorySaveDataManager.GetStoryData(StoryScenario) raw-2 dispatcher between SaveData.smSaveData and StorySaveDataManager.saveDataList, bridged from FACT-0103.",
+      "summary": "canonical/witnesses/CAP-R6-001/story_save_data_manager_get_story_data_scenario.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored SaveData.smSaveData contents",
+        "authored StorySaveDataManager.saveDataList contents",
+        "StoryScenario semantic closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

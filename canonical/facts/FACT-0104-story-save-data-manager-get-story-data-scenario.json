@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0104",
+  "claim": "In the matching retail DLL, StorySaveDataManager.GetStoryData(StoryScenario) (0x06003C25) is an instance one-StoryScenario-parameter method with exact signature blob 2001129cd4119cd0 and an exact 29-byte body. It compares the supplied raw scenario against Int32 2 with bge. When the branch is not taken it returns SaveData.inst.smSaveData[scenario]; when the branch is taken it returns this.saveDataList[scenario]. FACT-0103 pins the already-canonical caller at StorySaveDataManager.GetStoryData() IL+0x0006 after loading StoryWork.storyScenario.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "StorySaveDataManager.GetStoryData(StoryScenario) token 0x06003C25 RVA 0x0023A1CA signature 2001129cd4119cd0 code size 29 code sha256=bddbc1bb012966f7b1473c87204f7669e637de70bbb3ab6069be5d1e5cb79861; exact raw-2 branch and two array-return sources in canonical/witnesses/CAP-R6-001/story_save_data_manager_get_story_data_scenario.summary.json; prover tools/prove_story_save_data_manager_get_story_data_scenario.py",
+      "observation": "Exact matching-DLL one-StoryScenario GetStoryData overload body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0103 StorySaveDataManager.GetStoryData()",
+      "to": "StorySaveDataManager.GetStoryData(StoryWork.storyScenario)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0103 pins ldsfld StoryWork.storyScenario token 0x04004856 at IL+0x0001 followed by call token 0x06003C25 at IL+0x0006."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact one-StoryScenario overload and the FACT-0103 caller bridge.",
+    "Authored contents of SaveData.smSaveData and StorySaveDataManager.saveDataList remain outside this fact.",
+    "The raw threshold value 2 is preserved without assigning StoryScenario semantics.",
+    "No broader Story Mode behavior is promoted."
+  ]
+}
