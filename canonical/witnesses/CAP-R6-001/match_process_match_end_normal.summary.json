@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCH_PROCESS_MATCH_END_NORMAL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchMain",
+      "method": "ProcessMatchEnd_Normal",
+      "token": "0x06004928",
+      "rva": "0x002A9904",
+      "signature_blob_hex": "20020111a39808",
+      "return_type": "Void",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "match_result"
+        },
+        {
+          "sequence": 2,
+          "name": "pl_idx_winner",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 261,
+      "code_sha256": "f204671841365e78a2dfef78bb7a34a0c483ee30ac13d388b9b28b22cd5f17e9",
+      "max_stack": 2,
+      "local_signature_token": "0x11000F4A",
+      "instruction_count": 88,
+      "branch_instruction_count": 13,
+      "call_instruction_count": 5
+    },
+    "entry": {
+      "player_man_inst": {
+        "name": "PlayerMan.inst",
+        "token": "0x040061FA"
+      },
+      "get_pl_obj": {
+        "method": "PlayerMan.GetPlObj",
+        "token": "0x06005065",
+        "argument": "pl_idx_winner"
+      },
+      "object_implicit_memberref": "0x0A00002A",
+      "false_effect": "return",
+      "match_evaluation_inst": {
+        "name": "MatchEvaluation.inst",
+        "token": "0x040056FF"
+      },
+      "pl_result": {
+        "name": "MatchEvaluation.PlResult",
+        "token": "0x04005700"
+      },
+      "winner_result_write": {
+        "field": "PlayerMatchResult.resultPosition",
+        "token": "0x040056CF",
+        "raw_value": 0
+      }
+    },
+    "winner_controller_gate": {
+      "player_controller": {
+        "name": "Player.plController",
+        "token": "0x0400602B"
+      },
+      "kind": {
+        "name": "PlayerController.kind",
+        "token": "0x04006115"
+      },
+      "raw_value": 2,
+      "on_equal": {
+        "field": "MatchMain.exitTimer",
+        "token": "0x04005743",
+        "raw_value": 900
+      }
+    },
+    "loop": {
+      "raw_index_range": {
+        "min_inclusive": 0,
+        "max_inclusive": 7
+      },
+      "skip_when": [
+        "GetPlObj(index) converts false",
+        "Player.isSleep 0x04006057 is nonzero"
+      ],
+      "result_field": {
+        "name": "PlayerMatchResult.resultPosition",
+        "token": "0x040056CF"
+      },
+      "non_winner_branches": [
+        {
+          "condition": "scanned Player.Group 0x04005FF0 == winner Player.Group",
+          "write_raw_result_position": 1
+        },
+        {
+          "condition": "groups differ AND scanned Player.hasRight 0x04006043 != 0",
+          "write_raw_result_position": 2,
+          "additional_write": {
+            "field": "Player.isLoseAndStop",
+            "token": "0x04006070",
+            "raw_value": 1
+          }
+        },
+        {
+          "condition": "groups differ AND scanned Player.hasRight == 0",
+          "write_raw_result_position": 3
+        }
+      ],
+      "finish_time": {
+        "field": {
+          "name": "PlayerMatchResult.finishTime",
+          "token": "0x040056D1"
+        },
+        "source": {
+          "name": "MatchMain.matchTime",
+          "token": "0x0400573B"
+        },
+        "call": {
+          "method": "MatchTime.Set",
+          "token": "0x06004905",
+          "code_size": 37,
+          "code_sha256": "94a90dfec6b4dda72ec1c11c69106555c2e093589c42bf30bfa37c5351f613d5"
+        }
+      }
+    },
+    "final_writes": [
+      {
+        "field": "MatchMain.isMatchEnd",
+        "token": "0x04005753",
+        "raw_value": 1
+      },
+      {
+        "field": "MatchEvaluation.ResultType",
+        "token": "0x04005701",
+        "value": "match_result"
+      }
+    ],
+    "fact_0093_bridge": {
+      "fact_id": "FACT-0093",
+      "caller": "Referee.ProcesskMatchEnd_Normal",
+      "call_il": "0x0096",
+      "callee_token": "0x06004928",
+      "arguments": [
+        "this.matchResult",
+        "selected_index"
+      ]
+    }
+  },
+  "limits": [
+    "MatchTime.Set and broader MatchEvaluation field semantics remain outside this record."
+  ]
+}
