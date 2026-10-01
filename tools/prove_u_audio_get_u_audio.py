@@ -2,7 +2,7 @@
 import argparse,hashlib,struct
 from pathlib import Path
 DLL_SHA="9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
-RVA=0x00325714
+RVA=0x003256D4
 SIZE=86
 CODE_SHA="5524703abb8912537cca2bf60cf25fdcde63df8bcc2ea51a0db76d5dc8e858c4"
 CALLER_RVA=0x00325A30

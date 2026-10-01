@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 s=json.loads((ROOT/"canonical"/"witnesses"/"CAP-R6-001"/"u_audio_get_u_audio.summary.json").read_text(encoding="utf-8"))
 assert s["dataset_id"]=="DLL_U_AUDIO_GET_U_AUDIO_V1"
 m=s["dll"]["method"]
-assert (m["token"],m["rva"],m["signature_blob_hex"])==("0x060052D0","0x00325714","20001282b1")
+assert (m["token"],m["rva"],m["signature_blob_hex"])==("0x060052D0","0x003256D4","20001282b1")
 assert (m["code_size"],m["code_sha256"])==(86,"5524703abb8912537cca2bf60cf25fdcde63df8bcc2ea51a0db76d5dc8e858c4")
 assert (m["instruction_count"],m["branch_instruction_count"],m["call_instruction_count"])==(25,1,5)
 assert s["dll"]["fields"]["backend"]["token"]=="0x040087E3"
