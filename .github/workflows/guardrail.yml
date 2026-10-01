@@ -318,3 +318,8 @@ jobs:
         run: python tests/test_match_se_data_lookup_summary.py
       - name: MatchSEData lookup prover syntax
         run: python -m py_compile tools/prove_match_se_data_lookup.py
+
+      - name: MatchSEPlayer.Update wait-list summary
+        run: python tests/test_match_se_player_update_wait_list_summary.py
+      - name: MatchSEPlayer.Update wait-list prover syntax
+        run: python -m py_compile tools/prove_match_se_player_update_wait_list.py
