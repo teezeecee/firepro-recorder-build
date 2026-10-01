@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0085",
+  "claim": "In the matching retail DLL, Referee.Process_ArrivedDestination (0x0600509F) is a parameterless instance method with an exact 545-byte body. It resolves PlayerMan.inst.GetPlObj(TargetPlIdx), tests the returned object through MemberRef 0x0A00002A op_Implicit, and returns when that test is false. It then loads Referee.NextState and dispatches through an exact ten-entry switch after subtracting raw 9, so only raw NextState values 9 through 18 enter case bodies. Raw 9 calls Start_FallCount. Raw 15 calls Start_SubmissionCheck. Raw 18 calls Start_HandlingDisturbing. Raw 12 and 14 share one body that first writes State=12, overwrites State=14 only when NextState is raw 14, recomputes PlDir through DecideRefereeDir(TargetPlIdx), requests RefAnmTbl[12 + MatchData.AnmOfsTbl_3Dir[PlDir]], then writes FrameWait = FoulWaitCnt[RefePrm.foulCount]. Raw 11 writes State=11, requests RefAnmTbl[12 + MatchData.AnmOfsTbl_3Dir[PlDir]], and writes FrameWait = OutWaitCnt[RefePrm.outCount]. Raw 13 writes State=13, requests the same raw-12/3-dir table expression, and writes FrameWait = FoulWaitCnt[RefePrm.foulCount]. Raw 16 writes State=16; only when the resolved Player.Zone field is zero does it recompute PlDir through DecideRefereeDir(TargetPlIdx), then it requests RefAnmTbl[47 + MatchData.AnmOfsTbl_2Dir[PlDir]]. Raw 10 writes State=10, recomputes PlDir, requests RefAnmTbl[12 + MatchData.AnmOfsTbl_3Dir[PlDir]], and writes FrameWait=50. Raw 17 writes State=17, recomputes PlDir, and requests RefAnmTbl[47 + MatchData.AnmOfsTbl_2Dir[PlDir]]. Any switch default returns without those case effects. FACT-0084 pins the direct call from Process_MoveToDestination at IL+0x0053.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.Process_ArrivedDestination token 0x0600509F RVA 0x00308668 signature 200001 code size 545 code sha256=ec45a72452fcbddd71df0a05d3c7b9a68df75fa36c1452a36638468a5e9db5e4; exact raw NextState switch/field writes/helper calls in canonical/witnesses/CAP-R6-001/referee_arrived_destination.summary.json; prover tools/prove_referee_arrived_destination.py",
+      "observation": "Exact matching-DLL arrival-dispatch body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0084 Referee.Process_MoveToDestination",
+      "to": "Referee.Process_ArrivedDestination",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0084 pins call token 0x0600509F at Process_MoveToDestination IL+0x0053 after IsReachedDestination returns true."
+        }
+      ]
+    },
+    {
+      "from": "Referee.NextState raw values 9..18",
+      "to": "exact case bodies",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Process_ArrivedDestination IL+0x0024 subtracts raw 9 and executes a ten-entry switch with exact targets 0x005A,0x0199,0x00D6,0x0070,0x0115,0x0070,0x0065,0x0154,0x01DB,0x0215 for raw values 9..18 respectively."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only Process_ArrivedDestination and the FACT-0084 caller bridge.",
+    "Start_FallCount, Start_SubmissionCheck, DecideRefereeDir and Start_HandlingDisturbing internals remain separate gates unless already canonical elsewhere.",
+    "FACT-0068 already closes ReqRefereeAnm itself; this fact preserves only the exact raw arguments/table expressions passed to it here.",
+    "Raw State/NextState values and table offsets 12, 47 and FrameWait 50 are preserved without adding gameplay labels."
+  ]
+}
