@@ -1,0 +1,39 @@
+{
+  "fact_id": "FACT-0072",
+  "claim": "In the matching retail DLL, SkillDataMan.GetSkillData_Standard (0x06005264) is an instance method with one parameter named skill_idx and an exact 14-byte body. It pushes raw Int32 2675, loads skill_idx, adds them, calls SkillDataMan.GetSkillData (0x06005262) with that sum, and returns the result. FACT-0070 pins the direct caller at Referee.UpdateRefereeAnm IL+0x0023, where the argument is Referee.SkillID.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SkillDataMan.GetSkillData_Standard token 0x06005264 RVA 0x0031FF20 signature blob 200112a9a811a970 parameter skill_idx code size 14 code sha256=9db7aaaf1198a49f3fd4637000dab60fa02b6ede3a444f5dfb2a09e7e6e844f9; exact wrapper in canonical/witnesses/CAP-R6-001/skill_data_standard_wrapper.summary.json; prover tools/prove_skill_data_standard_wrapper.py",
+      "observation": "Exact matching-DLL GetSkillData_Standard wrapper."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0070 Referee.UpdateRefereeAnm",
+      "to": "SkillDataMan.GetSkillData_Standard(SkillID)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0070 pins callvirt token 0x06005264 at UpdateRefereeAnm IL+0x0023 after loading Referee.SkillID."
+        }
+      ]
+    },
+    {
+      "from": "SkillDataMan.GetSkillData_Standard(skill_idx)",
+      "to": "SkillDataMan.GetSkillData(2675 + skill_idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact 14-byte body IL+0x0000..0x000D: ldarg.0; ldc.i4 2675; ldarg.1; add; call token 0x06005262; ret."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact wrapper arithmetic/call and the FACT-0070 caller bridge.",
+    "Raw offset 2675 is preserved numerically without assigning a catalog or gameplay label.",
+    "SkillDataMan.GetSkillData internals and authored SkillData contents remain separate gates."
+  ]
+}
