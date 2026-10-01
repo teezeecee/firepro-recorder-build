@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_VOICE_LEAF_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Menu_SoundManager",
+      "method": "Play_RefereeVoice",
+      "token": "0x060052A9",
+      "rva": "0x00322C58",
+      "signature_blob_hex": "00020111aa380c",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "vid",
+          "type": "Int32"
+        },
+        {
+          "sequence": 2,
+          "name": "volume",
+          "type": "Float32"
+        }
+      ],
+      "code_size": 122,
+      "code_sha256": "6168083a2b8e7ff12b16c44ba759062f611c24ac73de637c5461485234e65b74",
+      "instruction_count": 35,
+      "branch_instruction_count": 6,
+      "call_instruction_count": 3
+    },
+    "fields": {
+      "clip_list": {
+        "name": "Sound_ClipRefereeVoice_List",
+        "token": "0x040086FF"
+      },
+      "volume_voice": {
+        "name": "Volume_Voice",
+        "token": "0x040086EF"
+      },
+      "audio_src_info": {
+        "name": "audioSrcInfo",
+        "token": "0x040086EB"
+      },
+      "source_field": {
+        "name": "sRefAudio",
+        "token": "0x0400874C"
+      }
+    },
+    "exact_gates": [
+      {
+        "condition": "Sound_ClipRefereeVoice_List != null",
+        "fail_effect": "return"
+      },
+      {
+        "condition": "vid >= 0",
+        "fail_effect": "return"
+      },
+      {
+        "condition": "vid < 24",
+        "fail_effect": "return"
+      },
+      {
+        "condition": "Sound_ClipRefereeVoice_List[vid] != null",
+        "fail_effect": "return"
+      }
+    ],
+    "volume_flow": {
+      "expression": "local = Volume_Voice * volume",
+      "negative_gate": {
+        "opcode": "bge.un",
+        "compare": 0,
+        "ordered_negative_effect": "return",
+        "unordered_effect": "continue"
+      },
+      "upper_gate": {
+        "opcode": "ble.un",
+        "compare": 1,
+        "ordered_greater_effect": "local = 1.0f",
+        "less_equal_or_unordered_effect": "continue unchanged"
+      }
+    },
+    "playback": {
+      "raw_audio_src_info_index": 4,
+      "audio_source_type": "UnityEngine.AudioSource",
+      "set_volume_memberref": "0x0A0002A2",
+      "play_one_shot_memberref": "0x0A000FA6",
+      "play_argument": "Sound_ClipRefereeVoice_List[vid]"
+    },
+    "fact_0076_bridge": {
+      "fact_id": "FACT-0076",
+      "caller": "MatchSEPlayer.PlayRefereeVoice",
+      "call_il": "0x004C",
+      "arguments": [
+        "vid",
+        1
+      ]
+    }
+  },
+  "limits": [
+    "Authored clip contents and global volume value remain outside this record."
+  ]
+}
