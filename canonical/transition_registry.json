@@ -969,6 +969,24 @@
         "Unity quaternion implementation beyond emitted calls",
         "later explosion effect internals"
       ]
+    },
+    {
+      "family_id": "DLL_MATCH_EFFECT_PLAY_MINE_EXPLOSION_V1",
+      "fact_id": "FACT-0056",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchEffect.Play_MineExplosion prefab-null/object-layer loop and unconditional ring-shake/camera-vibration tail reached from FACT-0049.",
+      "summary": "canonical/witnesses/CAP-R6-001/play_mine_explosion.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "MethodSpec generic implementation internals",
+        "prefab/resource contents",
+        "Ring.mRingShake internals",
+        "MatchCamera.ReqVivration internals"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

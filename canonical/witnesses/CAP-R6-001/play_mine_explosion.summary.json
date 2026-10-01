@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCH_EFFECT_PLAY_MINE_EXPLOSION_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchEffect",
+      "method": "Play_MineExplosion",
+      "token": "0x060048CB",
+      "rva": "0x002A4AA4",
+      "signature_blob_hex": "200201111911a368",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "pos"
+        },
+        {
+          "sequence": 2,
+          "name": "layer"
+        }
+      ],
+      "code_size": 152,
+      "code_sha256": "fc8982922fb7bba57f9f0052110e69463503c4f343c90fc030846e61e7a2e049",
+      "max_stack": 2,
+      "local_signature_token": "0x1100111E",
+      "instruction_count": 51,
+      "branch_instruction_count": 3,
+      "call_instruction_count": 19
+    },
+    "prefab_block": {
+      "field": {
+        "name": "Prefab_RopeExplosion",
+        "token": "0x04005679"
+      },
+      "null_test": "UnityEngine.Object.op_Inequality(prefab,null)",
+      "false_target": "0x007C",
+      "method_spec_tokens": [
+        "0x2B000051",
+        "0x2B000391"
+      ],
+      "effects": [
+        "set instantiated object's transform.position = pos",
+        "rootChild = object.transform.GetChild(0).gameObject",
+        "for i=0; i<rootChild.transform.childCount; i++: rootChild.transform.GetChild(i).gameObject.layer = LayerMan.GetLayerID(layer)"
+      ]
+    },
+    "shared_tail": [
+      "Ring.GetInst().mRingShake(10)",
+      "MatchCamera.GetInst().ReqVivration(2.0f)",
+      "return"
+    ],
+    "caller_bridge": {
+      "fact_id": "FACT-0049",
+      "caller": "Player.TransitStateAfterAnm_Down",
+      "call_il": "0x030F",
+      "callee_token": "0x060048CB"
+    }
+  },
+  "limits": [
+    "MethodSpec internals and prefab/resource content remain outside this record.",
+    "Ring/camera helper internals remain outside this record."
+  ]
+}
