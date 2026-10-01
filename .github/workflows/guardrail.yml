@@ -278,3 +278,8 @@ jobs:
         run: python tests/test_segment_intersection_summary.py
       - name: Segment intersection prover syntax
         run: python -m py_compile tools/prove_segment_intersection.py
+
+      - name: IsStepOnMine summary
+        run: python tests/test_is_step_on_mine_summary.py
+      - name: IsStepOnMine prover syntax
+        run: python -m py_compile tools/prove_is_step_on_mine.py
