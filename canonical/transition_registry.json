@@ -1742,6 +1742,23 @@
         "additional Check_File caller closure",
         "authored music path/content provenance"
       ]
+    },
+    {
+      "family_id": "DLL_SAVE_DATA_STORY_WORK_GETTER_V1",
+      "fact_id": "FACT-0101",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL SaveData.get_story_work raw-threshold dispatcher, bridged from FACT-0099.",
+      "summary": "canonical/witnesses/CAP-R6-001/save_data_story_work_getter.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "StorySaveDataManager.GetStoryData internal closure",
+        "authored story-data closure",
+        "additional get_story_work caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
