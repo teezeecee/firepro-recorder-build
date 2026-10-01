@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCH_TIME_SET_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchTime",
+      "method": "Set",
+      "token": "0x06004905",
+      "rva": "0x002A7AF0",
+      "signature_blob_hex": "20010112a3c4",
+      "return_type": "Void",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "t",
+          "type": "MatchTime"
+        }
+      ],
+      "code_size": 37,
+      "code_sha256": "94a90dfec6b4dda72ec1c11c69106555c2e093589c42bf30bfa37c5351f613d5",
+      "instruction_count": 13,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 0
+    },
+    "exact_copies": [
+      {
+        "source": "t.min",
+        "source_token": "0x0400572E",
+        "target": "this.min",
+        "target_token": "0x0400572E"
+      },
+      {
+        "source": "t.sec",
+        "source_token": "0x0400572F",
+        "target": "this.sec",
+        "target_token": "0x0400572F"
+      },
+      {
+        "source": "t.frm",
+        "source_token": "0x04005730",
+        "target": "this.frm",
+        "target_token": "0x04005730"
+      }
+    ],
+    "fact_0097_bridge": {
+      "fact_id": "FACT-0097",
+      "caller": "MatchMain.ProcessMatchEnd_Normal",
+      "call_il": "0x00E2",
+      "callee_token": "0x06004905",
+      "receiver": "PlayerMatchResult.finishTime",
+      "argument": "MatchMain.matchTime"
+    }
+  },
+  "limits": [
+    "Other MatchTime.Set callers remain outside this record."
+  ]
+}
