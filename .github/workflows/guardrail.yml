@@ -493,3 +493,8 @@ jobs:
         run: python tests/test_match_process_match_end_normal_summary.py
       - name: MatchMain ProcessMatchEnd_Normal prover syntax
         run: python -m py_compile tools/prove_match_process_match_end_normal.py
+
+      - name: MatchTime Set summary
+        run: python tests/test_match_time_set_summary.py
+      - name: MatchTime Set prover syntax
+        run: python -m py_compile tools/prove_match_time_set.py

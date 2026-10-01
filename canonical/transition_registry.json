@@ -1694,6 +1694,21 @@
         "broader MatchEvaluation field semantics",
         "additional ProcessMatchEnd_Normal caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_MATCH_TIME_SET_V1",
+      "fact_id": "FACT-0098",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchTime.Set branchless min/sec/frm field-copy helper, bridged from FACT-0097.",
+      "summary": "canonical/witnesses/CAP-R6-001/match_time_set.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "additional MatchTime.Set caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
