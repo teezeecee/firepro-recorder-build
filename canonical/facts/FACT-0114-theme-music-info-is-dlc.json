@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0114",
+  "claim": "In the matching retail DLL, ThemeMusicInfo.IsDLC (0x06001192) is an instance parameterless Boolean method with exact signature blob 200002 and an exact 36-byte body. It initializes an Int32 local index to raw 0, then while signed index < raw 16 it reads this.dlc[index] from ThemeMusicInfo.dlc (0x04000FB8, Boolean[]). The first nonzero Boolean returns true immediately. A zero element increments the index by raw 1 and continues. Reaching index 16 returns false. FACT-0111 pins the two already-canonical direct caller sites at Menu_SoundManager.Change_BGM_Theme IL+0x0059 and IL+0x00B8.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "ThemeMusicInfo.IsDLC token 0x06001192 RVA 0x0006CAE4 signature 200002 code size 36 code sha256=493b5cdc804f432200f9198f85dbd365d62854ee6f944047f0cd690002c2f3cd; exact raw-0..15 Boolean-array scan in canonical/witnesses/CAP-R6-001/theme_music_info_is_dlc.summary.json; prover tools/prove_theme_music_info_is_dlc.py",
+      "observation": "Exact matching-DLL ThemeMusicInfo.IsDLC body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0111 Menu_SoundManager.Change_BGM_Theme",
+      "to": "ThemeMusicInfo.IsDLC()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0111 pins callvirt token 0x06001192 at Change_BGM_Theme IL+0x0059 and IL+0x00B8."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact IsDLC Boolean-array scan and the two FACT-0111 caller bridges.",
+    "Authored ThemeMusicInfo.dlc array contents remain outside this fact.",
+    "Other IsDLC callers remain separate caller seams.",
+    "Raw array positions 0 through 15 are preserved without assigning DLC-pack labels."
+  ]
+}
