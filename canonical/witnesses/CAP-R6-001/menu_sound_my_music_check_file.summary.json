@@ -20,7 +20,7 @@
       "header_format": "tiny",
       "max_stack": 8,
       "local_signature_token": "0x00000000",
-      "instruction_count": 13,
+      "instruction_count": 15,
       "branch_instruction_count": 2,
       "call_instruction_count": 3
     },
