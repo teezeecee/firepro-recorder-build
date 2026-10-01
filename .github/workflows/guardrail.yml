@@ -223,3 +223,8 @@ jobs:
         run: python tests/test_set_ai_act_core_summary.py
       - name: SetAIAct core prover syntax
         run: python -m py_compile tools/prove_set_ai_act_core.py
+
+      - name: EndAIAct lifecycle summary
+        run: python tests/test_end_ai_act_lifecycle_summary.py
+      - name: EndAIAct lifecycle prover syntax
+        run: python -m py_compile tools/prove_end_ai_act_lifecycle.py

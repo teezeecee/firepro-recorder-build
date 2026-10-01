@@ -762,6 +762,23 @@
         "remaining noncanonical SetAIAct caller seams",
         "raw AIActEnum semantic mapping"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_END_AI_ACT_LIFECYCLE_V1",
+      "fact_id": "FACT-0044",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL PlayerController_AI.EndAIAct and EndPriAct teardown pair: action/duration reset, conditional priority teardown, conditional Player.SetLastSkill(-1), and priority-state reset with caller bridges from UpdateAnimation and PlayerController_AI.Update.",
+      "summary": "canonical/witnesses/CAP-R6-001/end_ai_act_lifecycle.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "full PlayerController_AI.Update scheduler closure",
+        "keepLastSkill writer/consumer closure",
+        "remaining action-function caller seams"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

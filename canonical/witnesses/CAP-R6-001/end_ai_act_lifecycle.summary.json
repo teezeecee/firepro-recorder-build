@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_END_AI_ACT_LIFECYCLE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "PlayerController_AI",
+        "method": "EndAIAct",
+        "token": "0x06004FAD",
+        "rva": "0x002F60F5",
+        "signature_blob_hex": "200001",
+        "return_type": "Void",
+        "parameters": [],
+        "code_size": 33,
+        "code_sha256": "596a7249879f79a09b58884b3296525e4a2fd50a7549e53565f10b10b6d91d2f",
+        "max_stack": 8,
+        "local_signature_token": null,
+        "local_count": 0,
+        "instruction_count": 13,
+        "branch_instruction_count": 1,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "PlayerController_AI",
+        "method": "EndPriAct",
+        "token": "0x0600500B",
+        "rva": "0x002FD4D7",
+        "signature_blob_hex": "200001",
+        "return_type": "Void",
+        "parameters": [],
+        "code_size": 38,
+        "code_sha256": "4f3be7710b4a49b035c4f3d0bcc0be43bc6a36afb09368200886656b9e6ae460",
+        "max_stack": 8,
+        "local_signature_token": null,
+        "local_count": 0,
+        "instruction_count": 13,
+        "branch_instruction_count": 1,
+        "call_instruction_count": 1
+      }
+    ],
+    "fields": {
+      "aiActDuration": {
+        "token": "0x0400614C",
+        "type": "Int32"
+      },
+      "aiAct": {
+        "token": "0x0400614B",
+        "type": "AIActEnum"
+      },
+      "currentPriAct": {
+        "token": "0x04006151",
+        "type": "AIPriorityActEnum"
+      },
+      "keepLastSkill": {
+        "token": "0x0400616A",
+        "type": "Boolean"
+      },
+      "PlObj": {
+        "token": "0x0400614A",
+        "type": "Player"
+      }
+    },
+    "end_ai_act": [
+      "this.aiActDuration = 0",
+      "this.aiAct = 0",
+      "if this.currentPriAct == -1: return",
+      "this.EndPriAct()",
+      "return"
+    ],
+    "end_pri_act": [
+      "if this.keepLastSkill == 0: this.PlObj.SetLastSkill(-1)",
+      "this.keepLastSkill = 0",
+      "this.currentPriAct = -1",
+      "return"
+    ],
+    "caller_bridges": [
+      {
+        "fact_id": "FACT-0014",
+        "caller": "FormAnimator.UpdateAnimation",
+        "call_il": "0x028F",
+        "callee_token": "0x0600500B"
+      },
+      {
+        "caller": "PlayerController_AI.Update",
+        "caller_token": "0x0600502B",
+        "call_il": "0x025D",
+        "callee_token": "0x06004FAD"
+      }
+    ]
+  },
+  "limits": [
+    "Full Update scheduling and keepLastSkill semantics remain outside this record."
+  ]
+}
