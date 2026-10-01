@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_PRIORITY_ACTION_WRAPPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "set_ai_act_core": {
+      "token": "0x06004F9D",
+      "rva": "0x002F5F54",
+      "code_size": 102,
+      "code_sha256": "58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065",
+      "status": "OUTSIDE_FACT"
+    },
+    "methods": [
+      {
+        "type": "PlayerController_AI",
+        "method": "SetAIAct_DownAtk",
+        "token": "0x06004FA4",
+        "rva": "0x002F604F",
+        "signature_blob_hex": "2003011186000802",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "opt",
+            "type": "SkillSlotEnum"
+          },
+          {
+            "sequence": 2,
+            "name": "tm",
+            "type": "Int32"
+          },
+          {
+            "sequence": 3,
+            "name": "is_wait_down",
+            "type": "Boolean"
+          }
+        ],
+        "code_size": 30,
+        "code_sha256": "fb38a89d3118cf815885af4d76af0a9a8a2c4744c5d9352a6f58cca215640589",
+        "instruction_count": 13,
+        "branch_instruction_count": 1,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "PlayerController_AI",
+        "method": "SetAIAct_RunUpDive_Stand",
+        "token": "0x06004FA2",
+        "rva": "0x002F6023",
+        "signature_blob_hex": "20010111a860",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "corner",
+            "type": "CornerEnum"
+          }
+        ],
+        "code_size": 21,
+        "code_sha256": "94e61e33b42bff7c649e3d687172f74aa95a6083618dc9fa82e1e3c1e6fdd431",
+        "instruction_count": 8,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "PlayerController_AI",
+        "method": "SetAIAct_RunUpDive_Down",
+        "token": "0x06004FA3",
+        "rva": "0x002F6039",
+        "signature_blob_hex": "20010111a860",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "corner",
+            "type": "CornerEnum"
+          }
+        ],
+        "code_size": 21,
+        "code_sha256": "fc342bf4ac6481bbab368979011af8b3a878a91e00528b03d11c7f8021ce0b81",
+        "instruction_count": 8,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "PlayerController_AI",
+        "method": "SetAIAct_CornerDive",
+        "token": "0x06004FA1",
+        "rva": "0x002F6000",
+        "signature_blob_hex": "20030111a86011870c02",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "corner",
+            "type": "CornerEnum"
+          },
+          {
+            "sequence": 2,
+            "name": "dive_skill",
+            "type": "SkillSlotEnum"
+          },
+          {
+            "sequence": 3,
+            "name": "lot_perform",
+            "type": "Boolean"
+          }
+        ],
+        "code_size": 34,
+        "code_sha256": "76067b8223899419015727846653c64dcf88f7aba379d6621dac196ef2bcb802",
+        "instruction_count": 14,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "PlayerController_AI",
+        "method": "SetAIAct_PriAct_RunAtk",
+        "token": "0x06004FAA",
+        "rva": "0x002F60C8",
+        "signature_blob_hex": "20020111a7d008",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "kind",
+            "type": "AIPriorityActEnum"
+          },
+          {
+            "sequence": 2,
+            "name": "tm",
+            "type": "Int32"
+          }
+        ],
+        "code_size": 17,
+        "code_sha256": "09d1a53cf821b1ed7cf1f66622e3b14e1cfd5d8d86b4de366aaba3387e8ad46f",
+        "instruction_count": 8,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "PlayerController_AI",
+        "method": "SetAIAct_GoGrapple",
+        "token": "0x06004F9E",
+        "rva": "0x002F5FC6",
+        "signature_blob_hex": "20030111870c11a7dc08",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "skill",
+            "type": "SkillSlotEnum"
+          },
+          {
+            "sequence": 2,
+            "name": "dir",
+            "type": "DirectionEnum"
+          },
+          {
+            "sequence": 3,
+            "name": "tm",
+            "type": "Int32"
+          }
+        ],
+        "code_size": 23,
+        "code_sha256": "978e82da32179445718786287df804ca334ac6f1889e726bec8774e5a13ccf12",
+        "instruction_count": 11,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "PlayerController_AI",
+        "method": "SetAIAct_GoBackGrapple",
+        "token": "0x06004FA0",
+        "rva": "0x002F5FEF",
+        "signature_blob_hex": "20020111870c08",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "skill",
+            "type": "SkillSlotEnum"
+          },
+          {
+            "sequence": 2,
+            "name": "tm",
+            "type": "Int32"
+          }
+        ],
+        "code_size": 16,
+        "code_sha256": "78b1f889deb727931a2cf293d6125dbba940b2f77b8d67e400fa8c99cdf195ac",
+        "instruction_count": 8,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1
+      }
+    ],
+    "exact_wrappers": [
+      {
+        "method": "SetAIAct_DownAtk",
+        "set_ai_act_args": [
+          19,
+          "tm"
+        ],
+        "writes": [
+          "aiActPrm = opt",
+          "if !is_wait_down: aiActStep = 1"
+        ],
+        "field_tokens": {
+          "aiActPrm": "0x0400614E",
+          "aiActStep": "0x0400614D"
+        }
+      },
+      {
+        "method": "SetAIAct_RunUpDive_Stand",
+        "set_ai_act_args": [
+          9,
+          512
+        ],
+        "writes": [
+          "destCorner = corner"
+        ],
+        "field_tokens": {
+          "destCorner": "0x0400614F"
+        }
+      },
+      {
+        "method": "SetAIAct_RunUpDive_Down",
+        "set_ai_act_args": [
+          10,
+          512
+        ],
+        "writes": [
+          "destCorner = corner"
+        ],
+        "field_tokens": {
+          "destCorner": "0x0400614F"
+        }
+      },
+      {
+        "method": "SetAIAct_CornerDive",
+        "set_ai_act_args": [
+          5,
+          256
+        ],
+        "writes": [
+          "destCorner = corner",
+          "nextSkill = dive_skill",
+          "isLotPerformanceOnCorner = lot_perform"
+        ],
+        "field_tokens": {
+          "destCorner": "0x0400614F",
+          "nextSkill": "0x04006160",
+          "isLotPerformanceOnCorner": "0x0400616C"
+        }
+      },
+      {
+        "method": "SetAIAct_PriAct_RunAtk",
+        "set_ai_act_args": [
+          16,
+          "tm"
+        ],
+        "writes": [
+          "aiActPrm = kind"
+        ],
+        "field_tokens": {
+          "aiActPrm": "0x0400614E"
+        }
+      },
+      {
+        "method": "SetAIAct_GoGrapple",
+        "set_ai_act_args": [
+          1,
+          "tm"
+        ],
+        "writes": [
+          "nextSkill = skill",
+          "aiActPrm = dir"
+        ],
+        "field_tokens": {
+          "nextSkill": "0x04006160",
+          "aiActPrm": "0x0400614E"
+        }
+      },
+      {
+        "method": "SetAIAct_GoBackGrapple",
+        "set_ai_act_args": [
+          3,
+          "tm"
+        ],
+        "writes": [
+          "nextSkill = skill"
+        ],
+        "field_tokens": {
+          "nextSkill": "0x04006160"
+        }
+      }
+    ],
+    "fact_0040_bridge": {
+      "fact_id": "FACT-0040",
+      "caller": "PlayerController_AI.TryToDoPriorityAct",
+      "caller_token": "0x06005009",
+      "calls": [
+        {
+          "method": "SetAIAct_DownAtk",
+          "il": "0x00BF"
+        },
+        {
+          "method": "SetAIAct_DownAtk",
+          "il": "0x00E0"
+        },
+        {
+          "method": "SetAIAct_RunUpDive_Stand",
+          "il": "0x012F"
+        },
+        {
+          "method": "SetAIAct_RunUpDive_Down",
+          "il": "0x013C"
+        },
+        {
+          "method": "SetAIAct_CornerDive",
+          "il": "0x01AE"
+        },
+        {
+          "method": "SetAIAct_PriAct_RunAtk",
+          "il": "0x01F3"
+        },
+        {
+          "method": "SetAIAct_GoGrapple",
+          "il": "0x022C"
+        },
+        {
+          "method": "SetAIAct_GoBackGrapple",
+          "il": "0x024B"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "SetAIAct core and wrapper field consumers remain outside this record.",
+    "Raw action/timing constants are preserved without semantic labels."
+  ]
+}
