@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0129",
+  "claim": "In the matching retail DLL, static Menu_SoundManager.Change_BGM_Theme(String fn, Boolean bAsync, Boolean bStart) (0x06005298) has exact signature blob 0003010e0202 and an exact 125-byte body at RVA 0x00322430. When bAsync is true it writes g_ProgressBGM_Continue=false, g_KeepBgmNumber=15 and MyMusic_SelectFile_Admission=System.String.Empty, then calls canonical Menu_SoundManager.get__instance, constructs 'Sound/Bgm/' + fn, calls canonical CoChange_BGMandPlay with raw SYSTEM_SOUND 33, bStart and null onLoad, and passes the returned IEnumerator to StartCoroutine. When bAsync is false it constructs the same resource path, calls Resources.Load, casts the result to UnityEngine.AudioClip, writes it through canonical AudioClipInfo.Set on Menu_SoundManager.audioClipInfo[33], then writes the same three static reset values. FACT-0122 pins the already-canonical caller at MatchMain.PlayAfterMatchBGM IL+0x00F0.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.Change_BGM_Theme(String,Boolean,Boolean) token 0x06005298 RVA 0x00322430 signature 0003010e0202 code size 125 code sha256=3d1bd7f767849f9b77dd562c223725e3f1614d823843c55b71a12d7b15303c18; exact async coroutine vs synchronous Resources.Load path and shared raw field resets in canonical/witnesses/CAP-R6-001/menu_sound_change_bgm_theme_string.summary.json; prover tools/prove_menu_sound_change_bgm_theme_string.py",
+      "observation": "Exact matching-DLL String overload body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0122 MatchMain.PlayAfterMatchBGM",
+      "to": "Menu_SoundManager.Change_BGM_Theme(String,Boolean,Boolean)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0122 pins call token 0x06005298 at PlayAfterMatchBGM IL+0x00F0."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact String overload and its FACT-0122 caller bridge.",
+    "FACT-0112 closes get__instance, FACT-0115 closes CoChange_BGMandPlay factory construction, and FACT-0113 closes AudioClipInfo.Set; their already-recorded limits remain in force.",
+    "Unity Resources.Load, AudioClip cast behavior and coroutine scheduling remain external.",
+    "Authored audio resources remain outside this fact."
+  ]
+}
