@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_AUDIO_SRC_INFO_STOP_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "AudioSrcInfo",
+      "method": "Stop",
+      "token": "0x060052C4",
+      "rva": "0x00323806",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 43,
+      "code_sha256": "6367793f54b558ae8629023c6246cc6a97b366e8e4cf5761be3343d3cafcb76a",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 15,
+      "branch_instruction_count": 1,
+      "call_instruction_count": 2
+    },
+    "fields": {
+      "source": {
+        "name": "AudioSrcInfo.sRefAudio",
+        "token": "0x0400874C",
+        "signature_blob_hex": "061280b9",
+        "type": "UnityEngine.AudioSource"
+      },
+      "fade_out_cnt": {
+        "name": "AudioSrcInfo.fadeOutCnt",
+        "token": "0x0400874D",
+        "signature_blob_hex": "0608",
+        "type": "Int32"
+      },
+      "fade_out_frm": {
+        "name": "AudioSrcInfo.fadeOutFrm",
+        "token": "0x0400874E",
+        "signature_blob_hex": "0608",
+        "type": "Int32"
+      }
+    },
+    "calls": {
+      "object_inequality": {
+        "token": "0x0A00000F",
+        "resolved": "UnityEngine.Object.op_Inequality",
+        "call_il": "0x0007"
+      },
+      "audio_source_stop": {
+        "token": "0x0A00079F",
+        "resolved": "UnityEngine.AudioSource.Stop",
+        "signature_blob_hex": "200001",
+        "call_il": "0x0015"
+      }
+    },
+    "exact_flow": [
+      "if this.sRefAudio != null: this.sRefAudio.Stop()",
+      "this.fadeOutFrm = 0",
+      "this.fadeOutCnt = 0",
+      "return"
+    ],
+    "fact_0123_bridge": {
+      "fact_id": "FACT-0123",
+      "caller": "Menu_SoundManager.StopBGM",
+      "caller_token": "0x060052A4",
+      "call_il": "0x0009",
+      "callee_token": "0x060052C4",
+      "array_source": "Menu_SoundManager.audioSrcInfo[0]"
+    }
+  },
+  "limits": [
+    "External Unity audio implementation and other AudioSrcInfo state flows remain outside this record."
+  ]
+}
