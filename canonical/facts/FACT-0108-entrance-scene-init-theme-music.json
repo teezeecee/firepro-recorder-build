@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0108",
+  "claim": "In the matching retail DLL, EntranceScene.InitThemeMusic (0x06004833) is an instance parameterless Void method with exact signature blob 200001 and an exact 244-byte body. It computes pl_idx = this.plIdxList[this.plNum - 1], then player = PlayerMan.inst.GetPlObj(pl_idx). When player.WresParam.themeMusic is below raw Int32 10000, it calls Menu_SoundManager.Change_BGM_Theme(themeMusic, false, false) and returns. Otherwise it loads GlobalWork.inst.MatchSetting and matchWrestlerInfo[pl_idx]. If wrestlerID is raw 10000 or greater, or exactly raw -2, execution enters a data path that first calls SaveData.inst.GetEditWrestlerData(wrestlerID); when wrestlerID is -2 that local is then replaced by SaveData.get_story_data().m_pc. The method calls canonical MyMusic.Check_File(data.ThemeMusic_Filename). A false result calls Change_BGM_Theme(0,false,false) and MyMusic.Set(33,String.Empty); a true result calls MyMusic.Set(33,data.ThemeMusic_Filename). If wrestlerID is below 10000 and is not -2, the method calls Change_BGM_Theme(player.WresParam.themeMusic,false,false). FACT-0102, FACT-0099 and FACT-0100 pin the three already-canonical helper call boundaries.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "EntranceScene.InitThemeMusic token 0x06004833 RVA 0x00299808 signature 200001 code size 244 code sha256=c64099c6e74a32eaa9dcc01c14768a9687140d2da506f443bd11da9449a5bb58; exact plIdxList/plNum/player theme/raw-10000/raw--2/data-source/file-check/Change_BGM_Theme/MyMusic.Set flow in canonical/witnesses/CAP-R6-001/entrance_scene_init_theme_music.summary.json; prover tools/prove_entrance_scene_init_theme_music.py",
+      "observation": "Exact matching-DLL EntranceScene.InitThemeMusic body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "EntranceScene.InitThemeMusic",
+      "to": "FACT-0102 SaveData.GetEditWrestlerData / FACT-0099 SaveData.get_story_data / FACT-0100 MyMusic.Check_File(String)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "InitThemeMusic IL+0x0084 is callvirt 0x060051B9, IL+0x0098 is call 0x06005172, and IL+0x00AB is call 0x06002C1E after loading EditWrestlerData.ThemeMusic_Filename."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact EntranceScene.InitThemeMusic body and its direct call boundaries.",
+    "PlayerMan.GetPlObj, Menu_SoundManager.Change_BGM_Theme and MyMusic.Set internals remain separate gates.",
+    "Authored wrestler, match-setting and music-file contents remain outside this fact.",
+    "Raw values 10000, -2 and 33 are preserved without assigning broader gameplay labels."
+  ]
+}

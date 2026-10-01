@@ -1861,6 +1861,24 @@
         "Prefab_Referee authored object closure",
         "CreateRefereeDisp editor/display semantics"
       ]
+    },
+    {
+      "family_id": "DLL_ENTRANCE_SCENE_INIT_THEME_MUSIC_V1",
+      "fact_id": "FACT-0108",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL EntranceScene.InitThemeMusic player/theme threshold, match-wrestler data selection, canonical SaveData/MyMusic file-check bridges and raw music-call branches.",
+      "summary": "canonical/witnesses/CAP-R6-001/entrance_scene_init_theme_music.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "PlayerMan.GetPlObj internal closure",
+        "Menu_SoundManager.Change_BGM_Theme internal closure",
+        "MyMusic.Set internal closure",
+        "authored wrestler/match/music data and file contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
