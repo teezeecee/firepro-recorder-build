@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_U_AUDIO_GET_U_AUDIO_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "uAudio.uAudioPlayer",
+      "method": "get_UAudio",
+      "token": "0x060052D0",
+      "rva": "0x00325714",
+      "signature_blob_hex": "20001282b1",
+      "return_type": "uAudio.uAudio_backend.uAudio",
+      "parameters": [],
+      "code_size": 86,
+      "code_sha256": "5524703abb8912537cca2bf60cf25fdcde63df8bcc2ea51a0db76d5dc8e858c4",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 3,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 25,
+      "branch_instruction_count": 1,
+      "call_instruction_count": 5
+    },
+    "fields": {
+      "backend": {"token":"0x040087E3","name":"uAudio.uAudioPlayer._uAudio","signature_blob_hex":"061282b1","type":"uAudio.uAudio_backend.uAudio"},
+      "target_file": {"token":"0x040087E6","name":"uAudio.uAudioPlayer.targetFile","signature_blob_hex":"060e","type":"String"},
+      "start_volume_offset": {"token":"0x040087F0","name":"uAudio.uAudioPlayer.start_volume_Offset","signature_blob_hex":"060c","type":"Single"}
+    },
+    "calls": {
+      "backend_ctor":{"token":"0x0A000FB1","resolved":"uAudio.uAudio_backend.uAudio..ctor()","signature_blob_hex":"200001","call_il":"0x000C"},
+      "set_audio_file":{"token":"0x0A000FB2","resolved":"uAudio.uAudio_backend.uAudio.SetAudioFile(String)","signature_blob_hex":"2001010e","call_il":"0x0022"},
+      "set_volume":{"token":"0x0A000FB0","resolved":"uAudio.uAudio_backend.uAudio.set_Volume(Single)","signature_blob_hex":"2001010c","call_il":"0x0033"},
+      "callback_method":{"token":"0x060052EE","resolved":"uAudio.uAudioPlayer.<get_UAudio>m__0","signature_blob_hex":"2001011182b5","ldftn_il":"0x003F"},
+      "callback_delegate_ctor":{"token":"0x0A000FB3","parent_typespec_token":"0x1B0002D6","parent_typespec_blob_hex":"151280d1011182b5","resolved_parent":"System.Action<uAudio.uAudio_backend.PlayBackState>","signature_blob_hex":"2002011c18","call_il":"0x0045"},
+      "set_send_playback_state":{"token":"0x0A000FB4","resolved":"uAudio.uAudio_backend.uAudio.set_sendPlaybackState","signature_blob_hex":"200101151280d1011182b5","call_il":"0x004A"}
+    },
+    "exact_flow": [
+      "if this._uAudio is non-null: return this._uAudio",
+      "this._uAudio = new uAudio.uAudio_backend.uAudio()",
+      "this._uAudio.SetAudioFile(this.targetFile)",
+      "this._uAudio.set_Volume(this.start_volume_Offset)",
+      "callback = new System.Action<uAudio.uAudio_backend.PlayBackState>(this, ldftn uAudioPlayer.<get_UAudio>m__0)",
+      "this._uAudio.set_sendPlaybackState(callback)",
+      "return this._uAudio"
+    ],
+    "fact_0137_bridges": [
+      {"fact_id":"FACT-0137","caller":"uAudio.uAudioPlayer.LoadFile","call_il":"0x0013"},
+      {"fact_id":"FACT-0137","caller":"uAudio.uAudioPlayer.LoadFile","call_il":"0x0035"}
+    ]
+  },
+  "limits": [
+    "Callback internals, external backend implementation and actual audio/file behavior remain outside this record."
+  ]
+}
