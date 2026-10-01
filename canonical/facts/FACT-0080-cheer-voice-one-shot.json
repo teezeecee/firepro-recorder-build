@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0080",
+  "claim": "In the matching retail DLL, Menu_SoundManager.Play_CheerVoice_OneShot (0x060052AC) is a static two-parameter method with exact signature blob 00020111aa000c, parameters vid (metadata valuetype token resolving to CheerVoiceEnum) and volume:Float32, and an exact 120-byte body. It returns when static Sound_ClipCheerVoice_List is null, returns when vid is negative or vid is 42 or greater, and returns when Sound_ClipCheerVoice_List[vid] is null. It computes local = Volume_Cheer * volume. The emitted bge.un comparison against raw 0.0f preserves greater/equal or unordered values; only an ordered-negative result is replaced with raw 0.0f. It then compares local against raw 1.0f using ble.un; ordered values greater than 1.0f are replaced with raw 1.0f, while less/equal or unordered values continue unchanged. It selects raw audioSrcInfo index 6, loads sRefAudio, calls AudioSource.set_volume(local), calls AudioSource.PlayOneShot(clip), and returns. FACT-0079 pins the direct caller at Audience.PlayCheerVoice IL+0x00A5 with arguments vid and its computed Float32 local.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.Play_CheerVoice_OneShot token 0x060052AC RVA 0x00322D48 signature 00020111aa000c code size 120 code sha256=a32030b069fd4cdecafcd55c677b9ffe0f3c2220729d455c31ae7796c31b4fb2; exact bounds/null/Float32 clamp/fixed-source playback body in canonical/witnesses/CAP-R6-001/cheer_voice_one_shot.summary.json; prover tools/prove_cheer_voice_one_shot.py",
+      "observation": "Exact matching-DLL Play_CheerVoice_OneShot body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0079 Audience.PlayCheerVoice",
+      "to": "Menu_SoundManager.Play_CheerVoice_OneShot(vid,computedVolume)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0079 pins call token 0x060052AC at Audience.PlayCheerVoice IL+0x00A5 after loading raw argument vid and local slot 4."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact one-shot cheer-voice leaf and FACT-0079 caller bridge.",
+    "Authored cheer voice clip contents and Volume_Cheer value remain outside this fact.",
+    "The metadata enum/type name and raw bounds/source index are preserved as locators; no gameplay meaning is assigned to them.",
+    "Float32 unordered-value behavior is preserved from the emitted .un branch opcodes."
+  ]
+}

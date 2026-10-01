@@ -1380,6 +1380,23 @@
         "Menu_SoundManager.Play_CheerVoice_OneShot internal closure",
         "authored meaning of raw cheer/attendance values"
       ]
+    },
+    {
+      "family_id": "DLL_CHEER_VOICE_ONE_SHOT_V1",
+      "fact_id": "FACT-0080",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Play_CheerVoice_OneShot raw vid bounds, clip gate, Float32 lower/upper clamps, fixed audioSrcInfo[6] source selection and playback, bridged from FACT-0079.",
+      "summary": "canonical/witnesses/CAP-R6-001/cheer_voice_one_shot.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored cheer voice clip contents",
+        "Volume_Cheer value provenance",
+        "remaining cheer-voice caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
