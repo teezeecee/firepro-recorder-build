@@ -730,3 +730,9 @@ jobs:
         run: python tests/test_u_audio_get_u_audio_summary.py
       - name: uAudio get UAudio prover syntax
         run: python -m py_compile tools/prove_u_audio_get_u_audio.py
+
+
+      - name: uAudio get UAudio callback summary
+        run: python tests/test_u_audio_get_u_audio_callback_summary.py
+      - name: uAudio get UAudio callback prover syntax
+        run: python -m py_compile tools/prove_u_audio_get_u_audio_callback.py
