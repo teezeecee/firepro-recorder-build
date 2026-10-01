@@ -1627,6 +1627,22 @@
         "Audience.SetBaseCheerLevel internal closure",
         "MatchMain.ProcessMatchEnd_Normal internal closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_CHECK_RIGHT_V1",
+      "fact_id": "FACT-0094",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.CheckRight Boolean helper over isLose and hasRight, bridged from FACT-0093.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_check_right.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "additional CheckRight caller closure",
+        "field writer/provenance closure for isLose and hasRight"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
