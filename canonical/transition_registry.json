@@ -1726,6 +1726,22 @@
         "StoryWork.m_data authored/data closure",
         "additional get_story_data caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_MYMUSIC_CHECK_FILE_V1",
+      "fact_id": "FACT-0100",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MyMusic.Check_File 25-byte path-prefix/Boolean member-call helper, bridged from FACT-0096 SetAfterMatchBGM.",
+      "summary": "canonical/witnesses/CAP-R6-001/mymusic_check_file.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "additional Check_File caller closure",
+        "authored music path/content provenance"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
