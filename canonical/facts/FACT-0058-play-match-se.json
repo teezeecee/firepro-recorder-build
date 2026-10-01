@@ -1,0 +1,38 @@
+{
+  "fact_id": "FACT-0058",
+  "claim": "In the matching retail DLL, MatchMisc.PlayMatchSE (0x06004970) is a static three-parameter method (seid, vol, pl_idx) with an exact 95-byte body. If MatchMain.inst exists, isFastForwardMatch is nonzero, and Fade.inst.IsFadeFinish() is true, it computes unsigned MatchMain.MchFrameCnt % 20 and returns immediately when the remainder is nonzero; remainder zero proceeds. Any earlier false condition also proceeds. The shared dispatch path tests MatchSEPlayer.inst against null and, when present, calls MatchSEPlayer.PlayMatchSE(seid,vol,pl_idx) with all three arguments unchanged, then returns. FACT-0026 pins raw call (30,1.0f,PlIdx) and FACT-0049 pins raw call (67,1.0f,PlIdx).",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.PlayMatchSE token 0x06004970 RVA 0x002B0AE4 signature 00030111aa0c0c08 parameters seid/vol/pl_idx code size 95 code sha256=20b2b0b4629e94a1522ac997f16d94062fd0e3ad779184615939a1ee3a794aae; exact throttle and forwarding body in canonical/witnesses/CAP-R6-001/play_match_se.summary.json; prover tools/prove_play_match_se.py",
+      "observation": "Exact matching-DLL PlayMatchSE body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0026 Player.ProcessCritical",
+      "to": "MatchMisc.PlayMatchSE(30,1.0f,PlIdx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0026 pins call token 0x06004970 at ProcessCritical IL+0x00FF."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0049 Player.TransitStateAfterAnm_Down",
+      "to": "MatchMisc.PlayMatchSE(67,1.0f,PlIdx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0049 pins call token 0x06004970 at TransitStateAfterAnm_Down IL+0x0321."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Fade.IsFadeFinish and MatchSEPlayer.PlayMatchSE internals remain separate gates.",
+    "Raw sound IDs and frame-throttle constants are preserved numerically without added labels."
+  ]
+}
