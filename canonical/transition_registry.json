@@ -919,6 +919,23 @@
         "authored colData_AroundRing provenance",
         "larger cross-line geometry helper closure"
       ]
+    },
+    {
+      "family_id": "DLL_RING_OCTAGON_INSIDE_CROSS_LINE_V1",
+      "fact_id": "FACT-0053",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Ring.mGetOctagonInSideCrossLine four-way raw pb2 segment construction and final Misc.IsIntersect_Segment delegation reached from FACT-0050 AutoRun geometry.",
+      "summary": "canonical/witnesses/CAP-R6-001/octagon_inside_cross_line.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Misc.IsIntersect_Segment internal closure",
+        "authored ColVert_Octagon coordinate provenance",
+        "raw pb2 direction mapping"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
