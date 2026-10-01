@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SAVE_DATA_EDIT_WRESTLER_DATA_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "SaveData",
+      "method": "GetEditWrestlerData",
+      "token": "0x060051B9",
+      "rva": "0x003166EC",
+      "signature_blob_hex": "20011287b41187b8",
+      "return_type": "EditWrestlerData",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "wid",
+          "type": "WrestlerID"
+        }
+      ],
+      "code_size": 47,
+      "code_sha256": "fb1d5036d90b5023700c012f02b2775cd7c763c0a131ba63904e8f7a6bc56998",
+      "max_stack": 2,
+      "local_signature_token": "0x1100003A",
+      "local_signature_blob_hex": "070108",
+      "instruction_count": 19,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 3
+    },
+    "lookup": {
+      "index_helper": {
+        "method": "SaveData.GetEditWrestlerIdx",
+        "token": "0x060051B5",
+        "rva": "0x00316558",
+        "code_size": 68,
+        "code_sha256": "d3a61b6659b558132c7269733dda2c9925958fc65d6a5925f84474e04d42969d",
+        "argument": "wid",
+        "result_local": "Int32 local 0"
+      },
+      "data_field": {
+        "name": "SaveData.editWrestlerData",
+        "token": "0x040064F5",
+        "signature_blob_hex": "06151209011287b4",
+        "type": "System.Collections.Generic.List<EditWrestlerData>"
+      },
+      "list_memberrefs": {
+        "get_Item": {
+          "token": "0x0A0007A3",
+          "signature_blob_hex": "2001130008"
+        },
+        "get_Count": {
+          "token": "0x0A0007A4",
+          "signature_blob_hex": "200008"
+        }
+      }
+    },
+    "exact_flow": [
+      "idx = this.GetEditWrestlerIdx(wid)",
+      "if idx < 0: return null",
+      "if idx >= this.editWrestlerData.Count: return null",
+      "return this.editWrestlerData[idx]"
+    ],
+    "fact_0096_bridge": {
+      "fact_id": "FACT-0096",
+      "caller": "MatchMain.SetAfterMatchBGM",
+      "caller_token": "0x06004924",
+      "caller_rva": "0x002A95D8",
+      "caller_code_size": 195,
+      "caller_code_sha256": "57fe61387e5df262b4c752819960c309b4a48a1a2299a231f8f5199a6e69eeb3",
+      "call_il": "0x0059",
+      "opcode": "callvirt",
+      "callee_token": "0x060051B9",
+      "argument": "MatchWrestlerInfo.wrestlerID"
+    }
+  },
+  "limits": [
+    "This record closes only GetEditWrestlerData and the already-pinned FACT-0096 call boundary.",
+    "SaveData.GetEditWrestlerIdx internals remain a separate dependency.",
+    "The authored editWrestlerData list contents and WrestlerID meaning/provenance remain outside this record.",
+    "Other direct callers of GetEditWrestlerData are not promoted by this record."
+  ]
+}
