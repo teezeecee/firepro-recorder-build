@@ -428,3 +428,8 @@ jobs:
         run: python tests/test_referee_move_destination_summary.py
       - name: Referee move destination prover syntax
         run: python -m py_compile tools/prove_referee_move_destination.py
+
+      - name: Referee arrived destination summary
+        run: python tests/test_referee_arrived_destination_summary.py
+      - name: Referee arrived destination prover syntax
+        run: python -m py_compile tools/prove_referee_arrived_destination.py
