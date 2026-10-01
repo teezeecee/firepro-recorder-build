@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0137",
+  "claim": "In the matching retail DLL, instance uAudio.uAudioPlayer.LoadFile (0x060052E4) has exact signature blob 2001010e, one String parameter targetFileIN, and an exact 65-byte body. It first stores targetFileIN into this.targetFile (0x040087E6). When this._loadedTarget (0x040087F1) is true, it calls this.get_UAudio() (0x060052D0), reads backend member field targetFile (memberref 0x0A000FC1), compares that value to this.targetFile through System.String.op_Inequality, and returns immediately when they are equal. Otherwise, and whenever _loadedTarget was false, it writes true to this._loadedTarget, calls this.get_UAudio() again, and calls backend uAudio.uAudio_backend.uAudio.LoadFile(String) through memberref 0x0A000FC2 with the original targetFileIN argument. FACT-0133 pins two already-canonical caller sites at Menu_SoundManager.MyMusic_Play IL+0x00E3 and IL+0x019A.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "uAudio.uAudioPlayer.LoadFile token 0x060052E4 RVA 0x00325A30 signature 2001010e parameter targetFileIN:String code size 65 code sha256=b5b74da6ab2322d1895635e2add04dd52f9ee9ca4a3846825a9b6fe4631e3ef4; exact targetFile store, _loadedTarget/cache-name equality gate and backend LoadFile forward in canonical/witnesses/CAP-R6-001/u_audio_load_file.summary.json; prover tools/prove_u_audio_load_file.py",
+      "observation": "Exact matching-DLL uAudio.uAudioPlayer.LoadFile body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0133 Menu_SoundManager.MyMusic_Play",
+      "to": "uAudio.uAudioPlayer.LoadFile(targetFileIN)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0133 pins callvirt token 0x060052E4 at MyMusic_Play IL+0x00E3 and IL+0x019A."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact uAudioPlayer.LoadFile wrapper and its two FACT-0133 caller bridges.",
+    "uAudio.uAudioPlayer.get_UAudio internals remain a separate gate.",
+    "uAudio.uAudio_backend.uAudio.LoadFile implementation and actual file/audio contents remain external.",
+    "The _loadedTarget and targetFile fields are preserved by their exact metadata names and raw control flow only."
+  ]
+}

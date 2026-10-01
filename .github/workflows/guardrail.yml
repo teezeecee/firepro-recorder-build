@@ -718,3 +718,9 @@ jobs:
         run: python tests/test_menu_sound_my_music_check_file_summary.py
       - name: Menu Sound MyMusic CheckFile prover syntax
         run: python -m py_compile tools/prove_menu_sound_my_music_check_file.py
+
+
+      - name: uAudio LoadFile summary
+        run: python tests/test_u_audio_load_file_summary.py
+      - name: uAudio LoadFile prover syntax
+        run: python -m py_compile tools/prove_u_audio_load_file.py
