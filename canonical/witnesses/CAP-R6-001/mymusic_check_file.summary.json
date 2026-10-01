@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MYMUSIC_CHECK_FILE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MyMusic",
+      "method": "Check_File",
+      "token": "0x06002C1E",
+      "rva": "0x001AE7A4",
+      "signature_blob_hex": "0001020e",
+      "return_type": "Boolean",
+      "parameters": [
+        {
+          "sequence": 1,
+          "type": "String"
+        }
+      ],
+      "code_size": 25,
+      "code_sha256": "193b347ba039064fe416b7d3c34758af6401a2ead6f5c45046904e0a29646877",
+      "instruction_count": 8,
+      "branch_instruction_count": 1,
+      "call_instruction_count": 2
+    },
+    "exact_body": [
+      {
+        "il": "0x0000",
+        "opcode": "ldsfld",
+        "token": "0x04003903",
+        "field": "MyMusic.Root_DirectotyPath"
+      },
+      {
+        "il": "0x0005",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0006",
+        "opcode": "call",
+        "token": "0x0A000012",
+        "method": "System.String.Concat(string,string)"
+      },
+      {
+        "il": "0x000B",
+        "opcode": "call",
+        "token": "0x0A000216",
+        "method": "System.IO.File.Exists(string)"
+      },
+      {
+        "il": "0x0010",
+        "opcode": "brfalse",
+        "target_il": "0x0017"
+      },
+      {
+        "il": "0x0015",
+        "opcode": "ldc.i4.1"
+      },
+      {
+        "il": "0x0016",
+        "opcode": "ret"
+      },
+      {
+        "il": "0x0017",
+        "opcode": "ldc.i4.0; ret"
+      }
+    ],
+    "direct_call_inventory": {
+      "total_call_sites": 7,
+      "fact_0096_promoted_call": {
+        "caller": "MatchMain.SetAfterMatchBGM",
+        "token": "0x06004924",
+        "call_il": "0x0098"
+      },
+      "other_call_sites_count": 6
+    },
+    "fact_0096_bridge": {
+      "fact_id": "FACT-0096",
+      "caller": "MatchMain.SetAfterMatchBGM",
+      "caller_token": "0x06004924",
+      "call_il": "0x0098",
+      "argument": "EditWrestlerData.ThemeMusic_Filename"
+    }
+  },
+  "limits": [
+    "Other callers and file contents remain outside this record."
+  ]
+}
