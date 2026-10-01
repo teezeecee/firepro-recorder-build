@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0127",
+  "claim": "In the matching retail DLL, uAudio.uAudioPlayer.get_sendPlaybackState (0x060052CB) is an instance parameterless getter with exact signature blob 2000151280d1011182b5 and an exact 7-byte body. It loads this._sendPlaybackState (0x040087E7, exact field signature blob 06151280d1011182b5) and immediately returns that field value. FACT-0126 pins the two already-canonical caller sites at uAudio.uAudioPlayer.SongEnd IL+0x005A and IL+0x0065.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "uAudio.uAudioPlayer.get_sendPlaybackState token 0x060052CB RVA 0x0032568B signature 2000151280d1011182b5 code size 7 code sha256=f0eb7b6d2625782d43a08476d93acb464e82bc45c00d660925f2176d82bc8c4b; exact this._sendPlaybackState / ret body in canonical/witnesses/CAP-R6-001/u_audio_get_send_playback_state.summary.json; prover tools/prove_u_audio_get_send_playback_state.py",
+      "observation": "Exact matching-DLL get_sendPlaybackState body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0126 uAudio.uAudioPlayer.SongEnd",
+      "to": "uAudio.uAudioPlayer.get_sendPlaybackState()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0126 pins call token 0x060052CB at SongEnd IL+0x005A and IL+0x0065."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact getter and the two FACT-0126 caller bridges.",
+    "Writers of _sendPlaybackState and delegate invocation/runtime behavior remain outside this fact.",
+    "No semantic label is assigned beyond the matching-DLL metadata names."
+  ]
+}
