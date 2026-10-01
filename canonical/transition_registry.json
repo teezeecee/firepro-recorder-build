@@ -2447,6 +2447,22 @@
         "external NLayer.MpegFile.Read implementation",
         "decoded sample contents"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_PAUSE_V1",
+      "fact_id": "FACT-0143",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudioPlayer.Pause raw State 1/2 pause-unpause toggle, protected playback-state notifications and two System.Object catch clauses, bridged from FACT-0140.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_pause.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external UnityEngine.AudioSource Pause/UnPause behavior",
+        "delegate subscriber behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
