@@ -2031,6 +2031,22 @@
         "GlobalParam.IsStoryMode internal closure",
         "authored DLC/install/story state"
       ]
+    },
+    {
+      "family_id": "DLL_GLOBAL_PARAM_IS_STORY_MODE_V1",
+      "fact_id": "FACT-0118",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL GlobalParam.IsStoryMode raw SceneMode-11 comparison, bridged from FACT-0117.",
+      "summary": "canonical/witnesses/CAP-R6-001/global_param_is_story_mode.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "GlobalParam.m_SceneMode writer closure",
+        "broader SceneMode behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

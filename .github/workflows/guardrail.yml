@@ -604,3 +604,9 @@ jobs:
         run: python tests/test_theme_music_info_check_validation_dlc_summary.py
       - name: ThemeMusicInfo CheckValidationDLC prover syntax
         run: python -m py_compile tools/prove_theme_music_info_check_validation_dlc.py
+
+
+      - name: GlobalParam IsStoryMode summary
+        run: python tests/test_global_param_is_story_mode_summary.py
+      - name: GlobalParam IsStoryMode prover syntax
+        run: python -m py_compile tools/prove_global_param_is_story_mode.py

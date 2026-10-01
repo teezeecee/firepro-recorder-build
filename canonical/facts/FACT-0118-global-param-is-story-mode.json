@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0118",
+  "claim": "In the matching retail DLL, static GlobalParam.IsStoryMode (0x06001FC1) is a parameterless Boolean method with exact signature blob 000002 and an exact 10-byte body. It loads static field GlobalParam.m_SceneMode (0x04002862, SceneMode), loads raw Int32 11, compares them with ceq, and returns that Boolean result. FACT-0117 pins the already-canonical caller at ThemeMusicInfo.CheckValidationDLC IL+0x0058.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "GlobalParam.IsStoryMode token 0x06001FC1 RVA 0x0011382F signature 000002 code size 10 code sha256=421cdea7e302135e6671b62354bfa5d99562e3a6547b1d20d6aa9492bfa3fa8d; exact m_SceneMode/raw-11/ceq/ret body in canonical/witnesses/CAP-R6-001/global_param_is_story_mode.summary.json; prover tools/prove_global_param_is_story_mode.py",
+      "observation": "Exact matching-DLL GlobalParam.IsStoryMode body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0117 ThemeMusicInfo.CheckValidationDLC",
+      "to": "GlobalParam.IsStoryMode()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0117 pins call token 0x06001FC1 at CheckValidationDLC IL+0x0058."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact IsStoryMode raw comparison and the FACT-0117 caller bridge.",
+    "GlobalParam.m_SceneMode writers and broader SceneMode behavior remain outside this fact.",
+    "Raw SceneMode value 11 is preserved without assigning a scene label."
+  ]
+}
