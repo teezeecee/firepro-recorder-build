@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0111",
+  "claim": "In the matching retail DLL, static Menu_SoundManager.Change_BGM_Theme (0x06005296) has exact signature blob 0003011187480202, parameters (ThemeMusicID index, Boolean bAsync, Boolean bStart), and an exact 399-byte body. It compares signed index against ThemeMusicInfoManager.inst.themeMusicList.Count and writes index=0 when index is not below Count. It loads GetThemeMusicInfo(index), calls CheckValidationDLC, and replaces the local with GetThemeMusicInfo(0) when validation is false. When bAsync is true it writes g_ProgressBGM_Continue=false, g_KeepBgmNumber=15 and MyMusic_SelectFile_Admission=String.Empty, then chooses IsDLC: true starts CoChange_BGMandPlay_FromAssetBundle with path prefix \"dlc_assets/theme_music/\", raw 33 and bStart; false starts CoChange_BGMandPlay with path prefix \"Sound/Bgm/\", raw 33 and bStart. When bAsync is false it chooses IsDLC: true attempts AssetBundle.LoadFromFile on the DLC path, loads the named asset and writes audioClipInfo[33] when the bundle exists, otherwise falls back to GetThemeMusicInfo(0) and Resources.Load from \"Sound/Bgm/\"; non-DLC directly Resources.Loads the same resource prefix. The synchronous paths write audioClipInfo[33] through AudioClipInfo.Set, then write g_ProgressBGM_Continue=false, g_KeepBgmNumber=15 and MyMusic_SelectFile_Admission=String.Empty. FACT-0108 pins the three already-canonical direct caller sites at IL+0x003E, 0x00B8 and 0x00EE.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.Change_BGM_Theme token 0x06005296 RVA 0x00322268 signature 0003011187480202 code size 399 code sha256=2e0905ada32d6f97c3a3ac37f28bb0722b6084a109618070cf1dfc1ea1fb4733; exact upper-count fallback, validation fallback, async coroutine split, synchronous DLC/resource loading and shared raw-field resets in canonical/witnesses/CAP-R6-001/menu_sound_change_bgm_theme.summary.json; prover tools/prove_menu_sound_change_bgm_theme.py",
+      "observation": "Exact matching-DLL Change_BGM_Theme body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0108 EntranceScene.InitThemeMusic",
+      "to": "Menu_SoundManager.Change_BGM_Theme(index,bAsync,bStart)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0108 pins call token 0x06005296 at InitThemeMusic IL+0x003E, IL+0x00B8 and IL+0x00EE."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Change_BGM_Theme body and the three FACT-0108 caller bridges.",
+    "ThemeMusicInfoManager.GetThemeMusicInfo, ThemeMusicInfo.CheckValidationDLC, ThemeMusicInfo.IsDLC, Menu_SoundManager.get__instance, the two coroutine factories, AudioClipInfo.Set and engine-call internals remain separate gates.",
+    "Authored ThemeMusicInfo rows, bundles, resources and audio contents remain outside this fact.",
+    "Raw values 0, 15 and 33 and the two path-prefix strings are preserved exactly."
+  ]
+}

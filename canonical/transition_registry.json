@@ -1913,6 +1913,25 @@
         "authored music-file contents",
         "additional MyMusic.Set caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_CHANGE_BGM_THEME_V1",
+      "fact_id": "FACT-0111",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Change_BGM_Theme upper-count/validation fallback, async coroutine split, sync bundle/resource load and raw field resets, bridged from FACT-0108.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_change_bgm_theme.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "ThemeMusicInfo helper internals",
+        "Menu_SoundManager coroutine-helper internals",
+        "Menu_SoundManager.get__instance closure",
+        "AudioClipInfo.Set closure",
+        "authored ThemeMusicInfo/bundle/resource contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
