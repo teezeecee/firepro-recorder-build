@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0105",
+  "claim": "In the matching retail DLL, SaveData.GetEditWrestlerIdx (0x060051B5) is an instance one-WrestlerID-parameter Int32 method with exact signature blob 2001081187b8 and an exact 68-byte body. It returns raw -1 immediately when wid is below raw Int32 10000. Otherwise it scans this.editWrestlerData from index 0 while index is below Count, compares each EditWrestlerData.editWrestlerID against wid, returns the matching index, and returns raw -1 when no element matches. FACT-0102 pins the already-canonical caller at SaveData.GetEditWrestlerData IL+0x0002.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SaveData.GetEditWrestlerIdx token 0x060051B5 RVA 0x00316558 signature 2001081187b8 code size 68 code sha256=d3a61b6659b558132c7269733dda2c9925958fc65d6a5925f84474e04d42969d; exact raw-10000 gate and List<EditWrestlerData> scan in canonical/witnesses/CAP-R6-001/save_data_edit_wrestler_index.summary.json; prover tools/prove_save_data_edit_wrestler_index.py",
+      "observation": "Exact matching-DLL SaveData.GetEditWrestlerIdx body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0102 SaveData.GetEditWrestlerData",
+      "to": "SaveData.GetEditWrestlerIdx(wid)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0102 pins call token 0x060051B5 at GetEditWrestlerData IL+0x0002 after loading this and wid."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact GetEditWrestlerIdx helper and the FACT-0102 caller bridge.",
+    "Authored editWrestlerData contents remain outside this fact.",
+    "The raw threshold value 10000 is preserved without assigning WrestlerID semantics.",
+    "Other GetEditWrestlerIdx callers are not promoted by this fact."
+  ]
+}
