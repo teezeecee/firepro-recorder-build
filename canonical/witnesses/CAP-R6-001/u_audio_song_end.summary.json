@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_U_AUDIO_SONG_END_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "uAudio.uAudioPlayer",
+      "method": "SongEnd",
+      "token": "0x060052E6",
+      "rva": "0x003259C8",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 141,
+      "code_sha256": "3ff6f18fdb7ed86c92f309f6496f6d7fc3a7cee75b55c9174345fac0efaeee4c",
+      "header_format": "fat",
+      "header_flags_raw": "0x001B",
+      "init_locals": true,
+      "more_sections": true,
+      "max_stack": 2,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 45,
+      "branch_instruction_count": 5,
+      "call_instruction_count": 9
+    },
+    "fields": {
+      "end_song_time": {"token":"0x040087F2","name":"uAudio.uAudioPlayer.endSongTime","signature_blob_hex":"061182c1"},
+      "read_fully_stream": {"token":"0x040087EF","name":"uAudio.uAudioPlayer.readFullyStream","signature_blob_hex":"061282bd"},
+      "my_audio_source": {"token":"0x040087E4","name":"uAudio.uAudioPlayer.myAudioSource","signature_blob_hex":"061280b9"},
+      "u_audio": {"token":"0x040087E3","name":"uAudio.uAudioPlayer._uAudio","signature_blob_hex":"061282b1"},
+      "update_time": {"token":"0x040087EA","name":"uAudio.uAudioPlayer.updateTime","signature_blob_hex":"0602"},
+      "loaded_target": {"token":"0x040087F1","name":"uAudio.uAudioPlayer._loadedTarget","signature_blob_hex":"0602"},
+      "state": {"token":"0x040087E9","name":"uAudio.uAudioPlayer.State","signature_blob_hex":"061182b5"}
+    },
+    "calls": {
+      "get_current_time": {"token":"0x060052D6","resolved":"uAudio.uAudioPlayer.get_CurrentTime","call_il":"0x0002"},
+      "stream_close": {"token":"0x0A000154","resolved":"System.IO.Stream.Close","call_il":"0x001D"},
+      "audio_source_stop": {"token":"0x0A00079F","resolved":"UnityEngine.AudioSource.Stop","call_il":"0x0028"},
+      "backend_stop": {"token":"0x0A000FC3","resolved":"uAudio.uAudio_backend.uAudio.Stop","call_il":"0x0033"},
+      "audio_source_set_clip": {"token":"0x0A00079B","resolved":"UnityEngine.AudioSource.set_clip","call_il":"0x003F"},
+      "get_send_playback_state": {"token":"0x060052CB","resolved":"uAudio.uAudioPlayer.get_sendPlaybackState","call_ils":["0x005A","0x0065"]},
+      "delegate_invoke": {"token":"0x0A000FC4","resolved":"Invoke","call_il":"0x006B","raw_argument":0},
+      "exception_ctor": {"token":"0x0A000499","resolved":"System.Exception..ctor(String)","call_il":"0x0086"}
+    },
+    "user_string": {
+      "token": "0x7008F3A4",
+      "value": "Song end #7cgf87dcf7sd8csd"
+    },
+    "exact_flow": [
+      "this.endSongTime = this.get_CurrentTime()",
+      "if this.readFullyStream != null: this.readFullyStream.Close()",
+      "this.myAudioSource.Stop()",
+      "this._uAudio.Stop()",
+      "this.myAudioSource.clip = null",
+      "this.updateTime = false",
+      "this._loadedTarget = false",
+      "this.State = raw 0",
+      "inner try: if this.get_sendPlaybackState() != null, invoke this.get_sendPlaybackState() with raw 0",
+      "inner catch System.Object: pop caught object and leave to IL+0x007B",
+      "outer catch System.Object: pop caught object, new System.Exception(exact user string), throw",
+      "return at IL+0x008C"
+    ],
+    "exception_section": {
+      "section_kind_raw": "0x01",
+      "data_size": 28,
+      "clause_format": "small",
+      "clause_count": 2,
+      "clauses": [
+        {
+          "flags_raw": "0x0000",
+          "try_offset": "0x0059",
+          "try_length": 28,
+          "try_end_exclusive": "0x0075",
+          "handler_offset": "0x0075",
+          "handler_length": 6,
+          "handler_end_exclusive": "0x007B",
+          "class_token": "0x010000C2",
+          "class_resolved": "System.Object"
+        },
+        {
+          "flags_raw": "0x0000",
+          "try_offset": "0x0000",
+          "try_length": 128,
+          "try_end_exclusive": "0x0080",
+          "handler_offset": "0x0080",
+          "handler_length": 12,
+          "handler_end_exclusive": "0x008C",
+          "class_token": "0x010000C2",
+          "class_resolved": "System.Object"
+        }
+      ]
+    },
+    "fact_0124_bridge": {
+      "fact_id":"FACT-0124",
+      "caller":"uAudio.uAudioPlayer.Destroy_AudioPlayer",
+      "caller_token":"0x060052CA",
+      "call_il":"0x0001",
+      "callee_token":"0x060052E6"
+    }
+  },
+  "limits": [
+    "Direct sibling getters and external framework/engine/backend implementations remain outside this record."
+  ]
+}

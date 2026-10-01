@@ -2164,6 +2164,23 @@
         "external UnityEngine.AudioSource.Stop implementation",
         "AudioSrcInfo construction and other state-flow closure"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_SONG_END_V1",
+      "fact_id": "FACT-0126",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudio.uAudioPlayer.SongEnd cleanup/callback sequence plus nested small System.Object exception clauses, bridged from FACT-0124.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_song_end.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "uAudio.uAudioPlayer.get_CurrentTime internal closure",
+        "uAudio.uAudioPlayer.get_sendPlaybackState internal closure",
+        "external framework/Unity/backend runtime behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
