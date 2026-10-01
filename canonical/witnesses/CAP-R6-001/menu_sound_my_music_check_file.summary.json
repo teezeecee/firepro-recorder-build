@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_MY_MUSIC_CHECK_FILE_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Menu_SoundManager",
+      "method": "MyMusic_CheckFile",
+      "token": "0x060052B7",
+      "rva": "0x00323103",
+      "signature_blob_hex": "2001020e",
+      "return_type": "Boolean",
+      "parameters": [
+        {"sequence":1,"name":"fname","type":"String"}
+      ],
+      "code_size": 43,
+      "code_sha256": "662652aabb116c9ffa4f8e994a1ad55ed75cb54c40114569e6a0b8be4c140978",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 13,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 3
+    },
+    "field": {
+      "token":"0x04003903",
+      "name":"GlobalParam.Root_DirectotyPath"
+    },
+    "calls": {
+      "string_equality":{"token":"0x0A00002F","resolved":"System.String.op_Equality(String,String)","call_il":"0x0006"},
+      "string_concat":{"token":"0x0A000012","resolved":"System.String.Concat(String,String)","call_il":"0x0018"},
+      "file_exists":{"token":"0x0A000216","resolved":"System.IO.File.Exists(String)","signature_blob_hex":"0001020e","call_il":"0x001D"}
+    },
+    "exact_flow": [
+      "if fname == System.String.Empty: return false",
+      "path = GlobalParam.Root_DirectotyPath + fname",
+      "if System.IO.File.Exists(path): return true",
+      "return false"
+    ],
+    "fact_0133_bridges": [
+      {"fact_id":"FACT-0133","caller":"Menu_SoundManager.MyMusic_Play","call_il":"0x0026"},
+      {"fact_id":"FACT-0133","caller":"Menu_SoundManager.MyMusic_Play","call_il":"0x0065"},
+      {"fact_id":"FACT-0133","caller":"Menu_SoundManager.MyMusic_Play","call_il":"0x011C"}
+    ]
+  },
+  "limits": [
+    "External library implementation and filesystem contents remain outside this record."
+  ]
+}
