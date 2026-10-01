@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0076",
+  "claim": "In the matching retail DLL, the two direct presentation helpers called by FACT-0075 Referee.CallFight are exact small bodies. MatchSEPlayer.PlayRefereeVoice (0x06005279) is an instance one-Int32-parameter method named vid with an exact 82-byte body. It calls MatchMain.GetInst(), and when isFastForwardMatch is nonzero it calls Fade.GetInst().IsFadeFinish(); only when that result is nonzero and unsigned MchFrameCnt % 20 is also nonzero does it return before dispatch. Otherwise it calls FACT-0065 RefereeMan.GetInst().GetRefereeObj(), tests the returned object through MemberRef 0x0A00002A op_Implicit, returns when that test is false, and on the true path calls Menu_SoundManager.Play_RefereeVoice(vid,1.0f). MatchUI.Show_Fight (0x060049F4) is an instance one-Boolean-parameter method named sw with an exact 13-byte body: it loads field gameObj_Fight (0x0400589B), forwards sw to UnityEngine.GameObject.SetActive, and returns. FACT-0075 pins the calls with raw arguments 0 and 1 respectively.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchSEPlayer.PlayRefereeVoice token 0x06005279 RVA 0x003216E4 signature 20010111aa38 parameter vid:Int32 code size 82 code sha256=c96840b83bb1f8795fc6e881c61a725201424c4dec3ff5188b932e16e3f1f745; exact gate/object-check/final-call body in canonical/witnesses/CAP-R6-001/referee_fight_presentation.summary.json; prover tools/prove_referee_fight_presentation.py",
+      "observation": "Exact matching-DLL PlayRefereeVoice body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchUI.Show_Fight token 0x060049F4 RVA 0x002B40A6 signature 20010102 parameter sw:Boolean code size 13 code sha256=4f1688f5e78f6692ef931ec6a1337cb88f04f099e3ec938be0f9d15b2c9fd65e; exact gameObj_Fight.SetActive(sw) body in the same witness/prover.",
+      "observation": "Exact matching-DLL Show_Fight body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0075 Referee.CallFight",
+      "to": "MatchSEPlayer.PlayRefereeVoice / MatchUI.Show_Fight",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0075 pins callvirt PlayRefereeVoice token 0x06005279 at CallFight IL+0x0053 with raw 0 and callvirt Show_Fight token 0x060049F4 at IL+0x005E with raw 1."
+        }
+      ]
+    },
+    {
+      "from": "MatchSEPlayer.PlayRefereeVoice object gate",
+      "to": "FACT-0065 referee-object lookups",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayRefereeVoice calls RefereeMan.GetInst token 0x060050B2 at IL+0x002F and GetRefereeObj token 0x060050B6 at IL+0x0034, then tests the result with MemberRef 0x0A00002A op_Implicit."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the two exact helper bodies and FACT-0075 caller arguments.",
+    "Menu_SoundManager.Play_RefereeVoice internals remain a separate gate.",
+    "Raw voice argument 0, fixed volume 1.0 and Show_Fight argument 1 are preserved numerically without added rule labels.",
+    "The field name gameObj_Fight is metadata; broader UI meaning is not assigned here."
+  ]
+}
