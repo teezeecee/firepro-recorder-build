@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0060",
+  "claim": "In the matching retail DLL, MatchSEPlayer.PlayMatchSE (0x06005277) is an instance method with parameters seid, vol and pl_idx and an exact 374-byte body. It returns immediately unless raw seid is in the inclusive range 0..108, resolves PlayerMan.GetPlObj(pl_idx), and loads MatchSEData.GetMatchSEParam(seid). When the Player converts true, an isVibratePad branch clamps MatchSEParam.vibTime to raw 10..60 and, when either vibLevel_Large or vibLevel_Small is nonzero and plCont_Pad exists, calls GamePadMan.SetVibration(port, vibLevel_Large, Float32(vibTime)/60.0f). Raw seid 31 or 32 calls Player.PlayBreathEffect. Raw seid 5 returns when CostumeData.layerTex.Get(8,1) is null/empty or when FormRenderer.pos_OutOfRing is nonzero. Raw seids 7,8,9,10,11,12,13,14 and 58 test pos_OutOfRing and replace seid with raw 48 when nonzero. The shared tail calls MatchUI.Show_Critical(1) when seid is raw 30, returns when rfs_se_wait_list[seid] is nonzero, otherwise stores raw 2 into that element and calls Menu_SoundManager.Play_MatchSE(seid,vol). FACT-0058 pins the canonical caller boundary at MatchMisc.PlayMatchSE IL+0x0059 with the wrapper's three arguments forwarded into this method.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchSEPlayer.PlayMatchSE token 0x06005277 RVA 0x00321504 signature 20030111aa0c0c08 parameters seid/vol/pl_idx code size 374 code sha256=4c90d23ad41281c6f3411dd71c82635d6b56e0a15c80f80d2abf775639f9a4f9; exact branch/field/call structure in canonical/witnesses/CAP-R6-001/match_se_player_play_match_se.summary.json; prover tools/prove_match_se_player_play_match_se.py",
+      "observation": "Exact matching-DLL MatchSEPlayer.PlayMatchSE body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0058 MatchMisc.PlayMatchSE",
+      "to": "MatchSEPlayer.PlayMatchSE(seid,vol,pl_idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0058 pins callvirt token 0x06005277 at wrapper IL+0x0059 after loading arguments 0,1,2 unchanged."
+        }
+      ]
+    },
+    {
+      "from": "raw seid/player/MatchSEParam inputs",
+      "to": "player-side vibration/effect/remap branches",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayMatchSE IL+0x0000..0x0143 contains raw seid bounds, Player lookup, MatchSEParam lookup, vibration clamp/call, raw 31/32 Player.PlayBreathEffect, raw 5 early-return path, and raw 7..14/58 out-of-ring remap to 48."
+        }
+      ]
+    },
+    {
+      "from": "shared sound tail",
+      "to": "wait-list store and Menu_SoundManager call",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayMatchSE IL+0x0144..0x0175 handles raw seid 30 MatchUI.Show_Critical(1), rfs_se_wait_list[seid] nonzero return, raw 2 store, and Menu_SoundManager.Play_MatchSE(seid,vol)."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw sound IDs, vibration levels and wait-list values are preserved numerically without player-facing labels.",
+    "MatchSEData.GetMatchSEParam table contents, GamePadMan.SetVibration, Player.PlayBreathEffect, MatchUI.Show_Critical and Menu_SoundManager.Play_MatchSE internals remain separate gates unless already closed elsewhere.",
+    "The authored CostumeData.layerTex contents and meaning of FormRenderer.pos_OutOfRing remain outside this fact.",
+    "Other callers of MatchSEPlayer.PlayMatchSE are not promoted by this fact."
+  ]
+}
