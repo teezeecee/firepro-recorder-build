@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SAVE_DATA_STORY_WORK_GETTER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "SaveData",
+      "method": "get_story_work",
+      "token": "0x06005171",
+      "rva": "0x00314983",
+      "signature_blob_hex": "0000129cd4",
+      "parameters": [],
+      "code_size": 39,
+      "code_sha256": "dcca7695b47672ce7825fed3223764f312476b6d900da9aa66b929a54916780b",
+      "instruction_count": 11,
+      "branch_instruction_count": 1,
+      "call_instruction_count": 1
+    },
+    "fields": {
+      "story_scenario": {
+        "name": "StoryWork.storyScenario",
+        "token": "0x04004856"
+      },
+      "save_data_inst": {
+        "name": "SaveData.inst",
+        "token": "0x040064EC"
+      },
+      "save_array": {
+        "name": "SaveData.smSaveData",
+        "token": "0x0400650F"
+      },
+      "manager_inst": {
+        "name": "StorySaveDataManager.inst",
+        "token": "0x0400497D"
+      }
+    },
+    "exact_flow": {
+      "comparison": "StoryWork.storyScenario >= 2",
+      "opcode": "bge",
+      "not_taken": "return SaveData.inst.smSaveData[StoryWork.storyScenario]",
+      "taken": "return StorySaveDataManager.inst.GetStoryData()"
+    },
+    "dependency": {
+      "method": "StorySaveDataManager.GetStoryData",
+      "token": "0x06003C24",
+      "rva": "0x0023A1BD",
+      "code_size": 12,
+      "code_sha256": "564cd017b6b587e05dc90b0c95294394b6d0d874e7c59dee6c493fa3182cb611"
+    },
+    "fact_0099_bridge": {
+      "fact_id": "FACT-0099",
+      "caller": "SaveData.get_story_data",
+      "caller_token": "0x06005172",
+      "call_il": "0x0000",
+      "callee_token": "0x06005171"
+    }
+  },
+  "limits": [
+    "The manager helper, authored story data and other callers remain outside this record."
+  ]
+}
