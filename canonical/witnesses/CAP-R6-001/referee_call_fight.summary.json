@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_CALL_FIGHT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "CallFight",
+      "token": "0x06005080",
+      "rva": "0x00306394",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 100,
+      "code_sha256": "fba8e1eb077d2800274abf6f40345ed6768347f753aedaf9ccb023b2a24ea530",
+      "instruction_count": 35,
+      "branch_instruction_count": 4,
+      "call_instruction_count": 2
+    },
+    "gates": [
+      {
+        "field": "State",
+        "token": "0x0400629D",
+        "condition": "State == raw 19",
+        "fail_effect": "return"
+      },
+      {
+        "field": "CurrentSkill",
+        "token": "0x040062B0",
+        "condition": "CurrentSkill != null",
+        "fail_effect": "return"
+      },
+      {
+        "expression": "currentFormIdx == anmData[CurrentAnmIdx].formNum - 6 - 1",
+        "fail_effect": "return"
+      },
+      {
+        "field": "FormDispDuration",
+        "token": "0x040062B2",
+        "condition": "FormDispDuration == 0",
+        "fail_effect": "return"
+      }
+    ],
+    "success_calls": [
+      {
+        "receiver_field": "MatchSEPlayer.inst",
+        "receiver_token": "0x040086E4",
+        "method": "PlayRefereeVoice",
+        "method_token": "0x06005279",
+        "raw_argument": 0
+      },
+      {
+        "receiver_field": "MatchUI.inst",
+        "receiver_token": "0x04005899",
+        "method": "Show_Fight",
+        "method_token": "0x060049F4",
+        "raw_argument": 1
+      }
+    ],
+    "fact_0074_bridge": {
+      "fact_id": "FACT-0074",
+      "caller": "Referee.UpdateReferee",
+      "call_il": "0x002D",
+      "callee_token": "0x06005080"
+    }
+  },
+  "limits": [
+    "Called presentation helpers remain outside this record."
+  ]
+}
