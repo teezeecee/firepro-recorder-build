@@ -568,3 +568,9 @@ jobs:
         run: python tests/test_menu_sound_change_bgm_theme_summary.py
       - name: Menu Sound Change BGM Theme prover syntax
         run: python -m py_compile tools/prove_menu_sound_change_bgm_theme.py
+
+
+      - name: Menu Sound instance getter summary
+        run: python tests/test_menu_sound_instance_getter_summary.py
+      - name: Menu Sound instance getter prover syntax
+        run: python -m py_compile tools/prove_menu_sound_instance_getter.py
