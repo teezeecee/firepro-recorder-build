@@ -9,7 +9,7 @@
       "type": "uAudio.uAudioPlayer",
       "method": "LoadFile",
       "token": "0x060052E4",
-      "rva": "0x00325A30",
+      "rva": "0x00325970",
       "signature_blob_hex": "2001010e",
       "return_type": "Void",
       "parameters": [
