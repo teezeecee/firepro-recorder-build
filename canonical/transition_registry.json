@@ -1415,6 +1415,23 @@
         "remaining PlayLoopCheerVoice caller closure",
         "authored meaning of raw cheer levels/IDs"
       ]
+    },
+    {
+      "family_id": "DLL_CHEER_LOOP_PLAYBACK_V1",
+      "fact_id": "FACT-0082",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager cheer-loop play and volume-only helpers: shared Float32 clamps and audioSrcInfo[7], plus loop clip/flag/play/fade-counter resets for the playback path, bridged from FACT-0081.",
+      "summary": "canonical/witnesses/CAP-R6-001/cheer_loop_playback.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored cheer-loop clip contents",
+        "Volume_Cheer value provenance",
+        "remaining loop-helper caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
