@@ -657,6 +657,24 @@
         "AIParam priority table provenance and raw index meaning",
         "wider PlayerController_AI.Update scheduling closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_PRIORITY_SMALL_HELPERS_V1",
+      "fact_id": "FACT-0038",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL PlayerController_AI.GetDamageLevel_LMH raw threshold branch helper and Reset_HungUpCheck eight-entry Vector2 buffer reset, both reached directly from FACT-0037 ProcessPriorityAct.",
+      "summary": "canonical/witnesses/CAP-R6-001/priority_small_helpers.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "COMLevelDataManager.damageLevelThreshold_LMH data provenance",
+        "MoveCheckPos buffer consumer closure",
+        "IsLotPriorityAct internal closure",
+        "TryToDoPriorityAct internal closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
