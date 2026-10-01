@@ -796,6 +796,24 @@
         "remaining PlayerController_AI.Init body",
         "later consumers of initialized AI fields"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_CALC_TOUCH_TIME_V1",
+      "fact_id": "FACT-0046",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL PlayerController_AI.CalcTouchTime null guards, COMLevel touch-time parameters, FACT-0032 integer random call, touchCond arithmetic, touchFrm write, and caller bridges from FACT-0045 plus UpdatePlayer.",
+      "summary": "canonical/witnesses/CAP-R6-001/calc_touch_time.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored COMLevelDataManager touch-time values",
+        "AIParam.touchCond authored/runtime provenance",
+        "touchFrm downstream consumer closure",
+        "full PlayerController_AI.UpdatePlayer closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

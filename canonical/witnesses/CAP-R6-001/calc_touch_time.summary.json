@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_CALC_TOUCH_TIME_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "CalcTouchTime",
+      "token": "0x06004FFE",
+      "rva": "0x002FC064",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 129,
+      "code_sha256": "47a7f7261543bcf1382b1f1095a756cf101300461f48a08ca1e06c7ac5288589",
+      "max_stack": 3,
+      "local_signature_token": "0x11001124",
+      "local_count": 6,
+      "instruction_count": 51,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 2
+    },
+    "source_fields": [
+      {
+        "owner": "COMLevelDataManager",
+        "name": "inst",
+        "token": "0x04000D38"
+      },
+      {
+        "owner": "COMLevelDataManager",
+        "name": "touchTimePrm_Base",
+        "token": "0x04000D3C"
+      },
+      {
+        "owner": "COMLevelDataManager",
+        "name": "touchTimePrm_Coefficient",
+        "token": "0x04000D3D"
+      },
+      {
+        "owner": "COMLevelDataManager",
+        "name": "touchTimePrm_RandomRange",
+        "token": "0x04000D3E"
+      },
+      {
+        "owner": "PlayerController_AI",
+        "name": "PlObj",
+        "token": "0x0400614A"
+      },
+      {
+        "owner": "Player",
+        "name": "WresParam",
+        "token": "0x04005FB3"
+      },
+      {
+        "owner": "WrestlerParam",
+        "name": "aiParam",
+        "token": "0x040010AA"
+      },
+      {
+        "owner": "AIParam",
+        "name": "touchCond",
+        "token": "0x04000D2E"
+      }
+    ],
+    "guards": [
+      "if PlObj == null: return",
+      "if PlObj.WresParam == null: return"
+    ],
+    "random_call": {
+      "fact_id": "FACT-0032",
+      "token": "0x0600497B",
+      "min_expression": "-touchTimePrm_RandomRange",
+      "max_expression": "touchTimePrm_RandomRange + 1"
+    },
+    "exact_expression": "local5 = touchTimePrm_Base + Int32((100 - aiParam.touchCond) * touchTimePrm_Coefficient) + sampledRandom",
+    "output": {
+      "field": "touchFrm",
+      "token": "0x04006170",
+      "expression": "local5 * 30",
+      "raw_multiplier": 30
+    },
+    "caller_bridges": [
+      {
+        "fact_id": "FACT-0045",
+        "caller": "PlayerController_AI.InitAllWorks",
+        "call_il": "0x00C8",
+        "condition": "create_init == false"
+      },
+      {
+        "caller": "PlayerController_AI.UpdatePlayer",
+        "caller_token": "0x06004F87",
+        "call_il": "0x0034"
+      }
+    ]
+  },
+  "limits": [
+    "Touch-time parameter values and downstream touchFrm behavior remain outside this record."
+  ]
+}

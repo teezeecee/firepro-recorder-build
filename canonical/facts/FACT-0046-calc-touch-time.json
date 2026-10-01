@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0046",
+  "claim": "In the matching retail DLL, PlayerController_AI.CalcTouchTime (0x06004FFE) is a parameterless instance method with an exact 129-byte body. It loads COMLevelDataManager.inst.touchTimePrm_Base, touchTimePrm_Coefficient, and touchTimePrm_RandomRange into locals. It returns immediately when PlObj compares equal to null or when PlObj.WresParam is null. Otherwise it loads PlObj.WresParam.aiParam, calls the already-closed Int32 MatchRandom.Range overload with exact arguments -touchTimePrm_RandomRange and touchTimePrm_RandomRange+1, then computes local5 = touchTimePrm_Base + Int32((100 - aiParam.touchCond) * touchTimePrm_Coefficient) + sampledRandom and stores touchFrm = local5 * 30 before returning. FACT-0045 pins CalcTouchTime as the false branch of InitAllWorks(create_init), and the matching PlayerController_AI.UpdatePlayer body also contains a callvirt to CalcTouchTime at IL+0x0034.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.CalcTouchTime token 0x06004FFE RVA 0x002FC064 signature 200001 code size 129 code sha256=47a7f7261543bcf1382b1f1095a756cf101300461f48a08ca1e06c7ac5288589; exact body in canonical/witnesses/CAP-R6-001/calc_touch_time.summary.json; prover tools/prove_calc_touch_time.py",
+      "observation": "Exact matching-DLL CalcTouchTime body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0045 PlayerController_AI.InitAllWorks false create_init branch",
+      "to": "PlayerController_AI.CalcTouchTime()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0045 pins InitAllWorks IL+0x00C1 loading create_init, brtrue IL+0x00CD, and false-path call token 0x06004FFE at IL+0x00C8."
+        }
+      ]
+    },
+    {
+      "from": "COMLevelDataManager parameters and AI touchCond",
+      "to": "touchFrm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CalcTouchTime reads fields 0x04000D3C touchTimePrm_Base, 0x04000D3D touchTimePrm_Coefficient, 0x04000D3E touchTimePrm_RandomRange, and AIParam.touchCond field 0x04000D2E; after exact Float32 multiply/conv.i4 arithmetic it stores field 0x04006170 touchFrm after multiplying by raw 30."
+        }
+      ]
+    },
+    {
+      "from": "touchTimePrm_RandomRange",
+      "to": "FACT-0032 MatchRandom.Range(Int32,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CalcTouchTime IL+0x0055..0x005E passes -local2 and local2+1 to MatchRandom.Range token 0x0600497B; FACT-0032 closes that exact wrapper."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The authored/runtime contents of COMLevelDataManager touch-time parameters and AIParam.touchCond remain outside this fact.",
+    "Unity null/equality semantics behind MemberRef 0x0A000006 remain external to this method body.",
+    "The later consumers and decrements of touchFrm remain outside this fact.",
+    "The full PlayerController_AI.UpdatePlayer caller remains outside this fact."
+  ]
+}
