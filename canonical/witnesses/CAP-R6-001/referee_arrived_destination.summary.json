@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_ARRIVED_DESTINATION_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "Process_ArrivedDestination",
+      "token": "0x0600509F",
+      "rva": "0x00308668",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 545,
+      "code_sha256": "ec45a72452fcbddd71df0a05d3c7b9a68df75fa36c1452a36638468a5e9db5e4",
+      "max_stack": 5,
+      "local_signature_token": "0x11001162",
+      "instruction_count": 169,
+      "branch_instruction_count": 14,
+      "call_instruction_count": 15
+    },
+    "entry": {
+      "player_man_inst": {
+        "name": "PlayerMan.inst",
+        "token": "0x040061FA"
+      },
+      "target_pl_idx": {
+        "name": "TargetPlIdx",
+        "token": "0x040062A4"
+      },
+      "get_pl_obj": {
+        "token": "0x06005065",
+        "method": "PlayerMan.GetPlObj"
+      },
+      "object_implicit_memberref": "0x0A00002A",
+      "false_effect": "return"
+    },
+    "switch": {
+      "source_field": {
+        "name": "NextState",
+        "token": "0x0400629F"
+      },
+      "normalization": "NextState - 9",
+      "raw_case_range": {
+        "min_inclusive": 9,
+        "max_inclusive": 18
+      },
+      "targets": {
+        "9": "0x005A",
+        "10": "0x0199",
+        "11": "0x00D6",
+        "12": "0x0070",
+        "13": "0x0115",
+        "14": "0x0070",
+        "15": "0x0065",
+        "16": "0x0154",
+        "17": "0x01DB",
+        "18": "0x0215"
+      },
+      "default_effect": "return"
+    },
+    "fields": {
+      "state": {
+        "name": "State",
+        "token": "0x0400629D"
+      },
+      "pl_dir": {
+        "name": "PlDir",
+        "token": "0x040062A3"
+      },
+      "frame_wait": {
+        "name": "FrameWait",
+        "token": "0x040062B4"
+      },
+      "ref_anm_tbl": {
+        "name": "RefAnmTbl",
+        "token": "0x04006297"
+      },
+      "anm_ofs_3dir": {
+        "name": "MatchData.AnmOfsTbl_3Dir",
+        "token": "0x0400565B"
+      },
+      "anm_ofs_2dir": {
+        "name": "MatchData.AnmOfsTbl_2Dir",
+        "token": "0x0400565C"
+      },
+      "foul_wait_cnt": {
+        "name": "FoulWaitCnt",
+        "token": "0x0400628B"
+      },
+      "out_wait_cnt": {
+        "name": "OutWaitCnt",
+        "token": "0x0400628A"
+      },
+      "referee_param": {
+        "name": "RefePrm",
+        "token": "0x040062C3"
+      },
+      "foul_count": {
+        "name": "RefereeParam.foulCount",
+        "token": "0x04000E72"
+      },
+      "out_count": {
+        "name": "RefereeParam.outCount",
+        "token": "0x04000E74"
+      },
+      "player_zone": {
+        "name": "Player.Zone",
+        "token": "0x04005FEE"
+      }
+    },
+    "exact_cases": {
+      "9": [
+        "call Start_FallCount 0x0600509A"
+      ],
+      "10": [
+        "State=10",
+        "PlDir=DecideRefereeDir(TargetPlIdx)",
+        "ReqRefereeAnm(RefAnmTbl[12 + AnmOfsTbl_3Dir[PlDir]])",
+        "FrameWait=50"
+      ],
+      "11": [
+        "State=11",
+        "ReqRefereeAnm(RefAnmTbl[12 + AnmOfsTbl_3Dir[PlDir]])",
+        "FrameWait=OutWaitCnt[RefePrm.outCount]"
+      ],
+      "12": [
+        "State=12",
+        "PlDir=DecideRefereeDir(TargetPlIdx)",
+        "ReqRefereeAnm(RefAnmTbl[12 + AnmOfsTbl_3Dir[PlDir]])",
+        "FrameWait=FoulWaitCnt[RefePrm.foulCount]"
+      ],
+      "13": [
+        "State=13",
+        "ReqRefereeAnm(RefAnmTbl[12 + AnmOfsTbl_3Dir[PlDir]])",
+        "FrameWait=FoulWaitCnt[RefePrm.foulCount]"
+      ],
+      "14": [
+        "State=12 then State=14",
+        "PlDir=DecideRefereeDir(TargetPlIdx)",
+        "ReqRefereeAnm(RefAnmTbl[12 + AnmOfsTbl_3Dir[PlDir]])",
+        "FrameWait=FoulWaitCnt[RefePrm.foulCount]"
+      ],
+      "15": [
+        "call Start_SubmissionCheck 0x0600509B"
+      ],
+      "16": [
+        "State=16",
+        "if resolved Player.Zone == 0: PlDir=DecideRefereeDir(TargetPlIdx)",
+        "ReqRefereeAnm(RefAnmTbl[47 + AnmOfsTbl_2Dir[PlDir]])"
+      ],
+      "17": [
+        "State=17",
+        "PlDir=DecideRefereeDir(TargetPlIdx)",
+        "ReqRefereeAnm(RefAnmTbl[47 + AnmOfsTbl_2Dir[PlDir]])"
+      ],
+      "18": [
+        "call Start_HandlingDisturbing 0x0600509D"
+      ]
+    },
+    "helper_tokens": {
+      "start_fall_count": "0x0600509A",
+      "start_submission_check": "0x0600509B",
+      "decide_referee_dir": "0x0600508C",
+      "req_referee_anm": "0x06005096",
+      "start_handling_disturbing": "0x0600509D"
+    },
+    "fact_0084_bridge": {
+      "fact_id": "FACT-0084",
+      "caller": "Referee.Process_MoveToDestination",
+      "call_il": "0x0053",
+      "callee_token": "0x0600509F"
+    }
+  },
+  "limits": [
+    "Open helper internals and raw state meanings remain outside this record."
+  ]
+}
