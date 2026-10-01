@@ -1126,6 +1126,23 @@
         "raw sound-ID meaning",
         "authored sound data"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_OBJECT_LOOKUPS_V1",
+      "fact_id": "FACT-0065",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL RefereeMan.GetInst singleton accessor and GetRefereeObj raw element-0 array accessor reached from FACT-0064 MatchSEPlayer.PlayRefereeSE.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_object_lookups.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "RefereeMan singleton/array population closure",
+        "remaining helper caller closure",
+        "referee object lifecycle closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
