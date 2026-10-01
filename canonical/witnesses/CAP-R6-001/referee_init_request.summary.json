@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_INIT_REQUEST_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "Referee",
+        "method": "Init",
+        "token": "0x06005079",
+        "rva": "0x003059EC",
+        "signature_blob_hex": "200201128648118ff8",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "costume"
+          },
+          {
+            "sequence": 2,
+            "name": "fsize"
+          }
+        ],
+        "code_size": 167,
+        "code_sha256": "e19f6d9ac4f9301e31c9e58d32ed267743c5bd5e6c44ae16a1aa04e4e02f8e24",
+        "instruction_count": 58,
+        "branch_instruction_count": 3
+      },
+      {
+        "type": "Referee",
+        "method": "ReqRefereeAnm",
+        "token": "0x06005096",
+        "rva": "0x00307E2C",
+        "signature_blob_hex": "20010111a970",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "an"
+          }
+        ],
+        "code_size": 92,
+        "code_sha256": "460f863df8f05cabe8f18840b94a8b6a3bdd22505263f3baf51edd0b900be7b6",
+        "instruction_count": 40,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0
+      }
+    ],
+    "init": {
+      "construction": {
+        "component_game_object_memberref": "0x0A000028",
+        "form_renderer_ctor_token": "0x06001F1E",
+        "ctor_arguments": [
+          null,
+          "this.gameObject"
+        ],
+        "form_renderer_field": {
+          "name": "FormRen",
+          "token": "0x040062A1"
+        }
+      },
+      "form_size_writes": [
+        {
+          "field": "Referee.formSize",
+          "token": "0x040062A2",
+          "value": "fsize"
+        },
+        {
+          "field": "FormRenderer.formSize",
+          "token": "0x04002734",
+          "value": "fsize"
+        }
+      ],
+      "parts_scale_loop": {
+        "raw_index_range": {
+          "min_inclusive": 0,
+          "max_inclusive": 8
+        },
+        "source_field": {
+          "name": "CostumeData.partsScale",
+          "token": "0x04000D5F"
+        },
+        "target_field": {
+          "name": "FormRenderer.partsScale",
+          "token": "0x0400273A"
+        },
+        "copy": "target[index] = source[index]",
+        "comparison_opcode": "bge.un",
+        "comparison_value": 0,
+        "replacement_when_branch_not_taken": "target[index] = 1.0f",
+        "exact_note": "unordered values take the bge.un branch and are not replaced"
+      },
+      "pl_pos": {
+        "field": {
+          "name": "PlPos",
+          "token": "0x040062A0"
+        },
+        "vector3_memberrefs": {
+          "x": "0x0A000009",
+          "y": "0x0A00000A",
+          "z": "0x0A000056"
+        },
+        "values": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        }
+      }
+    },
+    "request": {
+      "field_writes": [
+        {
+          "field": "SkillID",
+          "token": "0x040062B5",
+          "value": "an"
+        },
+        {
+          "field": "FrameWait",
+          "token": "0x040062B4",
+          "value": 0
+        },
+        {
+          "field": "isCount29",
+          "token": "0x040062CE",
+          "value": 0
+        },
+        {
+          "field": "reqAnmInit",
+          "token": "0x040062BF",
+          "value": 1
+        },
+        {
+          "field": "isReqAnmLoopEnd",
+          "token": "0x040062B8",
+          "value": 0
+        },
+        {
+          "field": "isAnmLooped",
+          "token": "0x040062B9",
+          "value": 0
+        },
+        {
+          "field": "isAnmPause",
+          "token": "0x040062BA",
+          "value": 0
+        },
+        {
+          "field": "isAnmSync",
+          "token": "0x040062BB",
+          "value": 0
+        },
+        {
+          "field": "isCopiedOpponentDir",
+          "token": "0x040062BC",
+          "value": 0
+        },
+        {
+          "field": "isAnmBoot",
+          "token": "0x040062BD",
+          "value": 0
+        },
+        {
+          "field": "isAtkHitOff",
+          "token": "0x040062BE",
+          "value": 0
+        },
+        {
+          "field": "isAttackHit",
+          "token": "0x040062C0",
+          "value": 0
+        },
+        {
+          "field": "isAttackHit2",
+          "token": "0x040062C1",
+          "value": 0
+        }
+      ]
+    },
+    "fact_0067_bridges": [
+      {
+        "caller": "MatchMain.<InitReferee>c__Iterator5.MoveNext",
+        "caller_token": "0x06007425",
+        "init_il": "0x0156",
+        "request_il": "0x01FB"
+      },
+      {
+        "caller": "MatchMainCp.<InitReferee>c__Iterator3.MoveNext",
+        "caller_token": "0x06007443",
+        "init_il": "0x00EB",
+        "request_il": "0x010B"
+      }
+    ]
+  },
+  "limits": [
+    "Authored costume data and additional ReqRefereeAnm callers remain outside this record."
+  ]
+}
