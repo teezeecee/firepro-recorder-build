@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0078",
+  "claim": "In the matching retail DLL, Referee.Process_Booing (0x060050A3) is a parameterless instance method with an exact 90-byte body. It loads MatchMain.inst, returns immediately when MatchMain.isMatchEnd is nonzero, otherwise increments MatchMain.BooingCnt by raw one. It compares the updated BooingCnt with raw 4096 and returns unless they are equal. On equality it calls Audience.inst.PlayCheerVoice with raw arguments 9 and 0, subtracts raw 128 from the same BooingCnt field, calls Audience.inst.TensionDown(), and returns. FACT-0074 pins the direct scheduler call at Referee.UpdateReferee IL+0x0033.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.Process_Booing token 0x060050A3 RVA 0x00308FB4 signature 200001 code size 90 code sha256=b7e8964816ea334e17fdf26aeb44a9789251e264d1bcc2eedc1fbd0fcc3ea42d; exact gate/counter/call body in canonical/witnesses/CAP-R6-001/referee_process_booing.summary.json; prover tools/prove_referee_process_booing.py",
+      "observation": "Exact matching-DLL Process_Booing body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0074 Referee.UpdateReferee",
+      "to": "Referee.Process_Booing",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0074 scheduler body calls token 0x060050A3 at IL+0x0033."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Process_Booing body and FACT-0074 caller site.",
+    "Raw counter values 4096 and 128 and PlayCheerVoice arguments 9 and 0 are preserved without added rule labels.",
+    "Audience.PlayCheerVoice and Audience.TensionDown internals remain separate gates."
+  ]
+}

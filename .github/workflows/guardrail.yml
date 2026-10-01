@@ -393,3 +393,8 @@ jobs:
         run: python tests/test_referee_voice_leaf_summary.py
       - name: Referee voice leaf prover syntax
         run: python -m py_compile tools/prove_referee_voice_leaf.py
+
+      - name: Referee Process_Booing summary
+        run: python tests/test_referee_process_booing_summary.py
+      - name: Referee Process_Booing prover syntax
+        run: python -m py_compile tools/prove_referee_process_booing.py
