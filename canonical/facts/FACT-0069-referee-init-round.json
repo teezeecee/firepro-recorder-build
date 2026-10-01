@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0069",
+  "claim": "In the matching retail DLL, Referee.InitRound (0x0600507A) is an instance method with one Int32 parameter named rd and an exact 244-byte body; the emitted body never loads rd. It loads GlobalWork.inst.MatchSetting into a local. For Referee.PlPos, x is written raw 0.0f on every path; y is written raw 1.0f when MatchSetting.BattleRoyalKind is raw 0 or raw 4, and raw 0.0f for other nonzero raw BattleRoyalKind values. The next branch tests BattleRoyalKind and MatchSetting.isFastForwardMatch: only when BattleRoyalKind is raw 0 and isFastForwardMatch is zero does the method store raw State 22 and call FACT-0068 Referee.ReqRefereeAnm(1106). Otherwise it stores raw State 19, calls FACT-0068 Referee.ReqRefereeAnm(1121), then calls Referee.UpdateRefereeAnm(). The shared tail writes PlPos.z=1.0f, Counter=0, plIdx_FirstWiner=-1 and standPoseTimer=0, then returns.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.InitRound token 0x0600507A RVA 0x00305AA0 signature blob 20010108 parameter rd:Int32 code size 244 code sha256=e49118b8c0107b96e5bcca09a2cd24853191f05c685c858415a176cac7ba3bc2; exact body in canonical/witnesses/CAP-R6-001/referee_init_round.summary.json; prover tools/prove_referee_init_round.py",
+      "observation": "Exact matching-DLL Referee.InitRound body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Referee.InitRound raw request branches",
+      "to": "FACT-0068 Referee.ReqRefereeAnm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "InitRound IL+0x00A6 loads raw 1106 then call token 0x06005096 at IL+0x00AB; alternate path IL+0x00BE loads raw 1121 then calls the same token at IL+0x00C3."
+        }
+      ]
+    },
+    {
+      "from": "Referee.InitRound alternate request branch",
+      "to": "Referee.UpdateRefereeAnm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "InitRound calls token 0x06005097 at IL+0x00C9 immediately after the raw 1121 request branch."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw BattleRoyalKind, State and animation-request values are preserved numerically without assigning player-facing meanings.",
+    "The Int32 rd parameter is recorded as unused by this exact emitted body; no purpose is assigned to it.",
+    "Referee.UpdateRefereeAnm internals remain a separate gate.",
+    "Callers of Referee.InitRound remain separate caller seams until closed."
+  ]
+}
