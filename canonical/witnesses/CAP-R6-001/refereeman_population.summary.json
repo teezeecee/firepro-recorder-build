@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREEMAN_POPULATION_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "fields": [
+      {
+        "name": "inst",
+        "token": "0x040062DC"
+      },
+      {
+        "name": "Prefab_Referee",
+        "token": "0x040062DD",
+        "signature_blob_hex": "06120d"
+      },
+      {
+        "name": "RefereeObj",
+        "token": "0x040062DE",
+        "signature_blob_hex": "061d12a838",
+        "shape": "single-dimensional zero-based Referee array"
+      }
+    ],
+    "methods": [
+      {
+        "type": "RefereeMan",
+        "method": ".ctor",
+        "token": "0x060050B1",
+        "rva": "0x0030A469",
+        "signature_blob_hex": "200001",
+        "return_type": "Void",
+        "parameters": [],
+        "code_size": 19,
+        "code_sha256": "41af045848eb62f4e23c69e03c31ef3b97d03f719029ccc12ba8664223d8ad0f",
+        "instruction_count": 7,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "RefereeMan",
+        "method": "Awake",
+        "token": "0x060050B3",
+        "rva": "0x0030A484",
+        "signature_blob_hex": "200001",
+        "return_type": "Void",
+        "parameters": [],
+        "code_size": 7,
+        "code_sha256": "7f2f8b8a300d684c753bf13af8b5395f7de72f88526eeee171860bcef5004548",
+        "instruction_count": 3,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0
+      },
+      {
+        "type": "RefereeMan",
+        "method": "Start",
+        "token": "0x060050B4",
+        "rva": "0x0030A48C",
+        "signature_blob_hex": "200001",
+        "return_type": "Void",
+        "parameters": [],
+        "code_size": 1,
+        "code_sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "instruction_count": 1,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0
+      },
+      {
+        "type": "RefereeMan",
+        "method": "CreateReferee",
+        "token": "0x060050B5",
+        "rva": "0x0030A490",
+        "signature_blob_hex": "200012a838",
+        "return_type": "Referee",
+        "parameters": [],
+        "code_size": 39,
+        "code_sha256": "cbd7b30a0f79c0a5cb7c5459a6cb8462f5df1e30a023aefa52826ebce99fd7a6",
+        "instruction_count": 19,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 2,
+        "local_signature_token": "0x1100116E",
+        "local_signature_blob_hex": "070308120d12a838"
+      }
+    ],
+    "constructor": {
+      "effect": [
+        "this.RefereeObj = new Referee[1]",
+        "call UnityEngine.MonoBehaviour..ctor"
+      ],
+      "referee_typedef_token": "0x02000A0E",
+      "mono_behaviour_ctor_memberref": "0x0A00000E"
+    },
+    "awake": {
+      "effect": "RefereeMan.inst = this"
+    },
+    "start": {
+      "effect": "ret only"
+    },
+    "create_referee": {
+      "raw_index": 0,
+      "instantiate": {
+        "methodspec_token": "0x2B000051",
+        "resolved": "UnityEngine.Object.Instantiate<GameObject>",
+        "argument": "this.Prefab_Referee"
+      },
+      "component": {
+        "methodspec_token": "0x2B0003B9",
+        "resolved": "UnityEngine.GameObject.GetComponent<Referee>"
+      },
+      "effects": [
+        "RefereeObj[0] = instantiatedGameObject.GetComponent<Referee>()",
+        "return RefereeObj[0]"
+      ]
+    },
+    "fact_0065_bridge": {
+      "fact_id": "FACT-0065",
+      "shared_fields": [
+        "0x040062DC",
+        "0x040062DE"
+      ]
+    }
+  },
+  "limits": [
+    "Engine callback timing, prefab contents and external CreateReferee caller semantics remain outside this record."
+  ]
+}
