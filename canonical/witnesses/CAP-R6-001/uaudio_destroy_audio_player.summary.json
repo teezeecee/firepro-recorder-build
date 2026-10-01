@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_UAUDIO_DESTROY_AUDIO_PLAYER_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "uAudio.uAudioPlayer",
+      "method": "Destroy_AudioPlayer",
+      "token": "0x060052CA",
+      "rva": "0x0032567D",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 13,
+      "code_sha256": "62a68c749da17a7c536b2ef155fd300637ffd8bd582da8979c28fdd87bf83d1c",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 5,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 2
+    },
+    "calls": {
+      "song_end":{"token":"0x060052E6","resolved":"uAudio.uAudioPlayer.SongEnd","call_il":"0x0001"},
+      "unity_destroy":{"token":"0x0A0000D0","resolved":"UnityEngine.Object.Destroy(UnityEngine.Object)","call_il":"0x0007"}
+    },
+    "exact_flow": [
+      "this.SongEnd()",
+      "UnityEngine.Object.Destroy(this)",
+      "return"
+    ],
+    "fact_0123_bridge": {
+      "fact_id":"FACT-0123",
+      "caller":"Menu_SoundManager.StopBGM",
+      "caller_token":"0x060052A4",
+      "call_il":"0x0023",
+      "callee_token":"0x060052CA"
+    }
+  },
+  "limits": [
+    "SongEnd and Unity engine object-lifetime internals remain outside this record."
+  ]
+}

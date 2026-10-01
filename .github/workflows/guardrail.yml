@@ -640,3 +640,9 @@ jobs:
         run: python tests/test_menu_sound_stop_bgm_summary.py
       - name: Menu Sound StopBGM prover syntax
         run: python -m py_compile tools/prove_menu_sound_stop_bgm.py
+
+
+      - name: uAudio Destroy_AudioPlayer summary
+        run: python tests/test_uaudio_destroy_audio_player_summary.py
+      - name: uAudio Destroy_AudioPlayer prover syntax
+        run: python -m py_compile tools/prove_uaudio_destroy_audio_player.py
