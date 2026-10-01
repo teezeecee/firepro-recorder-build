@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_START_FALL_COUNT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "Start_FallCount",
+      "token": "0x0600509A",
+      "rva": "0x003081C4",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 258,
+      "code_sha256": "3688c9d5342ef0785ee92923ceb8862dc82d0e50d0aaa26e580f3487c9502f4b",
+      "max_stack": 5,
+      "local_signature_token": "0x11000AB5",
+      "instruction_count": 83,
+      "branch_instruction_count": 4,
+      "call_instruction_count": 11
+    },
+    "entry": {
+      "player_man_inst": {
+        "name": "PlayerMan.inst",
+        "token": "0x040061FA"
+      },
+      "target_pl_idx": {
+        "name": "TargetPlIdx",
+        "token": "0x040062A4"
+      },
+      "get_pl_obj": {
+        "token": "0x06005065",
+        "method": "PlayerMan.GetPlObj"
+      },
+      "object_implicit_memberref": "0x0A00002A",
+      "player_flag": {
+        "name": "Player.isPinfallDef",
+        "token": "0x04006049"
+      },
+      "false_pinfall_call": {
+        "method": "Referee.SetFree",
+        "token": "0x06005095"
+      }
+    },
+    "rope_path": {
+      "match_setting_field": {
+        "name": "GlobalWork.MatchSetting",
+        "token": "0x04002AD2"
+      },
+      "rope_check_field": {
+        "name": "MatchSetting.isRopeCheck",
+        "token": "0x040057F1"
+      },
+      "ring_inst": {
+        "name": "Ring.inst",
+        "token": "0x04006355"
+      },
+      "collision_call": {
+        "method": "Ring.TestCollision_OctagonEdge_InRing",
+        "token": "0x060050EE"
+      },
+      "collision_float_bits": "0x3F2AAAB0",
+      "collision_float_value": 0.6666669845581055,
+      "position_field": {
+        "name": "Player.PlPos",
+        "token": "0x04005FAA"
+      },
+      "vector2_implicit_memberref": "0x0A000089",
+      "true_effects": [
+        "player.animator.isReqAnmLoopEnd = 1",
+        "Player.SetDownTime(0)",
+        "State = 23",
+        "PlDir = DecideRefereeDir(TargetPlIdx)",
+        "ReqRefereeAnm(RefAnmTbl[33 + MatchData.AnmOfsTbl_2Dir[PlDir]])",
+        "PlayRefereeVoice(1)",
+        "return"
+      ]
+    },
+    "normal_path": {
+      "state_raw": 9,
+      "direction_call": {
+        "token": "0x0600508C",
+        "fact_id": "FACT-0086"
+      },
+      "request_expression": "AnmIDTbl_FallCount[MatchData.AnmOfsTbl_2Dir[PlDir]]",
+      "anm_table": {
+        "name": "AnmIDTbl_FallCount",
+        "token": "0x0400629A"
+      },
+      "ofs_2dir": {
+        "name": "MatchData.AnmOfsTbl_2Dir",
+        "token": "0x0400565C"
+      },
+      "request_call": {
+        "token": "0x06005096",
+        "fact_id": "FACT-0068"
+      },
+      "frame_wait_expression": "FallWaitCnt[RefePrm.fallCount]",
+      "fall_wait_cnt": {
+        "name": "FallWaitCnt",
+        "token": "0x04006289"
+      },
+      "referee_param": {
+        "name": "RefePrm",
+        "token": "0x040062C3"
+      },
+      "fall_count": {
+        "name": "RefereeParam.fallCount",
+        "token": "0x04000E71"
+      },
+      "frame_wait": {
+        "name": "FrameWait",
+        "token": "0x040062B4"
+      }
+    },
+    "canonical_helpers": {
+      "player_set_down_time": {
+        "token": "0x06004ED8",
+        "fact_id": "FACT-0029"
+      },
+      "decide_referee_dir": {
+        "token": "0x0600508C",
+        "fact_id": "FACT-0086"
+      },
+      "req_referee_anm": {
+        "token": "0x06005096",
+        "fact_id": "FACT-0068"
+      },
+      "play_referee_voice": {
+        "token": "0x06005279",
+        "fact_id": "FACT-0076"
+      }
+    },
+    "fact_0085_bridge": {
+      "fact_id": "FACT-0085",
+      "caller": "Referee.Process_ArrivedDestination",
+      "call_il": "0x005B",
+      "callee_token": "0x0600509A"
+    }
+  },
+  "limits": [
+    "SetFree, ring collision internals and authored tables remain outside this record."
+  ]
+}
