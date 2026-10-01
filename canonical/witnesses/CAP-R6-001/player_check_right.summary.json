@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_CHECK_RIGHT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "CheckRight",
+      "token": "0x06004EB9",
+      "rva": "0x002DE7BC",
+      "signature_blob_hex": "200002",
+      "return_type": "Boolean",
+      "parameters": [],
+      "code_size": 28,
+      "code_sha256": "91e367c3dde890584416fa256d52fe2122dde68fa653733621274d624b4002f1",
+      "instruction_count": 12,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 0
+    },
+    "fields": [
+      {
+        "name": "isLose",
+        "token": "0x04006052"
+      },
+      {
+        "name": "hasRight",
+        "token": "0x04006043"
+      }
+    ],
+    "exact_flow": [
+      "if isLose != 0: return false",
+      "if hasRight != 0: return true",
+      "return false"
+    ],
+    "equivalent_true_condition": "isLose == 0 AND hasRight != 0",
+    "fact_0093_bridge": {
+      "fact_id": "FACT-0093",
+      "caller": "Referee.ProcesskMatchEnd_Normal",
+      "call_il": "0x003C",
+      "callee_token": "0x06004EB9"
+    }
+  },
+  "limits": [
+    "Other CheckRight callers remain outside this record."
+  ]
+}
