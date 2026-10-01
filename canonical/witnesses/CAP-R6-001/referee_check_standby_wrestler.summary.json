@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_CHECK_STANDBY_WRESTLER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "CheckStandByWrestler",
+      "token": "0x060050A8",
+      "rva": "0x003094D0",
+      "signature_blob_hex": "200002",
+      "return_type": "Boolean",
+      "parameters": [],
+      "code_size": 103,
+      "code_sha256": "ee9e9c47f5d28bf25f68a8af0c22b9a0f794b042d30cbdc9dbf23ab310a3964d",
+      "max_stack": 2,
+      "local_signature_token": "0x1100116A",
+      "instruction_count": 39,
+      "branch_instruction_count": 8,
+      "call_instruction_count": 2
+    },
+    "entry": {
+      "match_setting": {
+        "name": "GlobalWork.MatchSetting",
+        "token": "0x04002AD2"
+      },
+      "battle_royal_kind": {
+        "name": "MatchSetting.BattleRoyalKind",
+        "token": "0x040057D3"
+      },
+      "required_raw_value": 4,
+      "nonmatching_effect": "return false"
+    },
+    "scan": {
+      "raw_index_range": {
+        "min_inclusive": 0,
+        "max_inclusive": 7
+      },
+      "player_man_inst": {
+        "name": "PlayerMan.inst",
+        "token": "0x040061FA"
+      },
+      "get_pl_obj": {
+        "method": "PlayerMan.GetPlObj",
+        "token": "0x06005065"
+      },
+      "object_implicit_memberref": "0x0A00002A",
+      "sleep_field": {
+        "name": "Player.isSleep",
+        "token": "0x04006057"
+      },
+      "appear_time_field": {
+        "name": "Player.royalRambleAppearTime",
+        "token": "0x04006035"
+      },
+      "true_condition": "player converts true AND player.isSleep == 0 AND player.royalRambleAppearTime != -1",
+      "true_effect": "return true",
+      "exhaustion_effect": "return false"
+    },
+    "direct_callers": [
+      {
+        "fact_id": "FACT-0091",
+        "type": "Referee",
+        "method": "CheckMatchEnd",
+        "token": "0x060050A9",
+        "rva": "0x00309544",
+        "call_il": "0x0007",
+        "opcode": "call"
+      }
+    ]
+  },
+  "limits": [
+    "Tested-field writers and raw-value meaning remain outside this record."
+  ]
+}

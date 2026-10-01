@@ -1592,6 +1592,23 @@
         "ProcesskMatchEnd_Normal internal closure",
         "ProcessMatchEnd_Draw internal closure"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_CHECK_STANDBY_WRESTLER_V1",
+      "fact_id": "FACT-0092",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Referee.CheckStandByWrestler raw BattleRoyalKind==4 gate, raw player indices 0..7 scan, null/sleep skips, royalRambleAppearTime != -1 true-return condition, and exact sole FACT-0091 caller.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_check_standby_wrestler.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "royalRambleAppearTime writer/producer closure",
+        "raw BattleRoyalKind 4 meaning",
+        "player sleep-state producer closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
