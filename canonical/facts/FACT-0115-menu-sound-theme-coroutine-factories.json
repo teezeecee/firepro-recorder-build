@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0115",
+  "claim": "In the matching retail DLL, static Menu_SoundManager.CoChange_BGMandPlay (0x06005294) and CoChange_BGMandPlay_FromAssetBundle (0x06005295) have the same exact signature blob 00041281810e11aa24021280fd: they return System.Collections.IEnumerator and accept String fn, SYSTEM_SOUND system_sound, Boolean bStart and System.Action onLoad. Each has an exact 36-byte body that constructs its own compiler-generated iterator, copies fn, system_sound, onLoad and bStart into the corresponding iterator fields, and returns that iterator. The normal factory body hash is 6bf3b32bde5c0e41ede808a7df79d384f18e7aa4cb00181ed96c4495a8a69082 and constructs <CoChange_BGMandPlay>c__Iterator8 via token 0x060074E9. The asset-bundle factory body hash is 350a54533b1c76c5c5a5d7259e377d8aa3b1e1cf2aeb16042332cc6aa01bedb5 and constructs <CoChange_BGMandPlay_FromAssetBundle>c__Iterator9 via token 0x060074EF. Both generated constructors are exact seven-byte bodies with SHA-256 5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9 and do only ldarg.0; call System.Object..ctor (MemberRef 0x0A0000EF); ret. FACT-0111 pins the already-canonical direct factory caller sites at Change_BGM_Theme IL+0x00A7 for CoChange_BGMandPlay and IL+0x007E for CoChange_BGMandPlay_FromAssetBundle.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.CoChange_BGMandPlay token 0x06005294 RVA 0x00322208 code size 36 sha256=6bf3b32bde5c0e41ede808a7df79d384f18e7aa4cb00181ed96c4495a8a69082; CoChange_BGMandPlay_FromAssetBundle token 0x06005295 RVA 0x00322238 code size 36 sha256=350a54533b1c76c5c5a5d7259e377d8aa3b1e1cf2aeb16042332cc6aa01bedb5; generated constructors 0x060074E9 / 0x060074EF body size 7 common sha256=5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9; exact field-copy and constructor flow in canonical/witnesses/CAP-R6-001/menu_sound_theme_coroutine_factories.summary.json; prover tools/prove_menu_sound_theme_coroutine_factories.py",
+      "observation": "Exact matching-DLL coroutine-factory pair and generated constructor leaves."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0111 Menu_SoundManager.Change_BGM_Theme",
+      "to": "Menu_SoundManager.CoChange_BGMandPlay / CoChange_BGMandPlay_FromAssetBundle",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0111 pins call token 0x06005294 at IL+0x00A7 and call token 0x06005295 at IL+0x007E."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the two factory bodies, their generated constructor leaves, and the two FACT-0111 caller bridges.",
+    "The generated iterator MoveNext and disposal/current methods remain separate gates.",
+    "Coroutine scheduling and Unity engine behavior remain outside this fact.",
+    "Authored audio contents remain outside this fact."
+  ]
+}
