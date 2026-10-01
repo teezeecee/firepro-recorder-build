@@ -228,3 +228,8 @@ jobs:
         run: python tests/test_end_ai_act_lifecycle_summary.py
       - name: EndAIAct lifecycle prover syntax
         run: python -m py_compile tools/prove_end_ai_act_lifecycle.py
+
+      - name: AI InitAllWorks summary
+        run: python tests/test_ai_init_all_works_summary.py
+      - name: AI InitAllWorks prover syntax
+        run: python -m py_compile tools/prove_ai_init_all_works.py
