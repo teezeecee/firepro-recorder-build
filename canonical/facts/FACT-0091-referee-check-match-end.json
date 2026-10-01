@@ -1,0 +1,35 @@
+{
+  "fact_id": "FACT-0091",
+  "claim": "In the matching retail DLL, Referee.CheckMatchEnd (0x060050A9) is a parameterless instance method with an exact 168-byte body and exactly one direct DLL caller. It loads MatchMain.inst and first calls Referee.CheckStandByWrestler(); when that helper returns true this method returns. It then returns when MatchMain.isMatchEnd is nonzero and returns when MatchMain.isRoundEnd is nonzero. Otherwise it loads GlobalWork.inst.MatchSetting and calls PlayerMan.inst.GetWrestlerNum_HasRight(). When that returned Int32 is raw zero it calls MatchMain.ProcessMatchEnd_Draw(this.isTwoDownWithExplosion) and returns. For a nonzero count it checks, in exact order: MatchSetting.BattleRoyalKind nonzero -> call Referee.CheckMatchEnd_BattleRoyal; else MatchSetting.VictoryCondition equal raw 4 -> call Referee.CheckMatchEnd_EscapedFromCage; else MatchSetting.isTornadoBattle nonzero -> call Referee.CheckMatchEnd_Tornado; else returned wrestler count equal raw 1 -> call Referee.ProcesskMatchEnd_Normal; otherwise return. FACT-0074 pins the sole direct caller at Referee.UpdateReferee IL+0x007A.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.CheckMatchEnd token 0x060050A9 RVA 0x00309544 signature 200001 code size 168 code sha256=14d88238c271a882dd9fe1c4d3a0fdd732d43a830be6728478f50747326aab9f; exact helper/gate/dispatcher body in canonical/witnesses/CAP-R6-001/referee_check_match_end.summary.json; prover tools/prove_referee_check_match_end.py",
+      "observation": "Exact matching-DLL CheckMatchEnd dispatcher body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact call-token inventory for 0x060050A9 finds one direct DLL caller only: Referee.UpdateReferee token 0x060050AF RVA 0x00309E9C, call opcode at IL+0x007A.",
+      "observation": "Exact direct caller inventory."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0074 Referee.UpdateReferee",
+      "to": "Referee.CheckMatchEnd",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdateReferee IL+0x007A call token 0x060050A9."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the CheckMatchEnd dispatcher and its exact direct caller inventory.",
+    "CheckStandByWrestler, CheckMatchEnd_BattleRoyal, CheckMatchEnd_EscapedFromCage, CheckMatchEnd_Tornado and ProcesskMatchEnd_Normal internals remain separate gates.",
+    "MatchMain.ProcessMatchEnd_Draw internals remain outside this fact.",
+    "Raw VictoryCondition value 4, count comparisons and metadata field names are preserved without added rule labels."
+  ]
+}
