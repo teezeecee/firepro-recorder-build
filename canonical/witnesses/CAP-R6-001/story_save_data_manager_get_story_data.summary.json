@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_STORY_SAVE_DATA_MANAGER_GET_STORY_DATA_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "StorySaveDataManager",
+      "method": "GetStoryData",
+      "token": "0x06003C24",
+      "rva": "0x0023A1BD",
+      "signature_blob_hex": "2000129cd4",
+      "return_type": "StoryWork",
+      "parameters": [],
+      "code_size": 12,
+      "code_sha256": "564cd017b6b587e05dc90b0c95294394b6d0d874e7c59dee6c493fa3182cb611",
+      "tiny_header": true,
+      "max_stack": 8,
+      "instruction_count": 4,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 1
+    },
+    "exact_body": [
+      {
+        "il": "0x0000",
+        "opcode": "ldarg.0",
+        "value": "this"
+      },
+      {
+        "il": "0x0001",
+        "opcode": "ldsfld",
+        "token": "0x04004856",
+        "field": "StoryWork.storyScenario",
+        "field_signature_blob_hex": "06119cd0"
+      },
+      {
+        "il": "0x0006",
+        "opcode": "call",
+        "token": "0x06003C25",
+        "method": "StorySaveDataManager.GetStoryData(StoryScenario)",
+        "signature_blob_hex": "2001129cd4119cd0"
+      },
+      {
+        "il": "0x000B",
+        "opcode": "ret"
+      }
+    ],
+    "sibling_dependency": {
+      "method": "StorySaveDataManager.GetStoryData",
+      "token": "0x06003C25",
+      "rva": "0x0023A1CA",
+      "signature_blob_hex": "2001129cd4119cd0",
+      "return_type": "StoryWork",
+      "parameter_type": "StoryScenario"
+    },
+    "fact_0101_bridge": {
+      "fact_id": "FACT-0101",
+      "caller": "SaveData.get_story_work",
+      "caller_token": "0x06005171",
+      "caller_rva": "0x00314983",
+      "caller_code_size": 39,
+      "caller_code_sha256": "dcca7695b47672ce7825fed3223764f312476b6d900da9aa66b929a54916780b",
+      "manager_inst_field_token": "0x0400497D",
+      "manager_load_il": "0x001C",
+      "call_il": "0x0021",
+      "opcode": "callvirt",
+      "callee_token": "0x06003C24"
+    }
+  },
+  "limits": [
+    "The one-StoryScenario overload internals remain outside this record.",
+    "Authored story data and StoryScenario semantics remain outside this record.",
+    "No broader Story Mode subsystem behavior is promoted."
+  ]
+}

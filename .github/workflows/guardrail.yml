@@ -518,3 +518,8 @@ jobs:
         run: python tests/test_save_data_edit_wrestler_data_summary.py
       - name: SaveData GetEditWrestlerData prover syntax
         run: python -m py_compile tools/prove_save_data_edit_wrestler_data.py
+
+      - name: StorySaveDataManager GetStoryData summary
+        run: python tests/test_story_save_data_manager_get_story_data_summary.py
+      - name: StorySaveDataManager GetStoryData prover syntax
+        run: python -m py_compile tools/prove_story_save_data_manager_get_story_data.py
