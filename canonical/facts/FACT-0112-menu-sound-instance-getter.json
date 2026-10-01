@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0112",
+  "claim": "In the matching retail DLL, static Menu_SoundManager.get__instance (0x0600527C) is a parameterless method returning Menu_SoundManager with exact signature blob 000012aa14 and an exact 6-byte body. It loads static field Menu_SoundManager.inst (0x040086EA) and immediately returns that reference. FACT-0111 pins the two already-canonical direct caller sites at Menu_SoundManager.Change_BGM_Theme IL+0x0074 and IL+0x008E.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.get__instance token 0x0600527C RVA 0x0032178B signature 000012aa14 code size 6 code sha256=51403f7f590ffecc93a4904d8183a6255e36fdc173d7d24ad889577fbf035c03; exact ldsfld Menu_SoundManager.inst / ret body in canonical/witnesses/CAP-R6-001/menu_sound_instance_getter.summary.json; prover tools/prove_menu_sound_instance_getter.py",
+      "observation": "Exact matching-DLL Menu_SoundManager singleton getter body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0111 Menu_SoundManager.Change_BGM_Theme",
+      "to": "Menu_SoundManager.get__instance()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0111 pins call token 0x0600527C at Change_BGM_Theme IL+0x0074 and IL+0x008E."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact singleton getter and its two FACT-0111 caller bridges.",
+    "Menu_SoundManager.inst assignment and object lifecycle remain outside this fact.",
+    "Other get__instance callers remain separate caller seams."
+  ]
+}
