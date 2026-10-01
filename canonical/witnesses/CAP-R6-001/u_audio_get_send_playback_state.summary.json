@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_U_AUDIO_GET_SEND_PLAYBACK_STATE_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "uAudio.uAudioPlayer",
+      "method": "get_sendPlaybackState",
+      "token": "0x060052CB",
+      "rva": "0x0032568B",
+      "signature_blob_hex": "2000151280d1011182b5",
+      "parameters": [],
+      "code_size": 7,
+      "code_sha256": "f0eb7b6d2625782d43a08476d93acb464e82bc45c00d660925f2176d82bc8c4b",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 3,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 0
+    },
+    "field": {
+      "name": "uAudio.uAudioPlayer._sendPlaybackState",
+      "token": "0x040087E7",
+      "signature_blob_hex": "06151280d1011182b5"
+    },
+    "exact_flow": [
+      "load this",
+      "load field uAudio.uAudioPlayer._sendPlaybackState",
+      "return"
+    ],
+    "fact_0126_bridges": [
+      {"fact_id":"FACT-0126","caller":"uAudio.uAudioPlayer.SongEnd","call_il":"0x005A"},
+      {"fact_id":"FACT-0126","caller":"uAudio.uAudioPlayer.SongEnd","call_il":"0x0065"}
+    ]
+  },
+  "limits": [
+    "Field writers and delegate runtime behavior remain outside this record."
+  ]
+}
