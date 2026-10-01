@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_CHEER_LOOP_PLAYBACK_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "Menu_SoundManager",
+        "method": "Play_CheerVoice_Loop",
+        "token": "0x060052AD",
+        "rva": "0x00322DCC",
+        "signature_blob_hex": "00020111aa000c",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "vid",
+            "metadata_type": "valuetype CheerVoiceEnum",
+            "typedef_token": "0x02000A80"
+          },
+          {
+            "sequence": 2,
+            "name": "volume",
+            "type": "Float32"
+          }
+        ],
+        "code_size": 158,
+        "code_sha256": "001cb4d3bd5417613100f8bfe639e04dda3482b57c57eb21ef6522ce30adfebe",
+        "instruction_count": 61,
+        "branch_instruction_count": 7,
+        "call_instruction_count": 6
+      },
+      {
+        "type": "Menu_SoundManager",
+        "method": "SetVol_CheerVoice_Loop",
+        "token": "0x060052B0",
+        "rva": "0x00322EDC",
+        "signature_blob_hex": "0001010c",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "volume",
+            "type": "Float32"
+          }
+        ],
+        "code_size": 76,
+        "code_sha256": "6f321c7c744fbfc0c24a57378d548aa080b210e4d264ec0cf63d9c9576338126",
+        "instruction_count": 28,
+        "branch_instruction_count": 3,
+        "call_instruction_count": 2
+      }
+    ],
+    "shared": {
+      "volume_expression": "local = Volume_Cheer * volume",
+      "lower_clamp": {
+        "opcode": "bge.un",
+        "ordered_negative_effect": "local=0.0f",
+        "greater_equal_or_unordered_effect": "unchanged"
+      },
+      "upper_clamp": {
+        "opcode": "ble.un",
+        "ordered_greater_effect": "local=1.0f",
+        "less_equal_or_unordered_effect": "unchanged"
+      },
+      "audio_src_info_index": 7,
+      "fields": {
+        "volume_cheer": "0x040086F0",
+        "audio_src_info": "0x040086EB",
+        "s_ref_audio": "0x0400874C"
+      }
+    },
+    "play_loop": {
+      "valid_vid_range": {
+        "min_inclusive": 0,
+        "max_inclusive": 41
+      },
+      "clip_field": "0x04008701",
+      "source_truth_memberref": "0x0A00002A",
+      "calls": [
+        [
+          "set_volume",
+          "0x0A0002A2"
+        ],
+        [
+          "set_clip",
+          "0x0A00079B"
+        ],
+        [
+          "set_loop",
+          "0x0A00079C"
+        ],
+        [
+          "Play",
+          "0x0A0002A3"
+        ]
+      ],
+      "loop_argument": true,
+      "tail_writes": [
+        {
+          "field": "fadeOutFrm",
+          "token": "0x0400874E",
+          "value": 0
+        },
+        {
+          "field": "fadeOutCnt",
+          "token": "0x0400874D",
+          "value": 0
+        }
+      ]
+    },
+    "set_volume_only": {
+      "source_truth_memberref": "0x0A00002A",
+      "call": {
+        "name": "set_volume",
+        "token": "0x0A0002A2"
+      }
+    },
+    "fact_0081_bridge": {
+      "fact_id": "FACT-0081",
+      "calls": [
+        {
+          "il": "0x00FA",
+          "callee_token": "0x060052AD"
+        },
+        {
+          "il": "0x010E",
+          "callee_token": "0x060052B0"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Authored audio contents and remaining callers stay outside this record."
+  ]
+}

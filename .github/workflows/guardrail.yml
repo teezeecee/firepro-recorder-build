@@ -413,3 +413,8 @@ jobs:
         run: python tests/test_audience_loop_cheer_summary.py
       - name: Audience loop cheer prover syntax
         run: python -m py_compile tools/prove_audience_loop_cheer.py
+
+      - name: Cheer loop playback summary
+        run: python tests/test_cheer_loop_playback_summary.py
+      - name: Cheer loop playback prover syntax
+        run: python -m py_compile tools/prove_cheer_loop_playback.py
