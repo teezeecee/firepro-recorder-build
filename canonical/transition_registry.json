@@ -952,6 +952,23 @@
         "higher-level collision meaning beyond exact arithmetic",
         "Unity Vector2 engine implementation outside emitted field access"
       ]
+    },
+    {
+      "family_id": "DLL_RING_IS_STEP_ON_MINE_V1",
+      "fact_id": "FACT-0055",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Ring.IsStepOnMine player/Zone gate, 45-degree position rotation and four strict rotated rectangular-band tests reached from FACT-0049.",
+      "summary": "canonical/witnesses/CAP-R6-001/is_step_on_mine.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "mine placement/art provenance",
+        "Unity quaternion implementation beyond emitted calls",
+        "later explosion effect internals"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
