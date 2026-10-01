@@ -766,3 +766,9 @@ jobs:
         run: python tests/test_u_audio_pause_summary.py
       - name: uAudio Pause prover syntax
         run: python -m py_compile tools/prove_u_audio_pause.py
+
+
+      - name: Menu Sound MyMusic Play Co factory summary
+        run: python tests/test_menu_sound_my_music_play_co_factory_summary.py
+      - name: Menu Sound MyMusic Play Co factory prover syntax
+        run: python -m py_compile tools/prove_menu_sound_my_music_play_co_factory.py
