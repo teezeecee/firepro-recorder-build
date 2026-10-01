@@ -598,3 +598,9 @@ jobs:
         run: python tests/test_menu_sound_theme_iterator_support_summary.py
       - name: Menu Sound theme iterator support prover syntax
         run: python -m py_compile tools/prove_menu_sound_theme_iterator_support.py
+
+
+      - name: ThemeMusicInfo CheckValidationDLC summary
+        run: python tests/test_theme_music_info_check_validation_dlc_summary.py
+      - name: ThemeMusicInfo CheckValidationDLC prover syntax
+        run: python -m py_compile tools/prove_theme_music_info_check_validation_dlc.py

@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0117",
+  "claim": "In the matching retail DLL, ThemeMusicInfo.CheckValidationDLC (0x06001191) is an instance parameterless Boolean method with exact signature blob 200002 and an exact 132-byte body. It first calls canonical ThemeMusicInfo.IsDLC (FACT-0114); if that returns false, CheckValidationDLC returns true immediately. Otherwise it scans raw local index 0 while signed index < 13. For each index it requires this.dlc[index] nonzero and SaveData.inst.IsDLCInstalled(index) true before continuing. Any qualifying index other than raw 9 returns true immediately. Raw index 9 takes a special path: StorySaveDataManager.inst.GetStoryData(raw 2) is loaded; if the result is non-null and its StoryWork.m_root_clear field is nonzero, the method returns true. Otherwise it calls GlobalParam.IsStoryMode; when that is true and StoryWork.storyScenario equals raw 2, it returns true. Failing those raw-index-9 checks continues the loop. If no index qualifies through raw 12, it returns false. FACT-0111 pins the already-canonical caller at Menu_SoundManager.Change_BGM_Theme IL+0x0025.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "ThemeMusicInfo.CheckValidationDLC token 0x06001191 RVA 0x0006CA54 signature 200002 code size 132 code sha256=f49006bbea8bcc23f4ac9019fc646d7fd2dc09edad531bc204b027a920bcc8c2; exact IsDLC early-true gate, raw-0..12 scan, SaveData.IsDLCInstalled test and raw-index-9 story branch in canonical/witnesses/CAP-R6-001/theme_music_info_check_validation_dlc.summary.json; prover tools/prove_theme_music_info_check_validation_dlc.py",
+      "observation": "Exact matching-DLL ThemeMusicInfo.CheckValidationDLC body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0111 Menu_SoundManager.Change_BGM_Theme",
+      "to": "ThemeMusicInfo.CheckValidationDLC()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0111 pins callvirt token 0x06001191 at Change_BGM_Theme IL+0x0025."
+        }
+      ]
+    },
+    {
+      "from": "ThemeMusicInfo.CheckValidationDLC",
+      "to": "FACT-0114 ThemeMusicInfo.IsDLC / FACT-0104 StorySaveDataManager.GetStoryData(StoryScenario)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CheckValidationDLC IL+0x0001 calls token 0x06001192; IL+0x003F calls canonical token 0x06003C25 with raw argument 2."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact CheckValidationDLC body and its already-canonical bridges.",
+    "SaveData.IsDLCInstalled and GlobalParam.IsStoryMode internals remain separate gates.",
+    "Authored ThemeMusicInfo.dlc values, installed-DLC state and StoryWork data remain outside this fact.",
+    "Raw values 9, 13 and 2 are preserved without assigning product or scenario labels."
+  ]
+}
