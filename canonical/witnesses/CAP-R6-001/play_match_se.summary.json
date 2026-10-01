@@ -33,18 +33,29 @@
       "branch_instruction_count": 5,
       "call_instruction_count": 4
     },
+    "exact_tokens": {
+      "match_main_inst": "0x0400576C",
+      "is_fast_forward_match": "0x04005752",
+      "fade_inst": "0x0400591E",
+      "fade_is_fade_finish": "0x06004A7D",
+      "match_frame_count": "0x04005738",
+      "object_op_inequality": "0x0A00000F",
+      "match_se_player_inst": "0x040086E4",
+      "match_se_player_play_match_se": "0x06005277"
+    },
     "throttle": {
       "conditions": [
-        "MatchMain.inst exists",
+        "MatchMain.inst != null",
         "MatchMain.isFastForwardMatch != 0",
-        "Fade.inst.IsFadeFinish() == true"
+        "Fade.inst.IsFadeFinish() != 0"
       ],
-      "expression": "unsigned MchFrameCnt % 20",
-      "skip_when": "remainder != 0"
+      "frame_expression": "unsigned MatchMain.MchFrameCnt % 20",
+      "immediate_return_when": "all three conditions are true and remainder != 0",
+      "dispatch_when": "any earlier condition is false OR remainder == 0"
     },
     "dispatch": {
-      "condition": "MatchSEPlayer.inst exists",
-      "callee_token": "0x06005277",
+      "condition": "MatchSEPlayer.inst != null",
+      "effect": "MatchSEPlayer.inst.PlayMatchSE(seid,vol,pl_idx)",
       "arguments": [
         "seid",
         "vol",
@@ -53,8 +64,20 @@
     },
     "caller_bridges": [
       {
+        "fact_id": "FACT-0015",
+        "caller": "FormAnimator.PlayAnimationSE",
+        "call_il": "0x0161",
+        "arguments": [
+          "seID",
+          1,
+          "plObj.PlIdx"
+        ]
+      },
+      {
         "fact_id": "FACT-0026",
-        "raw_arguments": [
+        "caller": "Player.ProcessCritical",
+        "call_il": "0x00FF",
+        "arguments": [
           30,
           1,
           "PlIdx"
@@ -62,7 +85,9 @@
       },
       {
         "fact_id": "FACT-0049",
-        "raw_arguments": [
+        "caller": "Player.TransitStateAfterAnm_Down",
+        "call_il": "0x0321",
+        "arguments": [
           67,
           1,
           "PlIdx"
@@ -71,6 +96,8 @@
     ]
   },
   "limits": [
-    "Callee internals and raw sound-ID meaning remain outside this record."
+    "Fade.IsFadeFinish and MatchSEPlayer.PlayMatchSE internals remain outside this record.",
+    "Additional raw PlayMatchSE call sites exist outside the three caller seams already canonical here.",
+    "Raw sound-ID meaning remains outside this record."
   ]
 }
