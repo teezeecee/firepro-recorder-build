@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_MY_MUSIC_PLAY_CO_CTOR_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "owner_type":{"name":"<MyMusic_Play_Co>c__IteratorE","token":"0x02000F73"},
+    "methoddef_row":{"token":"0x0600750E","row_hex":"a454320000008618eb4f06005c480000d24f","rva":"0x003254A4"},
+    "method":{"method":".ctor","token":"0x0600750E","rva":"0x003254A4","signature_blob_hex":"200001","return_type":"Void","parameters":[],"code_size":7,"code_sha256":"5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9","header_format":"tiny","max_stack":8,"local_signature_token":"0x00000000","instruction_count":3,"branch_instruction_count":0,"call_instruction_count":1},
+    "call":{"token":"0x0A0000EF","resolved":"System.Object..ctor","signature_blob_hex":"200001","call_il":"0x0001"},
+    "exact_flow":["load this","call System.Object..ctor","return"],
+    "fact_0144_bridge":{"fact_id":"FACT-0144","caller":"Menu_SoundManager.MyMusic_Play_Co","newobj_il":"0x0000","callee_token":"0x0600750E"}
+  },
+  "limits":["Generated MoveNext and external System.Object implementation remain outside this record."]
+}
