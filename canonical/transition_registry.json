@@ -1502,6 +1502,24 @@
         "remaining DecideRefereeDir caller closure",
         "raw return-value meaning"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_START_HANDLING_DISTURBING_V1",
+      "fact_id": "FACT-0087",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Referee.Start_HandlingDisturbing target lookup, State/PlDir setup, raw animation choice, disturbedCnt table lookup, target-player request/reset calls and referee-voice dispatch, bridged from FACT-0085.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_start_handling_disturbing.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "MatchMisc.ReversePlayerDirLR internal closure",
+        "DisturbedTime authored table closure",
+        "RefereeParam.interfereTime authored provenance",
+        "remaining disturbing-state consumer closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

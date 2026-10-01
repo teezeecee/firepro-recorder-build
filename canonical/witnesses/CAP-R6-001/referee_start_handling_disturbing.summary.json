@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_START_HANDLING_DISTURBING_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "Start_HandlingDisturbing",
+      "token": "0x0600509D",
+      "rva": "0x00308528",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 202,
+      "code_sha256": "2b83b8d57051b7b88b861140401b12d2ec72246595a3021b601c6cc10754b96c",
+      "max_stack": 4,
+      "local_signature_token": "0x11001082",
+      "instruction_count": 68,
+      "branch_instruction_count": 3,
+      "call_instruction_count": 9
+    },
+    "entry": {
+      "player_man_inst": {
+        "name": "PlayerMan.inst",
+        "token": "0x040061FA"
+      },
+      "target_pl_idx": {
+        "name": "TargetPlIdx",
+        "token": "0x040062A4"
+      },
+      "get_pl_obj": {
+        "method": "PlayerMan.GetPlObj",
+        "token": "0x06005065"
+      },
+      "object_implicit_memberref": "0x0A00002A",
+      "false_effect": "return"
+    },
+    "referee_flow": {
+      "state_write": {
+        "field": "State",
+        "token": "0x0400629D",
+        "raw_value": 18
+      },
+      "direction": [
+        {
+          "call": "Referee.DecideRefereeDir",
+          "token": "0x0600508C",
+          "argument": "TargetPlIdx",
+          "fact_id": "FACT-0086"
+        },
+        {
+          "call": "MatchMisc.ReversePlayerDirLR",
+          "token": "0x06004966",
+          "argument": "PlDir",
+          "store_field": "PlDir",
+          "store_token": "0x040062A3"
+        }
+      ],
+      "animation_selection": {
+        "default_raw_id": 1158,
+        "replacement_raw_id": 1159,
+        "replacement_when_post_reverse_pl_dir_in": [
+          1,
+          5
+        ],
+        "request_call": {
+          "method": "Referee.ReqRefereeAnm",
+          "token": "0x06005096",
+          "fact_id": "FACT-0068"
+        }
+      },
+      "disturbed_count": {
+        "target_field": {
+          "name": "disturbedCnt",
+          "token": "0x040062C8"
+        },
+        "source_array": {
+          "name": "DisturbedTime",
+          "token": "0x0400628D"
+        },
+        "index_field": {
+          "name": "RefereeParam.interfereTime",
+          "token": "0x04000E76"
+        },
+        "referee_param_field": {
+          "name": "RefePrm",
+          "token": "0x040062C3"
+        }
+      }
+    },
+    "target_player_flow": {
+      "animator_field": {
+        "name": "Player.animator",
+        "token": "0x04005FA8"
+      },
+      "basic_skill_field": {
+        "name": "FormAnimator.BasicSkillID",
+        "token": "0x04005ED8"
+      },
+      "req_basic_anm": {
+        "token": "0x06004E6F",
+        "arguments": [
+          "animator.BasicSkillID",
+          false,
+          -1
+        ],
+        "fact_id": "FACT-0010"
+      },
+      "start_anm": {
+        "token": "0x06004E75",
+        "arguments": [
+          1
+        ],
+        "fact_id": "FACT-0006"
+      },
+      "disturbing_step": {
+        "field": "Player.disturbingStep",
+        "token": "0x04006022",
+        "raw_value": 1
+      }
+    },
+    "voice_flow": {
+      "match_se_player_inst": {
+        "name": "MatchSEPlayer.inst",
+        "token": "0x040086E4"
+      },
+      "random_call": {
+        "token": "0x0600497B",
+        "arguments": [
+          0,
+          3
+        ],
+        "fact_id": "FACT-0032"
+      },
+      "expression": "21 + MatchRandom.Range(0,3)",
+      "play_referee_voice": {
+        "token": "0x06005279",
+        "fact_id": "FACT-0076"
+      }
+    },
+    "fact_0085_bridge": {
+      "fact_id": "FACT-0085",
+      "caller": "Referee.Process_ArrivedDestination",
+      "call_il": "0x0216",
+      "callee_token": "0x0600509D"
+    }
+  },
+  "limits": [
+    "ReversePlayerDirLR internals and authored timer-table contents remain outside this record."
+  ]
+}

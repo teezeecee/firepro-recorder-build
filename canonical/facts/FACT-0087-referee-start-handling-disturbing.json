@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0087",
+  "claim": "In the matching retail DLL, Referee.Start_HandlingDisturbing (0x0600509D) is a parameterless instance method with an exact 202-byte body. It resolves PlayerMan.inst.GetPlObj(TargetPlIdx), tests the result through UnityEngine.Object.op_Implicit, and returns when false. It writes Referee.State=18, writes PlDir=DecideRefereeDir(TargetPlIdx), then replaces PlDir with MatchMisc.ReversePlayerDirLR(PlDir). A local animation id starts at raw 1158 and is replaced with raw 1159 when the post-reversal PlDir is raw 1 or raw 5; that id is passed to FACT-0068 ReqRefereeAnm. It writes disturbedCnt = DisturbedTime[RefePrm.interfereTime]. On the resolved target player it calls FACT-0010 FormAnimator.ReqBasicAnm(animator.BasicSkillID,false,-1), then FACT-0006 FormAnimator.StartAnm(1), then writes Player.disturbingStep=1. Finally it calls FACT-0076 MatchSEPlayer.PlayRefereeVoice with raw argument 21 + FACT-0032 MatchRandom.Range(0,3), and returns. FACT-0085 pins the direct call at Process_ArrivedDestination IL+0x0216.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.Start_HandlingDisturbing token 0x0600509D RVA 0x00308528 signature 200001 code size 202 code sha256=2b83b8d57051b7b88b861140401b12d2ec72246595a3021b601c6cc10754b96c; exact target lookup/state-direction/animation/timer/player-reset/voice body in canonical/witnesses/CAP-R6-001/referee_start_handling_disturbing.summary.json; prover tools/prove_referee_start_handling_disturbing.py",
+      "observation": "Exact matching-DLL disturbing-handler initializer body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0085 Referee.Process_ArrivedDestination",
+      "to": "Referee.Start_HandlingDisturbing",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0085 pins call token 0x0600509D at Process_ArrivedDestination IL+0x0216."
+        }
+      ]
+    },
+    {
+      "from": "Referee.Start_HandlingDisturbing",
+      "to": "already-canonical helper seams",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact body calls FACT-0086 DecideRefereeDir token 0x0600508C, FACT-0068 ReqRefereeAnm 0x06005096, FACT-0010 ReqBasicAnm 0x06004E6F, FACT-0006 StartAnm 0x06004E75, FACT-0032 MatchRandom.Range(Int32,Int32) 0x0600497B, and FACT-0076 PlayRefereeVoice 0x06005279."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only Start_HandlingDisturbing and the FACT-0085 caller bridge.",
+    "MatchMisc.ReversePlayerDirLR internals remain a separate gate.",
+    "Raw State 18, PlDir values 1/5, animation ids 1158/1159, disturbingStep 1 and voice arithmetic 21+Range(0,3) are preserved without adding gameplay labels.",
+    "Authored DisturbedTime contents and RefereeParam.interfereTime provenance remain outside this fact."
+  ]
+}
