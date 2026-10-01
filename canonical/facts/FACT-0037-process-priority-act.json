@@ -1,0 +1,66 @@
+{
+  "fact_id": "FACT-0037",
+  "claim": "In the matching retail DLL, PlayerController_AI.ProcessPriorityAct (0x0600500A) is a parameterless instance method returning Boolean with an exact 431-byte body. It returns false unless currentPriAct is raw -1; then State raw 6 bypasses the State<=4/Zone==0 gate, while non-6 State must pass signed State<=4 and Zone==0. It also requires weaponIdx<0 and lastSkill!=-1. It resolves the target through PlayerMan.inst.GetPlObj(TargetPlIdx), loads PlObj.WresParam.aiParam, and returns false when the target has isKO or isKOCount set. The main loop uses raw index 0 through 11 only. A nonzero checkedPriAct[index] skips that index. Otherwise moveAct is loaded from aiParam.priorityAct[index].moveAct, target HP is passed to GetDamageLevel_LMH, and raw damage-level value 2 selects aiParam.priorityAct_HDmg[index] while every other value selects aiParam.priorityAct_LDmg[index]. The selected Int32 must be positive; aiParam.priorityAct[index].triggerAct must equal PlObj.lastSkill; PlObj.lastSkillHit must be nonzero; and IsLotPriorityAct(moveAct) must return true. The method then writes checkedPriAct[index]=1 before calling the already-closed MatchMisc.mRate100Check(selected Int32). On that true path it calls TryToDoPriorityAct(moveAct); result<=0 continues the loop, result>0 calls Reset_HungUpCheck, result==1 returns false, and result>0 with result!=1 returns true. After index 11 the method returns false. The matching DLL also pins PlayerController_AI.Update IL+0x0208 as a caller, immediately followed by pop of the returned Boolean.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.ProcessPriorityAct token 0x0600500A RVA 0x002FD31C signature 200002 code size 431 code sha256=0db6da9710767a5629dec05b3a7521e0aa1cb83f55d6332a648e89fa5917afc1; exact body in canonical/witnesses/CAP-R6-001/process_priority_act.summary.json; prover tools/prove_process_priority_act.py",
+      "observation": "Exact matching-DLL ProcessPriorityAct body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Update token 0x0600502B RVA 0x002FFC68 code size 984 code sha256=6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9; IL+0x0208 calls ProcessPriorityAct and IL+0x020D pops its result",
+      "observation": "Exact matching-DLL caller bridge."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0036 checkedPriAct reset domain",
+      "to": "ProcessPriorityAct checkedPriAct indexed scan",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0036 clears checkedPriAct raw indices 0..40; ProcessPriorityAct IL+0x00B9..0x01A8 reads/writes checkedPriAct only while signed index<12, so this method consumes raw indices 0..11."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Update",
+      "to": "PlayerController_AI.ProcessPriorityAct()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Update IL+0x0207 loads this; IL+0x0208 calls token 0x0600500A; IL+0x020D pop discards the Boolean result."
+        }
+      ]
+    },
+    {
+      "from": "ProcessPriorityAct priority index",
+      "to": "candidate gating sequence",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ProcessPriorityAct IL+0x00B9..0x0179 orders checkedPriAct skip, priorityAct.moveAct load, GetDamageLevel_LMH(target.HP), raw-2 HDmg/else LDmg integer selection, positive test, triggerAct==lastSkill, lastSkillHit, IsLotPriorityAct, checkedPriAct[index]=1, then mRate100Check."
+        }
+      ]
+    },
+    {
+      "from": "mRate100Check true path",
+      "to": "TryToDoPriorityAct result and return",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ProcessPriorityAct IL+0x017E calls TryToDoPriorityAct; IL+0x018A sends result<=0 back to the loop; positive result calls Reset_HungUpCheck at IL+0x0190; result==1 returns 0 and positive result!=1 returns 1."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact preserves raw State values, priority indices, damage-level value 2, field names and branch order without assigning additional player-facing meanings.",
+    "GetDamageLevel_LMH, IsLotPriorityAct, TryToDoPriorityAct and Reset_HungUpCheck internals remain outside this fact unless separately closed.",
+    "The authored contents and semantic mapping of AIParam.priorityAct, priorityAct_HDmg and priorityAct_LDmg remain outside this fact.",
+    "FACT-0036 proves checkedPriAct indices 0..40 are reset; this fact proves only that ProcessPriorityAct scans indices 0..11.",
+    "CAP-R6-001 has no standalone ProcessPriorityAct PRE/POST event, so this gate uses matching-DLL evidence and the exact Update caller boundary."
+  ]
+}
