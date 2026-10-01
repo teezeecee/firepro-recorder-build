@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MYMUSIC_CHECK_FILE_INDEX_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MyMusic",
+      "method": "Check_File",
+      "token": "0x06002C20",
+      "rva": "0x001AE7D8",
+      "signature_blob_hex": "00010208",
+      "static": true,
+      "return_type": "Boolean",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "index",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 73,
+      "code_sha256": "66362426cdc7c33b609dc94d3bb31cac438d725c0dc823789587063ab0174c7b",
+      "max_stack": 2,
+      "local_signature_token": "0x11000A75",
+      "instruction_count": 23,
+      "branch_instruction_count": 3,
+      "call_instruction_count": 4
+    },
+    "exact_flow": [
+      "local0 = index - 10000",
+      "if local0 < 0: return false",
+      "if MyMusic.FileList_Match.Count == 0: return false",
+      "load MyMusic.FileList_Match.Count then local0; bge IL+0x0030",
+      "if bge is not taken: return false",
+      "local1 = MyMusic.FileList_Match[local0]",
+      "return MyMusic.Check_File(local1.name)"
+    ],
+    "fields": {
+      "file_list_match": {
+        "name": "MyMusic.FileList_Match",
+        "token": "0x04003905"
+      },
+      "entry_name": {
+        "name": "MySound_FileList.name",
+        "token": "0x04003900",
+        "signature_blob_hex": "060e",
+        "type": "String"
+      }
+    },
+    "list_memberrefs": {
+      "get_Count": {
+        "token": "0x0A0008E9",
+        "signature_blob_hex": "200008"
+      },
+      "get_Item": {
+        "token": "0x0A0008EA",
+        "signature_blob_hex": "2001130008"
+      }
+    },
+    "fact_0100_bridge": {
+      "fact_id": "FACT-0100",
+      "callee": "MyMusic.Check_File(String)",
+      "callee_token": "0x06002C1E",
+      "call_il": "0x0043",
+      "opcode": "call",
+      "argument": "MySound_FileList.name"
+    }
+  },
+  "limits": [
+    "The authored FileList_Match contents and referenced files remain outside this record.",
+    "The exact raw 10000 subtraction and bge operand order are retained without semantic relabeling.",
+    "Other String-overload callers remain outside this record."
+  ]
+}
