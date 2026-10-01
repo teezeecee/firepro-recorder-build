@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0119",
+  "claim": "In the matching retail DLL, SaveData.IsDLCInstalled (0x060051C9) is an instance one-DLCEnum-parameter Boolean method with exact signature blob 2001021185c8 and an exact 45-byte body. It first calls static DLCChecker.IsOwner(dlc) at token 0x06001033; a false result returns false. It then reads this.dlcVersion[dlc] from SaveData.dlcVersion (0x0400650C, Int32[]); a zero element returns false. If the raw dlc argument is not 3, the method returns true. When raw dlc is 3, it recursively calls this.IsDLCInstalled(raw 2) and returns that result. FACT-0117 pins the already-canonical caller at ThemeMusicInfo.CheckValidationDLC IL+0x0027, passing its raw loop index.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SaveData.IsDLCInstalled token 0x060051C9 RVA 0x00316C6C signature 2001021185c8 code size 45 code sha256=d353bf6e7046434074ecca1c5a62cb8cd9ec636500659fc5b9083f2943c7d841; exact DLCChecker owner gate, dlcVersion array gate and raw-3 -> raw-2 recursive branch in canonical/witnesses/CAP-R6-001/save_data_is_dlc_installed.summary.json; prover tools/prove_save_data_is_dlc_installed.py",
+      "observation": "Exact matching-DLL SaveData.IsDLCInstalled body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0117 ThemeMusicInfo.CheckValidationDLC",
+      "to": "SaveData.IsDLCInstalled(raw index)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0117 pins callvirt token 0x060051C9 at CheckValidationDLC IL+0x0027 after loading SaveData.inst and local index."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact SaveData.IsDLCInstalled body and the FACT-0117 caller bridge.",
+    "DLCChecker.IsOwner internals remain a separate gate.",
+    "Authored dlcVersion contents and external ownership state remain outside this fact.",
+    "Raw DLCEnum values 3 and 2 are preserved without assigning product labels."
+  ]
+}
