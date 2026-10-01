@@ -1,0 +1,49 @@
+{
+  "fact_id": "FACT-0056",
+  "claim": "In the matching retail DLL, MatchEffect.Play_MineExplosion (0x060048CB) is an instance method with parameters pos and layer and an exact 152-byte body. It first tests Prefab_RopeExplosion against null. When the prefab is present it calls MethodSpec token 0x2B000051 with the prefab, stores the returned object, invokes MethodSpec token 0x2B000391 on it, sets the object's transform.position to pos, gets transform child 0's GameObject, then loops raw child index 0 through childCount-1; each child GameObject has its layer set to LayerMan.GetLayerID(layer). The prefab-null path skips that entire object/layer block. Both paths converge at IL+0x007C and always call Ring.GetInst().mRingShake(10), then MatchCamera.GetInst().ReqVivration(2.0f), then return. FACT-0049 pins the exact caller at TransitStateAfterAnm_Down IL+0x030F with the constructed effect position and raw layer argument selected earlier in that method.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchEffect.Play_MineExplosion token 0x060048CB RVA 0x002A4AA4 signature 200201111911a368 params pos/layer code size 152 code sha256=fc8982922fb7bba57f9f0052110e69463503c4f343c90fc030846e61e7a2e049; exact prefab/null/child-layer/ring-shake/camera-vibration body in canonical/witnesses/CAP-R6-001/play_mine_explosion.summary.json; prover tools/prove_play_mine_explosion.py",
+      "observation": "Exact matching-DLL Play_MineExplosion body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0049 TransitStateAfterAnm_Down",
+      "to": "MatchEffect.Play_MineExplosion(pos,layer)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0049 pins callvirt token 0x060048CB at IL+0x030F."
+        }
+      ]
+    },
+    {
+      "from": "Play_MineExplosion prefab-present block",
+      "to": "child layer writes",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IL+0x0000..0x007B checks Prefab_RopeExplosion, invokes MethodSpec 0x2B000051 and 0x2B000391, sets transform.position, then loops child index with Transform.get_childCount and GameObject.set_layer(LayerMan.GetLayerID(layer))."
+        }
+      ]
+    },
+    {
+      "from": "prefab-present and prefab-null paths",
+      "to": "shared shake/vibration tail",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Both paths converge at IL+0x007C; calls Ring.GetInst token 0x060050C8, mRingShake(10) token 0x060050E3, MatchCamera.GetInst token 0x06004879 and ReqVivration(2.0f) token 0x06004884."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The two MethodSpec tokens are preserved as exact metadata tokens; their generic implementation internals are outside this fact.",
+    "Prefab/resource contents, rendered particle behavior, layer-name meaning, Ring.mRingShake internals and MatchCamera.ReqVivration internals remain separate gates.",
+    "The method name and field names come from DLL metadata; no additional presentation semantics are inferred."
+  ]
+}
