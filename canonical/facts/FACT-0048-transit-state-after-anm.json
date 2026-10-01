@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0048",
+  "claim": "In the matching retail DLL, Player.TransitStateAfterAnm (0x06004EC8) is a parameterless instance method with an exact 1,438-byte body. It returns unless animator.IsAnmComplete() is true; a forViewer path sets animator.isAnmPause=1 and returns. It resolves TargetPlIdx, calls PostprocessEachState, then applies an exact TerrainColType==3 / Zone==0 Ring-collision pre-branch that can store Zone=3 and call mForceFallStatus, or call mForceDropStatus and, when DownTime==255, SetStunTime(111), SetDownTime(143), isStandingStunOK=1, then return. It loads GetCurrentFormDispInfo and raw formIdx 100 or 101 dispatches to TransitStateAfterAnm_Down and returns. Otherwise it switches on animator.AnimeEnd-1 with 14 explicit targets. The exact raw AnimeEnd cases 1..14 perform the pinned state/direction/down-time/request/audience/target/auto-run/host-field effects recorded in the witness, including case 9 dispatch to TransitStateAfterAnm_AutoRun; values outside the 1..14 switch range return. FACT-0047 pins the direct call at UpdatePlayer IL+0x0066. The two large subhelpers TransitStateAfterAnm_Down and TransitStateAfterAnm_AutoRun are intentionally separate gates.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.TransitStateAfterAnm token 0x06004EC8 RVA 0x002E0B8C signature 200001 code size 1438 code sha256=cb9c68b98a1db450cee699fde8a7ab45926cb582dafa5b9e78e51b87d8886bb6; exact preamble, 14-target switch, calls/fields/constants in canonical/witnesses/CAP-R6-001/transit_state_after_anm.summary.json; prover tools/prove_transit_state_after_anm.py",
+      "observation": "Exact matching-DLL TransitStateAfterAnm body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0047 PlayerController_AI.UpdatePlayer",
+      "to": "Player.TransitStateAfterAnm()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0047 pins UpdatePlayer IL+0x0066 call token 0x06004EC8 after CheckFallToOutOfRing."
+        }
+      ]
+    },
+    {
+      "from": "current form info raw formIdx",
+      "to": "TransitStateAfterAnm_Down",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "TransitStateAfterAnm IL+0x00EE calls GetCurrentFormDispInfo; formIdx raw 100 or 101 reaches IL+0x011B call token 0x06004EC6 then returns."
+        }
+      ]
+    },
+    {
+      "from": "animator.AnimeEnd - 1",
+      "to": "14-target transition switch",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "TransitStateAfterAnm IL+0x0121..0x016C loads animator.AnimeEnd, subtracts 1, and switches to exact targets 0x0172,0x059D,0x02D9,0x0331,0x059D,0x026A,0x01F5,0x0350,0x03A5,0x03B0,0x03C9,0x0418,0x04A8,0x0584; default branches to return 0x059D."
+        }
+      ]
+    },
+    {
+      "from": "raw AnimeEnd 9",
+      "to": "TransitStateAfterAnm_AutoRun",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Switch case raw AnimeEnd 9 targets IL+0x03A5, which calls Player.TransitStateAfterAnm_AutoRun token 0x06004EC7 and joins return tail."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "TransitStateAfterAnm_Down (0x06004EC6, 807-byte body) and TransitStateAfterAnm_AutoRun (0x06004EC7, 712-byte body) remain separate gates.",
+    "Other called helper internals remain separate unless already canonical.",
+    "Raw AnimeEnd, State, Zone, direction, formIdx, animation IDs and numeric constants are preserved without player-facing semantic labels.",
+    "CAP-R6-001 contains no standalone TransitStateAfterAnm PRE/POST event."
+  ]
+}
