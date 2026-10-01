@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_AUDIENCE_LOOP_CHEER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Audience",
+      "method": "PlayLoopCheerVoice",
+      "token": "0x060047DA",
+      "rva": "0x0028FF68",
+      "signature_blob_hex": "2002010802",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "nLevel",
+          "type": "Int32"
+        },
+        {
+          "sequence": 2,
+          "name": "force_play",
+          "type": "Boolean"
+        }
+      ],
+      "code_size": 276,
+      "code_sha256": "45701fac9b7e62ecbae949718859ea29a3dac586af0f7494c87b405de7262b4b",
+      "instruction_count": 107,
+      "branch_instruction_count": 12,
+      "call_instruction_count": 5
+    },
+    "fields": {
+      "cheer_level_total": {
+        "name": "CheerLevel_Total",
+        "token": "0x040054CA"
+      },
+      "attendance_rate": {
+        "name": "AttendanceRate",
+        "token": "0x04005750"
+      },
+      "stored_loop_id": {
+        "name": "seid_LoopCheerVoice",
+        "token": "0x040054CD"
+      }
+    },
+    "nlevel_clamp": {
+      "min": 1,
+      "max": 4
+    },
+    "local_level_expression": "nLevel + CheerLevel_Total + 3",
+    "volume_flow": {
+      "initial": {
+        "low": 0.3,
+        "high": 1
+      },
+      "zero_test": {
+        "opcode": "bne.un",
+        "compare": 0,
+        "ordered_equal_effect": "low=0.0f; high=0.0f",
+        "unequal_or_unordered_effect": "arithmetic path"
+      },
+      "arithmetic": [
+        "low = low - (1.0f - AttendanceRate) * 0.1f",
+        "high = high - (1.0f - AttendanceRate) * 0.5f"
+      ],
+      "final": "volume = low + (high - low) * (Float32(localLevel) / 11.0f); volume = volume * 1.0f"
+    },
+    "raw_id_selection": [
+      {
+        "condition": "CheerLevel_Total <= 1",
+        "raw_id": 39
+      },
+      {
+        "condition": "2 <= CheerLevel_Total <= 3",
+        "raw_id": 40
+      },
+      {
+        "condition": "CheerLevel_Total >= 4",
+        "raw_id": 41
+      }
+    ],
+    "dispatch": {
+      "start_or_replace": {
+        "condition": "force_play == true OR selected_id != seid_LoopCheerVoice",
+        "call": {
+          "method": "Menu_SoundManager.Play_CheerVoice_Loop",
+          "token": "0x060052AD",
+          "il": "0x00FA",
+          "arguments": [
+            "selected_id",
+            "volume"
+          ]
+        },
+        "then": "seid_LoopCheerVoice = selected_id"
+      },
+      "volume_only": {
+        "condition": "force_play == false AND selected_id == seid_LoopCheerVoice",
+        "call": {
+          "method": "Menu_SoundManager.SetVol_CheerVoice_Loop",
+          "token": "0x060052B0",
+          "il": "0x010E",
+          "arguments": [
+            "volume"
+          ]
+        }
+      }
+    },
+    "fact_0079_bridge": {
+      "fact_id": "FACT-0079",
+      "caller": "Audience.TensionDown",
+      "call_il": "0x002C",
+      "raw_arguments": [
+        0,
+        false
+      ]
+    }
+  },
+  "limits": [
+    "Loop playback leaf internals and other callers remain outside this record."
+  ]
+}
