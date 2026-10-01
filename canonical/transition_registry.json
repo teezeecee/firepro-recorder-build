@@ -2496,6 +2496,23 @@
         "generated iterator MoveNext closure",
         "Unity coroutine scheduler behavior"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_MY_MUSIC_PLAY_CO_MOVENEXT_V1",
+      "fact_id": "FACT-0146",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL <MyMusic_Play_Co>c__IteratorE.MoveNext $PC/yield/WWW/AudioClip/audioSrcInfo state machine on the generated type established by FACT-0144/0145, without promoting Unity string scheduler dispatch.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_my_music_play_co_movenext.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Unity StartCoroutine(String) dispatch/scheduler",
+        "external WWW/AudioClip/AudioSource implementations",
+        "generated iterator support leaf closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
