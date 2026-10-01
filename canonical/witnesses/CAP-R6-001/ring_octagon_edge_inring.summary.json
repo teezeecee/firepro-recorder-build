@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_RING_OCTAGON_EDGE_INRING_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Ring",
+      "method": "TestCollision_OctagonEdge_InRing",
+      "token": "0x060050EE",
+      "rva": "0x0030C4F9",
+      "signature_blob_hex": "2002020c1131",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "range",
+          "type": "Float32"
+        },
+        {
+          "sequence": 2,
+          "name": "p",
+          "type": "Vector2"
+        }
+      ],
+      "code_size": 15,
+      "code_sha256": "feb37d8722b81f775838d19746a28c526247c92c902c0e4437baddbb786034ef",
+      "instruction_count": 7,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 1
+    },
+    "field": {
+      "type": "Ring",
+      "name": "colData_InsideRing",
+      "token": "0x04006372",
+      "signature_blob_hex": "0612a8f8"
+    },
+    "inner_call": {
+      "type": "Ring",
+      "method": "TestCollision_OctagonEdge",
+      "token": "0x060050ED",
+      "signature_blob_hex": "20030212a8f80c1131",
+      "arguments": [
+        "this.colData_InsideRing",
+        "range",
+        "p"
+      ]
+    },
+    "exact_body": [
+      "ldarg.0",
+      "ldarg.0",
+      "ldfld Ring.colData_InsideRing",
+      "ldarg.1",
+      "ldarg.2",
+      "call Ring.TestCollision_OctagonEdge",
+      "ret"
+    ],
+    "fact_0089_bridge": {
+      "fact_id": "FACT-0089",
+      "caller": "Referee.Start_FallCount",
+      "call_il": "0x005A",
+      "callee_token": "0x060050EE"
+    }
+  },
+  "limits": [
+    "Inner collision method and authored collision data remain outside this record."
+  ]
+}
