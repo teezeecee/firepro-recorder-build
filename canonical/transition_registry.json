@@ -1108,6 +1108,24 @@
         "raw wait-list index meaning",
         "authored sound data"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_SOUND_PATH_V1",
+      "fact_id": "FACT-0064",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMisc.PlayRefereeSE fast-forward/Fade/frame throttle plus directly connected MatchSEPlayer.PlayRefereeSE referee-object gate, shared wait-list raw-2 writer, and FACT-0061 sound-leaf dispatch.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_sound_path.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "gameplay caller closure for MatchMisc.PlayRefereeSE",
+        "RefereeMan.GetRefereeObj internal closure",
+        "raw sound-ID meaning",
+        "authored sound data"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
