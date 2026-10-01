@@ -1362,6 +1362,24 @@
         "Audience.TensionDown internal closure",
         "raw BooingCnt meaning"
       ]
+    },
+    {
+      "family_id": "DLL_AUDIENCE_BOOING_DEPENDENCIES_V1",
+      "fact_id": "FACT-0079",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Audience.TensionDown CheerLevel_Base decrement/-4 clamp/downstream calls and Audience.PlayCheerVoice fast-forward throttle/AttendanceRate Float32 volume calculation/final one-shot dispatch, bridged from FACT-0078.",
+      "summary": "canonical/witnesses/CAP-R6-001/audience_booing_dependencies.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Audience.CalcCheerLevel internal closure",
+        "Audience.PlayLoopCheerVoice internal closure",
+        "Menu_SoundManager.Play_CheerVoice_OneShot internal closure",
+        "authored meaning of raw cheer/attendance values"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
