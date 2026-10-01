@@ -1555,6 +1555,23 @@
         "AnmIDTbl_FallCount authored contents",
         "FallWaitCnt authored contents"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_CHECK_START_SCANNER_V1",
+      "fact_id": "FACT-0090",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL parameterless Referee.CheckStartRefereeing outer scanner: raw State<=5, match/round-end gates, raw player indices 0..7, null/sleep skips, Boolean Int32-overload dispatch, and exact sole FACT-0074 caller.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_check_start_scanner.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Boolean CheckStartRefereeing(Int32 pl_idx) overload internal closure",
+        "raw State threshold meaning",
+        "player sleep-state producer closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
