@@ -1038,6 +1038,24 @@
         "Fade.NowFrm writer/update closure",
         "remaining caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_MATCH_SE_PLAYER_PLAY_MATCH_SE_V1",
+      "fact_id": "FACT-0060",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchSEPlayer.PlayMatchSE raw seid bounds, Player/MatchSEParam resolution, vibration/player-form branches, raw sound-id remap/UI branch, wait-list gate, and final Menu_SoundManager dispatch reached from FACT-0058.",
+      "summary": "canonical/witnesses/CAP-R6-001/match_se_player_play_match_se.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "MatchSEData authored parameter table closure",
+        "Menu_SoundManager.Play_MatchSE internal closure",
+        "raw sound-ID meaning",
+        "called player/presentation helper closure where still open"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

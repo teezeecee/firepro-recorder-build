@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCH_SE_PLAYER_PLAY_MATCH_SE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchSEPlayer",
+      "method": "PlayMatchSE",
+      "token": "0x06005277",
+      "rva": "0x00321504",
+      "signature_blob_hex": "20030111aa0c0c08",
+      "return_type": "Void",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "seid"
+        },
+        {
+          "sequence": 2,
+          "name": "vol",
+          "type": "Float32"
+        },
+        {
+          "sequence": 3,
+          "name": "pl_idx",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 374,
+      "code_sha256": "4c90d23ad41281c6f3411dd71c82635d6b56e0a15c80f80d2abf775639f9a4f9",
+      "instruction_count": 134,
+      "branch_instruction_count": 26,
+      "call_instruction_count": 10
+    },
+    "entry": {
+      "raw_seid_valid_range": {
+        "min_inclusive": 0,
+        "max_inclusive": 108
+      },
+      "player_lookup": "PlayerMan.GetInst().GetPlObj(pl_idx)",
+      "player_lookup_tokens": [
+        "0x0600505D",
+        "0x06005065"
+      ],
+      "match_se_param_call": {
+        "token": "0x06005273",
+        "argument": "seid"
+      }
+    },
+    "vibration": {
+      "player_flag": {
+        "name": "isVibratePad",
+        "token": "0x0400605C"
+      },
+      "vib_time": {
+        "field_token": "0x04008667",
+        "raw_floor_when_nonpositive": 10,
+        "raw_cap_when_not_less_than": 60
+      },
+      "level_fields": {
+        "large": "0x04008665",
+        "small": "0x04008666"
+      },
+      "pad_field_token": "0x0400602E",
+      "pad_port_field_token": "0x040061C5",
+      "call": {
+        "target": "GamePadMan.SetVibration",
+        "token": "0x06001FB3",
+        "arguments": [
+          "plCont_Pad.port",
+          "vibLevel_Large",
+          "Float32(vibTime)/60.0f"
+        ]
+      }
+    },
+    "player_side_raw_branches": {
+      "breath_ids": [
+        31,
+        32
+      ],
+      "breath_call_token": "0x06004F7E",
+      "raw_5": {
+        "layer_tex_field_token": "0x04000D5D",
+        "layer_tex_indices": [
+          8,
+          1
+        ],
+        "string_is_null_or_empty_memberref": "0x0A000015",
+        "form_renderer_field_token": "0x04005FA7",
+        "out_of_ring_field_token": "0x04002744",
+        "effect": "return on empty layer string OR nonzero pos_OutOfRing"
+      },
+      "out_of_ring_remap": {
+        "input_ids": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          58
+        ],
+        "when": "FormRen.pos_OutOfRing != 0",
+        "replacement_raw_seid": 48
+      }
+    },
+    "shared_tail": {
+      "raw_30": {
+        "match_ui_field_token": "0x04005899",
+        "show_critical_token": "0x060049F3",
+        "argument": 1
+      },
+      "wait_list": {
+        "field_token": "0x040086E5",
+        "nonzero_effect": "return",
+        "zero_effect": "store raw 2"
+      },
+      "final_call": {
+        "target": "Menu_SoundManager.Play_MatchSE",
+        "token": "0x060052A8",
+        "arguments": [
+          "seid",
+          "vol"
+        ]
+      }
+    },
+    "caller_bridge": {
+      "fact_id": "FACT-0058",
+      "caller": "MatchMisc.PlayMatchSE",
+      "call_il": "0x0059",
+      "callee_token": "0x06005277",
+      "arguments": [
+        "seid",
+        "vol",
+        "pl_idx"
+      ]
+    }
+  },
+  "limits": [
+    "Raw sound IDs and authored MatchSE/Costume data remain outside this record.",
+    "Called helper internals are outside this record unless separately canonical."
+  ]
+}
