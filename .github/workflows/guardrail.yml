@@ -463,3 +463,8 @@ jobs:
         run: python tests/test_referee_check_match_end_summary.py
       - name: Referee CheckMatchEnd prover syntax
         run: python -m py_compile tools/prove_referee_check_match_end.py
+
+      - name: Referee CheckStandByWrestler summary
+        run: python tests/test_referee_check_standby_wrestler_summary.py
+      - name: Referee CheckStandByWrestler prover syntax
+        run: python -m py_compile tools/prove_referee_check_standby_wrestler.py
