@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0138",
+  "claim": "In the matching retail DLL, instance uAudio.uAudioPlayer.get_UAudio (0x060052D0) has exact signature blob 20001282b1, returns uAudio.uAudio_backend.uAudio, takes no parameters, and has an exact 86-byte body. If this._uAudio (0x040087E3) is already non-null it returns that field. Otherwise it constructs backend uAudio through memberref 0x0A000FB1 and stores it into _uAudio; calls backend SetAudioFile(String) memberref 0x0A000FB2 with this.targetFile (0x040087E6); calls backend set_Volume(Single) memberref 0x0A000FB0 with this.start_volume_Offset (0x040087F0); constructs a System.Action<uAudio.uAudio_backend.PlayBackState> delegate using this plus ldftn uAudioPlayer.<get_UAudio>m__0 (0x060052EE) through constructor memberref 0x0A000FB3; assigns it through backend set_sendPlaybackState memberref 0x0A000FB4; then returns this._uAudio. FACT-0137 pins two already-canonical direct caller sites at uAudioPlayer.LoadFile IL+0x0013 and IL+0x0035.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "uAudio.uAudioPlayer.get_UAudio token 0x060052D0 RVA 0x00325714 signature 20001282b1 code size 86 code sha256=5524703abb8912537cca2bf60cf25fdcde63df8bcc2ea51a0db76d5dc8e858c4; exact lazy _uAudio construction, targetFile/volume setup and Action<PlayBackState> callback assignment in canonical/witnesses/CAP-R6-001/u_audio_get_u_audio.summary.json; prover tools/prove_u_audio_get_u_audio.py",
+      "observation": "Exact matching-DLL uAudioPlayer.get_UAudio body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0137 uAudio.uAudioPlayer.LoadFile",
+      "to": "uAudio.uAudioPlayer.get_UAudio()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0137 pins call token 0x060052D0 at LoadFile IL+0x0013 and IL+0x0035."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact get_UAudio lazy-construction body and its two FACT-0137 caller bridges.",
+    "uAudioPlayer.<get_UAudio>m__0 internals remain a separate gate.",
+    "Backend uAudio constructor, SetAudioFile, set_Volume and set_sendPlaybackState implementations remain external memberrefs.",
+    "Actual backend/file/audio behavior remains outside this fact."
+  ]
+}
