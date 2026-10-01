@@ -868,6 +868,24 @@
         "Ring.IsStepOnMine and mine effect helper closure",
         "authored mHpDamageTbl contents"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_TRANSIT_STATE_AFTER_ANM_AUTORUN_V1",
+      "fact_id": "FACT-0050",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.TransitStateAfterAnm_AutoRun ring/target/current-skill direction graph, inside-ring cross-line and distance/parity decision, and two exact transition tails reached from FACT-0048 raw AnimeEnd 9.",
+      "summary": "canonical/witnesses/CAP-R6-001/transit_state_after_anm_autorun.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Ring geometry helper internals",
+        "authored AnmOfsTbl_3Dir contents",
+        "raw direction/ring-area semantic mapping",
+        "later AutoRun state consumers"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
