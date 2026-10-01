@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0053",
+  "claim": "In the matching retail DLL, Ring.mGetOctagonInSideCrossLine (0x060050FB) has parameters x, y, rp, pb2 and out/ref isp and an exact 538-byte body. It first stores Vector2.zero into isp, allocates two Vector2[2] arrays, stores raw scalar 10.666666030883789, and sets the first moving-segment point to new Vector2(x,y). It subtracts 2 from raw pb2 and switches over exactly four targets, so only pb2 values 2,3,4,5 continue and every other value returns false. For pb2=2 the second moving point is start+(-s,+s) and the comparison edge is (rp.x1,rp.y2)->(rp.x2,rp.y1); pb2=3 uses start+(+s,+s) and (rp.x3,rp.y1)->(rp.x4,rp.y2); pb2=4 uses start+(-s,-s) and (rp.x2,rp.y4)->(rp.x1,rp.y3); pb2=5 uses start+(+s,-s) and (rp.x4,rp.y3)->(rp.x3,rp.y4). All four paths converge by calling Misc.IsIntersect_Segment(out isp, moving[0], moving[1], edge[0], edge[1]) and returning its Boolean result. FACT-0050 pins the exact caller operands target.PlPos.x, target.PlPos.y, Ring.colData_InsideRing, Player.Way2pb2[PlDir] and ref AutoRunDest at TransitStateAfterAnm_AutoRun IL+0x0162.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Ring.mGetOctagonInSideCrossLine token 0x060050FB RVA 0x0030CF88 signature 0005020c0c12a8f808101131 parameters x,y,rp,pb2,isp code size 538 code sha256=342c92172a4c47371d07312bf9b8d7bec1b5d2cd2cbe9019255e8282ee26b59f; exact switch/segment construction in canonical/witnesses/CAP-R6-001/octagon_inside_cross_line.summary.json; prover tools/prove_octagon_inside_cross_line.py",
+      "observation": "Exact matching-DLL cross-line segment-construction body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0050 TransitStateAfterAnm_AutoRun",
+      "to": "Ring.mGetOctagonInSideCrossLine(...)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0050 pins call token 0x060050FB at IL+0x0162 with target PlPos x/y, Ring.colData_InsideRing, Player.Way2pb2[PlDir] and ref AutoRunDest."
+        }
+      ]
+    },
+    {
+      "from": "raw pb2 2..5",
+      "to": "four exact moving/edge segment pairs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "mGetOctagonInSideCrossLine IL+0x0033 subtracts 2 and switches to 0x0050,0x00B4,0x0117,0x017C; default IL+0x004B branches to false return 0x01E0. Each target builds the exact Vector2 offset and ColVert_Octagon edge recorded in the witness."
+        }
+      ]
+    },
+    {
+      "from": "four segment-construction paths",
+      "to": "Misc.IsIntersect_Segment",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "All four paths converge at IL+0x01E2 and call token 0x06004A92 at IL+0x0214 with out isp plus moving[0],moving[1],edge[0],edge[1], then return."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw pb2 values 2/3/4/5 are preserved numerically without directional labels.",
+    "Misc.IsIntersect_Segment internals remain a separate gate.",
+    "ColVert_Octagon field geometry is observed through field reads here; authored coordinate values remain resource/runtime provenance outside this fact.",
+    "The method's Vector2 arithmetic uses Unity MemberRefs; no engine-side behavior beyond the emitted calls is added."
+  ]
+}
