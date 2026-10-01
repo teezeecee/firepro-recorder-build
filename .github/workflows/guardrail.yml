@@ -754,3 +754,9 @@ jobs:
         run: python tests/test_u_audio_set_current_time_summary.py
       - name: uAudio set CurrentTime prover syntax
         run: python -m py_compile tools/prove_u_audio_set_current_time.py
+
+
+      - name: uAudio Song Stream Loop summary
+        run: python tests/test_u_audio_song_stream_loop_summary.py
+      - name: uAudio Song Stream Loop prover syntax
+        run: python -m py_compile tools/prove_u_audio_song_stream_loop.py

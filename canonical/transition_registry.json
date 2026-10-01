@@ -2431,6 +2431,22 @@
         "external uAudio backend set_CurrentTime implementation",
         "runtime playback timing"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_SONG_STREAM_LOOP_V1",
+      "fact_id": "FACT-0142",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudioPlayer.Song_Stream_Loop SongDone/read-count/flg_source_destroy callback plus one System.Exception catch clause, linked from FACT-0140 ldftn.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_song_stream_loop.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external NLayer.MpegFile.Read implementation",
+        "decoded sample contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

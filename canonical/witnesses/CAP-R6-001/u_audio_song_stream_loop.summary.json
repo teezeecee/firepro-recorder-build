@@ -1,0 +1,17 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_SONG_STREAM_LOOP_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060052E8","row_hex":"f45c32000000810013640a00c3e502005e3d","rva":"0x00325CF4"},
+    "method":{"type":"uAudio.uAudioPlayer","method":"Song_Stream_Loop","token":"0x060052E8","rva":"0x00325CF4","signature_blob_hex":"2001011d0c","return_type":"Void","parameters":[{"sequence":1,"name":"data","type":"Single[]"}],"code_size":73,"code_sha256":"2834d930fa5659f589d893b94877b0b1b3462054322124cc7e1124abb3e8ae39","header_format":"fat","header_flags_raw":"0x001B","max_stack":4,"local_signature_token":"0x11001221","local_signature_blob_hex":"070208128349","locals":[{"index":0,"type":"Int32"},{"index":1,"type":"System.Exception"}],"instruction_count":29,"branch_instruction_count":5,"call_instruction_count":1},
+    "fields":{"song_done":{"token":"0x040087EB","name":"uAudio.uAudioPlayer.SongDone"},"playback_device":{"token":"0x040087EE","name":"uAudio.uAudioPlayer.playbackDevice"},"source_destroy":{"token":"0x040087E8","name":"uAudio.uAudioPlayer.flg_source_destroy"}},
+    "call":{"token":"0x0A000FD4","resolved":"NLayer.MpegFile.Read(Single[],Int32,Int32)","signature_blob_hex":"2003081d0c0808","call_il":"0x0016"},
+    "exact_flow":["if SongDone is true: flg_source_destroy=true; leave","otherwise count=playbackDevice.Read(data,0,data.Length)","if count <= 0: SongDone=true","flg_source_destroy=false; leave","catch System.Exception: store exception local1; leave","return"],
+    "exception_section":{"format":"small","raw_hex":"011000000000000042420006d2000001","size_bytes":16,"sha256":"6a80fae31f6fc3bf241bdd460e4208a9fd322a555b82a612da16d0b82c9adab2","clause":{"flags_raw":"0x0000","try_offset":"0x0000","try_length":66,"try_end_exclusive":"0x0042","handler_offset":"0x0042","handler_length":6,"handler_end_exclusive":"0x0048","class_token":"0x010000D2","class_resolved":"System.Exception"}},
+    "fact_0140_bridge":{"fact_id":"FACT-0140","caller":"uAudio.uAudioPlayer.Play","ldftn_il":"0x0070","callee_token":"0x060052E8"}
+  },
+  "limits":["NLayer Read implementation and decoded sample contents remain outside this record."]
+}
