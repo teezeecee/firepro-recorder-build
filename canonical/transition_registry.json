@@ -1896,6 +1896,23 @@
         "Player object lifecycle closure",
         "additional GetPlObj caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_MYMUSIC_SET_V1",
+      "fact_id": "FACT-0110",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MyMusic.Set raw-33/raw-34 String store dispatcher, bridged from both FACT-0108 raw-33 calls.",
+      "summary": "canonical/witnesses/CAP-R6-001/mymusic_set.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Menu_SoundManager MyMusic filename field reader closure",
+        "authored music-file contents",
+        "additional MyMusic.Set caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
