@@ -2213,6 +2213,23 @@
         "external uAudio backend get_CurrentTime implementation",
         "higher-level uAudioPlayer State semantics"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_CHANGE_BGM_THEME_STRING_V1",
+      "fact_id": "FACT-0129",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Change_BGM_Theme(String,Boolean,Boolean) async coroutine vs synchronous resource-load paths, raw slot 33 and shared BGM-field resets, bridged from FACT-0122.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_change_bgm_theme_string.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "generated CoChange_BGMandPlay MoveNext closure",
+        "Unity Resources.Load/coroutine scheduling behavior",
+        "authored audio resources"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
