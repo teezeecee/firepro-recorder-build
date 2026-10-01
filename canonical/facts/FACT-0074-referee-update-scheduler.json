@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0074",
+  "claim": "In the matching retail DLL, Referee.UpdateReferee (0x060050AF) is a parameterless instance method with an exact 160-byte body and exactly two direct DLL callers: MatchMain.Update_EntranceScene and MatchMain.Update_Match. It loads MatchMain.inst. When Referee.State is raw 22, it calls the already-canonical Referee.UpdateRefereeAnm and returns immediately. On all other State values it copies State into PrevState, then calls this exact ordered sequence: PostProcessAnimation; CallFight; Process_Booing; ReturnWrestlers only when MatchMain.isMatchEnd is zero; ReturnWrestlers_Lumberjack unconditionally; CheckExplosion; FinishCheck; CheckStartRefereeing; Process_MoveToDestination; Process_Walk; Process_Run; Process_StandPose; CheckMatchEnd; UpdateRefereeAnm. After that sequence, only when disturbedCnt is greater than zero it subtracts one from disturbedCnt, then returns. The two direct caller sites are MatchMain.Update_EntranceScene IL+0x0021 and MatchMain.Update_Match IL+0x0051, both callvirt token 0x060050AF.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.UpdateReferee token 0x060050AF RVA 0x00309E9C signature blob 200001 code size 160 code sha256=1a435c9d3f94c89836c5a175bee66f7a1fb84e4e7a7c8af9197108c533df1004; exact scheduler body in canonical/witnesses/CAP-R6-001/referee_update_scheduler.summary.json; prover tools/prove_referee_update_scheduler.py",
+      "observation": "Exact matching-DLL Referee.UpdateReferee scheduler body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Direct caller inventory by exact call token scan: MatchMain.Update_EntranceScene token 0x06004935 RVA 0x002AA570 body size 822 sha256=574be9a2193d91b436a4a241a5dee31bd03c08b32ca09d28dbdf4afd60990cde callvirt at IL+0x0021; MatchMain.Update_Match token 0x06004936 RVA 0x002AA8B4 body size 1152 sha256=b6841694e03be5ca4c73e966a13802de9fe7339ab63540ffdf5edaee96ea9dfe callvirt at IL+0x0051.",
+      "observation": "Exact direct caller inventory for token 0x060050AF."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Referee.UpdateReferee raw State 22 path",
+      "to": "FACT-0070 Referee.UpdateRefereeAnm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdateReferee IL+0x0006 loads State, compares raw 22, then call token 0x06005097 at IL+0x0014 and returns."
+        }
+      ]
+    },
+    {
+      "from": "Referee.UpdateReferee non-22 path",
+      "to": "FACT-0070 Referee.UpdateRefereeAnm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "After the exact ordered process sequence, UpdateReferee calls token 0x06005097 again at IL+0x0080."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes the scheduler body and exact direct caller inventory only.",
+    "The individual process/helper method internals remain separate gates unless already canonical.",
+    "Raw State 22 and field names are preserved without added match-rule meaning.",
+    "The enclosing MatchMain caller bodies are not otherwise promoted by this fact."
+  ]
+}
