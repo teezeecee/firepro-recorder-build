@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_CHEER_VOICE_ONE_SHOT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Menu_SoundManager",
+      "method": "Play_CheerVoice_OneShot",
+      "token": "0x060052AC",
+      "rva": "0x00322D48",
+      "signature_blob_hex": "00020111aa000c",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "vid",
+          "metadata_type": "valuetype CheerVoiceEnum",
+          "typedef_token": "0x02000A80"
+        },
+        {
+          "sequence": 2,
+          "name": "volume",
+          "type": "Float32"
+        }
+      ],
+      "code_size": 120,
+      "code_sha256": "a32030b069fd4cdecafcd55c677b9ffe0f3c2220729d455c31ae7796c31b4fb2",
+      "instruction_count": 47,
+      "branch_instruction_count": 6,
+      "call_instruction_count": 3
+    },
+    "fields": {
+      "clip_list": {
+        "name": "Sound_ClipCheerVoice_List",
+        "token": "0x04008701"
+      },
+      "volume_cheer": {
+        "name": "Volume_Cheer",
+        "token": "0x040086F0"
+      },
+      "audio_src_info": {
+        "name": "audioSrcInfo",
+        "token": "0x040086EB"
+      },
+      "source_field": {
+        "name": "sRefAudio",
+        "token": "0x0400874C"
+      }
+    },
+    "exact_gates": [
+      {
+        "condition": "Sound_ClipCheerVoice_List != null",
+        "fail_effect": "return"
+      },
+      {
+        "condition": "vid >= 0",
+        "fail_effect": "return"
+      },
+      {
+        "condition": "vid < 42",
+        "fail_effect": "return"
+      },
+      {
+        "condition": "Sound_ClipCheerVoice_List[vid] != null",
+        "fail_effect": "return"
+      }
+    ],
+    "volume_flow": {
+      "expression": "local = Volume_Cheer * volume",
+      "lower_gate": {
+        "opcode": "bge.un",
+        "compare": 0,
+        "ordered_negative_effect": "local = 0.0f",
+        "greater_equal_or_unordered_effect": "continue unchanged"
+      },
+      "upper_gate": {
+        "opcode": "ble.un",
+        "compare": 1,
+        "ordered_greater_effect": "local = 1.0f",
+        "less_equal_or_unordered_effect": "continue unchanged"
+      }
+    },
+    "playback": {
+      "raw_audio_src_info_index": 6,
+      "set_volume_memberref": "0x0A0002A2",
+      "play_one_shot_memberref": "0x0A000FA6",
+      "play_argument": "Sound_ClipCheerVoice_List[vid]"
+    },
+    "fact_0079_bridge": {
+      "fact_id": "FACT-0079",
+      "caller": "Audience.PlayCheerVoice",
+      "call_il": "0x00A5",
+      "callee_token": "0x060052AC",
+      "arguments": [
+        "vid",
+        "computed Float32 local"
+      ]
+    }
+  },
+  "limits": [
+    "Authored clip contents and global cheer-volume value remain outside this record."
+  ]
+}
