@@ -1844,6 +1844,23 @@
         "music-file provenance",
         "remaining MyMusic.Check_File(String) caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_CREATE_REFEREE_DISP_AWAKE_V1",
+      "fact_id": "FACT-0107",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL CreateRefereeDisp.Awake display-parent lookup/setup, raw-130 scale and caller bridge into canonical RefereeMan.GetInst/CreateReferee.",
+      "summary": "canonical/witnesses/CAP-R6-001/create_referee_disp_awake.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Unity display-object lifecycle closure",
+        "Prefab_Referee authored object closure",
+        "CreateRefereeDisp editor/display semantics"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

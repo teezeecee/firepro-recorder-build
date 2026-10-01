@@ -538,3 +538,9 @@ jobs:
         run: python tests/test_mymusic_check_file_index_summary.py
       - name: MyMusic Check_File index prover syntax
         run: python -m py_compile tools/prove_mymusic_check_file_index.py
+
+
+      - name: CreateRefereeDisp Awake summary
+        run: python tests/test_create_referee_disp_awake_summary.py
+      - name: CreateRefereeDisp Awake prover syntax
+        run: python -m py_compile tools/prove_create_referee_disp_awake.py
