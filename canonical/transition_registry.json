@@ -1537,6 +1537,24 @@
         "remaining ReversePlayerDirLR caller closure",
         "raw direction-value meaning"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_START_FALL_COUNT_V1",
+      "fact_id": "FACT-0089",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Referee.Start_FallCount player/isPinfallDef gate, optional rope-check/ring-collision path, raw State/animation/voice effects, and normal FallWaitCnt path, bridged from FACT-0085.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_start_fall_count.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Referee.SetFree internal closure",
+        "Ring.TestCollision_OctagonEdge_InRing internal closure",
+        "AnmIDTbl_FallCount authored contents",
+        "FallWaitCnt authored contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
