@@ -586,3 +586,9 @@ jobs:
         run: python tests/test_theme_music_info_is_dlc_summary.py
       - name: ThemeMusicInfo IsDLC prover syntax
         run: python -m py_compile tools/prove_theme_music_info_is_dlc.py
+
+
+      - name: Menu Sound theme coroutine factories summary
+        run: python tests/test_menu_sound_theme_coroutine_factories_summary.py
+      - name: Menu Sound theme coroutine factories prover syntax
+        run: python -m py_compile tools/prove_menu_sound_theme_coroutine_factories.py
