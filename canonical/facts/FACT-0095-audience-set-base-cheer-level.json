@@ -1,0 +1,39 @@
+{
+  "fact_id": "FACT-0095",
+  "claim": "In the matching retail DLL, Audience.SetBaseCheerLevel (0x060047D8) is an instance one-Int32-parameter method with an exact 54-byte body. It first stores its raw argument nLevel into Audience.CheerLevel_Base (0x040054CB). If the stored value is greater than raw 4 it replaces the field with raw 4. It then reloads the field and, if the value is less than raw -4, replaces it with raw -4. It finally calls FACT-0083 Audience.CalcCheerLevel() and returns. FACT-0093 pins the already-canonical caller at Referee.ProcesskMatchEnd_Normal IL+0x006D with raw argument 4.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Audience.SetBaseCheerLevel token 0x060047D8 RVA 0x0028FE76 signature 20010108 parameter nLevel:Int32 code size 54 code sha256=aeedc6c70baddc6ef42cd4c445d568061fdc8a73a18464494aad0e9062279520; exact field-store/raw-clamp/CalcCheerLevel body in canonical/witnesses/CAP-R6-001/audience_set_base_cheer_level.summary.json; prover tools/prove_audience_set_base_cheer_level.py",
+      "observation": "Exact matching-DLL SetBaseCheerLevel body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0093 Referee.ProcesskMatchEnd_Normal",
+      "to": "Audience.SetBaseCheerLevel(4)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0093 pins callvirt token 0x060047D8 at ProcesskMatchEnd_Normal IL+0x006D after raw ldc.i4.4."
+        }
+      ]
+    },
+    {
+      "from": "Audience.SetBaseCheerLevel",
+      "to": "FACT-0083 Audience.CalcCheerLevel",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "SetBaseCheerLevel IL+0x0030 call token 0x060047E0 after exact [-4,4] field clamps."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only SetBaseCheerLevel and the FACT-0093 caller bridge.",
+    "Additional SetBaseCheerLevel callers remain separate caller seams.",
+    "The authored/provenance meaning of CheerLevel_Base values remains outside this fact; raw bounds -4 and 4 are preserved numerically."
+  ]
+}

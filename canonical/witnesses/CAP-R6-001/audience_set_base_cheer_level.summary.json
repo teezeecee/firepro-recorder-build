@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_AUDIENCE_SET_BASE_CHEER_LEVEL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Audience",
+      "method": "SetBaseCheerLevel",
+      "token": "0x060047D8",
+      "rva": "0x0028FE76",
+      "signature_blob_hex": "20010108",
+      "return_type": "Void",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "nLevel",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 54,
+      "code_sha256": "aeedc6c70baddc6ef42cd4c445d568061fdc8a73a18464494aad0e9062279520",
+      "instruction_count": 20,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 1
+    },
+    "field": {
+      "name": "CheerLevel_Base",
+      "token": "0x040054CB"
+    },
+    "exact_flow": [
+      "CheerLevel_Base = nLevel",
+      "if CheerLevel_Base > 4: CheerLevel_Base = 4",
+      "if CheerLevel_Base < -4: CheerLevel_Base = -4",
+      "call Audience.CalcCheerLevel()",
+      "return"
+    ],
+    "clamp": {
+      "min_inclusive": -4,
+      "max_inclusive": 4
+    },
+    "calc_cheer_level": {
+      "token": "0x060047E0",
+      "fact_id": "FACT-0083",
+      "call_il": "0x0030"
+    },
+    "fact_0093_bridge": {
+      "fact_id": "FACT-0093",
+      "caller": "Referee.ProcesskMatchEnd_Normal",
+      "call_il": "0x006D",
+      "raw_argument": 4
+    }
+  },
+  "limits": [
+    "Other SetBaseCheerLevel callers and raw CheerLevel_Base meaning remain outside this record."
+  ]
+}
