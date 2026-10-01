@@ -1981,6 +1981,23 @@
         "authored ThemeMusicInfo.dlc contents",
         "additional ThemeMusicInfo.IsDLC caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_THEME_COROUTINE_FACTORIES_V1",
+      "fact_id": "FACT-0115",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager theme-BGM coroutine factory pair plus their generated System.Object-only constructor leaves, bridged from FACT-0111.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_theme_coroutine_factories.summary.json",
+      "dll_method_count": 4,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "generated iterator MoveNext/disposal/current closure",
+        "Unity coroutine scheduling behavior",
+        "authored audio contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
