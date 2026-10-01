@@ -1,0 +1,51 @@
+{
+  "fact_id": "FACT-0132",
+  "claim": "In the matching retail DLL, static Menu_SoundManager.Play_BGM (0x0600529E) has exact signature blob 00020111aa2411aa18, parameters (SYSTEM_SOUND bgm_type, PLAY_TYPE type), and an exact 309-byte body. It loads Menu_SoundManager.audioSrcInfo[0] into local0 and local0.sRefAudio into local1. When g_ProgressBGM_Continue is true, local1 is truthy through UnityEngine.Object.op_Implicit and local1.get_isPlaying() is true, the method returns immediately. Otherwise it calls canonical Menu_SoundManager.StopBGM. It then returns when audioClipInfo is null, signed bgm_type is raw 39 or greater, or audioClipInfo[bgm_type].audioClip compares equal to null through UnityEngine.Object.op_Equality. It calls canonical get__instance().MyMusic_Play(bgm_type,type) and returns when that call returns true. It then stores the original bgm_type into Menu_SoundManager.bgmKind. A switch over raw bgm_type-32 assigns local1.volume from Volume_BgmProgress for raw 32, Volume_BgmAdmission for raw 33, Volume_BgmBattle for raw 34 and Volume_BgmProgress for raw 35. The default path rewrites argument bgm_type to raw 32 and assigns local1.volume=1.0f. If raw PLAY_TYPE type equals 1 it sets local1.clip from audioClipInfo[bgm_type].audioClip, calls local1.Play(), sets local1.loop=true, and writes raw 0 to local0.fadeOutFrm and local0.fadeOutCnt. All other PLAY_TYPE values call local1.PlayOneShot(audioClipInfo[bgm_type].audioClip). FACT-0122, FACT-0130 and FACT-0131 pin canonical callers of this method.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.Play_BGM token 0x0600529E RVA 0x00322750 signature 00020111aa2411aa18 code size 309 code sha256=b8e1c3d745fe8e77062c61c6ed822cf58159f4de99e69e662c91b9646745eb2f; exact continue/isPlaying gate, StopBGM gate, audioClip upper-bound/null gates, MyMusic_Play gate, raw 32-35 volume dispatch/default argument rewrite and PLAY_TYPE split in canonical/witnesses/CAP-R6-001/menu_sound_play_bgm.summary.json; prover tools/prove_menu_sound_play_bgm.py",
+      "observation": "Exact matching-DLL Menu_SoundManager.Play_BGM body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0122 MatchMain.PlayAfterMatchBGM",
+      "to": "Menu_SoundManager.Play_BGM(raw 33, raw 1)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0122 pins call token 0x0600529E at PlayAfterMatchBGM IL+0x0145."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0130 <CoChange_BGMandPlay>c__Iterator8.MoveNext",
+      "to": "Menu_SoundManager.Play_BGM(system_sound, raw 1)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0130 pins call token 0x0600529E at iterator IL+0x00B4."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0131 <CoChange_BGMandPlay_FromAssetBundle>c__Iterator9.MoveNext",
+      "to": "Menu_SoundManager.Play_BGM(system_sound, raw 1)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0131 pins call token 0x0600529E at iterator IL+0x00E8."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Play_BGM body and the three already-canonical caller bridges.",
+    "Menu_SoundManager.MyMusic_Play internals remain a separate gate.",
+    "UnityEngine.Object and UnityEngine.AudioSource member implementations remain external.",
+    "Authored AudioClip contents and runtime audio-device behavior remain outside this fact.",
+    "Raw SYSTEM_SOUND values 32 through 39 and raw PLAY_TYPE value 1 are preserved without assigning broader labels."
+  ]
+}

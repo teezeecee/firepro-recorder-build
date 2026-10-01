@@ -2264,6 +2264,23 @@
         "external Unity AssetBundle/coroutine behavior",
         "authored bundle/audio contents"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_PLAY_BGM_V1",
+      "fact_id": "FACT-0132",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Play_BGM continue/isPlaying gate, StopBGM/clip/MyMusic gates, raw 32-35 volume dispatch with default argument rewrite, and PLAY_TYPE normal-vs-one-shot split.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_play_bgm.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Menu_SoundManager.MyMusic_Play internal closure",
+        "external Unity audio implementation",
+        "authored AudioClip contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_PLAY_BGM_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Menu_SoundManager",
+      "method": "Play_BGM",
+      "token": "0x0600529E",
+      "rva": "0x00322750",
+      "signature_blob_hex": "00020111aa2411aa18",
+      "static": true,
+      "return_type": "Void",
+      "parameters": [
+        {"sequence":1,"name":"bgm_type","type":"SYSTEM_SOUND"},
+        {"sequence":2,"name":"type","type":"PLAY_TYPE"}
+      ],
+      "code_size": 309,
+      "code_sha256": "b8e1c3d745fe8e77062c61c6ed822cf58159f4de99e69e662c91b9646745eb2f",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 3,
+      "local_signature_token": "0x1100120A",
+      "local_signature_blob_hex": "070212aa2c1280b9",
+      "locals": [
+        {"index":0,"type":"AudioSrcInfo"},
+        {"index":1,"type":"UnityEngine.AudioSource"}
+      ],
+      "instruction_count": 93,
+      "branch_instruction_count": 16,
+      "call_instruction_count": 15
+    },
+    "fields": {
+      "audio_src_info":{"token":"0x040086EB","name":"Menu_SoundManager.audioSrcInfo"},
+      "progress_continue":{"token":"0x04008703","name":"Menu_SoundManager.g_ProgressBGM_Continue"},
+      "audio_clip_info":{"token":"0x040086F4","name":"Menu_SoundManager.audioClipInfo"},
+      "bgm_kind":{"token":"0x040086F8","name":"Menu_SoundManager.bgmKind"},
+      "volume_progress":{"token":"0x040086F1","name":"Menu_SoundManager.Volume_BgmProgress"},
+      "volume_admission":{"token":"0x040086F2","name":"Menu_SoundManager.Volume_BgmAdmission"},
+      "volume_battle":{"token":"0x040086F3","name":"Menu_SoundManager.Volume_BgmBattle"},
+      "source":{"token":"0x0400874C","name":"AudioSrcInfo.sRefAudio"},
+      "audio_clip":{"token":"0x0400874B","name":"AudioClipInfo.audioClip"},
+      "fade_out_cnt":{"token":"0x0400874D","name":"AudioSrcInfo.fadeOutCnt"},
+      "fade_out_frm":{"token":"0x0400874E","name":"AudioSrcInfo.fadeOutFrm"}
+    },
+    "calls": {
+      "object_implicit":{"token":"0x0A00002A","resolved":"UnityEngine.Object.op_Implicit","call_il":"0x001A"},
+      "source_is_playing":{"token":"0x0A000CAE","resolved":"UnityEngine.AudioSource.get_isPlaying","call_il":"0x0025"},
+      "stop_bgm":{"token":"0x060052A4","resolved":"Menu_SoundManager.StopBGM","call_il":"0x0030","fact_id":"FACT-0123"},
+      "object_equality":{"token":"0x0A000006","resolved":"UnityEngine.Object.op_Equality","call_il":"0x0054"},
+      "get_instance":{"token":"0x0600527C","resolved":"Menu_SoundManager.get__instance","call_il":"0x005F","fact_id":"FACT-0112"},
+      "my_music_play":{"token":"0x060052B8","resolved":"Menu_SoundManager.MyMusic_Play","call_il":"0x0066"},
+      "set_volume":{"token":"0x0A0002A2","resolved":"UnityEngine.AudioSource.set_volume","call_ils":["0x009B","0x00AB","0x00BB","0x00CB","0x00DF"]},
+      "set_clip":{"token":"0x0A00079B","resolved":"UnityEngine.AudioSource.set_clip","call_il":"0x00FD"},
+      "play":{"token":"0x0A0002A3","resolved":"UnityEngine.AudioSource.Play","call_il":"0x0103"},
+      "set_loop":{"token":"0x0A00079C","resolved":"UnityEngine.AudioSource.set_loop","call_il":"0x010A"},
+      "play_one_shot":{"token":"0x0A000FA6","resolved":"UnityEngine.AudioSource.PlayOneShot(AudioClip)","call_il":"0x012F"}
+    },
+    "exact_flow": {
+      "source_and_continue_gate":[
+        "local0 = Menu_SoundManager.audioSrcInfo[0]",
+        "local1 = local0.sRefAudio",
+        "if g_ProgressBGM_Continue is true and UnityEngine.Object.op_Implicit(local1) is true and local1.isPlaying is true: return",
+        "Menu_SoundManager.StopBGM()"
+      ],
+      "clip_gates":[
+        "if Menu_SoundManager.audioClipInfo is null: return",
+        "if signed bgm_type >= 39: return",
+        "if Menu_SoundManager.audioClipInfo[bgm_type].audioClip == null through UnityEngine.Object.op_Equality: return"
+      ],
+      "my_music_gate":[
+        "if Menu_SoundManager.get__instance().MyMusic_Play(bgm_type,type) is true: return"
+      ],
+      "volume_dispatch":[
+        "Menu_SoundManager.bgmKind = original bgm_type",
+        "raw bgm_type 32 -> local1.volume = Volume_BgmProgress",
+        "raw bgm_type 33 -> local1.volume = Volume_BgmAdmission",
+        "raw bgm_type 34 -> local1.volume = Volume_BgmBattle",
+        "raw bgm_type 35 -> local1.volume = Volume_BgmProgress",
+        "all other values reaching this point -> rewrite argument bgm_type=32; local1.volume=1.0f"
+      ],
+      "play_type_raw_1":[
+        "local1.clip = Menu_SoundManager.audioClipInfo[bgm_type].audioClip",
+        "local1.Play()",
+        "local1.loop = true",
+        "local0.fadeOutFrm = 0",
+        "local0.fadeOutCnt = 0",
+        "return"
+      ],
+      "play_type_other":[
+        "local1.PlayOneShot(Menu_SoundManager.audioClipInfo[bgm_type].audioClip)",
+        "return"
+      ]
+    },
+    "canonical_bridges": [
+      {"fact_id":"FACT-0122","caller":"MatchMain.PlayAfterMatchBGM","call_il":"0x0145"},
+      {"fact_id":"FACT-0130","caller":"<CoChange_BGMandPlay>c__Iterator8.MoveNext","call_il":"0x00B4"},
+      {"fact_id":"FACT-0131","caller":"<CoChange_BGMandPlay_FromAssetBundle>c__Iterator9.MoveNext","call_il":"0x00E8"}
+    ]
+  },
+  "limits": [
+    "MyMusic_Play internals, external Unity audio implementation and authored clips remain outside this record."
+  ]
+}
