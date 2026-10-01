@@ -1827,6 +1827,23 @@
         "WrestlerID semantic closure",
         "additional GetEditWrestlerIdx caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_MYMUSIC_CHECK_FILE_INDEX_V1",
+      "fact_id": "FACT-0106",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MyMusic.Check_File(Int32) raw-10000 index transform, FileList_Match count gates/item/name lookup and call into canonical String overload.",
+      "summary": "canonical/witnesses/CAP-R6-001/mymusic_check_file_index.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored MyMusic.FileList_Match contents",
+        "music-file provenance",
+        "remaining MyMusic.Check_File(String) caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
