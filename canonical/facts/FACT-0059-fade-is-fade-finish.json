@@ -1,0 +1,39 @@
+{
+  "fact_id": "FACT-0059",
+  "claim": "In the matching retail DLL, Fade.IsFadeFinish (0x06004A7D) is a parameterless instance Boolean method with an exact 16-byte body. It reads Fade.NowFrm (field token 0x04005920), compares it to raw signed Int32 zero with bgt, returns false when NowFrm > 0, and returns true otherwise. FACT-0058 pins the already-canonical caller boundary at MatchMisc.PlayMatchSE IL+0x0024.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Fade.IsFadeFinish token 0x06004A7D RVA 0x002B76FD signature 200002 code size 16 code sha256=8ab025c02e60a82d0238a60fbf523b6ad20647ca0ed32600a0fdf8b2df1a0083; exact field/comparison/return body in canonical/witnesses/CAP-R6-001/fade_is_fade_finish.summary.json; prover tools/prove_fade_is_fade_finish.py",
+      "observation": "Exact matching-DLL Fade.IsFadeFinish body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0058 MatchMisc.PlayMatchSE",
+      "to": "Fade.IsFadeFinish()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0058 pins callvirt token 0x06004A7D at PlayMatchSE IL+0x0024 after loading Fade.inst."
+        }
+      ]
+    },
+    {
+      "from": "Fade.NowFrm",
+      "to": "Boolean return",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IsFadeFinish IL+0x0000..0x000F loads field 0x04005920, compares against signed zero with bgt to the false return; fall-through returns true."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact helper body and FACT-0058 caller seam.",
+    "The meaning and update lifecycle of Fade.NowFrm remain outside this fact.",
+    "Other callers of Fade.IsFadeFinish are not promoted by this fact."
+  ]
+}
