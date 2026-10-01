@@ -694,3 +694,9 @@ jobs:
         run: python tests/test_menu_sound_play_bgm_summary.py
       - name: Menu Sound Play BGM prover syntax
         run: python -m py_compile tools/prove_menu_sound_play_bgm.py
+
+
+      - name: Menu Sound MyMusic Play summary
+        run: python tests/test_menu_sound_my_music_play_summary.py
+      - name: Menu Sound MyMusic Play prover syntax
+        run: python -m py_compile tools/prove_menu_sound_my_music_play.py
