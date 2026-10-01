@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_PRIORITY_SMALL_HELPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "PlayerController_AI",
+        "method": "GetDamageLevel_LMH",
+        "token": "0x06004F9B",
+        "rva": "0x002F5ED4",
+        "signature_blob_hex": "000111a7c40c",
+        "return_type": "DamageLevelEnum_LMH",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "hp",
+            "type": "Float32"
+          }
+        ],
+        "code_size": 49,
+        "code_sha256": "9c943eda48fd9f9c76271366324f22095426c06b0eecbb77d37e0cc945dde6c3",
+        "instruction_count": 21,
+        "branch_instruction_count": 2,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "PlayerController_AI",
+        "method": "Reset_HungUpCheck",
+        "token": "0x06004FD8",
+        "rva": "0x002F91A0",
+        "signature_blob_hex": "200001",
+        "return_type": "Void",
+        "parameters": [],
+        "code_size": 55,
+        "code_sha256": "9bea2fa5e79dc6e2c45acd5a83161a0ce0bec614c28ca0c2f0e63037bb0b2e01",
+        "instruction_count": 23,
+        "branch_instruction_count": 2,
+        "call_instruction_count": 1
+      }
+    ],
+    "get_damage_level_lmh": {
+      "get_param_rate_token": "0x06004975",
+      "get_param_rate_fact_id": "FACT-0031",
+      "manager_field": {
+        "name": "COMLevelDataManager.inst",
+        "token": "0x04000D38"
+      },
+      "threshold_field": {
+        "name": "damageLevelThreshold_LMH",
+        "token": "0x04000D3B"
+      },
+      "exact_branches": [
+        {
+          "index": 0,
+          "branch_il": "0x0014",
+          "opcode": "blt.un",
+          "branch_target": "0x001B",
+          "non_branch_return_raw": 0
+        },
+        {
+          "index": 1,
+          "branch_il": "0x0028",
+          "opcode": "blt.un",
+          "branch_target": "0x002F",
+          "non_branch_return_raw": 1
+        }
+      ],
+      "final_return_raw": 2
+    },
+    "reset_hung_up_check": {
+      "zeroed_fields": [
+        {
+          "name": "MoveCheckPosPtr",
+          "token": "0x0400615A",
+          "value": 0
+        },
+        {
+          "name": "MoveCheckPosRecordNum",
+          "token": "0x0400615B",
+          "value": 0
+        }
+      ],
+      "buffer_field": {
+        "name": "MoveCheckPosBuf",
+        "token": "0x04006159"
+      },
+      "element_type": "UnityEngine.Vector2",
+      "element_type_token": "0x0100000C",
+      "zero_memberref": {
+        "name": "UnityEngine.Vector2.get_zero",
+        "token": "0x0A00008B"
+      },
+      "raw_index_range": {
+        "min_inclusive": 0,
+        "max_inclusive": 7
+      },
+      "loop_condition": "signed index < 8"
+    },
+    "process_priority_act_bridge": {
+      "fact_id": "FACT-0037",
+      "caller": "PlayerController_AI.ProcessPriorityAct",
+      "caller_token": "0x0600500A",
+      "calls": [
+        {
+          "callee": "GetDamageLevel_LMH",
+          "callee_token": "0x06004F9B",
+          "il": "0x00E3",
+          "argument": "target.HP"
+        },
+        {
+          "callee": "Reset_HungUpCheck",
+          "callee_token": "0x06004FD8",
+          "il": "0x0190",
+          "argument": null
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Threshold array contents and buffer consumers remain outside this record.",
+    "Raw enum values and Float32 branch semantics are preserved without extra labels."
+  ]
+}
