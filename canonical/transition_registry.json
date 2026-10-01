@@ -2097,6 +2097,24 @@
         "raw DLCEnum product-label closure",
         "external Steamworks ownership state"
       ]
+    },
+    {
+      "family_id": "DLL_MATCH_MAIN_PLAY_AFTER_MATCH_BGM_V1",
+      "fact_id": "FACT-0122",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMain.PlayAfterMatchBGM timer/evaluation/suppression eligibility and ThemeMusic -1/-2/threshold dispatch, including canonical MyMusic and Change_BGM_Theme bridges.",
+      "summary": "canonical/witnesses/CAP-R6-001/match_main_play_after_match_bgm.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Menu_SoundManager.Change_BGM_Theme(String,Boolean,Boolean) internal closure",
+        "Menu_SoundManager.StopBGM internal closure",
+        "Menu_SoundManager.Play_BGM internal closure",
+        "authored match/theme/audio data"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
