@@ -832,6 +832,24 @@
         "raw State/Zone/pad/status semantic mapping",
         "Ring collision helper internal closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_TRANSIT_STATE_AFTER_ANM_V1",
+      "fact_id": "FACT-0048",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.TransitStateAfterAnm full 1,438-byte main transition body: completion/viewer guards, terrain collision pre-branch, formIdx 100/101 Down-helper dispatch, 14-target AnimeEnd-1 switch, exact state/direction/request/target/auto-run effects, and FACT-0047 caller bridge.",
+      "summary": "canonical/witnesses/CAP-R6-001/transit_state_after_anm.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "TransitStateAfterAnm_Down internal closure",
+        "TransitStateAfterAnm_AutoRun internal closure",
+        "remaining called helper internals",
+        "raw AnimeEnd/State/Zone/direction semantic mapping"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
