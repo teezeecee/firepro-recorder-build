@@ -1090,6 +1090,24 @@
         "authored MatchSEParamTbl contents",
         "raw sound-ID meaning"
       ]
+    },
+    {
+      "family_id": "DLL_MATCH_SE_PLAYER_UPDATE_WAIT_LIST_V1",
+      "fact_id": "FACT-0063",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchSEPlayer.Update loop over rfs_se_wait_list raw indices 0..108, decrementing each positive element by one, paired with FACT-0060 raw value-2 writer.",
+      "summary": "canonical/witnesses/CAP-R6-001/match_se_player_update_wait_list.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "MatchSEPlayer.Update scheduling frequency",
+        "other rfs_se_wait_list readers/writers",
+        "raw wait-list index meaning",
+        "authored sound data"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

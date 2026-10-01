@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCH_SE_PLAYER_UPDATE_WAIT_LIST_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchSEPlayer",
+      "method": "Update",
+      "token": "0x0600527A",
+      "rva": "0x00321744",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 51,
+      "code_sha256": "8bb4fe7bdd1afe7b8440b399d90daf4e90da035214a8732bbb3f105723cdafcf",
+      "max_stack": 3,
+      "local_signature_token": "0x1100003A",
+      "local_count": 1,
+      "instruction_count": 23,
+      "branch_instruction_count": 3,
+      "call_instruction_count": 0
+    },
+    "field": {
+      "name": "rfs_se_wait_list",
+      "token": "0x040086E5"
+    },
+    "exact_loop": {
+      "initial_index": 0,
+      "condition": "index < 109",
+      "condition_opcode": "blt",
+      "raw_index_range": {
+        "min_inclusive": 0,
+        "max_inclusive": 108
+      },
+      "element_gate": {
+        "condition": "rfs_se_wait_list[index] > 0",
+        "opcode": "ble",
+        "nonpositive_effect": "leave unchanged"
+      },
+      "positive_effect": "rfs_se_wait_list[index] = rfs_se_wait_list[index] - 1",
+      "increment": 1
+    },
+    "writer_bridge": {
+      "fact_id": "FACT-0060",
+      "caller": "MatchSEPlayer.PlayMatchSE",
+      "effect": "rfs_se_wait_list[seid] = 2",
+      "raw_value": 2,
+      "field_token": "0x040086E5"
+    }
+  },
+  "limits": [
+    "Update scheduling frequency and other field readers/writers are outside this record.",
+    "Raw wait-list indices and authored sound data remain unlabeled."
+  ]
+}
