@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_STORY_SAVE_DATA_MANAGER_GET_STORY_DATA_SCENARIO_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "StorySaveDataManager",
+      "method": "GetStoryData",
+      "token": "0x06003C25",
+      "rva": "0x0023A1CA",
+      "signature_blob_hex": "2001129cd4119cd0",
+      "return_type": "StoryWork",
+      "parameters": [
+        {
+          "sequence": 1,
+          "type": "StoryScenario"
+        }
+      ],
+      "code_size": 29,
+      "code_sha256": "bddbc1bb012966f7b1473c87204f7669e637de70bbb3ab6069be5d1e5cb79861",
+      "tiny_header": true,
+      "max_stack": 8,
+      "instruction_count": 13,
+      "branch_instruction_count": 1,
+      "call_instruction_count": 0
+    },
+    "exact_flow": {
+      "comparison": "scenario >= 2",
+      "raw_value": 2,
+      "opcode": "bge",
+      "not_taken": "return SaveData.inst.smSaveData[scenario]",
+      "taken": "return this.saveDataList[scenario]"
+    },
+    "fields": {
+      "save_data_inst": {
+        "name": "SaveData.inst",
+        "token": "0x040064EC"
+      },
+      "save_data_array": {
+        "name": "SaveData.smSaveData",
+        "token": "0x0400650F"
+      },
+      "manager_array": {
+        "name": "StorySaveDataManager.saveDataList",
+        "token": "0x04004980",
+        "signature_blob_hex": "061d129cd4",
+        "type": "StoryWork[]"
+      }
+    },
+    "fact_0103_bridge": {
+      "fact_id": "FACT-0103",
+      "caller": "StorySaveDataManager.GetStoryData()",
+      "caller_token": "0x06003C24",
+      "caller_rva": "0x0023A1BD",
+      "caller_code_size": 12,
+      "caller_code_sha256": "564cd017b6b587e05dc90b0c95294394b6d0d874e7c59dee6c493fa3182cb611",
+      "argument_field": "StoryWork.storyScenario",
+      "argument_field_token": "0x04004856",
+      "argument_load_il": "0x0001",
+      "call_il": "0x0006",
+      "opcode": "call",
+      "callee_token": "0x06003C25"
+    }
+  },
+  "limits": [
+    "The two array contents remain authored/data provenance blockers.",
+    "The raw threshold 2 and StoryScenario values receive no semantic labels here.",
+    "No broader Story Mode subsystem behavior is promoted."
+  ]
+}
