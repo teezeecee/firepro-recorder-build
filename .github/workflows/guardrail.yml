@@ -478,3 +478,8 @@ jobs:
         run: python tests/test_player_check_right_summary.py
       - name: Player CheckRight prover syntax
         run: python -m py_compile tools/prove_player_check_right.py
+
+      - name: Audience SetBaseCheerLevel summary
+        run: python tests/test_audience_set_base_cheer_level_summary.py
+      - name: Audience SetBaseCheerLevel prover syntax
+        run: python -m py_compile tools/prove_audience_set_base_cheer_level.py
