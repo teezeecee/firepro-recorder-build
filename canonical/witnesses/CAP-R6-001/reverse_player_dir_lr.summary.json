@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REVERSE_PLAYER_DIR_LR_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchMisc",
+      "method": "ReversePlayerDirLR",
+      "token": "0x06004966",
+      "rva": "0x002B0428",
+      "signature_blob_hex": "000111a76811a768",
+      "code_size": 8,
+      "code_sha256": "c361809e798508defe998c0c3891196cdb2d60d5f4e45adf6fc213666c309eb0",
+      "instruction_count": 4,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 0
+    },
+    "table_field": {
+      "type": "MatchMisc",
+      "name": "rev_lr_tbl",
+      "token": "0x04005788",
+      "signature_blob_hex": "061d11a768"
+    },
+    "exact_body": [
+      "ldsfld MatchMisc.rev_lr_tbl",
+      "ldarg.0",
+      "ldelem.i4",
+      "ret"
+    ],
+    "fact_0087_bridge": {
+      "fact_id": "FACT-0087",
+      "caller": "Referee.Start_HandlingDisturbing",
+      "call_il": "0x003E",
+      "callee_token": "0x06004966",
+      "argument": "PlDir"
+    }
+  },
+  "limits": [
+    "rev_lr_tbl contents and initialization remain outside this record."
+  ]
+}
