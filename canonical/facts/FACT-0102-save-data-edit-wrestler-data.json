@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0102",
+  "claim": "In the matching retail DLL, SaveData.GetEditWrestlerData (0x060051B9) is an instance one-WrestlerID-parameter method with exact signature blob 20011287b41187b8 and an exact 47-byte body. It calls SaveData.GetEditWrestlerIdx(wid) into an Int32 local; if the result is below raw 0 it returns null, and if the result is not below this.editWrestlerData.Count it also returns null. Otherwise it returns this.editWrestlerData[index] through the exact List<EditWrestlerData> get_Item memberref. FACT-0096 pins the already-canonical caller at MatchMain.SetAfterMatchBGM IL+0x0059 after loading MatchWrestlerInfo.wrestlerID.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SaveData.GetEditWrestlerData token 0x060051B9 RVA 0x003166EC signature 20011287b41187b8 code size 47 code sha256=fb1d5036d90b5023700c012f02b2775cd7c763c0a131ba63904e8f7a6bc56998; exact lookup/null/range/list-return body in canonical/witnesses/CAP-R6-001/save_data_edit_wrestler_data.summary.json; prover tools/prove_save_data_edit_wrestler_data.py",
+      "observation": "Exact matching-DLL SaveData.GetEditWrestlerData body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0096 MatchMain.SetAfterMatchBGM",
+      "to": "SaveData.GetEditWrestlerData(MatchWrestlerInfo.wrestlerID)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0096 pins callvirt token 0x060051B9 at SetAfterMatchBGM IL+0x0059 after loading MatchWrestlerInfo.wrestlerID."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact GetEditWrestlerData helper and the FACT-0096 caller bridge.",
+    "SaveData.GetEditWrestlerIdx internals remain a separate gate.",
+    "Authored editWrestlerData contents and WrestlerID semantics remain outside this fact.",
+    "Other GetEditWrestlerData callers are not promoted by this fact."
+  ]
+}
