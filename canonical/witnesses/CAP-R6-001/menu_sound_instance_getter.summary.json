@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_INSTANCE_GETTER_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Menu_SoundManager",
+      "method": "get__instance",
+      "token": "0x0600527C",
+      "rva": "0x0032178B",
+      "signature_blob_hex": "000012aa14",
+      "static": true,
+      "return_type": "Menu_SoundManager",
+      "parameters": [],
+      "code_size": 6,
+      "code_sha256": "51403f7f590ffecc93a4904d8183a6255e36fdc173d7d24ad889577fbf035c03",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 2,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 0
+    },
+    "field": {
+      "name": "Menu_SoundManager.inst",
+      "token": "0x040086EA",
+      "signature_blob_hex": "0612aa14"
+    },
+    "exact_flow": [
+      "load static Menu_SoundManager.inst",
+      "return"
+    ],
+    "fact_0111_bridges": [
+      {"fact_id":"FACT-0111","caller":"Menu_SoundManager.Change_BGM_Theme","call_il":"0x0074"},
+      {"fact_id":"FACT-0111","caller":"Menu_SoundManager.Change_BGM_Theme","call_il":"0x008E"}
+    ]
+  },
+  "limits": [
+    "Singleton assignment/lifecycle and other callers remain outside this record."
+  ]
+}
