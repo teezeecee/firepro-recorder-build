@@ -1,0 +1,44 @@
+{
+  "fact_id": "FACT-0084",
+  "claim": "In the matching retail DLL, Referee.Process_MoveToDestination (0x0600509E) and its direct Boolean helper Referee.IsReachedDestination (0x0600508B) are exact method bodies. Process_MoveToDestination is a parameterless instance method with an exact 89-byte body: it returns unless Referee.State is raw 8, then writes PlPos.x = PlPos.x + MoveVel.x and PlPos.y = PlPos.y + MoveVel.y. It calls IsReachedDestination(); when that result is true it calls Referee.Process_ArrivedDestination(), then returns. IsReachedDestination is a parameterless instance Boolean method with an exact 68-byte body. It forms local delta = DestPos - implicit(PlPos), computes Vector2.Dot(delta,MoveVel), and uses bgt.un against raw Float32 0.0f. An ordered dot <= 0 returns true immediately; a greater or unordered dot continues to the second test. That test loads delta.magnitude and uses bgt.un against raw Float32 bits 0x3D7FFFFF (0.0624999962747097f); an ordered magnitude <= that value returns true, while greater or unordered returns false. FACT-0074 pins Process_MoveToDestination at UpdateReferee IL+0x0062.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.Process_MoveToDestination token 0x0600509E RVA 0x00308600 signature 200001 code size 89 code sha256=58c6b30e276aa4ab2b5a5e4116f2f309ebb362cf4a6cb17d52245a744bd6fae1; exact State gate/position writes/helper calls in canonical/witnesses/CAP-R6-001/referee_move_destination.summary.json; prover tools/prove_referee_move_destination.py",
+      "observation": "Exact matching-DLL move-to-destination body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.IsReachedDestination token 0x0600508B RVA 0x00307334 signature 200002 code size 68 code sha256=ead82943535ec77fed4deda04c5e7adf102ba54ee322c82072b58762c619957b; exact delta/dot/magnitude Float32 tests in the same witness/prover.",
+      "observation": "Exact matching-DLL reached-destination body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0074 Referee.UpdateReferee",
+      "to": "Referee.Process_MoveToDestination",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0074 scheduler calls token 0x0600509E at IL+0x0062."
+        }
+      ]
+    },
+    {
+      "from": "Referee.Process_MoveToDestination",
+      "to": "Referee.IsReachedDestination / Referee.Process_ArrivedDestination",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Process_MoveToDestination calls token 0x0600508B at IL+0x0048; if true it calls token 0x0600509F at IL+0x0053."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes Process_MoveToDestination, IsReachedDestination, and the FACT-0074 caller bridge only.",
+    "Referee.Process_ArrivedDestination internals remain a separate gate.",
+    "Raw State 8 and the exact Float32 threshold are preserved without assigning gameplay meaning."
+  ]
+}
