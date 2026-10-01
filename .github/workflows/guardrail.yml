@@ -670,3 +670,9 @@ jobs:
         run: python tests/test_u_audio_get_current_time_summary.py
       - name: uAudio get_CurrentTime prover syntax
         run: python -m py_compile tools/prove_u_audio_get_current_time.py
+
+
+      - name: Menu Sound Change BGM Theme String summary
+        run: python tests/test_menu_sound_change_bgm_theme_string_summary.py
+      - name: Menu Sound Change BGM Theme String prover syntax
+        run: python -m py_compile tools/prove_menu_sound_change_bgm_theme_string.py
