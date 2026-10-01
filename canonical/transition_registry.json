@@ -936,6 +936,22 @@
         "authored ColVert_Octagon coordinate provenance",
         "raw pb2 direction mapping"
       ]
+    },
+    {
+      "family_id": "DLL_SEGMENT_INTERSECTION_V1",
+      "fact_id": "FACT-0054",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Misc.CrossProduct and Misc.IsIntersect_Segment vector arithmetic, two emitted blt.un product gates, interpolation scalar and output point reached from FACT-0053.",
+      "summary": "canonical/witnesses/CAP-R6-001/segment_intersection.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "higher-level collision meaning beyond exact arithmetic",
+        "Unity Vector2 engine implementation outside emitted field access"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
