@@ -193,3 +193,8 @@ jobs:
         run: python tests/test_process_priority_act_summary.py
       - name: ProcessPriorityAct prover syntax
         run: python -m py_compile tools/prove_process_priority_act.py
+
+      - name: Priority small helpers summary
+        run: python tests/test_priority_small_helpers_summary.py
+      - name: Priority small helpers prover syntax
+        run: python -m py_compile tools/prove_priority_small_helpers.py
