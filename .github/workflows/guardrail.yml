@@ -544,3 +544,9 @@ jobs:
         run: python tests/test_create_referee_disp_awake_summary.py
       - name: CreateRefereeDisp Awake prover syntax
         run: python -m py_compile tools/prove_create_referee_disp_awake.py
+
+
+      - name: EntranceScene InitThemeMusic summary
+        run: python tests/test_entrance_scene_init_theme_music_summary.py
+      - name: EntranceScene InitThemeMusic prover syntax
+        run: python -m py_compile tools/prove_entrance_scene_init_theme_music.py
