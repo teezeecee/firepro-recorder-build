@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0086",
+  "claim": "In the matching retail DLL, Referee.DecideRefereeDir (0x0600508C) is an instance one-Int32-parameter method named pl_idx with an exact 107-byte body. It loads PlayerMan.inst.GetPlObj(pl_idx), tests the returned object through MemberRef 0x0A00002A op_Implicit, and returns raw 1 when that test is false. Otherwise it computes a Vector2 local from UnityEngine.Vector2.op_Implicit(targetPlayer.PlPos - this.PlPos). It compares local.x with raw Float32 0.0f using bgt.un. When that branch is not taken, meaning ordered x <= 0, it compares local.y with raw 0.0f using bgt.un and returns raw 1 when that second branch is not taken or raw 2 when it is taken. When the x bgt.un branch is taken, meaning x > 0 or unordered, it compares local.y with raw 0.0f using bgt.un and returns raw 5 when that branch is not taken or raw 4 when it is taken. Thus the exact return set in this helper is raw {1,2,4,5}; raw 3 is not returned by this method. FACT-0085 pins four direct caller sites at IL+0x0095, 0x016F, 0x01A9 and 0x01EB.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.DecideRefereeDir token 0x0600508C RVA 0x00307384 signature 200111a76808 parameter pl_idx:Int32 code size 107 code sha256=619774a8896b2e0f017a07bcca09e6a9a2c976f75c90f2f8d648669cfb7172a1; exact Player lookup/Vector2 construction/bgt.un branch graph in canonical/witnesses/CAP-R6-001/referee_decide_dir.summary.json; prover tools/prove_referee_decide_dir.py",
+      "observation": "Exact matching-DLL direction helper body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0085 Referee.Process_ArrivedDestination",
+      "to": "Referee.DecideRefereeDir(TargetPlIdx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0085 pins call token 0x0600508C at Process_ArrivedDestination IL+0x0095, IL+0x016F, IL+0x01A9 and IL+0x01EB."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only DecideRefereeDir and the four FACT-0085 caller bridges.",
+    "Raw return values 1, 2, 4 and 5 are preserved without adding directional labels.",
+    "The emitted bgt.un behavior is preserved, including unordered Float32 values taking the branch.",
+    "Player/referee position producers remain outside this fact."
+  ]
+}
