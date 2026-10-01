@@ -2315,6 +2315,22 @@
         "uAudio.uAudioPlayer.set_Volume internal closure",
         "runtime audio behavior"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_SET_VOLUME_V1",
+      "fact_id": "FACT-0135",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudio.uAudioPlayer.set_Volume myAudioSource -> UnityEngine.AudioSource.set_volume leaf, bridged from FACT-0134.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_set_volume.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "uAudio myAudioSource assignment/lifecycle closure",
+        "external Unity audio implementation"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
