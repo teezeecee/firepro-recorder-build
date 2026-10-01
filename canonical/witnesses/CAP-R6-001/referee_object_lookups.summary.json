@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_OBJECT_LOOKUPS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "RefereeMan",
+        "method": "GetInst",
+        "token": "0x060050B2",
+        "rva": "0x0030A47D",
+        "signature_blob_hex": "000012a83c",
+        "return_type": "RefereeMan",
+        "parameters": [],
+        "code_size": 6,
+        "code_sha256": "9520016c102a2a51bd00c0108de13b24734f1b686f000e2460083dd39da009ee",
+        "instruction_count": 2,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0,
+        "exact_body": [
+          "ldsfld 0x040062DC RefereeMan.inst",
+          "ret"
+        ]
+      },
+      {
+        "type": "RefereeMan",
+        "method": "GetRefereeObj",
+        "token": "0x060050B6",
+        "rva": "0x0030A4C3",
+        "signature_blob_hex": "200012a838",
+        "return_type": "Referee",
+        "parameters": [],
+        "code_size": 9,
+        "code_sha256": "aa2a417db5ba1940541d91f5a98fe26ec59230af147fdb4dd2e768ca0dad1e4d",
+        "instruction_count": 5,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0,
+        "exact_body": [
+          "ldarg.0",
+          "ldfld 0x040062DE RefereeObj",
+          "ldc.i4.0",
+          "ldelem.ref",
+          "ret"
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "name": "inst",
+        "token": "0x040062DC",
+        "signature_blob_hex": "0612a83c"
+      },
+      {
+        "name": "RefereeObj",
+        "token": "0x040062DE",
+        "signature_blob_hex": "061d12a838",
+        "shape": "single-dimensional zero-based array"
+      }
+    ],
+    "fact_0064_bridge": {
+      "fact_id": "FACT-0064",
+      "caller": "MatchSEPlayer.PlayRefereeSE",
+      "caller_token": "0x06005278",
+      "calls": [
+        {
+          "il": "0x0009",
+          "callee_token": "0x060050B2",
+          "method": "RefereeMan.GetInst"
+        },
+        {
+          "il": "0x000E",
+          "callee_token": "0x060050B6",
+          "method": "RefereeMan.GetRefereeObj"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "RefereeMan singleton/array population and other callers remain outside this record."
+  ]
+}
