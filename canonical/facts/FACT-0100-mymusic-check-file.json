@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0100",
+  "claim": "In the matching retail DLL, MyMusic.Check_File (0x06002C1E) is a static one-String-parameter Boolean method with exact signature blob 0001020e and an exact 25-byte body. It loads static field MyMusic.Root_DirectotyPath (0x04003903), loads the supplied string, calls System.String.Concat(string,string) through MemberRef 0x0A000012, then calls System.IO.File.Exists(string) through MemberRef 0x0A000216. It returns raw Boolean 1 when File.Exists returns true and raw Boolean 0 otherwise. FACT-0096 pins the already-canonical caller at MatchMain.SetAfterMatchBGM IL+0x0098 after loading EditWrestlerData.ThemeMusic_Filename.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MyMusic.Check_File token 0x06002C1E RVA 0x001AE7A4 signature 0001020e code size 25 code sha256=193b347ba039064fe416b7d3c34758af6401a2ead6f5c45046904e0a29646877; exact Root_DirectotyPath/String.Concat/File.Exists/Boolean-return body in canonical/witnesses/CAP-R6-001/mymusic_check_file.summary.json; prover tools/prove_mymusic_check_file.py",
+      "observation": "Exact matching-DLL MyMusic.Check_File body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0096 MatchMain.SetAfterMatchBGM",
+      "to": "MyMusic.Check_File(ThemeMusic_Filename)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0096 pins call token 0x06002C1E at SetAfterMatchBGM IL+0x0098 after loading EditWrestlerData.ThemeMusic_Filename."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact one-String Check_File overload and the FACT-0096 caller bridge.",
+    "File-system contents and authored music files remain outside this fact.",
+    "Six additional direct DLL call sites to this overload remain separate caller seams.",
+    "The metadata spelling Root_DirectotyPath is preserved exactly."
+  ]
+}
