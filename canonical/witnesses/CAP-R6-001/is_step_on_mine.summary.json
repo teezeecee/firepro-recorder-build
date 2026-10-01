@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_RING_IS_STEP_ON_MINE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Ring",
+      "method": "IsStepOnMine",
+      "token": "0x060050FC",
+      "rva": "0x0030D1B0",
+      "code_size": 324,
+      "code_sha256": "c461d4e1d4b587e58b3086f2eb88ae656d7147dbee555c6470ea7bb7a8243ffa",
+      "max_stack": 4,
+      "local_signature_token": "0x11000872",
+      "instruction_count": 91,
+      "branch_instruction_count": 14,
+      "call_instruction_count": 6
+    },
+    "entry": [
+      "player = PlayerMan.GetInst().GetPlObj(arg0)",
+      "if player does not convert true: return false",
+      "if player.Zone != 1: return false"
+    ],
+    "rotation": {
+      "input": "Vector3(player.PlPos.x,player.PlPos.y,0.0f)",
+      "angle_degrees": 45,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "operation": "Quaternion.AngleAxis(angle,axis) * input"
+    },
+    "thresholds": {
+      "center": 3.6458330154418945,
+      "inner": 4.5833330154418945,
+      "outer": 6.4583330154418945
+    },
+    "ordered_true_bands": [
+      {
+        "x": [
+          "-center",
+          "+center"
+        ],
+        "y": [
+          "-outer",
+          "-inner"
+        ]
+      },
+      {
+        "x": [
+          "-center",
+          "+center"
+        ],
+        "y": [
+          "+inner",
+          "+outer"
+        ]
+      },
+      {
+        "y": [
+          "-center",
+          "+center"
+        ],
+        "x": [
+          "-outer",
+          "-inner"
+        ]
+      },
+      {
+        "y": [
+          "-center",
+          "+center"
+        ],
+        "x": [
+          "+inner",
+          "+outer"
+        ]
+      }
+    ],
+    "comparison_note": "All band bounds are strict on ordered Float32 inputs because equality follows emitted bge.un/ble.un reject branches.",
+    "fact_0049_bridge": {
+      "fact_id": "FACT-0049",
+      "caller": "Player.TransitStateAfterAnm_Down",
+      "call_il": "0x023F",
+      "callee_token": "0x060050FC"
+    }
+  },
+  "limits": [
+    "No radial or player-facing hazard geometry is inferred beyond exact rotated band tests.",
+    "Quaternion internals remain engine-side."
+  ]
+}
