@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0068",
+  "claim": "In the matching retail DLL, the two direct Referee component helpers exposed by FACT-0067 are exact method bodies. Referee.Init (0x06005079) has an exact 167-byte body with parameters costume and fsize. It constructs a new FormRenderer with raw arguments (null, this.gameObject), stores it in Referee.FormRen, stores fsize in both Referee.formSize and FormRenderer.formSize, then loops raw index 0 through 8. Each iteration copies costume.partsScale[index] into FormRen.partsScale[index]; after the copy, the emitted bge.un comparison against raw 0.0f skips replacement for values that are greater/equal or unordered, while an ordered-negative value is replaced with raw 1.0f. The method then writes Referee.PlPos Vector3 components x=0.0f, y=0.0f, z=1.0f and returns. Referee.ReqRefereeAnm (0x06005096) has an exact 92-byte branchless body with one parameter an: it stores SkillID=an, FrameWait=0, isCount29=0, reqAnmInit=1, and raw zero into isReqAnmLoopEnd, isAnmLooped, isAnmPause, isAnmSync, isCopiedOpponentDir, isAnmBoot, isAtkHitOff, isAttackHit and isAttackHit2, then returns. FACT-0067 pins the two MatchMain and two MatchMainCp caller sites for these helpers.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.Init token 0x06005079 RVA 0x003059EC signature 200201128648118ff8 parameters costume/fsize code size 167 code sha256=e19f6d9ac4f9301e31c9e58d32ed267743c5bd5e6c44ae16a1aa04e4e02f8e24; exact FormRenderer construction, nine-element partsScale copy/negative replacement and PlPos writes in canonical/witnesses/CAP-R6-001/referee_init_request.summary.json; prover tools/prove_referee_init_request.py",
+      "observation": "Exact matching-DLL Referee.Init body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.ReqRefereeAnm token 0x06005096 RVA 0x00307E2C signature 20010111a970 parameter an code size 92 code sha256=460f863df8f05cabe8f18840b94a8b6a3bdd22505263f3baf51edd0b900be7b6; exact branchless field-write body in the same witness/prover.",
+      "observation": "Exact matching-DLL Referee.ReqRefereeAnm body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0067 MatchMain.<InitReferee>c__Iterator5.MoveNext",
+      "to": "Referee.Init / Referee.ReqRefereeAnm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0067 pins callvirt Referee.Init token 0x06005079 at IL+0x0156 and callvirt Referee.ReqRefereeAnm token 0x06005096 at IL+0x01FB."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0067 MatchMainCp.<InitReferee>c__Iterator3.MoveNext",
+      "to": "Referee.Init / Referee.ReqRefereeAnm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0067 pins callvirt Referee.Init token 0x06005079 at IL+0x00EB and callvirt Referee.ReqRefereeAnm token 0x06005096 at IL+0x010B."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the two exact helper bodies and the four FACT-0067 caller bridges.",
+    "Many additional DLL callers of ReqRefereeAnm remain separate decision/control-flow seams.",
+    "The authored CostumeData.partsScale contents and meaning of formSize remain outside this fact.",
+    "No gameplay meaning is inferred from Referee field names beyond their exact writes."
+  ]
+}
