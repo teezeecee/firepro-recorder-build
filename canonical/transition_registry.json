@@ -1677,6 +1677,23 @@
         "MyMusic.Check_File internal/file provenance",
         "authored wrestler/edit/story music data"
       ]
+    },
+    {
+      "family_id": "DLL_MATCH_PROCESS_MATCH_END_NORMAL_V1",
+      "fact_id": "FACT-0097",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMain.ProcessMatchEnd_Normal winner gate, result-position scan, finish-time copy and final match-end/result writes, bridged from FACT-0093.",
+      "summary": "canonical/witnesses/CAP-R6-001/match_process_match_end_normal.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "MatchTime.Set internal closure",
+        "broader MatchEvaluation field semantics",
+        "additional ProcessMatchEnd_Normal caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

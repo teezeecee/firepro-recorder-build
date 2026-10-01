@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0097",
+  "claim": "In the matching retail DLL, MatchMain.ProcessMatchEnd_Normal (0x06004928) is an instance method with parameters match_result and pl_idx_winner and an exact 261-byte body. It resolves PlayerMan.inst.GetPlObj(pl_idx_winner), tests the result through UnityEngine.Object.op_Implicit, and returns when false. It writes MatchEvaluation.inst.PlResult[pl_idx_winner].resultPosition=0. When the resolved player's plController.kind equals raw 2 it writes this.exitTimer=900. It then scans raw player indices 0 through 7. Each iteration resolves PlayerMan.inst.GetPlObj(index), skips null-converting or isSleep-nonzero players, then selects MatchEvaluation.inst.PlResult[index]. When index differs from pl_idx_winner, the emitted branches write resultPosition=1 when the scanned player's Group equals the winner player's Group; otherwise, when the scanned player's hasRight is nonzero, they write resultPosition=2 and Player.isLoseAndStop=1; otherwise they write resultPosition=3. For every non-null, non-sleeping scanned player, including the winner index, the method calls PlResult[index].finishTime.Set(this.matchTime). After the raw 0..7 loop it writes this.isMatchEnd=1 and MatchEvaluation.inst.ResultType=match_result, then returns. FACT-0093 pins the already-canonical caller at Referee.ProcesskMatchEnd_Normal IL+0x0096 with this.matchResult and the selected raw player index.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMain.ProcessMatchEnd_Normal token 0x06004928 RVA 0x002A9904 signature 20020111a39808 parameters match_result/pl_idx_winner code size 261 code sha256=f204671841365e78a2dfef78bb7a34a0c483ee30ac13d388b9b28b22cd5f17e9; exact winner gate/result-position loop/finish-time/final-field body in canonical/witnesses/CAP-R6-001/match_process_match_end_normal.summary.json; prover tools/prove_match_process_match_end_normal.py",
+      "observation": "Exact matching-DLL ProcessMatchEnd_Normal body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0093 Referee.ProcesskMatchEnd_Normal",
+      "to": "MatchMain.ProcessMatchEnd_Normal(this.matchResult,selected_index)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0093 pins callvirt token 0x06004928 at Referee.ProcesskMatchEnd_Normal IL+0x0096."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only MatchMain.ProcessMatchEnd_Normal and the FACT-0093 caller bridge.",
+    "MatchTime.Set internals remain a separate gate.",
+    "Raw plController.kind value 2, exitTimer 900, resultPosition values 0/1/2/3 and isLoseAndStop/isMatchEnd writes are preserved without added match-rule labels.",
+    "Authored/evaluative meaning of MatchEvaluation result fields remains outside this fact."
+  ]
+}
