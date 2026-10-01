@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0116",
+  "claim": "In the matching retail DLL, the two compiler-generated iterator types returned by FACT-0115 each expose the same four exact IEnumerator support shapes. For <CoChange_BGMandPlay>c__Iterator8, tokens 0x060074EB and 0x060074EC are seven-byte Current getters that return field $current (0x0400C242); Dispose (0x060074ED) is a 15-byte body that writes $disposing=true (0x0400C243) then $PC=-1 (0x0400C244); Reset (0x060074EE) is a six-byte body that constructs System.NotSupportedException through MemberRef 0x0A0000EE and throws it. For <CoChange_BGMandPlay_FromAssetBundle>c__Iterator9, tokens 0x060074F1 and 0x060074F2 return $current (0x0400C24A); Dispose (0x060074F3) writes $disposing=true (0x0400C24B) then $PC=-1 (0x0400C24C); Reset (0x060074F4) has the same six-byte NotSupportedException throw body. FACT-0115 pins the exact generated iterator TypeDefs to which these methods belong.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Iterator8 support tokens 0x060074EB..0x060074EE and Iterator9 support tokens 0x060074F1..0x060074F4; exact bodies, fields and hashes in canonical/witnesses/CAP-R6-001/menu_sound_theme_iterator_support.summary.json; prover tools/prove_menu_sound_theme_iterator_support.py",
+      "observation": "Exact matching-DLL IEnumerator support methods for the two FACT-0115 generated iterator types."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0115 generated iterator types",
+      "to": "their Current / Dispose / Reset support methods",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Metadata ownership places tokens 0x060074EB..0x060074EE on <CoChange_BGMandPlay>c__Iterator8 and 0x060074F1..0x060074F4 on <CoChange_BGMandPlay_FromAssetBundle>c__Iterator9, the exact TypeDefs returned by FACT-0115."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only Current, Dispose and Reset support methods for the two FACT-0115 iterators.",
+    "The two MoveNext bodies remain separate gates.",
+    "Unity coroutine scheduling remains outside this fact."
+  ]
+}
