@@ -378,3 +378,8 @@ jobs:
         run: python tests/test_referee_update_scheduler_summary.py
       - name: Referee update scheduler prover syntax
         run: python -m py_compile tools/prove_referee_update_scheduler.py
+
+      - name: Referee CallFight summary
+        run: python tests/test_referee_call_fight_summary.py
+      - name: Referee CallFight prover syntax
+        run: python -m py_compile tools/prove_referee_call_fight.py
