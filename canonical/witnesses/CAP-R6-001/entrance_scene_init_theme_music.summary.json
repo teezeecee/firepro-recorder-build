@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_ENTRANCE_SCENE_INIT_THEME_MUSIC_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "EntranceScene",
+      "method": "InitThemeMusic",
+      "token": "0x06004833",
+      "rva": "0x00299808",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 244,
+      "code_sha256": "c64099c6e74a32eaa9dcc01c14768a9687140d2da506f443bd11da9449a5bb58",
+      "max_stack": 3,
+      "local_signature_token": "0x11000EED",
+      "local_signature_blob_hex": "07050812a78812a40812a4041287b4",
+      "instruction_count": 76,
+      "branch_instruction_count": 8,
+      "call_instruction_count": 9
+    },
+    "fields": {
+      "entrance_pl_idx_list": {"name": "EntranceScene.plIdxList", "token": "0x04005553"},
+      "entrance_pl_num": {"name": "EntranceScene.plNum", "token": "0x04005555"},
+      "player_man_inst": {"name": "PlayerMan.inst", "token": "0x040061FA"},
+      "player_wres_param": {"name": "Player.WresParam", "token": "0x04005FB3"},
+      "wrestler_theme_music": {"name": "WrestlerParam.themeMusic", "token": "0x040010A0"},
+      "global_work_inst": {"name": "GlobalWork.inst", "token": "0x04002AD1"},
+      "match_setting": {"name": "GlobalWork.MatchSetting", "token": "0x04002AD2"},
+      "match_wrestler_info": {"name": "MatchSetting.matchWrestlerInfo", "token": "0x040057CE"},
+      "wrestler_id": {"name": "MatchWrestlerInfo.wrestlerID", "token": "0x040057BD"},
+      "save_data_inst": {"name": "SaveData.inst", "token": "0x040064EC"},
+      "story_pc": {"name": "ScpData.m_pc", "token": "0x0400489A"},
+      "theme_filename": {"name": "EditWrestlerData.ThemeMusic_Filename", "token": "0x040010C3"}
+    },
+    "calls": {
+      "player_lookup": {"method": "PlayerMan.GetPlObj", "token": "0x06005065", "call_il": "0x0016"},
+      "change_bgm_theme": {
+        "method": "Menu_SoundManager.Change_BGM_Theme",
+        "token": "0x06005296",
+        "call_ils": ["0x003E", "0x00B8", "0x00EE"]
+      },
+      "get_edit_wrestler_data": {"method": "SaveData.GetEditWrestlerData", "token": "0x060051B9", "call_il": "0x0084", "fact_id": "FACT-0102"},
+      "get_story_data": {"method": "SaveData.get_story_data", "token": "0x06005172", "call_il": "0x0098", "fact_id": "FACT-0099"},
+      "check_file": {"method": "MyMusic.Check_File(String)", "token": "0x06002C1E", "call_il": "0x00AB", "fact_id": "FACT-0100"},
+      "my_music_set": {"method": "MyMusic.Set", "token": "0x06002C23", "call_ils": ["0x00C4", "0x00D7"]}
+    },
+    "memberrefs": {
+      "string_empty": {"token": "0x0A000025", "resolved": "System.String.Empty"}
+    },
+    "exact_flow": [
+      "local0 = this.plIdxList[this.plNum - 1]",
+      "local1 = PlayerMan.inst.GetPlObj(local0)",
+      "if local1.WresParam.themeMusic < 10000: Change_BGM_Theme(themeMusic,false,false); return",
+      "local2 = GlobalWork.inst.MatchSetting",
+      "local3 = local2.matchWrestlerInfo[local0]",
+      "if local3.wrestlerID < 10000 and local3.wrestlerID != -2: Change_BGM_Theme(local1.WresParam.themeMusic,false,false); return",
+      "local4 = SaveData.inst.GetEditWrestlerData(local3.wrestlerID)",
+      "if local3.wrestlerID == -2: local4 = SaveData.get_story_data().m_pc",
+      "if MyMusic.Check_File(local4.ThemeMusic_Filename) is false: Change_BGM_Theme(0,false,false); MyMusic.Set(33,System.String.Empty)",
+      "if MyMusic.Check_File(local4.ThemeMusic_Filename) is true: MyMusic.Set(33,local4.ThemeMusic_Filename)",
+      "return"
+    ],
+    "raw_values": {
+      "theme_threshold": 10000,
+      "story_sentinel": -2,
+      "my_music_set_index": 33,
+      "change_bgm_boolean_args": [false, false]
+    },
+    "canonical_bridges": [
+      {"fact_id": "FACT-0102", "callee_token": "0x060051B9", "call_il": "0x0084"},
+      {"fact_id": "FACT-0099", "callee_token": "0x06005172", "call_il": "0x0098"},
+      {"fact_id": "FACT-0100", "callee_token": "0x06002C1E", "call_il": "0x00AB"}
+    ]
+  },
+  "limits": [
+    "Helper internals not already canonical and authored data/file contents remain outside this record.",
+    "The exact raw branch order and call arguments are retained without broader labels."
+  ]
+}
