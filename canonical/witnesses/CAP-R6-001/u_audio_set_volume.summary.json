@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_U_AUDIO_SET_VOLUME_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "uAudio.uAudioPlayer",
+      "method": "set_Volume",
+      "token": "0x060052DC",
+      "rva": "0x00325827",
+      "signature_blob_hex": "2001010c",
+      "return_type": "Void",
+      "parameters": [
+        {"sequence":1,"name":"value","type":"Single"}
+      ],
+      "code_size": 13,
+      "code_sha256": "e3434a65b5c1a9c14959c686924c525e57f68f1cf3fbde7c02a25819e891480c",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 5,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 1
+    },
+    "field": {
+      "token":"0x040087E4",
+      "name":"uAudio.uAudioPlayer.myAudioSource",
+      "signature_blob_hex":"061280b9",
+      "type":"UnityEngine.AudioSource"
+    },
+    "call": {
+      "token":"0x0A0002A2",
+      "resolved":"UnityEngine.AudioSource.set_volume(Single)",
+      "signature_blob_hex":"2001010c",
+      "call_il":"0x0007"
+    },
+    "exact_flow": [
+      "load this.myAudioSource",
+      "load value",
+      "callvirt UnityEngine.AudioSource.set_volume(value)",
+      "return"
+    ],
+    "fact_0134_bridge": {
+      "fact_id":"FACT-0134",
+      "caller":"uAudio.uAudioPlayer.ChangeCurrentVolume",
+      "caller_token":"0x060052E0",
+      "call_il":"0x0002",
+      "callee_token":"0x060052DC"
+    }
+  },
+  "limits": [
+    "External Unity audio implementation and myAudioSource lifecycle remain outside this record."
+  ]
+}
