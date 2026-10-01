@@ -550,3 +550,9 @@ jobs:
         run: python tests/test_entrance_scene_init_theme_music_summary.py
       - name: EntranceScene InitThemeMusic prover syntax
         run: python -m py_compile tools/prove_entrance_scene_init_theme_music.py
+
+
+      - name: PlayerMan GetPlObj summary
+        run: python tests/test_player_man_get_pl_obj_summary.py
+      - name: PlayerMan GetPlObj prover syntax
+        run: python -m py_compile tools/prove_player_man_get_pl_obj.py
