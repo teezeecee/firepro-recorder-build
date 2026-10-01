@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0131",
+  "claim": "In the matching retail DLL, compiler-generated <CoChange_BGMandPlay_FromAssetBundle>c__Iterator9.MoveNext (0x060074F0) is an instance parameterless Boolean method with exact signature blob 200002 and an exact 248-byte body. It reads $PC (0x0400C24C), stores raw -1 back to $PC, and switches raw prior state 0 to initialization and raw prior state 1 to request polling; all other prior states return false. Initialization writes <req>__0 = UnityEngine.AssetBundle.LoadFromFileAsync(fn) through memberref 0x0A000FAB. While <req>__0.get_isDone() is false it writes $current = new UnityEngine.WaitForSeconds(0.0f), writes $PC=1 only when $disposing is false, and returns true. When the request is done it obtains <req>__0.get_assetBundle() through memberref 0x0A000FAC and compares it against null. Only when non-null it loads an AudioClip from Path.GetFileName(fn) through MethodSpec 0x2B000100, calls canonical AudioClipInfo.Set on Menu_SoundManager.audioClipInfo[system_sound], and calls AssetBundle.Unload(false). After that null-gated block, it invokes onLoad when non-null, calls Menu_SoundManager.Play_BGM(system_sound, raw 1) when bStart is true, writes $PC=-1, and returns false. FACT-0115 pins this generated type as the iterator returned by Menu_SoundManager.CoChange_BGMandPlay_FromAssetBundle, FACT-0111 pins the direct factory caller, and FACT-0113 already closes AudioClipInfo.Set.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "<CoChange_BGMandPlay_FromAssetBundle>c__Iterator9.MoveNext token 0x060074F0 RVA 0x00324D5C signature 200002 code size 248 code sha256=e52c9533e53cc4ced4f3643da73e1e997b793257adba26adbc42fa9c4e834754; exact $PC switch, LoadFromFileAsync/yield loop, assetBundle null gate, generic LoadAsset<AudioClip>, AudioClipInfo.Set/Unload(false), optional callback and raw-1 Play_BGM flow in canonical/witnesses/CAP-R6-001/menu_sound_cochange_bundle_movenext.summary.json; prover tools/prove_menu_sound_cochange_bundle_movenext.py",
+      "observation": "Exact matching-DLL generated asset-bundle iterator execution body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0115 Menu_SoundManager.CoChange_BGMandPlay_FromAssetBundle factory",
+      "to": "<CoChange_BGMandPlay_FromAssetBundle>c__Iterator9.MoveNext",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0115 pins factory token 0x06005295 constructing and returning generated type <CoChange_BGMandPlay_FromAssetBundle>c__Iterator9; token 0x060074F0 is MoveNext on that exact TypeDef."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0111 Menu_SoundManager.Change_BGM_Theme",
+      "to": "FACT-0115 CoChange_BGMandPlay_FromAssetBundle factory",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0111 pins call token 0x06005295 at Change_BGM_Theme IL+0x007E."
+        }
+      ]
+    },
+    {
+      "from": "<CoChange_BGMandPlay_FromAssetBundle>c__Iterator9.MoveNext",
+      "to": "FACT-0113 AudioClipInfo.Set",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "MoveNext IL+0x00AA is callvirt token 0x060052C2 after loading Menu_SoundManager.audioClipInfo[system_sound] and the loaded AudioClip local."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact generated iterator MoveNext body and its canonical factory/callee relationships.",
+    "Unity AssetBundle.LoadFromFileAsync, AssetBundleCreateRequest/AsyncOperation, WaitForSeconds, generic LoadAsset and coroutine scheduler behavior remain external.",
+    "Menu_SoundManager.Play_BGM internals remain a separate gate.",
+    "Authored asset-bundle and audio contents remain outside this fact."
+  ]
+}
