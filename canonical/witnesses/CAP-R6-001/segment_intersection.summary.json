@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SEGMENT_INTERSECTION_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "Misc",
+        "method": "CrossProduct",
+        "token": "0x06004A8E",
+        "rva": "0x002B7C10",
+        "signature_blob_hex": "00020c11311131",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "a"
+          },
+          {
+            "sequence": 2,
+            "name": "b"
+          }
+        ],
+        "code_size": 32,
+        "code_sha256": "d5ac4557f63717bfd9e57b204629c1e68dee69af19ff1f8c5842fb5667808c6f",
+        "max_stack": 2,
+        "local_signature_token": null,
+        "local_count": 0,
+        "instruction_count": 12,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 0
+      },
+      {
+        "type": "Misc",
+        "method": "IsIntersect_Segment",
+        "token": "0x06004A92",
+        "rva": "0x002B7CC0",
+        "signature_blob_hex": "0005021011311131113111311131",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "p",
+            "flags": 2
+          },
+          {
+            "sequence": 2,
+            "name": "a"
+          },
+          {
+            "sequence": 3,
+            "name": "b"
+          },
+          {
+            "sequence": 4,
+            "name": "c"
+          },
+          {
+            "sequence": 5,
+            "name": "d"
+          }
+        ],
+        "code_size": 416,
+        "code_sha256": "3ecf11f34c121c71dd42aa6aa5ea214ce1417008a01246410a71ef504a537f76",
+        "max_stack": 5,
+        "local_signature_token": "0x11000F9E",
+        "instruction_count": 151,
+        "branch_instruction_count": 2,
+        "call_instruction_count": 4
+      }
+    ],
+    "cross_product_expression": "a.x * b.y - a.y * b.x",
+    "intersection": {
+      "initialization": "p = Vector2.zero",
+      "first_pair": [
+        "v0=a-d",
+        "v1=b-d",
+        "local2=CrossProduct(v0,v1)",
+        "v0=a-c",
+        "v1=b-c",
+        "local3=CrossProduct(v0,v1)"
+      ],
+      "first_gate": {
+        "expression": "local2 * local3",
+        "compare": 0,
+        "opcode": "blt.un",
+        "continue_target": "0x00DA",
+        "false_return": "0x00D8"
+      },
+      "second_pair": [
+        "v0=c-a",
+        "v1=d-a",
+        "local4=CrossProduct(v0,v1)",
+        "local5=local4+local3-local2"
+      ],
+      "second_gate": {
+        "expression": "local4 * local5",
+        "compare": 0,
+        "opcode": "blt.un",
+        "continue_target": "0x0154",
+        "false_return": "0x0152"
+      },
+      "interpolation": [
+        "local6 = local4 / (local4 - local5)",
+        "p.x = a.x + local6 * (b.x - a.x)",
+        "p.y = a.y + local6 * (b.y - a.y)",
+        "return true"
+      ]
+    },
+    "fact_0053_bridge": {
+      "fact_id": "FACT-0053",
+      "caller": "Ring.mGetOctagonInSideCrossLine",
+      "call_il": "0x0214",
+      "callee_token": "0x06004A92"
+    }
+  },
+  "limits": [
+    "Float32 unordered behavior follows emitted `blt.un`; no higher-level collision semantics are added."
+  ]
+}
