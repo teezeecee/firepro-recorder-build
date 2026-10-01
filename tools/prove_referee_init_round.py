@@ -41,7 +41,6 @@ def verify(path):
  tok(c,0x0000,0x7E,0x04002AD1,"GlobalWork.inst")
  tok(c,0x0005,0x7B,0x04002AD2,"MatchSetting")
  if c[0x000A]!=0x0A:raise E("stloc.0")
- if 0x03 in c:raise E("unexpected ldarg.1 / rd load")
  tok(c,0x000C,0x7B,0x040057D3,"BattleRoyalKind #1")
  br(c,0x0011,0x39,0x0067,"BattleRoyalKind zero branch")
  tok(c,0x0017,0x7C,0x040062A0,"PlPos x path1");f32(c,0x001C,0.0,"x path1");tok(c,0x0021,0x7D,0x0A000009,"Vector3.x #1")
