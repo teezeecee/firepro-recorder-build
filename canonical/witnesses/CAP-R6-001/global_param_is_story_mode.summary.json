@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_GLOBAL_PARAM_IS_STORY_MODE_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "GlobalParam",
+      "method": "IsStoryMode",
+      "token": "0x06001FC1",
+      "rva": "0x0011382F",
+      "signature_blob_hex": "000002",
+      "static": true,
+      "return_type": "Boolean",
+      "parameters": [],
+      "code_size": 10,
+      "code_sha256": "421cdea7e302135e6671b62354bfa5d99562e3a6547b1d20d6aa9492bfa3fa8d",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 4,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 0
+    },
+    "field": {
+      "name": "GlobalParam.m_SceneMode",
+      "token": "0x04002862",
+      "signature_blob_hex": "06119094",
+      "type": "SceneMode"
+    },
+    "raw_scene_mode_value": 11,
+    "exact_flow": [
+      "load GlobalParam.m_SceneMode",
+      "load raw 11",
+      "ceq",
+      "return"
+    ],
+    "fact_0117_bridge": {
+      "fact_id": "FACT-0117",
+      "caller": "ThemeMusicInfo.CheckValidationDLC",
+      "call_il": "0x0058",
+      "callee_token": "0x06001FC1"
+    }
+  },
+  "limits": [
+    "SceneMode writers and broader scene behavior remain outside this record."
+  ]
+}
