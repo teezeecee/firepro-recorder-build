@@ -1,0 +1,53 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_MY_MUSIC_PLAY_CO_MOVENEXT_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "owner_type":{"name":"<MyMusic_Play_Co>c__IteratorE","token":"0x02000F73","factory_fact_id":"FACT-0144","ctor_fact_id":"FACT-0145"},
+    "methoddef_row":{"token":"0x0600750F","row_hex":"ac5432000000e6017f5a0600db490000d24f","rva":"0x003254AC"},
+    "method":{"method":"MoveNext","token":"0x0600750F","rva":"0x003254AC","signature_blob_hex":"200002","return_type":"Boolean","parameters":[],"code_size":328,"code_sha256":"19dabb20d473fa3b479ae5e4d54dd67e44063fc7b40e2537738b472ce9dbeb98","header_format":"fat","header_flags_raw":"0x0013","max_stack":4,"local_signature_token":"0x11000047","local_signature_blob_hex":"070109","locals":[{"index":0,"type":"UInt32"}],"instruction_count":98,"branch_instruction_count":11,"call_instruction_count":11},
+    "fields":{
+      "url":{"token":"0x0400C269","name":"<url>__0","signature_blob_hex":"060e","type":"String"},
+      "www":{"token":"0x0400C26A","name":"<www>__0","signature_blob_hex":"0612883d","type":"UnityEngine.WWW"},
+      "audio_track":{"token":"0x0400C26B","name":"<audioTrack>__0","signature_blob_hex":"061249","type":"UnityEngine.AudioClip"},
+      "audio_src_info":{"token":"0x0400C26C","name":"<s>__0","signature_blob_hex":"0612aa2c","type":"AudioSrcInfo"},
+      "current":{"token":"0x0400C26D","name":"$current","signature_blob_hex":"061c","type":"Object"},
+      "disposing":{"token":"0x0400C26E","name":"$disposing","signature_blob_hex":"0602","type":"Boolean"},
+      "pc":{"token":"0x0400C26F","name":"$PC","signature_blob_hex":"0608","type":"Int32"}
+    },
+    "external_fields":{
+      "selected_name":{"token":"0x04008707","name":"Menu_SoundManager.MyMusic_SelectFile_Name"},
+      "selected_volume":{"token":"0x04008708","name":"Menu_SoundManager.MyMusic_Volume"},
+      "audio_src_info_array":{"token":"0x040086EB","name":"Menu_SoundManager.audioSrcInfo"},
+      "source":{"token":"0x0400874C","name":"AudioSrcInfo.sRefAudio"},
+      "fade_out_cnt":{"token":"0x0400874D","name":"AudioSrcInfo.fadeOutCnt"},
+      "fade_out_frm":{"token":"0x0400874E","name":"AudioSrcInfo.fadeOutFrm"}
+    },
+    "strings":{"file_prefix":{"token":"0x7008EBDE","value":"file://","load_il":"0x0026"}},
+    "calls":{
+      "string_concat":{"token":"0x0A000012","resolved":"System.String.Concat(String,String)","call_il":"0x0030"},
+      "www_ctor":{"token":"0x0A000FA7","resolved":"UnityEngine.WWW..ctor(String)","call_il":"0x0041"},
+      "wait_end_of_frame_ctor":{"token":"0x0A00064D","resolved":"UnityEngine.WaitForEndOfFrame..ctor()","call_ils":["0x0051","0x0098"]},
+      "www_is_done":{"token":"0x0A000FA8","resolved":"UnityEngine.WWW.get_isDone","call_il":"0x0075"},
+      "get_audio_clip":{"token":"0x0A000FA9","resolved":"UnityEngine.WWWAudioExtensions.GetAudioClip(WWW,Boolean,Boolean)","call_il":"0x0088"},
+      "audio_clip_load_state":{"token":"0x0A000FAA","resolved":"UnityEngine.AudioClip.get_loadState","call_il":"0x00BC"},
+      "set_volume":{"token":"0x0A0002A2","resolved":"UnityEngine.AudioSource.set_volume","call_il":"0x00E4"},
+      "set_clip":{"token":"0x0A00079B","resolved":"UnityEngine.AudioSource.set_clip","call_il":"0x00FA"},
+      "set_loop":{"token":"0x0A00079C","resolved":"UnityEngine.AudioSource.set_loop","call_il":"0x010B"},
+      "play":{"token":"0x0A0002A3","resolved":"UnityEngine.AudioSource.Play","call_il":"0x011B"}
+    },
+    "state_switch":{"prior_state_field":"$PC","stores_minus_one_before_switch":true,"targets":[{"raw_state":0,"target_il":"0x0025"},{"raw_state":1,"target_il":"0x006F"},{"raw_state":2,"target_il":"0x00B6"}],"default_target_il":"0x0144"},
+    "exact_flow":[
+      "local0 = this.$PC; this.$PC = -1; switch local0: raw 0 -> initialize WWW, raw 1 -> WWW poll, raw 2 -> AudioClip load-state poll, default -> return false",
+      "raw state 0: this.<url>__0 = 'file://' + Menu_SoundManager.MyMusic_SelectFile_Name; this.<www>__0 = new UnityEngine.WWW(this.<url>__0); join WWW poll",
+      "WWW poll: if !this.<www>__0.isDone, this.$current = new WaitForEndOfFrame(); if !this.$disposing set this.$PC=1; return true",
+      "WWW done: this.<audioTrack>__0 = WWWAudioExtensions.GetAudioClip(this.<www>__0,false,true); join load-state poll",
+      "load-state poll: if this.<audioTrack>__0.loadState == raw 1, this.$current = new WaitForEndOfFrame(); if !this.$disposing set this.$PC=2; return true",
+      "load complete/non-raw-1: this.<s>__0 = Menu_SoundManager.audioSrcInfo[0]; set source volume from MyMusic_Volume; set source clip to audioTrack; loop=true; Play(); fadeOutFrm=0; fadeOutCnt=0; return false"
+    ],
+    "metadata_relationship":{"factory_fact_id":"FACT-0144","ctor_fact_id":"FACT-0145","owner_type_token":"0x02000F73","relationship_status":"SAME_GENERATED_TYPE_METHOD_NOT_RUNTIME_CALL"}
+  },
+  "limits":["Unity string coroutine dispatch/scheduler and all external Unity media implementations remain outside this record."]
+}
