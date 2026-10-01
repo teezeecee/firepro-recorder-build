@@ -610,3 +610,9 @@ jobs:
         run: python tests/test_global_param_is_story_mode_summary.py
       - name: GlobalParam IsStoryMode prover syntax
         run: python -m py_compile tools/prove_global_param_is_story_mode.py
+
+
+      - name: SaveData IsDLCInstalled summary
+        run: python tests/test_save_data_is_dlc_installed_summary.py
+      - name: SaveData IsDLCInstalled prover syntax
+        run: python -m py_compile tools/prove_save_data_is_dlc_installed.py
