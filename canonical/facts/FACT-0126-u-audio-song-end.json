@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0126",
+  "claim": "In the matching retail DLL, uAudio.uAudioPlayer.SongEnd (0x060052E6) is an instance parameterless Void method with exact signature blob 200001 and an exact 141-byte code body. It writes this.endSongTime from this.get_CurrentTime(), closes this.readFullyStream when non-null, calls this.myAudioSource.Stop(), calls this._uAudio.Stop(), writes null to this.myAudioSource.clip, then writes raw zero to this.updateTime, this._loadedTarget and this.State. Its inner protected region spans IL+0x0059 through IL+0x0074: when this.get_sendPlaybackState() is non-null it invokes that returned delegate with raw 0; the inner System.Object catch at IL+0x0075 pops the caught object and leaves to IL+0x007B. The outer protected region spans IL+0x0000 through IL+0x007F; its System.Object handler at IL+0x0080 pops the caught object, constructs System.Exception with exact user string 'Song end #7cgf87dcf7sd8csd', and throws it. FACT-0124 pins the already-canonical caller at Destroy_AudioPlayer IL+0x0001.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "uAudio.uAudioPlayer.SongEnd token 0x060052E6 RVA 0x003259C8 signature 200001 code size 141 code sha256=3ff6f18fdb7ed86c92f309f6496f6d7fc3a7cee75b55c9174345fac0efaeee4c; exact cleanup/callback sequence and two small System.Object EH clauses in canonical/witnesses/CAP-R6-001/u_audio_song_end.summary.json; prover tools/prove_u_audio_song_end.py",
+      "observation": "Exact matching-DLL SongEnd body and exception section."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0124 uAudio.uAudioPlayer.Destroy_AudioPlayer",
+      "to": "uAudio.uAudioPlayer.SongEnd()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0124 pins call token 0x060052E6 at Destroy_AudioPlayer IL+0x0001."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact SongEnd body, its two exception clauses and the FACT-0124 caller bridge.",
+    "uAudio.uAudioPlayer.get_CurrentTime and get_sendPlaybackState internals remain separate gates.",
+    "System.IO.Stream, UnityEngine.AudioSource, uAudio backend, delegate Invoke and System.Exception implementations remain external.",
+    "Raw callback/state value 0 and the exact exception string are preserved without assigning higher-level semantics."
+  ]
+}
