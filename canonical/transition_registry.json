@@ -637,6 +637,26 @@
         "other priority-action mutation/caller closure",
         "broader PlayerController_AI scheduling closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_PRIORITY_ACT_V1",
+      "fact_id": "FACT-0037",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL PlayerController_AI.ProcessPriorityAct entry gates, 12-index checkedPriAct scan, AIParam field selection, trigger/hit/lot/rate/action ordering, result return split, and PlayerController_AI.Update caller bridge.",
+      "summary": "canonical/witnesses/CAP-R6-001/process_priority_act.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "GetDamageLevel_LMH internal closure",
+        "IsLotPriorityAct internal closure",
+        "TryToDoPriorityAct internal closure",
+        "Reset_HungUpCheck internal closure",
+        "AIParam priority table provenance and raw index meaning",
+        "wider PlayerController_AI.Update scheduling closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
