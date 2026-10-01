@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0134",
+  "claim": "In the matching retail DLL, instance uAudio.uAudioPlayer.ChangeCurrentVolume (0x060052E0) is a one-Single-parameter Void method with exact signature blob 2001010c and an exact 8-byte body. It loads this and parameter volumeIN, calls sibling uAudio.uAudioPlayer.set_Volume (0x060052DC), and returns. FACT-0133 pins the two already-canonical direct caller sites at Menu_SoundManager.MyMusic_Play IL+0x0105 and IL+0x01BC.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "uAudio.uAudioPlayer.ChangeCurrentVolume token 0x060052E0 RVA 0x0032587C signature 2001010c parameter volumeIN:Single code size 8 code sha256=bf7afe343990f70067b2d0a5f418a180d7f1abee664827c4b4e6e18940403ca7; exact this/volumeIN/set_Volume/ret wrapper in canonical/witnesses/CAP-R6-001/u_audio_change_current_volume.summary.json; prover tools/prove_u_audio_change_current_volume.py",
+      "observation": "Exact matching-DLL ChangeCurrentVolume body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0133 Menu_SoundManager.MyMusic_Play",
+      "to": "uAudio.uAudioPlayer.ChangeCurrentVolume(MyMusic_Volume)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0133 pins callvirt token 0x060052E0 at MyMusic_Play IL+0x0105 and IL+0x01BC after loading script_uAudioPlayer and MyMusic_Volume."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact ChangeCurrentVolume wrapper and its two FACT-0133 caller bridges.",
+    "uAudio.uAudioPlayer.set_Volume internals remain a separate gate.",
+    "Audio output behavior remains outside this fact."
+  ]
+}

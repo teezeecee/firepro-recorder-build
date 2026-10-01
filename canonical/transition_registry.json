@@ -2299,6 +2299,22 @@
         "external Unity coroutine/component behavior",
         "filesystem and authored music contents"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_CHANGE_CURRENT_VOLUME_V1",
+      "fact_id": "FACT-0134",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudio.uAudioPlayer.ChangeCurrentVolume one-call wrapper into set_Volume, bridged from both FACT-0133 call sites.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_change_current_volume.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "uAudio.uAudioPlayer.set_Volume internal closure",
+        "runtime audio behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
