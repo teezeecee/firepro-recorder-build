@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_PROCESS_BOOING_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "Process_Booing",
+      "token": "0x060050A3",
+      "rva": "0x00308FB4",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 90,
+      "code_sha256": "b7e8964816ea334e17fdf26aeb44a9789251e264d1bcc2eedc1fbd0fcc3ea42d",
+      "instruction_count": 29,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 2
+    },
+    "fields": {
+      "match_main_inst": {
+        "name": "MatchMain.inst",
+        "token": "0x0400576C"
+      },
+      "is_match_end": {
+        "name": "isMatchEnd",
+        "token": "0x04005753"
+      },
+      "booing_count": {
+        "name": "BooingCnt",
+        "token": "0x04005739"
+      },
+      "audience_inst": {
+        "name": "Audience.inst",
+        "token": "0x040054C9"
+      }
+    },
+    "exact_flow": [
+      "local = MatchMain.inst",
+      "if local.isMatchEnd != 0: return",
+      "local.BooingCnt = local.BooingCnt + 1",
+      "if local.BooingCnt != 4096: return",
+      "Audience.inst.PlayCheerVoice(9,0)",
+      "local.BooingCnt = local.BooingCnt - 128",
+      "Audience.inst.TensionDown()",
+      "return"
+    ],
+    "calls": [
+      {
+        "method": "Audience.PlayCheerVoice",
+        "token": "0x060047D9",
+        "il": "0x0038",
+        "raw_arguments": [
+          9,
+          0
+        ]
+      },
+      {
+        "method": "Audience.TensionDown",
+        "token": "0x060047D7",
+        "il": "0x0054",
+        "raw_arguments": []
+      }
+    ],
+    "fact_0074_bridge": {
+      "fact_id": "FACT-0074",
+      "caller": "Referee.UpdateReferee",
+      "call_il": "0x0033",
+      "callee_token": "0x060050A3"
+    }
+  },
+  "limits": [
+    "Audience helper internals and semantic labels for raw constants remain outside this record."
+  ]
+}
