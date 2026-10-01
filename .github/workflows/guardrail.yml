@@ -263,3 +263,8 @@ jobs:
         run: python tests/test_force_set_down_time_summary.py
       - name: ForceSetDownTime prover syntax
         run: python -m py_compile tools/prove_force_set_down_time.py
+
+      - name: AutoRun geometry classifiers summary
+        run: python tests/test_autorun_geometry_classifiers_summary.py
+      - name: AutoRun geometry classifiers prover syntax
+        run: python -m py_compile tools/prove_autorun_geometry_classifiers.py

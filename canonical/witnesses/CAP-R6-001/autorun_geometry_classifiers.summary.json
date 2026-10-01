@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_AUTORUN_GEOMETRY_CLASSIFIERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "MatchMisc",
+        "method": "IsArea_UpperTriangles",
+        "token": "0x06004961",
+        "rva": "0x002B03A1",
+        "signature_blob_hex": "00010211a854",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "area"
+          }
+        ],
+        "return_type": "Boolean",
+        "code_size": 18,
+        "code_sha256": "654ba7cc9e57f9d89980c22e809e524ea356d0b765da69858346bf5f552f101e",
+        "instruction_count": 10,
+        "branch_instruction_count": 2,
+        "call_instruction_count": 0
+      },
+      {
+        "type": "Ring",
+        "method": "GetColAreaInRhombus",
+        "token": "0x060050E8",
+        "rva": "0x0030C1AC",
+        "signature_blob_hex": "000311a85412a8fc0c0c",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "rp"
+          },
+          {
+            "sequence": 2,
+            "name": "x"
+          },
+          {
+            "sequence": 3,
+            "name": "y"
+          }
+        ],
+        "code_size": 44,
+        "code_sha256": "9e30d379778702383767528e435f4f3286a8750330a3c347070a0bd6b2d7f040",
+        "instruction_count": 20,
+        "branch_instruction_count": 3,
+        "call_instruction_count": 0
+      },
+      {
+        "type": "Ring",
+        "method": "GetColAreaInRhombus_AroundRing",
+        "token": "0x060050E9",
+        "rva": "0x0030C1D9",
+        "signature_blob_hex": "200111a8541131",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "p"
+          }
+        ],
+        "code_size": 26,
+        "code_sha256": "176f302c0fcf51b200743023b8c7ca7028e80575b1fb3de87efd6d6bddf130d6",
+        "instruction_count": 8,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1
+      }
+    ],
+    "area_classifier": {
+      "raw_true_values": [
+        2,
+        3
+      ],
+      "raw_false": "all other values"
+    },
+    "rhombus_core": {
+      "fields": {
+        "x2": "0x0400648A",
+        "y2": "0x0400648D"
+      },
+      "raw_branch_opcodes": [
+        "blt.un",
+        "bgt.un",
+        "bgt.un"
+      ],
+      "ordered_mapping": [
+        {
+          "condition": "y >= rp.y2 AND x <= rp.x2",
+          "raw_result": 2
+        },
+        {
+          "condition": "y >= rp.y2 AND x > rp.x2",
+          "raw_result": 3
+        },
+        {
+          "condition": "y < rp.y2 AND x <= rp.x2",
+          "raw_result": 4
+        },
+        {
+          "condition": "y < rp.y2 AND x > rp.x2",
+          "raw_result": 5
+        }
+      ]
+    },
+    "around_ring_wrapper": {
+      "field": "Ring.colData_AroundRing",
+      "field_token": "0x04006373",
+      "forwarded_components": [
+        "p.x",
+        "p.y"
+      ],
+      "callee_token": "0x060050E8"
+    },
+    "fact_0050_bridge": {
+      "fact_id": "FACT-0050",
+      "around_ring_call_il": "0x0062",
+      "upper_triangle_call_ils": [
+        "0x0095",
+        "0x00B8",
+        "0x00F0",
+        "0x0113"
+      ]
+    }
+  },
+  "limits": [
+    "Raw area values and unordered Float32 behavior receive no inferred spatial labels."
+  ]
+}

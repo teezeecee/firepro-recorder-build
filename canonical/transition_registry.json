@@ -902,6 +902,23 @@
         "broader ruleset-state interpretation",
         "other ForceSetDownTime caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_AUTORUN_GEOMETRY_CLASSIFIERS_V1",
+      "fact_id": "FACT-0052",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL raw area Boolean classifier plus Ring rhombus core and around-ring wrapper used by FACT-0050 AutoRun direction selection.",
+      "summary": "canonical/witnesses/CAP-R6-001/autorun_geometry_classifiers.summary.json",
+      "dll_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "raw area spatial-label mapping",
+        "authored colData_AroundRing provenance",
+        "larger cross-line geometry helper closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
