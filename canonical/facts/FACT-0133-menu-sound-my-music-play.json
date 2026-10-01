@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0133",
+  "claim": "In the matching retail DLL, instance Menu_SoundManager.MyMusic_Play (0x060052B8) has exact signature blob 20020211aa2411aa18, parameters (SYSTEM_SOUND bgm, PLAY_TYPE type), and an exact 481-byte body. It initializes a Boolean local false and switches raw bgm-32 with raw 32 and raw 35 sharing the Progress branch, raw 33 using Admission and raw 34 using Match; the switch default jumps directly to the shared tail. Each named branch calls this.MyMusic_CheckFile on its corresponding static selected filename; a false result writes System.String.Empty back to that selected filename and returns false. Successful Progress writes MyMusic_SelectFile_Name = Root_DirectotyPath + MyMusic_SelectFile_Progress and MyMusic_Volume = Volume_BgmProgress. Successful Admission and Match similarly write the combined selected path and their corresponding volume, then inspect Path.GetExtension(MyMusic_SelectFile_Name).ToLower() for exact string '.mp3'. On that exact extension, when script_uAudioPlayer compares equal to null it writes this.gameObject.AddComponent<uAudio.uAudioPlayer>() to script_uAudioPlayer; it then calls LoadFile(MyMusic_SelectFile_Name), calls Play with a default-initialized Nullable<TimeSpan>, calls ChangeCurrentVolume(MyMusic_Volume), and sets the Boolean local true. At the shared tail, when that Boolean is false it calls this.StartCoroutine('MyMusic_Play_Co') and pops the returned Coroutine. The method then returns true. FACT-0132 pins the already-canonical caller at Menu_SoundManager.Play_BGM IL+0x0066.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.MyMusic_Play token 0x060052B8 RVA 0x00323130 signature 20020211aa2411aa18 code size 481 code sha256=e84b8a91478acffadf8ee5f39f17855e421d0cf1b4d482f97dfbb53700440a5a; exact raw-32/33/34/35 selection branches, MyMusic_CheckFile failures, path/volume writes, .mp3 uAudio direct path and shared MyMusic_Play_Co coroutine tail in canonical/witnesses/CAP-R6-001/menu_sound_my_music_play.summary.json; prover tools/prove_menu_sound_my_music_play.py",
+      "observation": "Exact matching-DLL Menu_SoundManager.MyMusic_Play body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0132 Menu_SoundManager.Play_BGM",
+      "to": "Menu_SoundManager.MyMusic_Play(bgm_type,type)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0132 pins callvirt token 0x060052B8 at Play_BGM IL+0x0066 after canonical get__instance and the two original arguments."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact MyMusic_Play body and the FACT-0132 caller bridge.",
+    "Menu_SoundManager.MyMusic_CheckFile, uAudio.uAudioPlayer.LoadFile, Play and ChangeCurrentVolume internals remain separate gates.",
+    "Unity GameObject.AddComponent, MonoBehaviour.StartCoroutine and other framework implementations remain external.",
+    "Filesystem contents and authored music files remain outside this fact.",
+    "Raw SYSTEM_SOUND values 32, 33, 34 and 35 and the exact '.mp3' extension string are preserved without assigning broader labels."
+  ]
+}
