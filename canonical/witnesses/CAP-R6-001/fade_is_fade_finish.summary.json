@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_FADE_IS_FADE_FINISH_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Fade",
+      "method": "IsFadeFinish",
+      "token": "0x06004A7D",
+      "rva": "0x002B76FD",
+      "signature_blob_hex": "200002",
+      "return_type": "Boolean",
+      "parameters": [],
+      "code_size": 16,
+      "code_sha256": "8ab025c02e60a82d0238a60fbf523b6ad20647ca0ed32600a0fdf8b2df1a0083",
+      "instruction_count": 8,
+      "branch_instruction_count": 1,
+      "call_instruction_count": 0
+    },
+    "field": {
+      "name": "NowFrm",
+      "token": "0x04005920"
+    },
+    "exact_branch": {
+      "comparison": "NowFrm > 0",
+      "opcode": "bgt",
+      "true_target_effect": "return false",
+      "fallthrough_effect": "return true",
+      "equivalent_true_condition": "NowFrm <= 0"
+    },
+    "caller_bridge": {
+      "fact_id": "FACT-0058",
+      "caller": "MatchMisc.PlayMatchSE",
+      "call_il": "0x0024",
+      "callee_token": "0x06004A7D"
+    }
+  },
+  "limits": [
+    "Fade.NowFrm writers/updates and other callers remain outside this record."
+  ]
+}
