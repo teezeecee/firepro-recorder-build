@@ -1998,6 +1998,22 @@
         "Unity coroutine scheduling behavior",
         "authored audio contents"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_THEME_ITERATOR_SUPPORT_V1",
+      "fact_id": "FACT-0116",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Current/Dispose/Reset support methods for the two FACT-0115 compiler-generated theme-BGM iterator types.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_theme_iterator_support.summary.json",
+      "dll_method_count": 8,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "generated iterator MoveNext closure",
+        "Unity coroutine scheduling behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
