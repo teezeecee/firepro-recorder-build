@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0045",
+  "claim": "In the matching retail DLL, PlayerController_AI.InitAllWorks (0x06004F9A) is an instance method with one Boolean parameter named create_init and an exact 213-byte body. It writes raw zero to padPush, padOn, aiAct, aiActStep, aiActDuration, ComStatus, aiActPrm, ComPos, ComReturn, ComCutWait, ComRtnCnt, area_InOctagon, area_InRhombus, takeOutWeaponSeq, ComSecMovTime, doneVictoryPerformance, isAICheckedDisturb, keepLastSkill, dragOpponentCnt, isLotPerformanceOnCorner, and isSleep; writes raw -1 to destCorner and currentPriAct; writes raw 216000 to both notDisturbTime_AllSecond and notDisturbTime; calls the already-closed Reset_HungUpCheck and ResetCheckedPriAct helpers; calls CalcTouchTime only when create_init is false; then writes touchTarget=-1 and returns. PlayerController_AI.Init (0x06004F99) pins one exact caller path: IL+0x0001 loads raw true and IL+0x0002 calls InitAllWorks, so that caller skips CalcTouchTime.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.InitAllWorks token 0x06004F9A RVA 0x002F5DF0 signature 20010102 parameter create_init:Boolean code size 213 code sha256=f79b47e5840d3c2948b9ce1a4af92f400b37f9fa52d613a9fb2a5b91674edeee; exact field/call body in canonical/witnesses/CAP-R6-001/ai_init_all_works.summary.json; prover tools/prove_ai_init_all_works.py",
+      "observation": "Exact matching-DLL InitAllWorks body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Init",
+      "to": "PlayerController_AI.InitAllWorks(true)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Init token 0x06004F99 RVA 0x002F5ADC code hash 7a738543d0ba6f0c0fbd5a6121ba72aceb6c2c2ec1477b08f3ede6390a557e30; IL+0x0001 ldc.i4.1 and IL+0x0002 call token 0x06004F9A."
+        }
+      ]
+    },
+    {
+      "from": "InitAllWorks reset body",
+      "to": "FACT-0038/FACT-0036 helpers",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "InitAllWorks IL+0x00B6 calls Reset_HungUpCheck token 0x06004FD8 closed by FACT-0038; IL+0x00BC calls ResetCheckedPriAct token 0x06005007 closed by FACT-0036."
+        }
+      ]
+    },
+    {
+      "from": "InitAllWorks create_init branch",
+      "to": "CalcTouchTime conditional call",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "InitAllWorks IL+0x00C1 loads create_init; brtrue IL+0x00CD skips the call; false path IL+0x00C8 calls CalcTouchTime token 0x06004FFE."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "CalcTouchTime internals remain outside this fact and are the next direct helper boundary.",
+    "Raw reset values and metadata field names are preserved without assigning higher-level AI meanings.",
+    "PlayerController_AI.Init is used only for the exact caller bridge here; its remaining 775-byte body remains outside this fact.",
+    "Later consumers of the initialized fields remain outside this fact."
+  ]
+}
