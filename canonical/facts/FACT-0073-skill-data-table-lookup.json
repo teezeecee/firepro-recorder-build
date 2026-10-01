@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0073",
+  "claim": "In the matching retail DLL, SkillDataMan.GetSkillData overload token 0x06005262 is an instance method with one parameter named anm_id and an exact 30-byte body. It applies signed bounds to anm_id: values below raw 0 branch to a fallback, values below raw 4188 continue unchanged, and values at or above raw 4188 fall through to the same fallback. The fallback overwrites argument anm_id with raw 0 using starg.s. The method then loads the SkillDataMan.skillData array field (0x04007CF7), indexes it with the resulting anm_id, and returns that element. FACT-0072 pins the direct call to this exact overload after computing raw 2675 + skill_idx.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SkillDataMan.GetSkillData token 0x06005262 RVA 0x0031FEC5 signature blob 200112a9a811a97c parameter anm_id code size 30 code sha256=34bf8ce8e06453d321e7f41685aa3e4e372936c5a0c79f789966d562be26b88b; exact signed bounds, starg.s fallback and skillData array lookup in canonical/witnesses/CAP-R6-001/skill_data_table_lookup.summary.json; prover tools/prove_skill_data_table_lookup.py",
+      "observation": "Exact matching-DLL GetSkillData overload body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0072 SkillDataMan.GetSkillData_Standard",
+      "to": "SkillDataMan.GetSkillData(anm_id)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0072 pins call token 0x06005262 at GetSkillData_Standard IL+0x0008 after raw 2675 + skill_idx."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only token 0x06005262; another GetSkillData overload exists separately.",
+    "Raw bounds 0 and 4188 and fallback index 0 are preserved numerically without catalog labels.",
+    "Authored SkillDataMan.skillData array contents remain outside this fact."
+  ]
+}
