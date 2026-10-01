@@ -1932,6 +1932,22 @@
         "AudioClipInfo.Set closure",
         "authored ThemeMusicInfo/bundle/resource contents"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_INSTANCE_GETTER_V1",
+      "fact_id": "FACT-0112",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.get__instance static-field getter, bridged from both FACT-0111 call sites.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_instance_getter.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Menu_SoundManager.inst assignment/lifecycle closure",
+        "additional get__instance caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
