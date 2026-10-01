@@ -1,0 +1,55 @@
+{
+  "fact_id": "FACT-0064",
+  "claim": "In the matching retail DLL, the referee-sound path is closed as two directly connected methods. MatchMisc.PlayRefereeSE (0x06004971) is a static one-parameter method named seid with an exact 87-byte body. Its only pre-dispatch suppression path requires non-null MatchMain, raw isFastForwardMatch nonzero, Fade.IsFadeFinish() true, and unsigned MchFrameCnt % 20 nonzero; otherwise it reaches dispatch, requires MatchSEPlayer.inst non-null, and calls MatchSEPlayer.PlayRefereeSE(seid) unchanged. MatchSEPlayer.PlayRefereeSE (0x06005278) is an instance one-parameter method named seid with an exact 77-byte body. It returns when seid is 109 or greater, resolves RefereeMan.GetInst().GetRefereeObj() and requires that object to convert true, returns when seid is negative, then requires rfs_se_wait_list[seid] to be zero. On the accepted path it stores raw 2 into rfs_se_wait_list[seid] and calls the already-canonical Menu_SoundManager.Play_MatchSE(seid,1.0f). FACT-0063 closes the shared positive-value wait-list decrement loop.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.PlayRefereeSE token 0x06004971 RVA 0x002B0B50 signature 00010111aa0c parameter seid code size 87 code sha256=1875e52cbc086e1797f248a8f89340c75605d756409b3eb4e4bf1cea0d0080f9; exact wrapper body in canonical/witnesses/CAP-R6-001/referee_sound_path.summary.json; prover tools/prove_referee_sound_path.py",
+      "observation": "Exact matching-DLL outer referee-sound wrapper."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchSEPlayer.PlayRefereeSE token 0x06005278 RVA 0x00321688 signature 20010111aa0c parameter seid code size 77 code sha256=43db6ad4797e97ed994bdc3c50bd925b35592f129148bd42103009de2d51b645; exact inner wait-list/referee gate in canonical/witnesses/CAP-R6-001/referee_sound_path.summary.json; prover tools/prove_referee_sound_path.py",
+      "observation": "Exact matching-DLL inner referee-sound method."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "MatchMisc.PlayRefereeSE",
+      "to": "MatchSEPlayer.PlayRefereeSE(seid)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Outer wrapper IL+0x0051 callvirt token 0x06005278 after loading static MatchSEPlayer.inst and arg0 seid."
+        }
+      ]
+    },
+    {
+      "from": "MatchSEPlayer.PlayRefereeSE",
+      "to": "FACT-0061 Menu_SoundManager.Play_MatchSE",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Inner method IL+0x0047 calls token 0x060052A8 after loading seid and local Float32 1.0."
+        }
+      ]
+    },
+    {
+      "from": "MatchSEPlayer.PlayRefereeSE raw wait write",
+      "to": "FACT-0063 MatchSEPlayer.Update decay loop",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Inner method IL+0x003C..0x0044 writes raw 2 to field 0x040086E5 rfs_se_wait_list[seid]; FACT-0063 closes the same field's positive-value decrement loop."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "No already-canonical gameplay caller of MatchMisc.PlayRefereeSE is promoted by this fact; the two method bodies and their direct internal connection are DLL-only.",
+    "RefereeMan.GetInst/GetRefereeObj internals remain separate gates.",
+    "Raw sound IDs and wait values remain numeric without player-facing labels.",
+    "Authored sound data remains source-blocked."
+  ]
+}
