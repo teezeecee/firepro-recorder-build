@@ -1,0 +1,44 @@
+{
+  "fact_id": "FACT-0054",
+  "claim": "In the matching retail DLL, `Misc.CrossProduct` and `Misc.IsIntersect_Segment` form one exact vector-arithmetic family used by FACT-0053. `CrossProduct` (0x06004A8E) has parameters a,b and an exact 32-byte branchless body returning `a.x*b.y - a.y*b.x`. `IsIntersect_Segment` (0x06004A92) has parameters out/ref p,a,b,c,d and an exact 416-byte body. It initializes p=Vector2.zero, computes local2=CrossProduct(a-d,b-d) and local3=CrossProduct(a-c,b-c), then continues only through the emitted `blt.un` test of `local2*local3` against 0.0; otherwise it returns false. It next computes local4=CrossProduct(c-a,d-a), local5=local4+local3-local2, and continues only through the emitted `blt.un` test of `local4*local5` against 0.0; otherwise it returns false. On the continuing path it computes local6=local4/(local4-local5), writes `p.x=a.x+local6*(b.x-a.x)` and `p.y=a.y+local6*(b.y-a.y)`, then returns true. FACT-0053 pins the exact caller at Ring.mGetOctagonInSideCrossLine IL+0x0214.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Misc.CrossProduct token 0x06004A8E RVA 0x002B7C10 signature 00020c11311131 parameters a,b code size 32 code sha256=d5ac4557f63717bfd9e57b204629c1e68dee69af19ff1f8c5842fb5667808c6f; exact body in canonical/witnesses/CAP-R6-001/segment_intersection.summary.json",
+      "observation": "Exact matching-DLL 2D cross-product helper."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Misc.IsIntersect_Segment token 0x06004A92 RVA 0x002B7CC0 signature 0005021011311131113111311131 parameters p,a,b,c,d code size 416 code sha256=3ecf11f34c121c71dd42aa6aa5ea214ce1417008a01246410a71ef504a537f76; exact arithmetic/branch/output body in canonical/witnesses/CAP-R6-001/segment_intersection.summary.json; prover tools/prove_segment_intersection.py",
+      "observation": "Exact matching-DLL segment-intersection helper."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0053 Ring.mGetOctagonInSideCrossLine",
+      "to": "Misc.IsIntersect_Segment(out isp,moving[0],moving[1],edge[0],edge[1])",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0053 pins call token 0x06004A92 at mGetOctagonInSideCrossLine IL+0x0214."
+        }
+      ]
+    },
+    {
+      "from": "Misc.IsIntersect_Segment vector differences",
+      "to": "Misc.CrossProduct",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IsIntersect_Segment calls token 0x06004A8E at IL+0x0065,0x00C5,0x0134."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The emitted `blt.un` Float32 branch behavior is preserved exactly; no additional claim is made for NaN/unordered inputs.",
+    "This fact records the algorithmic arithmetic only and does not assign player-facing geometric labels to the segment inputs.",
+    "UnityEngine.Vector2 field behavior is used only as emitted MemberRef access."
+  ]
+}
