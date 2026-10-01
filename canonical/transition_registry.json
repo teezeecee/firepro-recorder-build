@@ -745,6 +745,23 @@
         "later aiActPrm/aiActStep/destCorner/nextSkill/isLotPerformanceOnCorner consumers",
         "raw action constant semantic mapping"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_CORE_V1",
+      "fact_id": "FACT-0043",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL PlayerController_AI.SetAIAct core and SetAIActCounter leaf helper: same-action duration refresh, changed-action field writes, raw 19/20 dragOpponentCnt handling, and canonical caller bridges from FACT-0040/0042.",
+      "summary": "canonical/witnesses/CAP-R6-001/set_ai_act_core.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "later aiAct/aiActDuration/aiActStep consumers",
+        "remaining noncanonical SetAIAct caller seams",
+        "raw AIActEnum semantic mapping"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
