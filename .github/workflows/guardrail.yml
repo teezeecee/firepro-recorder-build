@@ -508,3 +508,8 @@ jobs:
         run: python tests/test_mymusic_check_file_summary.py
       - name: MyMusic Check_File prover syntax
         run: python -m py_compile tools/prove_mymusic_check_file.py
+
+      - name: SaveData get_story_work summary
+        run: python tests/test_save_data_story_work_getter_summary.py
+      - name: SaveData get_story_work prover syntax
+        run: python -m py_compile tools/prove_save_data_story_work_getter.py
