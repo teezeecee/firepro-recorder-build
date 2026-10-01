@@ -2281,6 +2281,24 @@
         "external Unity audio implementation",
         "authored AudioClip contents"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_MY_MUSIC_PLAY_V1",
+      "fact_id": "FACT-0133",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.MyMusic_Play raw 32/33/34/35 selected-file branches, MyMusic_CheckFile failure exits, .mp3 direct uAudio path and shared MyMusic_Play_Co coroutine tail.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_my_music_play.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Menu_SoundManager.MyMusic_CheckFile internal closure",
+        "uAudio LoadFile/Play/ChangeCurrentVolume closure",
+        "external Unity coroutine/component behavior",
+        "filesystem and authored music contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
