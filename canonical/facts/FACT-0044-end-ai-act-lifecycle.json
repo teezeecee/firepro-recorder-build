@@ -1,0 +1,65 @@
+{
+  "fact_id": "FACT-0044",
+  "claim": "In the matching retail DLL, PlayerController_AI.EndAIAct (0x06004FAD) and PlayerController_AI.EndPriAct (0x0600500B) form an exact teardown pair. EndAIAct is parameterless with an exact 33-byte body: it stores aiActDuration=0, stores aiAct=0, reads currentPriAct, and when currentPriAct is not raw -1 calls EndPriAct(), otherwise it returns directly. EndPriAct is parameterless with an exact 38-byte body: when keepLastSkill is zero it calls PlObj.SetLastSkill(-1); regardless of that branch it then stores keepLastSkill=0 and currentPriAct=-1 and returns. FACT-0014 pins a direct EndPriAct call from FormAnimator.UpdateAnimation under raw form flag mask 16, and the matching PlayerController_AI.Update body pins a direct EndAIAct call at IL+0x025D. FACT-0029 already closes Player.SetLastSkill, the callee used by EndPriAct.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.EndAIAct token 0x06004FAD RVA 0x002F60F5 signature 200001 code size 33 code sha256=596a7249879f79a09b58884b3296525e4a2fd50a7549e53565f10b10b6d91d2f; exact body in canonical/witnesses/CAP-R6-001/end_ai_act_lifecycle.summary.json; prover tools/prove_end_ai_act_lifecycle.py",
+      "observation": "Exact matching-DLL EndAIAct body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.EndPriAct token 0x0600500B RVA 0x002FD4D7 signature 200001 code size 38 code sha256=4f3be7710b4a49b035c4f3d0bcc0be43bc6a36afb09368200886656b9e6ae460; exact body in canonical/witnesses/CAP-R6-001/end_ai_act_lifecycle.summary.json; prover tools/prove_end_ai_act_lifecycle.py",
+      "observation": "Exact matching-DLL EndPriAct body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0014 FormAnimator.UpdateAnimation raw flag-16 branch",
+      "to": "PlayerController_AI.EndPriAct()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0014 pins UpdateAnimation IL+0x028F callvirt token 0x0600500B before host ApplySuicideDamage and CalcDownTime."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Update",
+      "to": "PlayerController_AI.EndAIAct()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Matching-DLL PlayerController_AI.Update token 0x0600502B code hash 6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9 calls EndAIAct token 0x06004FAD at IL+0x025D."
+        }
+      ]
+    },
+    {
+      "from": "EndAIAct action state",
+      "to": "EndPriAct conditional call",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "EndAIAct stores field 0x0400614C aiActDuration=0 and field 0x0400614B aiAct=0, reads currentPriAct field 0x04006151, branches directly to ret when equal to raw -1, otherwise calls token 0x0600500B at IL+0x001B."
+        }
+      ]
+    },
+    {
+      "from": "EndPriAct keepLastSkill",
+      "to": "FACT-0029 Player.SetLastSkill and priority reset",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "EndPriAct reads keepLastSkill field 0x0400616A; when zero it loads PlObj field 0x0400614A and callvirt Player.SetLastSkill token 0x06004EB1 with raw -1, then always stores keepLastSkill=0 and currentPriAct=-1."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw aiAct/currentPriAct reset values 0 and -1 are preserved without assigning extra lifecycle labels.",
+    "The meaning and later writers/readers of keepLastSkill remain outside this fact.",
+    "The full PlayerController_AI.Update scheduler remains outside this fact; only the exact EndAIAct caller site is pinned here.",
+    "CAP-R6-001 contains no standalone EndAIAct or EndPriAct PRE/POST event."
+  ]
+}
