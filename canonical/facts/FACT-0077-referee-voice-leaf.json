@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0077",
+  "claim": "In the matching retail DLL, Menu_SoundManager.Play_RefereeVoice (0x060052A9) is a static two-parameter method named vid:Int32 and volume:Boolean? No: its exact signature blob is 00020111aa380c, with vid:Int32 and volume:Float32, and an exact 122-byte body. It returns when static Sound_ClipRefereeVoice_List is null, returns when vid is negative or vid is 24 or greater, and returns when Sound_ClipRefereeVoice_List[vid] is null. It computes local volume = Volume_Voice * volume. The emitted bge.un against raw 0.0f means ordered-negative values return, while greater/equal or unordered values continue. It then compares the local against raw 1.0f using ble.un; ordered values greater than 1.0f are replaced with raw 1.0f, while values less/equal or unordered continue unchanged. It selects raw audioSrcInfo index 4, loads its sRefAudio field, calls UnityEngine.AudioSource.set_volume(local), then calls UnityEngine.AudioSource.PlayOneShot(Sound_ClipRefereeVoice_List[vid]) on the same sRefAudio and returns. FACT-0076 pins the direct caller with arguments vid and fixed raw 1.0f.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.Play_RefereeVoice token 0x060052A9 RVA 0x00322C58 signature blob 00020111aa380c parameters vid:Int32, volume:Float32 code size 122 code sha256=6168083a2b8e7ff12b16c44ba759062f611c24ac73de637c5461485234e65b74; exact bounds/null/Float32 clamp/source/playback body in canonical/witnesses/CAP-R6-001/referee_voice_leaf.summary.json; prover tools/prove_referee_voice_leaf.py",
+      "observation": "Exact matching-DLL Play_RefereeVoice body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0076 MatchSEPlayer.PlayRefereeVoice",
+      "to": "Menu_SoundManager.Play_RefereeVoice(vid,1.0f)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0076 pins call token 0x060052A9 at PlayRefereeVoice IL+0x004C after loading vid and raw Float32 1.0."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Play_RefereeVoice leaf and FACT-0076 caller bridge.",
+    "Authored referee voice clip contents and Volume_Voice value remain outside this fact.",
+    "Raw bounds 0..23, fixed audioSrcInfo index 4 and Float32 branch behavior are preserved without added presentation labels."
+  ]
+}
