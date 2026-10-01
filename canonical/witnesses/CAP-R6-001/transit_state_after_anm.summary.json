@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_TRANSIT_STATE_AFTER_ANM_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "TransitStateAfterAnm",
+      "token": "0x06004EC8",
+      "rva": "0x002E0B8C",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 1438,
+      "code_sha256": "cb9c68b98a1db450cee699fde8a7ab45926cb582dafa5b9e78e51b87d8886bb6",
+      "max_stack": 4,
+      "local_signature_token": "0x11001070",
+      "instruction_count": 446,
+      "branch_instruction_count": 49,
+      "call_instruction_count": 61
+    },
+    "entry": [
+      "if animator.IsAnmComplete() == 0: return",
+      "if forViewer != 0: animator.isAnmPause = 1; return",
+      "target = PlayerMan.inst.GetPlObj(TargetPlIdx)",
+      "PostprocessEachState()"
+    ],
+    "terrain_prebranch": {
+      "conditions": [
+        "TerrainColType == 3",
+        "Zone == 0"
+      ],
+      "ring_path": [
+        "Ring.TestCollision_OctagonEdge_InRing(-0.6666666269302368, PlPos)",
+        "if col-area raw 3 and IsInHorizontalRunwayCenterLine(PlPos): Zone=3; mForceFallStatus(); return"
+      ],
+      "alternate": [
+        "mForceDropStatus()",
+        "if DownTime == 255: SetStunTime(111); SetDownTime(143); isStandingStunOK=1",
+        "return"
+      ]
+    },
+    "form_info_down_dispatch": {
+      "form_idx_values": [
+        100,
+        101
+      ],
+      "callee": "Player.TransitStateAfterAnm_Down",
+      "callee_token": "0x06004EC6",
+      "call_il": "0x011B",
+      "status": "OUTSIDE_FACT"
+    },
+    "switch_expression": "animator.AnimeEnd - 1",
+    "switch_default": "return at 0x059D",
+    "switch_cases": [
+      {
+        "anime_end": 1,
+        "target": "0x0172",
+        "effect": "optional dir_LR reversal; isStandingStunOK=0; AddDownTime(StunTime); SetStunTime(0); when DownTime!=0 ChangeState(21), request PiyoTbl[GetHealth(HP)/4], set isDecDownTime=1 and isPossibleToGrapple=1"
+      },
+      {
+        "anime_end": 2,
+        "target": "0x059D",
+        "effect": "return"
+      },
+      {
+        "anime_end": 3,
+        "target": "0x02D9",
+        "effect": "choose PlDir raw 0/3 from Ring.colData_AroundRing.x2 versus PlPos.x; ChangeState(10); ReqBasicAnm(450,0,-1); isPossibleToGrapple=1"
+      },
+      {
+        "anime_end": 4,
+        "target": "0x0331",
+        "effect": "ChangeState(10); ReqBasicAnm(451,0,-1)"
+      },
+      {
+        "anime_end": 5,
+        "target": "0x059D",
+        "effect": "return"
+      },
+      {
+        "anime_end": 6,
+        "target": "0x026A",
+        "effect": "only when isDownRequested!=0: optional Audience calls under HP>32768 and Audience present; ChangeState(47); ReqBasicAnm(378 + AnmOfsTbl_3Dir[PlDir],0,-1)"
+      },
+      {
+        "anime_end": 7,
+        "target": "0x01F5",
+        "effect": "same stun/down conversion family as raw 1, but nonzero DownTime requests raw BasicAnm 245 before setting isDecDownTime/isPossibleToGrapple"
+      },
+      {
+        "anime_end": 8,
+        "target": "0x0350",
+        "effect": "ChangeState(14); if target converts true target.ChangeState(15); reverse PlDir; StartAnm(2); StartOpponentAnmM(TargetPlIdx,3,PlIdx)"
+      },
+      {
+        "anime_end": 9,
+        "target": "0x03A5",
+        "effect": "call TransitStateAfterAnm_AutoRun()"
+      },
+      {
+        "anime_end": 10,
+        "target": "0x03B0",
+        "effect": "ChangeState(57); StartAnm(2)"
+      },
+      {
+        "anime_end": 11,
+        "target": "0x03C9",
+        "effect": "ChangeState(5); ChangePlayerDirToLRAndReverse; ReqBasicAnm(44 + AnmOfsTbl_3Dir[PlDir],0,-1); isSummersaultChecked=0; Status3 |= 16"
+      },
+      {
+        "anime_end": 12,
+        "target": "0x0418",
+        "effect": "ChangeState(13); same direction/request/status branch as raw 11; DigCombCnt becomes 1 only when target converts true and target.animator.CurrentSkill.anmType==11, otherwise 2; SetDownTime(180)"
+      },
+      {
+        "anime_end": 13,
+        "target": "0x04A8",
+        "effect": "AutoRunWaza=animator.SkillSlotID; choose PlDir from Ring.GetColAreaInRhombus_AroundRing(target.PlPos) plus target existence/PlDir and IsArea_UpperTriangles branches; ChangeState(65); AutoRunStep=0; ReqBasicAnm(44 + AnmOfsTbl_3Dir[PlDir],0,-1); set host animator.AnmHostPlayer=PlIdx and, when target converts true, target.animator.AnmHostPlayer=TargetPlIdx"
+      },
+      {
+        "anime_end": 14,
+        "target": "0x0584",
+        "effect": "ChangeState(66); animator.isAnmPause=1"
+      }
+    ],
+    "auto_run_helper": {
+      "callee": "Player.TransitStateAfterAnm_AutoRun",
+      "callee_token": "0x06004EC7",
+      "raw_anime_end": 9,
+      "call_il": "0x03A6",
+      "status": "OUTSIDE_FACT"
+    },
+    "caller_bridge": {
+      "fact_id": "FACT-0047",
+      "caller": "PlayerController_AI.UpdatePlayer",
+      "caller_token": "0x06004F87",
+      "call_il": "0x0066",
+      "callee_token": "0x06004EC8"
+    }
+  },
+  "limits": [
+    "Two large direct transition subhelpers remain outside this record.",
+    "Raw enum/state meanings and other helper internals remain outside this record."
+  ]
+}
