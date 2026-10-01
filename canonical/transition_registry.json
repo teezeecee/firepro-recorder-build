@@ -1759,6 +1759,23 @@
         "authored story-data closure",
         "additional get_story_work caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_SAVE_DATA_GET_EDIT_WRESTLER_DATA_V1",
+      "fact_id": "FACT-0102",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL SaveData.GetEditWrestlerData bounds-checked edit-wrestler lookup, bridged from FACT-0096.",
+      "summary": "canonical/witnesses/CAP-R6-001/save_data_get_edit_wrestler_data.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "SaveData.GetEditWrestlerIdx internal closure",
+        "authored edit-wrestler list contents",
+        "additional GetEditWrestlerData caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
