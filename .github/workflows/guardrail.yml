@@ -388,3 +388,8 @@ jobs:
         run: python tests/test_referee_fight_presentation_summary.py
       - name: Referee fight presentation prover syntax
         run: python -m py_compile tools/prove_referee_fight_presentation.py
+
+      - name: Referee voice leaf summary
+        run: python tests/test_referee_voice_leaf_summary.py
+      - name: Referee voice leaf prover syntax
+        run: python -m py_compile tools/prove_referee_voice_leaf.py
