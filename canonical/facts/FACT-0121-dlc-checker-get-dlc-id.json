@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0121",
+  "claim": "In the matching retail DLL, static DLCChecker.GetDLCID (0x06001036) is a one-DLCEnum-parameter DLCIDEnum method with exact signature blob 00011185d01185c8 and an exact 143-byte body. It is call-free. Raw input values 0 through 12 dispatch through one 13-target switch and return the exact raw Int32 values {758160, 775630, 912460, 1037890, 766550, 1104260, 1121430, 1120550, 1120540, 1191160, 1191161, 1191162, 3932720} respectively. Any input that does not hit those 13 switch entries branches to a shared default that returns raw -1. FACT-0120 pins the already-canonical caller at DLCChecker.IsOwner IL+0x0001.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "DLCChecker.GetDLCID token 0x06001036 RVA 0x0005F840 signature 00011185d01185c8 code size 143 code sha256=e71bcaa68daa57d26a04e13b1d43b7761db94df3724f312e48ce26b7d81e5442; exact 13-way switch and raw return table in canonical/witnesses/CAP-R6-001/dlc_checker_get_dlc_id.summary.json; prover tools/prove_dlc_checker_get_dlc_id.py",
+      "observation": "Exact matching-DLL DLCChecker.GetDLCID mapping body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0120 DLCChecker.IsOwner",
+      "to": "DLCChecker.GetDLCID(dlcNum)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0120 pins call token 0x06001036 at DLCChecker.IsOwner IL+0x0001."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact GetDLCID raw mapping and the FACT-0120 caller bridge.",
+    "No product or DLC names are assigned to raw DLCEnum cases or returned DLCIDEnum values.",
+    "External Steamworks ownership behavior remains outside this fact."
+  ]
+}
