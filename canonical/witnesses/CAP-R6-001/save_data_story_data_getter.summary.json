@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SAVE_DATA_STORY_DATA_GETTER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "SaveData",
+      "method": "get_story_data",
+      "token": "0x06005172",
+      "rva": "0x003149AB",
+      "signature_blob_hex": "0000129cec",
+      "parameters": [],
+      "code_size": 11,
+      "code_sha256": "6ae14bc58bd6ce5fef923aed7dc39a940d5975700065175c076beda7f3ff143e",
+      "instruction_count": 3,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 1
+    },
+    "exact_body": [
+      {
+        "il": "0x0000",
+        "opcode": "call",
+        "token": "0x06005171",
+        "method": "SaveData.get_story_work"
+      },
+      {
+        "il": "0x0005",
+        "opcode": "ldfld",
+        "token": "0x0400485C",
+        "field": "StoryWork.m_data"
+      },
+      {
+        "il": "0x000A",
+        "opcode": "ret"
+      }
+    ],
+    "dependency": {
+      "method": "SaveData.get_story_work",
+      "token": "0x06005171",
+      "rva": "0x00314983",
+      "code_size": 39,
+      "code_sha256": "dcca7695b47672ce7825fed3223764f312476b6d900da9aa66b929a54916780b"
+    },
+    "fact_0096_bridge": {
+      "fact_id": "FACT-0096",
+      "caller": "MatchMain.SetAfterMatchBGM",
+      "caller_token": "0x06004924",
+      "call_il": "0x0071",
+      "callee_token": "0x06005172",
+      "gate": "raw wrestlerID == -2"
+    }
+  },
+  "limits": [
+    "SaveData.get_story_work and StoryWork.m_data contents remain outside this record.",
+    "Other callers remain separate caller seams."
+  ]
+}
