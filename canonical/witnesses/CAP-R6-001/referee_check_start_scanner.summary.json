@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_CHECK_START_SCANNER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "CheckStartRefereeing",
+      "overload": "parameterless",
+      "token": "0x060050A0",
+      "rva": "0x00308898",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 123,
+      "code_sha256": "a77f5e25b67af39e16a62e15a171465293dbae28e3851625a93c49f9ef820868",
+      "max_stack": 2,
+      "local_signature_token": "0x11001163",
+      "instruction_count": 43,
+      "branch_instruction_count": 11,
+      "call_instruction_count": 3
+    },
+    "entry_gates": [
+      {
+        "field": "Referee.State",
+        "token": "0x0400629D",
+        "condition": "State <= 5",
+        "fail_effect": "return"
+      },
+      {
+        "field": "MatchMain.isMatchEnd",
+        "token": "0x04005753",
+        "condition": "isMatchEnd == 0",
+        "fail_effect": "return"
+      },
+      {
+        "field": "MatchMain.isRoundEnd",
+        "token": "0x04005756",
+        "condition": "isRoundEnd == 0",
+        "fail_effect": "return"
+      }
+    ],
+    "scan": {
+      "raw_index_range": {
+        "min_inclusive": 0,
+        "max_inclusive": 7
+      },
+      "player_man_inst": {
+        "name": "PlayerMan.inst",
+        "token": "0x040061FA"
+      },
+      "get_pl_obj": {
+        "method": "PlayerMan.GetPlObj",
+        "token": "0x06005065"
+      },
+      "object_implicit_memberref": "0x0A00002A",
+      "sleep_field": {
+        "name": "Player.isSleep",
+        "token": "0x04006057"
+      },
+      "per_index_flow": [
+        "player = PlayerMan.inst.GetPlObj(index)",
+        "if player converts false: continue",
+        "if player.isSleep != 0: continue",
+        "if Referee.CheckStartRefereeing(index) == true: return",
+        "continue"
+      ]
+    },
+    "inner_overload": {
+      "token": "0x060050A1",
+      "rva": "0x00308920",
+      "signature_blob_hex": "20010208",
+      "return_type": "Boolean",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "pl_idx",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 1112,
+      "code_sha256": "8531aa20df597f7d7a37246779e58c39c7c7a2fdc6e34d4d38dcd1fd56f6f7e5",
+      "caller_il": "0x0060",
+      "status": "OPEN_SEPARATE_GATE"
+    },
+    "direct_callers": [
+      {
+        "fact_id": "FACT-0074",
+        "type": "Referee",
+        "method": "UpdateReferee",
+        "token": "0x060050AF",
+        "rva": "0x00309E9C",
+        "call_il": "0x005C",
+        "opcode": "call"
+      }
+    ]
+  },
+  "limits": [
+    "The Boolean Int32 overload remains outside this record."
+  ]
+}
