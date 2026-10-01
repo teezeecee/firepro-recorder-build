@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_INIT_ROUND_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "InitRound",
+      "token": "0x0600507A",
+      "rva": "0x00305AA0",
+      "signature_blob_hex": "20010108",
+      "return_type": "Void",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "rd",
+          "type": "Int32",
+          "loaded_by_body": false
+        }
+      ],
+      "code_size": 244,
+      "code_sha256": "e49118b8c0107b96e5bcca09a2cd24853191f05c685c858415a176cac7ba3bc2",
+      "instruction_count": 70,
+      "branch_instruction_count": 6,
+      "call_instruction_count": 3
+    },
+    "fields": {
+      "global_work_inst": "0x04002AD1",
+      "match_setting": "0x04002AD2",
+      "battle_royal_kind": "0x040057D3",
+      "is_fast_forward_match": "0x040057E7",
+      "pl_pos": "0x040062A0",
+      "state": "0x0400629D",
+      "counter": "0x040062C4",
+      "first_winner_index": "0x040062C5",
+      "stand_pose_timer": "0x040062A7"
+    },
+    "pl_pos_xy": {
+      "x": "0.0f on every path",
+      "y_when_battle_royal_kind_raw_0": 1,
+      "y_when_battle_royal_kind_raw_4": 1,
+      "y_when_other_nonzero_raw_values": 0
+    },
+    "request_branch": {
+      "first_path": {
+        "condition": "BattleRoyalKind == 0 AND isFastForwardMatch == 0",
+        "state_raw": 22,
+        "request_raw": 1106,
+        "request_token": "0x06005096",
+        "update_referee_anm": false
+      },
+      "alternate_path": {
+        "condition": "BattleRoyalKind != 0 OR isFastForwardMatch != 0",
+        "state_raw": 19,
+        "request_raw": 1121,
+        "request_token": "0x06005096",
+        "update_referee_anm": true,
+        "update_referee_anm_token": "0x06005097"
+      }
+    },
+    "shared_tail": [
+      "PlPos.z = 1.0f",
+      "Counter = 0",
+      "plIdx_FirstWiner = -1",
+      "standPoseTimer = 0"
+    ],
+    "fact_0068_bridge": {
+      "fact_id": "FACT-0068",
+      "callee_token": "0x06005096",
+      "call_ils": [
+        "0x00AB",
+        "0x00C3"
+      ]
+    }
+  },
+  "limits": [
+    "Referee.UpdateRefereeAnm and InitRound callers remain outside this record."
+  ]
+}
