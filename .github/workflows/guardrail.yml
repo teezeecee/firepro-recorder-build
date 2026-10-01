@@ -574,3 +574,9 @@ jobs:
         run: python tests/test_menu_sound_instance_getter_summary.py
       - name: Menu Sound instance getter prover syntax
         run: python -m py_compile tools/prove_menu_sound_instance_getter.py
+
+
+      - name: AudioClipInfo Set summary
+        run: python tests/test_audio_clip_info_set_summary.py
+      - name: AudioClipInfo Set prover syntax
+        run: python -m py_compile tools/prove_audio_clip_info_set.py
