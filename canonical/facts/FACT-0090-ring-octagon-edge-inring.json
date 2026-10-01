@@ -1,0 +1,39 @@
+{
+  "fact_id": "FACT-0090",
+  "claim": "In the matching retail DLL, Ring.TestCollision_OctagonEdge_InRing (0x060050EE) is an instance two-parameter method named range and p with an exact 15-byte body. It loads this twice, reads instance field Ring.colData_InsideRing (0x04006372), forwards raw arguments range and p unchanged, calls Ring.TestCollision_OctagonEdge (0x060050ED), and returns that Boolean result. The wrapper contains no branch, clamp, fallback, alternate collision dataset, or extra transformation. FACT-0089 pins the direct call at Referee.Start_FallCount IL+0x005A.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Ring.TestCollision_OctagonEdge_InRing token 0x060050EE RVA 0x0030C4F9 signature 2002020c1131 parameters range/p code size 15 code sha256=feb37d8722b81f775838d19746a28c526247c92c902c0e4437baddbb786034ef; exact pass-through body in canonical/witnesses/CAP-R6-001/ring_octagon_edge_inring.summary.json; prover tools/prove_ring_octagon_edge_inring.py",
+      "observation": "Exact matching-DLL in-ring octagon-edge wrapper."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0089 Referee.Start_FallCount",
+      "to": "Ring.TestCollision_OctagonEdge_InRing(range,p)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0089 pins callvirt token 0x060050EE at Start_FallCount IL+0x005A with exact range Float32 bits 0x3F2AAAB0 and Vector2-converted target-player position."
+        }
+      ]
+    },
+    {
+      "from": "Ring.TestCollision_OctagonEdge_InRing",
+      "to": "Ring.TestCollision_OctagonEdge",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact 15-byte wrapper loads field 0x04006372 colData_InsideRing, forwards arg1/arg2 and calls token 0x060050ED before ret."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the wrapper body and FACT-0089 caller bridge.",
+    "Ring.TestCollision_OctagonEdge internals and colData_InsideRing authored geometry remain separate gates.",
+    "No geometric meaning beyond the exact metadata field/method names and pass-through structure is added."
+  ]
+}
