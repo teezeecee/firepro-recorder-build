@@ -1,0 +1,59 @@
+{
+  "fact_id": "FACT-0057",
+  "claim": "In the matching retail DLL, three small direct callees used by FACT-0056 are closed as one exact support family. `LayerMan.GetLayerID` (0x06004876) is a static one-parameter method with an exact 25-byte body: raw input below 0 returns 0, raw input 9 or greater returns 0, and only raw values 0 through 8 return `LayerMan.layerID[input]`. `Ring.mRingShake` (0x060050E3) is an instance one-Int32-parameter method with an exact 8-byte body containing only `this.ShakeCnt=time` and return. `MatchCamera.ReqVivration` (0x06004884) is an instance one-Float32-parameter method with an exact 25-byte body containing only `this.VibPos=0.05000000074505806f*vib_lv`, `this.VibVel=0.0f`, and return. FACT-0056 pins calls to these helpers at Play_MineExplosion IL+0x005D, IL+0x0083 and IL+0x0092 respectively.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "LayerMan.GetLayerID token 0x06004876 RVA 0x002A0A97 signature 00010811a368 code size 25 code sha256=706f9840af6e5fc17181d4522b1d7900ff500e0dd9c657c47a45849fa0a0eb45; exact signed bounds/table lookup in canonical/witnesses/CAP-R6-001/mine_presentation_support.summary.json",
+      "observation": "Exact matching-DLL layer lookup body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Ring.mRingShake token 0x060050E3 RVA 0x0030C001 signature 20010108 parameter time code size 8 code sha256=f8a8ac1e526882d2d8478bd371f6d9d6027b364f890e507fe69dfc7b9da02623; exact ShakeCnt store in canonical witness.",
+      "observation": "Exact matching-DLL ring-shake store."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchCamera.ReqVivration token 0x06004884 RVA 0x002A10D6 signature 2001010c parameter vib_lv code size 25 code sha256=71a69e97e6e16dc6e78a660ef0833d3e5999bf892f194d77054a5c49003dba1c; exact VibPos/VibVel stores in canonical witness.",
+      "observation": "Exact matching-DLL vibration request body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0056 MatchEffect.Play_MineExplosion prefab child loop",
+      "to": "LayerMan.GetLayerID(layer)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0056 pins call token 0x06004876 at IL+0x005D."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0056 shared tail",
+      "to": "Ring.mRingShake(10)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0056 pins callvirt token 0x060050E3 at IL+0x0083 after raw argument 10."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0056 shared tail",
+      "to": "MatchCamera.ReqVivration(2.0f)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0056 pins callvirt token 0x06004884 at IL+0x0092 after raw Float32 2.0."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "LayerMan.layerID table contents are not established by this code body.",
+    "The stored ShakeCnt/VibPos/VibVel fields are closed only at these exact helper boundaries; their later per-frame consumers remain separate gates.",
+    "Raw layer values are preserved numerically without added player-facing labels."
+  ]
+}
