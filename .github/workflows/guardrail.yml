@@ -616,3 +616,9 @@ jobs:
         run: python tests/test_save_data_is_dlc_installed_summary.py
       - name: SaveData IsDLCInstalled prover syntax
         run: python -m py_compile tools/prove_save_data_is_dlc_installed.py
+
+
+      - name: DLCChecker IsOwner summary
+        run: python tests/test_dlc_checker_is_owner_summary.py
+      - name: DLCChecker IsOwner prover syntax
+        run: python -m py_compile tools/prove_dlc_checker_is_owner.py
