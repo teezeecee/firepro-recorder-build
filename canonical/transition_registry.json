@@ -1277,6 +1277,23 @@
         "authored SkillDataMan.skillData contents",
         "other GetSkillData overload closure"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_UPDATE_SCHEDULER_V1",
+      "fact_id": "FACT-0074",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Referee.UpdateReferee State-22 early path, ordered non-22 scheduler, isMatchEnd gate, disturbedCnt decay, and exact two-caller MatchMain inventory.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_update_scheduler.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "individual referee-process method closure",
+        "MatchMain.Update_EntranceScene caller-body closure",
+        "MatchMain.Update_Match caller-body closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
