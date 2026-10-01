@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0065",
+  "claim": "In the matching retail DLL, the two direct RefereeMan lookup helpers used by FACT-0064 are exact trivial accessors. RefereeMan.GetInst (0x060050B2) is a static parameterless method with an exact 6-byte body: it loads static field RefereeMan.inst (0x040062DC) and returns it. RefereeMan.GetRefereeObj (0x060050B6) is an instance parameterless method with an exact 9-byte body: it loads instance field RefereeObj (0x040062DE), pushes raw Int32 zero, loads array element 0 with ldelem.ref, and returns it. FACT-0064 pins the caller sequence inside MatchSEPlayer.PlayRefereeSE at IL+0x0009 GetInst followed immediately by IL+0x000E GetRefereeObj.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "RefereeMan.GetInst token 0x060050B2 RVA 0x0030A47D signature blob 000012a83c code size 6 code sha256=9520016c102a2a51bd00c0108de13b24734f1b686f000e2460083dd39da009ee; exact body ldsfld 0x040062DC; ret; prover tools/prove_referee_object_lookups.py",
+      "observation": "Exact matching-DLL singleton accessor."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "RefereeMan.GetRefereeObj token 0x060050B6 RVA 0x0030A4C3 signature blob 200012a838 code size 9 code sha256=aa2a417db5ba1940541d91f5a98fe26ec59230af147fdb4dd2e768ca0dad1e4d; exact body ldarg.0; ldfld 0x040062DE; ldc.i4.0; ldelem.ref; ret; prover tools/prove_referee_object_lookups.py",
+      "observation": "Exact matching-DLL RefereeObj[0] accessor."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0064 MatchSEPlayer.PlayRefereeSE",
+      "to": "RefereeMan.GetInst() -> GetRefereeObj()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0064 pins inner PlayRefereeSE calls token 0x060050B2 at IL+0x0009 and callvirt token 0x060050B6 at IL+0x000E."
+        }
+      ]
+    },
+    {
+      "from": "RefereeMan.GetRefereeObj",
+      "to": "RefereeObj raw element 0",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "GetRefereeObj exact 9-byte body loads field token 0x040062DE, then ldc.i4.0 and ldelem.ref before return."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the two exact lookup helpers and their FACT-0064 caller seam.",
+    "The lifecycle and population of RefereeMan.inst and RefereeObj remain outside this fact.",
+    "No meaning beyond raw array element 0 is assigned to the selected object.",
+    "Other callers of these helpers are not promoted here."
+  ]
+}
