@@ -850,6 +850,24 @@
         "remaining called helper internals",
         "raw AnimeEnd/State/Zone/direction semantic mapping"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_TRANSIT_STATE_AFTER_ANM_DOWN_V1",
+      "fact_id": "FACT-0049",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.TransitStateAfterAnm_Down 807-byte body: direction/FormRev handling, KO form split, ordered Neck/Arm/Waist/Leg zero-field plus SuperPain-bit animation selection, common down transition, and raw ringKind-4 mine damage/effect tail, bridged from FACT-0048.",
+      "summary": "canonical/witnesses/CAP-R6-001/transit_state_after_anm_down.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "TransitStateAfterAnm_AutoRun closure",
+        "ForceSetDownTime internal closure",
+        "Ring.IsStepOnMine and mine effect helper closure",
+        "authored mHpDamageTbl contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
