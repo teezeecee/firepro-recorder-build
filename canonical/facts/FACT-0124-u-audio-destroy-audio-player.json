@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0124",
+  "claim": "In the matching retail DLL, uAudio.uAudioPlayer.Destroy_AudioPlayer (0x060052CA) is an instance parameterless Void method with exact signature blob 200001 and an exact 13-byte body. It loads this and calls sibling uAudio.uAudioPlayer.SongEnd (0x060052E6), then loads this again and calls UnityEngine.Object.Destroy(Object) through memberref 0x0A0000D0 whose parent resolves to UnityEngine.Object, then returns. FACT-0123 pins the already-canonical caller at Menu_SoundManager.StopBGM IL+0x0023 on the non-null script_uAudioPlayer path.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "uAudio.uAudioPlayer.Destroy_AudioPlayer token 0x060052CA RVA 0x0032567D signature 200001 code size 13 code sha256=62a68c749da17a7c536b2ef155fd300637ffd8bd582da8979c28fdd87bf83d1c; exact SongEnd then UnityEngine.Object.Destroy(this) sequence in canonical/witnesses/CAP-R6-001/u_audio_destroy_audio_player.summary.json; prover tools/prove_u_audio_destroy_audio_player.py",
+      "observation": "Exact matching-DLL Destroy_AudioPlayer body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0123 Menu_SoundManager.StopBGM",
+      "to": "uAudio.uAudioPlayer.Destroy_AudioPlayer()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0123 pins call token 0x060052CA at StopBGM IL+0x0023 after loading Menu_SoundManager.script_uAudioPlayer."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Destroy_AudioPlayer wrapper and the FACT-0123 caller bridge.",
+    "uAudio.uAudioPlayer.SongEnd internals remain a separate gate.",
+    "UnityEngine.Object.Destroy implementation and runtime destruction timing remain outside this fact."
+  ]
+}
