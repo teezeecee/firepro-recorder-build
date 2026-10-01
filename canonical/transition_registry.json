@@ -1012,13 +1012,14 @@
         "DLL-001"
       ],
       "scope": "PROVEN_DLL",
-      "definition": "Exact matching-DLL MatchMisc.PlayMatchSE fast-forward/fade/frame throttle and argument-forwarding dispatch shared by FACT-0026 and FACT-0049.",
+      "definition": "Exact matching-DLL MatchMisc.PlayMatchSE MatchMain/fast-forward/Fade/frame-modulo gate and argument-forwarding dispatch, with already-canonical caller bridges from FACT-0015, FACT-0026 and FACT-0049.",
       "summary": "canonical/witnesses/CAP-R6-001/play_match_se.summary.json",
       "dll_method_count": 1,
       "runtime_eligible": false,
       "semantic_promotion_blockers": [
         "Fade.IsFadeFinish internal closure",
         "MatchSEPlayer.PlayMatchSE internal closure",
+        "remaining PlayMatchSE caller closure",
         "raw sound-ID meaning"
       ]
     }
