@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_TRANSIT_STATE_AFTER_ANM_DOWN_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "TransitStateAfterAnm_Down",
+      "token": "0x06004EC6",
+      "rva": "0x002E0584",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 807,
+      "code_sha256": "279517cb863c131495de999594e2eecb0ec3cfaada975d4215ee0efd7fb2b6f6",
+      "max_stack": 4,
+      "local_signature_token": "0x1100106E",
+      "instruction_count": 265,
+      "branch_instruction_count": 24,
+      "call_instruction_count": 25
+    },
+    "entry": [
+      "info = animator.GetCurrentFormDispInfo()",
+      "venue = Ring.inst.venueSetting",
+      "isTagPartnerStandby = 0",
+      "PlDir = MatchMisc.ChangePlayerDirToLR(PlDir)",
+      "if (animator.FormRev & 256) != 0: PlDir = MatchMisc.ChangePlayerDirToLRAndReverse(PlDir)"
+    ],
+    "ko_path": {
+      "effects": [
+        "isDownRequested=0",
+        "WrsDP=HP"
+      ],
+      "form_100": {
+        "raw_animation": 296,
+        "change_state": 17
+      },
+      "other_form": {
+        "raw_animation": 297,
+        "change_state": 18
+      },
+      "request": "animator.ReqBasicAnm(selected,0,-1)"
+    },
+    "non_ko_selection": [
+      {
+        "field": "HP_Neck",
+        "field_token": "0x04005FC2",
+        "superpain_bit": 1,
+        "raw_animation": 354
+      },
+      {
+        "field": "HP_Arm",
+        "field_token": "0x04005FC3",
+        "superpain_bit": 2,
+        "raw_animation": 356
+      },
+      {
+        "field": "HP_Waist",
+        "field_token": "0x04005FC4",
+        "superpain_bit": 4,
+        "raw_animation": 358
+      },
+      {
+        "field": "HP_Leg",
+        "field_token": "0x04005FC5",
+        "superpain_bit": 8,
+        "raw_animation": 360
+      }
+    ],
+    "non_ko_default_animation": 180,
+    "non_ko_common": [
+      "ChangeState(10) occurs before ordered selection",
+      "eligible body-part path ORs its SuperPain bit and SetDownTime(255)",
+      "isDownRequested=0; WrsDP=HP",
+      "if info.formIdx == 101: selectedAnimation += 1",
+      "animator.ReqBasicAnm(selectedAnimation,0,-1)",
+      "if selectedAnimation == 180: ChangeState(17); isDecDownTime=1",
+      "if selectedAnimation == 181: ChangeState(18); isDecDownTime=1"
+    ],
+    "mine_tail": {
+      "conditions": [
+        "venue.ringKind == 4",
+        "Ring.IsStepOnMine(PlIdx) == true"
+      ],
+      "effects": [
+        "MatchEvaluation.inst.PlResult[PlIdx].stepOnMineCnt += 1",
+        "Bleeding()",
+        "damage = 9216.0f * MatchData.mHpDamageTbl[MatchMisc.GetHealth(HP)/2]",
+        "AddHP(-damage)",
+        "ConsumeSP(9216.0f)",
+        "SetLastDamage(damage)",
+        "KoLastDamage = 0.0f",
+        "ForceSetDownTime()",
+        "if DownTime < 200: SetDownTime(200)",
+        "effectPos = new UnityEngine.Vector3(PlPos.x,0.5f,PlPos.y)",
+        "effectArg = 6 when effectPos.z < 0.0f, else 0",
+        "MatchEffect.inst.Play_MineExplosion(effectPos,effectArg)",
+        "MatchMisc.PlayMatchSE(67,1.0f,PlIdx)"
+      ]
+    },
+    "caller_bridge": {
+      "fact_id": "FACT-0048",
+      "caller": "Player.TransitStateAfterAnm",
+      "caller_token": "0x06004EC8",
+      "call_il": "0x011B",
+      "callee_token": "0x06004EC6",
+      "form_idx_values": [
+        100,
+        101
+      ]
+    }
+  },
+  "limits": [
+    "Remaining helper internals and authored damage table contents remain outside this record."
+  ]
+}
