@@ -1,0 +1,61 @@
+{
+  "fact_id": "FACT-0040",
+  "claim": "In the matching retail DLL, PlayerController_AI.TryToDoPriorityAct (0x06005009) is an instance method with one AIPriorityActEnum parameter named act returning Int32 and an exact 606-byte body. It switches on raw act with 41 explicit cases. Raw acts 0..5 and 6..7 index PriotityActToAIOpt[act], call SetAIAct_DownAtk(mapped value,180,1), store currentPriAct=act, then reach raw return 1. Raw acts 8..9 map the act, call PlObj.GetSkillData_Equip(mapped value,0), call GetDiveCorner_LR(TargetPlIdx,skill), return 0 when that result is -1, otherwise raw act 8 calls SetAIAct_RunUpDive_Stand and raw act 9 calls SetAIAct_RunUpDive_Down, then currentPriAct=act and return 1. Raw acts 10..13 map the act and load equipped SkillData; when PlObj.State is raw 6 they use PlObj.PostPos, otherwise call GetDiveCorner(TargetPlIdx,skill) and return 0 on -1; they then call SetAIAct_CornerDive(position,mapped value,0), store currentPriAct=act, and return 1. Raw acts 14..17 set padPush = PerformanceKeyTbl[PriotityActToAIOpt[act]-86], set currentPriAct=-1, and return raw 2 immediately. Raw acts 18..20 call SetAIAct_PriAct_RunAtk(mapped value,768); raw act 21 calls SetAIAct(17,768); raw acts 22..34 call SetAIAct_GoGrapple(mapped value,2,32); raw acts 35..40 call SetAIAct_GoBackGrapple(mapped value,32). Those paths store currentPriAct=act and return 1. The switch default also reaches raw return 1. FACT-0037 pins the direct call at ProcessPriorityAct IL+0x0180.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.TryToDoPriorityAct token 0x06005009 RVA 0x002FD0B0 signature 200108118628 parameter act:AIPriorityActEnum return Int32 code size 606 code sha256=f1818f56bcb7b04635a7c1b9cb814f1e20480577a20287b2d8ee4d438e109191; exact switch/body in canonical/witnesses/CAP-R6-001/try_to_do_priority_act.summary.json; prover tools/prove_try_to_do_priority_act.py",
+      "observation": "Exact matching-DLL TryToDoPriorityAct body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0037 ProcessPriorityAct",
+      "to": "PlayerController_AI.TryToDoPriorityAct(moveAct)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0037 pins ProcessPriorityAct IL+0x0180 call token 0x06005009 with local moveAct."
+        }
+      ]
+    },
+    {
+      "from": "raw act switch",
+      "to": "action setup families",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "TryToDoPriorityAct IL+0x0001 switch has 41 entries: 0..5->0x00AF; 6..7->0x00D0; 8..9->0x00F1; 10..13->0x014D; 14..17->0x01BF; 18..20->0x01E2; 21->0x0204; 22..34->0x021D; 35..40->0x023D; default continues at IL+0x00AA and branches to return 1."
+        }
+      ]
+    },
+    {
+      "from": "raw acts 8..13",
+      "to": "corner-selection failure paths",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Acts 8..9 call GetSkillData_Equip and GetDiveCorner_LR, returning 0 on raw -1 before selecting Stand vs Down by act==8. Acts 10..13 call GetSkillData_Equip; State raw 6 uses PostPos, otherwise GetDiveCorner can return -1 and force raw return 0 before SetAIAct_CornerDive."
+        }
+      ]
+    },
+    {
+      "from": "raw acts 14..17",
+      "to": "distinct raw return 2",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Acts 14..17 index PerformanceKeyTbl by PriotityActToAIOpt[act]-86, store the resulting Int32 into PlayerController.padPush, set currentPriAct=-1, then execute ldc.i4.2; ret at IL+0x01E0."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw act values, constants and method names are preserved exactly without assigning gameplay labels.",
+    "The internals of SetAIAct_DownAtk, GetSkillData_Equip, GetDiveCorner_LR, SetAIAct_RunUpDive_Stand/Down, GetDiveCorner, SetAIAct_CornerDive, SetAIAct_PriAct_RunAtk, SetAIAct, SetAIAct_GoGrapple and SetAIAct_GoBackGrapple remain outside this fact unless separately closed.",
+    "The contents and semantic mapping of PriotityActToAIOpt and PerformanceKeyTbl remain outside this fact.",
+    "Raw return values 0, 1 and 2 are retained without assigning semantic labels; FACT-0037 independently pins how its caller treats them.",
+    "CAP-R6-001 contains no standalone TryToDoPriorityAct PRE/POST event."
+  ]
+}
