@@ -556,3 +556,9 @@ jobs:
         run: python tests/test_player_man_get_pl_obj_summary.py
       - name: PlayerMan GetPlObj prover syntax
         run: python -m py_compile tools/prove_player_man_get_pl_obj.py
+
+
+      - name: MyMusic Set summary
+        run: python tests/test_mymusic_set_summary.py
+      - name: MyMusic Set prover syntax
+        run: python -m py_compile tools/prove_mymusic_set.py
