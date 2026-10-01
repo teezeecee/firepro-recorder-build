@@ -1,0 +1,8 @@
+{
+  "fact_id":"FACT-0141",
+  "claim":"In the matching retail DLL, instance uAudio.uAudioPlayer.set_CurrentTime (0x060052D7) has raw MethodDef row a05732000000e609728a070074480100553d, RVA 0x003257A0, exact signature blob 2001011182c1, one System.TimeSpan parameter value, and an exact 24-byte body. It reads this._uAudio (0x040087E3) and returns when that field is null. Otherwise it loads this._uAudio again, loads value, calls backend uAudio.uAudio_backend.uAudio.set_CurrentTime(System.TimeSpan) through memberref 0x0A000FB9, and returns. FACT-0140 pins the two already-canonical caller sites at uAudioPlayer.Play IL+0x018D and IL+0x019F.",
+  "status":"PROVEN_DLL",
+  "evidence":[{"source_id":"DLL-001","locator":"uAudio.uAudioPlayer.set_CurrentTime token 0x060052D7 raw MethodDef row a05732000000e609728a070074480100553d -> RVA 0x003257A0; signature 2001011182c1 parameter value:System.TimeSpan; code size 24 code sha256=c09298a196302aaeb2cd6734a8b2297724c09221a9602d15e85257482f52199c; exact _uAudio null gate and backend set_CurrentTime forward in canonical/witnesses/CAP-R6-001/u_audio_set_current_time.summary.json; prover tools/prove_u_audio_set_current_time.py","observation":"Exact matching-DLL set_CurrentTime wrapper."}],
+  "chain_edges":[{"from":"FACT-0140 uAudio.uAudioPlayer.Play","to":"uAudio.uAudioPlayer.set_CurrentTime(value)","evidence":[{"source_id":"DLL-001","locator":"FACT-0140 pins call token 0x060052D7 at Play IL+0x018D and IL+0x019F."}]}],
+  "limits":["This fact closes only the exact 24-byte wrapper and the two FACT-0140 caller bridges.","Backend uAudio.set_CurrentTime implementation and actual playback timing remain external."]
+}
