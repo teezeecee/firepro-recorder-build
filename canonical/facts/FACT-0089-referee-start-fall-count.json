@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0089",
+  "claim": "In the matching retail DLL, Referee.Start_FallCount (0x0600509A) is a parameterless instance method with an exact 258-byte body. It resolves PlayerMan.inst.GetPlObj(TargetPlIdx), tests the returned player through UnityEngine.Object.op_Implicit, and returns when false. If Player.isPinfallDef is false it calls Referee.SetFree() and returns. Otherwise it loads GlobalWork.inst.MatchSetting. When MatchSetting.isRopeCheck is nonzero it calls Ring.inst.TestCollision_OctagonEdge_InRing with exact Float32 bits 0x3F2AAAB0 and Vector2.op_Implicit(player.PlPos); when that collision result is true it writes player.animator.isReqAnmLoopEnd=1, calls canonical Player.SetDownTime(0), writes State=23, writes PlDir=canonical DecideRefereeDir(TargetPlIdx), requests RefAnmTbl[33 + MatchData.AnmOfsTbl_2Dir[PlDir]] through canonical ReqRefereeAnm, calls canonical MatchSEPlayer.PlayRefereeVoice(1), and returns. If that collision path is not taken, it writes State=9, writes PlDir=DecideRefereeDir(TargetPlIdx), requests AnmIDTbl_FallCount[MatchData.AnmOfsTbl_2Dir[PlDir]], writes FrameWait=FallWaitCnt[RefePrm.fallCount], and returns. FACT-0085 pins the direct call at Process_ArrivedDestination IL+0x005B.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.Start_FallCount token 0x0600509A RVA 0x003081C4 signature 200001 code size 258 code sha256=3688c9d5342ef0785ee92923ceb8862dc82d0e50d0aaa26e580f3487c9502f4b; exact player/isPinfallDef/rope-check/collision/state/animation/wait body in canonical/witnesses/CAP-R6-001/referee_start_fall_count.summary.json; prover tools/prove_referee_start_fall_count.py",
+      "observation": "Exact matching-DLL fall-count initializer body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0085 Referee.Process_ArrivedDestination",
+      "to": "Referee.Start_FallCount",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0085 pins call token 0x0600509A at Process_ArrivedDestination IL+0x005B."
+        }
+      ]
+    },
+    {
+      "from": "Referee.Start_FallCount",
+      "to": "already-canonical helpers",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact body calls FACT-0029 Player.SetDownTime token 0x06004ED8, FACT-0086 DecideRefereeDir 0x0600508C, FACT-0068 ReqRefereeAnm 0x06005096, and FACT-0076 PlayRefereeVoice 0x06005279."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only Start_FallCount and the FACT-0085 caller bridge.",
+    "Referee.SetFree and Ring.TestCollision_OctagonEdge_InRing internals remain separate gates.",
+    "Authored AnmIDTbl_FallCount, RefAnmTbl, FallWaitCnt and RefereeParam.fallCount contents remain outside this fact.",
+    "Raw State values 23/9, raw animation base 33, raw voice argument 1 and exact Float32 collision argument bits are preserved without added gameplay labels."
+  ]
+}
