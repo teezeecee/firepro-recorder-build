@@ -1466,6 +1466,25 @@
         "destination/velocity producer closure",
         "raw State 8 meaning"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_ARRIVED_DESTINATION_V1",
+      "fact_id": "FACT-0085",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Referee.Process_ArrivedDestination raw NextState 9..18 switch, Player target gate, state/direction/frame-wait writes, animation-table requests, and helper dispatches, bridged from FACT-0084.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_arrived_destination.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Start_FallCount internal closure",
+        "Start_SubmissionCheck internal closure",
+        "DecideRefereeDir internal closure",
+        "Start_HandlingDisturbing internal closure",
+        "raw State/NextState meaning"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
