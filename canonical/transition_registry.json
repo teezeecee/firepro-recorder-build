@@ -675,6 +675,24 @@
         "IsLotPriorityAct internal closure",
         "TryToDoPriorityAct internal closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_IS_LOT_PRIORITY_ACT_V1",
+      "fact_id": "FACT-0039",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL PlayerController_AI.IsLotPriorityAct 41-case raw switch, conditional State/Zone/ring/equipment gates, default true path, and FACT-0037 ProcessPriorityAct caller bridge.",
+      "summary": "canonical/witnesses/CAP-R6-001/is_lot_priority_act.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "PlayerController_AI.IsEffectiveFall internal closure",
+        "Player.mEquExistCehck internal closure",
+        "PriotityActToAIOpt contents and raw act mapping",
+        "raw State/Zone/ringKind semantic closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
