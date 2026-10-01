@@ -1022,6 +1022,22 @@
         "remaining PlayMatchSE caller closure",
         "raw sound-ID meaning"
       ]
+    },
+    {
+      "family_id": "DLL_FADE_IS_FADE_FINISH_V1",
+      "fact_id": "FACT-0059",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Fade.IsFadeFinish signed NowFrm comparison and Boolean return reached from FACT-0058 MatchMisc.PlayMatchSE.",
+      "summary": "canonical/witnesses/CAP-R6-001/fade_is_fade_finish.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Fade.NowFrm writer/update closure",
+        "remaining caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
