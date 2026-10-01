@@ -2247,6 +2247,23 @@
         "external Unity async/coroutine behavior",
         "authored audio resources"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_COCHANGE_BUNDLE_MOVENEXT_V1",
+      "fact_id": "FACT-0131",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL <CoChange_BGMandPlay_FromAssetBundle>c__Iterator9.MoveNext state machine, async bundle request/yield loop, null-gated LoadAsset<AudioClip>/AudioClipInfo.Set/Unload and optional callback/raw-1 Play_BGM path.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_cochange_bundle_movenext.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external Unity AssetBundle async/coroutine behavior",
+        "Menu_SoundManager.Play_BGM internal closure",
+        "authored asset-bundle/audio contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
