@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_MOVE_DESTINATION_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "Referee",
+        "method": "Process_MoveToDestination",
+        "token": "0x0600509E",
+        "rva": "0x00308600",
+        "signature_blob_hex": "200001",
+        "parameters": [],
+        "code_size": 89,
+        "code_sha256": "58c6b30e276aa4ab2b5a5e4116f2f309ebb362cf4a6cb17d52245a744bd6fae1",
+        "instruction_count": 29,
+        "branch_instruction_count": 2,
+        "call_instruction_count": 2
+      },
+      {
+        "type": "Referee",
+        "method": "IsReachedDestination",
+        "token": "0x0600508B",
+        "rva": "0x00307334",
+        "signature_blob_hex": "200002",
+        "parameters": [],
+        "code_size": 68,
+        "code_sha256": "ead82943535ec77fed4deda04c5e7adf102ba54ee322c82072b58762c619957b",
+        "instruction_count": 23,
+        "branch_instruction_count": 2,
+        "call_instruction_count": 4
+      }
+    ],
+    "move": {
+      "state_gate": {
+        "field": "State",
+        "token": "0x0400629D",
+        "raw_value": 8,
+        "fail_effect": "return"
+      },
+      "position_field": {
+        "name": "PlPos",
+        "token": "0x040062A0"
+      },
+      "velocity_field": {
+        "name": "MoveVel",
+        "token": "0x040062CB"
+      },
+      "writes": [
+        "PlPos.x = PlPos.x + MoveVel.x",
+        "PlPos.y = PlPos.y + MoveVel.y"
+      ],
+      "reached_call": {
+        "token": "0x0600508B",
+        "il": "0x0048"
+      },
+      "arrived_call": {
+        "token": "0x0600509F",
+        "il": "0x0053",
+        "condition": "IsReachedDestination() == true"
+      }
+    },
+    "reached": {
+      "destination_field": {
+        "name": "DestPos",
+        "token": "0x040062CA"
+      },
+      "delta_expression": "DestPos - implicit(PlPos)",
+      "memberrefs": {
+        "implicit": "0x0A000089",
+        "subtraction": "0x0A000100",
+        "dot": "0x0A0001AD",
+        "magnitude": "0x0A000091"
+      },
+      "first_test": {
+        "expression": "Dot(delta,MoveVel) bgt.un 0.0f",
+        "fallthrough_effect": "return true",
+        "branch_effect": "continue to magnitude test"
+      },
+      "second_test": {
+        "expression": "delta.magnitude bgt.un threshold",
+        "threshold_float32_bits": "0x3D7FFFFF",
+        "threshold_value": 0.0624999962747097,
+        "fallthrough_effect": "return true",
+        "branch_effect": "return false"
+      }
+    },
+    "fact_0074_bridge": {
+      "fact_id": "FACT-0074",
+      "caller": "Referee.UpdateReferee",
+      "call_il": "0x0062",
+      "callee_token": "0x0600509E"
+    }
+  },
+  "limits": [
+    "Process_ArrivedDestination remains outside this record."
+  ]
+}
