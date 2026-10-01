@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_CREATE_REFEREE_DISP_AWAKE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "CreateRefereeDisp",
+      "method": "Awake",
+      "token": "0x0600283D",
+      "rva": "0x0016B410",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 203,
+      "code_sha256": "c6838190cec43f4419a3adb7d1d18f7d38e4810430ed454c346d422f8a8db9b4",
+      "max_stack": 4,
+      "local_signature_token": "0x11000966",
+      "instruction_count": 55,
+      "branch_instruction_count": 1,
+      "call_instruction_count": 21
+    },
+    "fields": {
+      "parent_referee": {
+        "name": "CreateRefereeDisp.Obj_ParentReferee",
+        "token": "0x040032D6",
+        "signature_blob_hex": "06120d"
+      },
+      "referee": {
+        "name": "CreateRefereeDisp.referee",
+        "token": "0x040032D7",
+        "signature_blob_hex": "0612a838"
+      }
+    },
+    "strings": {
+      "existing_parent_path": {
+        "token": "0x7004AC4C",
+        "value": "UI_Root_Dialog/UI_DialogCamera/RefereeLayer_Dialog"
+      },
+      "dialog_camera_path": {
+        "token": "0x7002DE90",
+        "value": "UI_Root_Dialog/UI_DialogCamera"
+      },
+      "created_name": {
+        "token": "0x7004ACB2",
+        "value": "RefereeLayer_Dialog"
+      },
+      "layer_name": {
+        "token": "0x7004ACDA",
+        "value": "UI_Dialog"
+      }
+    },
+    "exact_flow": {
+      "initial_lookup": [
+        "this.Obj_ParentReferee = GameObject.Find(existing_parent_path)",
+        "UnityEngine.Object.op_Equality(this.Obj_ParentReferee,null)",
+        "brfalse IL+0x009C when equality result is false"
+      ],
+      "null_only_setup": [
+        "local0 = GameObject.Find(dialog_camera_path)",
+        "this.Obj_ParentReferee = new GameObject()",
+        "this.Obj_ParentReferee.transform.parent = local0.transform",
+        "this.Obj_ParentReferee.name = created_name",
+        "this.Obj_ParentReferee.transform.localPosition = Vector3.zero",
+        "this.Obj_ParentReferee.transform.localScale = Vector3.one",
+        "this.Obj_ParentReferee.layer = LayerMask.NameToLayer(layer_name)"
+      ],
+      "joined_tail": [
+        "local1 = 130.0f",
+        "this.Obj_ParentReferee.transform.localScale = new Vector3(local1,local1,local1)",
+        "this.referee = RefereeMan.GetInst().CreateReferee()",
+        "return"
+      ]
+    },
+    "memberrefs": {
+      "GameObject.Find": "0x0A000662",
+      "Object.op_Equality": "0x0A000006",
+      "GameObject..ctor": "0x0A0001F4",
+      "GameObject.get_transform": "0x0A000050",
+      "Transform.set_parent": "0x0A000061",
+      "Object.set_name": "0x0A0000E1",
+      "Vector3.zero": "0x0A00003D",
+      "Transform.set_localPosition": "0x0A00005B",
+      "Vector3.one": "0x0A0000D4",
+      "Transform.set_localScale": "0x0A00005D",
+      "LayerMask.NameToLayer": "0x0A000202",
+      "GameObject.set_layer": "0x0A0000D7",
+      "Vector3..ctor": "0x0A000044"
+    },
+    "canonical_bridges": {
+      "get_inst": {
+        "fact_id": "FACT-0065",
+        "method": "RefereeMan.GetInst",
+        "token": "0x060050B2",
+        "call_il": "0x00BB"
+      },
+      "create_referee": {
+        "fact_id": "FACT-0066",
+        "method": "RefereeMan.CreateReferee",
+        "token": "0x060050B5",
+        "call_il": "0x00C0"
+      },
+      "result_store": {
+        "field": "CreateRefereeDisp.referee",
+        "token": "0x040032D7",
+        "store_il": "0x00C5"
+      }
+    }
+  },
+  "limits": [
+    "This record is caller/display-object closure only; editor semantics are not assigned.",
+    "Unity engine implementation details and prefab contents remain outside this record."
+  ]
+}
