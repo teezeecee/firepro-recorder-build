@@ -1294,6 +1294,23 @@
         "MatchMain.Update_EntranceScene caller-body closure",
         "MatchMain.Update_Match caller-body closure"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_CALL_FIGHT_V1",
+      "fact_id": "FACT-0075",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Referee.CallFight raw State/current-skill/form-index/duration gates and raw PlayRefereeVoice(0)/Show_Fight(1) calls, bridged from FACT-0074.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_call_fight.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "MatchSEPlayer.PlayRefereeVoice internal closure",
+        "MatchUI.Show_Fight internal closure",
+        "authored animation form counts"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
