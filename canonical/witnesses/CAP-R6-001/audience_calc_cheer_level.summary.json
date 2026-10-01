@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_AUDIENCE_CALC_CHEER_LEVEL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Audience",
+      "method": "CalcCheerLevel",
+      "token": "0x060047E0",
+      "rva": "0x0029018C",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 477,
+      "code_sha256": "ba5e6b908f65b9feecf9b3c43ab61fbb139abf93eea50f11ae66585a92efbc32",
+      "instruction_count": 164,
+      "branch_instruction_count": 31,
+      "call_instruction_count": 11
+    },
+    "timed_refresh": {
+      "condition": "(MatchMain.matchTime.sec + 1) % 20 == 0",
+      "match_time_field": "0x0400573B",
+      "sec_field": "0x0400572F",
+      "raw_player_indices": {
+        "min_inclusive": 0,
+        "max_inclusive": 7
+      },
+      "eligibility": [
+        "player object conversion true",
+        "isSleep == 0",
+        "hasRight != 0"
+      ],
+      "player_fields": {
+        "is_sleep": "0x04006057",
+        "has_right": "0x04006043",
+        "hp": "0x04005FBF",
+        "sp": "0x04005FC0"
+      },
+      "accumulation": "sum += (HP * 2.0f + SP) / 3.0f",
+      "get_health": {
+        "token": "0x0600495C",
+        "argument": "sum"
+      },
+      "cheer_hp_table": {
+        "field": "CheerHpTbl",
+        "token": "0x040054CE"
+      },
+      "store": {
+        "field": "CheerLevel_HP",
+        "token": "0x040054CC",
+        "expression": "CheerHpTbl[MatchMisc.GetHealth(sum)]"
+      }
+    },
+    "base_total": {
+      "field": "CheerLevel_Total",
+      "token": "0x040054CA",
+      "expression": "CheerLevel_Base + CheerLevel_HP",
+      "base_field": "0x040054CB",
+      "hp_field": "0x040054CC"
+    },
+    "zone_scan": {
+      "raw_player_indices": {
+        "min_inclusive": 0,
+        "max_inclusive": 7
+      },
+      "eligibility": [
+        "player object conversion true",
+        "isSleep == 0",
+        "Zone in {1,3,8,9}"
+      ],
+      "zone_field": "0x04005FEE",
+      "raw_zone_values": [
+        1,
+        3,
+        8,
+        9
+      ],
+      "trigger_count": 2,
+      "effect": "CheerLevel_Total = CheerLevel_Total + 1; leave scan"
+    },
+    "sally_scan": {
+      "raw_player_indices": {
+        "min_inclusive": 0,
+        "max_inclusive": 7
+      },
+      "eligibility": [
+        "player object conversion true",
+        "isSleep == 0",
+        "isSallying != 0"
+      ],
+      "is_sallying_field": "0x04005FE4",
+      "effect": "CheerLevel_Total = CheerLevel_Total + 1; leave scan on first match"
+    },
+    "final_clamp": {
+      "field": "CheerLevel_Total",
+      "min": -4,
+      "max": 4
+    },
+    "fact_0079_bridge": {
+      "fact_id": "FACT-0079",
+      "caller": "Audience.TensionDown",
+      "call_il": "0x0024",
+      "callee_token": "0x060047E0"
+    }
+  },
+  "limits": [
+    "GetHealth internals and CheerHpTbl authored values remain outside this record."
+  ]
+}
