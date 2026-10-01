@@ -1,0 +1,35 @@
+{
+  "fact_id": "FACT-0079",
+  "claim": "In the matching retail DLL, the two direct Audience helpers called by FACT-0078 are exact method bodies. Audience.TensionDown (0x060047D7) is a parameterless instance method with an exact 50-byte body: it decrements Audience.CheerLevel_Base by raw one, clamps the field to raw -4 only when the decremented value is less than -4, calls Audience.CalcCheerLevel(), then calls Audience.PlayLoopCheerVoice with raw arguments 0 and false, and returns. Audience.PlayCheerVoice (0x060047D9) is an instance method with exact signature blob 20020111aa0008, parameters vid (metadata valuetype token resolving to CheerVoiceEnum) and nLevel:Int32, and an exact 171-byte body. It obtains MatchMain.GetInst(); when isFastForwardMatch is nonzero, Fade.GetInst().IsFadeFinish() is nonzero, and unsigned MchFrameCnt % 20 is nonzero, it returns before playback. Otherwise it stores nLevel, initializes two Float32 locals to raw 0.5f and 1.0f, and tests AttendanceRate against raw 0.0f with bne.un. Only an ordered-equal-zero value takes the zero-local path; all unequal or unordered values take the arithmetic path. That path performs the emitted Float32 sequence low = low - (1.0f - AttendanceRate) * 0.2f and high = high - (1.0f - AttendanceRate) * 0.5f. It then computes local = low + (high - low) * (Float32(nLevel) / 4.0f), multiplies local by raw 1.0f, and calls Menu_SoundManager.Play_CheerVoice_OneShot(vid,local). FACT-0078 pins the calls to PlayCheerVoice with raw arguments 9 and 0 and to TensionDown with no arguments.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Audience.TensionDown token 0x060047D7 RVA 0x0028FE43 signature 200001 code size 50 code sha256=36b8ed39e946a670d66af8344565ee39ada17a831fb66a84935def5e66450dc0; exact clamp/helper-call body in canonical/witnesses/CAP-R6-001/audience_booing_dependencies.summary.json; prover tools/prove_audience_booing_dependencies.py",
+      "observation": "Exact matching-DLL Audience.TensionDown body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Audience.PlayCheerVoice token 0x060047D9 RVA 0x0028FEB0 signature 20020111aa0008 parameters vid/nLevel code size 171 code sha256=ae89176689967732040134fd4991d756cbe400831f634051ea2aacea57113a6b; exact throttle/AttendanceRate/Float32/playback-call body in the same witness/prover.",
+      "observation": "Exact matching-DLL Audience.PlayCheerVoice body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0078 Referee.Process_Booing",
+      "to": "Audience.PlayCheerVoice / Audience.TensionDown",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0078 pins callvirt Audience.PlayCheerVoice token 0x060047D9 at Process_Booing IL+0x0038 with raw arguments 9 and 0, and callvirt Audience.TensionDown token 0x060047D7 at IL+0x0054."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact two Audience helper bodies and FACT-0078 caller arguments.",
+    "Audience.CalcCheerLevel, Audience.PlayLoopCheerVoice and Menu_SoundManager.Play_CheerVoice_OneShot internals remain separate gates.",
+    "The metadata enum/type name for vid and raw numeric constants are preserved as locators; no gameplay rule meaning is assigned to them.",
+    "AttendanceRate and Float32 unordered-value behavior are preserved exactly from emitted branch opcodes."
+  ]
+}
