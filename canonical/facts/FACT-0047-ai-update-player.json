@@ -1,0 +1,61 @@
+{
+  "fact_id": "FACT-0047",
+  "claim": "In the matching retail DLL, PlayerController_AI.UpdatePlayer (0x06004F87) is a parameterless instance method with an exact 836-byte body. It begins by zeroing PlPosOfs and copying State to PrevState. When hasRight is set, hasRightFrm<=0 causes plCont_AI.CalcTouchTime(), then hasRightFrm increments; otherwise hasRightFrm resets to zero. It then calls, in emitted order, MakeKeyData, ProcessRecover, CheckFallToOutOfRing and TransitStateAfterAnm. Raw Status2 mask 64 triggers ChangeState(10), animator.ReqBasicAnm(animator.WazaRequest,true,TargetPlIdx), then Status2 &= -65. The method continues through MultiGrappleCheck, Process_Down, GatherInformation, DecideTargetEnemy, target-direction selection, TagTouchCheck, TagHelpCheck, TransitZone, StandardKeyInput, FlyingMove, ProcessRun, FrontHeadLock, ProcessRopeEscape and ProcessCageAct. When signed State<=4 it clears isDisableUpdateDownTime; isLoseAndStop calls SetBP(0); raw padOn mask 256 takes ChangeState(4) and, when PrevState differs from State, ReqBasicAnm(496 + AnmOfsTbl_3Dir[PlDir],false,-1); otherwise raw padOn mask 15 selects ProcessWalk versus WrestlerStand. In that same State<=4 region, when forceControl and isSecond are both false it stores isPossibleToGrapple=1. It then always calls GrappleCheck and animator.UpdateAnimation. Raw Zone 8 executes the exact Ring collision-line geometry block and stores PlPos.z = NearestPointOnSegment_Normalized(...) * 1.5f. Positive FormRen.PoisonedCnt is decremented, then VibratePlayer is called. reboundTimes is cleared unless State is raw 5 or 32. When requestedForceControl is nonzero and State is one of raw {0,1,2,3,6}, Start_ForceControl(requestedForceControl) is called and requestedForceControl is cleared. ProcessBloodstain is the final call before return. FACT-0046 pins the direct CalcTouchTime call at IL+0x0034. Matching-DLL Update_EntranceScene and Update_Match call this method at IL+0x00CC and IL+0x026F respectively.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.UpdatePlayer token 0x06004F87 RVA 0x002F4308 signature 200001 code size 836 code sha256=da9fecfe8759295bfca091cebf9c3d58f54802008907127c9658db73eadfbf15; exact phases/calls/branches in canonical/witnesses/CAP-R6-001/ai_update_player.summary.json; prover tools/prove_ai_update_player.py",
+      "observation": "Exact matching-DLL UpdatePlayer body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "hasRight/hasRightFrm gate",
+      "to": "FACT-0046 PlayerController_AI.CalcTouchTime()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdatePlayer IL+0x0018 reads hasRight; IL+0x0023 reads hasRightFrm; when hasRightFrm<=0 IL+0x002F loads plCont_AI and IL+0x0034 callvirt token 0x06004FFE; FACT-0046 closes that callee."
+        }
+      ]
+    },
+    {
+      "from": "State/input phase",
+      "to": "animation and grapple phase",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdatePlayer IL+0x0053..0x01E7 pins the ordered state/input helper calls, raw Status2/padOn gates, isPossibleToGrapple store, GrappleCheck token 0x06004F78 and FormAnimator.UpdateAnimation token 0x06004E7E."
+        }
+      ]
+    },
+    {
+      "from": "raw Zone 8",
+      "to": "collision-line PlPos.z update",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdatePlayer IL+0x01EC..0x0299 requires Zone==8, reads Ring collision data, calls CalcLinearFunctinParam, IsIntersect_Line twice and NearestPointOnSegment_Normalized, then stores the returned Float32 multiplied by 1.5f into PlPos.z."
+        }
+      ]
+    },
+    {
+      "from": "UpdatePlayer tail",
+      "to": "poison/rebound/force-control/bloodstain aftermath",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdatePlayer IL+0x029A..0x0343 decrements positive FormRen.PoisonedCnt, calls VibratePlayer, clears reboundTimes unless State is 5 or 32, conditionally starts requested force control only for raw State {0,1,2,3,6}, clears requestedForceControl after that call, calls ProcessBloodstain and returns."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Called helper internals remain separate unless already canonical; this fact closes UpdatePlayer ordering, arguments, fields and branches, not every callee.",
+    "Raw State, Zone, pad and status values are preserved numerically without gameplay labels.",
+    "The Ring collision helper internals and Unity vector conversions are outside this fact.",
+    "Update_EntranceScene and Update_Match are used only as exact caller bridges; their full scheduler bodies remain outside this fact.",
+    "CAP-R6-001 contains no standalone UpdatePlayer PRE/POST event."
+  ]
+}

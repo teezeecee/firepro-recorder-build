@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_UPDATE_PLAYER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "UpdatePlayer",
+      "token": "0x06004F87",
+      "rva": "0x002F4308",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 836,
+      "code_sha256": "da9fecfe8759295bfca091cebf9c3d58f54802008907127c9658db73eadfbf15",
+      "max_stack": 6,
+      "local_signature_token": "0x110010EF",
+      "local_signature_blob_hex": "07060c0c12a8f8113111310c",
+      "local_count": 6,
+      "instruction_count": 268,
+      "branch_instruction_count": 26,
+      "call_instruction_count": 38
+    },
+    "entry_and_right_timer": [
+      "PlPosOfs = UnityEngine.Vector2.zero",
+      "PrevState = State",
+      "if hasRight != 0: if hasRightFrm <= 0 call plCont_AI.CalcTouchTime(); then hasRightFrm += 1",
+      "else hasRightFrm = 0"
+    ],
+    "status2_mask64": {
+      "raw_mask": 64,
+      "change_state_argument": 10,
+      "request": "animator.ReqBasicAnm(animator.WazaRequest, true, TargetPlIdx)",
+      "clear_mask": -65
+    },
+    "target_direction": {
+      "target_path_condition": "TargetPlIdx != PlIdx AND TargetPlIdx >= 0",
+      "target_path": "SetPlayerDirToTarget()",
+      "alternate_path": "SetPlayerDir_Walking()"
+    },
+    "standing_state_region": {
+      "condition": "signed State <= 4",
+      "effects": [
+        "isDisableUpdateDownTime = 0",
+        "if isLoseAndStop != 0: SetBP(0.0f)",
+        "if (padOn & 256) != 0: ChangeState(4); when PrevState != State request BasicAnm raw 496 + AnmOfsTbl_3Dir[PlDir], false, -1",
+        "else if (padOn & 15) != 0: ProcessWalk(); else WrestlerStand()",
+        "if forceControl == 0 AND isSecond == 0: isPossibleToGrapple = 1"
+      ]
+    },
+    "post_animation_geometry": {
+      "condition": "Zone == 8",
+      "z_multiplier": 1.5,
+      "helpers": [
+        "CalcLinearFunctinParam",
+        "IsIntersect_Line",
+        "IsIntersect_Line",
+        "NearestPointOnSegment_Normalized"
+      ]
+    },
+    "tail": {
+      "poisoned_count": "if FormRen.PoisonedCnt > 0: PoisonedCnt -= 1",
+      "rebound_keep_states": [
+        5,
+        32
+      ],
+      "rebound_else": "reboundTimes = 0",
+      "requested_force_control_states": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "force_control_effect": "Start_ForceControl(requestedForceControl); requestedForceControl = 0",
+      "final_call": "ProcessBloodstain"
+    },
+    "ordered_calls": [
+      {
+        "il": "0x0001",
+        "method": "UnityEngine.Vector2.get_zero",
+        "token": "0x0A00003D"
+      },
+      {
+        "il": "0x0034",
+        "method": "PlayerController_AI.CalcTouchTime",
+        "token": "0x06004FFE"
+      },
+      {
+        "il": "0x0054",
+        "method": "Player.MakeKeyData",
+        "token": "0x06004F76"
+      },
+      {
+        "il": "0x005A",
+        "method": "Player.ProcessRecover",
+        "token": "0x06004F21"
+      },
+      {
+        "il": "0x0060",
+        "method": "Player.CheckFallToOutOfRing",
+        "token": "0x06004F22"
+      },
+      {
+        "il": "0x0066",
+        "method": "Player.TransitStateAfterAnm",
+        "token": "0x06004EC8"
+      },
+      {
+        "il": "0x007C",
+        "method": "Player.ChangeState",
+        "token": "0x06004EAE"
+      },
+      {
+        "il": "0x0099",
+        "method": "FormAnimator.ReqBasicAnm",
+        "token": "0x06004E6F"
+      },
+      {
+        "il": "0x00AE",
+        "method": "Player.MultiGrappleCheck",
+        "token": "0x06004F23"
+      },
+      {
+        "il": "0x00B4",
+        "method": "Player.Process_Down",
+        "token": "0x06004F28"
+      },
+      {
+        "il": "0x00BA",
+        "method": "Player.GatherInformation",
+        "token": "0x06004F31"
+      },
+      {
+        "il": "0x00C0",
+        "method": "Player.DecideTargetEnemy",
+        "token": "0x06004F30"
+      },
+      {
+        "il": "0x00E3",
+        "method": "Player.SetPlayerDirToTarget",
+        "token": "0x06004F2F"
+      },
+      {
+        "il": "0x00EE",
+        "method": "Player.SetPlayerDir_Walking",
+        "token": "0x06004F2E"
+      },
+      {
+        "il": "0x00F4",
+        "method": "Player.TagTouchCheck",
+        "token": "0x06004F35"
+      },
+      {
+        "il": "0x00FA",
+        "method": "Player.TagHelpCheck",
+        "token": "0x06004F36"
+      },
+      {
+        "il": "0x0100",
+        "method": "Player.TransitZone",
+        "token": "0x06004F3D"
+      },
+      {
+        "il": "0x0106",
+        "method": "Player.StandardKeyInput",
+        "token": "0x06004F51"
+      },
+      {
+        "il": "0x010C",
+        "method": "Player.FlyingMove",
+        "token": "0x06004F52"
+      },
+      {
+        "il": "0x0112",
+        "method": "Player.ProcessRun",
+        "token": "0x06004F62"
+      },
+      {
+        "il": "0x0118",
+        "method": "Player.FrontHeadLock",
+        "token": "0x06004F66"
+      },
+      {
+        "il": "0x011E",
+        "method": "Player.ProcessRopeEscape",
+        "token": "0x06004F67"
+      },
+      {
+        "il": "0x0124",
+        "method": "Player.ProcessCageAct",
+        "token": "0x06004F71"
+      },
+      {
+        "il": "0x014D",
+        "method": "Player.SetBP",
+        "token": "0x06004ECE"
+      },
+      {
+        "il": "0x0165",
+        "method": "Player.ChangeState",
+        "token": "0x06004EAE"
+      },
+      {
+        "il": "0x0195",
+        "method": "FormAnimator.ReqBasicAnm",
+        "token": "0x06004E6F"
+      },
+      {
+        "il": "0x01AE",
+        "method": "Player.ProcessWalk",
+        "token": "0x06004F07"
+      },
+      {
+        "il": "0x01B9",
+        "method": "Player.WrestlerStand",
+        "token": "0x06004F08"
+      },
+      {
+        "il": "0x01DC",
+        "method": "Player.GrappleCheck",
+        "token": "0x06004F78"
+      },
+      {
+        "il": "0x01E7",
+        "method": "FormAnimator.UpdateAnimation",
+        "token": "0x06004E7E"
+      },
+      {
+        "il": "0x021F",
+        "method": "MatchMisc.CalcLinearFunctinParam",
+        "token": "0x06004A90"
+      },
+      {
+        "il": "0x023C",
+        "method": "MatchMisc.IsIntersect_Line",
+        "token": "0x06004A91"
+      },
+      {
+        "il": "0x026C",
+        "method": "MatchMisc.IsIntersect_Line",
+        "token": "0x06004A91"
+      },
+      {
+        "il": "0x0278",
+        "method": "Unity conversion op_Implicit",
+        "token": "0x0A000089"
+      },
+      {
+        "il": "0x0280",
+        "method": "MatchMisc.NearestPointOnSegment_Normalized",
+        "token": "0x06004A93"
+      },
+      {
+        "il": "0x02BF",
+        "method": "Player.VibratePlayer",
+        "token": "0x06004F7F"
+      },
+      {
+        "il": "0x0331",
+        "method": "Player.Start_ForceControl",
+        "token": "0x06004F74"
+      },
+      {
+        "il": "0x033E",
+        "method": "Player.ProcessBloodstain",
+        "token": "0x06004F80"
+      }
+    ],
+    "caller_bridges": [
+      {
+        "caller": "Update_EntranceScene",
+        "caller_token": "0x06004935",
+        "caller_rva": "0x002AA570",
+        "caller_code_size": 822,
+        "caller_code_sha256": "574be9a2193d91b436a4a241a5dee31bd03c08b32ca09d28dbdf4afd60990cde",
+        "call_il": "0x00CC"
+      },
+      {
+        "caller": "Update_Match",
+        "caller_token": "0x06004936",
+        "caller_rva": "0x002AA8B4",
+        "caller_code_size": 1152,
+        "caller_code_sha256": "b6841694e03be5ca4c73e966a13802de9fe7339ab63540ffdf5edaee96ea9dfe",
+        "call_il": "0x026F"
+      }
+    ]
+  },
+  "limits": [
+    "Helper internals, raw enum semantics and the full two caller schedulers remain outside this record."
+  ]
+}

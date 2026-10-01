@@ -814,6 +814,24 @@
         "touchFrm downstream consumer closure",
         "full PlayerController_AI.UpdatePlayer closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_UPDATE_PLAYER_V1",
+      "fact_id": "FACT-0047",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL PlayerController_AI.UpdatePlayer full 836-byte per-player update body: right/touch timer gate, ordered recovery/state/input/action helpers, raw status/pad/state branches, grapple and UpdateAnimation call, Zone-8 collision geometry, poison/rebound/force-control tail, and caller bridges from Update_EntranceScene and Update_Match.",
+      "summary": "canonical/witnesses/CAP-R6-001/ai_update_player.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "internals of remaining noncanonical UpdatePlayer helpers",
+        "full Update_EntranceScene and Update_Match scheduler closure",
+        "raw State/Zone/pad/status semantic mapping",
+        "Ring collision helper internal closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
