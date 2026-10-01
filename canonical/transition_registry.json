@@ -987,6 +987,23 @@
         "Ring.mRingShake internals",
         "MatchCamera.ReqVivration internals"
       ]
+    },
+    {
+      "family_id": "DLL_MINE_PRESENTATION_SUPPORT_V1",
+      "fact_id": "FACT-0057",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL LayerMan.GetLayerID raw 0..8 lookup, Ring.mRingShake ShakeCnt store, and MatchCamera.ReqVivration VibPos/VibVel stores called directly by FACT-0056.",
+      "summary": "canonical/witnesses/CAP-R6-001/mine_presentation_support.summary.json",
+      "dll_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "LayerMan.layerID table contents",
+        "later ShakeCnt consumer closure",
+        "later VibPos/VibVel consumer closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
