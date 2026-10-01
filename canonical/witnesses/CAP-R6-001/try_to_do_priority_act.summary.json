@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_TRY_TO_DO_PRIORITY_ACT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "TryToDoPriorityAct",
+      "token": "0x06005009",
+      "rva": "0x002FD0B0",
+      "signature_blob_hex": "200108118628",
+      "return_type": "Int32",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "act",
+          "type": "AIPriorityActEnum"
+        }
+      ],
+      "code_size": 606,
+      "code_sha256": "f1818f56bcb7b04635a7c1b9cb814f1e20480577a20287b2d8ee4d438e109191",
+      "max_stack": 4,
+      "local_signature_token": "0x1100112C",
+      "local_signature_blob_hex": "070c11860011860011870c12a9a811a86011870c12a9a811a86011870c11a7d011870c11870c",
+      "instruction_count": 169,
+      "branch_instruction_count": 16,
+      "call_instruction_count": 13
+    },
+    "switch": {
+      "count": 41,
+      "default_target": "0x00AA",
+      "default_effect": "branch to raw return 1",
+      "groups": [
+        {
+          "raw_acts": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "target": "0x00AF",
+          "effect": "SetAIAct_DownAtk(PriotityActToAIOpt[act],180,1); currentPriAct=act; return 1"
+        },
+        {
+          "raw_acts": [
+            6,
+            7
+          ],
+          "target": "0x00D0",
+          "effect": "SetAIAct_DownAtk(PriotityActToAIOpt[act],180,1); currentPriAct=act; return 1"
+        },
+        {
+          "raw_acts": [
+            8,
+            9
+          ],
+          "target": "0x00F1",
+          "effect": "GetSkillData_Equip(mapped,0); GetDiveCorner_LR; -1=>0; act 8 Stand else Down; currentPriAct=act; return 1"
+        },
+        {
+          "raw_acts": [
+            10,
+            11,
+            12,
+            13
+          ],
+          "target": "0x014D",
+          "effect": "GetSkillData_Equip(mapped,0); State 6 uses PostPos else GetDiveCorner and -1=>0; SetAIAct_CornerDive(pos,mapped,0); currentPriAct=act; return 1"
+        },
+        {
+          "raw_acts": [
+            14,
+            15,
+            16,
+            17
+          ],
+          "target": "0x01BF",
+          "effect": "padPush=PerformanceKeyTbl[PriotityActToAIOpt[act]-86]; currentPriAct=-1; return 2"
+        },
+        {
+          "raw_acts": [
+            18,
+            19,
+            20
+          ],
+          "target": "0x01E2",
+          "effect": "SetAIAct_PriAct_RunAtk(mapped,768); currentPriAct=act; return 1"
+        },
+        {
+          "raw_acts": [
+            21
+          ],
+          "target": "0x0204",
+          "effect": "SetAIAct(17,768); currentPriAct=act; return 1"
+        },
+        {
+          "raw_acts": [
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34
+          ],
+          "target": "0x021D",
+          "effect": "SetAIAct_GoGrapple(mapped,2,32); currentPriAct=act; return 1"
+        },
+        {
+          "raw_acts": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "target": "0x023D",
+          "effect": "SetAIAct_GoBackGrapple(mapped,32); currentPriAct=act; return 1"
+        }
+      ]
+    },
+    "exact_tokens": {
+      "priority_to_aiopt_field": {
+        "name": "PriotityActToAIOpt",
+        "token": "0x04006147"
+      },
+      "current_pri_act_field": {
+        "name": "currentPriAct",
+        "token": "0x04006151"
+      },
+      "performance_key_tbl_field": {
+        "name": "PerformanceKeyTbl",
+        "token": "0x04006143"
+      },
+      "pad_push_field": {
+        "name": "PlayerController.padPush",
+        "token": "0x04006118"
+      },
+      "pl_obj_field": {
+        "name": "PlObj",
+        "token": "0x0400614A"
+      },
+      "target_pl_idx_field": {
+        "name": "TargetPlIdx",
+        "token": "0x04005FB1"
+      },
+      "state_field": {
+        "name": "State",
+        "token": "0x04005FB7"
+      },
+      "post_pos_field": {
+        "name": "PostPos",
+        "token": "0x04005FEF"
+      },
+      "set_down_atk_token": "0x06004FA4",
+      "get_skill_data_equip_token": "0x06004EB2",
+      "get_dive_corner_lr_token": "0x06004FEC",
+      "set_runup_stand_token": "0x06004FA2",
+      "set_runup_down_token": "0x06004FA3",
+      "get_dive_corner_token": "0x06004FEB",
+      "set_corner_dive_token": "0x06004FA1",
+      "set_pri_runatk_token": "0x06004FAA",
+      "set_ai_act_token": "0x06004F9D",
+      "set_go_grapple_token": "0x06004F9E",
+      "set_go_back_grapple_token": "0x06004FA0"
+    },
+    "raw_constants": {
+      "down_atk_duration": 180,
+      "down_atk_flag": 1,
+      "performance_index_subtract": 86,
+      "run_attack_duration": 768,
+      "act21_set_ai_act_raw_action": 17,
+      "grapple_arg2": 2,
+      "grapple_arg3": 32,
+      "back_grapple_arg2": 32,
+      "raw_state_postpos_path": 6
+    },
+    "process_priority_act_bridge": {
+      "fact_id": "FACT-0037",
+      "caller": "PlayerController_AI.ProcessPriorityAct",
+      "caller_token": "0x0600500A",
+      "call_il": "0x0180",
+      "callee_token": "0x06005009",
+      "argument": "moveAct"
+    }
+  },
+  "r6_observation_note": "CAP-R6-001 contains no standalone PlayerController_AI.TryToDoPriorityAct PRE/POST event. This record uses the exact matching-DLL body and FACT-0037 caller boundary.",
+  "limits": [
+    "Called action-construction helpers, lookup-table contents and raw act semantics remain outside this record.",
+    "FACT-0037 governs the caller-side meaning of raw return handling."
+  ]
+}

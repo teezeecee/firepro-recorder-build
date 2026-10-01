@@ -693,6 +693,24 @@
         "PriotityActToAIOpt contents and raw act mapping",
         "raw State/Zone/ringKind semantic closure"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_TRY_TO_DO_PRIORITY_ACT_V1",
+      "fact_id": "FACT-0040",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL PlayerController_AI.TryToDoPriorityAct 41-case raw switch, action-construction call families, failure returns, distinct performance return 2 path, default return 1, and FACT-0037 caller bridge.",
+      "summary": "canonical/witnesses/CAP-R6-001/try_to_do_priority_act.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "action-construction helper internals",
+        "PriotityActToAIOpt and PerformanceKeyTbl contents",
+        "corner-selection helper closure",
+        "raw AIPriorityActEnum semantic mapping"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
