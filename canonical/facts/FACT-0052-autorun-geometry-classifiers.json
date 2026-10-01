@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0052",
+  "claim": "In the matching retail DLL, three small raw geometry/classifier methods used by FACT-0050 are closed as one caller-connected family. MatchMisc.IsArea_UpperTriangles (0x06004961) has an exact 18-byte Boolean body: it returns true when raw area equals 2 or 3 and false for every other raw value. Ring.GetColAreaInRhombus (0x060050E8) has parameters rp, x and y and an exact 44-byte body using emitted unordered-capable Float32 branches against rp.y2 and rp.x2: on ordered values, y>=rp.y2 returns raw 2 when x<=rp.x2 and raw 3 when x>rp.x2, while y<rp.y2 returns raw 4 when x<=rp.x2 and raw 5 when x>rp.x2. Ring.GetColAreaInRhombus_AroundRing (0x060050E9) is an exact 26-byte instance wrapper that loads colData_AroundRing, forwards p.x and p.y to GetColAreaInRhombus, and returns the raw result. FACT-0050 pins the around-ring wrapper call at TransitStateAfterAnm_AutoRun IL+0x0062 and four IsArea_UpperTriangles calls at IL+0x0095, 0x00B8, 0x00F0 and 0x0113.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.IsArea_UpperTriangles token 0x06004961 RVA 0x002B03A1 signature 00010211a854 parameter area code size 18 code sha256=654ba7cc9e57f9d89980c22e809e524ea356d0b765da69858346bf5f552f101e; exact body in canonical/witnesses/CAP-R6-001/autorun_geometry_classifiers.summary.json",
+      "observation": "Exact raw-area Boolean classifier."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Ring.GetColAreaInRhombus token 0x060050E8 RVA 0x0030C1AC signature 000311a85412a8fc0c0c parameters rp,x,y code size 44 code sha256=9e30d379778702383767528e435f4f3286a8750330a3c347070a0bd6b2d7f040; Ring.GetColAreaInRhombus_AroundRing token 0x060050E9 RVA 0x0030C1D9 signature 200111a8541131 parameter p code size 26 code sha256=176f302c0fcf51b200743023b8c7ca7028e80575b1fb3de87efd6d6bddf130d6",
+      "observation": "Exact rhombus core and around-ring wrapper."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0050 TransitStateAfterAnm_AutoRun",
+      "to": "Ring.GetColAreaInRhombus_AroundRing and MatchMisc.IsArea_UpperTriangles",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0050 exact body calls token 0x060050E9 at IL+0x0062 and token 0x06004961 at IL+0x0095,0x00B8,0x00F0,0x0113."
+        }
+      ]
+    },
+    {
+      "from": "Ring.GetColAreaInRhombus_AroundRing(p)",
+      "to": "Ring.GetColAreaInRhombus(colData_AroundRing,p.x,p.y)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "AroundRing IL+0x0000..0x0019 loads field 0x04006373, p.x MemberRef 0x0A000059, p.y MemberRef 0x0A00005A, calls token 0x060050E8 at IL+0x0014, then returns."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw area outputs 2/3/4/5 are preserved numerically without assigning spatial labels.",
+    "The emitted blt.un and bgt.un Float32 comparisons are preserved; no additional behavior is asserted for unordered inputs.",
+    "Authored colData_AroundRing values and higher-level geometry meaning remain outside this fact.",
+    "Other Ring collision/geometry helpers remain separate gates."
+  ]
+}
