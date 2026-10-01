@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0099",
+  "claim": "In the matching retail DLL, SaveData.get_story_data (0x06005172) is a static parameterless method with exact signature blob 0000129cec and an exact 11-byte body. It calls SaveData.get_story_work (0x06005171), loads StoryWork.m_data (field token 0x0400485C) from the returned object, and returns that field. FACT-0096 pins the already-canonical caller at MatchMain.SetAfterMatchBGM IL+0x0071 on the raw wrestlerID == -2 branch.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SaveData.get_story_data token 0x06005172 RVA 0x003149AB signature 0000129cec code size 11 code sha256=6ae14bc58bd6ce5fef923aed7dc39a940d5975700065175c076beda7f3ff143e; exact call/load/return body in canonical/witnesses/CAP-R6-001/save_data_story_data_getter.summary.json; prover tools/prove_save_data_story_data_getter.py",
+      "observation": "Exact matching-DLL SaveData.get_story_data body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0096 MatchMain.SetAfterMatchBGM",
+      "to": "SaveData.get_story_data()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0096 pins call token 0x06005172 at SetAfterMatchBGM IL+0x0071 after the raw wrestlerID == -2 comparison."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact get_story_data helper and the FACT-0096 caller bridge.",
+    "SaveData.get_story_work internals and StoryWork.m_data contents remain separate gates.",
+    "Other get_story_data callers are not promoted by this fact.",
+    "No Story Mode subsystem behavior or authored story data is promoted here."
+  ]
+}

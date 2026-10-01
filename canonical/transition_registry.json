@@ -1709,6 +1709,23 @@
       "semantic_promotion_blockers": [
         "additional MatchTime.Set caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_SAVE_DATA_STORY_DATA_GETTER_V1",
+      "fact_id": "FACT-0099",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL SaveData.get_story_data 11-byte call/load/return helper, bridged from FACT-0096 SetAfterMatchBGM raw -2 branch.",
+      "summary": "canonical/witnesses/CAP-R6-001/save_data_story_data_getter.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "SaveData.get_story_work internal closure",
+        "StoryWork.m_data authored/data closure",
+        "additional get_story_data caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
