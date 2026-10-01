@@ -1948,6 +1948,23 @@
         "Menu_SoundManager.inst assignment/lifecycle closure",
         "additional get__instance caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_AUDIO_CLIP_INFO_SET_V1",
+      "fact_id": "FACT-0113",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL AudioClipInfo.Set direct AudioClip field store, bridged from all three FACT-0111 raw-slot-33 call sites.",
+      "summary": "canonical/witnesses/CAP-R6-001/audio_clip_info_set.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "AudioClipInfo construction/reader closure",
+        "UnityEngine.AudioClip content provenance",
+        "additional AudioClipInfo.Set caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
