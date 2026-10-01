@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_CHANGE_BGM_THEME_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Menu_SoundManager",
+      "method": "Change_BGM_Theme",
+      "token": "0x06005296",
+      "rva": "0x00322268",
+      "signature_blob_hex": "0003011187480202",
+      "static": true,
+      "return_type": "Void",
+      "parameters": [
+        {"sequence":1,"name":"index","type":"ThemeMusicID"},
+        {"sequence":2,"name":"bAsync","type":"Boolean"},
+        {"sequence":3,"name":"bStart","type":"Boolean"}
+      ],
+      "code_size": 399,
+      "code_sha256": "2e0905ada32d6f97c3a3ac37f28bb0722b6084a109618070cf1dfc1ea1fb4733",
+      "max_stack": 5,
+      "local_signature_token": "0x11001202",
+      "local_signature_blob_hex": "070612874c0e12867d124912491249",
+      "instruction_count": 119,
+      "branch_instruction_count": 10,
+      "call_instruction_count": 28
+    },
+    "strings": {
+      "dlc_prefix": {"token":"0x700649B3","value":"dlc_assets/theme_music/"},
+      "resource_prefix": {"token":"0x7008EAFC","value":"Sound/Bgm/"}
+    },
+    "fields": {
+      "theme_manager_inst": {"name":"ThemeMusicInfoManager.inst","token":"0x04000FBC"},
+      "theme_list": {"name":"ThemeMusicInfoManager.themeMusicList","token":"0x04000FBD"},
+      "theme_file_name": {"name":"ThemeMusicInfo.fileName","token":"0x04000FBA"},
+      "progress_continue": {"name":"Menu_SoundManager.g_ProgressBGM_Continue","token":"0x04008703"},
+      "keep_bgm_number": {"name":"Menu_SoundManager.g_KeepBgmNumber","token":"0x04008702"},
+      "my_music_admission": {"name":"Menu_SoundManager.MyMusic_SelectFile_Admission","token":"0x04008705"},
+      "audio_clip_info": {"name":"Menu_SoundManager.audioClipInfo","token":"0x040086F4"}
+    },
+    "direct_method_calls": {
+      "get_theme_music_info": {"token":"0x06001196","call_ils":["0x001E","0x0035","0x0116"]},
+      "check_validation_dlc": {"token":"0x06001191","call_il":"0x0025"},
+      "is_dlc": {"token":"0x06001192","call_ils":["0x0059","0x00B8"]},
+      "get_instance": {"token":"0x0600527C","call_ils":["0x0074","0x008E"]},
+      "co_change_asset_bundle": {"token":"0x06005295","call_il":"0x007E"},
+      "co_change": {"token":"0x06005294","call_il":"0x00A7"},
+      "audio_clip_set": {"token":"0x060052C2","call_ils":["0x00FF","0x0142","0x0172"]}
+    },
+    "engine_and_member_calls": {
+      "theme_list_count_memberref":"0x0A000B98",
+      "string_concat_memberref":"0x0A000012",
+      "string_empty_memberref":"0x0A000025",
+      "start_coroutine_memberref":"0x0A00035A",
+      "asset_bundle_load_from_file_memberref":"0x0A000799",
+      "object_inequality_memberref":"0x0A00000F",
+      "path_get_file_name_memberref":"0x0A00071A",
+      "asset_load_methodspec":"0x2B000100",
+      "asset_bundle_unload_memberref":"0x0A00079E",
+      "resources_load_memberref":"0x0A0006DA",
+      "audio_clip_typeref":"0x01000012"
+    },
+    "exact_flow": {
+      "index_gate": [
+        "if signed index < ThemeMusicInfoManager.inst.themeMusicList.Count: keep index",
+        "otherwise index = 0"
+      ],
+      "validation": [
+        "local0 = ThemeMusicInfoManager.inst.GetThemeMusicInfo(index)",
+        "if local0.CheckValidationDLC() is false: local0 = ThemeMusicInfoManager.inst.GetThemeMusicInfo(0)"
+      ],
+      "async_true": [
+        "g_ProgressBGM_Continue = false",
+        "g_KeepBgmNumber = 15",
+        "MyMusic_SelectFile_Admission = System.String.Empty",
+        "if local0.IsDLC(): StartCoroutine(CoChange_BGMandPlay_FromAssetBundle('dlc_assets/theme_music/'+fileName,33,bStart,null))",
+        "otherwise StartCoroutine(CoChange_BGMandPlay('Sound/Bgm/'+fileName,33,bStart,null))",
+        "return"
+      ],
+      "async_false": [
+        "if local0.IsDLC(): bundle = AssetBundle.LoadFromFile('dlc_assets/theme_music/'+fileName)",
+        "if bundle is non-null: load named asset through MethodSpec 0x2B000100, AudioClipInfo.Set(audioClipInfo[33], asset), bundle.Unload(false)",
+        "if bundle is null: local0 = GetThemeMusicInfo(0); Resources.Load('Sound/Bgm/'+fileName); cast AudioClip; AudioClipInfo.Set(audioClipInfo[33], clip)",
+        "if local0.IsDLC() is false: Resources.Load('Sound/Bgm/'+fileName); cast AudioClip; AudioClipInfo.Set(audioClipInfo[33], clip)",
+        "g_ProgressBGM_Continue = false",
+        "g_KeepBgmNumber = 15",
+        "MyMusic_SelectFile_Admission = System.String.Empty",
+        "return"
+      ]
+    },
+    "fact_0108_bridges": [
+      {"fact_id":"FACT-0108","call_il":"0x003E"},
+      {"fact_id":"FACT-0108","call_il":"0x00B8"},
+      {"fact_id":"FACT-0108","call_il":"0x00EE"}
+    ]
+  },
+  "limits": [
+    "Direct helper internals and authored audio data remain outside this record."
+  ]
+}
