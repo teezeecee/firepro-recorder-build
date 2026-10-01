@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCH_MAIN_PLAY_AFTER_MATCH_BGM_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchMain",
+      "method": "PlayAfterMatchBGM",
+      "token": "0x06004925",
+      "rva": "0x002A96A8",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 390,
+      "code_sha256": "ce8a2a91a564c9f28928b39c7d444dfe0758d3b771b7a142125e5bac4daaa2b5",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 3,
+      "local_signature_token": "0x11000F48",
+      "local_signature_blob_hex": "070212a40802",
+      "locals": [
+        {"index":0,"type":"MatchSetting"},
+        {"index":1,"type":"Boolean"}
+      ],
+      "instruction_count": 123,
+      "branch_instruction_count": 22,
+      "call_instruction_count": 10
+    },
+    "fields": {
+      "bgm_req_timer":{"token":"0x0400574F","name":"MatchMain.bgmReqTimer","type":"Int32"},
+      "global_work_inst":{"token":"0x04002AD1","name":"GlobalWork.inst"},
+      "match_setting":{"token":"0x04002AD2","name":"GlobalWork.MatchSetting"},
+      "battle_royal_kind":{"token":"0x040057D3","name":"MatchSetting.BattleRoyalKind"},
+      "match_evaluation_inst":{"token":"0x040056FF","name":"MatchEvaluation.inst"},
+      "pl_result":{"token":"0x04005700","name":"MatchEvaluation.PlResult"},
+      "result_position":{"token":"0x040056CF","name":"PlayerMatchResult.resultPosition"},
+      "suppress_blue":{"token":"0x040057EF","name":"MatchSetting.isSuppressWinJingle_Blue"},
+      "suppress_red":{"token":"0x040057F0","name":"MatchSetting.isSuppressWinJingle_Red"},
+      "exit_timer":{"token":"0x04005743","name":"MatchMain.exitTimer"},
+      "game_speed":{"token":"0x040057CF","name":"MatchSetting.GameSpeed"},
+      "theme_music":{"token":"0x0400574D","name":"MatchMain.ThemeMusic"},
+      "theme_music_filename":{"token":"0x0400574E","name":"MatchMain.ThemeMusicFilename"}
+    },
+    "strings": {
+      "default_after_match_bgm":{"token":"0x7005B2B2","value":"BGIN_001"}
+    },
+    "calls": {
+      "change_bgm_theme_string":{"token":"0x06005298","resolved":"Menu_SoundManager.Change_BGM_Theme(String,Boolean,Boolean)","call_ils":["0x00F0"]},
+      "check_file":{"token":"0x06002C1E","resolved":"MyMusic.Check_File(String)","fact_id":"FACT-0100","call_ils":["0x010D"]},
+      "change_bgm_theme_id":{"token":"0x06005296","resolved":"Menu_SoundManager.Change_BGM_Theme(ThemeMusicID,Boolean,Boolean)","fact_id":"FACT-0111","call_ils":["0x011A","0x0167","0x0174"]},
+      "my_music_set":{"token":"0x06002C23","resolved":"MyMusic.Set","fact_id":"FACT-0110","call_ils":["0x0126","0x013D","0x0180"]},
+      "stop_bgm":{"token":"0x060052A4","resolved":"Menu_SoundManager.StopBGM","call_ils":["0x0130"]},
+      "play_bgm":{"token":"0x0600529E","resolved":"Menu_SoundManager.Play_BGM","call_ils":["0x0145"]}
+    },
+    "exact_flow": {
+      "timer_gate":[
+        "if bgmReqTimer <= 0: return",
+        "bgmReqTimer = bgmReqTimer - 1",
+        "if bgmReqTimer > 0: return"
+      ],
+      "eligibility":[
+        "local0 = GlobalWork.inst.MatchSetting",
+        "local1 = false",
+        "if BattleRoyalKind == 0: inspect PlResult[0]/PlResult[4] resultPosition and the two suppression fields; exact suppression branch writes exitTimer=900",
+        "otherwise, and on the non-suppression path, local1 becomes true only when exitTimer < 512 and GameSpeed == 100",
+        "if local1 is false: return"
+      ],
+      "theme_raw_minus_1":[
+        "Change_BGM_Theme('BGIN_001', true, true)",
+        "return"
+      ],
+      "theme_raw_minus_2_file_false":[
+        "MyMusic.Check_File(ThemeMusicFilename) is false",
+        "Change_BGM_Theme(raw 0, true, true)",
+        "MyMusic.Set(raw 33, System.String.Empty)",
+        "return"
+      ],
+      "theme_raw_minus_2_file_true":[
+        "MyMusic.Check_File(ThemeMusicFilename) is true",
+        "Menu_SoundManager.StopBGM()",
+        "MyMusic.Set(raw 33, ThemeMusicFilename)",
+        "Menu_SoundManager.Play_BGM(raw 33, raw 1)",
+        "return"
+      ],
+      "theme_other":[
+        "if ThemeMusic < 10000: Change_BGM_Theme(ThemeMusic, true, true)",
+        "otherwise Change_BGM_Theme(raw 0, true, true) then MyMusic.Set(raw 33, System.String.Empty)",
+        "return"
+      ]
+    }
+  },
+  "limits": [
+    "The three newly exposed Menu_SoundManager helper internals and authored audio/data remain outside this record."
+  ]
+}
