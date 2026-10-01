@@ -1195,6 +1195,23 @@
         "additional ReqRefereeAnm caller closure",
         "later referee animation-state consumer closure"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_INIT_ROUND_V1",
+      "fact_id": "FACT-0069",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Referee.InitRound raw BattleRoyalKind/isFastForwardMatch branches, PlPos writes, State/request selection, FACT-0068 ReqRefereeAnm calls and shared tail resets.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_init_round.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Referee.UpdateRefereeAnm internal closure",
+        "InitRound caller closure",
+        "authored meaning of raw BattleRoyalKind/State/request values"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
