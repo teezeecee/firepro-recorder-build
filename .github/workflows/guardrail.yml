@@ -308,3 +308,8 @@ jobs:
         run: python tests/test_match_se_player_play_match_se_summary.py
       - name: MatchSEPlayer.PlayMatchSE prover syntax
         run: python -m py_compile tools/prove_match_se_player_play_match_se.py
+
+      - name: Menu_SoundManager.Play_MatchSE summary
+        run: python tests/test_menu_sound_manager_play_match_se_summary.py
+      - name: Menu_SoundManager.Play_MatchSE prover syntax
+        run: python -m py_compile tools/prove_menu_sound_manager_play_match_se.py

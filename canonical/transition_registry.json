@@ -1056,6 +1056,24 @@
         "raw sound-ID meaning",
         "called player/presentation helper closure where still open"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_MANAGER_PLAY_MATCH_SE_V1",
+      "fact_id": "FACT-0061",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Play_MatchSE clip-list/range/null gates, global-volume multiplication and Float32 clamp, audioSrcInfo[2] selection, AudioSource volume write and PlayOneShot call reached from FACT-0060.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_manager_play_match_se.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Sound_ClipMatchSE_List authored contents",
+        "audioSrcInfo runtime construction",
+        "UnityEngine.AudioSource engine implementation",
+        "raw sound-number meaning"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

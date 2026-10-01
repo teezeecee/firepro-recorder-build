@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0061",
+  "claim": "In the matching retail DLL, Menu_SoundManager.Play_MatchSE (0x060052A8) is a static two-parameter method named snd_no and volume with an exact 122-byte body. It returns if Sound_ClipMatchSE_List is null, if snd_no is outside raw range 0..108, or if Sound_ClipMatchSE_List[snd_no] compares equal to null. It computes local volume = Volume_Se * volume, returns when the emitted bge.un against 0.0f does not continue, caps local volume to 1.0f when the emitted ble.un against 1.0f does not continue, selects audioSrcInfo[2], calls AudioSrcInfo.sRefAudio.set_volume(local volume), then calls AudioSrcInfo.sRefAudio.PlayOneShot(Sound_ClipMatchSE_List[snd_no]) and returns. FACT-0060 pins the canonical caller at MatchSEPlayer.PlayMatchSE IL+0x0170 with current seid and vol.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.Play_MatchSE token 0x060052A8 RVA 0x00322B90 signature 00020111aa0c0c parameters snd_no/volume code size 122 code sha256=56ce94a2d961f8cb774c95924d1cab7a28ed7dc521501dc72ace69c7ce39c162; exact clip/range/volume/audio-source body in canonical/witnesses/CAP-R6-001/menu_sound_manager_play_match_se.summary.json; prover tools/prove_menu_sound_manager_play_match_se.py",
+      "observation": "Exact matching-DLL Menu_SoundManager.Play_MatchSE body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0060 MatchSEPlayer.PlayMatchSE",
+      "to": "Menu_SoundManager.Play_MatchSE(seid,vol)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0060 pins call token 0x060052A8 at IL+0x0170 after loading current seid and vol."
+        }
+      ]
+    },
+    {
+      "from": "raw sound number and clip table",
+      "to": "audio source dispatch",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Play_MatchSE IL+0x0000..0x0079 pins Sound_ClipMatchSE_List null/range/element gates, Volume_Se multiplication and clamp, audioSrcInfo[2], AudioSource.set_volume and AudioSource.PlayOneShot."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Sound_ClipMatchSE_List and audioSrcInfo authored/runtime contents remain outside this fact.",
+    "UnityEngine.AudioSource method internals are engine-side and outside this DLL fact.",
+    "The emitted bge.un/ble.un Float32 comparison behavior is preserved without adding behavior for unordered inputs beyond the raw IL.",
+    "Raw sound-number meaning remains outside this fact."
+  ]
+}
