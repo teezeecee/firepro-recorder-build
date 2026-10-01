@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0109",
+  "claim": "In the matching retail DLL, PlayerMan.GetPlObj (0x06005065) is an instance one-Int32-parameter method returning Player with exact signature blob 200112a78808 and an exact 25-byte body. It returns null when idx is below raw 0. It then compares idx against raw 8 and returns null unless signed idx < 8. Only raw indices 0 through 7 load and return this.PlObj[idx] from PlayerMan.PlObj (0x040061FF). FACT-0108 pins the already-canonical caller at EntranceScene.InitThemeMusic IL+0x0016 after loading the computed local player index.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerMan.GetPlObj token 0x06005065 RVA 0x00304B6C signature 200112a78808 parameter idx:Int32 code size 25 code sha256=32cbd360156f7bbbf97ed096e6afa8d4e7e4e500ff3d37179f32aecfafcf05d8; exact signed raw-0/raw-8 bounds and PlObj element return in canonical/witnesses/CAP-R6-001/player_man_get_pl_obj.summary.json; prover tools/prove_player_man_get_pl_obj.py",
+      "observation": "Exact matching-DLL PlayerMan.GetPlObj body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0108 EntranceScene.InitThemeMusic",
+      "to": "PlayerMan.GetPlObj(pl_idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0108 pins callvirt token 0x06005065 at InitThemeMusic IL+0x0016 after loading PlayerMan.inst and local0."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact GetPlObj helper and the FACT-0108 caller bridge.",
+    "PlayerMan.PlObj population and Player object lifecycle remain outside this fact.",
+    "Other GetPlObj callers remain separate caller seams.",
+    "Raw valid indices 0 through 7 are preserved without assigning participant-role labels."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_MAN_GET_PL_OBJ_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerMan",
+      "method": "GetPlObj",
+      "token": "0x06005065",
+      "rva": "0x00304B6C",
+      "signature_blob_hex": "200112a78808",
+      "return_type": "Player",
+      "parameters": [
+        {"sequence": 1, "name": "idx", "type": "Int32"}
+      ],
+      "code_size": 25,
+      "code_sha256": "32cbd360156f7bbbf97ed096e6afa8d4e7e4e500ff3d37179f32aecfafcf05d8",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 13,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 0
+    },
+    "field": {
+      "name": "PlayerMan.PlObj",
+      "token": "0x040061FF",
+      "signature_blob_hex": "061d12a788",
+      "shape": "single-dimensional zero-based Player array"
+    },
+    "exact_flow": [
+      "if signed idx < 0: return null",
+      "if signed idx < 8: continue to array lookup",
+      "otherwise: return null",
+      "return this.PlObj[idx]"
+    ],
+    "raw_valid_index_range": {
+      "minimum": 0,
+      "maximum": 7
+    },
+    "fact_0108_bridge": {
+      "fact_id": "FACT-0108",
+      "caller": "EntranceScene.InitThemeMusic",
+      "caller_token": "0x06004833",
+      "call_il": "0x0016",
+      "callee_token": "0x06005065",
+      "argument": "local0 computed from plIdxList[plNum-1]"
+    }
+  },
+  "limits": [
+    "Array population, Player lifecycle and other callers remain outside this record."
+  ]
+}
