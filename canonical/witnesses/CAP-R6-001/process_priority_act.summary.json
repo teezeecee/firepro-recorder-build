@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_PRIORITY_ACT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "ProcessPriorityAct",
+      "token": "0x0600500A",
+      "rva": "0x002FD31C",
+      "signature_blob_hex": "200002",
+      "return_type": "Boolean",
+      "parameters": [],
+      "code_size": 431,
+      "code_sha256": "0db6da9710767a5629dec05b3a7521e0aa1cb83f55d6332a648e89fa5917afc1",
+      "max_stack": 3,
+      "local_signature_token": "0x1100112D",
+      "local_signature_blob_hex": "070712a7881286300811862811a7c40808",
+      "local_types": [
+        "Player",
+        "AIParam",
+        "Int32",
+        "AIPriorityActEnum",
+        "DamageLevelEnum_LMH",
+        "Int32",
+        "Int32"
+      ],
+      "instruction_count": 153,
+      "branch_instruction_count": 27,
+      "call_instruction_count": 6
+    },
+    "entry_gates": [
+      {
+        "il": "0x0000..0x000D",
+        "condition": "currentPriAct == -1",
+        "else": "return false",
+        "field_token": "0x04006151"
+      },
+      {
+        "il": "0x000E..0x0048",
+        "condition": "State == 6 bypasses to IL_0049; otherwise signed State <= 4 and Zone == 0 are required",
+        "state_field_token": "0x04005FB7",
+        "zone_field_token": "0x04005FEE",
+        "raw_state_bypass": 6,
+        "raw_state_limit": 4
+      },
+      {
+        "il": "0x0049..0x005B",
+        "condition": "weaponIdx < 0",
+        "else": "return false",
+        "field_token": "0x0400600B"
+      },
+      {
+        "il": "0x005C..0x006E",
+        "condition": "lastSkill != -1",
+        "else": "return false",
+        "field_token": "0x04006036"
+      }
+    ],
+    "target_and_ai_param": {
+      "target_expression": "PlayerMan.inst.GetPlObj(PlObj.TargetPlIdx)",
+      "player_man_field_token": "0x040061FA",
+      "target_pl_idx_field_token": "0x04005FB1",
+      "get_pl_obj_token": "0x06005065",
+      "ai_param_expression": "PlObj.WresParam.aiParam",
+      "wres_param_field_token": "0x04005FB3",
+      "ai_param_field_token": "0x040010AA",
+      "target_reject_fields": [
+        {
+          "name": "isKO",
+          "token": "0x04006047"
+        },
+        {
+          "name": "isKOCount",
+          "token": "0x04006046"
+        }
+      ]
+    },
+    "priority_loop": {
+      "raw_index_min": 0,
+      "raw_index_max": 11,
+      "loop_condition": "signed index < 12",
+      "checked_field_token": "0x04006152",
+      "checked_read_opcode": "ldelem.u1",
+      "checked_write_opcode": "stelem.i1",
+      "checked_write_value": 1,
+      "priority_act_field_token": "0x04000D28",
+      "element_type_token": "0x0200018B",
+      "move_act_field_token": "0x04000CF9",
+      "target_hp_field_token": "0x04005FBF",
+      "get_damage_level_token": "0x06004F9B",
+      "damage_level_split": {
+        "raw_value": 2,
+        "true_field": "priorityAct_HDmg",
+        "true_field_token": "0x04000D27",
+        "false_field": "priorityAct_LDmg",
+        "false_field_token": "0x04000D26"
+      },
+      "selected_int_condition": "selected Int32 > 0",
+      "trigger_act_field_token": "0x04000CF8",
+      "trigger_condition": "priorityAct[index].triggerAct == PlObj.lastSkill",
+      "last_skill_hit_field_token": "0x04006037",
+      "last_skill_hit_condition": "nonzero",
+      "is_lot_priority_act_token": "0x06005008",
+      "mark_checked_before_rate_check": true,
+      "rate_check_token": "0x06004955",
+      "rate_check_fact_id": "FACT-0025"
+    },
+    "action_tail": {
+      "try_to_do_priority_act_token": "0x06005009",
+      "result_nonpositive_effect": "continue loop",
+      "positive_effect": "call Reset_HungUpCheck",
+      "reset_hung_up_check_token": "0x06004FD8",
+      "result_return_split": [
+        {
+          "condition": "result == 1",
+          "return": false
+        },
+        {
+          "condition": "result > 0 and result != 1",
+          "return": true
+        }
+      ]
+    },
+    "caller_bridge": {
+      "caller": "PlayerController_AI.Update",
+      "caller_token": "0x0600502B",
+      "caller_rva": "0x002FFC68",
+      "caller_code_size": 984,
+      "caller_code_sha256": "6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9",
+      "call_il": "0x0208",
+      "post_call_il": "0x020D",
+      "post_call_opcode": "pop"
+    }
+  },
+  "r6_observation_note": "CAP-R6-001 weapon_ai_trace does not contain a standalone PlayerController_AI.ProcessPriorityAct event. This record uses the exact matching-DLL body and caller.",
+  "limits": [
+    "Helper internals other than FACT-0025 mRate100Check remain outside this record.",
+    "Raw priority indices and metadata field names are not promoted into gameplay labels.",
+    "AIParam authored values and the wider PlayerController_AI.Update scheduler remain outside this record."
+  ]
+}
