@@ -562,3 +562,9 @@ jobs:
         run: python tests/test_mymusic_set_summary.py
       - name: MyMusic Set prover syntax
         run: python -m py_compile tools/prove_mymusic_set.py
+
+
+      - name: Menu Sound Change BGM Theme summary
+        run: python tests/test_menu_sound_change_bgm_theme_summary.py
+      - name: Menu Sound Change BGM Theme prover syntax
+        run: python -m py_compile tools/prove_menu_sound_change_bgm_theme.py
