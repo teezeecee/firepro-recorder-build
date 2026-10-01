@@ -646,3 +646,9 @@ jobs:
         run: python tests/test_u_audio_destroy_audio_player_summary.py
       - name: uAudio Destroy AudioPlayer prover syntax
         run: python -m py_compile tools/prove_u_audio_destroy_audio_player.py
+
+
+      - name: AudioSrcInfo Stop summary
+        run: python tests/test_audio_src_info_stop_summary.py
+      - name: AudioSrcInfo Stop prover syntax
+        run: python -m py_compile tools/prove_audio_src_info_stop.py

@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0125",
+  "claim": "In the matching retail DLL, AudioSrcInfo.Stop (0x060052C4) is an instance parameterless Void method with exact signature blob 200001 and an exact 43-byte body. It reads this.sRefAudio (0x0400874C), compares it against null through UnityEngine.Object.op_Inequality memberref 0x0A00000F, and when non-null calls UnityEngine.AudioSource.Stop through memberref 0x0A00079F. The shared tail writes raw 0 to this.fadeOutFrm (0x0400874E) and this.fadeOutCnt (0x0400874D), then returns. FACT-0123 pins the already-canonical caller at Menu_SoundManager.StopBGM IL+0x0009 after loading audioSrcInfo[0].",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "AudioSrcInfo.Stop token 0x060052C4 RVA 0x00323806 signature 200001 code size 43 code sha256=6367793f54b558ae8629023c6246cc6a97b366e8e4cf5761be3343d3cafcb76a; exact sRefAudio null gate, UnityEngine.AudioSource.Stop call and fadeOutFrm/fadeOutCnt zero tail in canonical/witnesses/CAP-R6-001/audio_src_info_stop.summary.json; prover tools/prove_audio_src_info_stop.py",
+      "observation": "Exact matching-DLL AudioSrcInfo.Stop body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0123 Menu_SoundManager.StopBGM",
+      "to": "AudioSrcInfo.Stop()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0123 pins callvirt token 0x060052C4 at StopBGM IL+0x0009 after loading Menu_SoundManager.audioSrcInfo[0]."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact AudioSrcInfo.Stop body and the FACT-0123 caller bridge.",
+    "UnityEngine.Object comparison and UnityEngine.AudioSource.Stop implementations remain external.",
+    "AudioSrcInfo construction and other state writers/readers remain outside this fact."
+  ]
+}
