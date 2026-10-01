@@ -1449,6 +1449,23 @@
         "authored CheerHpTbl contents",
         "raw zone/cheer threshold meaning"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_MOVE_DESTINATION_V1",
+      "fact_id": "FACT-0084",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Referee.Process_MoveToDestination raw State-8 position update/call path plus IsReachedDestination delta-dot-magnitude Float32 tests, bridged from FACT-0074.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_move_destination.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Referee.Process_ArrivedDestination internal closure",
+        "destination/velocity producer closure",
+        "raw State 8 meaning"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
