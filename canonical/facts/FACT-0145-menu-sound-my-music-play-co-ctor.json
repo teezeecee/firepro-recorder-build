@@ -1,0 +1,8 @@
+{
+  "fact_id":"FACT-0145",
+  "claim":"In the matching retail DLL, instance constructor <MyMusic_Play_Co>c__IteratorE..ctor (0x0600750E), owned by generated TypeDef 0x02000F73, has raw MethodDef row a454320000008618eb4f06005c480000d24f, RVA 0x003254A4, exact signature blob 200001, and an exact 7-byte body. It loads this, calls System.Object..ctor through memberref 0x0A0000EF, and returns. FACT-0144 pins the already-canonical direct newobj edge at Menu_SoundManager.MyMusic_Play_Co IL+0x0000.",
+  "status":"PROVEN_DLL",
+  "evidence":[{"source_id":"DLL-001","locator":"<MyMusic_Play_Co>c__IteratorE..ctor token 0x0600750E raw MethodDef row a454320000008618eb4f06005c480000d24f -> RVA 0x003254A4; signature 200001; code size 7; code sha256=5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9; exact Object-constructor leaf in canonical/witnesses/CAP-R6-001/menu_sound_my_music_play_co_ctor.summary.json; prover tools/prove_menu_sound_my_music_play_co_ctor.py","observation":"Exact matching-DLL generated iterator constructor body."}],
+  "chain_edges":[{"from":"FACT-0144 Menu_SoundManager.MyMusic_Play_Co","to":"<MyMusic_Play_Co>c__IteratorE..ctor()","evidence":[{"source_id":"DLL-001","locator":"FACT-0144 pins newobj token 0x0600750E at MyMusic_Play_Co IL+0x0000."}]}],
+  "limits":["This fact closes only the generated constructor and FACT-0144 newobj edge.","System.Object constructor implementation remains external.","Generated iterator MoveNext and Unity coroutine scheduling remain separate gates."]
+}
