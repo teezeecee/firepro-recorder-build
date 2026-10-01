@@ -1311,6 +1311,23 @@
         "MatchUI.Show_Fight internal closure",
         "authored animation form counts"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_FIGHT_PRESENTATION_V1",
+      "fact_id": "FACT-0076",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchSEPlayer.PlayRefereeVoice throttle/referee-object/fixed-volume dispatch and MatchUI.Show_Fight gameObj_Fight.SetActive helper bodies, bridged from FACT-0075.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_fight_presentation.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Menu_SoundManager.Play_RefereeVoice internal closure",
+        "remaining referee voice caller closure",
+        "broader UI object lifecycle closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
