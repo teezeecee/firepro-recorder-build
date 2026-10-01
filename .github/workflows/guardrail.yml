@@ -268,3 +268,8 @@ jobs:
         run: python tests/test_autorun_geometry_classifiers_summary.py
       - name: AutoRun geometry classifiers prover syntax
         run: python -m py_compile tools/prove_autorun_geometry_classifiers.py
+
+      - name: Octagon inside cross-line summary
+        run: python tests/test_octagon_inside_cross_line_summary.py
+      - name: Octagon inside cross-line prover syntax
+        run: python -m py_compile tools/prove_octagon_inside_cross_line.py

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_RING_OCTAGON_INSIDE_CROSS_LINE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Ring",
+      "method": "mGetOctagonInSideCrossLine",
+      "token": "0x060050FB",
+      "rva": "0x0030CF88",
+      "signature_blob_hex": "0005020c0c12a8f808101131",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "x"
+        },
+        {
+          "sequence": 2,
+          "name": "y"
+        },
+        {
+          "sequence": 3,
+          "name": "rp"
+        },
+        {
+          "sequence": 4,
+          "name": "pb2"
+        },
+        {
+          "sequence": 5,
+          "name": "isp",
+          "flags": 2
+        }
+      ],
+      "code_size": 538,
+      "code_sha256": "342c92172a4c47371d07312bf9b8d7bec1b5d2cd2cbe9019255e8282ee26b59f",
+      "max_stack": 6,
+      "local_signature_token": "0x11001181",
+      "instruction_count": 172,
+      "branch_instruction_count": 6,
+      "call_instruction_count": 6
+    },
+    "setup": [
+      "isp = Vector2.zero",
+      "moving = new Vector2[2]",
+      "edge = new Vector2[2]",
+      "s = 10.666666030883789f",
+      "moving[0] = new Vector2(x,y)"
+    ],
+    "raw_scalar": 10.666666030883789,
+    "switch_expression": "pb2 - 2",
+    "switch_targets": [
+      "0x0050",
+      "0x00B4",
+      "0x0117",
+      "0x017C"
+    ],
+    "default": "return false",
+    "cases": [
+      {
+        "pb2": 2,
+        "moving_offset": [
+          "-s",
+          "+s"
+        ],
+        "edge": [
+          [
+            "x1",
+            "y2"
+          ],
+          [
+            "x2",
+            "y1"
+          ]
+        ]
+      },
+      {
+        "pb2": 3,
+        "moving_offset": [
+          "+s",
+          "+s"
+        ],
+        "edge": [
+          [
+            "x3",
+            "y1"
+          ],
+          [
+            "x4",
+            "y2"
+          ]
+        ]
+      },
+      {
+        "pb2": 4,
+        "moving_offset": [
+          "-s",
+          "-s"
+        ],
+        "edge": [
+          [
+            "x2",
+            "y4"
+          ],
+          [
+            "x1",
+            "y3"
+          ]
+        ]
+      },
+      {
+        "pb2": 5,
+        "moving_offset": [
+          "+s",
+          "-s"
+        ],
+        "edge": [
+          [
+            "x4",
+            "y3"
+          ],
+          [
+            "x3",
+            "y4"
+          ]
+        ]
+      }
+    ],
+    "colvert_field_tokens": {
+      "x1": "0x0400647F",
+      "x2": "0x04006480",
+      "x3": "0x04006481",
+      "x4": "0x04006482",
+      "y1": "0x04006483",
+      "y2": "0x04006484",
+      "y3": "0x04006485",
+      "y4": "0x04006486"
+    },
+    "intersection_tail": {
+      "callee": "Misc.IsIntersect_Segment",
+      "callee_token": "0x06004A92",
+      "call_il": "0x0214",
+      "arguments": [
+        "out isp",
+        "moving[0]",
+        "moving[1]",
+        "edge[0]",
+        "edge[1]"
+      ]
+    },
+    "fact_0050_bridge": {
+      "fact_id": "FACT-0050",
+      "caller": "Player.TransitStateAfterAnm_AutoRun",
+      "call_il": "0x0162",
+      "callee_token": "0x060050FB"
+    }
+  },
+  "limits": [
+    "Intersection math and authored octagon coordinates remain outside this record.",
+    "Raw pb2 values receive no directional labels."
+  ]
+}
