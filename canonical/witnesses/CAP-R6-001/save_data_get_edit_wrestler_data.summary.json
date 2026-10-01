@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SAVE_DATA_GET_EDIT_WRESTLER_DATA_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "SaveData",
+      "method": "GetEditWrestlerData",
+      "token": "0x060051B9",
+      "rva": "0x003166EC",
+      "signature_blob_hex": "20011287b41187b8",
+      "return_type": "EditWrestlerData",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "wid",
+          "type": "WrestlerID"
+        }
+      ],
+      "code_size": 47,
+      "code_sha256": "fb1d5036d90b5023700c012f02b2775cd7c763c0a131ba63904e8f7a6bc56998",
+      "max_stack": 2,
+      "local_signature_token": "0x1100003A",
+      "instruction_count": 19,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 3
+    },
+    "exact_flow": {
+      "index_call": {
+        "method": "SaveData.GetEditWrestlerIdx",
+        "token": "0x060051B5",
+        "arguments": [
+          "this",
+          "wid"
+        ],
+        "store": "local index"
+      },
+      "negative_gate": {
+        "comparison": "index < 0",
+        "opcode": "blt",
+        "effect": "return null"
+      },
+      "collection": {
+        "field": "SaveData.editWrestlerData",
+        "token": "0x040064F5",
+        "field_type": "System.Collections.Generic.List<EditWrestlerData>"
+      },
+      "upper_gate": {
+        "comparison": "index < editWrestlerData.Count",
+        "opcode": "blt",
+        "count_memberref": "0x0A0007A4",
+        "false_effect": "return null"
+      },
+      "success": {
+        "effect": "return editWrestlerData[index]",
+        "item_memberref": "0x0A0007A3"
+      }
+    },
+    "fact_0096_bridge": {
+      "fact_id": "FACT-0096",
+      "caller": "MatchMain.SetAfterMatchBGM",
+      "caller_token": "0x06004924",
+      "call_il": "0x0059",
+      "callee_token": "0x060051B9",
+      "argument": "MatchWrestlerInfo.wrestlerID"
+    }
+  },
+  "limits": [
+    "This record closes only GetEditWrestlerData and the FACT-0096 caller bridge.",
+    "SaveData.GetEditWrestlerIdx internals remain a separate gate.",
+    "Authored edit-wrestler list contents remain outside this record.",
+    "No WrestlerID semantic labels beyond the matching DLL metadata type name are promoted."
+  ]
+}
