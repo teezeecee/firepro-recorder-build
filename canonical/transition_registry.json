@@ -2148,6 +2148,22 @@
         "uAudio.uAudioPlayer.SongEnd internal closure",
         "UnityEngine.Object.Destroy runtime behavior"
       ]
+    },
+    {
+      "family_id": "DLL_AUDIO_SRC_INFO_STOP_V1",
+      "fact_id": "FACT-0125",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL AudioSrcInfo.Stop sRefAudio null gate, UnityEngine.AudioSource.Stop call and fadeOutFrm/fadeOutCnt zero tail, bridged from FACT-0123.",
+      "summary": "canonical/witnesses/CAP-R6-001/audio_src_info_stop.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external UnityEngine.AudioSource.Stop implementation",
+        "AudioSrcInfo construction and other state-flow closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
