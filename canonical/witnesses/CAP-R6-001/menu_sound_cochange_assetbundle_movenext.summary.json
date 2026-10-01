@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_COCHANGE_ASSETBUNDLE_MOVENEXT_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "<CoChange_BGMandPlay_FromAssetBundle>c__Iterator9",
+      "method": "MoveNext",
+      "token": "0x060074F0",
+      "rva": "0x00324D5C",
+      "signature_blob_hex": "200002",
+      "return_type": "Boolean",
+      "parameters": [],
+      "code_size": 248,
+      "code_sha256": "e52c9533e53cc4ced4f3643da73e1e997b793257adba26adbc42fa9c4e834754",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 2,
+      "local_signature_token": "0x1100121C",
+      "instruction_count": 75,
+      "branch_instruction_count": 9,
+      "call_instruction_count": 13
+    },
+    "fields": {
+      "fn":{"token":"0x0400C245","name":"fn","signature_blob_hex":"060e"},
+      "req":{"token":"0x0400C246","name":"<req>__0","signature_blob_hex":"06128835"},
+      "system_sound":{"token":"0x0400C247","name":"system_sound","signature_blob_hex":"0611aa24"},
+      "on_load":{"token":"0x0400C248","name":"onLoad","signature_blob_hex":"061280fd"},
+      "b_start":{"token":"0x0400C249","name":"bStart","signature_blob_hex":"0602"},
+      "current":{"token":"0x0400C24A","name":"$current","signature_blob_hex":"061c"},
+      "disposing":{"token":"0x0400C24B","name":"$disposing","signature_blob_hex":"0602"},
+      "pc":{"token":"0x0400C24C","name":"$PC","signature_blob_hex":"0608"},
+      "audio_clip_info":{"token":"0x040086F4","name":"Menu_SoundManager.audioClipInfo"}
+    },
+    "calls": {
+      "load_from_file_async":{"token":"0x0A000FAB","resolved":"UnityEngine.AssetBundle.LoadFromFileAsync(String)","call_il":"0x0028"},
+      "wait_ctor":{"token":"0x0A000679","resolved":"UnityEngine.WaitForSeconds..ctor(Single)","call_il":"0x003D"},
+      "is_done":{"token":"0x0A000676","resolved":"UnityEngine.AsyncOperation.get_isDone","call_il":"0x0061"},
+      "get_asset_bundle":{"token":"0x0A000FAC","resolved":"UnityEngine.AssetBundleCreateRequest.get_assetBundle","call_ils":["0x0071","0x0087","0x00B5"]},
+      "object_inequality":{"token":"0x0A00000F","resolved":"UnityEngine.Object.op_Inequality","call_il":"0x0077"},
+      "path_get_file_name":{"token":"0x0A00071A","resolved":"System.IO.Path.GetFileName","call_il":"0x0092"},
+      "load_asset_methodspec":{"token":"0x2B000100","call_il":"0x0097"},
+      "audio_clip_set":{"token":"0x060052C2","fact_id":"FACT-0113","call_il":"0x00AA"},
+      "asset_bundle_unload":{"token":"0x0A00079E","resolved":"UnityEngine.AssetBundle.Unload(Boolean)","call_il":"0x00BB"},
+      "on_load_invoke":{"token":"0x0A0003DE","resolved":"System.Action.Invoke","call_il":"0x00D1"},
+      "play_bgm":{"token":"0x0600529E","resolved":"Menu_SoundManager.Play_BGM","call_il":"0x00E8"}
+    },
+    "state_switch": {
+      "prior_state_field":"$PC",
+      "stores_minus_one_before_switch":true,
+      "targets":[
+        {"raw_state":0,"target_il":"0x0021"},
+        {"raw_state":1,"target_il":"0x005B"}
+      ],
+      "default_target_il":"0x00F4"
+    },
+    "exact_flow": [
+      "local0 = this.$PC; this.$PC = -1",
+      "switch local0: raw 0 -> initialization; raw 1 -> request poll; default -> return false",
+      "initialization: this.<req>__0 = UnityEngine.AssetBundle.LoadFromFileAsync(this.fn)",
+      "poll: if request is not done, this.$current = new WaitForSeconds(0.0f); if not disposing set this.$PC=1; return true",
+      "done: if this.<req>__0.assetBundle != null, load named asset using Path.GetFileName(this.fn), write it through Menu_SoundManager.audioClipInfo[this.system_sound].Set(local1), then assetBundle.Unload(false)",
+      "if this.onLoad != null: this.onLoad.Invoke()",
+      "if this.bStart: Menu_SoundManager.Play_BGM(this.system_sound, raw 1)",
+      "this.$PC = -1; return false"
+    ],
+    "canonical_relationships": {
+      "factory":{
+        "fact_id":"FACT-0115",
+        "method":"Menu_SoundManager.CoChange_BGMandPlay_FromAssetBundle",
+        "token":"0x06005295",
+        "iterator_type":"<CoChange_BGMandPlay_FromAssetBundle>c__Iterator9"
+      },
+      "caller":{
+        "fact_id":"FACT-0111",
+        "caller":"Menu_SoundManager.Change_BGM_Theme",
+        "factory_call_il":"0x007E"
+      },
+      "audio_clip_set":{
+        "fact_id":"FACT-0113",
+        "callee_token":"0x060052C2",
+        "call_il":"0x00AA"
+      }
+    }
+  },
+  "limits": [
+    "External Unity async/bundle/coroutine behavior, Play_BGM internals and authored bundle/audio contents remain outside this record."
+  ]
+}
