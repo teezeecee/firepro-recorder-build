@@ -742,3 +742,9 @@ jobs:
         run: python tests/test_u_audio_methoddef_rva_audit_summary.py
       - name: uAudio MethodDef RVA repair audit prover syntax
         run: python -m py_compile tools/prove_u_audio_methoddef_rva_audit.py
+
+
+      - name: uAudio Play summary
+        run: python tests/test_u_audio_play_summary.py
+      - name: uAudio Play prover syntax
+        run: python -m py_compile tools/prove_u_audio_play.py
