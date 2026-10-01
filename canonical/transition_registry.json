@@ -1328,6 +1328,23 @@
         "remaining referee voice caller closure",
         "broader UI object lifecycle closure"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_VOICE_LEAF_V1",
+      "fact_id": "FACT-0077",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Play_RefereeVoice raw vid bounds, clip-null gate, Float32 volume arithmetic/clamp, fixed audioSrcInfo[4] selection and AudioSource playback, bridged from FACT-0076.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_voice_leaf.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored referee voice clip contents",
+        "Volume_Voice authored/runtime value provenance",
+        "remaining referee-voice caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
