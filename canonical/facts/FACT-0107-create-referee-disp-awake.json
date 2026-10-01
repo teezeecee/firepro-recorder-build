@@ -25,6 +25,6 @@
     "This fact closes only the exact CreateRefereeDisp.Awake caller/display-object setup body and the already-canonical RefereeMan call bridge.",
     "Unity engine object lookup/parenting/layer behavior beyond these exact calls is not independently promoted.",
     "Prefab_Referee contents remain outside this fact.",
-    "No Create Ref editor semantics are inferred from the type or field names."
+    "No Create Ref editor semantics are assigned from the type or field names."
   ]
 }
