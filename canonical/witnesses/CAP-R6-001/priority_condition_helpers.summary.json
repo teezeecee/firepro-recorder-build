@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_PRIORITY_CONDITION_HELPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "PlayerController_AI",
+        "method": "IsEffectiveFall",
+        "token": "0x06004FE9",
+        "rva": "0x002FA69C",
+        "signature_blob_hex": "200002",
+        "return_type": "Boolean",
+        "parameters": [],
+        "code_size": 111,
+        "code_sha256": "022740847f18e115a477191d3dff827edb956e998dae7496eb1ed591b26ae6eb",
+        "instruction_count": 39,
+        "branch_instruction_count": 5,
+        "call_instruction_count": 1
+      },
+      {
+        "type": "Player",
+        "method": "mEquExistCehck",
+        "token": "0x06004F1D",
+        "rva": "0x002E8263",
+        "signature_blob_hex": "20010211870c",
+        "return_type": "Boolean",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "slot",
+            "type": "SkillSlotEnum"
+          }
+        ],
+        "code_size": 22,
+        "code_sha256": "62f4465a263d518b20434cedb4b42170c20ce2113adfaeb967e19f1ff7b3d204",
+        "instruction_count": 10,
+        "branch_instruction_count": 1,
+        "call_instruction_count": 0
+      }
+    ],
+    "is_effective_fall": {
+      "target_expression": "PlayerMan.inst.GetPlObj(PlObj.TargetPlIdx)",
+      "player_man_field_token": "0x040061FA",
+      "get_pl_obj_token": "0x06005065",
+      "match_setting_expression": "GlobalWork.inst.MatchSetting",
+      "global_work_field_token": "0x04002AD1",
+      "match_setting_field_token": "0x04002AD2",
+      "victory_condition_field_token": "0x040057D0",
+      "rejected_victory_condition_raw": [
+        3,
+        4
+      ],
+      "zone_field_token": "0x04005FEE",
+      "rejected_zone_raw": 1,
+      "has_right_field_token": "0x04006043",
+      "final_condition": "PlObj.hasRight != 0 AND target.hasRight != 0"
+    },
+    "equipment_exist_check": {
+      "wres_param_field_token": "0x04005FB3",
+      "skill_slot_field": {
+        "name": "WrestlerParam.skillSlot",
+        "token": "0x040010A6"
+      },
+      "element_opcode": "ldelem.i4",
+      "true_condition": "skillSlot[slot] != 0",
+      "internal_bounds_check": false
+    },
+    "is_lot_bridge": {
+      "fact_id": "FACT-0039",
+      "caller": "PlayerController_AI.IsLotPriorityAct",
+      "caller_token": "0x06005008",
+      "calls": [
+        {
+          "callee": "IsEffectiveFall",
+          "callee_token": "0x06004FE9",
+          "il": "0x00D6"
+        },
+        {
+          "callee": "mEquExistCehck",
+          "callee_token": "0x06004F1D",
+          "il": "0x011F"
+        },
+        {
+          "callee": "mEquExistCehck",
+          "callee_token": "0x06004F1D",
+          "il": "0x0168"
+        },
+        {
+          "callee": "mEquExistCehck",
+          "callee_token": "0x06004F1D",
+          "il": "0x01F9"
+        }
+      ]
+    }
+  },
+  "r6_observation_note": "CAP-R6-001 contains no standalone PRE/POST events for these two helpers. This record uses exact matching-DLL bodies and FACT-0039 caller boundaries.",
+  "limits": [
+    "Authored skillSlot contents and hasRight state provenance remain outside this record.",
+    "Raw numeric branch values are retained without semantic relabeling."
+  ]
+}

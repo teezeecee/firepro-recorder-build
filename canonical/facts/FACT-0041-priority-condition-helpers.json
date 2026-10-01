@@ -1,0 +1,66 @@
+{
+  "fact_id": "FACT-0041",
+  "claim": "In the matching retail DLL, the two conditional helpers left opaque by FACT-0039 are closed together. PlayerController_AI.IsEffectiveFall (0x06004FE9) is a parameterless instance method returning Boolean with an exact 111-byte body: it resolves the target Player and current MatchSetting, returns false when MatchSetting.VictoryCondition equals raw 3 or raw 4, returns false when PlObj.Zone equals raw 1, then returns true only when both PlObj.hasRight and target.hasRight are nonzero. Player.mEquExistCehck (0x06004F1D) is an instance method with one SkillSlotEnum parameter named slot returning Boolean with an exact 22-byte body: it loads WresParam.skillSlot[slot] and returns true when that Int32 element is nonzero, false when zero. FACT-0039 pins IsEffectiveFall at IsLotPriorityAct IL+0x00D6 and mEquExistCehck at IL+0x011F, 0x0168, and 0x01F9.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.IsEffectiveFall token 0x06004FE9 RVA 0x002FA69C signature 200002 code size 111 code sha256=022740847f18e115a477191d3dff827edb956e998dae7496eb1ed591b26ae6eb; exact body in canonical/witnesses/CAP-R6-001/priority_condition_helpers.summary.json; prover tools/prove_priority_condition_helpers.py",
+      "observation": "Exact matching-DLL IsEffectiveFall body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.mEquExistCehck token 0x06004F1D RVA 0x002E8263 signature 20010211870c parameter slot:SkillSlotEnum code size 22 code sha256=62f4465a263d518b20434cedb4b42170c20ce2113adfaeb967e19f1ff7b3d204; exact body in canonical/witnesses/CAP-R6-001/priority_condition_helpers.summary.json; prover tools/prove_priority_condition_helpers.py",
+      "observation": "Exact matching-DLL mEquExistCehck body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0039 IsLotPriorityAct raw acts 6..7",
+      "to": "PlayerController_AI.IsEffectiveFall()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0039 pins IsLotPriorityAct IL+0x00D6 call token 0x06004FE9 and requires its Boolean true path."
+        }
+      ]
+    },
+    {
+      "from": "IsEffectiveFall entry",
+      "to": "raw victory/zone/hasRight gates",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IsEffectiveFall reads MatchSetting.VictoryCondition field 0x040057D0 twice, rejecting raw 3 and raw 4; reads PlObj.Zone field 0x04005FEE rejecting raw 1; then reads Player.hasRight field 0x04006043 on both PlObj and target and returns true only if both are nonzero."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0039 IsLotPriorityAct equipment branches",
+      "to": "Player.mEquExistCehck(slot)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0039 pins mEquExistCehck token 0x06004F1D at IsLotPriorityAct IL+0x011F, IL+0x0168 and IL+0x01F9."
+        }
+      ]
+    },
+    {
+      "from": "mEquExistCehck slot",
+      "to": "WrestlerParam.skillSlot element",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "mEquExistCehck IL+0x0000..0x0015 loads this.WresParam.skillSlot field 0x040010A6, indexes by slot with ldelem.i4, and returns true on nonzero or false on zero."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw VictoryCondition and Zone values are preserved numerically without assigning gameplay labels.",
+    "This fact does not prove bounds for Player.mEquExistCehck's slot argument; the method performs no internal bounds check.",
+    "The authored contents and semantic mapping of WrestlerParam.skillSlot remain outside this fact.",
+    "The meaning and writers of Player.hasRight remain outside this fact.",
+    "CAP-R6-001 contains no standalone IsEffectiveFall or mEquExistCehck PRE/POST event."
+  ]
+}
