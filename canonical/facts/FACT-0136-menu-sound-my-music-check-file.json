@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0136",
+  "claim": "In the matching retail DLL, instance Menu_SoundManager.MyMusic_CheckFile (0x060052B7) is a one-String-parameter Boolean method with exact signature blob 2001020e and an exact 43-byte body. It first compares parameter fname against System.String.Empty through String.op_Equality and returns false when equal. Otherwise it concatenates static GlobalParam.Root_DirectotyPath (0x04003903) with fname through System.String.Concat(String,String), passes that result to System.IO.File.Exists, and returns true when File.Exists returns true or false otherwise. FACT-0133 pins the three already-canonical direct caller sites at Menu_SoundManager.MyMusic_Play IL+0x0026, IL+0x0065 and IL+0x011C.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.MyMusic_CheckFile token 0x060052B7 RVA 0x00323103 signature 2001020e parameter fname:String code size 43 code sha256=662652aabb116c9ffa4f8e994a1ad55ed75cb54c40114569e6a0b8be4c140978; exact String.Empty gate, Root_DirectotyPath+fname construction and File.Exists Boolean return in canonical/witnesses/CAP-R6-001/menu_sound_my_music_check_file.summary.json; prover tools/prove_menu_sound_my_music_check_file.py",
+      "observation": "Exact matching-DLL Menu_SoundManager.MyMusic_CheckFile body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0133 Menu_SoundManager.MyMusic_Play",
+      "to": "Menu_SoundManager.MyMusic_CheckFile(fname)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0133 pins call token 0x060052B7 at MyMusic_Play IL+0x0026, IL+0x0065 and IL+0x011C."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact MyMusic_CheckFile body and its three FACT-0133 caller bridges.",
+    "System.String and System.IO.File implementations remain external.",
+    "Filesystem state and authored music files remain outside this fact."
+  ]
+}
