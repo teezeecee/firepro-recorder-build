@@ -2115,6 +2115,23 @@
         "Menu_SoundManager.Play_BGM internal closure",
         "authored match/theme/audio data"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_STOP_BGM_V1",
+      "fact_id": "FACT-0123",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.StopBGM audioSrcInfo[0] stop, optional uAudioPlayer destruction/reference clear and BGM fade-counter reset, bridged from FACT-0122.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_stop_bgm.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "AudioSrcInfo.Stop internal closure",
+        "uAudioPlayer.Destroy_AudioPlayer internal closure",
+        "external audio runtime state"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

@@ -634,3 +634,9 @@ jobs:
         run: python tests/test_match_main_play_after_match_bgm_summary.py
       - name: MatchMain PlayAfterMatchBGM prover syntax
         run: python -m py_compile tools/prove_match_main_play_after_match_bgm.py
+
+
+      - name: Menu Sound StopBGM summary
+        run: python tests/test_menu_sound_stop_bgm_summary.py
+      - name: Menu Sound StopBGM prover syntax
+        run: python -m py_compile tools/prove_menu_sound_stop_bgm.py

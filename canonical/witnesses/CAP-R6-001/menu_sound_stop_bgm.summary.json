@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_STOP_BGM_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Menu_SoundManager",
+      "method": "StopBGM",
+      "token": "0x060052A4",
+      "rva": "0x003229E0",
+      "signature_blob_hex": "000001",
+      "static": true,
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 59,
+      "code_sha256": "5ba3bf95e0ffa2db0c9766a6254c9016dab003ed26d580ec573effd8e2966b51",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 2,
+      "local_signature_token": "0x1100120B",
+      "local_signature_blob_hex": "070112aa2c",
+      "locals": [
+        {"index":0,"type":"AudioSrcInfo"}
+      ],
+      "instruction_count": 19,
+      "branch_instruction_count": 1,
+      "call_instruction_count": 3
+    },
+    "fields": {
+      "audio_src_info":{"token":"0x040086EB","name":"Menu_SoundManager.audioSrcInfo"},
+      "script_u_audio_player":{"token":"0x04008709","name":"Menu_SoundManager.script_uAudioPlayer"},
+      "bgm_fade_out_frm":{"token":"0x040086F7","name":"Menu_SoundManager.bgmFadeOutFrm","type":"Int32"},
+      "bgm_fade_out_cnt":{"token":"0x040086F6","name":"Menu_SoundManager.bgmFadeOutCnt","type":"Int32"}
+    },
+    "calls": {
+      "audio_src_stop":{"token":"0x060052C4","resolved":"AudioSrcInfo.Stop","call_il":"0x0009"},
+      "object_inequality":{"token":"0x0A00000F","resolved":"UnityEngine.Object.op_Inequality","call_il":"0x0014"},
+      "destroy_audio_player":{"token":"0x060052CA","resolved":"uAudio.uAudioPlayer.Destroy_AudioPlayer","call_il":"0x0023"}
+    },
+    "exact_flow": [
+      "local0 = Menu_SoundManager.audioSrcInfo[0]",
+      "local0.Stop()",
+      "if Menu_SoundManager.script_uAudioPlayer != null: script_uAudioPlayer.Destroy_AudioPlayer(); script_uAudioPlayer = null",
+      "Menu_SoundManager.bgmFadeOutFrm = 0",
+      "Menu_SoundManager.bgmFadeOutCnt = 0",
+      "return"
+    ],
+    "fact_0122_bridge": {
+      "fact_id":"FACT-0122",
+      "caller":"MatchMain.PlayAfterMatchBGM",
+      "caller_token":"0x06004925",
+      "call_il":"0x0130",
+      "callee_token":"0x060052A4"
+    }
+  },
+  "limits": [
+    "Direct callee internals and external audio runtime behavior remain outside this record."
+  ]
+}
