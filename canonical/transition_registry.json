@@ -2331,6 +2331,22 @@
         "uAudio myAudioSource assignment/lifecycle closure",
         "external Unity audio implementation"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_MY_MUSIC_CHECK_FILE_V1",
+      "fact_id": "FACT-0136",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.MyMusic_CheckFile String.Empty gate plus Root_DirectotyPath+fname File.Exists predicate, bridged from all three FACT-0133 calls.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_my_music_check_file.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external filesystem state",
+        "authored music files"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
