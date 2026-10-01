@@ -1397,6 +1397,24 @@
         "Volume_Cheer value provenance",
         "remaining cheer-voice caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_AUDIENCE_LOOP_CHEER_V1",
+      "fact_id": "FACT-0081",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Audience.PlayLoopCheerVoice fast-forward throttle, nLevel clamp, AttendanceRate Float32 volume path, raw 39/40/41 ID selection and start-vs-volume dispatch, bridged from FACT-0079.",
+      "summary": "canonical/witnesses/CAP-R6-001/audience_loop_cheer.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Menu_SoundManager.Play_CheerVoice_Loop internal closure",
+        "Menu_SoundManager.SetVol_CheerVoice_Loop internal closure",
+        "remaining PlayLoopCheerVoice caller closure",
+        "authored meaning of raw cheer levels/IDs"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
