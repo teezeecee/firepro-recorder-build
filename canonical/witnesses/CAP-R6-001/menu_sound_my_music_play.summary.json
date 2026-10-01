@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_MY_MUSIC_PLAY_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Menu_SoundManager",
+      "method": "MyMusic_Play",
+      "token": "0x060052B8",
+      "rva": "0x00323130",
+      "signature_blob_hex": "20020211aa2411aa18",
+      "return_type": "Boolean",
+      "parameters": [
+        {"sequence":1,"name":"bgm","type":"SYSTEM_SOUND"},
+        {"sequence":2,"name":"type","type":"PLAY_TYPE"}
+      ],
+      "code_size": 481,
+      "code_sha256": "e84b8a91478acffadf8ee5f39f17855e421d0cf1b4d482f97dfbb53700440a5a",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 2,
+      "local_signature_token": "0x11001213",
+      "local_signature_blob_hex": "07030e0215118839011182c1",
+      "locals": [
+        {"index":0,"type":"String"},
+        {"index":1,"type":"Boolean"},
+        {"index":2,"type":"System.Nullable<System.TimeSpan>","type_spec_token":"0x1B0002D5","type_spec_blob_hex":"15118839011182c1"}
+      ],
+      "instruction_count": 120,
+      "branch_instruction_count": 15,
+      "call_instruction_count": 25
+    },
+    "strings": {
+      "mp3":{"token":"0x7005186D","value":".mp3"},
+      "coroutine_name":{"token":"0x7008EBBE","value":"MyMusic_Play_Co"}
+    },
+    "fields": {
+      "progress_file":{"token":"0x04008706","name":"Menu_SoundManager.MyMusic_SelectFile_Progress"},
+      "admission_file":{"token":"0x04008705","name":"Menu_SoundManager.MyMusic_SelectFile_Admission"},
+      "match_file":{"token":"0x04008704","name":"Menu_SoundManager.MyMusic_SelectFile_Match"},
+      "root_path":{"token":"0x04003903","name":"GlobalParam.Root_DirectotyPath"},
+      "selected_name":{"token":"0x04008707","name":"Menu_SoundManager.MyMusic_SelectFile_Name"},
+      "selected_volume":{"token":"0x04008708","name":"Menu_SoundManager.MyMusic_Volume"},
+      "volume_progress":{"token":"0x040086F1","name":"Menu_SoundManager.Volume_BgmProgress"},
+      "volume_admission":{"token":"0x040086F2","name":"Menu_SoundManager.Volume_BgmAdmission"},
+      "volume_battle":{"token":"0x040086F3","name":"Menu_SoundManager.Volume_BgmBattle"},
+      "u_audio_player":{"token":"0x04008709","name":"Menu_SoundManager.script_uAudioPlayer"}
+    },
+    "calls": {
+      "check_file":{"token":"0x060052B7","resolved":"Menu_SoundManager.MyMusic_CheckFile","call_ils":["0x0026","0x0065","0x011C"]},
+      "string_concat":{"token":"0x0A000012","resolved":"System.String.Concat(String,String)","call_ils":["0x0046","0x0085","0x013C"]},
+      "path_get_extension":{"token":"0x0A000BC1","resolved":"System.IO.Path.GetExtension","call_ils":["0x009E","0x0155"]},
+      "string_to_lower":{"token":"0x0A0002C0","resolved":"System.String.ToLower","call_ils":["0x00A3","0x015A"]},
+      "string_equality":{"token":"0x0A00002F","resolved":"System.String.op_Equality","call_ils":["0x00AF","0x0166"]},
+      "object_equality":{"token":"0x0A000006","resolved":"UnityEngine.Object.op_Equality","call_ils":["0x00BF","0x0176"]},
+      "component_game_object":{"token":"0x0A000028","resolved":"UnityEngine.Component.get_gameObject","call_ils":["0x00CA","0x0181"]},
+      "add_component":{"token":"0x2B0003E2","resolved":"UnityEngine.GameObject.AddComponent<uAudio.uAudioPlayer>","instantiation_blob_hex":"0a0112aa40","call_ils":["0x00CF","0x0186"]},
+      "load_file":{"token":"0x060052E4","resolved":"uAudio.uAudioPlayer.LoadFile","call_ils":["0x00E3","0x019A"]},
+      "play":{"token":"0x060052E7","resolved":"uAudio.uAudioPlayer.Play","call_ils":["0x00F6","0x01AD"]},
+      "change_volume":{"token":"0x060052E0","resolved":"uAudio.uAudioPlayer.ChangeCurrentVolume","call_ils":["0x0105","0x01BC"]},
+      "start_coroutine":{"token":"0x0A0000C4","resolved":"UnityEngine.MonoBehaviour.StartCoroutine(String)","call_il":"0x01D9"}
+    },
+    "switch": {
+      "normalizer":"raw bgm - 32",
+      "targets":[
+        {"raw_bgm":32,"target_il":"0x0020"},
+        {"raw_bgm":33,"target_il":"0x005F"},
+        {"raw_bgm":34,"target_il":"0x0116"},
+        {"raw_bgm":35,"target_il":"0x0020"}
+      ],
+      "default_target_il":"0x01CD"
+    },
+    "exact_flow": {
+      "progress_raw_32_or_35":[
+        "if MyMusic_CheckFile(MyMusic_SelectFile_Progress) is false: MyMusic_SelectFile_Progress=String.Empty; return false",
+        "MyMusic_SelectFile_Name = Root_DirectotyPath + MyMusic_SelectFile_Progress",
+        "MyMusic_Volume = Volume_BgmProgress",
+        "join shared tail with local1=false"
+      ],
+      "admission_raw_33":[
+        "if MyMusic_CheckFile(MyMusic_SelectFile_Admission) is false: MyMusic_SelectFile_Admission=String.Empty; return false",
+        "MyMusic_SelectFile_Name = Root_DirectotyPath + MyMusic_SelectFile_Admission",
+        "MyMusic_Volume = Volume_BgmAdmission",
+        "if Path.GetExtension(MyMusic_SelectFile_Name).ToLower() == '.mp3': execute direct uAudio path and set local1=true",
+        "otherwise join shared tail with local1=false"
+      ],
+      "match_raw_34":[
+        "if MyMusic_CheckFile(MyMusic_SelectFile_Match) is false: MyMusic_SelectFile_Match=String.Empty; return false",
+        "MyMusic_SelectFile_Name = Root_DirectotyPath + MyMusic_SelectFile_Match",
+        "MyMusic_Volume = Volume_BgmBattle",
+        "if Path.GetExtension(MyMusic_SelectFile_Name).ToLower() == '.mp3': execute direct uAudio path and set local1=true",
+        "otherwise join shared tail with local1=false"
+      ],
+      "direct_u_audio_path":[
+        "if script_uAudioPlayer == null: script_uAudioPlayer = this.gameObject.AddComponent<uAudio.uAudioPlayer>()",
+        "script_uAudioPlayer.LoadFile(MyMusic_SelectFile_Name)",
+        "initialize local2 to default System.Nullable<System.TimeSpan>",
+        "script_uAudioPlayer.Play(local2)",
+        "script_uAudioPlayer.ChangeCurrentVolume(MyMusic_Volume)",
+        "local1=true"
+      ],
+      "shared_tail":[
+        "if local1 is false: this.StartCoroutine('MyMusic_Play_Co'); pop returned Coroutine",
+        "return true"
+      ]
+    },
+    "fact_0132_bridge": {
+      "fact_id":"FACT-0132",
+      "caller":"Menu_SoundManager.Play_BGM",
+      "caller_token":"0x0600529E",
+      "call_il":"0x0066",
+      "callee_token":"0x060052B8"
+    }
+  },
+  "limits": [
+    "MyMusic_CheckFile, uAudio direct-player helper internals, external framework behavior and file contents remain outside this record."
+  ]
+}
