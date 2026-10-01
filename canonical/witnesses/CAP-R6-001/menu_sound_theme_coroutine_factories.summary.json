@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_THEME_COROUTINE_FACTORIES_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "shared_signature": {
+      "signature_blob_hex": "00041281810e11aa24021280fd",
+      "static": true,
+      "return_type": "System.Collections.IEnumerator",
+      "parameters": [
+        {"sequence":1,"name":"fn","type":"String"},
+        {"sequence":2,"name":"system_sound","type":"SYSTEM_SOUND"},
+        {"sequence":3,"name":"bStart","type":"Boolean"},
+        {"sequence":4,"name":"onLoad","type":"System.Action"}
+      ]
+    },
+    "factories": [
+      {
+        "method": "Menu_SoundManager.CoChange_BGMandPlay",
+        "token": "0x06005294",
+        "rva": "0x00322208",
+        "code_size": 36,
+        "code_sha256": "6bf3b32bde5c0e41ede808a7df79d384f18e7aa4cb00181ed96c4495a8a69082",
+        "max_stack": 2,
+        "local_signature_token": "0x11001200",
+        "instruction_count": 16,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1,
+        "iterator_type": "<CoChange_BGMandPlay>c__Iterator8",
+        "constructor_token": "0x060074E9",
+        "field_copies": [
+          {"argument":"fn","field":"fn","token":"0x0400C23D","signature_blob_hex":"060e"},
+          {"argument":"system_sound","field":"system_sound","token":"0x0400C23F","signature_blob_hex":"0611aa24"},
+          {"argument":"onLoad","field":"onLoad","token":"0x0400C240","signature_blob_hex":"061280fd"},
+          {"argument":"bStart","field":"bStart","token":"0x0400C241","signature_blob_hex":"0602"}
+        ]
+      },
+      {
+        "method": "Menu_SoundManager.CoChange_BGMandPlay_FromAssetBundle",
+        "token": "0x06005295",
+        "rva": "0x00322238",
+        "code_size": 36,
+        "code_sha256": "350a54533b1c76c5c5a5d7259e377d8aa3b1e1cf2aeb16042332cc6aa01bedb5",
+        "max_stack": 2,
+        "local_signature_token": "0x11001201",
+        "instruction_count": 16,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1,
+        "iterator_type": "<CoChange_BGMandPlay_FromAssetBundle>c__Iterator9",
+        "constructor_token": "0x060074EF",
+        "field_copies": [
+          {"argument":"fn","field":"fn","token":"0x0400C245","signature_blob_hex":"060e"},
+          {"argument":"system_sound","field":"system_sound","token":"0x0400C247","signature_blob_hex":"0611aa24"},
+          {"argument":"onLoad","field":"onLoad","token":"0x0400C248","signature_blob_hex":"061280fd"},
+          {"argument":"bStart","field":"bStart","token":"0x0400C249","signature_blob_hex":"0602"}
+        ]
+      }
+    ],
+    "generated_constructors": [
+      {
+        "type": "<CoChange_BGMandPlay>c__Iterator8",
+        "token": "0x060074E9",
+        "rva": "0x00324C53",
+        "signature_blob_hex": "200001",
+        "code_size": 7,
+        "code_sha256": "5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9"
+      },
+      {
+        "type": "<CoChange_BGMandPlay_FromAssetBundle>c__Iterator9",
+        "token": "0x060074EF",
+        "rva": "0x00324D53",
+        "signature_blob_hex": "200001",
+        "code_size": 7,
+        "code_sha256": "5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9"
+      }
+    ],
+    "constructor_leaf": {
+      "memberref_token": "0x0A0000EF",
+      "resolved": "System.Object..ctor",
+      "signature_blob_hex": "200001",
+      "exact_flow": ["load this","call System.Object..ctor","return"]
+    },
+    "fact_0111_bridges": [
+      {"fact_id":"FACT-0111","caller":"Menu_SoundManager.Change_BGM_Theme","call_il":"0x00A7","callee_token":"0x06005294"},
+      {"fact_id":"FACT-0111","caller":"Menu_SoundManager.Change_BGM_Theme","call_il":"0x007E","callee_token":"0x06005295"}
+    ]
+  },
+  "limits": [
+    "Generated iterator execution methods, scheduling and authored audio remain outside this record."
+  ]
+}
