@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_STANDARD_WRAPPER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "SkillDataMan",
+      "method": "GetSkillData_Standard",
+      "token": "0x06005264",
+      "rva": "0x0031FF20",
+      "signature_blob_hex": "200112a9a811a970",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "skill_idx"
+        }
+      ],
+      "code_size": 14,
+      "code_sha256": "9db7aaaf1198a49f3fd4637000dab60fa02b6ede3a444f5dfb2a09e7e6e844f9",
+      "instruction_count": 6,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 1
+    },
+    "exact_wrapper": {
+      "raw_offset": 2675,
+      "expression": "2675 + skill_idx",
+      "callee": {
+        "name": "SkillDataMan.GetSkillData",
+        "token": "0x06005262"
+      },
+      "effect": "return GetSkillData(2675 + skill_idx)"
+    },
+    "fact_0070_bridge": {
+      "fact_id": "FACT-0070",
+      "caller": "Referee.UpdateRefereeAnm",
+      "call_il": "0x0023",
+      "argument": "Referee.SkillID"
+    }
+  },
+  "limits": [
+    "Underlying GetSkillData and authored SkillData contents remain outside this record."
+  ]
+}
