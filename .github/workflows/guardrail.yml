@@ -408,3 +408,8 @@ jobs:
         run: python tests/test_cheer_voice_one_shot_summary.py
       - name: Cheer voice one-shot prover syntax
         run: python -m py_compile tools/prove_cheer_voice_one_shot.py
+
+      - name: Audience loop cheer summary
+        run: python tests/test_audience_loop_cheer_summary.py
+      - name: Audience loop cheer prover syntax
+        run: python -m py_compile tools/prove_audience_loop_cheer.py
