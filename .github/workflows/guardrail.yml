@@ -772,3 +772,9 @@ jobs:
         run: python tests/test_menu_sound_my_music_play_co_factory_summary.py
       - name: Menu Sound MyMusic Play Co factory prover syntax
         run: python -m py_compile tools/prove_menu_sound_my_music_play_co_factory.py
+
+
+      - name: Menu Sound MyMusic Play Co ctor summary
+        run: python tests/test_menu_sound_my_music_play_co_ctor_summary.py
+      - name: Menu Sound MyMusic Play Co ctor prover syntax
+        run: python -m py_compile tools/prove_menu_sound_my_music_play_co_ctor.py
