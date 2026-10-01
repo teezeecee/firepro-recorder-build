@@ -1,0 +1,39 @@
+{
+  "fact_id": "FACT-0062",
+  "claim": "In the matching retail DLL, MatchSEData.GetMatchSEParam (0x06005273) is a static one-parameter method named seid returning MatchSEParam with an exact 25-byte body. It returns null when seid is negative, returns null when seid is 109 or greater, and only for raw seid values 0 through 108 loads static MatchSEParamTbl and returns MatchSEParamTbl[seid]. FACT-0060 pins the canonical caller boundary at MatchSEPlayer.PlayMatchSE IL+0x001E.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchSEData.GetMatchSEParam token 0x06005273 RVA 0x0032062D signature 000112aa0411aa0c parameter seid code size 25 code sha256=debaed5fa38ab512128db75e843d35f2df2d78e93145f1f7c9f88fb3ca2d7199; exact signed bounds/table lookup in canonical/witnesses/CAP-R6-001/match_se_data_lookup.summary.json; prover tools/prove_match_se_data_lookup.py",
+      "observation": "Exact matching-DLL MatchSEData.GetMatchSEParam body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0060 MatchSEPlayer.PlayMatchSE",
+      "to": "MatchSEData.GetMatchSEParam(seid)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0060 pins call token 0x06005273 at IL+0x001E after loading current seid."
+        }
+      ]
+    },
+    {
+      "from": "raw seid",
+      "to": "null or MatchSEParamTbl element",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "GetMatchSEParam IL+0x0000..0x0018 uses signed blt for seid<0 -> null and seid<109 -> table path; remaining values return null; table path loads field 0x0400866B and ldelem.ref at seid."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only lookup code and exact raw bounds; it does not establish authored MatchSEParamTbl contents.",
+    "Raw sound IDs are preserved numerically without added labels.",
+    "Additional callers of GetMatchSEParam remain outside this caller bridge unless separately canonical."
+  ]
+}
