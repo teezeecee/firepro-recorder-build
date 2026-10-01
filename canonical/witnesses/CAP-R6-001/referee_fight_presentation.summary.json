@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_FIGHT_PRESENTATION_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "MatchSEPlayer",
+        "method": "PlayRefereeVoice",
+        "token": "0x06005279",
+        "rva": "0x003216E4",
+        "signature_blob_hex": "20010111aa38",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "vid",
+            "type": "Int32"
+          }
+        ],
+        "code_size": 82,
+        "code_sha256": "c96840b83bb1f8795fc6e881c61a725201424c4dec3ff5188b932e16e3f1f745",
+        "instruction_count": 24,
+        "branch_instruction_count": 4,
+        "call_instruction_count": 7
+      },
+      {
+        "type": "MatchUI",
+        "method": "Show_Fight",
+        "token": "0x060049F4",
+        "rva": "0x002B40A6",
+        "signature_blob_hex": "20010102",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "sw",
+            "type": "Boolean"
+          }
+        ],
+        "code_size": 13,
+        "code_sha256": "4f1688f5e78f6692ef931ec6a1337cb88f04f099e3ec938be0f9d15b2c9fd65e",
+        "instruction_count": 5,
+        "branch_instruction_count": 0,
+        "call_instruction_count": 1
+      }
+    ],
+    "play_referee_voice": {
+      "throttle": {
+        "match_main_get_inst_token": "0x06004907",
+        "is_fast_forward_match_field": "0x04005752",
+        "fade_get_inst_token": "0x06004A70",
+        "fade_is_fade_finish_token": "0x06004A7D",
+        "match_frame_count_field": "0x04005738",
+        "raw_modulus": 20,
+        "early_return_condition": "isFastForwardMatch != 0 AND Fade.IsFadeFinish() != 0 AND unsigned MchFrameCnt % 20 != 0"
+      },
+      "referee_object_gate": {
+        "get_inst_token": "0x060050B2",
+        "get_referee_obj_token": "0x060050B6",
+        "object_implicit_memberref": "0x0A00002A",
+        "false_effect": "return"
+      },
+      "dispatch": {
+        "method": "Menu_SoundManager.Play_RefereeVoice",
+        "token": "0x060052A9",
+        "arguments": [
+          "vid",
+          1
+        ]
+      }
+    },
+    "show_fight": {
+      "field": {
+        "name": "gameObj_Fight",
+        "token": "0x0400589B"
+      },
+      "call": {
+        "memberref": "0x0A000103",
+        "name": "SetActive",
+        "arguments": [
+          "sw"
+        ]
+      }
+    },
+    "fact_0075_bridge": {
+      "fact_id": "FACT-0075",
+      "caller": "Referee.CallFight",
+      "calls": [
+        {
+          "il": "0x0053",
+          "callee_token": "0x06005279",
+          "raw_argument": 0
+        },
+        {
+          "il": "0x005E",
+          "callee_token": "0x060049F4",
+          "raw_argument": 1
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Menu_SoundManager.Play_RefereeVoice remains outside this record."
+  ]
+}
