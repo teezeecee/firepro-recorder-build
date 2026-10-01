@@ -1432,6 +1432,23 @@
         "Volume_Cheer value provenance",
         "remaining loop-helper caller closure"
       ]
+    },
+    {
+      "family_id": "DLL_AUDIENCE_CALC_CHEER_LEVEL_V1",
+      "fact_id": "FACT-0083",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Audience.CalcCheerLevel timed HP/SP refresh, raw 0..7 player scans, raw zone set/count adjustment, isSallying adjustment and final -4..4 clamp, bridged from FACT-0079.",
+      "summary": "canonical/witnesses/CAP-R6-001/audience_calc_cheer_level.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "MatchMisc.GetHealth internal closure",
+        "authored CheerHpTbl contents",
+        "raw zone/cheer threshold meaning"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
