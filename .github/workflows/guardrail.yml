@@ -592,3 +592,9 @@ jobs:
         run: python tests/test_menu_sound_theme_coroutine_factories_summary.py
       - name: Menu Sound theme coroutine factories prover syntax
         run: python -m py_compile tools/prove_menu_sound_theme_coroutine_factories.py
+
+
+      - name: Menu Sound theme iterator support summary
+        run: python tests/test_menu_sound_theme_iterator_support_summary.py
+      - name: Menu Sound theme iterator support prover syntax
+        run: python -m py_compile tools/prove_menu_sound_theme_iterator_support.py

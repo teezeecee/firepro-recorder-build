@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_THEME_ITERATOR_SUPPORT_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "iterators": [
+      {
+        "type": "<CoChange_BGMandPlay>c__Iterator8",
+        "fact_0115_constructor_token": "0x060074E9",
+        "fields": {
+          "current": {"token":"0x0400C242","signature_blob_hex":"061c","type":"Object"},
+          "disposing": {"token":"0x0400C243","signature_blob_hex":"0602","type":"Boolean"},
+          "pc": {"token":"0x0400C244","signature_blob_hex":"0608","type":"Int32"}
+        },
+        "methods": [
+          {"name":"System.Collections.Generic.IEnumerator<object>.get_Current","token":"0x060074EB","rva":"0x00324D2C","signature_blob_hex":"20001c","code_size":7,"code_sha256":"010e7d2894e129945449584a26a5fd0e99e10c9f6dbcd65faffa03ff8c244d73","instruction_count":3,"branch_instruction_count":0,"call_instruction_count":0},
+          {"name":"System.Collections.IEnumerator.get_Current","token":"0x060074EC","rva":"0x00324D34","signature_blob_hex":"20001c","code_size":7,"code_sha256":"010e7d2894e129945449584a26a5fd0e99e10c9f6dbcd65faffa03ff8c244d73","instruction_count":3,"branch_instruction_count":0,"call_instruction_count":0},
+          {"name":"Dispose","token":"0x060074ED","rva":"0x00324D3C","signature_blob_hex":"200001","code_size":15,"code_sha256":"e86626c33062562b8370a39954a1cd69a0cf16f25abd8ed69745e512cd39449d","instruction_count":7,"branch_instruction_count":0,"call_instruction_count":0},
+          {"name":"Reset","token":"0x060074EE","rva":"0x00324D4C","signature_blob_hex":"200001","code_size":6,"code_sha256":"feef1163dc69f21cc1201b1ec63d1a60afc2af2ce98036d760713f22a2968a49","instruction_count":2,"branch_instruction_count":0,"call_instruction_count":1}
+        ]
+      },
+      {
+        "type": "<CoChange_BGMandPlay_FromAssetBundle>c__Iterator9",
+        "fact_0115_constructor_token": "0x060074EF",
+        "fields": {
+          "current": {"token":"0x0400C24A","signature_blob_hex":"061c","type":"Object"},
+          "disposing": {"token":"0x0400C24B","signature_blob_hex":"0602","type":"Boolean"},
+          "pc": {"token":"0x0400C24C","signature_blob_hex":"0608","type":"Int32"}
+        },
+        "methods": [
+          {"name":"System.Collections.Generic.IEnumerator<object>.get_Current","token":"0x060074F1","rva":"0x00324E60","signature_blob_hex":"20001c","code_size":7,"code_sha256":"a9d9e52dc49e2933d096b9672481b9e8d64ed398998606a4b5639a3924f9553f","instruction_count":3,"branch_instruction_count":0,"call_instruction_count":0},
+          {"name":"System.Collections.IEnumerator.get_Current","token":"0x060074F2","rva":"0x00324E68","signature_blob_hex":"20001c","code_size":7,"code_sha256":"a9d9e52dc49e2933d096b9672481b9e8d64ed398998606a4b5639a3924f9553f","instruction_count":3,"branch_instruction_count":0,"call_instruction_count":0},
+          {"name":"Dispose","token":"0x060074F3","rva":"0x00324E70","signature_blob_hex":"200001","code_size":15,"code_sha256":"901ca17e2ae4c9e392c1d7c503318763a7e507f7ad3595d277e4495bac74000a","instruction_count":7,"branch_instruction_count":0,"call_instruction_count":0},
+          {"name":"Reset","token":"0x060074F4","rva":"0x00324E80","signature_blob_hex":"200001","code_size":6,"code_sha256":"feef1163dc69f21cc1201b1ec63d1a60afc2af2ce98036d760713f22a2968a49","instruction_count":2,"branch_instruction_count":0,"call_instruction_count":1}
+        ]
+      }
+    ],
+    "reset_exception": {
+      "memberref_token": "0x0A0000EE",
+      "resolved": "System.NotSupportedException..ctor",
+      "signature_blob_hex": "200001",
+      "exact_flow": ["new System.NotSupportedException()","throw"]
+    },
+    "exact_shapes": {
+      "current": "return this.$current",
+      "dispose": ["this.$disposing = true","this.$PC = -1","return"],
+      "reset": ["new System.NotSupportedException()","throw"]
+    }
+  },
+  "limits": [
+    "The two MoveNext bodies and Unity scheduling remain outside this record."
+  ]
+}
