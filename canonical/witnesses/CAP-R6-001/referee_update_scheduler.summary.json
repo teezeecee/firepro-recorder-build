@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_UPDATE_SCHEDULER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "UpdateReferee",
+      "token": "0x060050AF",
+      "rva": "0x00309E9C",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "code_size": 160,
+      "code_sha256": "1a435c9d3f94c89836c5a175bee66f7a1fb84e4e7a7c8af9197108c533df1004",
+      "instruction_count": 55,
+      "branch_instruction_count": 3,
+      "call_instruction_count": 15
+    },
+    "fields": {
+      "match_main_inst": "0x0400576C",
+      "state": "0x0400629D",
+      "prev_state": "0x0400629E",
+      "is_match_end": "0x04005753",
+      "disturbed_cnt": "0x040062C8"
+    },
+    "state_22_path": {
+      "raw_state": 22,
+      "effect": [
+        "call Referee.UpdateRefereeAnm",
+        "return"
+      ],
+      "callee_token": "0x06005097",
+      "fact_id": "FACT-0070"
+    },
+    "non_22_path": {
+      "first_write": "PrevState = State",
+      "ordered_calls": [
+        [
+          "PostProcessAnimation",
+          "0x0600507F"
+        ],
+        [
+          "CallFight",
+          "0x06005080"
+        ],
+        [
+          "Process_Booing",
+          "0x060050A3"
+        ],
+        [
+          "ReturnWrestlers",
+          "0x060050AA",
+          "only when MatchMain.isMatchEnd == 0"
+        ],
+        [
+          "ReturnWrestlers_Lumberjack",
+          "0x060050AB"
+        ],
+        [
+          "CheckExplosion",
+          "0x060050A2"
+        ],
+        [
+          "FinishCheck",
+          "0x06005089"
+        ],
+        [
+          "CheckStartRefereeing",
+          "0x060050A0"
+        ],
+        [
+          "Process_MoveToDestination",
+          "0x0600509E"
+        ],
+        [
+          "Process_Walk",
+          "0x0600508A"
+        ],
+        [
+          "Process_Run",
+          "0x06005099"
+        ],
+        [
+          "Process_StandPose",
+          "0x060050AC"
+        ],
+        [
+          "CheckMatchEnd",
+          "0x060050A9"
+        ],
+        [
+          "UpdateRefereeAnm",
+          "0x06005097"
+        ]
+      ],
+      "tail": "if disturbedCnt > 0: disturbedCnt = disturbedCnt - 1"
+    },
+    "direct_callers": [
+      {
+        "type": "MatchMain",
+        "method": "Update_EntranceScene",
+        "token": "0x06004935",
+        "rva": "0x002AA570",
+        "code_size": 822,
+        "code_sha256": "574be9a2193d91b436a4a241a5dee31bd03c08b32ca09d28dbdf4afd60990cde",
+        "call_il": "0x0021",
+        "opcode": "callvirt"
+      },
+      {
+        "type": "MatchMain",
+        "method": "Update_Match",
+        "token": "0x06004936",
+        "rva": "0x002AA8B4",
+        "code_size": 1152,
+        "code_sha256": "b6841694e03be5ca4c73e966a13802de9fe7339ab63540ffdf5edaee96ea9dfe",
+        "call_il": "0x0051",
+        "opcode": "callvirt"
+      }
+    ]
+  },
+  "limits": [
+    "Called referee-process internals and broader MatchMain caller behavior remain outside this record."
+  ]
+}
