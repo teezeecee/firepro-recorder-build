@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DLC_CHECKER_IS_OWNER_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "DLCChecker",
+      "method": "IsOwner",
+      "token": "0x06001033",
+      "rva": "0x0005F7DC",
+      "signature_blob_hex": "0001021185c8",
+      "static": true,
+      "return_type": "Boolean",
+      "parameters": [
+        {"sequence": 1, "name": "dlcNum", "type": "DLCEnum"}
+      ],
+      "code_size": 39,
+      "code_sha256": "1aef92c709ae4ad954e979dec831bd361ef6546059f6ddf914fe9fa352bae5cc",
+      "header_format": "fat",
+      "header_flags_raw": "0x001B",
+      "init_locals": true,
+      "more_sections": true,
+      "max_stack": 2,
+      "local_signature_token": "0x110002A5",
+      "local_signature_blob_hex": "07041185d01186590202",
+      "locals": [
+        {"index": 0, "type": "DLCIDEnum"},
+        {"index": 1, "type": "Steamworks.AppId_t"},
+        {"index": 2, "type": "Boolean"},
+        {"index": 3, "type": "Boolean"}
+      ],
+      "instruction_count": 16,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 3
+    },
+    "calls": {
+      "get_dlc_id": {
+        "token": "0x06001036",
+        "resolved": "DLCChecker.GetDLCID(DLCEnum)",
+        "call_il": "0x0001"
+      },
+      "app_id_ctor": {
+        "token": "0x0A0006C4",
+        "resolved": "Steamworks.AppId_t..ctor",
+        "call_il": "0x000A"
+      },
+      "is_subscribed_app": {
+        "token": "0x0A0006C5",
+        "resolved": "Steamworks.SteamApps.BIsSubscribedApp",
+        "call_il": "0x0010"
+      }
+    },
+    "exact_flow": [
+      "local0 = DLCChecker.GetDLCID(dlcNum)",
+      "construct local1 Steamworks.AppId_t from local0",
+      "try begins at IL+0x000F",
+      "local2 = Steamworks.SteamApps.BIsSubscribedApp(local1)",
+      "local3 = local2",
+      "leave IL+0x0025",
+      "catch handler at IL+0x001D pops the caught object, writes local3=false, and leaves IL+0x0025",
+      "return local3"
+    ],
+    "exception_section": {
+      "section_kind_raw": "0x01",
+      "data_size": 16,
+      "clause_format": "small",
+      "clause_count": 1,
+      "clause": {
+        "flags_raw": "0x0000",
+        "try_offset": "0x000F",
+        "try_length": 14,
+        "try_end_exclusive": "0x001D",
+        "handler_offset": "0x001D",
+        "handler_length": 8,
+        "handler_end_exclusive": "0x0025",
+        "class_token": "0x010000C2",
+        "class_resolved": "System.Object"
+      }
+    },
+    "fact_0119_bridge": {
+      "fact_id": "FACT-0119",
+      "caller": "SaveData.IsDLCInstalled",
+      "caller_token": "0x060051C9",
+      "call_il": "0x0001",
+      "callee_token": "0x06001033"
+    }
+  },
+  "limits": [
+    "GetDLCID internals, external Steamworks implementations and external ownership state remain outside this record."
+  ]
+}

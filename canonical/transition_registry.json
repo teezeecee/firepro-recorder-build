@@ -2064,6 +2064,23 @@
         "authored dlcVersion contents",
         "external DLC ownership state"
       ]
+    },
+    {
+      "family_id": "DLL_DLC_CHECKER_IS_OWNER_V1",
+      "fact_id": "FACT-0120",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL DLCChecker.IsOwner GetDLCID/AppId_t/SteamApps ownership call plus single small System.Object catch clause, bridged from FACT-0119.",
+      "summary": "canonical/witnesses/CAP-R6-001/dlc_checker_is_owner.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "DLCChecker.GetDLCID internal closure",
+        "external Steamworks implementation",
+        "external DLC ownership state"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

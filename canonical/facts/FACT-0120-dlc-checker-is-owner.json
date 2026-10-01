@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0120",
+  "claim": "In the matching retail DLL, static DLCChecker.IsOwner (0x06001033) is a one-DLCEnum-parameter Boolean method with exact signature blob 0001021185c8 and an exact 39-byte code body. Before its protected region it calls DLCChecker.GetDLCID(dlcNum) (0x06001036), stores the returned DLCIDEnum, and constructs a Steamworks.AppId_t local through memberref 0x0A0006C4. Its single small exception clause protects IL+0x000F through IL+0x001C inclusive: inside that region it calls Steamworks.SteamApps.BIsSubscribedApp through memberref 0x0A0006C5, stores the Boolean result, and leaves to the shared return. The handler begins at IL+0x001D, has catch type token 0x010000C2 resolving to System.Object, pops the caught object, stores false, and leaves to the same return at IL+0x0025. FACT-0119 pins the already-canonical caller at SaveData.IsDLCInstalled IL+0x0001.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "DLCChecker.IsOwner token 0x06001033 RVA 0x0005F7DC signature 0001021185c8 code size 39 code sha256=1aef92c709ae4ad954e979dec831bd361ef6546059f6ddf914fe9fa352bae5cc; fat header flags 0x001B maxstack 2 local sig 0x110002A5; exact GetDLCID/AppId_t/BIsSubscribedApp flow and one small EH clause in canonical/witnesses/CAP-R6-001/dlc_checker_is_owner.summary.json; prover tools/prove_dlc_checker_is_owner.py",
+      "observation": "Exact matching-DLL DLCChecker.IsOwner body and exception section."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0119 SaveData.IsDLCInstalled",
+      "to": "DLCChecker.IsOwner(dlc)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0119 pins call token 0x06001033 at SaveData.IsDLCInstalled IL+0x0001 after loading its DLCEnum argument."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact IsOwner method, its exception clause and the FACT-0119 caller bridge.",
+    "DLCChecker.GetDLCID internals remain a separate gate.",
+    "Steamworks AppId_t constructor and SteamApps.BIsSubscribedApp are external memberrefs; their library implementations and external ownership state remain outside this fact.",
+    "The catch type is preserved exactly as metadata token 0x010000C2 resolving to System.Object without assigning broader runtime exception semantics."
+  ]
+}
