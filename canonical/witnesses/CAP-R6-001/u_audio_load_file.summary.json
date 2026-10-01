@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_U_AUDIO_LOAD_FILE_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "uAudio.uAudioPlayer",
+      "method": "LoadFile",
+      "token": "0x060052E4",
+      "rva": "0x00325A30",
+      "signature_blob_hex": "2001010e",
+      "return_type": "Void",
+      "parameters": [
+        {"sequence":1,"name":"targetFileIN","type":"String"}
+      ],
+      "code_size": 65,
+      "code_sha256": "b5b74da6ab2322d1895635e2add04dd52f9ee9ca4a3846825a9b6fe4631e3ef4",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 2,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 21,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 4
+    },
+    "fields": {
+      "target_file": {
+        "token":"0x040087E6",
+        "name":"uAudio.uAudioPlayer.targetFile",
+        "signature_blob_hex":"060e",
+        "type":"String"
+      },
+      "loaded_target": {
+        "token":"0x040087F1",
+        "name":"uAudio.uAudioPlayer._loadedTarget",
+        "signature_blob_hex":"0602",
+        "type":"Boolean"
+      },
+      "backend_target_file": {
+        "token":"0x0A000FC1",
+        "parent":"uAudio.uAudio_backend.uAudio",
+        "name":"targetFile",
+        "signature_blob_hex":"060e",
+        "type":"String"
+      }
+    },
+    "calls": {
+      "get_u_audio": {
+        "token":"0x060052D0",
+        "resolved":"uAudio.uAudioPlayer.get_UAudio",
+        "call_ils":["0x0013","0x0035"]
+      },
+      "string_inequality": {
+        "token":"0x0A000030",
+        "resolved":"System.String.op_Inequality(String,String)",
+        "call_il":"0x0023"
+      },
+      "backend_load_file": {
+        "token":"0x0A000FC2",
+        "resolved":"uAudio.uAudio_backend.uAudio.LoadFile(String)",
+        "signature_blob_hex":"2001010e",
+        "call_il":"0x003B"
+      }
+    },
+    "exact_flow": [
+      "this.targetFile = targetFileIN",
+      "if this._loadedTarget is true: compare this.get_UAudio().targetFile to this.targetFile through String.op_Inequality; if not unequal, return",
+      "this._loadedTarget = true",
+      "this.get_UAudio().LoadFile(targetFileIN)",
+      "return"
+    ],
+    "fact_0133_bridges": [
+      {"fact_id":"FACT-0133","caller":"Menu_SoundManager.MyMusic_Play","call_il":"0x00E3"},
+      {"fact_id":"FACT-0133","caller":"Menu_SoundManager.MyMusic_Play","call_il":"0x019A"}
+    ]
+  },
+  "limits": [
+    "get_UAudio, backend LoadFile implementation and actual file/audio contents remain outside this record."
+  ]
+}
