@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0096",
+  "claim": "In the matching retail DLL, MatchMain.SetAfterMatchBGM (0x06004924) is an instance one-Int32-parameter method with an exact 195-byte body. It loads GlobalWork.inst.MatchSetting and PlayerMan.inst.GetPlObj(pl_idx), then writes this.ThemeMusic = player.WresParam.themeMusic and this.ThemeMusicFilename = String.Empty. It selects MatchSetting.matchWrestlerInfo[pl_idx] and initializes a data local to null. When that entry's wrestlerID is raw 10000 or greater it replaces the local with SaveData.inst.GetEditWrestlerData(wrestlerID). Otherwise, only when wrestlerID is raw -2, it replaces the local with SaveData.get_story_data().m_pc. If the resulting local is null or its EditWrestlerData.ThemeMusic_Filename is null/empty, the method returns while preserving the initial ThemeMusic and empty filename. Otherwise it calls MyMusic.Check_File(ThemeMusic_Filename). When that call is true it writes ThemeMusic=-2 and copies ThemeMusic_Filename into this.ThemeMusicFilename; when false it writes ThemeMusic=0. FACT-0093 pins the already-canonical caller at Referee.ProcesskMatchEnd_Normal IL+0x0062 with the selected raw player index.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMain.SetAfterMatchBGM token 0x06004924 RVA 0x002A95D8 signature 20010108 parameter pl_idx:Int32 code size 195 code sha256=57fe61387e5df262b4c752819960c309b4a48a1a2299a231f8f5199a6e69eeb3; exact initialization/raw-wrestlerID/data-source/filename-file-check branches in canonical/witnesses/CAP-R6-001/match_set_after_match_bgm.summary.json; prover tools/prove_match_set_after_match_bgm.py",
+      "observation": "Exact matching-DLL SetAfterMatchBGM body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0093 Referee.ProcesskMatchEnd_Normal",
+      "to": "MatchMain.SetAfterMatchBGM(selected_index)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0093 pins callvirt token 0x06004924 at ProcesskMatchEnd_Normal IL+0x0062 after loading the selected-index local."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only SetAfterMatchBGM and the FACT-0093 caller bridge.",
+    "SaveData.GetEditWrestlerData, SaveData.get_story_data and MyMusic.Check_File internals remain separate gates unless independently canonical.",
+    "Authored wrestler/edit/story data and music files remain outside this fact.",
+    "Raw wrestlerID threshold 10000 and sentinel -2, plus ThemeMusic writes -2 and 0, are preserved without added semantic labels."
+  ]
+}
