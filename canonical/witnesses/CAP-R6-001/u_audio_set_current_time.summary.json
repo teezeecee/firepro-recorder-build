@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_SET_CURRENT_TIME_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060052D7","row_hex":"a05732000000e609728a070074480100553d","rva":"0x003257A0"},
+    "method":{"type":"uAudio.uAudioPlayer","method":"set_CurrentTime","token":"0x060052D7","rva":"0x003257A0","signature_blob_hex":"2001011182c1","return_type":"Void","parameters":[{"sequence":1,"name":"value","type":"System.TimeSpan"}],"code_size":24,"code_sha256":"c09298a196302aaeb2cd6734a8b2297724c09221a9602d15e85257482f52199c","header_format":"tiny","max_stack":8,"local_signature_token":"0x00000000","instruction_count":8,"branch_instruction_count":1,"call_instruction_count":1},
+    "field":{"token":"0x040087E3","name":"uAudio.uAudioPlayer._uAudio","type":"uAudio.uAudio_backend.uAudio"},
+    "call":{"token":"0x0A000FB9","resolved":"uAudio.uAudio_backend.uAudio.set_CurrentTime(System.TimeSpan)","signature_blob_hex":"2001011182c1","call_il":"0x0012"},
+    "exact_flow":["if this._uAudio is null: return","this._uAudio.set_CurrentTime(value)","return"],
+    "fact_0140_bridges":[{"fact_id":"FACT-0140","caller":"uAudio.uAudioPlayer.Play","call_il":"0x018D"},{"fact_id":"FACT-0140","caller":"uAudio.uAudioPlayer.Play","call_il":"0x019F"}]
+  },
+  "limits":["Backend implementation and runtime playback timing remain outside this record."]
+}
