@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_U_AUDIO_CHANGE_CURRENT_VOLUME_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "uAudio.uAudioPlayer",
+      "method": "ChangeCurrentVolume",
+      "token": "0x060052E0",
+      "rva": "0x0032587C",
+      "signature_blob_hex": "2001010c",
+      "return_type": "Void",
+      "parameters": [
+        {"sequence":1,"name":"volumeIN","type":"Single"}
+      ],
+      "code_size": 8,
+      "code_sha256": "bf7afe343990f70067b2d0a5f418a180d7f1abee664827c4b4e6e18940403ca7",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 4,
+      "branch_instruction_count": 0,
+      "call_instruction_count": 1
+    },
+    "call": {
+      "token":"0x060052DC",
+      "resolved":"uAudio.uAudioPlayer.set_Volume(Single)",
+      "signature_blob_hex":"2001010c",
+      "call_il":"0x0002"
+    },
+    "exact_flow": [
+      "load this",
+      "load volumeIN",
+      "call uAudio.uAudioPlayer.set_Volume(volumeIN)",
+      "return"
+    ],
+    "fact_0133_bridges": [
+      {"fact_id":"FACT-0133","caller":"Menu_SoundManager.MyMusic_Play","call_il":"0x0105"},
+      {"fact_id":"FACT-0133","caller":"Menu_SoundManager.MyMusic_Play","call_il":"0x01BC"}
+    ]
+  },
+  "limits": [
+    "set_Volume internals and runtime audio behavior remain outside this record."
+  ]
+}
