@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0055",
+  "claim": "In the matching retail DLL, Ring.IsStepOnMine (0x060050FC) has one Int32 player-index argument and an exact 324-byte body. It resolves the Player through PlayerMan.GetInst().GetPlObj and returns false unless the Player converts true and Player.Zone equals raw 1. It builds Vector3(PlPos.x,PlPos.y,0.0f), rotates that vector by Quaternion.AngleAxis(45.0f,Vector3(0,0,1)) using Quaternion*Vector3, then applies the exact emitted unordered-capable Float32 boundary tests. A true return occurs only in one of four strict ordered bands: rotated x is between -3.6458330154418945 and +3.6458330154418945 while rotated y is between -6.4583330154418945 and -4.5833330154418945; the same x-center band with y between +4.5833330154418945 and +6.4583330154418945; rotated y between -3.6458330154418945 and +3.6458330154418945 with x between -6.4583330154418945 and -4.5833330154418945; or the same y-center band with x between +4.5833330154418945 and +6.4583330154418945. Otherwise it returns false. FACT-0049 pins the canonical caller at TransitStateAfterAnm_Down IL+0x023F before the exact mine damage/effect tail.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Ring.IsStepOnMine token 0x060050FC RVA 0x0030D1B0 code size 324 code sha256=c461d4e1d4b587e58b3086f2eb88ae656d7147dbee555c6470ea7bb7a8243ffa; exact player/Zone gate, 45-degree rotation and four strict bands in canonical/witnesses/CAP-R6-001/is_step_on_mine.summary.json; prover tools/prove_is_step_on_mine.py",
+      "observation": "Exact matching-DLL mine-contact body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0049 TransitStateAfterAnm_Down",
+      "to": "Ring.IsStepOnMine(PlIdx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0049 pins call token 0x060050FC at IL+0x023F under venue.ringKind raw 4."
+        }
+      ]
+    },
+    {
+      "from": "Player.PlPos",
+      "to": "rotated local vector",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IsStepOnMine IL+0x0027..0x006D constructs (PlPos.x,PlPos.y,0), Quaternion.AngleAxis(45,(0,0,1)), multiplies quaternion by vector, and stores the result."
+        }
+      ]
+    },
+    {
+      "from": "rotated vector",
+      "to": "four Boolean true bands",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IsStepOnMine IL+0x006E..0x0143 uses exact bge.un/ble.un gates with ±3.6458330154418945, ±4.5833330154418945 and ±6.4583330154418945 and contains four ldc.i4.1;ret true exits."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The method name is retained from DLL metadata, but this fact does not infer a radial mine shape; it records the exact rotated rectangular-band tests.",
+    "The emitted bge.un/ble.un Float32 behavior is preserved; no extra claim is made for unordered/NaN inputs.",
+    "Unity Quaternion/Vector operations are represented only by their emitted MemberRef calls.",
+    "Mine placement/art assets and the later explosion effect internals remain outside this fact."
+  ]
+}
