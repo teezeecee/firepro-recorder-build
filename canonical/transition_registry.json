@@ -2415,6 +2415,22 @@
         "external backend/library/Unity audio behavior",
         "actual media contents"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_SET_CURRENT_TIME_V1",
+      "fact_id": "FACT-0141",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudioPlayer.set_CurrentTime _uAudio null gate and backend TimeSpan forward, bridged from both FACT-0140 calls.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_set_current_time.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external uAudio backend set_CurrentTime implementation",
+        "runtime playback timing"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
