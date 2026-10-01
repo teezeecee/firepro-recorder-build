@@ -2081,6 +2081,22 @@
         "external Steamworks implementation",
         "external DLC ownership state"
       ]
+    },
+    {
+      "family_id": "DLL_DLC_CHECKER_GET_DLC_ID_V1",
+      "fact_id": "FACT-0121",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL DLCChecker.GetDLCID call-free 13-way raw DLCEnum to DLCIDEnum switch table with default -1, bridged from FACT-0120.",
+      "summary": "canonical/witnesses/CAP-R6-001/dlc_checker_get_dlc_id.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "raw DLCEnum product-label closure",
+        "external Steamworks ownership state"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

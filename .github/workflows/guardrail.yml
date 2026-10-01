@@ -622,3 +622,9 @@ jobs:
         run: python tests/test_dlc_checker_is_owner_summary.py
       - name: DLCChecker IsOwner prover syntax
         run: python -m py_compile tools/prove_dlc_checker_is_owner.py
+
+
+      - name: DLCChecker GetDLCID summary
+        run: python tests/test_dlc_checker_get_dlc_id_summary.py
+      - name: DLCChecker GetDLCID prover syntax
+        run: python -m py_compile tools/prove_dlc_checker_get_dlc_id.py
