@@ -1160,6 +1160,24 @@
         "external CreateReferee caller closure",
         "referee component behavior closure"
       ]
+    },
+    {
+      "family_id": "DLL_MATCH_INIT_REFEREE_V1",
+      "fact_id": "FACT-0067",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMain and MatchMainCp InitReferee wrappers plus iterator MoveNext bodies, including raw RefereeID gates/data selection, FACT-0066 CreateReferee calls, initialization field writes, async/non-async divergence and raw animation request.",
+      "summary": "canonical/witnesses/CAP-R6-001/match_init_referee.summary.json",
+      "dll_method_count": 4,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored referee/costume/voice data closure",
+        "FormRenderer texture/sprite helper closure",
+        "Referee.Init and ReqRefereeAnm internal closure",
+        "CreateRefereeDisp caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

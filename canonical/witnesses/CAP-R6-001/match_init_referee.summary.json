@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCH_INIT_REFEREE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "MatchMain",
+        "method": "InitReferee",
+        "token": "0x06004919",
+        "rva": "0x002A8BCC",
+        "signature_blob_hex": "2000128181",
+        "code_size": 8,
+        "code_sha256": "d404b794b4ad8b202e0dfaadeceb6698bcd0a653b27f42d05efb6c60d3692ad4",
+        "instruction_count": 4,
+        "branch_instruction_count": 0,
+        "newobj_count": 1,
+        "iterator_ctor_token": "0x06007424"
+      },
+      {
+        "type": "<InitReferee>c__Iterator5",
+        "enclosing_type": "MatchMain",
+        "method": "MoveNext",
+        "token": "0x06007425",
+        "rva": "0x002AD188",
+        "signature_blob_hex": "200002",
+        "code_size": 523,
+        "code_sha256": "2cf73d3b9e4f7c5d0e3e3bf24708c219538bab0e1dcac04dc076329b4002c98d",
+        "instruction_count": 153,
+        "branch_instruction_count": 12,
+        "call_instruction_count": 11
+      },
+      {
+        "type": "MatchMainCp",
+        "method": "InitReferee",
+        "token": "0x0600493F",
+        "rva": "0x002AD5EC",
+        "signature_blob_hex": "2000128181",
+        "code_size": 8,
+        "code_sha256": "42472ac9c0e12c47b372f848afebdd431149ffcf9d829a116b336d25e424ef29",
+        "instruction_count": 4,
+        "branch_instruction_count": 0,
+        "newobj_count": 1,
+        "iterator_ctor_token": "0x06007442"
+      },
+      {
+        "type": "<InitReferee>c__Iterator3",
+        "enclosing_type": "MatchMainCp",
+        "method": "MoveNext",
+        "token": "0x06007443",
+        "rva": "0x002AE534",
+        "signature_blob_hex": "200002",
+        "code_size": 303,
+        "code_sha256": "c5fc6e292c2adf300eeda5ad44d8c2e0d0650a59e63eadf41213ea81f90e1d6d",
+        "instruction_count": 96,
+        "branch_instruction_count": 8,
+        "call_instruction_count": 10
+      }
+    ],
+    "shared_raw_flow": {
+      "match_setting_field": "GlobalWork.MatchSetting 0x04002AD2",
+      "referee_id_field": "MatchSetting.RefereeID 0x040057D7",
+      "negative_effect": "return false before CreateReferee",
+      "create_referee_token": "0x060050B5",
+      "edit_threshold": 10000,
+      "edit_lookup_token": "0x060051A3",
+      "null_edit_fallback": "store RefereeID = 0",
+      "preset_param_token": "0x06001138",
+      "costume_filename_token": "0x0600113A",
+      "preset_referee_data_token": "0x060010F3",
+      "costume_index": 0,
+      "referee_init_token": "0x06005079",
+      "final_field_writes": [
+        [
+          "TargetPlIdx",
+          -1
+        ],
+        [
+          "PlDir",
+          0
+        ],
+        [
+          "hasRight",
+          1
+        ]
+      ],
+      "request_animation": {
+        "token": "0x06005096",
+        "raw_argument": 1106
+      }
+    },
+    "match_main_path": {
+      "pc_field": "0x0400C12C",
+      "raw_pc_dispatch": [
+        0,
+        1,
+        2
+      ],
+      "first_yield": {
+        "call": "FormRenderer.InitTexture_Async",
+        "token": "0x06001F38",
+        "arguments": [
+          "costumeData[0]",
+          null
+        ],
+        "next_pc": 1
+      },
+      "pc1_effects": [
+        "FormRenderer.InitSprite(0)",
+        "TargetPlIdx=-1",
+        "PlDir=0",
+        "hasRight=1"
+      ],
+      "second_yield": {
+        "call": "Menu_SoundManager.LoadAsync_RefereeVoice",
+        "token": "0x0600528A",
+        "argument": "RefePrm.voiceType",
+        "next_pc": 2
+      },
+      "pc2_effect": "ReqRefereeAnm(1106); $PC=-1; return false"
+    },
+    "match_main_cp_path": {
+      "pc_field": "0x0400C14C",
+      "execution_gate": "prior $PC == 0",
+      "async_yields": 0,
+      "tail": [
+        "TargetPlIdx=-1",
+        "PlDir=0",
+        "hasRight=1",
+        "ReqRefereeAnm(1106)",
+        "if Shadow != null: Shadow.SetActive(false)",
+        "return false"
+      ],
+      "shadow_field": "0x040062AB",
+      "gameobject_set_active_memberref": "0x0A000103"
+    },
+    "fact_0066_bridge": {
+      "fact_id": "FACT-0066",
+      "calls": [
+        {
+          "caller_token": "0x06007425",
+          "il": "0x0051"
+        },
+        {
+          "caller_token": "0x06007443",
+          "il": "0x0033"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Authored referee/costume/voice data and called helper internals remain outside this record.",
+    "CreateRefereeDisp.Awake remains a separate direct caller seam."
+  ]
+}

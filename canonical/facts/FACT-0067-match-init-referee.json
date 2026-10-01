@@ -1,0 +1,55 @@
+{
+  "fact_id": "FACT-0067",
+  "claim": "In the matching retail DLL, the two InitReferee state-machine paths that directly call FACT-0066 RefereeMan.CreateReferee are closed from exact method bodies. MatchMain.InitReferee (0x06004919) is an exact 8-byte wrapper that constructs <InitReferee>c__Iterator5. Its MoveNext (0x06007425) is an exact 523-byte body with raw PC cases 0/1/2. On initial entry it loads GlobalWork.MatchSetting, returns false when RefereeID < 0, calls RefereeMan.CreateReferee, and when RefereeID >= 10000 checks SaveData.GetEditRefereeData; a null result stores raw RefereeID 0. The RefereeID < 10000 path loads preset referee parameter/costume data; the other path loads edit RefereeData.Prm/appearanceData. Both converge on costumeData[0], call Referee.Init(costume,formSize), then yield FormRen.InitTexture_Async(costume,null). PC case 1 calls FormRen.InitSprite(0), writes TargetPlIdx=-1, PlDir=0 and hasRight=1, yields Menu_SoundManager.LoadAsync_RefereeVoice(RefePrm.voiceType), and PC case 2 calls Referee.ReqRefereeAnm(1106) before final false return. MatchMainCp.InitReferee (0x0600493F) is another exact 8-byte wrapper constructing <InitReferee>c__Iterator3. Its MoveNext (0x06007443) is an exact 303-byte body that only executes its main path when the prior $PC value is zero; it performs the same RefereeID negative gate, CreateReferee call, >=10000 edit-data null fallback to raw 0, and <10000 versus >=10000 parameter/appearance selection, then uses costumeData[0], calls Referee.Init, writes TargetPlIdx=-1, PlDir=0 and hasRight=1, calls ReqRefereeAnm(1106), and if Referee.Shadow is non-null calls Shadow.SetActive(false), then returns false. These exact paths preserve their differing async/state-machine behavior without treating their names as proof of broader gameplay meaning.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMain.InitReferee token 0x06004919 RVA 0x002A8BCC signature 2000128181 code size 8 code sha256=d404b794b4ad8b202e0dfaadeceb6698bcd0a653b27f42d05efb6c60d3692ad4; iterator MoveNext token 0x06007425 RVA 0x002AD188 code size 523 code sha256=2cf73d3b9e4f7c5d0e3e3bf24708c219538bab0e1dcac04dc076329b4002c98d; exact graph in canonical/witnesses/CAP-R6-001/match_init_referee.summary.json; prover tools/prove_match_init_referee.py",
+      "observation": "Exact matching-DLL MatchMain InitReferee wrapper/state-machine bodies."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMainCp.InitReferee token 0x0600493F RVA 0x002AD5EC signature 2000128181 code size 8 code sha256=42472ac9c0e12c47b372f848afebdd431149ffcf9d829a116b336d25e424ef29; iterator MoveNext token 0x06007443 RVA 0x002AE534 code size 303 code sha256=c5fc6e292c2adf300eeda5ad44d8c2e0d0650a59e63eadf41213ea81f90e1d6d; exact graph in same witness/prover.",
+      "observation": "Exact matching-DLL MatchMainCp InitReferee wrapper/state-machine bodies."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "MatchMain.<InitReferee>c__Iterator5.MoveNext",
+      "to": "FACT-0066 RefereeMan.CreateReferee",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "MoveNext IL+0x0051 callvirt token 0x060050B5."
+        }
+      ]
+    },
+    {
+      "from": "MatchMainCp.<InitReferee>c__Iterator3.MoveNext",
+      "to": "FACT-0066 RefereeMan.CreateReferee",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "MoveNext IL+0x0033 callvirt token 0x060050B5."
+        }
+      ]
+    },
+    {
+      "from": "both raw RefereeID branches",
+      "to": "parameter/appearance selection",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Both exact bodies compare RefereeID against raw 0 and raw 10000, perform SaveData.GetEditRefereeData null fallback to RefereeID 0, and select the recorded preset/edit data calls before costumeData[0]."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Authored preset/edit referee data, costume contents and voice assets remain outside this fact.",
+    "The method/type names do not establish broader semantic meaning beyond the exact recorded control flow.",
+    "FormRenderer texture/sprite internals, Referee.Init/ReqRefereeAnm internals and voice-loading internals remain separate gates unless separately canonical.",
+    "The third direct CreateReferee caller, CreateRefereeDisp.Awake, remains outside this fact."
+  ]
+}
