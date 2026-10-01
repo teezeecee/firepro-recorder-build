@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0094",
+  "claim": "In the matching retail DLL, Player.CheckRight (0x06004EB9) is a parameterless instance Boolean method with an exact 28-byte body. It reads Player.isLose (0x04006052); when that field is nonzero it returns false. Otherwise it reads Player.hasRight (0x04006043); when that field is nonzero it returns true, and when zero it returns false. Equivalently, the method returns true exactly when isLose == 0 and hasRight != 0. FACT-0093 pins one already-canonical caller at Referee.ProcesskMatchEnd_Normal IL+0x003C.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.CheckRight token 0x06004EB9 RVA 0x002DE7BC signature 200002 code size 28 code sha256=91e367c3dde890584416fa256d52fe2122dde68fa653733621274d624b4002f1; exact two-field Boolean body in canonical/witnesses/CAP-R6-001/player_check_right.summary.json; prover tools/prove_player_check_right.py",
+      "observation": "Exact matching-DLL CheckRight body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0093 Referee.ProcesskMatchEnd_Normal",
+      "to": "Player.CheckRight()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0093 pins callvirt token 0x06004EB9 at ProcesskMatchEnd_Normal IL+0x003C."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only Player.CheckRight and the FACT-0093 caller bridge.",
+    "Additional DLL callers of CheckRight remain separate caller seams.",
+    "Field names isLose and hasRight are preserved from matching-DLL metadata; no broader match-rule meaning is assigned here."
+  ]
+}
