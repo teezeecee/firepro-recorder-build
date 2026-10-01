@@ -253,3 +253,8 @@ jobs:
         run: python tests/test_transit_state_after_anm_down_summary.py
       - name: TransitStateAfterAnm_Down prover syntax
         run: python -m py_compile tools/prove_transit_state_after_anm_down.py
+
+      - name: TransitStateAfterAnm_AutoRun summary
+        run: python tests/test_transit_state_after_anm_autorun_summary.py
+      - name: TransitStateAfterAnm_AutoRun prover syntax
+        run: python -m py_compile tools/prove_transit_state_after_anm_autorun.py
