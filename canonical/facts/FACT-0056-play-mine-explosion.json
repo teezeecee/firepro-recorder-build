@@ -44,6 +44,6 @@
   "limits": [
     "The two MethodSpec tokens are preserved as exact metadata tokens; their generic implementation internals are outside this fact.",
     "Prefab/resource contents, rendered particle behavior, layer-name meaning, Ring.mRingShake internals and MatchCamera.ReqVivration internals remain separate gates.",
-    "The method name and field names come from DLL metadata; no additional presentation semantics are inferred."
+    "The method name and field names come from DLL metadata; no additional presentation semantics are added."
   ]
 }
