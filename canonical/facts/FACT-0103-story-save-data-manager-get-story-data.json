@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0103",
+  "claim": "In the matching retail DLL, StorySaveDataManager.GetStoryData (0x06003C24) is an instance parameterless method with exact signature blob 2000129cd4 and an exact 12-byte body. It loads this, loads static field StoryWork.storyScenario (0x04004856), calls the sibling instance overload StorySaveDataManager.GetStoryData(StoryScenario) at token 0x06003C25, and returns that result. The sibling overload signature blob is pinned as 2001129cd4119cd0. FACT-0101 pins the already-canonical caller at SaveData.get_story_work IL+0x0021 after loading StorySaveDataManager.inst.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "StorySaveDataManager.GetStoryData token 0x06003C24 RVA 0x0023A1BD signature 2000129cd4 code size 12 code sha256=564cd017b6b587e05dc90b0c95294394b6d0d874e7c59dee6c493fa3182cb611; exact this/storyScenario/sibling-overload/return body in canonical/witnesses/CAP-R6-001/story_save_data_manager_get_story_data.summary.json; prover tools/prove_story_save_data_manager_get_story_data.py",
+      "observation": "Exact matching-DLL parameterless StorySaveDataManager.GetStoryData wrapper body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0101 SaveData.get_story_work",
+      "to": "StorySaveDataManager.GetStoryData()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0101 pins StorySaveDataManager.inst field token 0x0400497D at IL+0x001C followed by callvirt token 0x06003C24 at IL+0x0021."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact parameterless GetStoryData wrapper and the FACT-0101 caller bridge.",
+    "StorySaveDataManager.GetStoryData(StoryScenario) internals remain a separate gate.",
+    "Authored story data and StoryScenario semantics remain outside this fact.",
+    "No broader Story Mode behavior is promoted."
+  ]
+}
