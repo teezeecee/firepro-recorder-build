@@ -2463,6 +2463,23 @@
         "external UnityEngine.AudioSource Pause/UnPause behavior",
         "delegate subscriber behavior"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_MY_MUSIC_PLAY_CO_FACTORY_V1",
+      "fact_id": "FACT-0144",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL standalone Menu_SoundManager.MyMusic_Play_Co generated-iterator factory; FACT-0133 StartCoroutine(String) name match is recorded but not promoted as a direct call edge.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_my_music_play_co_factory.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Unity StartCoroutine(String) external name dispatch",
+        "generated iterator constructor/MoveNext closure",
+        "Unity coroutine scheduler behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
