@@ -1659,6 +1659,24 @@
         "additional SetBaseCheerLevel caller closure",
         "raw CheerLevel_Base provenance/meaning"
       ]
+    },
+    {
+      "family_id": "DLL_MATCH_SET_AFTER_MATCH_BGM_V1",
+      "fact_id": "FACT-0096",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMain.SetAfterMatchBGM initial theme writes, raw wrestlerID edit/story data selection, filename/file-existence gates and final ThemeMusic overrides, bridged from FACT-0093.",
+      "summary": "canonical/witnesses/CAP-R6-001/match_set_after_match_bgm.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "SaveData.GetEditWrestlerData internal/data closure",
+        "SaveData.get_story_data internal/data closure",
+        "MyMusic.Check_File internal/file provenance",
+        "authored wrestler/edit/story music data"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

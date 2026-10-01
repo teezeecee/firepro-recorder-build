@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCH_SET_AFTER_MATCH_BGM_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchMain",
+      "method": "SetAfterMatchBGM",
+      "token": "0x06004924",
+      "rva": "0x002A95D8",
+      "signature_blob_hex": "20010108",
+      "return_type": "Void",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "pl_idx",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 195,
+      "code_sha256": "57fe61387e5df262b4c752819960c309b4a48a1a2299a231f8f5199a6e69eeb3",
+      "max_stack": 2,
+      "local_signature_token": "0x11000F47",
+      "instruction_count": 61,
+      "branch_instruction_count": 7,
+      "call_instruction_count": 5
+    },
+    "initial_flow": {
+      "match_setting": [
+        "GlobalWork.inst 0x04002AD1",
+        "GlobalWork.MatchSetting 0x04002AD2"
+      ],
+      "player_lookup": [
+        "PlayerMan.inst 0x040061FA",
+        "PlayerMan.GetPlObj 0x06005065",
+        "argument pl_idx"
+      ],
+      "theme_source": [
+        "Player.WresParam 0x04005FB3",
+        "WrestlerParam.themeMusic 0x040010A0"
+      ],
+      "writes": [
+        {
+          "field": "MatchMain.ThemeMusic",
+          "token": "0x0400574D",
+          "value": "player.WresParam.themeMusic"
+        },
+        {
+          "field": "MatchMain.ThemeMusicFilename",
+          "token": "0x0400574E",
+          "value": "System.String.Empty memberref 0x0A000025"
+        }
+      ]
+    },
+    "data_selection": {
+      "match_wrestler_info_field": {
+        "name": "MatchSetting.matchWrestlerInfo",
+        "token": "0x040057CE"
+      },
+      "wrestler_id_field": {
+        "name": "MatchWrestlerInfo.wrestlerID",
+        "token": "0x040057BD"
+      },
+      "edit_threshold": {
+        "comparison": "wrestlerID >= 10000",
+        "raw_value": 10000,
+        "effect": "data = SaveData.inst.GetEditWrestlerData(wrestlerID)",
+        "save_data_inst": "0x040064EC",
+        "call_token": "0x060051B9"
+      },
+      "story_sentinel": {
+        "comparison": "wrestlerID == -2",
+        "raw_value": -2,
+        "effect": "data = SaveData.get_story_data().m_pc",
+        "story_call_token": "0x06005172",
+        "m_pc_field": "0x0400489A"
+      },
+      "otherwise": "data remains null"
+    },
+    "filename_flow": {
+      "field": {
+        "name": "EditWrestlerData.ThemeMusic_Filename",
+        "token": "0x040010C3"
+      },
+      "null_or_empty_memberref": "0x0A000015",
+      "null_or_empty_effect": "return preserving initial ThemeMusic and empty ThemeMusicFilename",
+      "check_file": {
+        "method": "MyMusic.Check_File",
+        "token": "0x06002C1E",
+        "argument": "ThemeMusic_Filename"
+      },
+      "check_true": [
+        {
+          "field": "MatchMain.ThemeMusic",
+          "value": -2
+        },
+        {
+          "field": "MatchMain.ThemeMusicFilename",
+          "value": "ThemeMusic_Filename"
+        }
+      ],
+      "check_false": [
+        {
+          "field": "MatchMain.ThemeMusic",
+          "value": 0
+        }
+      ]
+    },
+    "fact_0093_bridge": {
+      "fact_id": "FACT-0093",
+      "caller": "Referee.ProcesskMatchEnd_Normal",
+      "call_il": "0x0062",
+      "callee_token": "0x06004924",
+      "argument": "selected_index"
+    }
+  },
+  "limits": [
+    "Authored wrestler/edit/story records, file contents and open helper internals remain outside this record."
+  ]
+}

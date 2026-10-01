@@ -483,3 +483,8 @@ jobs:
         run: python tests/test_audience_set_base_cheer_level_summary.py
       - name: Audience SetBaseCheerLevel prover syntax
         run: python -m py_compile tools/prove_audience_set_base_cheer_level.py
+
+      - name: MatchMain SetAfterMatchBGM summary
+        run: python tests/test_match_set_after_match_bgm_summary.py
+      - name: MatchMain SetAfterMatchBGM prover syntax
+        run: python -m py_compile tools/prove_match_set_after_match_bgm.py
