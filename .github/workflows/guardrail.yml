@@ -233,3 +233,8 @@ jobs:
         run: python tests/test_ai_init_all_works_summary.py
       - name: AI InitAllWorks prover syntax
         run: python -m py_compile tools/prove_ai_init_all_works.py
+
+      - name: CalcTouchTime summary
+        run: python tests/test_calc_touch_time_summary.py
+      - name: CalcTouchTime prover syntax
+        run: python -m py_compile tools/prove_calc_touch_time.py
