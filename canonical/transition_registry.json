@@ -2364,6 +2364,23 @@
         "uAudio backend LoadFile implementation",
         "actual file/audio contents"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_GET_U_AUDIO_V1",
+      "fact_id": "FACT-0138",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudioPlayer.get_UAudio lazy backend construction, target-file/volume initialization and Action<PlayBackState> callback assignment, bridged from both FACT-0137 calls.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_get_u_audio.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "uAudioPlayer.<get_UAudio>m__0 internal closure",
+        "external uAudio backend implementation",
+        "actual file/audio behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
