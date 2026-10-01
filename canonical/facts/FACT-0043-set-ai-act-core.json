@@ -1,0 +1,65 @@
+{
+  "fact_id": "FACT-0043",
+  "claim": "In the matching retail DLL, PlayerController_AI.SetAIAct (0x06004F9D) and its private leaf helper SetAIActCounter (0x06004FAC) are closed together as the core action-state setter used by FACT-0042 and the raw-act-21 path in FACT-0040. SetAIAct is an instance method with parameters act:AIActEnum and cnt:Int32 and an exact 102-byte body. When this.aiAct already equals act, it calls SetAIActCounter(cnt) and returns without changing aiActStep or dragOpponentCnt. Otherwise it stores aiAct=act, calls SetAIActCounter(cnt), stores aiActStep=0, increments dragOpponentCnt by one when the newly stored aiAct is raw 20, then stores dragOpponentCnt=0 when aiAct is neither raw 20 nor raw 19. SetAIActCounter is an exact 8-byte instance method with one Int32 parameter cnt and only stores aiActDuration=cnt then returns. FACT-0042 pins all seven priority-action wrappers as callers of SetAIAct with their exact raw action/time pairs, and FACT-0040 independently pins a direct SetAIAct(raw 17,768) call for raw priority act 21.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.SetAIAct token 0x06004F9D RVA 0x002F5F54 signature 20020111a7bc08 parameters act:AIActEnum,cnt:Int32 code size 102 code sha256=58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065; exact body in canonical/witnesses/CAP-R6-001/set_ai_act_core.summary.json; prover tools/prove_set_ai_act_core.py",
+      "observation": "Exact matching-DLL SetAIAct body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.SetAIActCounter token 0x06004FAC RVA 0x002F60EC signature 20010108 parameter cnt:Int32 code size 8 code sha256=cff3981d35f0878efae84ea0b7f25c9c403437bc3e9413041ba509fbb361fa1a; exact body in canonical/witnesses/CAP-R6-001/set_ai_act_core.summary.json; prover tools/prove_set_ai_act_core.py",
+      "observation": "Exact matching-DLL SetAIActCounter body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0042 priority action wrappers",
+      "to": "PlayerController_AI.SetAIAct(act,cnt)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0042 pins the seven wrapper bodies calling token 0x06004F9D with raw action/time pairs: DownAtk (19,tm), RunUpDive_Stand (9,512), RunUpDive_Down (10,512), CornerDive (5,256), PriAct_RunAtk (16,tm), GoGrapple (1,tm), GoBackGrapple (3,tm)."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0040 raw priority act 21 path",
+      "to": "PlayerController_AI.SetAIAct(17,768)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0040 pins TryToDoPriorityAct IL+0x0204 group as direct SetAIAct token 0x06004F9D with raw action 17 and duration 768; exact call opcode occurs at IL+0x020C."
+        }
+      ]
+    },
+    {
+      "from": "SetAIAct act equality split",
+      "to": "action fields",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "SetAIAct IL+0x0000..0x0065 reads/stores aiAct field 0x0400614B, calls SetAIActCounter token 0x06004FAC at IL+0x000E or IL+0x001D, stores aiActStep field 0x0400614D to zero on the changed-action path, increments dragOpponentCnt field 0x0400616B only for raw aiAct 20, and resets that counter when aiAct is neither 20 nor 19."
+        }
+      ]
+    },
+    {
+      "from": "SetAIActCounter cnt",
+      "to": "aiActDuration",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "SetAIActCounter exact 8-byte body is ldarg.0; ldarg.1; stfld aiActDuration token 0x0400614C; ret."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw AIActEnum values 19 and 20 are preserved numerically without gameplay labels.",
+    "This fact closes SetAIAct and SetAIActCounter bodies, not the later consumers of aiAct, aiActDuration, aiActStep, or dragOpponentCnt.",
+    "Many additional DLL callers of SetAIAct exist outside the already-canonical FACT-0040/0042 caller bridges and remain to be closed through their own caller seams.",
+    "CAP-R6-001 contains no standalone SetAIAct or SetAIActCounter PRE/POST event."
+  ]
+}
