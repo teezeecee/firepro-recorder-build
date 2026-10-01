@@ -1,0 +1,44 @@
+{
+  "fact_id": "FACT-0093",
+  "claim": "In the matching retail DLL, Referee.ProcesskMatchEnd_Normal (0x060050A7; metadata spelling includes the 'k') is a parameterless instance method with an exact 156-byte body and exactly one direct DLL caller. It initializes a selected-player local to raw -1 and scans raw player indices 0 through 7. For each index it resolves PlayerMan.inst.GetPlObj(index), skips when the object converts false, skips when Player.isSleep is nonzero, and skips when Player.CheckRight() returns false. On the first player passing those gates it stores the raw index and exits the scan. If no index was stored it returns. Otherwise, in exact order, it calls MatchMain.inst.SetAfterMatchBGM(index); Audience.inst.SetBaseCheerLevel(4); FACT-0081 Audience.PlayLoopCheerVoice(4,true); FACT-0079 Audience.PlayCheerVoice(6,4); and MatchMain.inst.ProcessMatchEnd_Normal(this.matchResult,index); then returns. FACT-0091 pins the sole direct caller at Referee.CheckMatchEnd IL+0x00A2.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.ProcesskMatchEnd_Normal token 0x060050A7 RVA 0x00309428 signature 200001 code size 156 code sha256=e71d1708191a0dc125367efbaa8adb8c280f8e1068cf6ae26ea320a98d482d8b; exact raw player scan and ordered post-scan call sequence in canonical/witnesses/CAP-R6-001/referee_process_match_end_normal.summary.json; prover tools/prove_referee_process_match_end_normal.py",
+      "observation": "Exact matching-DLL ProcesskMatchEnd_Normal body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact call-token inventory for 0x060050A7 finds one direct DLL caller only: Referee.CheckMatchEnd token 0x060050A9 at IL+0x00A2.",
+      "observation": "Exact direct caller inventory."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0091 Referee.CheckMatchEnd",
+      "to": "Referee.ProcesskMatchEnd_Normal",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CheckMatchEnd IL+0x00A2 call token 0x060050A7."
+        }
+      ]
+    },
+    {
+      "from": "Referee.ProcesskMatchEnd_Normal",
+      "to": "already-canonical Audience helpers",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact body calls FACT-0081 Audience.PlayLoopCheerVoice token 0x060047DA with raw arguments 4,true and FACT-0079 Audience.PlayCheerVoice token 0x060047D9 with raw arguments 6,4."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only ProcesskMatchEnd_Normal and its exact direct caller inventory.",
+    "Player.CheckRight, MatchMain.SetAfterMatchBGM, Audience.SetBaseCheerLevel and MatchMain.ProcessMatchEnd_Normal internals remain separate gates.",
+    "Raw scan range 0..7, selected-index sentinel -1, raw Audience arguments and matchResult field are preserved without added rule labels."
+  ]
+}
