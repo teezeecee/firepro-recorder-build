@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_TABLE_LOOKUP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "SkillDataMan",
+      "method": "GetSkillData",
+      "token": "0x06005262",
+      "rva": "0x0031FEC5",
+      "signature_blob_hex": "200112a9a811a97c",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "anm_id"
+        }
+      ],
+      "code_size": 30,
+      "code_sha256": "34bf8ce8e06453d321e7f41685aa3e4e372936c5a0c79f789966d562be26b88b",
+      "instruction_count": 13,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 0
+    },
+    "exact_bounds": {
+      "valid_raw_range": {
+        "min_inclusive": 0,
+        "max_inclusive": 4187
+      },
+      "below_zero_effect": "anm_id = 0",
+      "at_or_above_4188_effect": "anm_id = 0",
+      "fallback_opcode": "starg.s",
+      "fallback_raw_value": 0
+    },
+    "lookup": {
+      "field": {
+        "name": "skillData",
+        "token": "0x04007CF7"
+      },
+      "effect": "return skillData[anm_id]"
+    },
+    "fact_0072_bridge": {
+      "fact_id": "FACT-0072",
+      "caller": "SkillDataMan.GetSkillData_Standard",
+      "call_il": "0x0008",
+      "callee_token": "0x06005262"
+    }
+  },
+  "limits": [
+    "Authored skillData contents and the other GetSkillData overload remain outside this record."
+  ]
+}

@@ -1261,6 +1261,22 @@
         "SkillDataMan.GetSkillData internal closure",
         "authored SkillData contents"
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_TABLE_LOOKUP_V1",
+      "fact_id": "FACT-0073",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL SkillDataMan.GetSkillData token 0x06005262 signed bounds, raw-zero fallback and skillData array element return, bridged from FACT-0072.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_table_lookup.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored SkillDataMan.skillData contents",
+        "other GetSkillData overload closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

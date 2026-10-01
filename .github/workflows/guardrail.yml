@@ -368,3 +368,8 @@ jobs:
         run: python tests/test_skill_data_standard_wrapper_summary.py
       - name: SkillData standard wrapper prover syntax
         run: python -m py_compile tools/prove_skill_data_standard_wrapper.py
+
+      - name: SkillData table lookup summary
+        run: python tests/test_skill_data_table_lookup_summary.py
+      - name: SkillData table lookup prover syntax
+        run: python -m py_compile tools/prove_skill_data_table_lookup.py
