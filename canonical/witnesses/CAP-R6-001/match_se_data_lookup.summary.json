@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCH_SE_DATA_LOOKUP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchSEData",
+      "method": "GetMatchSEParam",
+      "token": "0x06005273",
+      "rva": "0x0032062D",
+      "signature_blob_hex": "000112aa0411aa0c",
+      "return_type": "MatchSEParam",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "seid"
+        }
+      ],
+      "code_size": 25,
+      "code_sha256": "debaed5fa38ab512128db75e843d35f2df2d78e93145f1f7c9f88fb3ca2d7199",
+      "instruction_count": 12,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 0
+    },
+    "table_field": {
+      "name": "MatchSEParamTbl",
+      "token": "0x0400866B"
+    },
+    "exact_bounds": [
+      {
+        "condition": "seid < 0",
+        "opcode": "blt",
+        "effect": "return null"
+      },
+      {
+        "condition": "seid < 109 after nonnegative gate",
+        "opcode": "blt",
+        "effect": "return MatchSEParamTbl[seid]"
+      },
+      {
+        "condition": "seid >= 109",
+        "effect": "return null"
+      }
+    ],
+    "raw_valid_range": {
+      "min_inclusive": 0,
+      "max_inclusive": 108
+    },
+    "caller_bridge": {
+      "fact_id": "FACT-0060",
+      "caller": "MatchSEPlayer.PlayMatchSE",
+      "call_il": "0x001E",
+      "callee_token": "0x06005273",
+      "argument": "seid"
+    }
+  },
+  "limits": [
+    "Authored MatchSEParamTbl contents and raw sound-ID meaning remain outside this record."
+  ]
+}
