@@ -1,0 +1,34 @@
+{
+  "fact_id": "FACT-0082",
+  "claim": "In the matching retail DLL, the two Menu_SoundManager loop helpers called by FACT-0081 are exact method bodies. Play_CheerVoice_Loop (0x060052AD) is a static vid/volume method with exact signature blob 00020111aa000c and an exact 158-byte body. It returns unless Sound_ClipCheerVoice_List exists, raw vid is in 0..41, and clip[vid] is non-null. It computes local=Volume_Cheer*volume, replaces only ordered-negative values with 0.0f, replaces only ordered values above 1.0f with 1.0f, selects raw audioSrcInfo index 7 and its sRefAudio, and returns unless that AudioSource converts true. On success it calls set_volume(local), set_clip(clip), set_loop(true), Play(), then stores raw zero into fadeOutFrm and fadeOutCnt. SetVol_CheerVoice_Loop (0x060052B0) is a static Float32-volume method with exact signature blob 0001010c and an exact 76-byte body. It performs the same Volume_Cheer multiplication and ordered 0..1 clamps, selects the same raw audioSrcInfo index 7 / sRefAudio, tests the AudioSource conversion, and only when true calls set_volume(local). FACT-0081 pins the calls at IL+0x00FA and IL+0x010E.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.Play_CheerVoice_Loop token 0x060052AD RVA 0x00322DCC code size 158 code sha256=001cb4d3bd5417613100f8bfe639e04dda3482b57c57eb21ef6522ce30adfebe; exact bounds/clamps/source/playback/fade reset in canonical/witnesses/CAP-R6-001/cheer_loop_playback.summary.json; prover tools/prove_cheer_loop_playback.py",
+      "observation": "Exact matching-DLL loop-playback body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.SetVol_CheerVoice_Loop token 0x060052B0 RVA 0x00322EDC code size 76 code sha256=6f321c7c744fbfc0c24a57378d548aa080b210e4d264ec0cf63d9c9576338126; exact clamp/source/set-volume body in the same witness/prover.",
+      "observation": "Exact matching-DLL loop-volume body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0081 Audience.PlayLoopCheerVoice",
+      "to": "Menu_SoundManager.Play_CheerVoice_Loop / SetVol_CheerVoice_Loop",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0081 pins Play_CheerVoice_Loop token 0x060052AD at IL+0x00FA and SetVol_CheerVoice_Loop token 0x060052B0 at IL+0x010E."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes the exact two Menu_SoundManager loop helpers and FACT-0081 caller sites only.",
+    "Authored cheer clips and Volume_Cheer value remain outside this fact.",
+    "Raw source index 7, clip bounds and fade counter values are preserved without added rule meaning."
+  ]
+}
