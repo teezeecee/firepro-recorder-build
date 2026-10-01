@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0122",
+  "claim": "In the matching retail DLL, MatchMain.PlayAfterMatchBGM (0x06004925) is an instance parameterless Void method with exact signature blob 200001 and an exact 390-byte body. It first requires bgmReqTimer > 0, decrements that field by one, and continues only when the decremented value is <= 0. It loads GlobalWork.inst.MatchSetting and initializes a Boolean local false. When MatchSetting.BattleRoyalKind is raw 0, it checks MatchEvaluation.inst.PlResult[0].resultPosition and PlResult[4].resultPosition against raw 1 together with isSuppressWinJingle_Blue / isSuppressWinJingle_Red; the exact suppress branch writes exitTimer=900. The non-suppress path, and the nonzero BattleRoyalKind path, set the Boolean local true only when exitTimer < 512 and MatchSetting.GameSpeed == 100. If that local remains false the method returns. Otherwise ThemeMusic raw -1 calls Menu_SoundManager.Change_BGM_Theme(String,Boolean,Boolean) with literal \"BGIN_001\", true, true. ThemeMusic raw -2 checks canonical MyMusic.Check_File(ThemeMusicFilename): false calls canonical Change_BGM_Theme(0,true,true) then canonical MyMusic.Set(33,String.Empty); true calls Menu_SoundManager.StopBGM(), canonical MyMusic.Set(33,ThemeMusicFilename), then Menu_SoundManager.Play_BGM(33,1). For all other ThemeMusic values, values below raw 10000 call canonical Change_BGM_Theme(ThemeMusic,true,true), while values at or above 10000 call canonical Change_BGM_Theme(0,true,true) followed by canonical MyMusic.Set(33,String.Empty).",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMain.PlayAfterMatchBGM token 0x06004925 RVA 0x002A96A8 signature 200001 code size 390 code sha256=ce8a2a91a564c9f28928b39c7d444dfe0758d3b771b7a142125e5bac4daaa2b5; exact timer/evaluation/suppression/ThemeMusic dispatch in canonical/witnesses/CAP-R6-001/match_main_play_after_match_bgm.summary.json; prover tools/prove_match_main_play_after_match_bgm.py",
+      "observation": "Exact matching-DLL PlayAfterMatchBGM body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "MatchMain.PlayAfterMatchBGM ThemeMusic raw -2 filename branch",
+      "to": "FACT-0100 MyMusic.Check_File(String)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayAfterMatchBGM IL+0x010D is call token 0x06002C1E after loading this.ThemeMusicFilename."
+        }
+      ]
+    },
+    {
+      "from": "MatchMain.PlayAfterMatchBGM",
+      "to": "FACT-0111 Menu_SoundManager.Change_BGM_Theme(ThemeMusicID) / FACT-0110 MyMusic.Set",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayAfterMatchBGM calls canonical Change_BGM_Theme token 0x06005296 at IL+0x011A, IL+0x0167 and IL+0x0174; canonical MyMusic.Set token 0x06002C23 at IL+0x0126, IL+0x013D and IL+0x0180."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact PlayAfterMatchBGM body and its direct call boundaries.",
+    "Menu_SoundManager.Change_BGM_Theme(String,Boolean,Boolean), StopBGM and Play_BGM internals remain separate gates.",
+    "Authored match results, theme-music data, files and audio contents remain outside this fact.",
+    "Raw constants -1, -2, 0, 1, 33, 100, 512, 900 and 10000 are preserved without assigning broader gameplay labels."
+  ]
+}
