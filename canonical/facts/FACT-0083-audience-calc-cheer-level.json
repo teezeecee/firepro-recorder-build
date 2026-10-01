@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0083",
+  "claim": "In the matching retail DLL, Audience.CalcCheerLevel (0x060047E0) is a parameterless instance method with an exact 477-byte body. It first loads MatchMain.GetInst().matchTime.sec; only when raw (sec + 1) % 20 equals zero does it refresh CheerLevel_HP. That refresh scans raw player indices 0..7 using PlayerMan.GetPlObj, skips a player when the object conversion is false, isSleep is nonzero, or hasRight is zero, and otherwise accumulates Float32 (HP * 2.0f + SP) / 3.0f. After the scan it calls MatchMisc.GetHealth(total), uses that result to index static CheerHpTbl, and stores the selected Int32 into CheerLevel_HP. Every invocation then stores CheerLevel_Total = CheerLevel_Base + CheerLevel_HP. A second raw 0..7 scan skips null or sleeping players and counts entries whose raw Zone equals 1, 3, 8, or 9; once the count reaches two, it increments CheerLevel_Total by raw one and leaves that scan. A third raw 0..7 scan skips null or sleeping players, and on the first entry with isSallying nonzero increments CheerLevel_Total by raw one and leaves that scan. Finally it clamps CheerLevel_Total to raw -4..4 and returns. FACT-0079 pins the direct TensionDown call at IL+0x0024.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Audience.CalcCheerLevel token 0x060047E0 RVA 0x0029018C signature 200001 code size 477 code sha256=ba5e6b908f65b9feecf9b3c43ab61fbb139abf93eea50f11ae66585a92efbc32; exact timed HP/SP refresh, two later player scans and final clamp in canonical/witnesses/CAP-R6-001/audience_calc_cheer_level.summary.json; prover tools/prove_audience_calc_cheer_level.py",
+      "observation": "Exact matching-DLL Audience.CalcCheerLevel body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0079 Audience.TensionDown",
+      "to": "Audience.CalcCheerLevel()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0079 pins call token 0x060047E0 at TensionDown IL+0x0024."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes the exact CalcCheerLevel body and FACT-0079 caller site only.",
+    "MatchMisc.GetHealth internals and authored CheerHpTbl contents remain separate gates.",
+    "Raw Zone values, thresholds and field names are preserved without assigning player-facing rule meanings.",
+    "Player slot range 0..7 and all numeric arithmetic are copied from emitted control flow."
+  ]
+}
