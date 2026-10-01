@@ -328,3 +328,8 @@ jobs:
         run: python tests/test_referee_sound_path_summary.py
       - name: Referee sound path prover syntax
         run: python -m py_compile tools/prove_referee_sound_path.py
+
+      - name: Referee object lookups summary
+        run: python tests/test_referee_object_lookups_summary.py
+      - name: Referee object lookups prover syntax
+        run: python -m py_compile tools/prove_referee_object_lookups.py
