@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0049",
+  "claim": "In the matching retail DLL, Player.TransitStateAfterAnm_Down (0x06004EC6) is a parameterless instance method with an exact 807-byte body. It loads current FormDispInfo and Ring.venueSetting, clears isTagPartnerStandby, normalizes PlDir through ChangePlayerDirToLR and applies ChangePlayerDirToLRAndReverse when raw FormRev mask 256 is set. If isKO is nonzero it clears isDownRequested, copies HP to WrsDP, selects raw BasicAnm 296 + ChangeState(17) for formIdx 100 or raw BasicAnm 297 + ChangeState(18) otherwise, then requests that animation. Otherwise it first ChangeState(10), then tests HP_Neck, HP_Arm, HP_Waist and HP_Leg in that exact order; when the tested field equals 0.0 and the corresponding SuperPain bit 1/2/4/8 is not already set, it ORs that bit, selects raw BasicAnm 354/356/358/360 respectively and SetDownTime(255). If none of the four paths is taken, the base raw BasicAnm is 180. It clears isDownRequested, copies HP to WrsDP, increments the selected animation by one when formIdx==101, requests it, and raw animations 180/181 additionally ChangeState(17/18) and set isDecDownTime=1. The shared tail tests venueSetting.ringKind==4 and Ring.IsStepOnMine(PlIdx); on true it increments stepOnMineCnt, calls Bleeding, computes 9216.0f * MatchData.mHpDamageTbl[GetHealth(HP)/2], applies AddHP of the negative scalar and ConsumeSP(9216.0f), records LastDamage and clears KoLastDamage, calls ForceSetDownTime and raises DownTime to at least 200, builds a Vector3 from PlPos.x, 0.5 and PlPos.y, selects raw effect argument 6 only when its z component is below 0, calls MatchEffect.Play_MineExplosion, then MatchMisc.PlayMatchSE(67,1.0f,PlIdx) and returns. FACT-0048 pins the only canonical caller boundary currently closed: formIdx raw 100 or 101 dispatches to this helper at IL+0x011B.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.TransitStateAfterAnm_Down token 0x06004EC6 RVA 0x002E0584 signature 200001 code size 807 code sha256=279517cb863c131495de999594e2eecb0ec3cfaada975d4215ee0efd7fb2b6f6; exact ordered limb/SuperPain selection and mine tail in canonical/witnesses/CAP-R6-001/transit_state_after_anm_down.summary.json; prover tools/prove_transit_state_after_anm_down.py",
+      "observation": "Exact matching-DLL TransitStateAfterAnm_Down body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0048 Player.TransitStateAfterAnm",
+      "to": "Player.TransitStateAfterAnm_Down()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0048 pins current FormDispInfo.formIdx raw 100/101 dispatch to token 0x06004EC6 at IL+0x011B."
+        }
+      ]
+    },
+    {
+      "from": "non-KO down transition",
+      "to": "ordered body-part/SuperPain selection",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "TransitStateAfterAnm_Down IL+0x00B5..0x01BC checks HP_Neck/SuperPain bit1, HP_Arm/bit2, HP_Waist/bit4, HP_Leg/bit8 in exact order; first eligible path selects raw 354/356/358/360 and SetDownTime(255), otherwise raw 180."
+        }
+      ]
+    },
+    {
+      "from": "venue ringKind raw 4 and mine contact",
+      "to": "damage/effect tail",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "TransitStateAfterAnm_Down IL+0x022D..0x0326 checks ringKind==4 and Ring.IsStepOnMine(PlIdx), increments stepOnMineCnt, invokes already-closed Bleeding/AddHP/ConsumeSP/SetLastDamage/SetDownTime paths plus ForceSetDownTime, then emits mine explosion and MatchSE 67."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw animation, State, ringKind, SuperPain-bit and effect/sound values are preserved numerically without assigning gameplay labels.",
+    "ForceSetDownTime, Ring.IsStepOnMine and MatchEffect.Play_MineExplosion internals remain outside this fact unless separately closed.",
+    "The authored MatchData.mHpDamageTbl contents remain packed-data provenance outside this fact.",
+    "CAP-R6-001 contains no standalone TransitStateAfterAnm_Down PRE/POST event."
+  ]
+}
