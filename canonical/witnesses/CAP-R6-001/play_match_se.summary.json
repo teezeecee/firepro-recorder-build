@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCHMISC_PLAY_MATCH_SE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchMisc",
+      "method": "PlayMatchSE",
+      "token": "0x06004970",
+      "rva": "0x002B0AE4",
+      "signature_blob_hex": "00030111aa0c0c08",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "seid"
+        },
+        {
+          "sequence": 2,
+          "name": "vol"
+        },
+        {
+          "sequence": 3,
+          "name": "pl_idx"
+        }
+      ],
+      "code_size": 95,
+      "code_sha256": "20b2b0b4629e94a1522ac997f16d94062fd0e3ad779184615939a1ee3a794aae",
+      "instruction_count": 26,
+      "branch_instruction_count": 5,
+      "call_instruction_count": 4
+    },
+    "throttle": {
+      "conditions": [
+        "MatchMain.inst exists",
+        "MatchMain.isFastForwardMatch != 0",
+        "Fade.inst.IsFadeFinish() == true"
+      ],
+      "expression": "unsigned MchFrameCnt % 20",
+      "skip_when": "remainder != 0"
+    },
+    "dispatch": {
+      "condition": "MatchSEPlayer.inst exists",
+      "callee_token": "0x06005277",
+      "arguments": [
+        "seid",
+        "vol",
+        "pl_idx"
+      ]
+    },
+    "caller_bridges": [
+      {
+        "fact_id": "FACT-0026",
+        "raw_arguments": [
+          30,
+          1,
+          "PlIdx"
+        ]
+      },
+      {
+        "fact_id": "FACT-0049",
+        "raw_arguments": [
+          67,
+          1,
+          "PlIdx"
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "Callee internals and raw sound-ID meaning remain outside this record."
+  ]
+}
