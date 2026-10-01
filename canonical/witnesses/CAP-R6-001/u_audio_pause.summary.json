@@ -1,0 +1,25 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_PAUSE_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060052E9","row_hex":"5c5d32000000e601d08703005c4800005f3d","rva":"0x00325D5C"},
+    "method":{"type":"uAudio.uAudioPlayer","method":"Pause","token":"0x060052E9","rva":"0x00325D5C","signature_blob_hex":"200001","return_type":"Void","parameters":[],"code_size":134,"code_sha256":"ea2a9629b5485ae8d47eb7166281fc0aefd20bdc8afde51a4830684d7b2406b2","header_format":"fat","header_flags_raw":"0x001B","max_stack":2,"local_signature_token":"0x00000000","instruction_count":42,"branch_instruction_count":9,"call_instruction_count":8},
+    "fields":{"state":{"token":"0x040087E9","name":"uAudio.uAudioPlayer.State"},"audio_source":{"token":"0x040087E4","name":"uAudio.uAudioPlayer.myAudioSource"}},
+    "direct_calls":{"get_send_playback_state":{"token":"0x060052CB","fact_id":"FACT-0127","call_ils":["0x001F","0x002A","0x0064","0x006F"]}},
+    "member_calls":{"audio_source_pause":{"token":"0x0A000CE6","resolved":"UnityEngine.AudioSource.Pause","signature_blob_hex":"200001","call_il":"0x0012"},"audio_source_unpause":{"token":"0x0A000CE8","resolved":"UnityEngine.AudioSource.UnPause","signature_blob_hex":"200001","call_il":"0x0057"},"callback_invoke":{"token":"0x0A000FC4","resolved":"System.Action<uAudio.uAudio_backend.PlayBackState>.Invoke","call_ils":["0x0030","0x0075"]}},
+    "exact_flow":[
+      "if raw State == 1: myAudioSource.Pause(); State=2; in protected block if get_sendPlaybackState()!=null invoke it with raw 2; catch System.Object only pops; skip second branch and return",
+      "else if raw State == 2: myAudioSource.UnPause(); State=1; in protected block if get_sendPlaybackState()!=null invoke it with raw 1; catch System.Object only pops; return",
+      "all other raw State values: return"
+    ],
+    "exception_section":{"format":"small","raw_hex":"011c000000001e001c3a0006c2000001000063001c7f0006c2000001","size_bytes":28,"sha256":"0182f6491b3e983aabf2cb42bc944c69f2225479a4b5464015a352ed7a895218","clauses":[
+      {"flags_raw":"0x0000","try_offset":"0x001E","try_length":28,"try_end_exclusive":"0x003A","handler_offset":"0x003A","handler_length":6,"handler_end_exclusive":"0x0040","class_token":"0x010000C2","class_resolved":"System.Object"},
+      {"flags_raw":"0x0000","try_offset":"0x0063","try_length":28,"try_end_exclusive":"0x007F","handler_offset":"0x007F","handler_length":6,"handler_end_exclusive":"0x0085","class_token":"0x010000C2","class_resolved":"System.Object"}
+    ]},
+    "fact_0140_bridge":{"fact_id":"FACT-0140","caller":"uAudio.uAudioPlayer.Play","call_il":"0x0019","callee_token":"0x060052E9"}
+  },
+  "limits":["External Unity pause/unpause behavior and delegate subscriber behavior remain outside this record."]
+}
