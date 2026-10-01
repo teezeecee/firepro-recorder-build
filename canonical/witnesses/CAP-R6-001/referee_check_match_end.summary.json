@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_CHECK_MATCH_END_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "CheckMatchEnd",
+      "token": "0x060050A9",
+      "rva": "0x00309544",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 168,
+      "code_sha256": "14d88238c271a882dd9fe1c4d3a0fdd732d43a830be6728478f50747326aab9f",
+      "max_stack": 2,
+      "local_signature_token": "0x1100116B",
+      "instruction_count": 52,
+      "branch_instruction_count": 12,
+      "call_instruction_count": 7
+    },
+    "entry": {
+      "match_main_inst": {
+        "name": "MatchMain.inst",
+        "token": "0x0400576C"
+      },
+      "check_standby": {
+        "method": "Referee.CheckStandByWrestler",
+        "token": "0x060050A8",
+        "code_size": 103,
+        "code_sha256": "ee9e9c47f5d28bf25f68a8af0c22b9a0f794b042d30cbdc9dbf23ab310a3964d",
+        "true_effect": "return"
+      },
+      "match_end": {
+        "name": "MatchMain.isMatchEnd",
+        "token": "0x04005753",
+        "nonzero_effect": "return"
+      },
+      "round_end": {
+        "name": "MatchMain.isRoundEnd",
+        "token": "0x04005756",
+        "nonzero_effect": "return"
+      }
+    },
+    "count_flow": {
+      "match_setting": {
+        "name": "GlobalWork.MatchSetting",
+        "token": "0x04002AD2"
+      },
+      "player_man_inst": {
+        "name": "PlayerMan.inst",
+        "token": "0x040061FA"
+      },
+      "count_call": {
+        "method": "PlayerMan.GetWrestlerNum_HasRight",
+        "token": "0x0600506C",
+        "code_size": 62,
+        "code_sha256": "a47e5a57dd57f5064893390bdb6350135c70259e9f4887dc834aead6fa75563b"
+      },
+      "zero_count": {
+        "condition": "returned count == 0",
+        "argument_field": {
+          "name": "Referee.isTwoDownWithExplosion",
+          "token": "0x040062D0"
+        },
+        "call": {
+          "method": "MatchMain.ProcessMatchEnd_Draw",
+          "token": "0x0600492D",
+          "code_size": 220,
+          "code_sha256": "6c438162c1bd3da8dac94fa31bc65e341cf16c1a03b5e1bbf6387e8aeab484af"
+        }
+      }
+    },
+    "nonzero_dispatch": [
+      {
+        "condition": "MatchSetting.BattleRoyalKind != 0",
+        "field_token": "0x040057D3",
+        "call": "Referee.CheckMatchEnd_BattleRoyal",
+        "callee_token": "0x060050A5",
+        "callee_code_size": 261,
+        "callee_code_sha256": "fcaf35b74d2f5de5fd85ae41abac07d85517f70cf08ad8019269572180b15252"
+      },
+      {
+        "condition": "MatchSetting.VictoryCondition == 4",
+        "field_token": "0x040057D0",
+        "raw_value": 4,
+        "call": "Referee.CheckMatchEnd_EscapedFromCage",
+        "callee_token": "0x060050A4",
+        "callee_code_size": 266,
+        "callee_code_sha256": "75437af848191b733bc991a8f1fb9602ba16f658a7f7e923f8d61173456767c7"
+      },
+      {
+        "condition": "MatchSetting.isTornadoBattle != 0",
+        "field_token": "0x040057F6",
+        "call": "Referee.CheckMatchEnd_Tornado",
+        "callee_token": "0x060050A6",
+        "callee_code_size": 465,
+        "callee_code_sha256": "12d18ed75c489181540b187a84d2f140248dd4af9482db7e16c4c0e582b33c04"
+      },
+      {
+        "condition": "returned wrestler count == 1",
+        "raw_value": 1,
+        "call": "Referee.ProcesskMatchEnd_Normal",
+        "callee_token": "0x060050A7",
+        "callee_code_size": 156,
+        "callee_code_sha256": "e71d1708191a0dc125367efbaa8adb8c280f8e1068cf6ae26ea320a98d482d8b"
+      }
+    ],
+    "direct_callers": [
+      {
+        "fact_id": "FACT-0074",
+        "type": "Referee",
+        "method": "UpdateReferee",
+        "token": "0x060050AF",
+        "rva": "0x00309E9C",
+        "call_il": "0x007A",
+        "opcode": "call"
+      }
+    ]
+  },
+  "limits": [
+    "Called helper internals remain outside this record."
+  ]
+}
