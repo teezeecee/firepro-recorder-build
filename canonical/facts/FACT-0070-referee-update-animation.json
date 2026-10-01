@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0070",
+  "claim": "In the matching retail DLL, Referee.UpdateRefereeAnm (0x06005097) is a parameterless instance method with an exact 415-byte body. It returns immediately when isAnmPause is nonzero. When reqAnmInit is nonzero, it sets CurrentSkill from SkillDataMan.inst.GetSkillData_Standard(SkillID), CurrentAnmIdx=0, isAnmBoot=1, currentFormIdx=-1, copies CurrentSkill.anmType into Referee.anmType, sets FormDispDuration=0, loads CurrentSkill.anmData[CurrentAnmIdx], copies terrainColType into TerrainColType and anmEndState into AnimeEnd, then clears reqAnmInit. The shared update path reloads that animation-data element. When FormDispDuration is nonpositive and currentFormIdx is not less than formNum-1, currentFormIdx is reset to -1. Only when FormDispDuration is zero does the method increment currentFormIdx and call GetCurrentFormDispInfo, repeatedly advancing currentFormIdx while the returned dispFrm is zero. From the first returned record with nonzero dispFrm it stores FormDispDuration=dispFrm, reads centerPos.x into a local and the negation of centerPos.y into another; when raw PlDir is 3 or greater it additionally negates the x local. It adds those locals to PlPos.x and PlPos.y, copies flags into FormRev, and when seID is nonzero calls the already-canonical MatchMisc.PlayRefereeSE(seID). The shared tail subtracts one from FormDispDuration and returns. FACT-0069 pins the direct UpdateRefereeAnm call at InitRound IL+0x00C9.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.UpdateRefereeAnm token 0x06005097 RVA 0x00307E94 signature blob 200001 code size 415 code sha256=5d41c826c5bc4929960746b1b03abdd389b4911c89ec01a48fda0eba6e6c9e4a; exact body in canonical/witnesses/CAP-R6-001/referee_update_animation.summary.json; prover tools/prove_referee_update_animation.py",
+      "observation": "Exact matching-DLL Referee.UpdateRefereeAnm body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0069 Referee.InitRound",
+      "to": "Referee.UpdateRefereeAnm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0069 pins call token 0x06005097 at InitRound IL+0x00C9 on the raw State 19 / request 1121 path."
+        }
+      ]
+    },
+    {
+      "from": "Referee.UpdateRefereeAnm optional sound branch",
+      "to": "FACT-0064 MatchMisc.PlayRefereeSE",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdateRefereeAnm IL+0x017A loads FormDispInfo.seID, skips when zero, and calls token 0x06004971 at IL+0x018B when nonzero."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes the exact update body and the FACT-0069 / FACT-0064 bridges only.",
+    "SkillDataMan.GetSkillData_Standard and Referee.GetCurrentFormDispInfo internals remain separate gates.",
+    "Authored SkillData/animation-data/FormDispInfo contents remain outside this fact.",
+    "Raw PlDir thresholds and copied enum-like fields are preserved without added gameplay labels."
+  ]
+}
