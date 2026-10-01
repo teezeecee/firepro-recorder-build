@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0107",
+  "claim": "In the matching retail DLL, CreateRefereeDisp.Awake (0x0600283D) is an instance parameterless Void method with exact signature blob 200001 and an exact 203-byte body. It first stores GameObject.Find(\"UI_Root_Dialog/UI_DialogCamera/RefereeLayer_Dialog\") into this.Obj_ParentReferee. Only when the exact UnityEngine.Object equality call reports that field equal to null does it find \"UI_Root_Dialog/UI_DialogCamera\", create a new GameObject, parent its transform under the found transform, name it \"RefereeLayer_Dialog\", write Vector3.zero to localPosition, Vector3.one to localScale, and set its layer from LayerMask.NameToLayer(\"UI_Dialog\"). After that branch joins, it always writes this.Obj_ParentReferee.transform.localScale = new Vector3(130.0f,130.0f,130.0f), then writes this.referee = RefereeMan.GetInst().CreateReferee(). FACT-0065 already pins RefereeMan.GetInst and FACT-0066 already pins RefereeMan.CreateReferee.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "CreateRefereeDisp.Awake token 0x0600283D RVA 0x0016B410 signature 200001 code size 203 code sha256=c6838190cec43f4419a3adb7d1d18f7d38e4810430ed454c346d422f8a8db9b4; exact display-parent object setup/raw-130 scale/RefereeMan.GetInst/CreateReferee flow in canonical/witnesses/CAP-R6-001/create_referee_disp_awake.summary.json; prover tools/prove_create_referee_disp_awake.py",
+      "observation": "Exact matching-DLL CreateRefereeDisp.Awake body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "CreateRefereeDisp.Awake",
+      "to": "FACT-0065 RefereeMan.GetInst / FACT-0066 RefereeMan.CreateReferee",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Awake IL+0x00BB is call token 0x060050B2 and IL+0x00C0 is callvirt token 0x060050B5; the returned Referee is stored to CreateRefereeDisp.referee at IL+0x00C5."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact CreateRefereeDisp.Awake caller/display-object setup body and the already-canonical RefereeMan call bridge.",
+    "Unity engine object lookup/parenting/layer behavior beyond these exact calls is not independently promoted.",
+    "Prefab_Referee contents remain outside this fact.",
+    "No Create Ref editor semantics are inferred from the type or field names."
+  ]
+}
