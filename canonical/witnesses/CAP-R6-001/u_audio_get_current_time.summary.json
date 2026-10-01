@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_U_AUDIO_GET_CURRENT_TIME_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "uAudio.uAudioPlayer",
+      "method": "get_CurrentTime",
+      "token": "0x060052D6",
+      "rva": "0x00325776",
+      "signature_blob_hex": "20001182c1",
+      "parameters": [],
+      "code_size": 41,
+      "code_sha256": "49f83f2ff33655f9bece0288383a552b4e5a31346d16547fcfd1028ecfdc7b0b",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 13,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 1
+    },
+    "fields": {
+      "backend": {
+        "name": "uAudio.uAudioPlayer._uAudio",
+        "token": "0x040087E3",
+        "signature_blob_hex": "061282b1"
+      },
+      "state": {
+        "name": "uAudio.uAudioPlayer.State",
+        "token": "0x040087E9",
+        "signature_blob_hex": "061182b5"
+      },
+      "end_song_time": {
+        "name": "uAudio.uAudioPlayer.endSongTime",
+        "token": "0x040087F2",
+        "signature_blob_hex": "061182c1"
+      }
+    },
+    "call": {
+      "token": "0x0A000FB8",
+      "resolved": "uAudio.uAudio_backend.uAudio.get_CurrentTime",
+      "signature_blob_hex": "20001182c1",
+      "call_il": "0x001C"
+    },
+    "exact_flow": [
+      "if this._uAudio == null: return this.endSongTime",
+      "if this.State == raw 0: return this.endSongTime",
+      "return this._uAudio.get_CurrentTime()"
+    ],
+    "fact_0126_bridge": {
+      "fact_id":"FACT-0126",
+      "caller":"uAudio.uAudioPlayer.SongEnd",
+      "caller_token":"0x060052E6",
+      "call_il":"0x0002",
+      "callee_token":"0x060052D6"
+    }
+  },
+  "limits": [
+    "Backend implementation and higher-level State semantics remain outside this record."
+  ]
+}

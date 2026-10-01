@@ -664,3 +664,9 @@ jobs:
         run: python tests/test_u_audio_get_send_playback_state_summary.py
       - name: uAudio get_sendPlaybackState prover syntax
         run: python -m py_compile tools/prove_u_audio_get_send_playback_state.py
+
+
+      - name: uAudio get_CurrentTime summary
+        run: python tests/test_u_audio_get_current_time_summary.py
+      - name: uAudio get_CurrentTime prover syntax
+        run: python -m py_compile tools/prove_u_audio_get_current_time.py
