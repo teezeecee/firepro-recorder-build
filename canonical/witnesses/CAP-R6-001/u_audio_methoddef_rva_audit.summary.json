@@ -1,0 +1,23 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_METHODDEF_RVA_AUDIT_V1",
+  "source_ids":["DLL-001"],
+  "dll":{"sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6","size_bytes":8171008},
+  "methoddef_row_size":18,
+  "methods":[
+    {"token":"0x060052CA","name":"Destroy_AudioPlayer","rva":"0x0032567D","methoddef_row_hex":"7d5632000000860084620a005c480000523d","body_size":13,"body_sha256":"62a68c749da17a7c536b2ef155fd300637ffd8bd582da8979c28fdd87bf83d1c"},
+    {"token":"0x060052CB","name":"get_sendPlaybackState","rva":"0x0032568B","methoddef_row_hex":"8b5632000000e60998620a007ce50200523d","body_size":7,"body_sha256":"f0eb7b6d2625782d43a08476d93acb464e82bc45c00d660925f2176d82bc8c4b"},
+    {"token":"0x060052D0","name":"get_UAudio","rva":"0x003256D4","methoddef_row_hex":"d456320000008608d2620a0087e50200543d","body_size":86,"body_sha256":"5524703abb8912537cca2bf60cf25fdcde63df8bcc2ea51a0db76d5dc8e858c4"},
+    {"token":"0x060052D6","name":"get_CurrentTime","rva":"0x00325776","methoddef_row_hex":"765732000000e609628a07006e480100553d","body_size":41,"body_sha256":"49f83f2ff33655f9bece0288383a552b4e5a31346d16547fcfd1028ecfdc7b0b"},
+    {"token":"0x060052DC","name":"set_Volume","rva":"0x00325827","methoddef_row_hex":"275832000000e609048a070070550000573d","body_size":13,"body_sha256":"e3434a65b5c1a9c14959c686924c525e57f68f1cf3fbde7c02a25819e891480c"},
+    {"token":"0x060052E0","name":"ChangeCurrentVolume","rva":"0x0032587C","methoddef_row_hex":"7c583200000086009c630a0070550000593d","body_size":8,"body_sha256":"bf7afe343990f70067b2d0a5f418a180d7f1abee664827c4b4e6e18940403ca7"},
+    {"token":"0x060052E4","name":"LoadFile","rva":"0x00325970","methoddef_row_hex":"705932000000e601f28a0700794800005b3d","body_size":65,"body_sha256":"b5b74da6ab2322d1895635e2add04dd52f9ee9ca4a3846825a9b6fe4631e3ef4"},
+    {"token":"0x060052E6","name":"SongEnd","rva":"0x003259C8","methoddef_row_hex":"c8593200000081000b640a005c4800005d3d","body_size":141,"body_sha256":"3ff6f18fdb7ed86c92f309f6496f6d7fc3a7cee75b55c9174345fac0efaeee4c"},
+    {"token":"0x060052E7","name":"Play","rva":"0x00325A80","methoddef_row_hex":"805a32000000e601ac5a0600a4e502005d3d","body_size":564,"body_sha256":"25cfa99ab6e97f650b4e517fa419b12acb018df2aab2933a87b40953a7084a26"},
+    {"token":"0x060052EE","name":"<get_UAudio>m__0","rva":"0x00325E6A","methoddef_row_hex":"6a5e32000000810024640a00d0e502005f3d","body_size":13,"body_sha256":"124f59a872afec501c29839a33e627e58a6c5339d59456ad7f66f6b7323e237d"}
+  ],
+  "repair_scope":{
+    "corrected":["FACT-0137 RVA 0x00325A30 -> 0x00325970","FACT-0138 RVA 0x00325714 -> 0x003256D4","FACT-0139 RVA 0x00325F6A -> 0x00325E6A"],
+    "unchanged_evidence":["method tokens","signatures","body sizes","body SHA-256 values","decoded control flow","caller/callee IL offsets"]
+  }
+}
