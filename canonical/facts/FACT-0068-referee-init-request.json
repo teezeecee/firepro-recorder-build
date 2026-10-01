@@ -40,6 +40,6 @@
     "This fact closes only the two exact helper bodies and the four FACT-0067 caller bridges.",
     "Many additional DLL callers of ReqRefereeAnm remain separate decision/control-flow seams.",
     "The authored CostumeData.partsScale contents and meaning of formSize remain outside this fact.",
-    "No gameplay meaning is inferred from Referee field names beyond their exact writes."
+    "No gameplay meaning is assigned from Referee field names beyond their exact writes."
   ]
 }
