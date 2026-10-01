@@ -40,7 +40,7 @@ def verify(path):
   cs[n]=c
  c=cs["Down"]
  tok(c,0x0006,0x6F,0x06004E7C,"GetCurrentFormDispInfo")
- tok(c,0x0025,0x28,0x06004962,"ChangePlayerDirToLR")
+ tok(c,0x0025,0x28,0x06004964,"ChangePlayerDirToLR")
  i4(c,0x003A,256,"FormRev mask256")
  tok(c,0x004C,0x28,0x06004963,"ChangePlayerDirToLRAndReverse")
  # KO animations / states
@@ -54,16 +54,16 @@ def verify(path):
  i4(c,0x01C1,180,"default anim180")
  tok(c,0x01F4,0x6F,0x06004E6F,"common ReqBasic")
  # mine branch
- tok(c,0x023F,0x28,0x060050FA,"IsStepOnMine")
+ tok(c,0x023F,0x28,0x060050FC,"IsStepOnMine")
  tok(c,0x0268,0x28,0x06004F1F,"Bleeding")
  f32(c,0x026D,9216.0,"damage base9216")
  tok(c,0x027D,0x28,0x0600495C,"GetHealth")
  tok(c,0x028A,0x28,0x06004ECB,"AddHP")
  f32(c,0x0290,9216.0,"ConsumeSP9216");tok(c,0x0295,0x28,0x06004ED1,"ConsumeSP")
  tok(c,0x029C,0x28,0x06004EDC,"SetLastDamage")
- tok(c,0x02AD,0x28,0x06004F20,"ForceSetDownTime")
+ tok(c,0x02AD,0x28,0x06004F0C,"ForceSetDownTime")
  i4(c,0x02C3,200,"min down200");tok(c,0x02C8,0x28,0x06004ED8,"SetDownTime200")
- tok(c,0x030F,0x6F,0x0600498E,"Play_MineExplosion")
+ tok(c,0x030F,0x6F,0x060048CB,"Play_MineExplosion")
  if c[0x0314:0x0316]!=bytes([0x1F,0x43]):raise ProofError("SE raw67")
  tok(c,0x0321,0x28,0x06004970,"PlayMatchSE")
  if c[0x0326]!=0x2A:raise ProofError("ret")
