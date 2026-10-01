@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_CHANGE_BGM_THEME_STRING_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Menu_SoundManager",
+      "method": "Change_BGM_Theme",
+      "overload": "(String,Boolean,Boolean)",
+      "token": "0x06005298",
+      "rva": "0x00322430",
+      "signature_blob_hex": "0003010e0202",
+      "static": true,
+      "return_type": "Void",
+      "parameters": [
+        {"sequence":1,"name":"fn","type":"String"},
+        {"sequence":2,"name":"bAsync","type":"Boolean"},
+        {"sequence":3,"name":"bStart","type":"Boolean"}
+      ],
+      "code_size": 125,
+      "code_sha256": "3d1bd7f767849f9b77dd562c223725e3f1614d823843c55b71a12d7b15303c18",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 5,
+      "local_signature_token": "0x11001204",
+      "instruction_count": 37,
+      "branch_instruction_count": 2,
+      "call_instruction_count": 7
+    },
+    "strings_and_constants": {
+      "resource_prefix":{"token":"0x7008EAFC","value":"Sound/Bgm/"},
+      "system_sound_raw":33,
+      "keep_bgm_raw":15,
+      "string_empty_memberref":"0x0A000025"
+    },
+    "fields": {
+      "progress_continue":{"token":"0x04008703","name":"Menu_SoundManager.g_ProgressBGM_Continue"},
+      "keep_bgm_number":{"token":"0x04008702","name":"Menu_SoundManager.g_KeepBgmNumber"},
+      "my_music_admission":{"token":"0x04008705","name":"Menu_SoundManager.MyMusic_SelectFile_Admission"},
+      "audio_clip_info":{"token":"0x040086F4","name":"Menu_SoundManager.audioClipInfo"}
+    },
+    "calls": {
+      "get_instance":{"token":"0x0600527C","fact_id":"FACT-0112","call_il":"0x001D"},
+      "string_concat":{"token":"0x0A000012","call_ils":["0x0028","0x0047"]},
+      "co_change":{"token":"0x06005294","fact_id":"FACT-0115","call_il":"0x0031"},
+      "start_coroutine":{"token":"0x0A00035A","call_il":"0x0036"},
+      "resources_load":{"token":"0x0A0006DA","call_il":"0x004C"},
+      "audio_clip_set":{"token":"0x060052C2","fact_id":"FACT-0113","call_il":"0x0060"}
+    },
+    "type_tokens": {
+      "audio_clip":"0x01000012"
+    },
+    "exact_flow": {
+      "async_true":[
+        "g_ProgressBGM_Continue = false",
+        "g_KeepBgmNumber = 15",
+        "MyMusic_SelectFile_Admission = System.String.Empty",
+        "instance = Menu_SoundManager.get__instance()",
+        "path = 'Sound/Bgm/' + fn",
+        "iterator = CoChange_BGMandPlay(path, raw 33, bStart, null)",
+        "instance.StartCoroutine(iterator)",
+        "return"
+      ],
+      "async_false":[
+        "local0 = (UnityEngine.AudioClip)Resources.Load('Sound/Bgm/' + fn)",
+        "Menu_SoundManager.audioClipInfo[33].Set(local0)",
+        "g_ProgressBGM_Continue = false",
+        "g_KeepBgmNumber = 15",
+        "MyMusic_SelectFile_Admission = System.String.Empty",
+        "return"
+      ]
+    },
+    "fact_0122_bridge": {
+      "fact_id":"FACT-0122",
+      "caller":"MatchMain.PlayAfterMatchBGM",
+      "caller_token":"0x06004925",
+      "call_il":"0x00F0",
+      "callee_token":"0x06005298"
+    }
+  },
+  "limits": [
+    "External Unity resource/coroutine behavior and authored resources remain outside this record."
+  ]
+}
