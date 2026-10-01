@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_INIT_ALL_WORKS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "InitAllWorks",
+      "token": "0x06004F9A",
+      "rva": "0x002F5DF0",
+      "signature_blob_hex": "20010102",
+      "return_type": "Void",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "create_init",
+          "type": "Boolean"
+        }
+      ],
+      "code_size": 213,
+      "code_sha256": "f79b47e5840d3c2948b9ce1a4af92f400b37f9fa52d613a9fb2a5b91674edeee",
+      "max_stack": 4,
+      "local_signature_token": "0x1100003A",
+      "local_count": 1,
+      "instruction_count": 89,
+      "branch_instruction_count": 1,
+      "call_instruction_count": 3
+    },
+    "zero_fields": [
+      {
+        "name": "padPush",
+        "token": "0x04006118",
+        "raw_value": 0
+      },
+      {
+        "name": "padOn",
+        "token": "0x04006117",
+        "raw_value": 0
+      },
+      {
+        "name": "aiAct",
+        "token": "0x0400614B",
+        "raw_value": 0
+      },
+      {
+        "name": "aiActStep",
+        "token": "0x0400614D",
+        "raw_value": 0
+      },
+      {
+        "name": "aiActDuration",
+        "token": "0x0400614C",
+        "raw_value": 0
+      },
+      {
+        "name": "ComStatus",
+        "token": "0x04006153",
+        "raw_value": 0
+      },
+      {
+        "name": "aiActPrm",
+        "token": "0x0400614E",
+        "raw_value": 0
+      },
+      {
+        "name": "ComPos",
+        "token": "0x04006150",
+        "raw_value": 0
+      },
+      {
+        "name": "ComReturn",
+        "token": "0x04006154",
+        "raw_value": 0
+      },
+      {
+        "name": "ComCutWait",
+        "token": "0x04006155",
+        "raw_value": 0
+      },
+      {
+        "name": "ComRtnCnt",
+        "token": "0x04006156",
+        "raw_value": 0
+      },
+      {
+        "name": "area_InOctagon",
+        "token": "0x04006157",
+        "raw_value": 0
+      },
+      {
+        "name": "area_InRhombus",
+        "token": "0x04006158",
+        "raw_value": 0
+      },
+      {
+        "name": "takeOutWeaponSeq",
+        "token": "0x0400615C",
+        "raw_value": 0
+      },
+      {
+        "name": "ComSecMovTime",
+        "token": "0x0400615F",
+        "raw_value": 0
+      },
+      {
+        "name": "doneVictoryPerformance",
+        "token": "0x04006166",
+        "raw_value": 0
+      },
+      {
+        "name": "isAICheckedDisturb",
+        "token": "0x04006169",
+        "raw_value": 0
+      },
+      {
+        "name": "keepLastSkill",
+        "token": "0x0400616A",
+        "raw_value": 0
+      },
+      {
+        "name": "dragOpponentCnt",
+        "token": "0x0400616B",
+        "raw_value": 0
+      },
+      {
+        "name": "isLotPerformanceOnCorner",
+        "token": "0x0400616C",
+        "raw_value": 0
+      },
+      {
+        "name": "isSleep",
+        "token": "0x0400616D",
+        "raw_value": 0
+      }
+    ],
+    "minus_one_fields": [
+      {
+        "name": "destCorner",
+        "token": "0x0400614F",
+        "raw_value": -1
+      },
+      {
+        "name": "currentPriAct",
+        "token": "0x04006151",
+        "raw_value": -1
+      },
+      {
+        "name": "touchTarget",
+        "token": "0x04006171",
+        "raw_value": -1
+      }
+    ],
+    "shared_timer_value": {
+      "raw_value": 216000,
+      "fields": [
+        {
+          "name": "notDisturbTime_AllSecond",
+          "token": "0x04006168"
+        },
+        {
+          "name": "notDisturbTime",
+          "token": "0x04006167"
+        }
+      ]
+    },
+    "helper_calls": [
+      {
+        "il": "0x00B6",
+        "method": "Reset_HungUpCheck",
+        "token": "0x06004FD8",
+        "fact_id": "FACT-0038"
+      },
+      {
+        "il": "0x00BC",
+        "method": "ResetCheckedPriAct",
+        "token": "0x06005007",
+        "fact_id": "FACT-0036"
+      },
+      {
+        "il": "0x00C8",
+        "method": "CalcTouchTime",
+        "token": "0x06004FFE",
+        "condition": "create_init == false",
+        "status": "OUTSIDE_FACT"
+      }
+    ],
+    "caller_bridge": {
+      "caller": "PlayerController_AI.Init",
+      "caller_token": "0x06004F99",
+      "caller_rva": "0x002F5ADC",
+      "caller_code_size": 775,
+      "caller_code_sha256": "7a738543d0ba6f0c0fbd5a6121ba72aceb6c2c2ec1477b08f3ede6390a557e30",
+      "raw_argument": true,
+      "call_il": "0x0002"
+    }
+  },
+  "limits": [
+    "CalcTouchTime and the remainder of PlayerController_AI.Init are outside this record."
+  ]
+}
