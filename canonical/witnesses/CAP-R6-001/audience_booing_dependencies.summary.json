@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_AUDIENCE_BOOING_DEPENDENCIES_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "Audience",
+        "method": "TensionDown",
+        "token": "0x060047D7",
+        "rva": "0x0028FE43",
+        "signature_blob_hex": "200001",
+        "parameters": [],
+        "code_size": 50,
+        "code_sha256": "36b8ed39e946a670d66af8344565ee39ada17a831fb66a84935def5e66450dc0",
+        "instruction_count": 20,
+        "branch_instruction_count": 1,
+        "call_instruction_count": 2
+      },
+      {
+        "type": "Audience",
+        "method": "PlayCheerVoice",
+        "token": "0x060047D9",
+        "rva": "0x0028FEB0",
+        "signature_blob_hex": "20020111aa0008",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "vid",
+            "metadata_type": "valuetype CheerVoiceEnum",
+            "typedef_token": "0x02000A80"
+          },
+          {
+            "sequence": 2,
+            "name": "nLevel",
+            "type": "Int32"
+          }
+        ],
+        "code_size": 171,
+        "code_sha256": "ae89176689967732040134fd4991d756cbe400831f634051ea2aacea57113a6b",
+        "instruction_count": 66,
+        "branch_instruction_count": 5,
+        "call_instruction_count": 4
+      }
+    ],
+    "tension_down": {
+      "field": {
+        "name": "CheerLevel_Base",
+        "token": "0x040054CB"
+      },
+      "exact_flow": [
+        "CheerLevel_Base = CheerLevel_Base - 1",
+        "if CheerLevel_Base < -4: CheerLevel_Base = -4",
+        "call Audience.CalcCheerLevel()",
+        "call Audience.PlayLoopCheerVoice(0,false)",
+        "return"
+      ],
+      "calls": [
+        {
+          "method": "Audience.CalcCheerLevel",
+          "token": "0x060047E0",
+          "il": "0x0024",
+          "arguments": []
+        },
+        {
+          "method": "Audience.PlayLoopCheerVoice",
+          "token": "0x060047DA",
+          "il": "0x002C",
+          "arguments": [
+            0,
+            false
+          ]
+        }
+      ]
+    },
+    "play_cheer_voice": {
+      "throttle": {
+        "match_main_get_inst_token": "0x06004907",
+        "is_fast_forward_match_field": "0x04005752",
+        "fade_get_inst_token": "0x06004A70",
+        "fade_is_fade_finish_token": "0x06004A7D",
+        "match_frame_count_field": "0x04005738",
+        "raw_modulus": 20,
+        "early_return_condition": "isFastForwardMatch != 0 AND Fade.IsFadeFinish() != 0 AND unsigned MchFrameCnt % 20 != 0"
+      },
+      "attendance_rate_field": {
+        "name": "AttendanceRate",
+        "token": "0x04005750"
+      },
+      "initial_float_locals": {
+        "low": 0.5,
+        "high": 1
+      },
+      "zero_test": {
+        "opcode": "bne.un",
+        "compare": 0,
+        "ordered_equal_zero_effect": "low=0.0f; high=0.0f",
+        "unequal_or_unordered_effect": "take arithmetic path"
+      },
+      "arithmetic_path": [
+        "low = low - (1.0f - AttendanceRate) * 0.2f",
+        "high = high - (1.0f - AttendanceRate) * 0.5f"
+      ],
+      "final_expression": "local = low + (high - low) * (Float32(nLevel) / 4.0f); local = local * 1.0f",
+      "dispatch": {
+        "method": "Menu_SoundManager.Play_CheerVoice_OneShot",
+        "token": "0x060052AC",
+        "il": "0x00A5",
+        "arguments": [
+          "vid",
+          "local"
+        ]
+      }
+    },
+    "fact_0078_bridge": {
+      "fact_id": "FACT-0078",
+      "caller": "Referee.Process_Booing",
+      "calls": [
+        {
+          "il": "0x0038",
+          "callee_token": "0x060047D9",
+          "raw_arguments": [
+            9,
+            0
+          ]
+        },
+        {
+          "il": "0x0054",
+          "callee_token": "0x060047D7",
+          "raw_arguments": []
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Three downstream helper internals remain outside this record."
+  ]
+}
