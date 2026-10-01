@@ -1,0 +1,65 @@
+{
+  "fact_id": "FACT-0066",
+  "claim": "In the matching retail DLL, the four small RefereeMan construction/population methods are exact and branchless. RefereeMan..ctor (0x060050B1) has an exact 19-byte body that allocates a one-element Referee array, stores it in field RefereeObj (0x040062DE), then calls UnityEngine.MonoBehaviour..ctor. RefereeMan.Awake (0x060050B3) has an exact 7-byte body that stores this into static field RefereeMan.inst (0x040062DC). RefereeMan.Start (0x060050B4) is an exact one-byte ret. RefereeMan.CreateReferee (0x060050B5) has an exact 39-byte body: local index is raw 0; it calls UnityEngine.Object.Instantiate<GameObject>(Prefab_Referee), stores the result, writes result.GetComponent<Referee>() into RefereeObj[0], reloads RefereeObj[0], and returns it. FACT-0065 already closes the GetInst/GetRefereeObj readers of these same fields.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "RefereeMan..ctor token 0x060050B1 RVA 0x0030A469 signature 200001 code size 19 code sha256=41af045848eb62f4e23c69e03c31ef3b97d03f719029ccc12ba8664223d8ad0f; exact newarr/store/base-.ctor body in canonical/witnesses/CAP-R6-001/refereeman_population.summary.json; prover tools/prove_refereeman_population.py",
+      "observation": "Exact matching-DLL constructor body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "RefereeMan.Awake token 0x060050B3 RVA 0x0030A484 signature 200001 code size 7 code sha256=7f2f8b8a300d684c753bf13af8b5395f7de72f88526eeee171860bcef5004548; exact static-inst store body.",
+      "observation": "Exact matching-DLL Awake body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "RefereeMan.Start token 0x060050B4 RVA 0x0030A48C signature 200001 code size 1 code sha256=684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1; body is ret.",
+      "observation": "Exact matching-DLL Start body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "RefereeMan.CreateReferee token 0x060050B5 RVA 0x0030A490 signature 200012a838 code size 39 code sha256=cbd7b30a0f79c0a5cb7c5459a6cb8462f5df1e30a023aefa52826ebce99fd7a6; exact Instantiate/GetComponent/array-element-0 body.",
+      "observation": "Exact matching-DLL CreateReferee body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "RefereeMan..ctor",
+      "to": "RefereeObj field shape",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Constructor exact body loads raw 1, newarr TypeDef 0x02000A0E Referee, and stores field 0x040062DE RefereeObj."
+        }
+      ]
+    },
+    {
+      "from": "RefereeMan.Awake",
+      "to": "FACT-0065 RefereeMan.GetInst",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Awake stores this to field 0x040062DC inst; FACT-0065 GetInst reads the same field."
+        }
+      ]
+    },
+    {
+      "from": "RefereeMan.CreateReferee",
+      "to": "FACT-0065 RefereeMan.GetRefereeObj",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CreateReferee stores GetComponent<Referee>() into field 0x040062DE element raw 0; FACT-0065 GetRefereeObj reads the same raw element 0."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact preserves the exact method bodies and field writes only; it does not assert when engine callbacks invoke Awake or Start.",
+    "The authored Prefab_Referee object and its component contents remain outside this fact.",
+    "External callers of CreateReferee remain separate caller seams unless independently closed.",
+    "No broader referee behavior is derived from the method or field names."
+  ]
+}
