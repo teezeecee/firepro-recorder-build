@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_TRANSIT_STATE_AFTER_ANM_AUTORUN_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "TransitStateAfterAnm_AutoRun",
+      "token": "0x06004EC7",
+      "rva": "0x002E08B8",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 712,
+      "code_sha256": "6bd624830f79c47cf800b28715a0f2628127003f9bf80484b8da7793ecaeb56d",
+      "max_stack": 5,
+      "local_signature_token": "0x1100106F",
+      "instruction_count": 227,
+      "branch_instruction_count": 32,
+      "call_instruction_count": 19
+    },
+    "entry": [
+      "venue = Ring.inst.venueSetting",
+      "target = PlayerMan.inst.GetPlObj(TargetPlIdx)",
+      "AutoRunWaza = animator.SkillSlotID",
+      "decisionFlag = 0"
+    ],
+    "geometry_gate": {
+      "skip_to_final_when": [
+        "venue.ringKind == 1",
+        "venue.ringKind == 3",
+        "Zone != 0"
+      ],
+      "otherwise": "ringArea = Ring.GetColAreaInRhombus_AroundRing(target.PlPos)"
+    },
+    "direction_graph": [
+      "when target != null AND target.PlDir==0 AND hitDmgType_Single==0: upperTriangles ? PlDir=1 : PlDir=2",
+      "when target != null AND target.PlDir==0 AND hitDmgType_Single!=0: upperTriangles ? PlDir=5 : PlDir=4",
+      "otherwise when hitDmgType_Single==0: upperTriangles ? PlDir=5 : PlDir=4",
+      "otherwise: upperTriangles ? PlDir=1 : PlDir=2"
+    ],
+    "cross_line": {
+      "call": "Ring.mGetOctagonInSideCrossLine(target.PlPos.x,target.PlPos.y,Ring.colData_InsideRing,Player.Way2pb2[PlDir],ref AutoRunDest)",
+      "callee_token": "0x060050FB",
+      "false_effect": "skip to final decision",
+      "requires_after_call": "target converts true"
+    },
+    "distance_and_parity": {
+      "scalar": "sqrt(target.PlPos.x^2 + target.PlPos.y^2)",
+      "raw_thresholds": [
+        2.0833332538604736,
+        2.9166665077209473
+      ],
+      "effects": [
+        "if scalar < 2.0833332538604736: decisionFlag=1",
+        "if scalar >= 2.9166665077209473: skip parity/direction tests",
+        "otherwise parity = ringArea & 1",
+        "if hitDmgType_Single != 0: parity ^= 1",
+        "if parity != 0 and target.PlDir == 0: decisionFlag=1",
+        "if parity == 0 and target.PlDir == 3: decisionFlag=1"
+      ]
+    },
+    "true_tail": [
+      "ChangeState(56)",
+      "AutoRunStep=0",
+      "animator.ReqBasicAnm(44 + MatchData.AnmOfsTbl_3Dir[PlDir],0,-1)",
+      "animator.AnmHostPlayer=PlIdx",
+      "if target converts true: target.animator.AnmHostPlayer=TargetPlIdx"
+    ],
+    "false_tail": [
+      "only when target converts true",
+      "if CurrentSkill.hitDmgType_Single != 0: PlDir=target.PlDir",
+      "ChangeState(10)",
+      "target.ChangeState(47)",
+      "animator.StartAnm(7)",
+      "animator.StartOpponentAnmM(TargetPlIdx,8,TargetPlIdx)"
+    ],
+    "caller_bridge": {
+      "fact_id": "FACT-0048",
+      "caller": "Player.TransitStateAfterAnm",
+      "caller_token": "0x06004EC8",
+      "raw_anime_end": 9,
+      "call_il": "0x03A6",
+      "callee_token": "0x06004EC7"
+    }
+  },
+  "limits": [
+    "Helper internals and authored AnmOfsTbl_3Dir data remain outside this record.",
+    "Raw state/direction/ring values retain only DLL-observed meaning."
+  ]
+}
