@@ -1643,6 +1643,22 @@
         "additional CheckRight caller closure",
         "field writer/provenance closure for isLose and hasRight"
       ]
+    },
+    {
+      "family_id": "DLL_AUDIENCE_SET_BASE_CHEER_LEVEL_V1",
+      "fact_id": "FACT-0095",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Audience.SetBaseCheerLevel raw field store, [-4,4] clamp and FACT-0083 CalcCheerLevel call, bridged from FACT-0093.",
+      "summary": "canonical/witnesses/CAP-R6-001/audience_set_base_cheer_level.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "additional SetBaseCheerLevel caller closure",
+        "raw CheerLevel_Base provenance/meaning"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
