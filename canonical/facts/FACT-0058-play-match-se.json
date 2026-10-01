@@ -1,15 +1,25 @@
 {
   "fact_id": "FACT-0058",
-  "claim": "In the matching retail DLL, MatchMisc.PlayMatchSE (0x06004970) is a static three-parameter method (seid, vol, pl_idx) with an exact 95-byte body. If MatchMain.inst exists, isFastForwardMatch is nonzero, and Fade.inst.IsFadeFinish() is true, it computes unsigned MatchMain.MchFrameCnt % 20 and returns immediately when the remainder is nonzero; remainder zero proceeds. Any earlier false condition also proceeds. The shared dispatch path tests MatchSEPlayer.inst against null and, when present, calls MatchSEPlayer.PlayMatchSE(seid,vol,pl_idx) with all three arguments unchanged, then returns. FACT-0026 pins raw call (30,1.0f,PlIdx) and FACT-0049 pins raw call (67,1.0f,PlIdx).",
+  "claim": "In the matching retail DLL, MatchMisc.PlayMatchSE (0x06004970) is a static three-parameter method (seid, vol, pl_idx) with an exact 95-byte body. The only immediate-return path before dispatch requires all four raw conditions: MatchMain.inst is non-null, MatchMain.isFastForwardMatch is nonzero, Fade.inst.IsFadeFinish() returns true, and unsigned MatchMain.MchFrameCnt % 20 is nonzero. If any of the first three conditions is false, or the remainder is zero, execution reaches the shared dispatch path. That path requires MatchSEPlayer.inst to be non-null, then calls MatchSEPlayer.PlayMatchSE(seid,vol,pl_idx) with all three arguments forwarded unchanged and returns. Already-canonical caller seams include FACT-0015 PlayAnimationSE IL+0x0161 with its current seID, raw 1.0f and PlIdx; FACT-0026 ProcessCritical IL+0x00FF with raw (30,1.0f,PlIdx); and FACT-0049 TransitStateAfterAnm_Down IL+0x0321 with raw (67,1.0f,PlIdx).",
   "status": "PROVEN_DLL",
   "evidence": [
     {
       "source_id": "DLL-001",
-      "locator": "MatchMisc.PlayMatchSE token 0x06004970 RVA 0x002B0AE4 signature 00030111aa0c0c08 parameters seid/vol/pl_idx code size 95 code sha256=20b2b0b4629e94a1522ac997f16d94062fd0e3ad779184615939a1ee3a794aae; exact throttle and forwarding body in canonical/witnesses/CAP-R6-001/play_match_se.summary.json; prover tools/prove_play_match_se.py",
+      "locator": "MatchMisc.PlayMatchSE token 0x06004970 RVA 0x002B0AE4 signature 00030111aa0c0c08 parameters seid/vol/pl_idx code size 95 code sha256=20b2b0b4629e94a1522ac997f16d94062fd0e3ad779184615939a1ee3a794aae; exact gate/dispatch body in canonical/witnesses/CAP-R6-001/play_match_se.summary.json; prover tools/prove_play_match_se.py",
       "observation": "Exact matching-DLL PlayMatchSE body."
     }
   ],
   "chain_edges": [
+    {
+      "from": "FACT-0015 FormAnimator.PlayAnimationSE",
+      "to": "MatchMisc.PlayMatchSE(seID,1.0f,plObj.PlIdx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0015 pins call token 0x06004970 at PlayAnimationSE IL+0x0161 on the generic dispatch path."
+        }
+      ]
+    },
     {
       "from": "FACT-0026 Player.ProcessCritical",
       "to": "MatchMisc.PlayMatchSE(30,1.0f,PlIdx)",
@@ -33,6 +43,7 @@
   ],
   "limits": [
     "Fade.IsFadeFinish and MatchSEPlayer.PlayMatchSE internals remain separate gates.",
-    "Raw sound IDs and frame-throttle constants are preserved numerically without added labels."
+    "Raw sound IDs, volume values and frame-throttle constants are preserved numerically without added labels.",
+    "The DLL contains additional PlayMatchSE call sites outside these three already-canonical caller seams; this fact closes the wrapper body, not every caller."
   ]
 }
