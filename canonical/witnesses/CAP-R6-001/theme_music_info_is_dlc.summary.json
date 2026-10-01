@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_THEME_MUSIC_INFO_IS_DLC_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "ThemeMusicInfo",
+      "method": "IsDLC",
+      "token": "0x06001192",
+      "rva": "0x0006CAE4",
+      "signature_blob_hex": "200002",
+      "return_type": "Boolean",
+      "parameters": [],
+      "code_size": 36,
+      "code_sha256": "493b5cdc804f432200f9198f85dbd365d62854ee6f944047f0cd690002c2f3cd",
+      "max_stack": 2,
+      "local_signature_token": "0x1100003A",
+      "instruction_count": 19,
+      "branch_instruction_count": 3,
+      "call_instruction_count": 0
+    },
+    "field": {
+      "name": "ThemeMusicInfo.dlc",
+      "token": "0x04000FB8",
+      "signature_blob_hex": "061d02",
+      "type": "Boolean[]"
+    },
+    "exact_flow": [
+      "index = 0",
+      "branch to loop condition",
+      "read this.dlc[index]",
+      "if element is nonzero: return true",
+      "index = index + 1",
+      "if signed index < 16: continue",
+      "return false"
+    ],
+    "raw_scan_range": {
+      "minimum": 0,
+      "maximum": 15,
+      "exclusive_upper_bound": 16
+    },
+    "fact_0111_bridges": [
+      {"fact_id":"FACT-0111","caller":"Menu_SoundManager.Change_BGM_Theme","call_il":"0x0059"},
+      {"fact_id":"FACT-0111","caller":"Menu_SoundManager.Change_BGM_Theme","call_il":"0x00B8"}
+    ]
+  },
+  "limits": [
+    "Authored dlc values and other callers remain outside this record."
+  ]
+}
