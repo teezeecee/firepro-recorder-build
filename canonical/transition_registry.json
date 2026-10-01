@@ -886,6 +886,22 @@
         "raw direction/ring-area semantic mapping",
         "later AutoRun state consumers"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_FORCE_SET_DOWN_TIME_V1",
+      "fact_id": "FACT-0051",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.ForceSetDownTime flag clears, SetDownTime(0), raw isS1Rule early-return gate and CalcDownTime dispatch reached from FACT-0049 mine aftermath.",
+      "summary": "canonical/witnesses/CAP-R6-001/force_set_down_time.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "broader ruleset-state interpretation",
+        "other ForceSetDownTime caller closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

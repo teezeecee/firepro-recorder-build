@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_FORCE_SET_DOWN_TIME_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "ForceSetDownTime",
+      "token": "0x06004F0C",
+      "rva": "0x002E6C9C",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 49,
+      "code_sha256": "f62c7b101e9f67f9c7e8d3aaa1de4964a53b2669013d4574f0b8ecb2e9bc732c",
+      "max_stack": 8,
+      "local_signature_token": null,
+      "local_count": 0,
+      "instruction_count": 17,
+      "branch_instruction_count": 1,
+      "call_instruction_count": 2
+    },
+    "exact_body": [
+      "this.isStandingStunOK = 0",
+      "this.isDisableUpdateDownTime = 0",
+      "this.SetDownTime(0)",
+      "if GlobalWork.inst.MatchSetting.isS1Rule != 0: return",
+      "this.CalcDownTime()",
+      "return"
+    ],
+    "fields": {
+      "isStandingStunOK": "0x04006050",
+      "isDisableUpdateDownTime": "0x04006051",
+      "isS1Rule": "0x040057E6"
+    },
+    "closed_callees": [
+      {
+        "fact_id": "FACT-0029",
+        "method": "Player.SetDownTime",
+        "token": "0x06004ED8"
+      },
+      {
+        "fact_id": "FACT-0030",
+        "method": "Player.CalcDownTime",
+        "token": "0x06004F0D"
+      }
+    ],
+    "caller_bridge": {
+      "fact_id": "FACT-0049",
+      "caller": "Player.TransitStateAfterAnm_Down",
+      "caller_token": "0x06004EC6",
+      "call_il": "0x02AD",
+      "callee_token": "0x06004F0C"
+    }
+  },
+  "limits": [
+    "Raw field names/control flow only; no extra ruleset interpretation is promoted."
+  ]
+}

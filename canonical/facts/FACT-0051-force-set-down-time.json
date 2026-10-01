@@ -1,0 +1,39 @@
+{
+  "fact_id": "FACT-0051",
+  "claim": "In the matching retail DLL, Player.ForceSetDownTime (0x06004F0C) is a parameterless instance method with an exact 49-byte body. It stores isStandingStunOK=0 and isDisableUpdateDownTime=0, calls Player.SetDownTime(0), then reads GlobalWork.inst.MatchSetting.isS1Rule. When that field is nonzero it returns immediately; otherwise it calls Player.CalcDownTime() and returns. FACT-0049 pins the current canonical caller boundary at TransitStateAfterAnm_Down IL+0x02AD after mine damage, LastDamage/KoLastDamage updates and before the raw DownTime>=200 floor check. Player.SetDownTime is already closed by FACT-0029 and Player.CalcDownTime by FACT-0030.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.ForceSetDownTime token 0x06004F0C RVA 0x002E6C9C signature 200001 code size 49 code sha256=f62c7b101e9f67f9c7e8d3aaa1de4964a53b2669013d4574f0b8ecb2e9bc732c; exact body in canonical/witnesses/CAP-R6-001/force_set_down_time.summary.json; prover tools/prove_force_set_down_time.py",
+      "observation": "Exact matching-DLL ForceSetDownTime body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0049 TransitStateAfterAnm_Down mine tail",
+      "to": "Player.ForceSetDownTime()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0049 pins call token 0x06004F0C at TransitStateAfterAnm_Down IL+0x02AD."
+        }
+      ]
+    },
+    {
+      "from": "ForceSetDownTime entry",
+      "to": "closed down-time helpers",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ForceSetDownTime IL+0x0000..0x0030 clears fields 0x04006050/0x04006051, calls SetDownTime token 0x06004ED8 with raw 0, gates on MatchSetting.isS1Rule field 0x040057E6, and when zero calls CalcDownTime token 0x06004F0D."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact preserves the exact isS1Rule branch but does not assign additional ruleset semantics.",
+    "The downstream behavior of SetDownTime and CalcDownTime is governed by FACT-0029 and FACT-0030.",
+    "CAP-R6-001 contains no standalone ForceSetDownTime PRE/POST event."
+  ]
+}
