@@ -1,0 +1,55 @@
+{
+  "fact_id": "FACT-0042",
+  "claim": "In the matching retail DLL, seven small PlayerController_AI action-construction helpers called directly by FACT-0040 are closed as one wrapper family around the still-separate PlayerController_AI.SetAIAct core (0x06004F9D). SetAIAct_DownAtk (0x06004FA4) calls SetAIAct(raw 19, tm), stores aiActPrm=opt, and when is_wait_down is false stores aiActStep=1. SetAIAct_RunUpDive_Stand (0x06004FA2) calls SetAIAct(raw 9,512) then stores destCorner=corner; SetAIAct_RunUpDive_Down (0x06004FA3) is identical except raw action 10. SetAIAct_CornerDive (0x06004FA1) calls SetAIAct(raw 5,256), then stores destCorner=corner, nextSkill=dive_skill, and isLotPerformanceOnCorner=lot_perform. SetAIAct_PriAct_RunAtk (0x06004FAA) calls SetAIAct(raw 16,tm) then stores aiActPrm=kind. SetAIAct_GoGrapple (0x06004F9E) calls SetAIAct(raw 1,tm), stores nextSkill=skill and aiActPrm=dir. SetAIAct_GoBackGrapple (0x06004FA0) calls SetAIAct(raw 3,tm) then stores nextSkill=skill. FACT-0040 pins the exact eight direct wrapper calls at IL+0x00BF, 0x00E0, 0x012F, 0x013C, 0x01AE, 0x01F3, 0x022C, and 0x024B.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SetAIAct_DownAtk token 0x06004FA4 RVA 0x002F604F size 30 sha256=fb38a89d3118cf815885af4d76af0a9a8a2c4744c5d9352a6f58cca215640589; exact body in canonical/witnesses/CAP-R6-001/priority_action_wrappers.summary.json; prover tools/prove_priority_action_wrappers.py",
+      "observation": "Exact matching-DLL wrapper."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "SetAIAct_RunUpDive_Stand token 0x06004FA2 RVA 0x002F6023 size 21 sha256=94e61e33b42bff7c649e3d687172f74aa95a6083618dc9fa82e1e3c1e6fdd431; SetAIAct_RunUpDive_Down token 0x06004FA3 RVA 0x002F6039 size 21 sha256=fc342bf4ac6481bbab368979011af8b3a878a91e00528b03d11c7f8021ce0b81",
+      "observation": "Exact matching-DLL run-up-dive wrappers."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "SetAIAct_CornerDive token 0x06004FA1 RVA 0x002F6000 size 34 sha256=76067b8223899419015727846653c64dcf88f7aba379d6621dac196ef2bcb802; SetAIAct_PriAct_RunAtk token 0x06004FAA RVA 0x002F60C8 size 17 sha256=09d1a53cf821b1ed7cf1f66622e3b14e1cfd5d8d86b4de366aaba3387e8ad46f",
+      "observation": "Exact matching-DLL corner/run-attack wrappers."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "SetAIAct_GoGrapple token 0x06004F9E RVA 0x002F5FC6 size 23 sha256=978e82da32179445718786287df804ca334ac6f1889e726bec8774e5a13ccf12; SetAIAct_GoBackGrapple token 0x06004FA0 RVA 0x002F5FEF size 16 sha256=78b1f889deb727931a2cf293d6125dbba940b2f77b8d67e400fa8c99cdf195ac",
+      "observation": "Exact matching-DLL grapple wrappers."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0040 TryToDoPriorityAct",
+      "to": "seven wrapper family",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0040 pins wrapper calls: DownAtk IL+0x00BF and 0x00E0; RunUpDive_Stand 0x012F; RunUpDive_Down 0x013C; CornerDive 0x01AE; PriAct_RunAtk 0x01F3; GoGrapple 0x022C; GoBackGrapple 0x024B."
+        }
+      ]
+    },
+    {
+      "from": "wrapper family",
+      "to": "PlayerController_AI.SetAIAct core",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Each of the seven exact bodies calls token 0x06004F9D once with the raw action/time pair recorded in the witness before its wrapper-specific field writes."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "PlayerController_AI.SetAIAct token 0x06004F9D remains outside this fact and must be closed separately.",
+    "Raw action constants 1,3,5,9,10,16,19 and timing constants 256/512 are preserved without semantic relabeling.",
+    "The meaning and later consumers of aiActPrm, aiActStep, destCorner, nextSkill and isLotPerformanceOnCorner remain outside this fact.",
+    "CAP-R6-001 contains no standalone PRE/POST events for these wrappers."
+  ]
+}
