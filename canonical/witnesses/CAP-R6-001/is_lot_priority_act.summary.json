@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_IS_LOT_PRIORITY_ACT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "IsLotPriorityAct",
+      "token": "0x06005008",
+      "rva": "0x002FCE8C",
+      "signature_blob_hex": "200102118628",
+      "return_type": "Boolean",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "act",
+          "type": "AIPriorityActEnum"
+        }
+      ],
+      "code_size": 534,
+      "code_sha256": "95906f7bec4bf47c92137113114297c666b46a997ca3a1c487e0a1b71c496461",
+      "max_stack": 2,
+      "local_signature_token": "0x1100112B",
+      "local_signature_blob_hex": "070412a78812a8f411870c11870c",
+      "local_types": [
+        "Player",
+        "VenueSetting",
+        "SkillSlotEnum",
+        "SkillSlotEnum"
+      ],
+      "instruction_count": 131,
+      "branch_instruction_count": 29,
+      "call_instruction_count": 5
+    },
+    "setup": {
+      "target_expression": "PlayerMan.inst.GetPlObj(PlObj.TargetPlIdx)",
+      "get_pl_obj_token": "0x06005065",
+      "venue_expression": "Ring.inst.venueSetting",
+      "ring_field_token": "0x04006355",
+      "venue_setting_field_token": "0x0400637A"
+    },
+    "switch": {
+      "count": 41,
+      "default_target": "0x00CB",
+      "default_effect": "branch to true",
+      "groups": [
+        {
+          "raw_acts": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "target": "0x00D0",
+          "effect": "branch to true"
+        },
+        {
+          "raw_acts": [
+            6,
+            7
+          ],
+          "target": "0x00D5",
+          "effect": "require IsEffectiveFall()"
+        },
+        {
+          "raw_acts": [
+            8,
+            9
+          ],
+          "target": "0x00E7",
+          "effect": "State raw 18 or17; Zone 0; mEquExistCehck(PriotityActToAIOpt[act])"
+        },
+        {
+          "raw_acts": [
+            10,
+            11,
+            12,
+            13
+          ],
+          "target": "0x0130",
+          "effect": "State raw 18 or17; Zone 0; mEquExistCehck(PriotityActToAIOpt[act])"
+        },
+        {
+          "raw_acts": [
+            14,
+            15,
+            16,
+            17
+          ],
+          "target": "0x0179",
+          "effect": "branch to true"
+        },
+        {
+          "raw_acts": [
+            18,
+            19,
+            20
+          ],
+          "target": "0x017E",
+          "effect": "Zone 0; ringKind !=1 and !=3"
+        },
+        {
+          "raw_acts": [
+            21
+          ],
+          "target": "0x01AC",
+          "effect": "State raw 18 or17; Zone 0; ringKind !=1 and !=3; mEquExistCehck(47)"
+        },
+        {
+          "raw_acts": [
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34
+          ],
+          "target": "0x020A",
+          "effect": "branch to true"
+        },
+        {
+          "raw_acts": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "target": "0x020F",
+          "effect": "branch to true"
+        }
+      ]
+    },
+    "conditional_tokens": {
+      "is_effective_fall_token": "0x06004FE9",
+      "player_state_field_token": "0x04005FB7",
+      "player_zone_field_token": "0x04005FEE",
+      "priority_to_aiopt_field": {
+        "name": "PriotityActToAIOpt",
+        "token": "0x04006147"
+      },
+      "m_equ_exist_check_token": "0x06004F1D",
+      "ring_kind_field_token": "0x04006468",
+      "raw_state_values": [
+        18,
+        17
+      ],
+      "raw_forbidden_ring_kinds": [
+        1,
+        3
+      ],
+      "raw_act21_equipment_argument": 47
+    },
+    "process_priority_act_bridge": {
+      "fact_id": "FACT-0037",
+      "caller": "PlayerController_AI.ProcessPriorityAct",
+      "caller_token": "0x0600500A",
+      "call_il": "0x0155",
+      "callee_token": "0x06005008",
+      "argument": "moveAct"
+    }
+  },
+  "r6_observation_note": "CAP-R6-001 contains no standalone PlayerController_AI.IsLotPriorityAct PRE/POST event. This record uses the exact matching-DLL body and FACT-0037 caller boundary.",
+  "limits": [
+    "Helper internals and PriotityActToAIOpt contents remain outside this record.",
+    "Raw switch values are not assigned semantic labels."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "fact_id": "FACT-0039",
+  "claim": "In the matching retail DLL, PlayerController_AI.IsLotPriorityAct (0x06005008) is an instance method with one AIPriorityActEnum parameter named act returning Boolean and an exact 534-byte body. It resolves the target Player and Ring.venueSetting, then switches on raw act with 41 explicit cases. Raw acts 0..5, 14..17, 22..34, 35..40, and the switch default reach the true return with no additional test. Raw acts 6..7 require IsEffectiveFall() to return true. Raw acts 8..9 and 10..13 each require target State to be raw 18 or 17, target Zone to be zero, then require PlObj.mEquExistCehck(PriotityActToAIOpt[act]) to return true. Raw acts 18..20 require target Zone zero and venueSetting.ringKind to be neither raw 1 nor raw 3. Raw act 21 requires target State raw 18 or 17, target Zone zero, ringKind neither 1 nor 3, and PlObj.mEquExistCehck(47) to return true. Every failed conditional path returns false. FACT-0037 pins the direct call at ProcessPriorityAct IL+0x0155.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.IsLotPriorityAct token 0x06005008 RVA 0x002FCE8C signature 200102118628 parameter act:AIPriorityActEnum return Boolean code size 534 code sha256=95906f7bec4bf47c92137113114297c666b46a997ca3a1c487e0a1b71c496461; exact switch/body in canonical/witnesses/CAP-R6-001/is_lot_priority_act.summary.json; prover tools/prove_is_lot_priority_act.py",
+      "observation": "Exact matching-DLL IsLotPriorityAct body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0037 ProcessPriorityAct",
+      "to": "PlayerController_AI.IsLotPriorityAct(moveAct)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0037 pins ProcessPriorityAct IL+0x0155 call token 0x06005008 after loading local moveAct."
+        }
+      ]
+    },
+    {
+      "from": "raw act switch",
+      "to": "conditional groups",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IsLotPriorityAct IL+0x0022 switch has 41 entries with targets: 0..5->0x00D0; 6..7->0x00D5; 8..9->0x00E7; 10..13->0x0130; 14..17->0x0179; 18..20->0x017E; 21->0x01AC; 22..34->0x020A; 35..40->0x020F; default continues at IL+0x00CB. The unconditional targets all branch to true IL+0x0214."
+        }
+      ]
+    },
+    {
+      "from": "raw acts 8..13",
+      "to": "mapped equipment existence check",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Both 8..9 and 10..13 branches require target State raw 18 or 17 and Zone zero, then index static PriotityActToAIOpt field 0x04006147 by act and pass that value to Player.mEquExistCehck token 0x06004F1D."
+        }
+      ]
+    },
+    {
+      "from": "raw acts 18..21",
+      "to": "venue/state/equipment gates",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Acts 18..20 require target Zone zero and VenueSetting.ringKind !=1 and !=3. Act 21 additionally requires target State 18 or17 and calls Player.mEquExistCehck with raw 47."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw act, State, Zone and ringKind values are preserved numerically without assigning gameplay labels.",
+    "PlayerController_AI.IsEffectiveFall and Player.mEquExistCehck internals remain outside this fact unless separately closed.",
+    "The authored/code-side contents and meaning of PriotityActToAIOpt remain outside this fact.",
+    "The switch default reaching true is preserved exactly; no assumption is made about whether out-of-range AIPriorityActEnum values occur in retail data.",
+    "CAP-R6-001 contains no standalone IsLotPriorityAct PRE/POST event."
+  ]
+}
