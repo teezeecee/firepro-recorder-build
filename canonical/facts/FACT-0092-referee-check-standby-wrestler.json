@@ -1,0 +1,34 @@
+{
+  "fact_id": "FACT-0092",
+  "claim": "In the matching retail DLL, Referee.CheckStandByWrestler (0x060050A8) is a parameterless instance Boolean method with an exact 103-byte body and exactly one direct DLL caller. It loads GlobalWork.inst.MatchSetting and returns false unless MatchSetting.BattleRoyalKind equals raw 4. When the raw value is 4 it scans player indices 0 through 7. For each index it resolves PlayerMan.inst.GetPlObj(index), skips when the object converts false, skips when Player.isSleep is nonzero, and then tests Player.royalRambleAppearTime against raw -1. It returns true immediately when royalRambleAppearTime is not -1; otherwise it continues scanning. After index 7 it returns false. FACT-0091 pins the sole direct caller at Referee.CheckMatchEnd IL+0x0007.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.CheckStandByWrestler token 0x060050A8 RVA 0x003094D0 signature 200002 code size 103 code sha256=ee9e9c47f5d28bf25f68a8af0c22b9a0f794b042d30cbdc9dbf23ab310a3964d; exact raw BattleRoyalKind gate and player scan in canonical/witnesses/CAP-R6-001/referee_check_standby_wrestler.summary.json; prover tools/prove_referee_check_standby_wrestler.py",
+      "observation": "Exact matching-DLL CheckStandByWrestler body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact call-token inventory for 0x060050A8 finds one direct DLL caller only: Referee.CheckMatchEnd token 0x060050A9 at IL+0x0007.",
+      "observation": "Exact direct caller inventory."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0091 Referee.CheckMatchEnd",
+      "to": "Referee.CheckStandByWrestler",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "CheckMatchEnd IL+0x0007 call token 0x060050A8."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only CheckStandByWrestler and its exact direct caller inventory.",
+    "Raw BattleRoyalKind value 4, scan range 0..7, isSleep and royalRambleAppearTime are preserved without adding rule labels.",
+    "Writers/producers of the tested fields remain outside this fact."
+  ]
+}
