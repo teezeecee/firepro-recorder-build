@@ -448,3 +448,8 @@ jobs:
         run: python tests/test_reverse_player_dir_lr_summary.py
       - name: ReversePlayerDirLR prover syntax
         run: python -m py_compile tools/prove_reverse_player_dir_lr.py
+
+      - name: Referee Start_FallCount summary
+        run: python tests/test_referee_start_fall_count_summary.py
+      - name: Referee Start_FallCount prover syntax
+        run: python -m py_compile tools/prove_referee_start_fall_count.py
