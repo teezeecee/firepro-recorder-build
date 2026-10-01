@@ -1,0 +1,44 @@
+{
+  "fact_id": "FACT-0090",
+  "claim": "In the matching retail DLL, the parameterless Referee.CheckStartRefereeing overload (0x060050A0) has an exact 123-byte body and exactly one direct DLL caller. It loads MatchMain.inst, returns when Referee.State is greater than raw 5, returns when MatchMain.isMatchEnd is nonzero, and returns when MatchMain.isRoundEnd is nonzero. Otherwise it scans raw player indices 0 through 7. For each index it resolves PlayerMan.inst.GetPlObj(index), skips when the returned object converts false, skips when Player.isSleep is nonzero, and otherwise calls the separate Boolean overload Referee.CheckStartRefereeing(Int32 pl_idx) token 0x060050A1 with that same raw index. If the Boolean overload returns true, the outer method returns immediately; otherwise the scan continues. After index 7 it returns. The only direct DLL caller of token 0x060050A0 is FACT-0074 Referee.UpdateReferee at IL+0x005C.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.CheckStartRefereeing token 0x060050A0 RVA 0x00308898 signature 200001 code size 123 code sha256=a77f5e25b67af39e16a62e15a171465293dbae28e3851625a93c49f9ef820868; exact state/match gates and raw 0..7 player scan in canonical/witnesses/CAP-R6-001/referee_check_start_scanner.summary.json; prover tools/prove_referee_check_start_scanner.py",
+      "observation": "Exact matching-DLL outer CheckStartRefereeing scanner body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact call-token inventory for 0x060050A0 finds one direct DLL caller only: Referee.UpdateReferee token 0x060050AF RVA 0x00309E9C, call opcode at IL+0x005C.",
+      "observation": "Exact direct caller inventory."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0074 Referee.UpdateReferee",
+      "to": "Referee.CheckStartRefereeing() outer scanner",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "UpdateReferee IL+0x005C call token 0x060050A0."
+        }
+      ]
+    },
+    {
+      "from": "Referee.CheckStartRefereeing() outer scanner",
+      "to": "Referee.CheckStartRefereeing(Int32 pl_idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Outer scanner IL+0x0060 calls token 0x060050A1 after loading this and the current loop index; metadata signature blob 20010208 and Param row name pl_idx identify one Int32 parameter and Boolean return."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the parameterless outer scanner and its exact direct caller inventory.",
+    "The 1,112-byte Boolean CheckStartRefereeing(Int32 pl_idx) overload remains a separate gate.",
+    "Raw State threshold 5, scan range 0..7 and Player.isSleep field are preserved without adding match-rule labels."
+  ]
+}
