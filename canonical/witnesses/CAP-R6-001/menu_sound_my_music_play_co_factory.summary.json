@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_MY_MUSIC_PLAY_CO_FACTORY_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060052B9","row_hex":"203332000000810018620a006a550000483d","rva":"0x00323320"},
+    "method":{"type":"Menu_SoundManager","method":"MyMusic_Play_Co","token":"0x060052B9","rva":"0x00323320","signature_blob_hex":"2000128181","return_type":"System.Collections.IEnumerator","return_type_token":"0x01000060","parameters":[],"code_size":8,"code_sha256":"8b924ec5650c79c888696f801976f2f99b92a71ba35fb44d7fcabce6d6e4c799","header_format":"fat","header_flags_raw":"0x0013","max_stack":1,"local_signature_token":"0x11001214","local_signature_blob_hex":"070112bdcc","instruction_count":4,"branch_instruction_count":0,"call_instruction_count":1},
+    "local":{"index":0,"type":"<MyMusic_Play_Co>c__IteratorE","type_token":"0x02000F73"},
+    "constructor":{"token":"0x0600750E","name":".ctor","owner_type":"<MyMusic_Play_Co>c__IteratorE","owner_type_token":"0x02000F73","rva":"0x003254A4","signature_blob_hex":"200001","newobj_il":"0x0000"},
+    "exact_flow":["local0 = new <MyMusic_Play_Co>c__IteratorE()","return local0"],
+    "fact_0133_related_string_observation":{"fact_id":"FACT-0133","caller":"Menu_SoundManager.MyMusic_Play","string_token":"0x7008EBBE","string_value":"MyMusic_Play_Co","start_coroutine_token":"0x0A0000C4","start_coroutine_resolved":"UnityEngine.MonoBehaviour.StartCoroutine(String)","call_il":"0x01D9","relationship_status":"NAME_ONLY_EXTERNAL_DISPATCH_NOT_DIRECT_CALL"}
+  },
+  "limits":["Unity StartCoroutine(String) dispatch is not promoted into a direct MethodDef caller edge.","Generated iterator constructor/MoveNext and scheduler behavior remain outside this record."]
+}
