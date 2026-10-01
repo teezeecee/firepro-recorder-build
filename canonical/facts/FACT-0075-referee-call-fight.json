@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0075",
+  "claim": "In the matching retail DLL, Referee.CallFight (0x06005080) is a parameterless instance method with an exact 100-byte body. It returns unless Referee.State is raw 19, returns unless CurrentSkill is non-null, then loads CurrentSkill.anmData[CurrentAnmIdx]. It compares currentFormIdx against the emitted expression formNum - 6 - 1; only equality continues. It then requires FormDispDuration to be raw zero. When all gates pass, it calls MatchSEPlayer.inst.PlayRefereeVoice with raw argument 0, then calls MatchUI.inst.Show_Fight with raw Boolean argument 1, and returns. FACT-0074 pins the direct scheduler call at Referee.UpdateReferee IL+0x002D.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Referee.CallFight token 0x06005080 RVA 0x00306394 signature blob 200001 code size 100 code sha256=fba8e1eb077d2800274abf6f40345ed6768347f753aedaf9ccb023b2a24ea530; exact gates/arithmetic/calls in canonical/witnesses/CAP-R6-001/referee_call_fight.summary.json; prover tools/prove_referee_call_fight.py",
+      "observation": "Exact matching-DLL Referee.CallFight body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0074 Referee.UpdateReferee",
+      "to": "Referee.CallFight",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0074 pins call token 0x06005080 at UpdateReferee IL+0x002D."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact CallFight body and FACT-0074 caller site.",
+    "Raw State 19, arithmetic constants 6 and 1, raw voice argument 0 and Show_Fight argument 1 are preserved without added rule labels.",
+    "MatchSEPlayer.PlayRefereeVoice and MatchUI.Show_Fight internals remain separate gates."
+  ]
+}
