@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_MANAGER_PLAY_MATCH_SE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Menu_SoundManager",
+      "method": "Play_MatchSE",
+      "token": "0x060052A8",
+      "rva": "0x00322B90",
+      "signature_blob_hex": "00020111aa0c0c",
+      "return_type": "Void",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "snd_no"
+        },
+        {
+          "sequence": 2,
+          "name": "volume",
+          "type": "Float32"
+        }
+      ],
+      "code_size": 122,
+      "code_sha256": "56ce94a2d961f8cb774c95924d1cab7a28ed7dc521501dc72ace69c7ce39c162",
+      "instruction_count": 45,
+      "branch_instruction_count": 6,
+      "call_instruction_count": 3
+    },
+    "gates": {
+      "clip_list": {
+        "name": "Sound_ClipMatchSE_List",
+        "token": "0x040086FE",
+        "null_effect": "return"
+      },
+      "raw_sound_number_range": {
+        "min_inclusive": 0,
+        "max_inclusive": 108
+      },
+      "clip_element_null_compare_memberref": "0x0A000006"
+    },
+    "volume_path": {
+      "global_volume_field": {
+        "name": "Volume_Se",
+        "token": "0x040086EE"
+      },
+      "expression": "local0 = Volume_Se * volume",
+      "lower_comparison": {
+        "constant": 0,
+        "opcode": "bge.un",
+        "noncontinue_effect": "return"
+      },
+      "upper_comparison": {
+        "constant": 1,
+        "opcode": "ble.un",
+        "noncontinue_effect": "local0 = 1.0f"
+      }
+    },
+    "audio_dispatch": {
+      "audio_src_info_field": {
+        "name": "audioSrcInfo",
+        "token": "0x040086EB"
+      },
+      "raw_index": 2,
+      "audio_field": {
+        "name": "sRefAudio",
+        "token": "0x0400874C"
+      },
+      "set_volume_memberref": "0x0A0002A2",
+      "play_one_shot_memberref": "0x0A000FA6",
+      "clip_argument": "Sound_ClipMatchSE_List[snd_no]"
+    },
+    "caller_bridge": {
+      "fact_id": "FACT-0060",
+      "caller": "MatchSEPlayer.PlayMatchSE",
+      "call_il": "0x0170",
+      "callee_token": "0x060052A8",
+      "arguments": [
+        "seid",
+        "vol"
+      ]
+    }
+  },
+  "limits": [
+    "Clip/audio-source contents and Unity AudioSource internals remain outside this record.",
+    "Raw sound-number meaning remains outside this record."
+  ]
+}
