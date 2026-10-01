@@ -1485,6 +1485,23 @@
         "Start_HandlingDisturbing internal closure",
         "raw State/NextState meaning"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREE_DECIDE_DIR_V1",
+      "fact_id": "FACT-0086",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Referee.DecideRefereeDir Player lookup, Vector3 subtraction/Vector2 conversion, and raw bgt.un Float32 return graph, bridged from four FACT-0085 call sites.",
+      "summary": "canonical/witnesses/CAP-R6-001/referee_decide_dir.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "position producer closure",
+        "remaining DecideRefereeDir caller closure",
+        "raw return-value meaning"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
