@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0140",
+  "claim": "In the matching retail DLL, instance uAudio.uAudioPlayer.Play (0x060052E7) has source-audited RVA 0x00325A80, exact signature blob 20010115118839011182c1, one System.Nullable<System.TimeSpan> parameter startOff, and an exact 564-byte code body. Raw State==1 returns immediately; raw State==2 calls sibling Pause (0x060052E9) and returns. Otherwise it writes State=1, SongDone=false and flare_SongEnd=false, then writes get_UAudio().targetFile=this.targetFile. When myAudioSource.clip is null it attempts get_UAudio().LoadMainOutputStream(); on success it builds a PCMReaderCallback from this plus ldftn Song_Stream_Loop (0x060052E8), opens targetFile, replaces readFullyStream with a ReadFullyStream whose stream_CanSeek is true, constructs NLayer.MpegFile(readFullyStream,true), conditionally performs an initial ReadSamples when startOff has a value equal to TimeSpan.Zero, stores that MpegFile to playbackDevice, obtains get_UAudio().SongLength, clamps it to Int32.MaxValue, and creates streaming AudioClip literal 'uAudio_song' using the MpegFile WaveFormat channels/sample-rate and the callback. It assigns the clip, sets loop=true and timeSamples=0, then calls set_CurrentTime(TimeSpan.Zero) when startOff has no value or set_CurrentTime(startOff.Value) otherwise. Inside a nested System.Object catch it conditionally invokes get_sendPlaybackState() with raw 1. If LoadMainOutputStream was false it writes myAudioSource.clip=null. The shared tail checks myAudioSource.clip != null; when non-null it calls AudioSource.Play only if not already playing and then writes updateTime=true, otherwise it writes State=0. A surrounding System.Exception catch also writes State=0. The method has exactly two fat EH clauses. FACT-0133 pins the two already-canonical caller sites at Menu_SoundManager.MyMusic_Play IL+0x00F6 and IL+0x01AD.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "uAudio.uAudioPlayer.Play token 0x060052E7 raw MethodDef row 805a32000000e601ac5a0600a4e502005d3d -> RVA 0x00325A80; signature 20010115118839011182c1; code size 564; code sha256=25cfa99ab6e97f650b4e517fa419b12acb018df2aab2933a87b40953a7084a26; 52-byte fat EH section sha256=f8df63a73e467352a3ef02ab450c1b90afb6379833275bb04e844ee0a95cd802; exact flow in canonical/witnesses/CAP-R6-001/u_audio_play.summary.json; prover tools/prove_u_audio_play.py",
+      "observation": "Exact matching-DLL Play code body plus both exception clauses."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0133 Menu_SoundManager.MyMusic_Play",
+      "to": "uAudio.uAudioPlayer.Play(startOff)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0133 pins callvirt token 0x060052E7 at MyMusic_Play IL+0x00F6 and IL+0x01AD."
+        }
+      ]
+    },
+    {
+      "from": "uAudio.uAudioPlayer.Play",
+      "to": "FACT-0138 get_UAudio / FACT-0127 get_sendPlaybackState",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Play calls get_UAudio token 0x060052D0 at IL+0x0039, IL+0x0060 and IL+0x010A; calls get_sendPlaybackState token 0x060052CB at IL+0x01A5 and IL+0x01B0."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact uAudioPlayer.Play code/EH body and its already-canonical caller/helper relationships.",
+    "uAudioPlayer.Pause, Song_Stream_Loop and set_CurrentTime internals remain separate gates.",
+    "External System.IO, NLayer, Unity AudioClip/AudioSource and uAudio backend implementations remain outside this fact.",
+    "Actual audio/file contents and audio-device behavior remain outside this fact.",
+    "Raw State values 0, 1 and 2 and playback callback raw value 1 are preserved without assigning broader labels."
+  ]
+}

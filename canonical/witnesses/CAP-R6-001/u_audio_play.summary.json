@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_U_AUDIO_PLAY_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methoddef_row": {
+      "token": "0x060052E7",
+      "row_hex": "805a32000000e601ac5a0600a4e502005d3d",
+      "rva": "0x00325A80"
+    },
+    "method": {
+      "type": "uAudio.uAudioPlayer",
+      "method": "Play",
+      "token": "0x060052E7",
+      "rva": "0x00325A80",
+      "signature_blob_hex": "20010115118839011182c1",
+      "return_type": "Void",
+      "parameters": [
+        {"sequence":1,"name":"startOff","type":"System.Nullable<System.TimeSpan>","typespec_token":"0x1B0002D5","typespec_blob_hex":"15118839011182c1"}
+      ],
+      "code_size": 564,
+      "code_sha256": "25cfa99ab6e97f650b4e517fa419b12acb018df2aab2933a87b40953a7084a26",
+      "header_format": "fat",
+      "header_flags_raw": "0x001B",
+      "max_stack": 7,
+      "local_signature_token": "0x11001220",
+      "local_signature_blob_hex": "07070a12884d1282091d051282b908128349",
+      "instruction_count": 177,
+      "branch_instruction_count": 23,
+      "call_instruction_count": 37
+    },
+    "locals": [
+      {"index":0,"type":"Int64"},
+      {"index":1,"type":"UnityEngine.AudioClip.PCMReaderCallback"},
+      {"index":2,"type":"System.IO.Stream"},
+      {"index":3,"type":"Byte[]"},
+      {"index":4,"type":"NLayer.MpegFile"},
+      {"index":5,"type":"Int32"},
+      {"index":6,"type":"System.Exception"}
+    ],
+    "fields": {
+      "state":{"token":"0x040087E9","name":"uAudio.uAudioPlayer.State"},
+      "song_done":{"token":"0x040087EB","name":"uAudio.uAudioPlayer.SongDone"},
+      "flare_song_end":{"token":"0x040087EC","name":"uAudio.uAudioPlayer.flare_SongEnd"},
+      "my_audio_source":{"token":"0x040087E4","name":"uAudio.uAudioPlayer.myAudioSource"},
+      "target_file":{"token":"0x040087E6","name":"uAudio.uAudioPlayer.targetFile"},
+      "update_time":{"token":"0x040087EA","name":"uAudio.uAudioPlayer.updateTime"},
+      "playback_device":{"token":"0x040087EE","name":"uAudio.uAudioPlayer.playbackDevice"},
+      "read_fully_stream":{"token":"0x040087EF","name":"uAudio.uAudioPlayer.readFullyStream"}
+    },
+    "direct_method_calls": {
+      "pause":{"token":"0x060052E9","call_il":"0x0019"},
+      "get_u_audio":{"token":"0x060052D0","fact_id":"FACT-0138","call_ils":["0x0039","0x0060","0x010A"]},
+      "song_stream_loop":{"token":"0x060052E8","ldftn_il":"0x0070"},
+      "set_current_time":{"token":"0x060052D7","call_ils":["0x018D","0x019F"]},
+      "get_send_playback_state":{"token":"0x060052CB","fact_id":"FACT-0127","call_ils":["0x01A5","0x01B0"]}
+    },
+    "member_calls": {
+      "audio_source_get_clip":{"token":"0x0A0007A0","call_ils":["0x004F","0x01E2"]},
+      "object_equality":{"token":"0x0A000006","call_il":"0x0055"},
+      "load_main_output_stream":{"token":"0x0A000FC5","call_il":"0x0065"},
+      "pcm_reader_callback_ctor":{"token":"0x0A000FC6","call_il":"0x0076"},
+      "file_open_read":{"token":"0x0A000150","call_il":"0x0082"},
+      "stream_dispose":{"token":"0x0A0009F1","call_il":"0x0099"},
+      "read_fully_stream_ctor":{"token":"0x0A000FC7","call_il":"0x00A0"},
+      "mpeg_file_ctor":{"token":"0x0A000FC9","call_il":"0x00C8"},
+      "nullable_has_value":{"token":"0x0A000FCA","call_ils":["0x00D1","0x017D"]},
+      "nullable_get_value_or_default":{"token":"0x0A000FCB","call_il":"0x00DD"},
+      "timespan_zero":{"token":"0x0A000FBD","load_ils":["0x00E2","0x0188"]},
+      "timespan_equality":{"token":"0x0A000FCC","call_il":"0x00E7"},
+      "read_samples":{"token":"0x0A000FCD","call_il":"0x00FB"},
+      "backend_song_length":{"token":"0x0A000FAF","call_il":"0x010F"},
+      "wave_format":{"token":"0x0A000FCE","call_ils":["0x0141","0x014D"]},
+      "wave_channels":{"token":"0x0A000FCF","call_il":"0x0146"},
+      "wave_sample_rate":{"token":"0x0A000FD0","call_il":"0x0152"},
+      "audio_clip_create":{"token":"0x0A000FD1","call_il":"0x0159"},
+      "audio_source_set_clip":{"token":"0x0A00079B","call_ils":["0x015E","0x01D2"]},
+      "audio_source_set_loop":{"token":"0x0A00079C","call_il":"0x016A"},
+      "audio_source_set_time_samples":{"token":"0x0A000FD2","call_il":"0x0176"},
+      "nullable_value":{"token":"0x0A000FD3","call_il":"0x019A"},
+      "callback_invoke":{"token":"0x0A000FC4","call_il":"0x01B6"},
+      "object_inequality":{"token":"0x0A00000F","call_il":"0x01E8"},
+      "audio_source_is_playing":{"token":"0x0A000CAE","call_il":"0x01F8"},
+      "audio_source_play":{"token":"0x0A0002A3","call_il":"0x0208"}
+    },
+    "strings": {
+      "audio_clip_name":{"token":"0x7008F3DA","value":"uAudio_song","load_il":"0x0138"}
+    },
+    "exception_section": {
+      "format":"fat",
+      "raw_hex":"4134000000000000a40100001c000000c001000006000000c2000001000000002a000000fb010000250200000e000000d2000001",
+      "size_bytes":52,
+      "sha256":"f8df63a73e467352a3ef02ab450c1b90afb6379833275bb04e844ee0a95cd802",
+      "clauses":[
+        {"flags_raw":"0x00000000","try_offset":"0x01A4","try_length":28,"try_end_exclusive":"0x01C0","handler_offset":"0x01C0","handler_length":6,"handler_end_exclusive":"0x01C6","class_token":"0x010000C2","class_resolved":"System.Object"},
+        {"flags_raw":"0x00000000","try_offset":"0x002A","try_length":507,"try_end_exclusive":"0x0225","handler_offset":"0x0225","handler_length":14,"handler_end_exclusive":"0x0233","class_token":"0x010000D2","class_resolved":"System.Exception"}
+      ]
+    },
+    "exact_flow": [
+      "if State == raw 1: return",
+      "if State == raw 2: Pause(); return",
+      "State=1; SongDone=false; flare_SongEnd=false",
+      "get_UAudio().targetFile = this.targetFile",
+      "if myAudioSource.clip == null and get_UAudio().LoadMainOutputStream() is true: construct the streaming MpegFile/AudioClip path, optional zero-offset ReadSamples, set clip/loop/timeSamples, set CurrentTime from nullable startOff, and inside the nested System.Object catch notify get_sendPlaybackState() with raw 1 when non-null",
+      "if LoadMainOutputStream() is false: myAudioSource.clip = null",
+      "if myAudioSource.clip != null: if not already playing call Play(); updateTime=true; else State=0",
+      "surrounding System.Exception catch: store exception local and set State=0",
+      "return"
+    ],
+    "fact_0133_bridges": [
+      {"fact_id":"FACT-0133","caller":"Menu_SoundManager.MyMusic_Play","call_il":"0x00F6"},
+      {"fact_id":"FACT-0133","caller":"Menu_SoundManager.MyMusic_Play","call_il":"0x01AD"}
+    ]
+  },
+  "limits": [
+    "Pause, Song_Stream_Loop and set_CurrentTime internals remain separate gates.",
+    "External System.IO/NLayer/Unity/backend implementations and authored audio contents remain outside this record."
+  ]
+}

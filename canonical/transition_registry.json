@@ -2396,6 +2396,25 @@
       "semantic_promotion_blockers": [
         "delegate subscriber/downstream behavior"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_PLAY_V1",
+      "fact_id": "FACT-0140",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudioPlayer.Play raw state gates, streaming/AudioClip construction, optional start offset, nested System.Object notification catch and outer System.Exception catch, bridged from both FACT-0133 calls.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_play.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "uAudioPlayer.Pause internal closure",
+        "uAudioPlayer.Song_Stream_Loop internal closure",
+        "uAudioPlayer.set_CurrentTime internal closure",
+        "external backend/library/Unity audio behavior",
+        "actual media contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
