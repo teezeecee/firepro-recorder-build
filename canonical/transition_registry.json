@@ -711,6 +711,23 @@
         "corner-selection helper closure",
         "raw AIPriorityActEnum semantic mapping"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_PRIORITY_CONDITION_HELPERS_V1",
+      "fact_id": "FACT-0041",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL PlayerController_AI.IsEffectiveFall raw victory/zone/hasRight gates and Player.mEquExistCehck direct WrestlerParam.skillSlot element test, reached from FACT-0039.",
+      "summary": "canonical/witnesses/CAP-R6-001/priority_condition_helpers.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "WrestlerParam.skillSlot authored contents and bounds provenance",
+        "Player.hasRight state provenance",
+        "raw VictoryCondition/Zone semantic mapping"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
