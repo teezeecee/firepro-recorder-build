@@ -2230,6 +2230,23 @@
         "Unity Resources.Load/coroutine scheduling behavior",
         "authored audio resources"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_COCHANGE_MOVENEXT_V1",
+      "fact_id": "FACT-0130",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL <CoChange_BGMandPlay>c__Iterator8.MoveNext state machine, async resource request/yield loop, direct AudioClip write and optional callback/Play_BGM, linked to FACT-0115/FACT-0129.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_cochange_movenext.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Menu_SoundManager.Play_BGM internal closure",
+        "external Unity async/coroutine behavior",
+        "authored audio resources"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
