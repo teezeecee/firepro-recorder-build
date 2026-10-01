@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0088",
+  "claim": "In the matching retail DLL, MatchMisc.ReversePlayerDirLR (0x06004966) is a static one-parameter method with an exact 8-byte body. It loads static field MatchMisc.rev_lr_tbl (0x04005788), loads its raw direction argument, reads the corresponding array element with ldelem.i4, and returns that element. The helper contains no branch, clamp, null check, call, or fallback path. FACT-0087 pins the direct call at Referee.Start_HandlingDisturbing IL+0x003E.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.ReversePlayerDirLR token 0x06004966 RVA 0x002B0428 signature 000111a76811a768 code size 8 code sha256=c361809e798508defe998c0c3891196cdb2d60d5f4e45adf6fc213666c309eb0; exact body ldsfld 0x04005788; ldarg.0; ldelem.i4; ret in canonical/witnesses/CAP-R6-001/reverse_player_dir_lr.summary.json; prover tools/prove_reverse_player_dir_lr.py",
+      "observation": "Exact matching-DLL raw direction-table lookup."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0087 Referee.Start_HandlingDisturbing",
+      "to": "MatchMisc.ReversePlayerDirLR(PlDir)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0087 pins call token 0x06004966 at Start_HandlingDisturbing IL+0x003E after loading Referee.PlDir."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the helper body and FACT-0087 caller bridge.",
+    "The contents and initialization provenance of MatchMisc.rev_lr_tbl remain outside this fact.",
+    "No player-facing directional labels are assigned to the raw table indices or values."
+  ]
+}

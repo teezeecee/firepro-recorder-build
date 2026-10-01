@@ -1520,6 +1520,23 @@
         "RefereeParam.interfereTime authored provenance",
         "remaining disturbing-state consumer closure"
       ]
+    },
+    {
+      "family_id": "DLL_REVERSE_PLAYER_DIR_LR_V1",
+      "fact_id": "FACT-0088",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL MatchMisc.ReversePlayerDirLR four-instruction static rev_lr_tbl raw-direction lookup, bridged from FACT-0087.",
+      "summary": "canonical/witnesses/CAP-R6-001/reverse_player_dir_lr.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "rev_lr_tbl contents/initializer provenance",
+        "remaining ReversePlayerDirLR caller closure",
+        "raw direction-value meaning"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
