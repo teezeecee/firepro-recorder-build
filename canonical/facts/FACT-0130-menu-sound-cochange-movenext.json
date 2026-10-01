@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0130",
+  "claim": "In the matching retail DLL, compiler-generated <CoChange_BGMandPlay>c__Iterator8.MoveNext (0x060074EA) is an instance parameterless Boolean method with exact signature blob 200002 and an exact 196-byte body. It reads $PC (0x0400C244), stores raw -1 back to $PC, and switches raw prior state 0 to initialization and raw prior state 1 to the request-poll loop; all other prior states return false. Initialization writes <resReq>__0 = UnityEngine.Resources.LoadAsync(fn). While <resReq>__0.get_isDone() is false it writes $current = new UnityEngine.WaitForSeconds(0.0f), writes $PC=1 only when $disposing is false, and returns true. When the request is done it writes (UnityEngine.AudioClip)<resReq>__0.get_asset() directly into Menu_SoundManager.audioClipInfo[system_sound].audioClip, invokes onLoad when non-null, calls Menu_SoundManager.Play_BGM(system_sound, raw 1) when bStart is true, writes $PC=-1, and returns false. FACT-0115 pins this generated type as the iterator returned by Menu_SoundManager.CoChange_BGMandPlay, and FACT-0129 pins the canonical async caller into that factory.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "<CoChange_BGMandPlay>c__Iterator8.MoveNext token 0x060074EA RVA 0x00324C5C signature 200002 code size 196 code sha256=9d1407458612aaaf641a3eb39d593c95ae61e1e459a85eaa9240647a95763a1f; exact $PC switch, LoadAsync/yield loop, asset write, optional callback/Play_BGM and return-state flow in canonical/witnesses/CAP-R6-001/menu_sound_cochange_movenext.summary.json; prover tools/prove_menu_sound_cochange_movenext.py",
+      "observation": "Exact matching-DLL generated iterator execution body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0115 Menu_SoundManager.CoChange_BGMandPlay factory",
+      "to": "<CoChange_BGMandPlay>c__Iterator8.MoveNext",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0115 pins CoChange_BGMandPlay token 0x06005294 constructing and returning generated type <CoChange_BGMandPlay>c__Iterator8; token 0x060074EA is MoveNext on that exact TypeDef."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0129 Change_BGM_Theme(String,Boolean,Boolean)",
+      "to": "FACT-0115 CoChange_BGMandPlay factory",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0129 pins call token 0x06005294 at IL+0x0031 on the async branch."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact generated iterator MoveNext body and its canonical factory/type relationship.",
+    "Unity Resources.LoadAsync, AsyncOperation/ResourceRequest, WaitForSeconds and coroutine scheduler behavior remain external.",
+    "Menu_SoundManager.Play_BGM internals remain a separate gate.",
+    "Authored audio resources remain outside this fact."
+  ]
+}

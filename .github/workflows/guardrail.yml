@@ -676,3 +676,9 @@ jobs:
         run: python tests/test_menu_sound_change_bgm_theme_string_summary.py
       - name: Menu Sound Change BGM Theme String prover syntax
         run: python -m py_compile tools/prove_menu_sound_change_bgm_theme_string.py
+
+
+      - name: Menu Sound CoChange MoveNext summary
+        run: python tests/test_menu_sound_cochange_movenext_summary.py
+      - name: Menu Sound CoChange MoveNext prover syntax
+        run: python -m py_compile tools/prove_menu_sound_cochange_movenext.py

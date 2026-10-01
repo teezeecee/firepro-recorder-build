@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MENU_SOUND_COCHANGE_MOVENEXT_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "<CoChange_BGMandPlay>c__Iterator8",
+      "method": "MoveNext",
+      "token": "0x060074EA",
+      "rva": "0x00324C5C",
+      "signature_blob_hex": "200002",
+      "return_type": "Boolean",
+      "parameters": [],
+      "code_size": 196,
+      "code_sha256": "9d1407458612aaaf641a3eb39d593c95ae61e1e459a85eaa9240647a95763a1f",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 2,
+      "local_signature_token": "0x11000047",
+      "instruction_count": 59,
+      "branch_instruction_count": 8,
+      "call_instruction_count": 6
+    },
+    "fields": {
+      "fn":{"token":"0x0400C23D","name":"fn","signature_blob_hex":"060e"},
+      "res_req":{"token":"0x0400C23E","name":"<resReq>__0","signature_blob_hex":"06128641"},
+      "system_sound":{"token":"0x0400C23F","name":"system_sound","signature_blob_hex":"0611aa24"},
+      "on_load":{"token":"0x0400C240","name":"onLoad","signature_blob_hex":"061280fd"},
+      "b_start":{"token":"0x0400C241","name":"bStart","signature_blob_hex":"0602"},
+      "current":{"token":"0x0400C242","name":"$current","signature_blob_hex":"061c"},
+      "disposing":{"token":"0x0400C243","name":"$disposing","signature_blob_hex":"0602"},
+      "pc":{"token":"0x0400C244","name":"$PC","signature_blob_hex":"0608"},
+      "audio_clip":{"token":"0x0400874B","name":"AudioClipInfo.audioClip","signature_blob_hex":"061249"},
+      "audio_clip_info":{"token":"0x040086F4","name":"Menu_SoundManager.audioClipInfo"}
+    },
+    "calls": {
+      "load_async":{"token":"0x0A000675","resolved":"UnityEngine.Resources.LoadAsync(String)","call_il":"0x0028"},
+      "wait_ctor":{"token":"0x0A000679","resolved":"UnityEngine.WaitForSeconds..ctor(Single)","call_il":"0x003D"},
+      "is_done":{"token":"0x0A000676","resolved":"UnityEngine.AsyncOperation.get_isDone","call_il":"0x0061"},
+      "get_asset":{"token":"0x0A000677","resolved":"UnityEngine.ResourceRequest.get_asset","call_il":"0x007D"},
+      "on_load_invoke":{"token":"0x0A0003DE","resolved":"System.Action.Invoke","call_il":"0x009D"},
+      "play_bgm":{"token":"0x0600529E","resolved":"Menu_SoundManager.Play_BGM","call_il":"0x00B4"}
+    },
+    "type_tokens": {
+      "audio_clip":"0x01000012"
+    },
+    "state_switch": {
+      "prior_state_field":"$PC",
+      "stores_minus_one_before_switch":true,
+      "targets":[
+        {"raw_state":0,"target_il":"0x0021"},
+        {"raw_state":1,"target_il":"0x005B"}
+      ],
+      "default_target_il":"0x00C0"
+    },
+    "exact_flow": [
+      "local0 = this.$PC; this.$PC = -1",
+      "switch local0: raw 0 -> initialization; raw 1 -> request poll; default -> return false",
+      "initialization: this.<resReq>__0 = UnityEngine.Resources.LoadAsync(this.fn)",
+      "poll: if request is not done, this.$current = new WaitForSeconds(0.0f); if not disposing set this.$PC=1; return true",
+      "done: Menu_SoundManager.audioClipInfo[this.system_sound].audioClip = (UnityEngine.AudioClip)this.<resReq>__0.asset",
+      "if this.onLoad != null: this.onLoad.Invoke()",
+      "if this.bStart: Menu_SoundManager.Play_BGM(this.system_sound, raw 1)",
+      "this.$PC = -1; return false"
+    ],
+    "canonical_relationships": {
+      "factory":{
+        "fact_id":"FACT-0115",
+        "method":"Menu_SoundManager.CoChange_BGMandPlay",
+        "token":"0x06005294",
+        "iterator_type":"<CoChange_BGMandPlay>c__Iterator8"
+      },
+      "async_caller":{
+        "fact_id":"FACT-0129",
+        "caller":"Menu_SoundManager.Change_BGM_Theme(String,Boolean,Boolean)",
+        "factory_call_il":"0x0031"
+      }
+    }
+  },
+  "limits": [
+    "External Unity async/coroutine behavior, Play_BGM internals and authored resources remain outside this record."
+  ]
+}
