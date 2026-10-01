@@ -700,3 +700,9 @@ jobs:
         run: python tests/test_menu_sound_my_music_play_summary.py
       - name: Menu Sound MyMusic Play prover syntax
         run: python -m py_compile tools/prove_menu_sound_my_music_play.py
+
+
+      - name: uAudio ChangeCurrentVolume summary
+        run: python tests/test_u_audio_change_current_volume_summary.py
+      - name: uAudio ChangeCurrentVolume prover syntax
+        run: python -m py_compile tools/prove_u_audio_change_current_volume.py
