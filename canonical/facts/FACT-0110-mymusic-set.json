@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0110",
+  "claim": "In the matching retail DLL, static MyMusic.Set (0x06002C23) has exact signature blob 00020111aa240e, two parameters (SYSTEM_SOUND bgm_mode, String fname), and an exact 44-byte body. Raw bgm_mode 33 stores fname into static Menu_SoundManager.MyMusic_SelectFile_Admission (0x04008705). Raw bgm_mode 34 stores fname into static Menu_SoundManager.MyMusic_SelectFile_Match (0x04008704). All other raw values reach the shared return without either store. FACT-0108 pins both already-canonical caller sites: IL+0x00C4 supplies raw 33 with System.String.Empty, and IL+0x00D7 supplies raw 33 with EditWrestlerData.ThemeMusic_Filename.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MyMusic.Set token 0x06002C23 RVA 0x001AE857 signature 00020111aa240e code size 44 code sha256=d390c42b59fdb5e492f5477ea4ebd30bb039048a3feebf4e7b82d7f2dd35a59a; exact raw-33/raw-34 static-field dispatch in canonical/witnesses/CAP-R6-001/mymusic_set.summary.json; prover tools/prove_mymusic_set.py",
+      "observation": "Exact matching-DLL MyMusic.Set body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0108 EntranceScene.InitThemeMusic",
+      "to": "MyMusic.Set(33, filename)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0108 pins calls to token 0x06002C23 at InitThemeMusic IL+0x00C4 and IL+0x00D7; both load raw 33 first."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact MyMusic.Set dispatcher and the two FACT-0108 caller bridges.",
+    "Writers/readers of the two Menu_SoundManager filename fields remain separate seams.",
+    "Authored music files and file-selection behavior outside these exact stores remain outside this fact.",
+    "Raw values 33 and 34 are preserved as raw SYSTEM_SOUND values."
+  ]
+}

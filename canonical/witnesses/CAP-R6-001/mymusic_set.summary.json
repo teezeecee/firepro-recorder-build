@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MYMUSIC_SET_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MyMusic",
+      "method": "Set",
+      "token": "0x06002C23",
+      "rva": "0x001AE857",
+      "signature_blob_hex": "00020111aa240e",
+      "static": true,
+      "return_type": "Void",
+      "parameters": [
+        {"sequence": 1, "name": "bgm_mode", "type": "SYSTEM_SOUND"},
+        {"sequence": 2, "name": "fname", "type": "String"}
+      ],
+      "code_size": 44,
+      "code_sha256": "d390c42b59fdb5e492f5477ea4ebd30bb039048a3feebf4e7b82d7f2dd35a59a",
+      "header_format": "tiny",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "instruction_count": 14,
+      "branch_instruction_count": 5,
+      "call_instruction_count": 0
+    },
+    "fields": {
+      "raw_33_target": {
+        "name": "Menu_SoundManager.MyMusic_SelectFile_Admission",
+        "token": "0x04008705",
+        "signature_blob_hex": "060e",
+        "type": "String"
+      },
+      "raw_34_target": {
+        "name": "Menu_SoundManager.MyMusic_SelectFile_Match",
+        "token": "0x04008704",
+        "signature_blob_hex": "060e",
+        "type": "String"
+      }
+    },
+    "exact_flow": [
+      "if bgm_mode == 33: Menu_SoundManager.MyMusic_SelectFile_Admission = fname; return",
+      "if bgm_mode == 34: Menu_SoundManager.MyMusic_SelectFile_Match = fname; return",
+      "otherwise: return"
+    ],
+    "fact_0108_bridges": [
+      {
+        "fact_id": "FACT-0108",
+        "caller": "EntranceScene.InitThemeMusic",
+        "call_il": "0x00C4",
+        "raw_bgm_mode": 33,
+        "fname_source": "System.String.Empty memberref 0x0A000025"
+      },
+      {
+        "fact_id": "FACT-0108",
+        "caller": "EntranceScene.InitThemeMusic",
+        "call_il": "0x00D7",
+        "raw_bgm_mode": 33,
+        "fname_source": "EditWrestlerData.ThemeMusic_Filename token 0x040010C3"
+      }
+    ]
+  },
+  "limits": [
+    "Only the exact dispatcher stores and FACT-0108 caller arguments are closed."
+  ]
+}
