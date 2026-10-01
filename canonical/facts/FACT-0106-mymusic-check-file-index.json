@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0106",
+  "claim": "In the matching retail DLL, static MyMusic.Check_File(Int32 index) (0x06002C20) has exact signature blob 00010208 and an exact 73-byte body. It computes local0 = index - raw 10000. If local0 is below raw 0 it returns false. It then reads MyMusic.FileList_Match.Count and returns false when Count is raw 0. It reads Count again and branches to the lookup only when the exact bge operand order succeeds for Count and local0; otherwise it returns false. The lookup loads FileList_Match[local0], reads MySound_FileList.name, calls the already-canonical MyMusic.Check_File(String) token 0x06002C1E, and returns that Boolean. The direct String-overload call is at IL+0x0043.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MyMusic.Check_File(Int32) token 0x06002C20 RVA 0x001AE7D8 signature 00010208 code size 73 code sha256=66362426cdc7c33b609dc94d3bb31cac438d725c0dc823789587063ab0174c7b; exact index subtraction/count gates/FileList_Match lookup/name/String-overload call in canonical/witnesses/CAP-R6-001/mymusic_check_file_index.summary.json; prover tools/prove_mymusic_check_file_index.py",
+      "observation": "Exact matching-DLL Int32 MyMusic.Check_File overload body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "MyMusic.Check_File(Int32 index)",
+      "to": "FACT-0100 MyMusic.Check_File(String)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Int32 overload IL+0x0043 is call token 0x06002C1E after loading MySound_FileList.name."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Int32 overload and its call into the already-canonical String overload.",
+    "Authored MyMusic.FileList_Match contents and music files remain outside this fact.",
+    "The raw 10000 subtraction and exact Count/local0 bge operand order are preserved without assigning music-ID semantics.",
+    "Other direct callers of MyMusic.Check_File(String) remain separate gates."
+  ]
+}
