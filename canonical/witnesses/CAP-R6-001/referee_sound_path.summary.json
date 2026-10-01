@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_SOUND_PATH_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methods": [
+      {
+        "type": "MatchMisc",
+        "method": "PlayRefereeSE",
+        "token": "0x06004971",
+        "rva": "0x002B0B50",
+        "signature_blob_hex": "00010111aa0c",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "seid"
+          }
+        ],
+        "code_size": 87,
+        "code_sha256": "1875e52cbc086e1797f248a8f89340c75605d756409b3eb4e4bf1cea0d0080f9",
+        "max_stack": 2,
+        "local_signature_token": "0x11000F77",
+        "instruction_count": 26,
+        "branch_instruction_count": 5,
+        "call_instruction_count": 5
+      },
+      {
+        "type": "MatchSEPlayer",
+        "method": "PlayRefereeSE",
+        "token": "0x06005278",
+        "rva": "0x00321688",
+        "signature_blob_hex": "20010111aa0c",
+        "return_type": "Void",
+        "parameters": [
+          {
+            "sequence": 1,
+            "name": "seid"
+          }
+        ],
+        "code_size": 77,
+        "code_sha256": "43db6ad4797e97ed994bdc3c50bd925b35592f129148bd42103009de2d51b645",
+        "max_stack": 3,
+        "local_signature_token": "0x110011F2",
+        "instruction_count": 32,
+        "branch_instruction_count": 4,
+        "call_instruction_count": 4
+      }
+    ],
+    "outer_wrapper": {
+      "throttle_conditions": [
+        "MatchMain.inst != null",
+        "MatchMain.isFastForwardMatch != 0",
+        "Fade.inst.IsFadeFinish() != 0"
+      ],
+      "frame_expression": "unsigned MatchMain.MchFrameCnt % 20",
+      "immediate_return_when": "all three conditions are true and remainder != 0",
+      "dispatch_when": "any earlier condition is false OR remainder == 0",
+      "dispatch": {
+        "condition": "MatchSEPlayer.inst != null",
+        "callee_token": "0x06005278",
+        "arguments": [
+          "seid"
+        ]
+      }
+    },
+    "inner_method": {
+      "raw_seid_upper_gate": "seid < 109 else return",
+      "referee_resolution": {
+        "calls": [
+          {
+            "owner": "RefereeMan",
+            "method": "GetInst",
+            "token": "0x060050B2"
+          },
+          {
+            "owner": "RefereeMan",
+            "method": "GetRefereeObj",
+            "token": "0x060050B6"
+          }
+        ],
+        "object_implicit_memberref": "0x0A00002A",
+        "false_effect": "return"
+      },
+      "raw_seid_lower_gate": "seid >= 0 else return",
+      "wait_list": {
+        "field_token": "0x040086E5",
+        "nonzero_effect": "return",
+        "zero_effect": "store raw 2"
+      },
+      "local_volume": 1,
+      "final_call": {
+        "target": "Menu_SoundManager.Play_MatchSE",
+        "token": "0x060052A8",
+        "arguments": [
+          "seid",
+          1
+        ]
+      }
+    },
+    "wait_decay_bridge": {
+      "fact_id": "FACT-0063",
+      "field_token": "0x040086E5",
+      "effect": "positive wait-list values decrement by one per MatchSEPlayer.Update call"
+    }
+  },
+  "limits": [
+    "No gameplay caller of the outer wrapper is promoted here.",
+    "Referee object internals and authored sound data remain outside this record."
+  ]
+}
