@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_FORM_DISP_LOOKUP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "GetCurrentFormDispInfo",
+      "token": "0x06005098",
+      "rva": "0x00308040",
+      "signature_blob_hex": "200012a9cc",
+      "parameters": [],
+      "code_size": 104,
+      "code_sha256": "edf4f6904d007e70cf4d2cec22ab4c31f61d4898d18fd3107d886d2239a5a964",
+      "instruction_count": 40,
+      "branch_instruction_count": 4,
+      "call_instruction_count": 0,
+      "local_signature_token": "0x11001052"
+    },
+    "fields": {
+      "current_anm_idx": {
+        "name": "CurrentAnmIdx",
+        "token": "0x040062B1"
+      },
+      "current_skill": {
+        "name": "CurrentSkill",
+        "token": "0x040062B0"
+      },
+      "anm_data": {
+        "name": "anmData",
+        "token": "0x04007C7A"
+      },
+      "current_form_idx": {
+        "name": "currentFormIdx",
+        "token": "0x040062B3"
+      },
+      "form_disp_list": {
+        "name": "formDispList",
+        "token": "0x04007C9F"
+      }
+    },
+    "exact_lookup": [
+      {
+        "condition": "CurrentAnmIdx < 0",
+        "opcode": "blt",
+        "effect": "return null"
+      },
+      {
+        "condition": "CurrentAnmIdx < CurrentSkill.anmData.Length",
+        "opcode": "blt",
+        "effect": "continue; otherwise return null"
+      },
+      {
+        "effect": "anm = CurrentSkill.anmData[CurrentAnmIdx]"
+      },
+      {
+        "condition": "currentFormIdx < 0",
+        "opcode": "blt",
+        "effect": "return null"
+      },
+      {
+        "condition": "currentFormIdx < anm.formDispList.Length",
+        "opcode": "blt",
+        "effect": "continue; otherwise return null"
+      },
+      {
+        "effect": "return anm.formDispList[currentFormIdx]"
+      }
+    ],
+    "fact_0070_bridge": {
+      "fact_id": "FACT-0070",
+      "caller": "Referee.UpdateRefereeAnm",
+      "call_ils": [
+        "0x00DF",
+        "0x0109"
+      ],
+      "callee_token": "0x06005098"
+    }
+  },
+  "limits": [
+    "Authored animation/form-display contents remain outside this record."
+  ]
+}
