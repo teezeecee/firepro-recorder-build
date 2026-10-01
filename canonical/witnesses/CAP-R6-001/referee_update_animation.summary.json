@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_REFEREE_UPDATE_ANIMATION_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Referee",
+      "method": "UpdateRefereeAnm",
+      "token": "0x06005097",
+      "rva": "0x00307E94",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 415,
+      "code_sha256": "5d41c826c5bc4929960746b1b03abdd389b4911c89ec01a48fda0eba6e6c9e4a",
+      "instruction_count": 147,
+      "branch_instruction_count": 11,
+      "call_instruction_count": 4,
+      "local_signature_token": "0x11001160"
+    },
+    "pause_gate": {
+      "field": "isAnmPause",
+      "field_token": "0x040062BA",
+      "nonzero_effect": "return"
+    },
+    "request_init": {
+      "gate_field": "reqAnmInit",
+      "gate_token": "0x040062BF",
+      "skill_lookup": {
+        "singleton_field": "SkillDataMan.inst 0x04007CF6",
+        "method": "GetSkillData_Standard",
+        "token": "0x06005264",
+        "argument": "SkillID"
+      },
+      "writes": [
+        [
+          "CurrentSkill",
+          "lookup result"
+        ],
+        [
+          "CurrentAnmIdx",
+          0
+        ],
+        [
+          "isAnmBoot",
+          1
+        ],
+        [
+          "currentFormIdx",
+          -1
+        ],
+        [
+          "anmType",
+          "CurrentSkill.anmType"
+        ],
+        [
+          "FormDispDuration",
+          0
+        ],
+        [
+          "TerrainColType",
+          "CurrentSkill.anmData[CurrentAnmIdx].terrainColType"
+        ],
+        [
+          "AnimeEnd",
+          "CurrentSkill.anmData[CurrentAnmIdx].anmEndState"
+        ],
+        [
+          "reqAnmInit",
+          0
+        ]
+      ]
+    },
+    "frame_selection": {
+      "current_animation_element": "CurrentSkill.anmData[CurrentAnmIdx]",
+      "form_index_reset_condition": "FormDispDuration <= 0 AND currentFormIdx >= formNum - 1",
+      "form_index_reset_value": -1,
+      "acquisition_condition": "FormDispDuration == 0",
+      "acquisition_step": "increment currentFormIdx; call GetCurrentFormDispInfo()",
+      "acquisition_method": {
+        "token": "0x06005098",
+        "name": "Referee.GetCurrentFormDispInfo"
+      },
+      "repeat_condition": "returned dispFrm == 0",
+      "accepted_record_effects": [
+        "FormDispDuration = dispFrm",
+        "local_x = centerPos.x",
+        "local_y = -centerPos.y",
+        "if PlDir >= 3: local_x = -local_x",
+        "PlPos.x += local_x",
+        "PlPos.y += local_y",
+        "FormRev = flags"
+      ]
+    },
+    "sound_branch": {
+      "field": "FormDispInfo.seID",
+      "field_token": "0x04007CE2",
+      "zero_effect": "skip sound call",
+      "nonzero_call": {
+        "token": "0x06004971",
+        "name": "MatchMisc.PlayRefereeSE",
+        "argument": "seID",
+        "fact_id": "FACT-0064"
+      }
+    },
+    "shared_tail": "FormDispDuration = FormDispDuration - 1",
+    "fact_0069_bridge": {
+      "fact_id": "FACT-0069",
+      "caller": "Referee.InitRound",
+      "call_il": "0x00C9",
+      "callee_token": "0x06005097"
+    }
+  },
+  "limits": [
+    "Skill/form data contents and the two still-open helper internals remain outside this record."
+  ]
+}
