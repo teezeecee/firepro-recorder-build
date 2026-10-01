@@ -5,7 +5,7 @@
   "evidence": [
     {
       "source_id": "DLL-001",
-      "locator": "uAudio.uAudioPlayer.get_UAudio token 0x060052D0 RVA 0x00325714 signature 20001282b1 code size 86 code sha256=5524703abb8912537cca2bf60cf25fdcde63df8bcc2ea51a0db76d5dc8e858c4; exact lazy _uAudio construction, targetFile/volume setup and Action<PlayBackState> callback assignment in canonical/witnesses/CAP-R6-001/u_audio_get_u_audio.summary.json; prover tools/prove_u_audio_get_u_audio.py",
+      "locator": "uAudio.uAudioPlayer.get_UAudio token 0x060052D0 RVA 0x003256D4 signature 20001282b1 code size 86 code sha256=5524703abb8912537cca2bf60cf25fdcde63df8bcc2ea51a0db76d5dc8e858c4; exact lazy _uAudio construction, targetFile/volume setup and Action<PlayBackState> callback assignment in canonical/witnesses/CAP-R6-001/u_audio_get_u_audio.summary.json; prover tools/prove_u_audio_get_u_audio.py",
       "observation": "Exact matching-DLL uAudioPlayer.get_UAudio body."
     }
   ],
