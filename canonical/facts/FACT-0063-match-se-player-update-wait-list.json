@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0063",
+  "claim": "In the matching retail DLL, MatchSEPlayer.Update (0x0600527A) is a parameterless instance method with an exact 51-byte body. It initializes a local Int32 index to zero and loops while signed index < 109. For each raw index, it reads rfs_se_wait_list[index]; when the value is greater than zero it takes the element address and replaces the value with value - 1, then increments the index. Values zero or less are left unchanged. The loop therefore visits exact raw indices 0 through 108 once per call. FACT-0060 pins the complementary writer: MatchSEPlayer.PlayMatchSE stores raw 2 into rfs_se_wait_list[seid] before dispatching the sound.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchSEPlayer.Update token 0x0600527A RVA 0x00321744 signature 200001 code size 51 code sha256=8bb4fe7bdd1afe7b8440b399d90daf4e90da035214a8732bbb3f105723cdafcf; exact loop/decrement body in canonical/witnesses/CAP-R6-001/match_se_player_update_wait_list.summary.json; prover tools/prove_match_se_player_update_wait_list.py",
+      "observation": "Exact matching-DLL MatchSEPlayer.Update body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0060 MatchSEPlayer.PlayMatchSE",
+      "to": "rfs_se_wait_list[seid] = 2",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0060 pins raw 2 store into field 0x040086E5 rfs_se_wait_list at PlayMatchSE IL+0x0166..0x016D."
+        }
+      ]
+    },
+    {
+      "from": "MatchSEPlayer.Update",
+      "to": "rfs_se_wait_list positive-value decrement",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Update IL+0x0000..0x0032 loops local0 from 0 while local0<109; for each element >0 it uses ldelema/ldind.i4/sub/stind.i4 to store element-1."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes the exact wait-list decay loop only; it does not establish the scheduling frequency of MatchSEPlayer.Update.",
+    "Raw wait-list indices are not assigned sound labels here.",
+    "Other writers/readers of rfs_se_wait_list remain outside this fact unless separately closed.",
+    "Authored sound tables remain outside canon until their raw packed source is available."
+  ]
+}
