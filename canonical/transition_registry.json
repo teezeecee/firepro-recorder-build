@@ -1143,6 +1143,23 @@
         "remaining helper caller closure",
         "referee object lifecycle closure"
       ]
+    },
+    {
+      "family_id": "DLL_REFEREEMAN_POPULATION_V1",
+      "fact_id": "FACT-0066",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL RefereeMan constructor, Awake, Start and CreateReferee branchless one-element-array population bodies linked to FACT-0065 field readers.",
+      "summary": "canonical/witnesses/CAP-R6-001/refereeman_population.summary.json",
+      "dll_method_count": 4,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Prefab_Referee authored object closure",
+        "external CreateReferee caller closure",
+        "referee component behavior closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
