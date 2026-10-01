@@ -1,0 +1,66 @@
+{
+  "fact_id": "FACT-0038",
+  "claim": "In the matching retail DLL, two small direct helpers used by FACT-0037 are closed together. PlayerController_AI.GetDamageLevel_LMH (0x06004F9B) is a static one-Float32-parameter method named hp returning DamageLevelEnum_LMH with an exact 49-byte body: it calls the already-closed MatchMisc.GetParamRate(hp), then compares that Float32 against COMLevelDataManager.inst.damageLevelThreshold_LMH[0] and [1] using the exact emitted blt.un branches; failure to take the first branch returns raw 0, failure to take the second returns raw 1, and taking both branches reaches raw 2. PlayerController_AI.Reset_HungUpCheck (0x06004FD8) is a parameterless instance method with an exact 55-byte body: it stores zero into MoveCheckPosPtr and MoveCheckPosRecordNum, then loops raw index 0 through 7 and stores UnityEngine.Vector2.zero into MoveCheckPosBuf[index], then returns. FACT-0037 pins GetDamageLevel_LMH at ProcessPriorityAct IL+0x00E3 and Reset_HungUpCheck at IL+0x0190.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.GetDamageLevel_LMH token 0x06004F9B RVA 0x002F5ED4 signature 000111a7c40c parameter hp:Float32 return DamageLevelEnum_LMH code size 49 code sha256=9c943eda48fd9f9c76271366324f22095426c06b0eecbb77d37e0cc945dde6c3; exact body in canonical/witnesses/CAP-R6-001/priority_small_helpers.summary.json; prover tools/prove_priority_small_helpers.py",
+      "observation": "Exact matching-DLL GetDamageLevel_LMH body."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Reset_HungUpCheck token 0x06004FD8 RVA 0x002F91A0 signature 200001 code size 55 code sha256=9bea2fa5e79dc6e2c45acd5a83161a0ce0bec614c28ca0c2f0e63037bb0b2e01; exact body in canonical/witnesses/CAP-R6-001/priority_small_helpers.summary.json; prover tools/prove_priority_small_helpers.py",
+      "observation": "Exact matching-DLL Reset_HungUpCheck body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0037 ProcessPriorityAct target HP",
+      "to": "PlayerController_AI.GetDamageLevel_LMH(hp)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0037 pins ProcessPriorityAct IL+0x00DE loading target.HP and IL+0x00E3 call token 0x06004F9B."
+        }
+      ]
+    },
+    {
+      "from": "GetDamageLevel_LMH input hp",
+      "to": "raw 0/1/2 return",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "GetDamageLevel_LMH calls FACT-0031 MatchMisc.GetParamRate at IL+0x0001, then uses COMLevelDataManager.damageLevelThreshold_LMH[0] with blt.un IL+0x0014 and [1] with blt.un IL+0x0028; non-branch returns are 0 then 1, final branch path returns 2."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0037 positive TryToDoPriorityAct result",
+      "to": "PlayerController_AI.Reset_HungUpCheck()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0037 pins ProcessPriorityAct IL+0x0190 call token 0x06004FD8 after a positive TryToDoPriorityAct result."
+        }
+      ]
+    },
+    {
+      "from": "Reset_HungUpCheck",
+      "to": "MoveCheckPos state reset",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Reset_HungUpCheck stores zero to MoveCheckPosPtr field 0x0400615A and MoveCheckPosRecordNum field 0x0400615B, then loops while signed index<8 and writes UnityEngine.Vector2.zero into MoveCheckPosBuf field 0x04006159."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The authored/runtime contents of COMLevelDataManager.damageLevelThreshold_LMH are outside this fact.",
+    "The emitted blt.un Float32 branch opcodes are preserved exactly; this fact does not simplify unordered-input behavior.",
+    "Raw return values 0, 1 and 2 are retained without adding labels beyond the metadata return type DamageLevelEnum_LMH.",
+    "The later use of MoveCheckPosBuf, MoveCheckPosPtr and MoveCheckPosRecordNum remains outside this fact.",
+    "UnityEngine.Vector2.get_zero is an external MemberRef; its engine implementation is outside Assembly-CSharp.dll."
+  ]
+}
