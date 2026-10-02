@@ -2642,6 +2642,23 @@
         "external/interface/framework invocation",
         "broader raw State semantics"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_BACKEND_FALLBACK_GETTERS_V1",
+      "fact_id": "FACT-0155",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL get_AudioTitle/get_TotalTime backend-or-static-fallback getters.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_backend_fallback_getters.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external backend getter implementations",
+        "framework static field behavior",
+        "non-direct invocation"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
