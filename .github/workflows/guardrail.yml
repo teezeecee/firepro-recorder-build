@@ -916,3 +916,9 @@ jobs:
         run: python tests/test_menu_sound_load_async_asset_movenext_summary.py
       - name: Menu Sound LoadAsyncAsset MoveNext prover syntax
         run: python -m py_compile tools/prove_menu_sound_load_async_asset_movenext.py
+
+
+      - name: Menu Sound IsWaitBGM MP3 summary
+        run: python tests/test_menu_sound_is_wait_bgm_mp3_summary.py
+      - name: Menu Sound IsWaitBGM MP3 prover syntax
+        run: python -m py_compile tools/prove_menu_sound_is_wait_bgm_mp3.py
