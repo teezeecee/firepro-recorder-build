@@ -10,3 +10,4 @@
   ],
   "limits":["This fact closes only the exact CheckValidationDLC body and its three direct canonical bridges.","Authored meaning of dlc indices 0..12 and SaveData installation state remain outside this fact.","Raw loop bounds 13 and the broader 16-entry IsDLC scan are preserved exactly without assigning product labels."]
 }
+
