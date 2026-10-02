@@ -1,0 +1,18 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_VOLUME_ROUTING_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "fields":{"backend":{"token":"0x040087E3","name":"_uAudio"},"offset":{"token":"0x040087F0","name":"start_volume_Offset","type":"Single"}},
+    "backend_calls":{"set_volume":{"token":"0x0A000FB0","resolved":"uAudio.uAudio_backend.uAudio.set_Volume","signature_blob_hex":"2001010c"},"get_volume":{"token":"0x0A000FBE","resolved":"uAudio.uAudio_backend.uAudio.get_Volume","signature_blob_hex":"20000c"}},
+    "methods":[
+      {"name":"set_Volume_Offset","token":"0x060052CF","methoddef_row_hex":"b156320000008608c0620a0070550000533d","rva":"0x003256B1","signature_blob_hex":"2001010c","parameters":[{"sequence":1,"name":"value","type":"Single"}],"code_size":31,"code_sha256":"2dd474a11591e000678f479f2d90becf09ceca30baa460e3ec548152f79511de","body_hex":"027be3870004390c000000027be3870004036fb00f000a02037df08700042a","exact_flow":["if _uAudio != null: _uAudio.set_Volume(value)","start_volume_Offset = value","return"]},
+      {"name":"get_Volume_BackEnd","token":"0x060052DD","methoddef_row_hex":"355832000000860864630a002a4c0000583d","rva":"0x00325835","signature_blob_hex":"20000c","parameters":[],"code_size":30,"code_sha256":"bdcad7e05493de6d828b070a1ebebada023b8623afedb806639dede39f46a105","body_hex":"027be3870004390c000000027be38700046fbe0f000a2a0228ce5200062a","exact_flow":["if _uAudio != null: return _uAudio.get_Volume()","otherwise return get_Volume_Offset()"],"fallback_call":{"token":"0x060052CE","fact_id":"FACT-0150","call_il":"0x0018"}},
+      {"name":"set_Volume_BackEnd","token":"0x060052DE","methoddef_row_hex":"545832000000860877630a0070550000583d","rva":"0x00325854","signature_blob_hex":"2001010c","parameters":[{"sequence":1,"name":"value","type":"Single"}],"code_size":31,"code_sha256":"c77479fb0ce8779178f36cdfedf65a4a1a72293210533a34202937657ad3304b","body_hex":"027be3870004390c000000027be3870004036fb00f000a020328cf5200062a","exact_flow":["if _uAudio != null: _uAudio.set_Volume(value)","call set_Volume_Offset(value)","return"],"sibling_call":{"token":"0x060052CF","call_il":"0x0019"}}
+    ],
+    "direct_methoddef_reference_scan":{"set_Volume_Offset":{"target":"0x060052CF","call_count":1,"known_call":{"caller":"set_Volume_BackEnd","il":"0x0019"}},"get_Volume_BackEnd":{"target":"0x060052DD","all_counts_zero":true},"set_Volume_BackEnd":{"target":"0x060052DE","all_counts_zero":true}}
+  },
+  "limits":["External backend implementation and higher-level naming semantics remain outside this record."]
+}

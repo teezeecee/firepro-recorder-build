@@ -838,3 +838,9 @@ jobs:
         run: python tests/test_u_audio_backend_fallback_getters_summary.py
       - name: uAudio backend fallback getters prover syntax
         run: python -m py_compile tools/prove_u_audio_backend_fallback_getters.py
+
+
+      - name: uAudio volume routing summary
+        run: python tests/test_u_audio_volume_routing_summary.py
+      - name: uAudio volume routing prover syntax
+        run: python -m py_compile tools/prove_u_audio_volume_routing.py

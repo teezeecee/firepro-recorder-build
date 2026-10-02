@@ -2659,6 +2659,23 @@
         "framework static field behavior",
         "non-direct invocation"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_VOLUME_ROUTING_V1",
+      "fact_id": "FACT-0156",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL set_Volume_Offset/get_Volume_BackEnd/set_Volume_BackEnd routing over backend set/get Volume, local start_volume_Offset, and canonical FACT-0150 getter.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_volume_routing.summary.json",
+      "dll_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external backend volume implementation",
+        "higher-level volume naming semantics",
+        "non-direct invocation"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
