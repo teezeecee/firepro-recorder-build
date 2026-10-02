@@ -1,0 +1,28 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_LOAD_MATCH_SE_MOVENEXT_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "move_next":{"owner_type":"<Load_MatchSe>c__Iterator0","owner_type_token":"0x02000F65","token":"0x060074BA","methoddef_row_hex":"a03832000000e6017f5a0600db490000d24f","rva":"0x003238A0","signature_blob_hex":"200002","code_size":361,"code_sha256":"f80edfba4bbae0a9f8538fe6abf28795445ad07b7558bd988c5f9fec8b79eed0","header_flags_raw":"0x0013","max_stack":6,"local_signature_token":"0x11000047","instruction_count":104,"branch_instruction_count":12,"call_instruction_count":7,
+      "fields":{"clip_list":"0x040086FE","load_end":"0x040086FC","param_file_name":"0x04008664","param_local":"0x0400C1EF","fname_local":"0x0400C1F0","current":"0x0400C1F2","disposing":"0x0400C1F3","pc":"0x0400C1F4","closure":"0x0400C1F5","closure_i":"0x0400C270","closure_backref":"0x0400C271"},
+      "strings":[{"token":"0x7008F366","value":"Sound/ENVIRONMENT/"},{"token":"0x7008F38C","value":"Sound/BASE/"}],
+      "state_switch":{"raw_state_0_target":"0x0021","raw_state_1_target":"0x012E","default_target":"0x0165"},
+      "exact_flow":["if Sound_ClipMatchSE_List already non-null: return false","allocate AudioClip[109] and closure; closure.i=0","while i<109: prm=FACT-0062 GetMatchSEParam(i); null fileName skips to increment","fname starts String.Empty; raw i>=103 uses 'Sound/ENVIRONMENT/' else 'Sound/BASE/'; append prm.fileName","call LoadAsyncAsset(fname, Action<object>(closure, <>m__0)); external StartCoroutine; store coroutine in $current; if not disposing set $PC=1; return true","resume: i=i+1 and continue","after loop: Sound_ClipMatchSE_List_Load_End=true; $PC=-1; return false"],
+      "canonical_call":{"token":"0x06005273","fact_id":"FACT-0062","call_il":"0x0070"},
+      "load_async_factory_call":{"token":"0x06005285","call_il":"0x010B"},
+      "closure_callback_ldftn":{"token":"0x06007515","ldftn_il":"0x0100"}
+    },
+    "closure":{"type":"<Load_MatchSe>c__AnonStoreyF","type_token":"0x02000F74","ctor":{"token":"0x06007514","rva":"0x00323A3C","code_size":7,"code_sha256":"5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9"},"callback":{"token":"0x06007515","rva":"0x00323A44","signature_blob_hex":"2001011c","code_size":19,"code_sha256":"c464156a84c67e9523c5fc1d5c43ef0acd8dffd406b94f26963b58f17742069d","exact_flow":["Sound_ClipMatchSE_List[this.i] = arg1 as UnityEngine.AudioClip","return"]}},
+    "load_async_factory":{"token":"0x06005285","methoddef_row_hex":"4c1a3200000081000f72080041910100e73c","rva":"0x00321A4C","signature_blob_hex":"20021281810e151280d1011c","parameters":[{"sequence":1,"name":"path","type":"String"},{"sequence":2,"name":"callback","type":"System.Action<object>"}],"code_size":22,"code_sha256":"374fd489b8e5ddd8431fbfedf3f2441f6c2ae47f54ae83bada355263b3af9fe0","body_hex":"73bf7400060a06037df6c1000406047df8c10004062a","generated_type":"<LoadAsyncAsset>c__Iterator1","generated_type_token":"0x02000F66","constructor_token":"0x060074BF"},
+    "load_async_support":[
+      {"name":".ctor","token":"0x060074BF","rva":"0x00323A58","code_size":7,"code_sha256":"5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9"},
+      {"name":"System.Collections.Generic.IEnumerator<object>.get_Current","token":"0x060074C1","rva":"0x00323AFF","code_size":7,"code_sha256":"8d21a6bcd74e1487bfbdb7c7b166ba89153a64c43d55c03916b2da7b9cb212a5"},
+      {"name":"System.Collections.IEnumerator.get_Current","token":"0x060074C2","rva":"0x00323B07","code_size":7,"code_sha256":"8d21a6bcd74e1487bfbdb7c7b166ba89153a64c43d55c03916b2da7b9cb212a5"},
+      {"name":"Dispose","token":"0x060074C3","rva":"0x00323B0F","code_size":15,"code_sha256":"69f03bb2a7db86d01e301011c3a8286cb9e8033ff1c21e6a48ef97bfc1d77fc1"},
+      {"name":"Reset","token":"0x060074C4","rva":"0x00323B1F","code_size":6,"code_sha256":"feef1163dc69f21cc1201b1ec63d1a60afc2af2ce98036d760713f22a2968a49"}
+    ],
+    "open_execution_method":{"token":"0x060074C0","name":"<LoadAsyncAsset>c__Iterator1.MoveNext","rva":"0x00323A60","code_size":147,"code_sha256":"a4d0aab998a3a51651ad2a7266627226a911274f84e12043ba419b6a5325cff7"}
+  },
+  "limits":["LoadAsyncAsset.MoveNext, Unity coroutine/resource implementation and authored MatchSE rows remain outside this record."]
+}
