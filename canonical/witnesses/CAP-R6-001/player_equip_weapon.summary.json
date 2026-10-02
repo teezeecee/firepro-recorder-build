@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_R6_PLAYER_EQUIP_WEAPON_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methoddef_row": {
+      "token": "0x06004EE0",
+      "row_hex": "b01a2e0000008600a0250a009f490000553a",
+      "rva": "0x002E1AB0"
+    },
+    "method": {
+      "type": "Player",
+      "method": "EquipWeapon",
+      "token": "0x06004EE0",
+      "rva": "0x002E1AB0",
+      "signature_blob_hex": "20010108",
+      "return_type": "Void",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "widx",
+          "type": "Int32"
+        }
+      ],
+      "code_size": 91,
+      "code_sha256": "f4436e9f21bb7d3b9eef160a5967c34e25eeaf52fcfcc87d41f6524ececa61eb",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 2,
+      "local_signature_token": "0x11001074",
+      "local_signature_blob_hex": "070112b508",
+      "locals": [
+        {
+          "index": 0,
+          "type": "Weapon",
+          "type_token": "0x02000D42"
+        }
+      ]
+    },
+    "fields": {
+      "player_weaponIdx": {
+        "token": "0x0400600B",
+        "owner": "Player",
+        "name": "weaponIdx",
+        "type": "Int32"
+      },
+      "weaponman_inst": {
+        "token": "0x0400B6EA",
+        "owner": "WeaponMan",
+        "name": "inst"
+      },
+      "weapon_state": {
+        "token": "0x0400B6D5",
+        "owner": "Weapon",
+        "name": "State"
+      },
+      "player_plidx": {
+        "token": "0x04005FA6",
+        "owner": "Player",
+        "name": "PlIdx",
+        "type": "Int32"
+      },
+      "weapon_plidx": {
+        "token": "0x0400B6DC",
+        "owner": "Weapon",
+        "name": "PlIdx",
+        "type": "Int32"
+      }
+    },
+    "calls": {
+      "get_weapon_obj": {
+        "token": "0x06006AC8",
+        "resolved": "WeaponMan.GetWeaponObj(Int32)",
+        "call_il": "0x0013",
+        "canonical_status": "OPEN_SEPARATE_GATE"
+      },
+      "object_op_implicit": {
+        "token": "0x0A00002A",
+        "resolved": "UnityEngine.Object.op_Implicit",
+        "call_il": "0x001A"
+      },
+      "weapon_get_game_object": {
+        "token": "0x0A000028",
+        "resolved": "UnityEngine.Component.get_gameObject",
+        "call_il": "0x0040"
+      },
+      "weapon_get_transform": {
+        "token": "0x0A000050",
+        "resolved": "UnityEngine.GameObject.get_transform",
+        "call_il": "0x0045"
+      },
+      "player_get_game_object": {
+        "token": "0x0A000028",
+        "resolved": "UnityEngine.Component.get_gameObject",
+        "call_il": "0x004B"
+      },
+      "player_get_transform": {
+        "token": "0x0A000050",
+        "resolved": "UnityEngine.GameObject.get_transform",
+        "call_il": "0x0050"
+      },
+      "set_parent": {
+        "token": "0x0A0007A2",
+        "resolved": "UnityEngine.Transform.SetParent(Transform)",
+        "call_il": "0x0055"
+      }
+    },
+    "exact_flow": [
+      "if signed this.weaponIdx is not less than raw 0: return",
+      "local0 = WeaponMan.inst.GetWeaponObj(widx)",
+      "if UnityEngine.Object.op_Implicit(local0) is false: return",
+      "this.weaponIdx = widx",
+      "local0.State = raw 1",
+      "local0.PlIdx = this.PlIdx",
+      "local0.gameObject.transform.SetParent(this.gameObject.transform)",
+      "return"
+    ],
+    "fact0015_bridge": {
+      "caller": "FormAnimator.PlayAnimationSE",
+      "caller_token": "0x06004E7D",
+      "caller_rva": "0x002DB718",
+      "caller_code_size": 364,
+      "caller_code_sha256": "ba7c6da321b3f5632756459a8a788abd92609da056981078f5fc7bbe04824085",
+      "call_il": "0x00E9",
+      "opcode": "callvirt",
+      "callee_token": "0x06004EE0",
+      "callsite_count_inside_caller": 1
+    }
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "direct_parent_method": "FormAnimator.PlayAnimationSE",
+    "equip_weapon_execution_count": 11,
+    "relations": {
+      "parent_PRE_weaponIdx_minus1": 11,
+      "equip_PRE_weaponIdx_minus1": 11,
+      "equip_owner_slot_equals_parent_owner_slot": 11,
+      "equip_raw_arg_equals_equip_POST_weaponIdx": 11,
+      "parent_POST_weaponIdx_equals_equip_raw_arg": 11
+    },
+    "raw_argument_counts": {
+      "0": 1,
+      "2": 2,
+      "3": 3,
+      "5": 2,
+      "6": 1,
+      "7": 2
+    },
+    "records": [
+      {"parent_pre_line":94039,"parent_post_line":94042,"equip_pre_line":94040,"equip_post_line":94041,"owner_slot":"3","instance":"Player#26707456","arg":"7","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"7","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"7","state":"NormalAnm","tick":"65319","seq":"239880"},
+      {"parent_pre_line":206261,"parent_post_line":206264,"equip_pre_line":206262,"equip_post_line":206263,"owner_slot":"7","instance":"Player#1840914816","arg":"7","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"7","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"7","state":"NormalAnm","tick":"69864","seq":"532312"},
+      {"parent_pre_line":248043,"parent_post_line":248046,"equip_pre_line":248044,"equip_post_line":248045,"owner_slot":"3","instance":"Player#26707456","arg":"3","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"3","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"3","state":"NormalAnm","tick":"71655","seq":"643524"},
+      {"parent_pre_line":273211,"parent_post_line":273214,"equip_pre_line":273212,"equip_post_line":273213,"owner_slot":"5","instance":"Player#224665984","arg":"3","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"3","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"3","state":"NormalAnm","tick":"72720","seq":"711546"},
+      {"parent_pre_line":353237,"parent_post_line":353240,"equip_pre_line":353238,"equip_post_line":353239,"owner_slot":"5","instance":"Player#224665984","arg":"5","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"5","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"5","state":"NormalAnm","tick":"76050","seq":"928564"},
+      {"parent_pre_line":414169,"parent_post_line":414172,"equip_pre_line":414170,"equip_post_line":414171,"owner_slot":"1","instance":"Player#446850176","arg":"0","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"0","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"0","state":"NormalAnm","tick":"78548","seq":"1090808"},
+      {"parent_pre_line":541855,"parent_post_line":541858,"equip_pre_line":541856,"equip_post_line":541857,"owner_slot":"7","instance":"Player#1840914816","arg":"2","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"2","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"2","state":"NormalAnm","tick":"84003","seq":"1436456"},
+      {"parent_pre_line":634655,"parent_post_line":634658,"equip_pre_line":634656,"equip_post_line":634657,"owner_slot":"5","instance":"Player#224665984","arg":"2","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"2","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"2","state":"NormalAnm","tick":"88005","seq":"1688138"},
+      {"parent_pre_line":692375,"parent_post_line":692378,"equip_pre_line":692376,"equip_post_line":692377,"owner_slot":"5","instance":"Player#224665984","arg":"6","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"6","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"6","state":"NormalAnm","tick":"90449","seq":"1845000"},
+      {"parent_pre_line":723057,"parent_post_line":723060,"equip_pre_line":723058,"equip_post_line":723059,"owner_slot":"6","instance":"Player#354206464","arg":"3","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"3","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"3","state":"NormalAnm","tick":"91740","seq":"1927850"},
+      {"parent_pre_line":815159,"parent_post_line":815162,"equip_pre_line":815160,"equip_post_line":815161,"owner_slot":"5","instance":"Player#224665984","arg":"5","equip_pre_weaponIdx":"-1","equip_post_weaponIdx":"5","parent_pre_weaponIdx":"-1","parent_post_weaponIdx":"5","state":"NormalAnm","tick":"95462","seq":"2169868"}
+    ]
+  },
+  "witness_digest": {
+    "algorithm": "sha256",
+    "canonical_record_format": "UTF-8 fields joined by tab and terminated by LF",
+    "fields": [
+      "parent_pre_line",
+      "parent_post_line",
+      "equip_pre_line",
+      "equip_post_line",
+      "tick",
+      "seq",
+      "owner_slot",
+      "instance",
+      "arg",
+      "parent_pre_weaponIdx",
+      "parent_post_weaponIdx",
+      "equip_pre_weaponIdx",
+      "equip_post_weaponIdx"
+    ],
+    "record_count": 11,
+    "byte_count": 794,
+    "sha256": "ee0f5723f7ae37c9742c154b75dd9055dc2b04cf84e8c9b60b76f82801fde1bf",
+    "reproducibility_tool": "tools/prove_player_equip_weapon.py"
+  },
+  "limits": [
+    "The R6 event trace directly corroborates the Player.weaponIdx mutation and exact PlayAnimationSE child-call relationship; it does not directly expose Weapon.State, Weapon.PlIdx or Unity transform-parent fields.",
+    "WeaponMan.GetWeaponObj token 0x06006AC8 remains a separate open in-assembly helper gate.",
+    "UnityEngine.Object/component/GameObject/Transform implementations remain external.",
+    "The raw State value 1 and metadata names are preserved exactly without assigning broader weapon lifecycle meaning.",
+    "Authored weapon kinds, attack data, AI selection and damage behavior remain outside this method-level evidence record."
+  ]
+}
