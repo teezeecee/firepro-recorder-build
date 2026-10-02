@@ -4,5 +4,5 @@
   "status":"PROVEN_DLL",
   "evidence":[{"source_id":"DLL-001","locator":"TypeDef 0x02000F73 <MyMusic_Play_Co>c__IteratorE support MethodDefs 0x06007510..0x06007513; exact rows/RVAs/body hashes and field/memberref flow in canonical/witnesses/CAP-R6-001/menu_sound_my_music_play_co_support.summary.json; prover tools/prove_menu_sound_my_music_play_co_support.py","observation":"Exact matching-DLL compiler-support leaf family for the already-canonical generated iterator type."}],
   "chain_edges":[],
-  "limits":["This fact closes only the four compiler-support methods on exact TypeDef 0x02000F73.","No runtime caller or Unity coroutine-scheduler edge is inferred.","System.NotSupportedException constructor implementation remains external."]
+  "limits":["This fact closes only the four compiler-support methods on exact TypeDef 0x02000F73.","No runtime caller or Unity coroutine-scheduler edge is promoted.","System.NotSupportedException constructor implementation remains external."]
 }
