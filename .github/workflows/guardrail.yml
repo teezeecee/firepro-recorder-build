@@ -928,3 +928,9 @@ jobs:
         run: python tests/test_menu_sound_bgm_field_writers_summary.py
       - name: Menu Sound BGM field writers prover syntax
         run: python -m py_compile tools/prove_menu_sound_bgm_field_writers.py
+
+
+      - name: Menu Sound stop wrappers summary
+        run: python tests/test_menu_sound_stop_wrappers_summary.py
+      - name: Menu Sound stop wrappers prover syntax
+        run: python -m py_compile tools/prove_menu_sound_stop_wrappers.py
