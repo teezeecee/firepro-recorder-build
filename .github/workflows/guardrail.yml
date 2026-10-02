@@ -1000,3 +1000,9 @@ jobs:
         run: python tests/test_wrestler_voice_construction_defaults_summary.py
       - name: Wrestler voice construction defaults prover syntax
         run: python -m py_compile tools/prove_wrestler_voice_construction_defaults.py
+
+
+      - name: WrestlerVoiceInfoManager GetWrestlerVoiceAttr summary
+        run: python tests/test_wrestler_voice_info_manager_get_attr_summary.py
+      - name: WrestlerVoiceInfoManager GetWrestlerVoiceAttr prover syntax
+        run: python -m py_compile tools/prove_wrestler_voice_info_manager_get_attr.py

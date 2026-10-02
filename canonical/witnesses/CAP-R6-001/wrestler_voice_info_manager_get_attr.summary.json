@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_WRESTLER_VOICE_INFO_MANAGER_GET_ATTR_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060011E8","row_hex":"c8f1060000008600848e080066a60100a10d","rva":"0x0006F1C8"},
+    "method":{"type":"WrestlerVoiceInfoManager","method":"GetWrestlerVoiceAttr","token":"0x060011E8","rva":"0x0006F1C8","signature_blob_hex":"20021287bc11aa3c08","return_type":"WrestlerVoiceAttr","return_type_token":"0x020001EF","parameters":[{"sequence":1,"name":"type","type":"WrestlerVoiceTypeEnum","type_token":"0x02000A8F"},{"sequence":2,"name":"idx","type":"Int32"}],"code_size":58,"code_sha256":"3e6d24308c5d970566cd1d5d912792e1ff4ba9bbc71aad81a62da600b2b772c4","header_format":"fat","header_flags_raw":"0x0013","max_stack":2,"local_signature_token":"0x1100034D","local_signature_blob_hex":"07011287c0","locals":[{"index":0,"type":"WrestlerVoiceInfo","type_token":"0x020001F0"}],"instruction_count":22,"branch_instruction_count":2,"call_instruction_count":3},
+    "fields":{"fallback":{"token":"0x040011E8","owner":"WrestlerVoiceInfoManager","name":"unknounVoiceAttr","type":"WrestlerVoiceAttr"},"attr":{"token":"0x040011E3","owner":"WrestlerVoiceInfo","name":"attr","type":"System.Collections.Generic.List<WrestlerVoiceAttr>"}},
+    "calls":{"get_info":{"token":"0x060011E7","fact_id":"FACT-0181","resolved":"WrestlerVoiceInfoManager.GetWrestlerVoiceInfo","call_il":"0x0002"},"get_count":{"token":"0x0A00078A","parent_typespec_token":"0x1B00010B","resolved":"List<WrestlerVoiceAttr>.get_Count","call_il":"0x001B"},"get_item":{"token":"0x0A00078B","parent_typespec_token":"0x1B00010B","resolved":"List<WrestlerVoiceAttr>.get_Item(Int32)","call_il":"0x0034"}},
+    "exact_flow":["info = GetWrestlerVoiceInfo(type)","if info is null: return this.unknounVoiceAttr","if signed idx is not less than info.attr.Count: return this.unknounVoiceAttr","otherwise return info.attr[idx]"],
+    "inbound_direct_reference":{"caller_type":"Player","caller_method":"PlayWrestlerVoice","caller_token":"0x06004EB4","caller_rva":"0x002DE53C","caller_code_size":272,"caller_code_sha256":"827f27896099f2fabf61cc8659bb91cfd1ef7c2cccee142cd3e754ba3e577d8d","call_il":"0x00EC","opcode":"callvirt","callee_token":"0x060011E8","caller_status":"BODY_NOT_YET_CANONICAL"}
+  },
+  "limits":["Player.PlayWrestlerVoice body closure and external generic List behavior remain outside this record."]
+}
