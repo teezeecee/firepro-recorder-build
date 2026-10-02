@@ -2778,6 +2778,23 @@
         "authored SystemSEFileList contents",
         "AudioClip runtime behavior"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_UPDATE_STATE_V1",
+      "fact_id": "FACT-0163",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Update_State six-channel /100.0f normalization plus direct SaveData.GetInst static-field leaf, bridged from FACT-0161.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_update_state.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "optionSettings persistence/origin",
+        "Unity Object equality behavior",
+        "higher-level channel semantics"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

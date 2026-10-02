@@ -1,0 +1,25 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_UPDATE_STATE_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "update_state":{"token":"0x06005282","methoddef_row_hex":"10193200000096009d5e0a00e3a50000e73c","rva":"0x00321910","signature_blob_hex":"000001","code_size":180,"code_sha256":"0f78bdbd8f0a3abc281912645f9d95b9b3f182a1eae9bf24c948379d3782b6d5","header_format":"fat","header_flags_raw":"0x0013","max_stack":2,"local_signature_token":"0x00000000","instruction_count":48,"branch_instruction_count":1,"call_instruction_count":8,
+      "null_gate":{"get_inst_token":"0x06005174","get_inst_call_il":"0x0000","object_equality_token":"0x0A000006","object_equality_call_il":"0x0006","null_return_il":"0x0010"},
+      "option_settings_field":{"token":"0x040064F2","name":"SaveData.optionSettings","signature_blob_hex":"0612a924"},
+      "normalizations":[
+        {"source_field_token":"0x040064C6","source_field_name":"seVol","get_inst_call_il":"0x0011","source_load_il":"0x001B","constant":100.0,"target_field_token":"0x040086EE","target_field_name":"Volume_Se","target_store_il":"0x0027"},
+        {"source_field_token":"0x040064C7","source_field_name":"voiceVol","get_inst_call_il":"0x002C","source_load_il":"0x0036","constant":100.0,"target_field_token":"0x040086EF","target_field_name":"Volume_Voice","target_store_il":"0x0042"},
+        {"source_field_token":"0x040064C8","source_field_name":"cheerVol","get_inst_call_il":"0x0047","source_load_il":"0x0051","constant":100.0,"target_field_token":"0x040086F0","target_field_name":"Volume_Cheer","target_store_il":"0x005D"},
+        {"source_field_token":"0x040064C9","source_field_name":"bgmVol_Menu","get_inst_call_il":"0x0062","source_load_il":"0x006C","constant":100.0,"target_field_token":"0x040086F1","target_field_name":"Volume_BgmProgress","target_store_il":"0x0078"},
+        {"source_field_token":"0x040064CA","source_field_name":"bgmVol_Entrance","get_inst_call_il":"0x007D","source_load_il":"0x0087","constant":100.0,"target_field_token":"0x040086F2","target_field_name":"Volume_BgmAdmission","target_store_il":"0x0093"},
+        {"source_field_token":"0x040064CB","source_field_name":"bgmVol_Match","get_inst_call_il":"0x0098","source_load_il":"0x00A2","constant":100.0,"target_field_token":"0x040086F3","target_field_name":"Volume_BgmBattle","target_store_il":"0x00AE"}
+      ],
+      "exact_flow":["if SaveData.GetInst() == null through UnityEngine.Object.op_Equality: return","for six exact optionSettings Int32 fields: conv.r4; divide by exact 100.0f; store matching Menu_SoundManager static Single","return"]
+    },
+    "save_data_get_inst":{"token":"0x06005174","methoddef_row_hex":"c8493100000096003b7f0800e8da0200ed3b","rva":"0x003149C8","signature_blob_hex":"000012a938","code_size":6,"code_sha256":"2e12171cc208596025d626b80263f5597a296cc70ab5856f40c8660292702f40","header_format":"tiny","field":{"token":"0x040064EC","name":"SaveData.inst","signature_blob_hex":"0612a938"},"exact_flow":["load static SaveData.inst","return"]},
+    "fact_0161_bridge":{"fact_id":"FACT-0161","caller":"Menu_SoundManager.Resume_State","caller_rva":"0x003218E4","caller_code_sha256":"a9e694a8e4472424719df74de8cf44737e837e6a86bc7e5dfd2a29c6ee47931a","call_il":"0x0000","callee_token":"0x06005282"}
+  },
+  "limits":["Option persistence/origin and Unity equality behavior remain outside this record."]
+}
