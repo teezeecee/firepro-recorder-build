@@ -952,3 +952,9 @@ jobs:
         run: python tests/test_menu_sound_playing_queries_summary.py
       - name: Menu Sound playing queries prover syntax
         run: python -m py_compile tools/prove_menu_sound_playing_queries.py
+
+
+      - name: Menu Sound stop reset family summary
+        run: python tests/test_menu_sound_stop_reset_family_summary.py
+      - name: Menu Sound stop reset family prover syntax
+        run: python -m py_compile tools/prove_menu_sound_stop_reset_family.py
