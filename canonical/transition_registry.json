@@ -2769,9 +2769,9 @@
         "DLL-001"
       ],
       "scope": "PROVEN_DLL",
-      "definition": "Exact matching-DLL Menu_SoundManager.Load_SystemSe loop plus direct AudioClipInfo.Set leaf, bridged from FACT-0160.",
+      "definition": "Exact matching-DLL Menu_SoundManager.Load_SystemSe loop, bridged from FACT-0160 and calling already-canonical FACT-0113 AudioClipInfo.Set.",
       "summary": "canonical/witnesses/CAP-R6-001/menu_sound_load_system_se.summary.json",
-      "dll_method_count": 2,
+      "dll_method_count": 1,
       "runtime_eligible": false,
       "semantic_promotion_blockers": [
         "Unity Resources.Load behavior",
