@@ -1,0 +1,17 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_PAN_ROUTING_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "field":{"token":"0x040087E4","name":"myAudioSource","signature_blob_hex":"061280b9","type":"UnityEngine.AudioSource"},
+    "object_inequality":{"token":"0x0A00000F","resolved":"UnityEngine.Object.op_Inequality"},
+    "methods":[
+      {"name":"get_Pan","token":"0x060052D8","methoddef_row_hex":"b95732000000e60954630a002a4c0000563d","rva":"0x003257B9","signature_blob_hex":"20000c","code_size":35,"code_sha256":"5de8447700a271c9b17ec8f23fe06668678a0e89c5a9b825074dc77fdc1763b4","body_hex":"027be487000414280f00000a390c000000027be48700046fba0f000a2a22000000002a","header_format":"tiny","max_stack":8,"instruction_count":11,"branch_instruction_count":1,"call_instruction_count":2,"audio_call":{"token":"0x0A000FBA","resolved":"UnityEngine.AudioSource.get_panStereo","signature_blob_hex":"20000c","call_il":"0x0017"},"exact_flow":["if myAudioSource != null: return myAudioSource.get_panStereo()","otherwise return raw Single 0.0f"]},
+      {"name":"set_Pan","token":"0x060052D9","methoddef_row_hex":"dd5732000000e6095c630a0070550000563d","rva":"0x003257DD","signature_blob_hex":"2001010c","parameters":[{"sequence":1,"name":"value","type":"Single"}],"code_size":30,"code_sha256":"32af8b52722443f3611991f370d4beb536ebfe0f4813884b525bcf4dbc8a0041","body_hex":"027be487000414280f00000a390c000000027be4870004036fbb0f000a2a","header_format":"tiny","max_stack":8,"instruction_count":10,"branch_instruction_count":1,"call_instruction_count":2,"audio_call":{"token":"0x0A000FBB","resolved":"UnityEngine.AudioSource.set_panStereo","signature_blob_hex":"2001010c","call_il":"0x0018"},"exact_flow":["if myAudioSource != null: myAudioSource.set_panStereo(value)","return"]}
+    ],
+    "direct_methoddef_reference_scan":{"targets":["0x060052D8","0x060052D9"],"opcodes":["call","callvirt","ldftn","ldvirtftn","newobj"],"all_counts_zero":true,"relationship_status":"NO_DIRECT_IN_ASSEMBLY_INBOUND_METHODDEF_REFERENCE"}
+  },
+  "limits":["External Unity pan implementation and non-direct framework/interface invocation remain outside this record."]
+}
