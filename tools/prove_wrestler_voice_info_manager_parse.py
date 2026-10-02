@@ -15,7 +15,7 @@ class E(RuntimeError): pass
 
 def sections(pe):
     q=struct.unpack_from("<I",pe,0x3c)[0]
-    if pe[q:q+4]!=b"PE\\0\\0": raise E("not PE")
+    if pe[q:q+4]!=b"PE\0\0": raise E("not PE")
     n=struct.unpack_from("<H",pe,q+6)[0]
     z=struct.unpack_from("<H",pe,q+20)[0]
     s=q+24+z
