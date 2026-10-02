@@ -826,3 +826,9 @@ jobs:
         run: python tests/test_u_audio_small_read_accessors_summary.py
       - name: uAudio small read accessors prover syntax
         run: python -m py_compile tools/prove_u_audio_small_read_accessors.py
+
+
+      - name: uAudio Stop summary
+        run: python tests/test_u_audio_stop_summary.py
+      - name: uAudio Stop prover syntax
+        run: python -m py_compile tools/prove_u_audio_stop.py

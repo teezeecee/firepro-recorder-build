@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_STOP_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060052EA","row_hex":"0c5e32000000e601280a04005c4800005f3d","rva":"0x00325E0C"},
+    "method":{"type":"uAudio.uAudioPlayer","method":"Stop","token":"0x060052EA","rva":"0x00325E0C","signature_blob_hex":"200001","return_type":"Void","parameters":[],"code_size":18,"code_sha256":"d5e285b4ad9285059afee97848d43a163c62ba65523f54379a5d5b6c8248a513","header_format":"tiny","max_stack":8,"local_signature_token":"0x00000000","instruction_count":7,"branch_instruction_count":1,"call_instruction_count":1,"body_hex":"027be987000439060000000228e65200062a"},
+    "field":{"token":"0x040087E9","name":"State","signature_blob_hex":"061182b5"},
+    "call":{"token":"0x060052E6","name":"SongEnd","fact_id":"FACT-0126","call_il":"0x000C"},
+    "exact_flow":["load raw State","if State == 0: return","otherwise call this.SongEnd()","return"],
+    "direct_methoddef_reference_scan":{"target":"0x060052EA","opcodes":["call","callvirt","ldftn","ldvirtftn","newobj"],"all_counts_zero":true,"relationship_status":"NO_DIRECT_IN_ASSEMBLY_INBOUND_METHODDEF_REFERENCE"}
+  },
+  "limits":["External/interface/framework invocation and broader State semantics remain outside this record."]
+}
