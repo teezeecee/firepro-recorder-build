@@ -3298,6 +3298,26 @@
         "authored weapon kinds/AI/attack/damage/choreography data",
         "external UnityEngine.Object behavior and unobserved WeaponMan.Drop wrapper execution"
       ]
+    },
+    {
+      "family_id": "DLL_R6_WEAPON_DROP_V1",
+      "fact_id": "FACT-0194",
+      "source_ids": [
+        "DLL-001",
+        "CAP-R6-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Exact 167-byte matching-DLL Weapon.Drop internal setup/state-write body plus unique FACT-0193 inbound edge and 11 direct R6 Weapon.Drop execution witnesses.",
+      "summary": "canonical/witnesses/CAP-R6-001/weapon_drop.summary.json",
+      "dll_method_count": 1,
+      "occurrence_count": 11,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Weapon.SetPattern token 0x06006AB7 internal closure",
+        "MatchRandom.Range token 0x0600497C internal closure",
+        "authored weapon pattern/kind/AI/attack/damage/choreography data",
+        "external Unity Component/GameObject/Transform/Quaternion/Renderer/Vector3 behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

@@ -1058,3 +1058,8 @@ jobs:
         run: python tests/test_weaponman_drop_summary.py
       - name: WeaponMan Drop prover syntax
         run: python -m py_compile tools/prove_weaponman_drop.py
+
+      - name: Weapon Drop summary
+        run: python tests/test_weapon_drop_summary.py
+      - name: Weapon Drop prover syntax
+        run: python -m py_compile tools/prove_weapon_drop.py
