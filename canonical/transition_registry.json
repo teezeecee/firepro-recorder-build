@@ -2626,6 +2626,22 @@
         "external backend/Unity getter implementations",
         "non-direct framework/interface invocation"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_STOP_V1",
+      "fact_id": "FACT-0154",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudioPlayer.Stop raw State zero/nonzero gate and direct FACT-0126 SongEnd call.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_stop.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external/interface/framework invocation",
+        "broader raw State semantics"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
