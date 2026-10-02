@@ -988,3 +988,9 @@ jobs:
         run: python tests/test_wrestler_voice_info_check_validation_dlc_summary.py
       - name: WrestlerVoiceInfo CheckValidationDLC prover syntax
         run: python -m py_compile tools/prove_wrestler_voice_info_check_validation_dlc.py
+
+
+      - name: WrestlerVoiceInfoManager GetWrestlerVoiceInfo summary
+        run: python tests/test_wrestler_voice_info_manager_get_summary.py
+      - name: WrestlerVoiceInfoManager GetWrestlerVoiceInfo prover syntax
+        run: python -m py_compile tools/prove_wrestler_voice_info_manager_get.py
