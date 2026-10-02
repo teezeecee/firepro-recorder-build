@@ -6,3 +6,4 @@
   "chain_edges":[{"from":"FACT-0178 <LoadAsync_WrestlerVoiceList>c__Iterator3.MoveNext","to":"WrestlerVoiceInfo.IsDLC()","evidence":[{"source_id":"DLL-001","locator":"FACT-0178 pins direct call token 0x060011E4 at MoveNext IL+0x01BF."}]}],
   "limits":["This fact closes only the exact IsDLC body and the FACT-0178 direct caller bridge.","The sibling WrestlerVoiceInfo.CheckValidationDLC method also directly calls IsDLC and remains a separate open gate.","The meaning of the 16 Boolean dlc entries is not broadened beyond the exact metadata field name, array type, loop bound and return behavior."]
 }
+
