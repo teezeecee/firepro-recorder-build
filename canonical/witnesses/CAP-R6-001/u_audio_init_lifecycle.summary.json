@@ -1,0 +1,18 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_INIT_LIFECYCLE_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "fields":{
+      "volume_offset":{"token":"0x040087F0","name":"start_volume_Offset","signature_blob_hex":"060c","type":"Single"},
+      "end_song_time":{"token":"0x040087F2","name":"endSongTime","signature_blob_hex":"061182c1","type":"System.TimeSpan"},
+      "audio_source":{"token":"0x040087E4","name":"myAudioSource","signature_blob_hex":"061280b9","type":"UnityEngine.AudioSource"}
+    },
+    "constructor":{"token":"0x060052C8","methoddef_row_hex":"2756320000008618eb4f06005c480000523d","rva":"0x00325627","signature_blob_hex":"200001","code_size":29,"code_sha256":"b3886117f8449c5a0bb1c948786b6cf3ecbfd14d7caee2594f9fb9cdcdc30b5e","body_hex":"02220000803f7df0870004027ebd0f000a7df287000402280e00000a2a","header_format":"tiny","max_stack":8,"instruction_count":9,"branch_instruction_count":0,"call_instruction_count":1,"exact_flow":["start_volume_Offset = 1.0f","endSongTime = System.TimeSpan.Zero","call UnityEngine.MonoBehaviour..ctor","return"],"members":{"timespan_zero":{"token":"0x0A000FBD","resolved":"System.TimeSpan.Zero"},"base_ctor":{"token":"0x0A00000E","resolved":"UnityEngine.MonoBehaviour..ctor"}}},
+    "awake":{"token":"0x060052C9","methoddef_row_hex":"4856320000008100d99106005c480000523d","rva":"0x00325648","signature_blob_hex":"200001","code_size":41,"code_sha256":"ff82e2f96702dc7b19840d6fe9cfa849d45c0fd7a749b317b93de5377869aa7e","body_hex":"027be487000414280600000a39170000007286ea0870286206000a0a02066f4c00002b7de48700042a","header_format":"fat","max_stack":2,"local_signature_token":"0x1100000A","local_signature_blob_hex":"0701120d","locals":[{"index":0,"type":"UnityEngine.GameObject","type_token":"0x01000003"}],"instruction_count":13,"branch_instruction_count":1,"call_instruction_count":3,"exact_flow":["if myAudioSource != null: return","local0 = UnityEngine.GameObject.Find('Sound_Manager')","myAudioSource = local0.AddComponent<UnityEngine.AudioSource>()","return"],"string":{"token":"0x7008EA86","value":"Sound_Manager"},"members":{"object_equality":{"token":"0x0A000006","resolved":"UnityEngine.Object.op_Equality"},"game_object_find":{"token":"0x0A000662","resolved":"UnityEngine.GameObject.Find(String)"},"add_component_spec":{"token":"0x2B00004C","base_memberref":"0x0A0000D8","resolved":"UnityEngine.GameObject.AddComponent<UnityEngine.AudioSource>()","generic_type_token":"0x0100002E","generic_type":"UnityEngine.AudioSource"}}},
+    "direct_methoddef_reference_scan":{"targets":["0x060052C8","0x060052C9"],"opcodes":["call","callvirt","ldftn","ldvirtftn","newobj"],"all_counts_zero":true,"relationship_status":"NO_DIRECT_IN_ASSEMBLY_INBOUND_METHODDEF_REFERENCE"}
+  },
+  "limits":["External Unity lifecycle and object/component implementations remain outside this record."]
+}

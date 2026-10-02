@@ -844,3 +844,9 @@ jobs:
         run: python tests/test_u_audio_volume_routing_summary.py
       - name: uAudio volume routing prover syntax
         run: python -m py_compile tools/prove_u_audio_volume_routing.py
+
+
+      - name: uAudio init lifecycle summary
+        run: python tests/test_u_audio_init_lifecycle_summary.py
+      - name: uAudio init lifecycle prover syntax
+        run: python -m py_compile tools/prove_u_audio_init_lifecycle.py
