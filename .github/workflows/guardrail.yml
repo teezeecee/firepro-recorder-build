@@ -814,3 +814,9 @@ jobs:
         run: python tests/test_u_audio_quit_dispose_summary.py
       - name: uAudio quit dispose prover syntax
         run: python -m py_compile tools/prove_u_audio_quit_dispose.py
+
+
+      - name: uAudio eight byte helpers summary
+        run: python tests/test_u_audio_eight_byte_helpers_summary.py
+      - name: uAudio eight byte helpers prover syntax
+        run: python -m py_compile tools/prove_u_audio_eight_byte_helpers.py
