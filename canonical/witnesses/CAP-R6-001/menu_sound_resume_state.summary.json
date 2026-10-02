@@ -1,0 +1,30 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_RESUME_STATE_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "method":{"type":"Menu_SoundManager","name":"Resume_State","token":"0x06005281","methoddef_row_hex":"e418320000009600905e0a00e3a50000e73c","rva":"0x003218E4","signature_blob_hex":"000001","code_size":42,"code_sha256":"a9e694a8e4472424719df74de8cf44737e837e6a86bc7e5dfd2a29c6ee47931a","header_format":"tiny","max_stack":8,"local_signature_token":"0x00000000","instruction_count":14,"branch_instruction_count":0,"call_instruction_count":4},
+    "exact_flow":[
+      "call Update_State()",
+      "load static BattleConfig_BGM_Progress; push raw 0; push raw 0; call Change_BGM_Progress",
+      "load static BattleConfig_BGM_Admission; push raw 0; push raw 0; call Change_BGM_Theme",
+      "load static BattleConfig_BGM_Battle; push raw 0; push raw 0; call Change_BGM_Battle",
+      "return"
+    ],
+    "direct_calls":{
+      "update_state":{"token":"0x06005282","name":"Update_State","methoddef_row_hex":"10193200000096009d5e0a00e3a50000e73c","rva":"0x00321910","signature_blob_hex":"000001","call_il":"0x0000","status":"OPEN_DIRECT_INTERNAL"},
+      "change_bgm_progress":{"token":"0x06005292","name":"Change_BGM_Progress","methoddef_row_hex":"c020320000009600d15f0a0077e30200003d","rva":"0x003220C0","signature_blob_hex":"00030111a9ec0202","call_il":"0x000C","status":"OPEN_DIRECT_INTERNAL"},
+      "change_bgm_theme":{"token":"0x06005296","name":"Change_BGM_Theme","methoddef_row_hex":"682232000000960033600a00b8e302000e3d","rva":"0x00322268","signature_blob_hex":"0003011187480202","call_il":"0x0018","status":"OPEN_DIRECT_INTERNAL"},
+      "change_bgm_battle":{"token":"0x0600529A","name":"Change_BGM_Battle","methoddef_row_hex":"e82432000000960057600a00fde302001a3d","rva":"0x003224E8","signature_blob_hex":"00030111a9f00202","call_il":"0x0024","status":"OPEN_DIRECT_INTERNAL"}
+    },
+    "static_fields":{
+      "progress":{"token":"0x0400286D","name":"BattleConfig_BGM_Progress","signature_blob_hex":"0608","load_il":"0x0005"},
+      "admission":{"token":"0x0400286E","name":"BattleConfig_BGM_Admission","signature_blob_hex":"06118748","load_il":"0x0011"},
+      "battle":{"token":"0x0400286F","name":"BattleConfig_BGM_Battle","signature_blob_hex":"0611a9f0","load_il":"0x001D"}
+    },
+    "fact_0160_bridge":{"fact_id":"FACT-0160","caller":"Menu_SoundManager.Initalize_State","caller_rva":"0x003217EC","caller_code_sha256":"11a01435a5eb88584d4a811a33bda97f11287b086c17dbae432748e51e0e4d23","call_il":"0x0092","callee_token":"0x06005281"}
+  },
+  "limits":["Four direct callee bodies and external authored/runtime audio behavior remain outside this record."]
+}

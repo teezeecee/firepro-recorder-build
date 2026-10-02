@@ -868,3 +868,9 @@ jobs:
         run: python tests/test_menu_sound_init_spine_summary.py
       - name: Menu Sound init spine prover syntax
         run: python -m py_compile tools/prove_menu_sound_init_spine.py
+
+
+      - name: Menu Sound Resume State summary
+        run: python tests/test_menu_sound_resume_state_summary.py
+      - name: Menu Sound Resume State prover syntax
+        run: python -m py_compile tools/prove_menu_sound_resume_state.py
