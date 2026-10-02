@@ -1,0 +1,43 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_UPDATE_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "method":{"type":"uAudio.uAudioPlayer","method":"Update","token":"0x060052E3","methoddef_row_hex":"9858320000008100edc800005c4800005b3d","rva":"0x00325898","signature_blob_hex":"200001","code_size":203,"code_sha256":"f5518241de99069e054067f93d7d8145a91d461a4a5b8b78e01b5e8c364f5e26","body_hex":"027bea8700043933000000027be98700041740270000000228d65200060b120128820d000a6b0a027be5870004390c000000027be5870004066fc00f000a027bec870004391400000002167dec8700040228e652000602167dec870004027be8870004396200000002167de887000402167deb87000402167dec870004027be38700047ebd0f000a6fb90f000a0228e6520006027be487000414280600000a39170000007286ea0870286206000a0c02086f4c00002b7de4870004021203fe15d502001b0928e75200062a","header_format":"fat","max_stack":2,"local_signature_token":"0x1100121F","local_signature_blob_hex":"07040c1182c1120d15118839011182c1","locals":[{"index":0,"type":"Single"},{"index":1,"type":"System.TimeSpan"},{"index":2,"type":"UnityEngine.GameObject","type_token":"0x01000003"},{"index":3,"type":"System.Nullable<System.TimeSpan>","type_spec_token":"0x1B0002D5"}],"instruction_count":68,"branch_instruction_count":6,"call_instruction_count":10},
+    "fields":{
+      "backend":{"token":"0x040087E3","name":"_uAudio"},
+      "audio_source":{"token":"0x040087E4","name":"myAudioSource"},
+      "time_callback":{"token":"0x040087E5","name":"Update_UI_songTime","signature_blob_hex":"06151280d1010c","type":"System.Action<Single>"},
+      "source_destroy":{"token":"0x040087E8","name":"flg_source_destroy"},
+      "state":{"token":"0x040087E9","name":"State"},
+      "update_time":{"token":"0x040087EA","name":"updateTime"},
+      "song_done":{"token":"0x040087EB","name":"SongDone"},
+      "flare_song_end":{"token":"0x040087EC","name":"flare_SongEnd"}
+    },
+    "calls":{
+      "get_current_time":{"token":"0x060052D6","fact_id":"FACT-0128","call_il":"0x0018"},
+      "timespan_total_seconds":{"token":"0x0A000D82","resolved":"System.TimeSpan.get_TotalSeconds","call_il":"0x0020"},
+      "time_callback_invoke":{"token":"0x0A000FC0","resolved":"System.Action<Single>.Invoke","type_spec_token":"0x1B0002D7","call_il":"0x0039"},
+      "song_end":{"token":"0x060052E6","fact_id":"FACT-0126","call_ils":["0x0051","0x008E"]},
+      "backend_set_current_time":{"token":"0x0A000FB9","resolved":"uAudio.uAudio_backend.uAudio.set_CurrentTime","call_il":"0x0088"},
+      "object_equality":{"token":"0x0A000006","resolved":"UnityEngine.Object.op_Equality","call_il":"0x009A"},
+      "game_object_find":{"token":"0x0A000662","resolved":"UnityEngine.GameObject.Find(String)","call_il":"0x00A9"},
+      "add_component_audio_source":{"token":"0x2B00004C","resolved":"UnityEngine.GameObject.AddComponent<UnityEngine.AudioSource>()","call_il":"0x00B1"},
+      "play":{"token":"0x060052E7","fact_id":"FACT-0140","call_il":"0x00C5"}
+    },
+    "constants":{"timespan_zero":{"token":"0x0A000FBD","resolved":"System.TimeSpan.Zero","load_il":"0x0083"},"sound_manager":{"token":"0x7008EA86","value":"Sound_Manager","load_il":"0x00A4"}},
+    "branch_targets":[{"branch_il":"0x0006","condition":"updateTime false","target_il":"0x003E"},{"branch_il":"0x0012","condition":"State != raw 1","target_il":"0x003E"},{"branch_il":"0x002D","condition":"Update_UI_songTime null","target_il":"0x003E"},{"branch_il":"0x0044","condition":"flare_SongEnd false","target_il":"0x005D"},{"branch_il":"0x0063","condition":"flg_source_destroy false","target_il":"0x00CA"},{"branch_il":"0x009F","condition":"myAudioSource non-null","target_il":"0x00BB"}],
+    "exact_flow":[
+      "if updateTime and raw State == 1: local1=get_CurrentTime(); local0=Single(local1.TotalSeconds); if Update_UI_songTime!=null invoke(local0)",
+      "if flare_SongEnd: flare_SongEnd=false; SongEnd(); flare_SongEnd=false",
+      "if flg_source_destroy: flg_source_destroy=false; SongDone=false; flare_SongEnd=false; _uAudio.set_CurrentTime(TimeSpan.Zero); SongEnd(); if myAudioSource==null then find 'Sound_Manager' and AddComponent<AudioSource>(); Play(default Nullable<TimeSpan>)",
+      "return"
+    ],
+    "exception_section":false,
+    "direct_methoddef_reference_scan":{"target":"0x060052E3","opcodes":["call","callvirt","ldftn","ldvirtftn","newobj"],"all_counts_zero":true,"relationship_status":"NO_DIRECT_IN_ASSEMBLY_INBOUND_METHODDEF_REFERENCE"},
+    "type_closure":{"type":"uAudio.uAudioPlayer","typedef_token":"0x02000A90","method_token_first":"0x060052C8","method_token_last":"0x060052EE","method_count":39,"status":"ALL_METHODDEFS_PROVEN_DLL_AFTER_FACT_0159"}
+  },
+  "limits":["Unity lifecycle invocation and external Unity/backend/delegate implementations remain outside this record."]
+}
