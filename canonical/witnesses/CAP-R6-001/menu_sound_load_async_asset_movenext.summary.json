@@ -1,0 +1,15 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_LOAD_ASYNC_ASSET_MOVENEXT_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "method":{"owner_type":"<LoadAsyncAsset>c__Iterator1","owner_type_token":"0x02000F66","token":"0x060074C0","methoddef_row_hex":"603a32000000e6017f5a0600db490000d24f","rva":"0x00323A60","signature_blob_hex":"200002","code_size":147,"code_sha256":"a4d0aab998a3a51651ad2a7266627226a911274f84e12043ba419b6a5325cff7","header_flags_raw":"0x0013","max_stack":2,"local_signature_token":"0x11000047","local_signature_blob_hex":"070109","instruction_count":46,"branch_instruction_count":7,"call_instruction_count":4},
+    "fields":{"path":{"token":"0x0400C1F6","name":"path"},"request":{"token":"0x0400C1F7","name":"<resReq>__0"},"callback":{"token":"0x0400C1F8","name":"callback"},"current":{"token":"0x0400C1F9","name":"$current"},"disposing":{"token":"0x0400C1FA","name":"$disposing"},"pc":{"token":"0x0400C1FB","name":"$PC"}},
+    "external_members":{"resources_load_async":{"token":"0x0A000675","resolved":"UnityEngine.Resources.LoadAsync","call_il":"0x0028"},"async_is_done":{"token":"0x0A000676","resolved":"UnityEngine.AsyncOperation.get_isDone","call_il":"0x005D"},"resource_get_asset":{"token":"0x0A000677","resolved":"UnityEngine.ResourceRequest.get_asset","call_il":"0x007E"},"callback_invoke":{"token":"0x0A000678","resolved":"System.Action<object>.Invoke","call_il":"0x0083"},"boxed_type":{"token":"0x010000D7","resolved":"System.Int32","box_il":"0x0039"}},
+    "state_switch":{"raw_state_0_target":"0x0021","raw_state_1_target":"0x0057","default_target":"0x008F"},
+    "exact_flow":["local0=$PC; $PC=-1; raw state 0 initializes request, raw state 1 resumes completion poll, default returns false","<resReq>__0=Resources.LoadAsync(path)","while !<resReq>__0.isDone: $current=box Int32(0); if !$disposing set $PC=1; return true","when done: if callback!=null invoke callback(<resReq>__0.asset)","$PC=-1; return false"],
+    "fact_0167_metadata_relationship":{"fact_id":"FACT-0167","factory_token":"0x06005285","generated_type_token":"0x02000F66","relationship_status":"FACTORY_GENERATED_TYPE_OWNERSHIP_NOT_RUNTIME_CALL"}
+  },
+  "limits":["External Unity async/callback runtime behavior remains outside this record."]
+}
