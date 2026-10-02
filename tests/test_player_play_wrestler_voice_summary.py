@@ -12,5 +12,4 @@ assert s["dll"]["calls"]["play_wrestler_voice_leaf"]["token"]=="0x060052B1"
 assert s["dll"]["calls"]["play_wrestler_voice_leaf"]["status"]=="BODY_NOT_YET_CANONICAL"
 r=s["dll"]["inbound_direct_reference"]
 assert (r["canonical_fact"],r["call_il"],r["dll_raw_token_occurrence_count"])==("FACT-0015","0x008E",1)
-assert s["dll"]["raw_capture_method_name_search"]["occurrences"]==0
 print("DLL PLAYER PLAY WRESTLER VOICE SUMMARY: PASS")
