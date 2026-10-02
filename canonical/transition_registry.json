@@ -2560,6 +2560,23 @@
         "non-direct interface/reflection/framework dispatch",
         "higher-level SLEEP semantics"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_FIELD_GETTERS_V1",
+      "fact_id": "FACT-0150",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL 7-byte direct field getters for start_volume_Offset, State and targetFile.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_field_getters.summary.json",
+      "dll_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "field writer closure",
+        "caller closure",
+        "higher-level playback/file semantics"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
