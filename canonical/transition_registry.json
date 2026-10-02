@@ -3109,6 +3109,22 @@
         "external System/Object/List constructors",
         "still-open WrestlerVoiceInfoManager.Parse caller sites"
       ]
+    },
+    {
+      "family_id": "DLL_WRESTLER_VOICE_INFO_MANAGER_GET_ATTR_V1",
+      "fact_id": "FACT-0183",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL WrestlerVoiceInfoManager.GetWrestlerVoiceAttr fallback/count/index flow, direct FACT-0181 dependency, and exact inbound Player.PlayWrestlerVoice call site.",
+      "summary": "canonical/witnesses/CAP-R6-001/wrestler_voice_info_manager_get_attr.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "full Player.PlayWrestlerVoice body closure",
+        "external generic List behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
