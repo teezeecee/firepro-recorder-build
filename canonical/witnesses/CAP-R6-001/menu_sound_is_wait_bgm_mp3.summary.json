@@ -1,0 +1,12 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_IS_WAIT_BGM_MP3_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "method":{"type":"Menu_SoundManager","method":"IsWaitBGM_MP3","token":"0x060052BD","methoddef_row_hex":"4c3432000000960058620a00634a00004b3d","rva":"0x0032344C","signature_blob_hex":"000002","return_type":"Boolean","parameters":[],"code_size":2,"body_hex":"172a","code_sha256":"3e652f9ec0ddcdd64c52c9cba261a1f70bba3ffa41ff4296d6eba45e6514b378","header_format":"tiny","instruction_count":2,"branch_instruction_count":0,"call_instruction_count":0,"exact_flow":["load raw Boolean true","return"]},
+    "direct_reference_observation":{"count":1,"relationship_status":"RAW_REFERENCE_ONLY_CALLER_NOT_CLOSED","caller":{"type":"Dialog_Skill","method":"Update","token":"0x06002ACB","rva":"0x00197B38","code_size":1048,"code_sha256":"14129c14ca6039a686af85c9de4920278e34dfb0910593b988ad62fa16417195","call_il":"0x0267","call_bytes_hex":"28bd520006"}}
+  },
+  "limits":["Dialog_Skill.Update remains outside canonical closure in this fact."]
+}
