@@ -3225,6 +3225,22 @@
         "GlobalWork/MatchSetting/FormRenderer runtime field provenance",
         "external UnityEngine.Random behavior behind FACT-0032"
       ]
+    },
+    {
+      "family_id": "DLL_RING_SHAKE_CAGE_V1",
+      "fact_id": "FACT-0190",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 8-byte matching-DLL Ring.ShakeCage leaf: write raw zero to ShakeCageAnmCnt and return, bridged from FACT-0015.",
+      "summary": "canonical/witnesses/CAP-R6-001/ring_shake_cage.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "ShakeCageAnmCnt update/consumer lifecycle",
+        "Player.Process_ShakeCage sibling closure"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

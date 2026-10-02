@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0190",
+  "claim": "In the matching retail DLL, instance Ring.ShakeCage (0x0600510A) has raw MethodDef row f0e2300000008600a94c0a005c480000893b, RVA 0x0030E2F0, exact signature blob 200001, and an exact 8-byte tiny-header body SHA-256 dc90ddc959a5183de014264fdbd38c6d4f4b92fa95ac83949817fbbe1adb79b3. The entire emitted body is ldarg.0; ldc.i4.0; stfld Ring.ShakeCageAnmCnt (0x0400636F); ret. FACT-0015 FormAnimator.PlayAnimationSE pins the direct callvirt to Ring.ShakeCage at IL+0x012A on its raw seID 61 branch.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Ring.ShakeCage token 0x0600510A raw MethodDef row f0e2300000008600a94c0a005c480000893b -> RVA 0x0030E2F0; signature 200001; tiny-header code size 8; code sha256=dc90ddc959a5183de014264fdbd38c6d4f4b92fa95ac83949817fbbe1adb79b3; exact field write in canonical/witnesses/CAP-R6-001/ring_shake_cage.summary.json; prover tools/prove_ring_shake_cage.py",
+      "observation": "Exact matching-DLL Ring.ShakeCage leaf body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0015 FormAnimator.PlayAnimationSE raw seID 61 branch",
+      "to": "Ring.ShakeCage()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0015 pins callvirt token 0x0600510A at PlayAnimationSE IL+0x012A."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Ring.ShakeCage body and FACT-0015 caller bridge.",
+    "The meaning, update lifecycle and downstream use of Ring.ShakeCageAnmCnt remain outside this fact.",
+    "Player.Process_ShakeCage, the sibling call earlier on the same FACT-0015 raw seID 61 branch, remains a separate gate.",
+    "Other callers of Ring.ShakeCage are not promoted here."
+  ]
+}
