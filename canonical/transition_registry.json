@@ -2893,6 +2893,22 @@
         "Dialog_Skill.Update caller closure",
         "higher-level MP3/wait semantics"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_BGM_FIELD_WRITERS_V1",
+      "fact_id": "FACT-0170",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL 13-byte Menu_SoundManager StopBGM_Continue and FadeOutBGM static BGM field writers.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_bgm_field_writers.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "inbound caller closure",
+        "higher-level BGM transition/fade policy"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
