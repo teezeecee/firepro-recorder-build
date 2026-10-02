@@ -1006,3 +1006,9 @@ jobs:
         run: python tests/test_wrestler_voice_info_manager_get_attr_summary.py
       - name: WrestlerVoiceInfoManager GetWrestlerVoiceAttr prover syntax
         run: python -m py_compile tools/prove_wrestler_voice_info_manager_get_attr.py
+
+
+      - name: WrestlerVoiceInfoManager Awake summary
+        run: python tests/test_wrestler_voice_info_manager_awake_summary.py
+      - name: WrestlerVoiceInfoManager Awake prover syntax
+        run: python -m py_compile tools/prove_wrestler_voice_info_manager_awake.py
