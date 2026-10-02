@@ -2676,6 +2676,22 @@
         "higher-level volume naming semantics",
         "non-direct invocation"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_INIT_LIFECYCLE_V1",
+      "fact_id": "FACT-0157",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudioPlayer constructor defaults and Awake null-source setup via GameObject.Find('Sound_Manager') + AddComponent<AudioSource>(), with no direct inbound MethodDef callers promoted.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_init_lifecycle.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external Unity construction/Awake lifecycle",
+        "Unity GameObject/Object/component implementations"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
