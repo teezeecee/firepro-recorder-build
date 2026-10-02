@@ -1,0 +1,439 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_R6_WEAPON_DROP_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methoddef_row": {
+      "token": "0x06006AB8",
+      "row_hex": "484c43000000860000cf0a0075370300a14d",
+      "rva": "0x00434C48"
+    },
+    "method": {
+      "type": "Weapon",
+      "method": "Drop",
+      "token": "0x06006AB8",
+      "rva": "0x00434C48",
+      "signature_blob_hex": "20040111190c11a85c11a768",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "p",
+          "type": "UnityEngine.Vector3"
+        },
+        {
+          "sequence": 2,
+          "name": "gy",
+          "type": "Single"
+        },
+        {
+          "sequence": 3,
+          "name": "zone",
+          "type": "ZoneEnum"
+        },
+        {
+          "sequence": 4,
+          "name": "dir",
+          "type": "PlDirEnum"
+        }
+      ],
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 5,
+      "local_signature_token": "0x00000000",
+      "code_size": 167,
+      "code_sha256": "eac3737037ba8ea767d588f6988426f6fd38567d37400dda6e58cfdc20ccc25e",
+      "body_hex": "02282800000a6f5000000a146fa207000a02282800000a6f5000000a22000000002200000000220000a0c1220000a041287c490006288006000a6f5c00000a021928b76a0006027bd6b60004166f3d02000a02037dd4b6000402047dddb6000402057ddab60004020e047ddbb6000402283d00000a7dd7b600040222000000002200000000226f1203bb734400000a7dd8b6000402187dd5b6000402220000803f7dd9b600042a"
+    },
+    "external_members": [
+      {
+        "token": "0x0A000028",
+        "owner": "UnityEngine.Component",
+        "name": "get_gameObject",
+        "signature_blob_hex": "2000120d"
+      },
+      {
+        "token": "0x0A000050",
+        "owner": "UnityEngine.GameObject",
+        "name": "get_transform",
+        "signature_blob_hex": "20001205"
+      },
+      {
+        "token": "0x0A0007A2",
+        "owner": "UnityEngine.Transform",
+        "name": "SetParent",
+        "signature_blob_hex": "2001011205"
+      },
+      {
+        "token": "0x0A000680",
+        "owner": "UnityEngine.Quaternion",
+        "name": "Euler",
+        "signature_blob_hex": "0003111d0c0c0c"
+      },
+      {
+        "token": "0x0A00005C",
+        "owner": "UnityEngine.Transform",
+        "name": "set_localRotation",
+        "signature_blob_hex": "200101111d"
+      },
+      {
+        "token": "0x0A00023D",
+        "owner": "UnityEngine.Renderer",
+        "name": "set_sortingOrder",
+        "signature_blob_hex": "20010108"
+      },
+      {
+        "token": "0x0A00003D",
+        "owner": "UnityEngine.Vector3",
+        "name": "get_zero",
+        "signature_blob_hex": "00001119"
+      },
+      {
+        "token": "0x0A000044",
+        "owner": "UnityEngine.Vector3",
+        "name": ".ctor",
+        "signature_blob_hex": "2003010c0c0c"
+      }
+    ],
+    "open_in_assembly_helpers": [
+      {
+        "token": "0x06006AB7",
+        "owner": "Weapon",
+        "name": "SetPattern",
+        "rva": "0x00434C1A",
+        "signature_blob_hex": "20010108",
+        "code_size": 44,
+        "code_sha256": "9fd8e4c6ea0c03f75b3de3aabfbe56ed4bf2f902ffe76bb13f7f57dee7b2c1b3",
+        "call_il": "0x0041"
+      },
+      {
+        "token": "0x0600497C",
+        "owner": "MatchRandom",
+        "name": "Range",
+        "rva": "0x002B109C",
+        "signature_blob_hex": "00020c0c0c",
+        "code_size": 30,
+        "code_sha256": "088e4cd8eb7a187b28b71251188f91e260b6c7189cf32a45b89f6cd38b1868dc",
+        "call_il": "0x0030"
+      }
+    ],
+    "fields": [
+      {
+        "token": "0x0400B6D6",
+        "name": "sprRen",
+        "signature_blob_hex": "061280b1",
+        "write_role": "read then Renderer.sortingOrder=0"
+      },
+      {
+        "token": "0x0400B6D4",
+        "name": "Pos",
+        "signature_blob_hex": "061119",
+        "write_role": "arg p"
+      },
+      {
+        "token": "0x0400B6DD",
+        "name": "GroundY",
+        "signature_blob_hex": "060c",
+        "write_role": "arg gy"
+      },
+      {
+        "token": "0x0400B6DA",
+        "name": "Zone",
+        "signature_blob_hex": "0611a85c",
+        "write_role": "arg zone"
+      },
+      {
+        "token": "0x0400B6DB",
+        "name": "Dir",
+        "signature_blob_hex": "0611a768",
+        "write_role": "arg dir"
+      },
+      {
+        "token": "0x0400B6D7",
+        "name": "Vel",
+        "signature_blob_hex": "061119",
+        "write_role": "Vector3.zero"
+      },
+      {
+        "token": "0x0400B6D8",
+        "name": "Acc",
+        "signature_blob_hex": "061119",
+        "write_role": "new Vector3(0,0,-0.0020000000949949026)"
+      },
+      {
+        "token": "0x0400B6D5",
+        "name": "State",
+        "signature_blob_hex": "0611b500",
+        "write_role": "raw 2"
+      },
+      {
+        "token": "0x0400B6D9",
+        "name": "Damping",
+        "signature_blob_hex": "060c",
+        "write_role": "raw 1.0"
+      }
+    ],
+    "exact_flow": [
+      "detach gameObject.transform with SetParent(null)",
+      "set localRotation to Quaternion.Euler(raw 0, raw 0, MatchRandom.Range(raw -20.0, raw 20.0))",
+      "call Weapon.SetPattern(raw 3)",
+      "set sprRen.sortingOrder to raw 0",
+      "write Pos=p, GroundY=gy, Zone=zone, Dir=dir",
+      "write Vel=Vector3.zero",
+      "write Acc=new Vector3(raw 0, raw 0, raw Float32 -0.0020000000949949026)",
+      "write raw State=2",
+      "write raw Damping=1.0",
+      "return"
+    ],
+    "inbound_direct_reference": {
+      "caller_type": "WeaponMan",
+      "caller_method": "Drop",
+      "caller_token": "0x06006AC9",
+      "caller_rva": "0x0043541C",
+      "caller_code_size": 33,
+      "caller_code_sha256": "edcc7cf0273d8a9e58e2e252323436fb039630779892b4c0e2e9654eddab7f76",
+      "call_il": "0x001B",
+      "opcode": "callvirt",
+      "canonical_fact": "FACT-0193",
+      "direct_reference_count": 1
+    }
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weapon_drop_execution_count": 11,
+    "all_parent_method": "Player.DropWeapon",
+    "all_traced_child_count_zero": true,
+    "pre_post_weaponIdx_unchanged_count": 11,
+    "parent_child_owner_slot_equal_count": 11,
+    "same_tick_with_parent_count": 11,
+    "seq_nested_pattern_count": 11,
+    "raw_args_counts": {
+      "Vector3 | 1 | InRing | Left": 8,
+      "Vector3 | 1 | InRing | Right": 3
+    }
+  },
+  "witness": {
+    "fields": [
+      "pre_line",
+      "post_line",
+      "tick",
+      "pre_seq",
+      "post_seq",
+      "owner_slot",
+      "instance",
+      "pre_weaponIdx",
+      "post_weaponIdx",
+      "args",
+      "parent_method",
+      "parent_pre_line",
+      "parent_post_line",
+      "parent_pre_seq",
+      "parent_post_seq"
+    ],
+    "records": [
+      [
+        98985,
+        98986,
+        "65520",
+        "252918",
+        "252920",
+        "3",
+        "Weapon#276967424",
+        "7",
+        "7",
+        "Vector3 | 1 | InRing | Right",
+        "Player.DropWeapon",
+        98984,
+        98987,
+        "252916",
+        "252922"
+      ],
+      [
+        210280,
+        210281,
+        "70026",
+        "542850",
+        "542852",
+        "7",
+        "Weapon#276967424",
+        "7",
+        "7",
+        "Vector3 | 1 | InRing | Left",
+        "Player.DropWeapon",
+        210279,
+        210282,
+        "542848",
+        "542854"
+      ],
+      [
+        248479,
+        248480,
+        "71676",
+        "644830",
+        "644832",
+        "3",
+        "Weapon#-1439269888",
+        "3",
+        "3",
+        "Vector3 | 1 | InRing | Right",
+        "Player.DropWeapon",
+        248478,
+        248481,
+        "644828",
+        "644834"
+      ],
+      [
+        274297,
+        274298,
+        "72760",
+        "714290",
+        "714292",
+        "5",
+        "Weapon#-1439269888",
+        "3",
+        "3",
+        "Vector3 | 1 | InRing | Left",
+        "Player.DropWeapon",
+        274296,
+        274299,
+        "714288",
+        "714294"
+      ],
+      [
+        382482,
+        382483,
+        "77239",
+        "1007160",
+        "1007162",
+        "5",
+        "Weapon#1566332416",
+        "5",
+        "5",
+        "Vector3 | 1 | InRing | Left",
+        "Player.DropWeapon",
+        382481,
+        382484,
+        "1007158",
+        "1007164"
+      ],
+      [
+        427887,
+        427888,
+        "79112",
+        "1128082",
+        "1128084",
+        "1",
+        "Weapon#-2079578368",
+        "0",
+        "0",
+        "Vector3 | 1 | InRing | Left",
+        "Player.DropWeapon",
+        427886,
+        427889,
+        "1128080",
+        "1128086"
+      ],
+      [
+        543413,
+        543414,
+        "84069",
+        "1440814",
+        "1440816",
+        "7",
+        "Weapon#1352896256",
+        "2",
+        "2",
+        "Vector3 | 1 | InRing | Left",
+        "Player.DropWeapon",
+        543412,
+        543415,
+        "1440812",
+        "1440818"
+      ],
+      [
+        639445,
+        639446,
+        "88231",
+        "1701914",
+        "1701916",
+        "5",
+        "Weapon#1352896256",
+        "2",
+        "2",
+        "Vector3 | 1 | InRing | Left",
+        "Player.DropWeapon",
+        639444,
+        639447,
+        "1701912",
+        "1701918"
+      ],
+      [
+        692871,
+        692872,
+        "90472",
+        "1846362",
+        "1846364",
+        "5",
+        "Weapon#-1225833728",
+        "6",
+        "6",
+        "Vector3 | 1 | InRing | Left",
+        "Player.DropWeapon",
+        692870,
+        692873,
+        "1846360",
+        "1846366"
+      ],
+      [
+        729526,
+        729527,
+        "91973",
+        "1943950",
+        "1943952",
+        "6",
+        "Weapon#-1439269888",
+        "3",
+        "3",
+        "Vector3 | 1 | InRing | Left",
+        "Player.DropWeapon",
+        729525,
+        729528,
+        "1943948",
+        "1943954"
+      ],
+      [
+        827317,
+        827318,
+        "95954",
+        "2202726",
+        "2202728",
+        "5",
+        "Weapon#1566332416",
+        "5",
+        "5",
+        "Vector3 | 1 | InRing | Right",
+        "Player.DropWeapon",
+        827316,
+        827319,
+        "2202724",
+        "2202730"
+      ]
+    ],
+    "record_count": 11,
+    "byte_count": 1482,
+    "sha256": "68958e0d08de846fdf50acf4f9710308c78bdd42a62ad3ef8eabe189dbc7ee7f",
+    "reproducibility_tool": "tools/prove_weapon_drop.py"
+  },
+  "limits": [
+    "R6 directly observes Weapon.Drop entry/exit, raw args, parent nesting, and recorder-visible weaponIdx only; it does not expose the internal Weapon fields written by the method.",
+    "Weapon.SetPattern token 0x06006AB7 remains a separate open in-assembly helper gate.",
+    "MatchRandom.Range token 0x0600497C remains a separate open in-assembly helper gate.",
+    "Unity Component/GameObject/Transform/Quaternion/Renderer/Vector3 implementations remain external.",
+    "Authored weapon kinds, pattern tables, AI selection, attack/damage behavior, and packed choreography remain outside this dataset."
+  ]
+}
