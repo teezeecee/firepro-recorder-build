@@ -2610,6 +2610,22 @@
         "non-direct framework/reflection/interface invocation",
         "higher-level playback/file semantics"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_SMALL_READ_ACCESSORS_V1",
+      "fact_id": "FACT-0153",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL small read accessors get_IsPlaying, get_SongLength and get_Volume; no inbound direct MethodDef callers promoted.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_small_read_accessors.summary.json",
+      "dll_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external backend/Unity getter implementations",
+        "non-direct framework/interface invocation"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
