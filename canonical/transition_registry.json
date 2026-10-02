@@ -2795,6 +2795,23 @@
         "Unity Object equality behavior",
         "higher-level channel semantics"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_CHANGE_BGM_PROGRESS_V1",
+      "fact_id": "FACT-0164",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Change_BGM_Progress same-index/async/sync raw-5 resource routing plus direct BGMData.GetBGMInfo_Menu leaf, bridged from FACT-0161 and existing canonical BGM helpers.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_change_bgm_progress.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external Unity coroutine/resource behavior",
+        "authored BGMInfo_Menu/resource contents",
+        "higher-level raw MenuBGM semantics"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

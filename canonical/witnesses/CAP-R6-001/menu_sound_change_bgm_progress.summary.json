@@ -1,0 +1,23 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_CHANGE_BGM_PROGRESS_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "change_bgm_progress":{"token":"0x06005292","methoddef_row_hex":"c020320000009600d15f0a0077e30200003d","rva":"0x003220C0","signature_blob_hex":"00030111a9ec0202","parameters":[{"sequence":1,"name":"index","type":"MenuBGM","type_token":"0x02000A7B"},{"sequence":2,"name":"bAsync","type":"Boolean"},{"sequence":3,"name":"bStart","type":"Boolean"}],"code_size":269,"code_sha256":"29648ba9313068964c8561e9f85d81f876629060fb99ee22e3b18e160e3b77b5","header_format":"fat","header_flags_raw":"0x0013","max_stack":5,"local_signature_token":"0x110011FE","instruction_count":84,"branch_instruction_count":9,"call_instruction_count":18,
+      "fields":{"keep_bgm":{"token":"0x04008702","name":"g_KeepBgmNumber","type":"MenuBGM"},"continue_flag":{"token":"0x04008703","name":"g_ProgressBGM_Continue","type":"Boolean"},"audio_clip_info":{"token":"0x040086F4","name":"audioClipInfo"},"bgm_file_name":{"token":"0x04008629","name":"BGMInfo.fileName","type":"String"}},
+      "strings":[{"token":"0x7008EAFC","value":"Sound/Bgm/"},{"token":"0x7008EB12","value":"Sound/OrganizationManagement/BGM/"}],
+      "paths":{
+        "same_index":["if bStart: FACT-0132 Play_BGM(raw 32, raw 1)","g_ProgressBGM_Continue=true","return"],
+        "different_async":["g_KeepBgmNumber=index","info=BGMData.GetBGMInfo_Menu(index)","g_ProgressBGM_Continue=false","signed index <= 5 uses 'Sound/Bgm/' else 'Sound/OrganizationManagement/BGM/'","path = prefix + info.fileName","FACT-0112 get__instance(); FACT-0115 CoChange_BGMandPlay(path, raw 32, bStart, null); external StartCoroutine(IEnumerator); return"],
+        "different_sync":["g_KeepBgmNumber=index","info=BGMData.GetBGMInfo_Menu(index)","signed index <= 5 uses 'Sound/Bgm/' else 'Sound/OrganizationManagement/BGM/'","clip=(AudioClip)Resources.Load(prefix + info.fileName)","FACT-0113 audioClipInfo[raw 32].Set(clip)","g_ProgressBGM_Continue=false","return"]
+      },
+      "canonical_calls":{"update_state":{"token":"0x06005282","fact_id":"FACT-0163","call_il":"0x0000"},"get_instance":{"token":"0x0600527C","fact_id":"FACT-0112","call_ils":["0x0030","0x0059"]},"cochange_factory":{"token":"0x06005294","fact_id":"FACT-0115","call_ils":["0x0049","0x0072"]},"audio_clip_set":{"token":"0x060052C2","fact_id":"FACT-0113","call_ils":["0x00BA","0x00E8"]},"play_bgm":{"token":"0x0600529E","fact_id":"FACT-0132","call_il":"0x0101"}},
+      "external_members":{"string_concat":{"token":"0x0A000012","call_ils":["0x0040","0x0069","0x00A1","0x00CF"]},"start_coroutine_ienumerator":{"token":"0x0A00035A","call_ils":["0x004E","0x0077"]},"resources_load":{"token":"0x0A0006DA","call_ils":["0x00A6","0x00D4"]},"audio_clip_type":{"token":"0x01000012","cast_ils":["0x00AB","0x00D9"]}}
+    },
+    "get_bgm_info_menu":{"token":"0x0600526E","methoddef_row_hex":"5d02320000009600225e0a0071e20200d93c","rva":"0x0032025D","signature_blob_hex":"000112a9f411a9ec","return_type":"BGMInfo","return_type_token":"0x02000A7D","parameters":[{"sequence":1,"name":"index","type":"MenuBGM","type_token":"0x02000A7B"}],"code_size":8,"code_sha256":"9cd18fdda1bfb9a6545243b98a151f8e8bc2fd604a36f2611c82a99548ff4eb2","body_hex":"7e2d860004029a2a","field":{"token":"0x0400862D","name":"BGMData.BGMInfo_Menu"},"exact_flow":["return BGMInfo_Menu[index]"]},
+    "fact_0161_bridge":{"fact_id":"FACT-0161","caller":"Menu_SoundManager.Resume_State","call_il":"0x000C","callee_token":"0x06005292"}
+  },
+  "limits":["External Unity coroutine/resource APIs and authored BGM data remain outside this record."]
+}
