@@ -784,3 +784,9 @@ jobs:
         run: python tests/test_menu_sound_my_music_play_co_movenext_summary.py
       - name: Menu Sound MyMusic Play Co MoveNext prover syntax
         run: python -m py_compile tools/prove_menu_sound_my_music_play_co_movenext.py
+
+
+      - name: Menu Sound MyMusic Play Co support summary
+        run: python tests/test_menu_sound_my_music_play_co_support_summary.py
+      - name: Menu Sound MyMusic Play Co support prover syntax
+        run: python -m py_compile tools/prove_menu_sound_my_music_play_co_support.py
