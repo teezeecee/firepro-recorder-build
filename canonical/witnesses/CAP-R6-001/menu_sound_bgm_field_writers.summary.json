@@ -1,0 +1,50 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_BGM_FIELD_WRITERS_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methods":[
+      {
+        "name":"StopBGM_Continue",
+        "token":"0x060052A3",
+        "methoddef_row_hex":"d029320000009600d0600a0061e402002b3d",
+        "rva":"0x003229D0",
+        "signature_blob_hex":"00010111a9ec",
+        "parameters":[{"sequence":1,"name":"no","type":"MenuBGM","type_token":"0x02000A7B"}],
+        "code_size":13,
+        "body_hex":"1780038700040280028700042a",
+        "code_sha256":"e4b40d03b2d5fa1894f4bcdd314fe8860105a11edb0df6b7f260115e6f51abf9",
+        "instruction_count":5,
+        "branch_instruction_count":0,
+        "call_instruction_count":0,
+        "writes":[
+          {"field_token":"0x04008703","field_name":"g_ProgressBGM_Continue","field_signature_blob_hex":"0602","value":"raw true"},
+          {"field_token":"0x04008702","field_name":"g_KeepBgmNumber","field_signature_blob_hex":"0611a9ec","value":"parameter no"}
+        ],
+        "exact_flow":["g_ProgressBGM_Continue = true","g_KeepBgmNumber = no","return"]
+      },
+      {
+        "name":"FadeOutBGM",
+        "token":"0x060052A5",
+        "methoddef_row_hex":"272a320000009600e9600a00c3dc00002c3d",
+        "rva":"0x00322A27",
+        "signature_blob_hex":"00010108",
+        "parameters":[{"sequence":1,"name":"frm","type":"Int32"}],
+        "code_size":13,
+        "body_hex":"0280f68600040280f78600042a",
+        "code_sha256":"26438a04e2990fa90e8ac47da1d35ac4bc09608c539517d58e490194a1731a18",
+        "instruction_count":5,
+        "branch_instruction_count":0,
+        "call_instruction_count":0,
+        "writes":[
+          {"field_token":"0x040086F6","field_name":"bgmFadeOutCnt","field_signature_blob_hex":"0608","value":"parameter frm"},
+          {"field_token":"0x040086F7","field_name":"bgmFadeOutFrm","field_signature_blob_hex":"0608","value":"parameter frm"}
+        ],
+        "exact_flow":["bgmFadeOutCnt = frm","bgmFadeOutFrm = frm","return"]
+      }
+    ]
+  },
+  "limits":["Inbound callers and higher-level BGM behavior remain outside this record."]
+}
