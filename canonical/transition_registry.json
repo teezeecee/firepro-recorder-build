@@ -2724,6 +2724,24 @@
         "external Unity Update lifecycle",
         "external Unity/backend/delegate implementations"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_INIT_SPINE_V1",
+      "fact_id": "FACT-0160",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager construction/Awake/Initalize_State singleton and AudioClipInfo/AudioSrcInfo source-array construction spine, preserving string-only Load_MatchSe coroutine dispatch.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_init_spine.summary.json",
+      "dll_method_count": 7,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Menu_SoundManager.Resume_State internal closure",
+        "Menu_SoundManager.Load_SystemSe internal closure",
+        "external Unity lifecycle/component/scene/coroutine behavior",
+        "authored audio resources"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
