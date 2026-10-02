@@ -862,3 +862,9 @@ jobs:
         run: python tests/test_u_audio_update_summary.py
       - name: uAudio Update prover syntax
         run: python -m py_compile tools/prove_u_audio_update.py
+
+
+      - name: Menu Sound init spine summary
+        run: python tests/test_menu_sound_init_spine_summary.py
+      - name: Menu Sound init spine prover syntax
+        run: python -m py_compile tools/prove_menu_sound_init_spine.py
