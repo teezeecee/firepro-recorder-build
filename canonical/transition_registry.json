@@ -3009,6 +3009,23 @@
         "external Unity coroutine scheduling/resource behavior",
         "authored voice resources"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_LOAD_ASYNC_ANNOUNCER_VOICE_MOVENEXT_V1",
+      "fact_id": "FACT-0177",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL <LoadAsync_AnnouncerVoice>c__Iterator5.MoveNext raw 0/1/2 $PC request-build/background-yield/request-completion/AudioClip state machine on the generated type established by FACT-0176.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_load_async_announcer_voice_movenext.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external Unity coroutine scheduler",
+        "external Resources/ResourceRequest/WaitForSeconds behavior",
+        "authored announcer-voice resources"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
