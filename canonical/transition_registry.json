@@ -2827,6 +2827,23 @@
         "external Unity AssetBundle/Resources/coroutine behavior",
         "authored BGMInfo_Match rows and audio assets"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_LOAD_MATCH_SE_FACTORY_SUPPORT_V1",
+      "fact_id": "FACT-0166",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Load_MatchSe IEnumerator factory plus generated iterator constructor/current/dispose/reset support leaves, preserving external StartCoroutine(String) dispatch boundary.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_load_match_se_factory_support.summary.json",
+      "dll_method_count": 6,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "generated MoveNext closure",
+        "Unity StartCoroutine(String) dispatch/scheduler",
+        "authored match-SE resources"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
