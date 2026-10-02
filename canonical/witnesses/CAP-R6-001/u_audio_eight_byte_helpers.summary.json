@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_EIGHT_BYTE_HELPERS_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methods":[
+      {"name":"uAudio_stopped","token":"0x060052D4","methoddef_row_hex":"4f5732000000810045630a005c480000553d","rva":"0x0032574F","signature_blob_hex":"200001","parameters":[],"code_size":8,"code_sha256":"a7ef316dd7fe39b4eaeda4d2e2e77ba05490faf1bfb2ef51a007d2e76bcb182f","body_hex":"02167dea8700042a","exact_flow":["load this","load raw 0","this.State = 0","return"],"field":{"token":"0x040087E9","name":"State","signature_blob_hex":"061182b5"}},
+      {"name":"ChangeCurrentTime","token":"0x060052E2","methoddef_row_hex":"8d5832000000e601f1630a00744801005a3d","rva":"0x0032588D","signature_blob_hex":"2001011182c1","parameters":[{"sequence":1,"name":"timeIN","type":"System.TimeSpan"}],"code_size":8,"code_sha256":"58193cf76ec4ea1593941160a6d4a33e52eabe8941423467e4856a4a1d58a521","body_hex":"020328d75200062a","exact_flow":["load this","load timeIN","call set_CurrentTime(timeIN)","return"],"call":{"token":"0x060052D7","name":"set_CurrentTime","fact_id":"FACT-0141","call_il":"0x0002"}},
+      {"name":"SetFile","token":"0x060052E5","methoddef_row_hex":"bd5932000000e60103640a00794800005c3d","rva":"0x003259BD","signature_blob_hex":"2001010e","parameters":[{"sequence":1,"name":"targetFileIN","type":"String"}],"code_size":8,"code_sha256":"79994be6176e273a75d4c1d2971a5a3e1dbd12aa3428791124fd0d7429e79caf","body_hex":"02037de68700042a","exact_flow":["load this","load targetFileIN","this.targetFile = targetFileIN","return"],"field":{"token":"0x040087E6","name":"targetFile","signature_blob_hex":"060e"}}
+    ],
+    "direct_methoddef_reference_scan":{"targets":["0x060052D4","0x060052E2","0x060052E5"],"opcodes":["call","callvirt","ldftn","ldvirtftn","newobj"],"all_counts_zero":true,"relationship_status":"NO_DIRECT_IN_ASSEMBLY_INBOUND_METHODDEF_REFERENCE"}
+  },
+  "limits":["Non-direct framework/reflection/interface invocation and broader playback semantics remain outside this record."]
+}
