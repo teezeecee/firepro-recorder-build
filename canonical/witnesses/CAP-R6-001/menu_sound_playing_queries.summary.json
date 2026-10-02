@@ -1,0 +1,20 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_PLAYING_QUERIES_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "shared":{"audio_src_info_field":{"token":"0x040086EB","name":"Menu_SoundManager.audioSrcInfo","signature_blob_hex":"061d12aa2c"},"source_field":{"token":"0x0400874C","name":"AudioSrcInfo.sRefAudio","signature_blob_hex":"061280b9"},"get_is_playing":{"token":"0x0A000CAE","resolved":"UnityEngine.AudioSource.get_isPlaying","signature_blob_hex":"200002","call_il":"0x000E"},"local_signature_token":"0x1100120B","local_signature_blob_hex":"070112aa2c","local0_type":"AudioSrcInfo"},
+    "methods":[
+      {"name":"IsPlaying_BGM","token":"0x060052A0","methoddef_row_hex":"0829320000009600aa600a00634a00002a3d","rva":"0x00322908","signature_blob_hex":"000002","return_type":"Boolean","code_size":20,"body_hex":"7eeb860004169a0a067b4c8700046fae0c000a2a","code_sha256":"f443c2451dd1f05f72b0fdf52010f2bdf11af076ba3d8cd82f5d819114b82b62","header_format":"fat","header_flags_raw":"0x0013","max_stack":2,"local_signature_token":"0x1100120B","instruction_count":8,"branch_instruction_count":0,"call_instruction_count":1,"raw_audio_src_info_index":0},
+      {"name":"IsPlay_RefereeVoice","token":"0x060052AA","methoddef_row_hex":"a02c32000000960028610a00634a0000373d","rva":"0x00322CA0","signature_blob_hex":"000002","return_type":"Boolean","code_size":20,"body_hex":"7eeb8600041a9a0a067b4c8700046fae0c000a2a","code_sha256":"73b973ba207b6764e96da5c8b6513177be2d821c9f0bbbdf234ebd4d13290b2c","header_format":"fat","header_flags_raw":"0x0013","max_stack":2,"local_signature_token":"0x1100120B","instruction_count":8,"branch_instruction_count":0,"call_instruction_count":1,"raw_audio_src_info_index":4}
+    ],
+    "exact_shape":["load static audioSrcInfo","select fixed raw index","store AudioSrcInfo local0","load local0.sRefAudio","callvirt AudioSource.get_isPlaying","return Boolean"],
+    "raw_caller_observations":[
+      {"callee_token":"0x060052A0","callee":"Menu_SoundManager.IsPlaying_BGM","caller_token":"0x0600507F","caller":"Referee.PostProcessAnimation","caller_rva":"0x00305E08","caller_code_size":1405,"caller_code_sha256":"9b1289adbe32d2145b2ff9a35d89323d7fc3fbb26ec0d59c49af3f85b115bffe","call_il":"0x041F","relationship_status":"RAW_DIRECT_REFERENCE_CALLER_BODY_NOT_CLOSED_HERE"},
+      {"callee_token":"0x060052AA","callee":"Menu_SoundManager.IsPlay_RefereeVoice","caller_token":"0x060026A4","caller":"Dialog_Scroll.Update","caller_rva":"0x00153F90","caller_code_size":242,"caller_code_sha256":"f4f823f813f84b79c2e1c95458a3aad3e06901cf453e88f6b8e6d3d295af4d67","call_il":"0x007D","relationship_status":"RAW_DIRECT_REFERENCE_CALLER_BODY_NOT_CLOSED_HERE"}
+    ]
+  },
+  "limits":["Caller bodies and Unity audio runtime implementation remain outside this record."]
+}
