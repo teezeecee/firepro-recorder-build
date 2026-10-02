@@ -2750,14 +2750,13 @@
         "DLL-001"
       ],
       "scope": "PROVEN_DLL",
-      "definition": "Exact matching-DLL Menu_SoundManager.Resume_State orchestration: Update_State plus BattleConfig-backed Change_BGM_Progress/Theme/Battle calls, bridged from FACT-0160.",
+      "definition": "Exact matching-DLL Menu_SoundManager.Resume_State orchestration: Update_State plus BattleConfig-backed Change_BGM_Progress/Theme/Battle calls, bridged from FACT-0160; Change_BGM_Theme target is already canonical FACT-0111.",
       "summary": "canonical/witnesses/CAP-R6-001/menu_sound_resume_state.summary.json",
       "dll_method_count": 1,
       "runtime_eligible": false,
       "semantic_promotion_blockers": [
         "Update_State closure",
         "Change_BGM_Progress closure",
-        "Change_BGM_Theme closure",
         "Change_BGM_Battle closure",
         "authored audio data/runtime behavior"
       ]
