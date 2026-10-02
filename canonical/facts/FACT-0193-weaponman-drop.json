@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0193",
+  "claim": "In the matching retail DLL, instance WeaponMan.Drop(Int32 idx, UnityEngine.Vector3 p, Single gy, ZoneEnum zone, PlDirEnum dir) (0x06006AC9) has raw MethodDef row 1c5443000000860000cf0a00b8370300ad4d, RVA 0x0043541C, signature blob 2005010811190c11a85c11a768, and an exact 33-byte fat-header body SHA-256 edcc7cf0273d8a9e58e2e252323436fb039630779892b4c0e2e9654eddab7f76. Its exact flow is: local0 = this.GetWeaponObj(idx); if UnityEngine.Object.op_Implicit(local0) is false return; otherwise local0.Drop(p, gy, zone, dir); return. The GetWeaponObj call at IL+0x0002 is canonical FACT-0192. Exact matching-DLL scanning finds one direct inbound reference only, Player.DropWeapon (0x06004EDF) at IL+0x0051. Fresh R6 contains 923 Player.DropWeapon executions and no WeaponMan.Drop rows: 912 begin with recorded weaponIdx=-1 and have no nested Weapon.Drop; the remaining 11 begin with nonnegative recorded weaponIdx and each contains exactly one direct nested Weapon.Drop PRE/POST pair with matching owner slots, equal parent PRE and child PRE weaponIdx, unchanged child weaponIdx, and parent POST weaponIdx=-1.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "WeaponMan.Drop token 0x06006AC9 raw MethodDef row 1c5443000000860000cf0a00b8370300ad4d -> RVA 0x0043541C; signature 2005010811190c11a85c11a768; fat-header code size 33; code sha256=edcc7cf0273d8a9e58e2e252323436fb039630779892b4c0e2e9654eddab7f76. Exact unique inbound Player.DropWeapon callsite and exact wrapper composition are pinned in canonical/witnesses/CAP-R6-001/weaponman_drop.summary.json; prover tools/prove_weaponman_drop.py.",
+      "observation": "Exact matching-DLL WeaponMan.Drop wrapper body, canonical FACT-0192 helper edge, Weapon.Drop callee identity/hash, and unique Player.DropWeapon inbound reference."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; summary canonical/witnesses/CAP-R6-001/weaponman_drop.summary.json; 11-record witness digest sha256=e1d7d7d17a5a18da4ce9110cd4878d2bcdafc6441ca866580f0f4cd24c9c21cf",
+      "observation": "923 Player.DropWeapon executions: 912 recorded negative-index early-return cases with no children, plus 11 nonnegative cases each containing one direct nested Weapon.Drop execution that preserves the recorded owner/index relationships and ends with parent weaponIdx=-1."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "WeaponMan.Drop idx",
+      "to": "FACT-0192 WeaponMan.GetWeaponObj(idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "WeaponMan.Drop direct call token 0x06006AC8 at IL+0x0002."
+        }
+      ]
+    },
+    {
+      "from": "Player.DropWeapon",
+      "to": "WeaponMan.Drop",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Player.DropWeapon token 0x06004EDF, RVA 0x002E1A44, unique direct callvirt token 0x06006AC9 at IL+0x0051."
+        }
+      ]
+    },
+    {
+      "from": "Player.DropWeapon observed nonnegative branch",
+      "to": "Weapon.Drop observed child",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Player.DropWeapon uniquely calls WeaponMan.Drop at IL+0x0051; WeaponMan.Drop uniquely composes GetWeaponObj/null gate with Weapon.Drop token 0x06006AB8 at IL+0x001B."
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "11 exact direct Player.DropWeapon -> Weapon.Drop parent/child witnesses in weaponman_drop.summary.json; witness digest e1d7d7d17a5a18da4ce9110cd4878d2bcdafc6441ca866580f0f4cd24c9c21cf."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "CAP-R6-001 does not contain WeaponMan.Drop rows, so this fact does not claim direct recorder observation of the wrapper itself.",
+    "The multi-source bridge is limited to the exact DLL composition Player.DropWeapon -> WeaponMan.Drop -> Weapon.Drop and the 11 observed nested Player.DropWeapon -> Weapon.Drop executions.",
+    "The 912 negative-index Player.DropWeapon executions are preserved as observed early-return cases with no direct children.",
+    "The exact body and broader behavior of Weapon.Drop remain separate work beyond the callee identity/hash pinned here.",
+    "Authored weapon kinds, AI selection, attack, damage, choreography, and external Unity behavior remain outside this fact."
+  ]
+}

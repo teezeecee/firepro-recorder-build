@@ -3278,6 +3278,26 @@
         "uncanonicalized caller behavior outside the exact reference edges",
         "weapon kind/AI/attack/damage/choreography semantics"
       ]
+    },
+    {
+      "family_id": "DLL_R6_WEAPONMAN_DROP_V1",
+      "fact_id": "FACT-0193",
+      "source_ids": [
+        "DLL-001",
+        "CAP-R6-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Exact 33-byte matching-DLL WeaponMan.Drop wrapper plus unique Player.DropWeapon inbound reference and 11 exact R6 Player.DropWeapon -> Weapon.Drop composite bridge witnesses.",
+      "summary": "canonical/witnesses/CAP-R6-001/weaponman_drop.summary.json",
+      "dll_method_count": 1,
+      "player_drop_weapon_occurrence_count": 923,
+      "composite_bridge_occurrence_count": 11,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Weapon.Drop exact body and broader lifecycle behavior",
+        "authored weapon kinds/AI/attack/damage/choreography data",
+        "external UnityEngine.Object behavior and unobserved WeaponMan.Drop wrapper execution"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
