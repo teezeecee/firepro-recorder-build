@@ -1,11 +1,39 @@
 {
-  "fact_id":"FACT-0162",
-  "claim":"In the matching retail DLL, static Menu_SoundManager.Load_SystemSe (0x06005283) has raw MethodDef row d019320000009600aa5e0a00e3a50000e73c, RVA 0x003219D0, exact signature blob 000001, and an exact 84-byte body with SHA-256 a3013c457438736875e2b086380b1531557597d34461483561823549e742c67b. It initializes raw local index i=0 and loops while i < static SystemSEFileList (0x040086E8).Length. For each i it reads static audioClipInfo (0x040086F4)[i].audioClip (0x0400874B); when that clip compares non-null through UnityEngine.Object.op_Inequality (0x0A00000F), it skips loading. Otherwise it reads SystemSEFileList[i], calls UnityEngine.Resources.Load(String) (0x0A0006DA), casts to UnityEngine.AudioClip (TypeRef 0x01000012), stores the result in local1, and directly calls AudioClipInfo.Set (0x060052C2) on audioClipInfo[i]. AudioClipInfo.Set itself has raw MethodDef row f537320000008600bb3201004cb100004b3d, RVA 0x003237F5, exact signature blob 2001011249, and an exact 8-byte body with SHA-256 5c1fa2fbc6a929b6fffb5ebb0e04fae4d1fa8b86b4d1984529906b46d8824dd0; it stores its UnityEngine.AudioClip argument directly into this.audioClip (0x0400874B) and returns. FACT-0160 pins the two already-canonical direct Load_SystemSe callers at Initalize_State IL+0x0097 and IL+0x00E6.",
-  "status":"PROVEN_DLL",
-  "evidence":[{"source_id":"DLL-001","locator":"Menu_SoundManager.Load_SystemSe token 0x06005283 row d019320000009600aa5e0a00e3a50000e73c RVA 0x003219D0 code size 84 sha256=a3013c457438736875e2b086380b1531557597d34461483561823549e742c67b; AudioClipInfo.Set token 0x060052C2 row f537320000008600bb3201004cb100004b3d RVA 0x003237F5 code size 8 sha256=5c1fa2fbc6a929b6fffb5ebb0e04fae4d1fa8b86b4d1984529906b46d8824dd0; exact loop, fields and external member tokens in canonical/witnesses/CAP-R6-001/menu_sound_load_system_se.summary.json; prover tools/prove_menu_sound_load_system_se.py","observation":"Exact matching-DLL system-SE load loop plus direct AudioClipInfo.Set leaf."}],
-  "chain_edges":[
-    {"from":"FACT-0160 Menu_SoundManager.Initalize_State","to":"Menu_SoundManager.Load_SystemSe","evidence":[{"source_id":"DLL-001","locator":"FACT-0160 pins direct call token 0x06005283 at Initalize_State IL+0x0097 and IL+0x00E6."}]},
-    {"from":"Menu_SoundManager.Load_SystemSe","to":"AudioClipInfo.Set(UnityEngine.AudioClip)","evidence":[{"source_id":"DLL-001","locator":"Load_SystemSe IL+0x003D callvirt token 0x060052C2 on audioClipInfo[i]."}]}
+  "fact_id": "FACT-0162",
+  "claim": "In the matching retail DLL, static Menu_SoundManager.Load_SystemSe (0x06005283) has raw MethodDef row d019320000009600aa5e0a00e3a50000e73c, RVA 0x003219D0, exact signature blob 000001, and an exact 84-byte body with SHA-256 a3013c457438736875e2b086380b1531557597d34461483561823549e742c67b. It initializes raw local index i=0 and loops while i < static SystemSEFileList (0x040086E8).Length. For each i it reads static audioClipInfo (0x040086F4)[i].audioClip (0x0400874B); when that clip compares non-null through UnityEngine.Object.op_Inequality (0x0A00000F), it skips loading. Otherwise it reads SystemSEFileList[i], calls UnityEngine.Resources.Load(String) (0x0A0006DA), casts to UnityEngine.AudioClip (TypeRef 0x01000012), stores the result in local1, and directly calls AudioClipInfo.Set (0x060052C2) on audioClipInfo[i]. FACT-0113 already canonically closes AudioClipInfo.Set (0x060052C2), including raw MethodDef row f537320000008600bb3201004cb100004b3d, RVA 0x003237F5, signature blob 2001011249, the exact 8-byte body SHA-256 5c1fa2fbc6a929b6fffb5ebb0e04fae4d1fa8b86b4d1984529906b46d8824dd0 and its direct store into AudioClipInfo.audioClip (0x0400874B); FACT-0162 only adds the new Load_SystemSe -> FACT-0113 call bridge and byte-identical dependency cross-check. FACT-0160 pins the two already-canonical direct Load_SystemSe callers at Initalize_State IL+0x0097 and IL+0x00E6.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.Load_SystemSe token 0x06005283 row d019320000009600aa5e0a00e3a50000e73c RVA 0x003219D0 code size 84 sha256=a3013c457438736875e2b086380b1531557597d34461483561823549e742c67b; dependency cross-check against canonical FACT-0113 AudioClipInfo.Set token 0x060052C2 row f537320000008600bb3201004cb100004b3d RVA 0x003237F5 code size 8 sha256=5c1fa2fbc6a929b6fffb5ebb0e04fae4d1fa8b86b4d1984529906b46d8824dd0; exact loop, fields and external member tokens in canonical/witnesses/CAP-R6-001/menu_sound_load_system_se.summary.json; prover tools/prove_menu_sound_load_system_se.py",
+      "observation": "Exact matching-DLL system-SE load loop plus direct bridge/cross-check to canonical FACT-0113 AudioClipInfo.Set."
+    }
   ],
-  "limits":["UnityEngine.Resources.Load, UnityEngine.Object comparison, AudioClip runtime behavior and authored SystemSEFileList contents remain external.","This fact closes only the exact loader/setter code paths; it does not establish asset existence or successful load results.","No semantic meaning beyond exact field/method metadata names and control flow is promoted."]
+  "chain_edges": [
+    {
+      "from": "FACT-0160 Menu_SoundManager.Initalize_State",
+      "to": "Menu_SoundManager.Load_SystemSe",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0160 pins direct call token 0x06005283 at Initalize_State IL+0x0097 and IL+0x00E6."
+        }
+      ]
+    },
+    {
+      "from": "Menu_SoundManager.Load_SystemSe",
+      "to": "FACT-0113 AudioClipInfo.Set(UnityEngine.AudioClip)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Load_SystemSe IL+0x003D callvirt token 0x060052C2 on audioClipInfo[i]; FACT-0113 canonically closes that exact target body."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "UnityEngine.Resources.Load, UnityEngine.Object comparison, AudioClip runtime behavior and authored SystemSEFileList contents remain external.",
+    "This fact newly closes only Load_SystemSe; AudioClipInfo.Set remains owned by FACT-0113 and is retained here only as a direct dependency bridge/cross-check.",
+    "No semantic meaning beyond exact field/method metadata names and control flow is promoted."
+  ]
 }
