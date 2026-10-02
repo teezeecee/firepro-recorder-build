@@ -958,3 +958,9 @@ jobs:
         run: python tests/test_menu_sound_stop_reset_family_summary.py
       - name: Menu Sound stop reset family prover syntax
         run: python -m py_compile tools/prove_menu_sound_stop_reset_family.py
+
+
+      - name: Menu Sound async voice factories support summary
+        run: python tests/test_menu_sound_async_voice_factories_support_summary.py
+      - name: Menu Sound async voice factories support prover syntax
+        run: python -m py_compile tools/prove_menu_sound_async_voice_factories_support.py
