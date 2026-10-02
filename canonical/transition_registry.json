@@ -3141,6 +3141,22 @@
         "WrestlerVoiceInfoManager.Parse body closure",
         "external Unity Awake lifecycle dispatch"
       ]
+    },
+    {
+      "family_id": "DLL_WRESTLER_VOICE_INFO_MANAGER_PARSE_PRM_INT_V1",
+      "fact_id": "FACT-0185",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL WrestlerVoiceInfoManager.ParsePrm_Int sentinel/space/Int32.Parse helper plus catch System.Object and direct Parse call site.",
+      "summary": "canonical/witnesses/CAP-R6-001/wrestler_voice_info_manager_parse_prm_int.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "full WrestlerVoiceInfoManager.Parse body closure",
+        "external System.String/Int32 behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
