@@ -1,0 +1,20 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_LOAD_ASYNC_REFEREE_VOICE_FACTORY_SUPPORT_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "factory":{"type":"Menu_SoundManager","method":"LoadAsync_RefereeVoice","token":"0x0600528A","methoddef_row_hex":"e41c3200000096001e5f0a0036e30200f43c","rva":"0x00321CE4","signature_blob_hex":"000112818111aa34","return_type":"System.Collections.IEnumerator","parameters":[{"sequence":1,"name":"type","type":"RefereeVoiceTypeEnum","type_token":"0x02000A8D"}],"code_size":15,"body_hex":"73d17400060a06027d1bc20004062a","code_sha256":"506732d3b9f0d6b4d7a4cf027d9a8c32bb1764f113000e24f2f72153caf4eb27","generated_type":"<LoadAsync_RefereeVoice>c__Iterator4","generated_type_token":"0x02000F69","constructor_token":"0x060074D1","stored_parameter_field":"0x0400C21B"},
+    "generated_fields":{"type":"0x0400C21B","res_req":"0x0400C21C","index":"0x0400C21D","current":"0x0400C21E","disposing":"0x0400C21F","pc":"0x0400C220"},
+    "support":[
+      {"name":".ctor","token":"0x060074D1","rva":"0x00324468","code_size":7,"body_hex":"0228ef00000a2a","code_sha256":"5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9"},
+      {"name":"System.Collections.Generic.IEnumerator<object>.get_Current","token":"0x060074D3","rva":"0x003245B3","code_size":7,"body_hex":"027b1ec200042a","code_sha256":"7e051e009393a0bf301de63967a42a8a685c359901912dab800489ebea628d82"},
+      {"name":"System.Collections.IEnumerator.get_Current","token":"0x060074D4","rva":"0x003245BB","code_size":7,"body_hex":"027b1ec200042a","code_sha256":"7e051e009393a0bf301de63967a42a8a685c359901912dab800489ebea628d82"},
+      {"name":"Dispose","token":"0x060074D5","rva":"0x003245C3","code_size":15,"body_hex":"02177d1fc2000402157d20c200042a","code_sha256":"87a280b69c2e509c151ab7901bb1eb163b4b8430c9f1d19de91344c7970f9657"},
+      {"name":"Reset","token":"0x060074D6","rva":"0x003245D3","code_size":6,"body_hex":"73ee00000a7a","code_sha256":"feef1163dc69f21cc1201b1ec63d1a60afc2af2ce98036d760713f22a2968a49"}
+    ],
+    "open_execution_method":{"name":"<LoadAsync_RefereeVoice>c__Iterator4.MoveNext","token":"0x060074D2","methoddef_row_hex":"704432000000e6017f5a0600db490000d24f","rva":"0x00324470","signature_blob_hex":"200002","code_size":311,"code_sha256":"b7cd1752de05dfc07cc79a9b416fd025358fd0f6d9041e7c03f72b564c054b64"}
+  },
+  "limits":["MoveNext, Unity scheduler behavior and authored referee-voice resources remain outside this record."]
+}
