@@ -1,0 +1,43 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_WRESTLER_VOICE_CONSTRUCTION_DEFAULTS_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methods":[
+      {"type":"WrestlerVoiceAttr","method":".ctor","token":"0x060011E1","methoddef_row_hex":"13f0060000008618eb4f06005c480000a00d","rva":"0x0006F013","signature_blob_hex":"200001","code_size":26,"code_sha256":"6836ea693beefcbacf0cca451f7be338d0113f53f4ce8b3710d8cf6b5039039a","body_hex":"02188dbf0000017ddb11000402157ddc1100040228ef00000a2a"},
+      {"type":"WrestlerVoiceInfo","method":".ctor","token":"0x060011E2","methoddef_row_hex":"30f0060000008618eb4f06005c480000a00d","rva":"0x0006F030","signature_blob_hex":"200001","code_size":65,"code_sha256":"941c4078e31edb844e0a3e59cb5ae28a6dedf8e86b01896fbaacf71c0a699a60","body_hex":"021f108dc80000017dde110004027e2500000a7ddf110004027e2500000a7de011000402188dbf0000017de111000402738607000a7de31100040228ef00000a2a"},
+      {"type":"WrestlerVoiceInfoManager","method":".ctor","token":"0x060011E5","methoddef_row_hex":"00f1060000008618eb4f06005c480000a00d","rva":"0x0006F100","signature_blob_hex":"200001","code_size":29,"code_sha256":"d73d650906909f5df68b9d1210095d7763ad6ca99a890b3fce2dd6238b6918f7","body_hex":"02739107000a7de71100040273e11100067de811000402280e00000a2a"}
+    ],
+    "fields":{
+      "description":{"token":"0x040011DB","owner":"WrestlerVoiceAttr","type":"System.String[]"},
+      "cheerVoice":{"token":"0x040011DC","owner":"WrestlerVoiceAttr"},
+      "dlc":{"token":"0x040011DE","owner":"WrestlerVoiceInfo","type":"System.Boolean[]"},
+      "parentFolder":{"token":"0x040011DF","owner":"WrestlerVoiceInfo","type":"System.String"},
+      "fileNamePrefix":{"token":"0x040011E0","owner":"WrestlerVoiceInfo","type":"System.String"},
+      "name":{"token":"0x040011E1","owner":"WrestlerVoiceInfo","type":"System.String[]"},
+      "attr":{"token":"0x040011E3","owner":"WrestlerVoiceInfo","type":"System.Collections.Generic.List<WrestlerVoiceAttr>"},
+      "wrestlerVoiceInfo":{"token":"0x040011E7","owner":"WrestlerVoiceInfoManager","type":"System.Collections.Generic.List<WrestlerVoiceInfo>"},
+      "unknounVoiceAttr":{"token":"0x040011E8","owner":"WrestlerVoiceInfoManager","type":"WrestlerVoiceAttr"}
+    },
+    "metadata":{
+      "system_string_typeref":"0x010000BF",
+      "system_boolean_typeref":"0x010000C8",
+      "string_empty_memberref":"0x0A000025",
+      "list_wrestler_voice_attr_typespec":"0x1B00010B",
+      "list_wrestler_voice_attr_ctor":"0x0A000786",
+      "list_wrestler_voice_info_typespec":"0x1B00010C",
+      "list_wrestler_voice_info_ctor":"0x0A000791",
+      "system_object_ctor":"0x0A0000EF",
+      "unity_monobehaviour_ctor":"0x0A00000E"
+    },
+    "exact_flow":{
+      "WrestlerVoiceAttr..ctor":["description = new System.String[2]","cheerVoice = raw -1","System.Object..ctor()","return"],
+      "WrestlerVoiceInfo..ctor":["dlc = new System.Boolean[16]","parentFolder = System.String.Empty","fileNamePrefix = System.String.Empty","name = new System.String[2]","attr = new List<WrestlerVoiceAttr>()","System.Object..ctor()","return"],
+      "WrestlerVoiceInfoManager..ctor":["wrestlerVoiceInfo = new List<WrestlerVoiceInfo>()","unknounVoiceAttr = new WrestlerVoiceAttr()","UnityEngine.MonoBehaviour..ctor()","return"]
+    },
+    "direct_edge":{"caller":"WrestlerVoiceInfoManager..ctor","call_il":"0x000C","opcode":"newobj","callee_token":"0x060011E1","callee":"WrestlerVoiceAttr..ctor"}
+  },
+  "limits":["External constructors/lifecycle and still-open Parse caller sites remain outside this record."]
+}

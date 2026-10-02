@@ -3092,6 +3092,23 @@
         "external generic enumerator implementation",
         "external Unity/resource behavior and authored wrestler-voice assets"
       ]
+    },
+    {
+      "family_id": "DLL_WRESTLER_VOICE_CONSTRUCTION_DEFAULTS_V1",
+      "fact_id": "FACT-0182",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL WrestlerVoiceAttr, WrestlerVoiceInfo and WrestlerVoiceInfoManager constructor defaults, including manager direct newobj edge to WrestlerVoiceAttr.",
+      "summary": "canonical/witnesses/CAP-R6-001/wrestler_voice_construction_defaults.summary.json",
+      "dll_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external Unity/component instantiation",
+        "external System/Object/List constructors",
+        "still-open WrestlerVoiceInfoManager.Parse caller sites"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
