@@ -1,0 +1,18 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_LOAD_SYSTEM_SE_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "load_system_se":{"token":"0x06005283","methoddef_row_hex":"d019320000009600aa5e0a00e3a50000e73c","rva":"0x003219D0","signature_blob_hex":"000001","code_size":84,"code_sha256":"a3013c457438736875e2b086380b1531557597d34461483561823549e742c67b","header_format":"fat","header_flags_raw":"0x0013","max_stack":2,"local_signature_token":"0x110011F5","instruction_count":31,"branch_instruction_count":4,"call_instruction_count":3,
+      "exact_flow":["i = 0","while i < SystemSEFileList.Length: if audioClipInfo[i].audioClip != null skip load; else clip = (UnityEngine.AudioClip)UnityEngine.Resources.Load(SystemSEFileList[i]); audioClipInfo[i].Set(clip); i++","return"],
+      "fields":{"audio_clip_info":{"token":"0x040086F4","name":"audioClipInfo","signature_blob_hex":"061d12aa28"},"system_se_file_list":{"token":"0x040086E8","name":"SystemSEFileList","signature_blob_hex":"061d0e"},"audio_clip":{"token":"0x0400874B","name":"AudioClipInfo.audioClip","signature_blob_hex":"061249"}},
+      "external_members":{"object_inequality":{"token":"0x0A00000F","resolved":"UnityEngine.Object.op_Inequality","call_il":"0x0014"},"resources_load":{"token":"0x0A0006DA","resolved":"UnityEngine.Resources.Load(String)","call_il":"0x002A"},"audio_clip_type":{"token":"0x01000012","resolved":"UnityEngine.AudioClip","cast_il":"0x002F"}},
+      "direct_calls":{"audio_clip_info_set":{"token":"0x060052C2","name":"AudioClipInfo.Set","call_il":"0x003D"}}
+    },
+    "audio_clip_info_set":{"token":"0x060052C2","methoddef_row_hex":"f537320000008600bb3201004cb100004b3d","rva":"0x003237F5","signature_blob_hex":"2001011249","code_size":8,"code_sha256":"5c1fa2fbc6a929b6fffb5ebb0e04fae4d1fa8b86b4d1984529906b46d8824dd0","header_format":"tiny","exact_flow":["load this","load UnityEngine.AudioClip argument","this.audioClip = argument","return"],"field_token":"0x0400874B"},
+    "fact_0160_bridges":[{"fact_id":"FACT-0160","caller":"Menu_SoundManager.Initalize_State","call_il":"0x0097"},{"fact_id":"FACT-0160","caller":"Menu_SoundManager.Initalize_State","call_il":"0x00E6"}]
+  },
+  "limits":["External Unity resource loading and authored file-list contents remain outside this record."]
+}
