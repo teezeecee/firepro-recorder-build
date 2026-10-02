@@ -1,0 +1,42 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_ASYNC_VOICE_FACTORIES_SUPPORT_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "factories":[
+      {
+        "method":"LoadAsync_WrestlerVoiceList","token":"0x06005288","methoddef_row_hex":"541c320000009600f05e0a001be30200f13c","rva":"0x00321C54","signature_blob_hex":"00021281811512090112aa3002","return_type":"System.Collections.IEnumerator",
+        "parameters":[{"sequence":1,"name":"request","type":"System.Collections.Generic.List<WrestlerVoiceLoadRequest>","type_argument_token":"0x02000A8C"},{"sequence":2,"name":"background","type":"Boolean"}],
+        "code_size":22,"body_hex":"73cb7400060a06027d07c2000406037d11c20004062a","code_sha256":"0b3dccaf04ab02d9fd75b42e066f836adf54e8527cbcd19cdf6f30b73fcaddf7",
+        "generated_type":"<LoadAsync_WrestlerVoiceList>c__Iterator3","generated_type_token":"0x02000F68","constructor_token":"0x060074CB","stored_parameter_fields":{"request":"0x0400C207","background":"0x0400C211"},
+        "support":[
+          {"name":".ctor","token":"0x060074CB","rva":"0x00323E3A","code_size":7,"body_hex":"0228ef00000a2a","code_sha256":"5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9"},
+          {"name":"System.Collections.Generic.IEnumerator<object>.get_Current","token":"0x060074CD","rva":"0x00324441","code_size":7,"body_hex":"027b18c200042a","code_sha256":"9f03a1c4cfab457e28da7eb7dfc8950881e458be2c22f773d48bc15d76dc3c40"},
+          {"name":"System.Collections.IEnumerator.get_Current","token":"0x060074CE","rva":"0x00324449","code_size":7,"body_hex":"027b18c200042a","code_sha256":"9f03a1c4cfab457e28da7eb7dfc8950881e458be2c22f773d48bc15d76dc3c40"},
+          {"name":"Dispose","token":"0x060074CF","rva":"0x00324451","code_size":15,"body_hex":"02177d19c2000402157d1ac200042a","code_sha256":"5dd0586b0ab5d9853aad6e461f586ec232dd731664d19af0f9dbb5d23e69f110"},
+          {"name":"Reset","token":"0x060074D0","rva":"0x00324461","code_size":6,"body_hex":"73ee00000a7a","code_sha256":"feef1163dc69f21cc1201b1ec63d1a60afc2af2ce98036d760713f22a2968a49"}
+        ],
+        "generated_fields":{"request":"0x0400C207","background":"0x0400C211","current":"0x0400C218","disposing":"0x0400C219","pc":"0x0400C21A"},
+        "open_execution_method":{"name":"<LoadAsync_WrestlerVoiceList>c__Iterator3.MoveNext","token":"0x060074CC","methoddef_row_hex":"443e32000000e6017f5a0600db490000d24f","rva":"0x00323E44","signature_blob_hex":"200002","code_size":1521,"code_sha256":"4a24846ef6fe5b1e729ee484cbdac32e5744eb183a9b23562fd7d865a8410f94"}
+      },
+      {
+        "method":"LoadAsync_AnnouncerVoice","token":"0x0600528C","methoddef_row_hex":"6c1d320000009600495f0a004ce30200f63c","rva":"0x00321D6C","signature_blob_hex":"000212818111a9e402","return_type":"System.Collections.IEnumerator",
+        "parameters":[{"sequence":1,"name":"type","type":"AnnouncerVoiceTypeEnum","type_token":"0x02000A79"},{"sequence":2,"name":"background","type":"Boolean"}],
+        "code_size":22,"body_hex":"73d77400060a06027d21c2000406037d25c20004062a","code_sha256":"0413ed4cc600423712fb04ffb304151d30a4e14f33179c35e29c80390992c958",
+        "generated_type":"<LoadAsync_AnnouncerVoice>c__Iterator5","generated_type_token":"0x02000F6A","constructor_token":"0x060074D7","stored_parameter_fields":{"type":"0x0400C221","background":"0x0400C225"},
+        "support":[
+          {"name":".ctor","token":"0x060074D7","rva":"0x003245DA","code_size":7,"body_hex":"0228ef00000a2a","code_sha256":"5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9"},
+          {"name":"System.Collections.Generic.IEnumerator<object>.get_Current","token":"0x060074D9","rva":"0x0032478B","code_size":7,"body_hex":"027b27c200042a","code_sha256":"c378542a12b73360475ddc0fcbc4f6a0f97ceb1f7fbad1b31c45e0b0824fa437"},
+          {"name":"System.Collections.IEnumerator.get_Current","token":"0x060074DA","rva":"0x00324793","code_size":7,"body_hex":"027b27c200042a","code_sha256":"c378542a12b73360475ddc0fcbc4f6a0f97ceb1f7fbad1b31c45e0b0824fa437"},
+          {"name":"Dispose","token":"0x060074DB","rva":"0x0032479B","code_size":15,"body_hex":"02177d28c2000402157d29c200042a","code_sha256":"d27b961c83ff2de4635e3628410b7f1f6f24c2589a8f477ab150584622b0c3dc"},
+          {"name":"Reset","token":"0x060074DC","rva":"0x003247AB","code_size":6,"body_hex":"73ee00000a7a","code_sha256":"feef1163dc69f21cc1201b1ec63d1a60afc2af2ce98036d760713f22a2968a49"}
+        ],
+        "generated_fields":{"type":"0x0400C221","background":"0x0400C225","current":"0x0400C227","disposing":"0x0400C228","pc":"0x0400C229"},
+        "open_execution_method":{"name":"<LoadAsync_AnnouncerVoice>c__Iterator5.MoveNext","token":"0x060074D8","methoddef_row_hex":"e44532000000e6017f5a0600db490000d24f","rva":"0x003245E4","signature_blob_hex":"200002","code_size":411,"code_sha256":"190881f0b3580bf1117c3f937040340778b36c472ddd6d9db01ae15286fa458a"}
+      }
+    ]
+  },
+  "limits":["Both generated MoveNext methods remain open execution gates; Unity scheduler/resource behavior and authored assets remain external."]
+}
