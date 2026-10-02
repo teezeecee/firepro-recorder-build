@@ -1,0 +1,23 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_WRESTLER_VOICE_INFO_IS_DLC_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060011E4","row_hex":"d0f00600000086006f7d0800db490000a00d","rva":"0x0006F0D0"},
+    "method":{"type":"WrestlerVoiceInfo","method":"IsDLC","token":"0x060011E4","rva":"0x0006F0D0","signature_blob_hex":"200002","return_type":"Boolean","parameters":[],"code_size":36,"code_sha256":"2acb70b4c1485d922c4cb298c85655aced949090d9446da112ff0935df31c9f6","header_format":"fat","header_flags_raw":"0x0013","max_stack":2,"local_signature_token":"0x1100003A","local_signature_blob_hex":"070108","locals":[{"index":0,"type":"Int32"}],"instruction_count":19,"branch_instruction_count":3,"call_instruction_count":0},
+    "field":{"token":"0x040011DE","name":"dlc","signature_blob_hex":"061d02","type":"Boolean[]"},
+    "exact_flow":[
+      "local0 = 0",
+      "loop test: local0 < raw 16",
+      "if this.dlc[local0] is nonzero: return true",
+      "otherwise local0 = local0 + 1 and repeat",
+      "after local0 reaches raw 16: return false"
+    ],
+    "exception_section":null,
+    "fact_0178_bridge":{"fact_id":"FACT-0178","caller":"<LoadAsync_WrestlerVoiceList>c__Iterator3.MoveNext","call_il":"0x01BF","callee_token":"0x060011E4"},
+    "next_direct_sibling":{"method":"WrestlerVoiceInfo.CheckValidationDLC","token":"0x060011E3","call_il_to_is_dlc":"0x0001","status":"OPEN_SEPARATE_GATE"}
+  },
+  "limits":["Per-entry DLC meaning remains outside this record beyond exact raw Boolean-array scan behavior."]
+}
