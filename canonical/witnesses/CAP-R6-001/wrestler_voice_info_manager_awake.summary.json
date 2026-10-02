@@ -1,0 +1,22 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_WRESTLER_VOICE_INFO_MANAGER_AWAKE_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060011E6","row_hex":"1ef1060000008100d99106005c480000a00d","rva":"0x0006F11E"},
+    "method":{"type":"WrestlerVoiceInfoManager","method":"Awake","token":"0x060011E6","rva":"0x0006F11E","signature_blob_hex":"200001","return_type":"Void","parameters":[],"code_size":61,"code_sha256":"bcee56df40b0e166d956e871a4b165a2e11eed714129aff4e22590ffbe441aae","header_format":"tiny","max_stack":8,"local_signature_token":"0x00000000","instruction_count":23,"branch_instruction_count":0,"call_instruction_count":1},
+    "fields":{
+      "inst":{"token":"0x040011E6","owner":"WrestlerVoiceInfoManager","name":"inst","type":"WrestlerVoiceInfoManager","static":true},
+      "fallback":{"token":"0x040011E8","owner":"WrestlerVoiceInfoManager","name":"unknounVoiceAttr","type":"WrestlerVoiceAttr"},
+      "description":{"token":"0x040011DB","owner":"WrestlerVoiceAttr","name":"description","type":"System.String[]"},
+      "cheer_voice":{"token":"0x040011DC","owner":"WrestlerVoiceAttr","name":"cheerVoice","type":"CheerVoiceEnum","type_token":"0x02000A80"}
+    },
+    "user_string":{"token":"0x70007D32","value":"Unknown","load_ils":["0x0012","0x0024"]},
+    "direct_call":{"token":"0x060011EA","resolved":"WrestlerVoiceInfoManager.Parse","call_il":"0x0037","callee_status":"OPEN"},
+    "exact_flow":["WrestlerVoiceInfoManager.inst = this","this.unknounVoiceAttr.description[0] = 'Unknown'","this.unknounVoiceAttr.description[1] = 'Unknown'","this.unknounVoiceAttr.cheerVoice = raw -1","this.Parse()","return"],
+    "direct_awake_reference_scan":{"target_token":"0x060011E6","opcodes":["call","callvirt","newobj","ldftn","ldvirtftn"],"all_counts_zero":true,"relationship_status":"NO_DIRECT_IN_ASSEMBLY_METHODDEF_REFERENCE"}
+  },
+  "limits":["Parse body and external Unity lifecycle dispatch remain outside this record."]
+}
