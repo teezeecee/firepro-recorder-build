@@ -1,0 +1,8 @@
+{
+  "fact_id":"FACT-0154",
+  "claim":"In the matching retail DLL, instance uAudio.uAudioPlayer.Stop (0x060052EA) has raw MethodDef row 0c5e32000000e601280a04005c4800005f3d, RVA 0x00325E0C, exact signature blob 200001, no parameters, and an exact 18-byte body with SHA-256 d5e285b4ad9285059afee97848d43a163c62ba65523f54379a5d5b6c8248a513. It loads raw this.State (0x040087E9); when State is zero it branches directly to return. When State is nonzero it loads this and directly calls uAudio.uAudioPlayer.SongEnd (0x060052E6) at IL+0x000C, then returns. FACT-0126 already canonically closes SongEnd. No inbound direct in-assembly caller edge is promoted for Stop.",
+  "status":"PROVEN_DLL",
+  "evidence":[{"source_id":"DLL-001","locator":"uAudio.uAudioPlayer.Stop token 0x060052EA raw MethodDef row 0c5e32000000e601280a04005c4800005f3d -> RVA 0x00325E0C; signature 200001; code size 18; code sha256=d5e285b4ad9285059afee97848d43a163c62ba65523f54379a5d5b6c8248a513; exact raw-State gate and direct SongEnd call in canonical/witnesses/CAP-R6-001/u_audio_stop.summary.json; prover tools/prove_u_audio_stop.py","observation":"Exact matching-DLL Stop body."}],
+  "chain_edges":[{"from":"uAudio.uAudioPlayer.Stop()","to":"FACT-0126 uAudio.uAudioPlayer.SongEnd()","evidence":[{"source_id":"DLL-001","locator":"Stop IL+0x000C is direct call token 0x060052E6."}]}],
+  "limits":["This fact closes only the exact Stop body and its direct SongEnd edge.","Raw State zero/nonzero behavior is preserved without assigning broader enum semantics.","No inbound direct caller edge is promoted.","Any external/interface/framework invocation remains outside this fact."]
+}
