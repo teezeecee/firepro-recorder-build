@@ -2544,6 +2544,22 @@
         "delegate subscriber/runtime behavior",
         "external caller provenance"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_NOT_IMPLEMENTED_STUBS_V1",
+      "fact_id": "FACT-0149",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL byte-identical NotImplementedException stubs for explicit-interface get_SLEEP/set_SLEEP and Resume, with zero direct MethodDef-reference scan.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_not_implemented_stubs.summary.json",
+      "dll_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "non-direct interface/reflection/framework dispatch",
+        "higher-level SLEEP semantics"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
