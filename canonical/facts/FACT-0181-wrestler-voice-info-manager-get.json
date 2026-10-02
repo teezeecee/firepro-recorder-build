@@ -9,3 +9,4 @@
   ],
   "limits":["This fact closes only the exact manager lookup body, its finally clause, and both FACT-0178 caller bridges.","Authored contents/order of WrestlerVoiceInfoManager.wrestlerVoiceInfo remain outside this fact.","Generic List enumerator and IDisposable implementations remain external library behavior.","With FACT-0179 and FACT-0180, FACT-0178 has no remaining unclosed in-assembly MethodDef helpers; Unity/resource behavior and authored assets remain the branch blockers."]
 }
+
