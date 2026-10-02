@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0195",
+  "claim": "In the matching retail DLL, static MatchRandom.Range(Single min, Single max) (0x0600497C) has raw MethodDef row 9c102b0000009600b4620600c65100005f36, RVA 0x002B109C, signature blob 00020c0c0c, and an exact 30-byte tiny-header body SHA-256 088e4cd8eb7a187b28b71251188f91e260b6c7189cf32a45b89f6cd38b1868dc. Its exact body reads static MatchRandom.randomCnt (0x0400578E), adds raw 1 and writes it back; calls external UnityEngine.Random.Range(Single, Single) MemberRef 0x0A000804 with min,max; writes the result to static MatchRandom.lastRandNum_Float (0x04005790); then reads and returns lastRandNum_Float. Exact matching-DLL scanning finds seven direct references across six caller methods, including canonical FACT-0022 MatchMisc.CriticalCheck at IL+0x0292 and canonical FACT-0194 Weapon.Drop at IL+0x0030.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchRandom.Range token 0x0600497C raw MethodDef row 9c102b0000009600b4620600c65100005f36 -> RVA 0x002B109C; signature 00020c0c0c; tiny-header code size 30; code sha256=088e4cd8eb7a187b28b71251188f91e260b6c7189cf32a45b89f6cd38b1868dc. Exact static-field accesses, external Unity Random.Range member identity, and seven-reference caller map are pinned in canonical/witnesses/CAP-R6-001/matchrandom_range.summary.json; prover tools/prove_matchrandom_range.py.",
+      "observation": "Exact matching-DLL MatchRandom.Range wrapper body, both static-field identities, external UnityEngine.Random.Range MemberRef identity, and exact seven-reference / six-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0022 MatchMisc.CriticalCheck",
+      "to": "MatchRandom.Range",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "MatchMisc.CriticalCheck token 0x06004949, RVA 0x002AEC54, direct call token 0x0600497C at IL+0x0292."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0194 Weapon.Drop",
+      "to": "MatchRandom.Range(raw -20.0, raw 20.0)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Weapon.Drop token 0x06006AB8, RVA 0x00434C48, direct call token 0x0600497C at IL+0x0030."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Fresh CAP-R6-001 contains zero recorder rows for MatchRandom.Range, so no direct runtime execution or caller bridge is claimed from R6.",
+    "UnityEngine.Random.Range implementation and random-number-generation semantics remain external.",
+    "Caller behavior remains separate except where already canonicalized by FACT-0022 and FACT-0194.",
+    "This fact closes only the exact wrapper body, both static-field accesses, external member identity, and exact direct in-assembly caller map."
+  ]
+}

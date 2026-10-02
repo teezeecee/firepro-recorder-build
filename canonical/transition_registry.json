@@ -3318,6 +3318,25 @@
         "authored weapon pattern/kind/AI/attack/damage/choreography data",
         "external Unity Component/GameObject/Transform/Quaternion/Renderer/Vector3 behavior"
       ]
+    },
+    {
+      "family_id": "DLL_MATCHRANDOM_RANGE_V1",
+      "fact_id": "FACT-0195",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 30-byte matching-DLL MatchRandom.Range wrapper, both static-field accesses, external UnityEngine.Random.Range member identity, and exact seven-reference / six-caller map.",
+      "summary": "canonical/witnesses/CAP-R6-001/matchrandom_range.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 7,
+      "direct_caller_method_count": 6,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "UnityEngine.Random.Range implementation and RNG semantics",
+        "uncanonicalized caller behavior outside FACT-0022 and FACT-0194",
+        "fresh R6 has zero direct MatchRandom.Range rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
