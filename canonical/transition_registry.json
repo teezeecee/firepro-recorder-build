@@ -2761,6 +2761,23 @@
         "Change_BGM_Battle closure",
         "authored audio data/runtime behavior"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_LOAD_SYSTEM_SE_V1",
+      "fact_id": "FACT-0162",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Load_SystemSe loop plus direct AudioClipInfo.Set leaf, bridged from FACT-0160.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_load_system_se.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Unity Resources.Load behavior",
+        "authored SystemSEFileList contents",
+        "AudioClip runtime behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
