@@ -1,14 +1,70 @@
 {
-  "fact_id":"FACT-0161",
-  "claim":"In the matching retail DLL, static Menu_SoundManager.Resume_State (0x06005281) has raw MethodDef row e418320000009600905e0a00e3a50000e73c, RVA 0x003218E4, exact signature blob 000001, and an exact 42-byte body with SHA-256 a9e694a8e4472424719df74de8cf44737e837e6a86bc7e5dfd2a29c6ee47931a. The body directly calls Menu_SoundManager.Update_State (0x06005282) at IL+0x0000. It then loads static BattleConfig_BGM_Progress (0x0400286D), pushes two raw zero arguments, and directly calls Change_BGM_Progress (0x06005292) at IL+0x000C; loads static BattleConfig_BGM_Admission (0x0400286E), pushes two raw zero arguments, and calls Change_BGM_Theme (0x06005296) at IL+0x0018; then loads static BattleConfig_BGM_Battle (0x0400286F), pushes two raw zero arguments, and calls Change_BGM_Battle (0x0600529A) at IL+0x0024 before returning. FACT-0160 pins the already-canonical direct caller Menu_SoundManager.Initalize_State at IL+0x0092.",
-  "status":"PROVEN_DLL",
-  "evidence":[{"source_id":"DLL-001","locator":"Menu_SoundManager.Resume_State token 0x06005281 raw MethodDef row e418320000009600905e0a00e3a50000e73c -> RVA 0x003218E4; signature 000001; code size 42; code sha256=a9e694a8e4472424719df74de8cf44737e837e6a86bc7e5dfd2a29c6ee47931a; exact calls/field loads in canonical/witnesses/CAP-R6-001/menu_sound_resume_state.summary.json; prover tools/prove_menu_sound_resume_state.py","observation":"Exact matching-DLL Resume_State orchestration body."}],
-  "chain_edges":[
-    {"from":"FACT-0160 Menu_SoundManager.Initalize_State","to":"Menu_SoundManager.Resume_State","evidence":[{"source_id":"DLL-001","locator":"FACT-0160 pins direct call token 0x06005281 at Initalize_State IL+0x0092."}]},
-    {"from":"Menu_SoundManager.Resume_State","to":"Menu_SoundManager.Update_State","evidence":[{"source_id":"DLL-001","locator":"Resume_State IL+0x0000 direct call token 0x06005282."}]},
-    {"from":"Menu_SoundManager.Resume_State","to":"Menu_SoundManager.Change_BGM_Progress","evidence":[{"source_id":"DLL-001","locator":"Resume_State IL+0x000C direct call token 0x06005292 after static field 0x0400286D and two raw zero arguments."}]},
-    {"from":"Menu_SoundManager.Resume_State","to":"Menu_SoundManager.Change_BGM_Theme","evidence":[{"source_id":"DLL-001","locator":"Resume_State IL+0x0018 direct call token 0x06005296 after static field 0x0400286E and two raw zero arguments."}]},
-    {"from":"Menu_SoundManager.Resume_State","to":"Menu_SoundManager.Change_BGM_Battle","evidence":[{"source_id":"DLL-001","locator":"Resume_State IL+0x0024 direct call token 0x0600529A after static field 0x0400286F and two raw zero arguments."}]}
+  "fact_id": "FACT-0161",
+  "claim": "In the matching retail DLL, static Menu_SoundManager.Resume_State (0x06005281) has raw MethodDef row e418320000009600905e0a00e3a50000e73c, RVA 0x003218E4, exact signature blob 000001, and an exact 42-byte body with SHA-256 a9e694a8e4472424719df74de8cf44737e837e6a86bc7e5dfd2a29c6ee47931a. The body directly calls Menu_SoundManager.Update_State (0x06005282) at IL+0x0000. It then loads static BattleConfig_BGM_Progress (0x0400286D), pushes two raw zero arguments, and directly calls Change_BGM_Progress (0x06005292) at IL+0x000C; loads static BattleConfig_BGM_Admission (0x0400286E), pushes two raw zero arguments, and calls Change_BGM_Theme (0x06005296) at IL+0x0018; then loads static BattleConfig_BGM_Battle (0x0400286F), pushes two raw zero arguments, and calls Change_BGM_Battle (0x0600529A) at IL+0x0024 before returning. FACT-0160 pins the already-canonical direct caller Menu_SoundManager.Initalize_State at IL+0x0092.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.Resume_State token 0x06005281 raw MethodDef row e418320000009600905e0a00e3a50000e73c -> RVA 0x003218E4; signature 000001; code size 42; code sha256=a9e694a8e4472424719df74de8cf44737e837e6a86bc7e5dfd2a29c6ee47931a; exact calls/field loads in canonical/witnesses/CAP-R6-001/menu_sound_resume_state.summary.json; prover tools/prove_menu_sound_resume_state.py",
+      "observation": "Exact matching-DLL Resume_State orchestration body."
+    }
   ],
-  "limits":["This fact closes only the exact Resume_State body and its direct caller/callee edges.","Update_State and the three Change_BGM_* callee bodies remain separate gates.","BattleConfig field meanings beyond exact metadata names and raw values remain outside this fact.","Authored audio data and Unity/audio runtime behavior remain outside this fact."]
+  "chain_edges": [
+    {
+      "from": "FACT-0160 Menu_SoundManager.Initalize_State",
+      "to": "Menu_SoundManager.Resume_State",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0160 pins direct call token 0x06005281 at Initalize_State IL+0x0092."
+        }
+      ]
+    },
+    {
+      "from": "Menu_SoundManager.Resume_State",
+      "to": "Menu_SoundManager.Update_State",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Resume_State IL+0x0000 direct call token 0x06005282."
+        }
+      ]
+    },
+    {
+      "from": "Menu_SoundManager.Resume_State",
+      "to": "Menu_SoundManager.Change_BGM_Progress",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Resume_State IL+0x000C direct call token 0x06005292 after static field 0x0400286D and two raw zero arguments."
+        }
+      ]
+    },
+    {
+      "from": "Menu_SoundManager.Resume_State",
+      "to": "FACT-0111 Menu_SoundManager.Change_BGM_Theme",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Resume_State IL+0x0018 direct call token 0x06005296 after static field 0x0400286E and two raw zero arguments; FACT-0111 already canonically closes that exact target body."
+        }
+      ]
+    },
+    {
+      "from": "Menu_SoundManager.Resume_State",
+      "to": "Menu_SoundManager.Change_BGM_Battle",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Resume_State IL+0x0024 direct call token 0x0600529A after static field 0x0400286F and two raw zero arguments."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Resume_State body and its direct caller/callee edges.",
+    "At FACT-0161 promotion, Update_State, Change_BGM_Progress and Change_BGM_Battle remained separate direct gates; Change_BGM_Theme was already canonical as FACT-0111.",
+    "BattleConfig field meanings beyond exact metadata names and raw values remain outside this fact.",
+    "Authored audio data and Unity/audio runtime behavior remain outside this fact."
+  ]
 }
