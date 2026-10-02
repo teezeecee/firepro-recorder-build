@@ -2513,6 +2513,21 @@
         "external WWW/AudioClip/AudioSource implementations",
         "generated iterator support leaf closure"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_MY_MUSIC_PLAY_CO_SUPPORT_V1",
+      "fact_id": "FACT-0147",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL compiler-support leaves for generated TypeDef <MyMusic_Play_Co>c__IteratorE: two $current getters, Dispose and Reset; no runtime scheduler edges promoted.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_my_music_play_co_support.summary.json",
+      "dll_method_count": 4,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Unity StartCoroutine(String) external dispatch/scheduler"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
