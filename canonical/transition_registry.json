@@ -2925,6 +2925,23 @@
         "inbound caller closure",
         "external Unity audio behavior"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_LOAD_ASYNC_REFEREE_VOICE_FACTORY_SUPPORT_V1",
+      "fact_id": "FACT-0172",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.LoadAsync_RefereeVoice IEnumerator factory plus generated iterator constructor/current/dispose/reset support leaves; generated MoveNext remains separate.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_load_async_referee_voice_factory_support.summary.json",
+      "dll_method_count": 6,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "generated MoveNext closure",
+        "external Unity coroutine scheduling",
+        "authored referee-voice resources"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
