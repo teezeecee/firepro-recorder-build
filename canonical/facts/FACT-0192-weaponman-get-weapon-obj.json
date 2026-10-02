@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0192",
+  "claim": "In the matching retail DLL, instance WeaponMan.GetWeaponObj(Int32 idx) (0x06006AC8) has raw MethodDef row 02544300000086006bcf0a00b1370300ac4d, RVA 0x00435402, exact signature blob 200112b50808, and an exact 25-byte tiny-header body SHA-256 e14e6ddd19807cae5dc1385638f47047f66403daae447e5cdaaa53a82253a0ee. Its entire emitted body is: if signed idx < raw 0 return null; else if signed idx < raw 8 return this.WeaponObj[idx]; otherwise return null. The accessed WeaponMan.WeaponObj field is token 0x0400B6EC with signature blob 061d12b508 (Weapon[]). Exact matching-DLL scanning finds nine direct in-assembly references to GetWeaponObj, including canonical FACT-0009 FormAnimator.ReqSlotAnm at IL+0x00FD and canonical FACT-0191 Player.EquipWeapon at IL+0x0013.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "WeaponMan.GetWeaponObj token 0x06006AC8 raw MethodDef row 02544300000086006bcf0a00b1370300ac4d -> RVA 0x00435402; signature 200112b50808; tiny-header code size 25; body hex 03163f07000000031e3f02000000142a027becb60004039a2a; code sha256=e14e6ddd19807cae5dc1385638f47047f66403daae447e5cdaaa53a82253a0ee; field WeaponMan.WeaponObj token 0x0400B6EC signature 061d12b508; exact body/caller map in canonical/witnesses/CAP-R6-001/weaponman_get_weapon_obj.summary.json; prover tools/prove_weaponman_get_weapon_obj.py",
+      "observation": "Exact matching-DLL bounds/null/array-return helper body and exact nine-reference in-assembly caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0009 FormAnimator.ReqSlotAnm",
+      "to": "WeaponMan.GetWeaponObj(idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "ReqSlotAnm token 0x06004E70, RVA 0x002D9FB8, direct callvirt token 0x06006AC8 at IL+0x00FD."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0191 Player.EquipWeapon",
+      "to": "WeaponMan.GetWeaponObj(widx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "EquipWeapon token 0x06004EE0, RVA 0x002E1AB0, direct callvirt token 0x06006AC8 at IL+0x0013."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact WeaponMan.GetWeaponObj body, WeaponObj field lookup, and exact direct in-assembly reference map.",
+    "Fresh CAP-R6-001 contains no event_trace.tsv method rows whose recorded method string contains GetWeaponObj, so no R6 execution or caller bridge is claimed.",
+    "WeaponObj array population, authored/runtime contents, and object lifecycle remain outside this fact.",
+    "The broader behavior of callers without an existing canonical fact remains separate work.",
+    "No weapon kind, AI selection, attack, damage, choreography, or Unity behavior is claimed by this fact."
+  ]
+}

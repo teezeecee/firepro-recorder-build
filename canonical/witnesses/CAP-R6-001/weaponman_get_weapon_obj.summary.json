@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WEAPONMAN_GET_WEAPON_OBJ_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "owner": {
+      "type": "WeaponMan",
+      "typedef_rid": 3396
+    },
+    "methoddef_row": {
+      "token": "0x06006AC8",
+      "row_hex": "02544300000086006bcf0a00b1370300ac4d",
+      "rva": "0x00435402"
+    },
+    "method": {
+      "type": "WeaponMan",
+      "method": "GetWeaponObj",
+      "token": "0x06006AC8",
+      "rva": "0x00435402",
+      "signature_blob_hex": "200112b50808",
+      "return_type": "Weapon",
+      "return_type_token": "0x02000D42",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "idx",
+          "type": "Int32"
+        }
+      ],
+      "header_format": "tiny",
+      "code_size": 25,
+      "code_sha256": "e14e6ddd19807cae5dc1385638f47047f66403daae447e5cdaaa53a82253a0ee",
+      "body_hex": "03163f07000000031e3f02000000142a027becb60004039a2a"
+    },
+    "field": {
+      "token": "0x0400B6EC",
+      "owner": "WeaponMan",
+      "name": "WeaponObj",
+      "signature_blob_hex": "061d12b508",
+      "type": "Weapon[]"
+    },
+    "exact_flow": [
+      "if signed idx < raw 0: return null",
+      "if signed idx < raw 8: return this.WeaponObj[idx]",
+      "otherwise return null"
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "FormRenderer",
+        "caller_method": "ApplySortingOrder",
+        "caller_token": "0x06001F4F",
+        "caller_rva": "0x0010D064",
+        "caller_code_size": 386,
+        "caller_code_sha256": "7d8231de8b396ae2209938f3104bd31a271a1009ceb600276f47492872f47066",
+        "call_il": "0x0097",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "FormRenderer",
+        "caller_method": "SetWeaponObj",
+        "caller_token": "0x06001F54",
+        "caller_rva": "0x0010D600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "9a90ee6e931c2e7e58f746ae75c41d44998fb63a7da7dac8972b34f1d2284ecf",
+        "call_il": "0x0020",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "FormAnimator",
+        "caller_method": "ReqSlotAnm",
+        "caller_token": "0x06004E70",
+        "caller_rva": "0x002D9FB8",
+        "caller_code_size": 722,
+        "caller_code_sha256": "c4c109776883423823725f70612e1a7cd7e61367d7680c206bcc838470cf88ef",
+        "call_il": "0x00FD",
+        "opcode": "callvirt",
+        "canonical_fact": "FACT-0009"
+      },
+      {
+        "caller_type": "Player",
+        "caller_method": "ThrowInWeapon",
+        "caller_token": "0x06004EDE",
+        "caller_rva": "0x002E19DC",
+        "caller_code_size": 90,
+        "caller_code_sha256": "60ce1799839692db53c9e180e8d10054a41a1882652de715101d2c79707db0ab",
+        "call_il": "0x0018",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Player",
+        "caller_method": "EquipWeapon",
+        "caller_token": "0x06004EE0",
+        "caller_rva": "0x002E1AB0",
+        "caller_code_size": 91,
+        "caller_code_sha256": "f4436e9f21bb7d3b9eef160a5967c34e25eeaf52fcfcc87d41f6524ececa61eb",
+        "call_il": "0x0013",
+        "opcode": "callvirt",
+        "canonical_fact": "FACT-0191"
+      },
+      {
+        "caller_type": "Player",
+        "caller_method": "ProcessAttackHit_Normal",
+        "caller_token": "0x06004F2A",
+        "caller_rva": "0x002E9D80",
+        "caller_code_size": 1272,
+        "caller_code_sha256": "9b0ee15ab9d50d7c55f283494967415fb4b3ab70e096088cafdafba068efe313",
+        "call_il": "0x007D",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_method": "AIActFunc_StandAtk",
+        "caller_token": "0x06004FC5",
+        "caller_rva": "0x002F7DE8",
+        "caller_code_size": 800,
+        "caller_code_sha256": "f6de274e9ab27bd900abddb1d8585e70fc69f0d02b52a0a8317e21e0c87231b4",
+        "call_il": "0x003E",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_method": "vpc_getkyo1",
+        "caller_token": "0x06004FCE",
+        "caller_rva": "0x002F8A34",
+        "caller_code_size": 112,
+        "caller_code_sha256": "5c3ee57e9c69cff9e8f29e9c67974c4286545b9028ca2cbc25a681e406f1a4b3",
+        "call_il": "0x000B",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "WeaponMan",
+        "caller_method": "Drop",
+        "caller_token": "0x06006AC9",
+        "caller_rva": "0x0043541C",
+        "caller_code_size": 33,
+        "caller_code_sha256": "edcc7cf0273d8a9e58e2e252323436fb039630779892b4c0e2e9654eddab7f76",
+        "call_il": "0x0002",
+        "opcode": "call"
+      }
+    ]
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "observation": "Fresh R6 event_trace.tsv contains no method rows whose recorded method string contains GetWeaponObj; no capture execution/caller bridge is claimed for this dataset.",
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "This dataset closes only the exact matching-DLL helper body, WeaponObj field lookup and direct in-assembly call references.",
+    "CAP-R6-001 is not used as positive evidence for this helper because it does not record GetWeaponObj rows.",
+    "WeaponObj authored/runtime contents and array population remain outside this dataset.",
+    "The broader semantics of the nine callers remain separate gates unless already canonical.",
+    "No weapon kind, AI selection, attack, damage, choreography or Unity behavior is inferred."
+  ]
+}
