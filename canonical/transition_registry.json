@@ -3157,7 +3157,7 @@
         "full WrestlerVoiceInfoManager.Parse body closure",
         "external System.String/Int32 behavior"
       ]
-    ,
+    },
     {
       "family_id": "DLL_WRESTLER_VOICE_INFO_MANAGER_PARSE_V1",
       "fact_id": "FACT-0186",
