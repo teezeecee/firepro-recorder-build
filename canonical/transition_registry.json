@@ -3125,6 +3125,22 @@
         "full Player.PlayWrestlerVoice body closure",
         "external generic List behavior"
       ]
+    },
+    {
+      "family_id": "DLL_WRESTLER_VOICE_INFO_MANAGER_AWAKE_V1",
+      "fact_id": "FACT-0184",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL WrestlerVoiceInfoManager.Awake static instance/fallback initialization and direct Parse edge, with no direct in-assembly Awake caller promoted.",
+      "summary": "canonical/witnesses/CAP-R6-001/wrestler_voice_info_manager_awake.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "WrestlerVoiceInfoManager.Parse body closure",
+        "external Unity Awake lifecycle dispatch"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
