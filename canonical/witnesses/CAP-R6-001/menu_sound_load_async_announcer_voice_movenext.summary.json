@@ -1,0 +1,32 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_LOAD_ASYNC_ANNOUNCER_VOICE_MOVENEXT_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "owner_type":{"name":"<LoadAsync_AnnouncerVoice>c__Iterator5","token":"0x02000F6A","factory_support_fact_id":"FACT-0176"},
+    "methoddef_row":{"token":"0x060074D8","row_hex":"e44532000000e6017f5a0600db490000d24f","rva":"0x003245E4"},
+    "method":{"method":"MoveNext","token":"0x060074D8","rva":"0x003245E4","signature_blob_hex":"200002","return_type":"Boolean","parameters":[],"code_size":411,"code_sha256":"190881f0b3580bf1117c3f937040340778b36c472ddd6d9db01ae15286fa458a","header_format":"fat","header_flags_raw":"0x0013","max_stack":4,"local_signature_token":"0x11000047","local_signature_blob_hex":"070109","locals":[{"index":0,"type":"UInt32"}],"instruction_count":132,"branch_instruction_count":16,"call_instruction_count":6},
+    "generated_fields":{"type":{"token":"0x0400C221","type":"AnnouncerVoiceTypeEnum"},"res_req":{"token":"0x0400C222","name":"<resReq>__0","type":"UnityEngine.ResourceRequest[]"},"build_index":{"token":"0x0400C223","name":"<i>__1","type":"Int32"},"filename":{"token":"0x0400C224","name":"<fn>__2","type":"String"},"background":{"token":"0x0400C225","name":"background","type":"Boolean"},"consume_index":{"token":"0x0400C226","name":"<i>__3","type":"Int32"},"current":{"token":"0x0400C227","name":"$current","type":"Object"},"disposing":{"token":"0x0400C228","name":"$disposing","type":"Boolean"},"pc":{"token":"0x0400C229","name":"$PC","type":"Int32"}},
+    "static_fields":{"clips":{"token":"0x04008700","name":"Menu_SoundManager.Sound_ClipAnnouncerVoice_List","signature_blob_hex":"061d1249","type":"UnityEngine.AudioClip[]"},"data_num":{"token":"0x0400866E","name":"MatchSEData.AnnouncerVoiceDataNum","signature_blob_hex":"061d08","type":"Int32[]"},"file_prefix":{"token":"0x0400866F","name":"MatchSEData.AnnouncerVoiceFilePrefix","signature_blob_hex":"061d0e","type":"String[]"}},
+    "strings":{"index_format":{"token":"0x700082AA","value":"{0:D3}","load_il":"0x0070"}},
+    "calls":{"string_format":{"token":"0x0A00050B","resolved":"System.String.Format(String,Object)","signature_blob_hex":"00020e0e1c","call_il":"0x0080"},"string_concat":{"token":"0x0A000012","resolved":"System.String.Concat(String,String)","signature_blob_hex":"00020e0e0e","call_il":"0x0085"},"resources_load_async":{"token":"0x0A000675","resolved":"UnityEngine.Resources.LoadAsync(String)","signature_blob_hex":"00011286410e","call_il":"0x00A1"},"wait_for_seconds_ctor":{"token":"0x0A000679","resolved":"UnityEngine.WaitForSeconds..ctor(Single)","signature_blob_hex":"2001010c","newobj_il":"0x0117"},"request_is_done":{"token":"0x0A000676","resolved":"UnityEngine.AsyncOperation.get_isDone","signature_blob_hex":"200002","call_il":"0x0142"},"request_get_asset":{"token":"0x0A000677","resolved":"UnityEngine.ResourceRequest.get_asset","signature_blob_hex":"20001269","call_il":"0x0164"}},
+    "state_switch":{"prior_state_field":"$PC","stores_minus_one_before_switch":true,"targets":[{"raw_state":0,"target_il":"0x0025"},{"raw_state":1,"target_il":"0x00CD"},{"raw_state":2,"target_il":"0x0135"}],"default_target_il":"0x0197"},
+    "exact_flow":[
+      "local0=this.$PC; this.$PC=-1; switch local0: raw 0 -> IL+0x0025, raw 1 -> IL+0x00CD, raw 2 -> IL+0x0135, default -> return false",
+      "raw state 0: if Sound_ClipAnnouncerVoice_List != null return false; else Sound_ClipAnnouncerVoice_List = new AudioClip[48]",
+      "this.<resReq>__0 = new ResourceRequest[MatchSEData.AnnouncerVoiceDataNum[this.type]]; this.<i>__1=0",
+      "request-build loop: this.<fn>__2 = MatchSEData.AnnouncerVoiceFilePrefix[this.type] + String.Format('{0:D3}', boxed i); resReq[i]=Resources.LoadAsync(fn)",
+      "if background is true after each request creation: $current=null; if !$disposing set $PC=1; return true; raw state 1 resumes by incrementing build index",
+      "after all requests are created: this.<i>__3=0",
+      "request-consumption loop: if resReq[i] is null, increment i; otherwise inspect resReq[i].isDone",
+      "if resReq[i].isDone is false: $current=new WaitForSeconds(0.0f); if !$disposing set $PC=2; return true; raw state 2 resumes at the isDone test",
+      "if resReq[i].isDone is true: Sound_ClipAnnouncerVoice_List[i] = resReq[i].asset as AudioClip; increment i and continue",
+      "after every request slot: this.$PC=-1; return false"
+    ],
+    "exception_section":null,
+    "metadata_relationship":{"factory_support_fact_id":"FACT-0176","owner_type_token":"0x02000F6A","relationship_status":"SAME_GENERATED_TYPE_METHOD_NOT_RUNTIME_CALL"}
+  },
+  "limits":["Unity scheduler/resource implementations and authored announcer-voice assets remain outside this record."]
+}
