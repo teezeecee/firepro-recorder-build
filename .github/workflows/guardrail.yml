@@ -994,3 +994,9 @@ jobs:
         run: python tests/test_wrestler_voice_info_manager_get_summary.py
       - name: WrestlerVoiceInfoManager GetWrestlerVoiceInfo prover syntax
         run: python -m py_compile tools/prove_wrestler_voice_info_manager_get.py
+
+
+      - name: Wrestler voice construction defaults summary
+        run: python tests/test_wrestler_voice_construction_defaults_summary.py
+      - name: Wrestler voice construction defaults prover syntax
+        run: python -m py_compile tools/prove_wrestler_voice_construction_defaults.py
