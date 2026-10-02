@@ -1,0 +1,34 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_WRESTLER_VOICE_INFO_MANAGER_GET_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060011E7","row_hex":"5cf10600000086006f8e08004ca60100a00d","rva":"0x0006F15C"},
+    "method":{"type":"WrestlerVoiceInfoManager","method":"GetWrestlerVoiceInfo","token":"0x060011E7","rva":"0x0006F15C","signature_blob_hex":"20011287c011aa3c","return_type":"WrestlerVoiceInfo","return_type_token":"0x020001F0","parameters":[{"sequence":1,"name":"type","type":"WrestlerVoiceTypeEnum","type_token":"0x02000A8F"}],"code_size":79,"code_sha256":"28ecb121c6b122a6a493c0e865d1b061d3679204933aad2909bd7759801e48ea","header_format":"fat","header_flags_raw":"0x001B","max_stack":2,"local_signature_token":"0x1100034C","local_signature_blob_hex":"07031287c0151183f1011287c01287c0","locals":[{"index":0,"type":"WrestlerVoiceInfo","type_token":"0x020001F0"},{"index":1,"type":"System.Collections.Generic.List<WrestlerVoiceInfo>.Enumerator","typespec_token":"0x1B00010D","typespec_blob_hex":"151183f1011287c0"},{"index":2,"type":"WrestlerVoiceInfo","type_token":"0x020001F0"}],"instruction_count":27,"branch_instruction_count":5,"call_instruction_count":4},
+    "fields":{
+      "list":{"token":"0x040011E7","owner":"WrestlerVoiceInfoManager","name":"wrestlerVoiceInfo","signature_blob_hex":"06151209011287c0","type":"System.Collections.Generic.List<WrestlerVoiceInfo>"},
+      "item_type":{"token":"0x040011DD","owner":"WrestlerVoiceInfo","name":"type","signature_blob_hex":"0611aa3c","type":"WrestlerVoiceTypeEnum"}
+    },
+    "calls":{
+      "get_enumerator":{"token":"0x0A000787","parent_typespec_token":"0x1B00010C","parent_typespec_blob_hex":"151209011287c0","resolved":"System.Collections.Generic.List<WrestlerVoiceInfo>.GetEnumerator","call_il":"0x0006"},
+      "get_current":{"token":"0x0A000788","parent_typespec_token":"0x1B00010D","resolved":"List<WrestlerVoiceInfo>.Enumerator.get_Current","call_il":"0x0013"},
+      "move_next":{"token":"0x0A000789","parent_typespec_token":"0x1B00010D","resolved":"List<WrestlerVoiceInfo>.Enumerator.MoveNext","call_il":"0x002E"},
+      "dispose":{"token":"0x0A00011F","parent_typeref_token":"0x010000DF","parent_resolved":"System.IDisposable","resolved":"System.IDisposable.Dispose","constrained_typespec_token":"0x1B00010D","call_il":"0x0045"}
+    },
+    "exact_flow":[
+      "enumerator = this.wrestlerVoiceInfo.GetEnumerator()",
+      "inside try: for each current item, if current.type equals argument type, store current to local2 and leave to return local2",
+      "when MoveNext returns false, leave try and return null",
+      "finally: constrained List<WrestlerVoiceInfo>.Enumerator; IDisposable.Dispose()",
+      "matching path returns local2 after finally"
+    ],
+    "exception_section":{"format":"small","raw_hex":"0110000002000c00313d000e00000000","size_bytes":16,"sha256":"047cd8520a6ef4751de3efd2feb22a33873fdd1bdf86a56aa084a7da14f3af68","clause":{"flags_raw":"0x0002","kind":"finally","try_offset":"0x000C","try_length":49,"try_end_exclusive":"0x003D","handler_offset":"0x003D","handler_length":14,"handler_end_exclusive":"0x004B","class_or_filter_raw":"0x00000000"}},
+    "fact_0178_bridges":[
+      {"fact_id":"FACT-0178","caller":"<LoadAsync_WrestlerVoiceList>c__Iterator3.MoveNext","call_il":"0x013B","callee_token":"0x060011E7"},
+      {"fact_id":"FACT-0178","caller":"<LoadAsync_WrestlerVoiceList>c__Iterator3.MoveNext","call_il":"0x0464","callee_token":"0x060011E7"}
+    ]
+  },
+  "limits":["Authored list contents/order and external generic enumerator implementation remain outside this record."]
+}
