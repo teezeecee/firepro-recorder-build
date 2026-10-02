@@ -1018,3 +1018,8 @@ jobs:
         run: python tests/test_wrestler_voice_info_manager_parse_prm_int_summary.py
       - name: WrestlerVoiceInfoManager ParsePrm Int prover syntax
         run: python -m py_compile tools/prove_wrestler_voice_info_manager_parse_prm_int.py
+
+      - name: WrestlerVoiceInfoManager Parse summary
+        run: python tests/test_wrestler_voice_info_manager_parse_summary.py
+      - name: WrestlerVoiceInfoManager Parse prover syntax
+        run: python -m py_compile tools/prove_wrestler_voice_info_manager_parse.py

@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WRESTLER_VOICE_INFO_MANAGER_PARSE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methoddef_row": {
+      "token": "0x060011EA",
+      "row_hex": "8cf2060000008100505606005c480000a70d",
+      "rva": "0x0006F28C"
+    },
+    "method": {
+      "type": "WrestlerVoiceInfoManager",
+      "method": "Parse",
+      "token": "0x060011EA",
+      "rva": "0x0006F28C",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 654,
+      "code_sha256": "51600ca58d83133003e36ec3afd834efa865af3cd33749c16af5e5f0e68d9a1d",
+      "header_format": "fat",
+      "header_flags_raw": "0x001B",
+      "max_stack": 6,
+      "local_signature_token": "0x1100034E",
+      "local_signature_blob_hex": "070d0c128391128661151209011d0e0e08081287c00802081287bc0c",
+      "locals": [
+        {
+          "index": 0,
+          "type": "Single"
+        },
+        {
+          "index": 1,
+          "type": "UnityEngine.TextAsset"
+        },
+        {
+          "index": 2,
+          "type": "System.IO.StringReader"
+        },
+        {
+          "index": 3,
+          "type": "System.Collections.Generic.List<System.String[]>"
+        },
+        {
+          "index": 4,
+          "type": "System.String"
+        },
+        {
+          "index": 5,
+          "type": "Int32"
+        },
+        {
+          "index": 6,
+          "type": "Int32"
+        },
+        {
+          "index": 7,
+          "type": "WrestlerVoiceInfo"
+        },
+        {
+          "index": 8,
+          "type": "Int32"
+        },
+        {
+          "index": 9,
+          "type": "Boolean"
+        },
+        {
+          "index": 10,
+          "type": "Int32"
+        },
+        {
+          "index": 11,
+          "type": "WrestlerVoiceAttr"
+        },
+        {
+          "index": 12,
+          "type": "Single"
+        }
+      ]
+    },
+    "user_strings": [
+      {
+        "token": "0x7000BE72",
+        "value": "DataBase/WrestlerVoiceList",
+        "load_il": "0x0006"
+      },
+      {
+        "token": "0x70007D24",
+        "value": "end",
+        "load_ils": [
+          "0x006C",
+          "0x01C1"
+        ]
+      },
+      {
+        "token": "0x7000BEA8",
+        "value": "************************* Invalid cheer voice is specified.",
+        "load_il": "0x023E"
+      }
+    ],
+    "external_calls": {
+      "time_get_realtimeSinceStartup": {
+        "token": "0x0A00055A",
+        "call_ils": [
+          "0x0000",
+          "0x027E"
+        ]
+      },
+      "resources_load": {
+        "token": "0x0A0006DA",
+        "call_il": "0x000B"
+      },
+      "textasset_get_text": {
+        "token": "0x0A0006DB",
+        "call_il": "0x0017"
+      },
+      "stringreader_ctor": {
+        "token": "0x0A0006DC",
+        "call_il": "0x001C"
+      },
+      "textreader_readline": {
+        "token": "0x0A0006DD",
+        "call_il": "0x0029"
+      },
+      "string_split": {
+        "token": "0x0A0000A4",
+        "call_il": "0x004A"
+      },
+      "string_equals": {
+        "token": "0x0A00016A",
+        "call_ils": [
+          "0x0071",
+          "0x01C6"
+        ]
+      },
+      "string_is_null_or_empty": {
+        "token": "0x0A000015",
+        "call_ils": [
+          "0x00C1",
+          "0x021D"
+        ]
+      },
+      "int32_parse": {
+        "token": "0x0A0006DE",
+        "call_ils": [
+          "0x0096",
+          "0x00DE",
+          "0x0174"
+        ]
+      },
+      "resources_unload_asset": {
+        "token": "0x0A0006DF",
+        "call_il": "0x0288"
+      }
+    },
+    "internal_calls": {
+      "wrestler_voice_info_ctor": {
+        "token": "0x060011E2",
+        "call_il": "0x0080",
+        "canonical_fact": "FACT-0182"
+      },
+      "wrestler_voice_attr_ctor": {
+        "token": "0x060011E1",
+        "call_il": "0x01D5",
+        "canonical_fact": "FACT-0182"
+      },
+      "parse_prm_int": {
+        "token": "0x060011E9",
+        "call_il": "0x0243",
+        "canonical_fact": "FACT-0185"
+      }
+    },
+    "raw_structure": {
+      "split_character_decimal": 9,
+      "outer_column_step": 4,
+      "dlc_iteration_count": 16,
+      "dlc_true_value": 1,
+      "dlc_false_value": 0,
+      "description_indices": [
+        0,
+        1
+      ],
+      "name_indices": [
+        0,
+        1
+      ],
+      "default_cheer_voice": -1,
+      "parse_prm_digit_count": 2
+    },
+    "fields": {
+      "type": "0x040011DD",
+      "dlc": "0x040011DE",
+      "parentFolder": "0x040011DF",
+      "fileNamePrefix": "0x040011E0",
+      "name": "0x040011E1",
+      "sortOrder": "0x040011E2",
+      "attr": "0x040011E3",
+      "description": "0x040011DB",
+      "cheerVoice": "0x040011DC",
+      "wrestlerVoiceInfo": "0x040011E7"
+    },
+    "exception_section": {
+      "format": "small",
+      "raw_hex": "011000000000d10019ea0009c2000001",
+      "size_bytes": 16,
+      "sha256": "70456e60bd6570383da3640a430a402719684d70d8183af136792f90f11df539",
+      "clause": {
+        "flags_raw": "0x0000",
+        "kind": "catch",
+        "try_offset": "0x00D1",
+        "try_length": 25,
+        "try_end_exclusive": "0x00EA",
+        "handler_offset": "0x00EA",
+        "handler_length": 9,
+        "handler_end_exclusive": "0x00F3",
+        "class_token": "0x010000C2",
+        "class_resolved": "System.Object"
+      }
+    },
+    "exact_flow": [
+      "local0 = UnityEngine.Time.get_realtimeSinceStartup()",
+      "local1 = Resources.Load('DataBase/WrestlerVoiceList') isinst UnityEngine.TextAsset; local2 = new StringReader(local1.text); local3 = new List<String[]>()",
+      "read each line from local2; split by a one-element Char array containing raw decimal 9; add the resulting String[] to local3",
+      "set local5=0 and local6=0; if local3[local6][local5+1] equals 'end', exit parsing",
+      "otherwise construct WrestlerVoiceInfo local7; type = Int32.Parse(local3[local6][local5+1]); increment local6 twice",
+      "for local8 from 0 while local8<16: if the current cell is nonempty, parse Int32 inside the protected region; catch System.Object sets local9=true; parsed raw 1 writes dlc[local8]=true; parsed nonzero other than 1 sets local9=true; the later local9 branch converges without an additional state write; increment local6 and local8",
+      "assign parentFolder and fileNamePrefix from successive cells; parse sortOrder with Int32.Parse; assign name[0] and name[1] from columns local5+1 and local5+2; increment local6",
+      "until local3[local6][local5] equals 'end': construct WrestlerVoiceAttr local11; assign description[0] and description[1]; write cheerVoice raw -1; if column local5+3 is nonempty, call FACT-0185 ParsePrm_Int with raw dgt 2, local7.type and the exact embedded error string, and store the returned value; add local11 to local7.attr; increment local6",
+      "add local7 to this.wrestlerVoiceInfo; local5 += raw 4; reset local6=0 through the loop back and repeat the outer column pass",
+      "on outer sentinel: local12 = Time.get_realtimeSinceStartup()-local0; call Resources.UnloadAsset(local1); return"
+    ],
+    "inbound_direct_reference": {
+      "caller_type": "WrestlerVoiceInfoManager",
+      "caller_method": "Awake",
+      "caller_token": "0x060011E6",
+      "caller_rva": "0x0006F11E",
+      "caller_code_size": 61,
+      "caller_code_sha256": "bcee56df40b0e166d956e871a4b165a2e11eed714129aff4e22590ffbe441aae",
+      "call_il": "0x0037",
+      "opcode": "call",
+      "callee_token": "0x060011EA",
+      "canonical_fact": "FACT-0184"
+    }
+  },
+  "limits": [
+    "This fact closes only the exact matching-DLL Parse body and its direct in-assembly edges.",
+    "The authored contents of the DataBase/WrestlerVoiceList TextAsset remain outside this code-only record.",
+    "Unity Resources/TextAsset/Time behavior and System StringReader/List/String/Int32 implementations remain external.",
+    "The local9 branch is recorded exactly as a converging branch; no additional interpretation is attached to it.",
+    "The elapsed-time local12 is assigned and not subsequently read by this body."
+  ]
+}

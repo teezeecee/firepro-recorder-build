@@ -3157,6 +3157,23 @@
         "full WrestlerVoiceInfoManager.Parse body closure",
         "external System.String/Int32 behavior"
       ]
+    },
+    {
+      "family_id": "DLL_WRESTLER_VOICE_INFO_MANAGER_PARSE_V1",
+      "fact_id": "FACT-0186",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL WrestlerVoiceInfoManager.Parse resource/read/split/raw-block parser, exception clause, constructor/helper edges, list writes and unload tail.",
+      "summary": "canonical/witnesses/CAP-R6-001/wrestler_voice_info_manager_parse.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored DataBase/WrestlerVoiceList TextAsset contents",
+        "external Unity Resources/TextAsset/Time behavior",
+        "external System StringReader/List/String/Int32 behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
