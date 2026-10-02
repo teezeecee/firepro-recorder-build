@@ -2528,6 +2528,22 @@
       "semantic_promotion_blockers": [
         "Unity StartCoroutine(String) external dispatch/scheduler"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_SET_SEND_PLAYBACK_STATE_V1",
+      "fact_id": "FACT-0148",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudioPlayer.set_sendPlaybackState direct _sendPlaybackState field writer paired with FACT-0127 getter; no direct caller edge promoted.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_set_send_playback_state.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "delegate subscriber/runtime behavior",
+        "external caller provenance"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
