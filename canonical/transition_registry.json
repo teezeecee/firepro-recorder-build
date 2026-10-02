@@ -3241,7 +3241,25 @@
         "ShakeCageAnmCnt update/consumer lifecycle",
         "Player.Process_ShakeCage sibling closure"
       ]
-    }
-  ],
+    },
+    {
+      "family_id": "DLL_R6_PLAYER_EQUIP_WEAPON_V1",
+      "fact_id": "FACT-0191",
+      "source_ids": [
+        "DLL-001",
+        "CAP-R6-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Exact matching-DLL Player.EquipWeapon gate/body plus direct R6 corroboration of the FACT-0015 child-call ownership seam and Player.weaponIdx mutation.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_equip_weapon.summary.json",
+      "dll_method_count": 1,
+      "occurrence_count": 11,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "WeaponMan.GetWeaponObj token 0x06006AC8 closure",
+        "authored weapon kinds/attack data/AI selection/damage behavior",
+        "external Unity object/component/GameObject/Transform behavior"
+      ]
+    }  ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
 }
