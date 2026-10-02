@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_SET_SEND_PLAYBACK_STATE_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060052CC","row_hex":"935632000000e6091c8a070055480100523d","rva":"0x00325693"},
+    "method":{"type":"uAudio.uAudioPlayer","method":"set_sendPlaybackState","token":"0x060052CC","rva":"0x00325693","signature_blob_hex":"200101151280d1011182b5","return_type":"Void","parameters":[{"sequence":1,"name":"value","type":"System.Action<uAudio.uAudio_backend.PlayBackState>"}],"code_size":8,"code_sha256":"8b12d7dcbce95657c6a5b8f58f76123dbc997c306b7976ba5e8419839add7a29","header_format":"tiny","max_stack":8,"local_signature_token":"0x00000000","instruction_count":4,"branch_instruction_count":0,"call_instruction_count":0},
+    "field":{"token":"0x040087E7","name":"uAudio.uAudioPlayer._sendPlaybackState","signature_blob_hex":"06151280d1011182b5","type":"System.Action<uAudio.uAudio_backend.PlayBackState>"},
+    "exact_flow":["load this","load value","this._sendPlaybackState = value","return"],
+    "paired_getter":{"fact_id":"FACT-0127","token":"0x060052CB","field_token":"0x040087E7"},
+    "relationship_status":"FIELD_WRITER_WITH_NO_PROMOTED_DIRECT_CALLER"
+  },
+  "limits":["Delegate subscriber/runtime behavior remains outside this record."]
+}
