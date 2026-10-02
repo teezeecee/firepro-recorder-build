@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_R6_WEAPONMAN_DROP_V1",
+  "source_ids": [
+    "DLL-001",
+    "CAP-R6-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "WeaponMan",
+      "method": "Drop",
+      "token": "0x06006AC9",
+      "rva": "0x0043541C",
+      "signature_blob_hex": "2005010811190c11a85c11a768",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 5,
+      "local_signature_token": "0x11001074",
+      "local_signature_blob_hex": "070112b508",
+      "code_size": 33,
+      "code_sha256": "edcc7cf0273d8a9e58e2e252323436fb039630779892b4c0e2e9654eddab7f76",
+      "body_hex": "020328c86a00060a06282a00000a3a010000002a0604050e040e056fb86a00062a"
+    },
+    "methoddef_row_hex": "1c5443000000860000cf0a00b8370300ad4d",
+    "calls": {
+      "get_weapon_obj": {
+        "token": "0x06006AC8",
+        "resolved": "WeaponMan.GetWeaponObj(Int32)",
+        "call_il": "0x0002",
+        "opcode": "call",
+        "canonical_fact": "FACT-0192"
+      },
+      "object_op_implicit": {
+        "token": "0x0A00002A",
+        "resolved": "UnityEngine.Object.op_Implicit",
+        "call_il": "0x0009",
+        "opcode": "call"
+      },
+      "weapon_drop": {
+        "token": "0x06006AB8",
+        "resolved": "Weapon.Drop(UnityEngine.Vector3, Single, ZoneEnum, PlDirEnum)",
+        "call_il": "0x001B",
+        "opcode": "callvirt",
+        "rva": "0x00434C48",
+        "code_size": 167,
+        "code_sha256": "eac3737037ba8ea767d588f6988426f6fd38567d37400dda6e58cfdc20ccc25e"
+      }
+    },
+    "exact_flow": [
+      "local0 = this.GetWeaponObj(idx)",
+      "if UnityEngine.Object.op_Implicit(local0) is false: return",
+      "local0.Drop(p, gy, zone, dir)",
+      "return"
+    ],
+    "inbound_direct_reference": {
+      "caller_type": "Player",
+      "caller_method": "DropWeapon",
+      "caller_token": "0x06004EDF",
+      "caller_rva": "0x002E1A44",
+      "caller_methoddef_row_hex": "441a2e000000860095250a005c480000553a",
+      "caller_signature_blob_hex": "200001",
+      "caller_code_size": 94,
+      "caller_code_sha256": "1ef3a7e1cc92cacab56a77fe83cec0ea5ff67e1c740031a8e99291013da59457",
+      "caller_body_hex": "027b0b600004163c010000002a027bb05f000428644900060a027baa5f00040b1201257b5600000a225555353f587d5600000a7eeab60004027b0b60000407027caa5f00047b5600000a027bee5f0004066fc96a000602157d0b6000042a",
+      "call_il": "0x0051",
+      "opcode": "callvirt",
+      "callsite_count_inside_caller": 1,
+      "pre_gate": "load Player.weaponIdx field 0x0400600B; raw 0; signed bge to IL+0x000D; otherwise ret at IL+0x000C",
+      "post_call_reset": "IL+0x0056 ldarg.0; IL+0x0057 ldc.i4.m1; IL+0x0058 stfld Player.weaponIdx 0x0400600B; ret"
+    }
+  },
+  "r6": {
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weaponman_drop_execution_count": 0,
+    "player_drop_weapon_execution_count": 923,
+    "weapon_drop_execution_count": 11,
+    "parent_pre_weaponIdx_negative_count": 912,
+    "parent_pre_weaponIdx_nonnegative_count": 11,
+    "negative_parent_with_direct_children_count": 0,
+    "nonnegative_parent_with_exactly_one_direct_weapon_drop_child_count": 11,
+    "relations": {
+      "parent_child_owner_slot_equal": 11,
+      "parent_pre_weaponIdx_equals_child_pre_weaponIdx": 11,
+      "child_weaponIdx_unchanged_pre_to_post": 11,
+      "parent_post_weaponIdx_minus1": 11,
+      "same_tick": 11,
+      "seq_advances_by_two_at_each_boundary": 11
+    },
+    "raw_weapon_index_counts": {
+      "0": 1,
+      "2": 2,
+      "3": 3,
+      "5": 2,
+      "6": 1,
+      "7": 2
+    },
+    "raw_weapon_drop_args_counts": {
+      "Vector3 | 1 | InRing | Left": 8,
+      "Vector3 | 1 | InRing | Right": 3
+    }
+  },
+  "witness": {
+    "fields": [
+      "parent_pre_line",
+      "parent_post_line",
+      "child_pre_line",
+      "child_post_line",
+      "tick",
+      "parent_pre_seq",
+      "child_pre_seq",
+      "child_post_seq",
+      "parent_post_seq",
+      "parent_owner_slot",
+      "parent_instance",
+      "child_owner_slot",
+      "child_instance",
+      "parent_pre_weaponIdx",
+      "child_pre_weaponIdx",
+      "child_post_weaponIdx",
+      "parent_post_weaponIdx",
+      "child_args"
+    ],
+    "records": [
+      [98984,98987,98985,98986,"65520","252916","252918","252920","252922","3","Player#26707456","3","Weapon#276967424","7","7","7","-1","Vector3 | 1 | InRing | Right"],
+      [210279,210282,210280,210281,"70026","542848","542850","542852","542854","7","Player#1840914816","7","Weapon#276967424","7","7","7","-1","Vector3 | 1 | InRing | Left"],
+      [248478,248481,248479,248480,"71676","644828","644830","644832","644834","3","Player#26707456","3","Weapon#-1439269888","3","3","3","-1","Vector3 | 1 | InRing | Right"],
+      [274296,274299,274297,274298,"72760","714288","714290","714292","714294","5","Player#224665984","5","Weapon#-1439269888","3","3","3","-1","Vector3 | 1 | InRing | Left"],
+      [382481,382484,382482,382483,"77239","1007158","1007160","1007162","1007164","5","Player#224665984","5","Weapon#1566332416","5","5","5","-1","Vector3 | 1 | InRing | Left"],
+      [427886,427889,427887,427888,"79112","1128080","1128082","1128084","1128086","1","Player#446850176","1","Weapon#-2079578368","0","0","0","-1","Vector3 | 1 | InRing | Left"],
+      [543412,543415,543413,543414,"84069","1440812","1440814","1440816","1440818","7","Player#1840914816","7","Weapon#1352896256","2","2","2","-1","Vector3 | 1 | InRing | Left"],
+      [639444,639447,639445,639446,"88231","1701912","1701914","1701916","1701918","5","Player#224665984","5","Weapon#1352896256","2","2","2","-1","Vector3 | 1 | InRing | Left"],
+      [692870,692873,692871,692872,"90472","1846360","1846362","1846364","1846366","5","Player#224665984","5","Weapon#-1225833728","6","6","6","-1","Vector3 | 1 | InRing | Left"],
+      [729525,729528,729526,729527,"91973","1943948","1943950","1943952","1943954","6","Player#354206464","6","Weapon#-1439269888","3","3","3","-1","Vector3 | 1 | InRing | Left"],
+      [827316,827319,827317,827318,"95954","2202724","2202726","2202728","2202730","5","Player#224665984","5","Weapon#1566332416","5","5","5","-1","Vector3 | 1 | InRing | Right"]
+    ],
+    "record_count": 11,
+    "byte_count": 1548,
+    "sha256": "e1d7d7d17a5a18da4ce9110cd4878d2bcdafc6441ca866580f0f4cd24c9c21cf",
+    "reproducibility_tool": "tools/prove_weaponman_drop.py"
+  },
+  "limits": [
+    "CAP-R6-001 does not contain WeaponMan.Drop rows; the capture directly records Player.DropWeapon and nested Weapon.Drop only.",
+    "The multi-source bridge is limited to the exact DLL composition Player.DropWeapon -> WeaponMan.Drop -> Weapon.Drop and the 11 observed nested Player.DropWeapon -> Weapon.Drop executions.",
+    "The 912 negative-index Player.DropWeapon executions are preserved as observed early-return cases with no direct children.",
+    "The exact body and broader behavior of Weapon.Drop remain separate work beyond the callee identity/hash pinned here.",
+    "Authored weapon kinds, AI selection, attack, damage, choreography and external Unity behavior remain outside this dataset."
+  ]
+}
