@@ -1,0 +1,24 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_NOT_IMPLEMENTED_STUBS_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methods":[
+      {"name":"uAudio.uAudio_backend.IAudioPlayer.get_SLEEP","token":"0x060052D2","methoddef_row_hex":"415732000000e109eb620a0061480100543d","rva":"0x00325741","signature_blob_hex":"20001280fd","code_size":6,"code_sha256":"72cc88b5b683b160abc8e7954fbaf73bc594488ba0cf95ae7d65958b1e21730c","header_format":"tiny","instruction_count":2,"branch_instruction_count":0,"call_instruction_count":1},
+      {"name":"uAudio.uAudio_backend.IAudioPlayer.set_SLEEP","token":"0x060052D3","methoddef_row_hex":"485732000000e10918630a0067480100543d","rva":"0x00325748","signature_blob_hex":"2001011280fd","code_size":6,"code_sha256":"72cc88b5b683b160abc8e7954fbaf73bc594488ba0cf95ae7d65958b1e21730c","header_format":"tiny","instruction_count":2,"branch_instruction_count":0,"call_instruction_count":1},
+      {"name":"Resume","token":"0x060052ED","methoddef_row_hex":"635e32000000860002f208005c4800005f3d","rva":"0x00325E63","signature_blob_hex":"200001","code_size":6,"code_sha256":"72cc88b5b683b160abc8e7954fbaf73bc594488ba0cf95ae7d65958b1e21730c","header_format":"tiny","instruction_count":2,"branch_instruction_count":0,"call_instruction_count":1}
+    ],
+    "shared_body_hex":"73c503000a7a",
+    "shared_flow":["new System.NotImplementedException()","throw"],
+    "constructor":{"token":"0x0A0003C5","memberref_row_hex":"29080000eb4f06005c480000","name":".ctor","signature_blob_hex":"200001","parent_typeref_token":"0x01000105","parent_typeref_row_hex":"0a00b36906000cae0000","parent_resolved":"System.NotImplementedException"},
+    "direct_methoddef_reference_scan":{
+      "targets":["0x060052D2","0x060052D3","0x060052ED"],
+      "opcodes":["call","callvirt","ldftn","ldvirtftn","newobj"],
+      "all_counts_zero":true,
+      "relationship_status":"NO_DIRECT_IN_ASSEMBLY_METHODDEF_REFERENCE"
+    }
+  },
+  "limits":["Non-direct interface/reflection/framework dispatch and higher-level SLEEP semantics remain outside this record."]
+}
