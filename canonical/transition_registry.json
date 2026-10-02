@@ -3260,6 +3260,7 @@
         "authored weapon kinds/attack data/AI selection/damage behavior",
         "external Unity object/component/GameObject/Transform behavior"
       ]
-    }  ],
+    }
+  ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
 }
