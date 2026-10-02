@@ -1,0 +1,54 @@
+{
+  "fact_id": "FACT-0191",
+  "claim": "In the matching retail DLL, instance Player.EquipWeapon(Int32 widx) (0x06004EE0) has RVA 0x002E1AB0, exact 91-byte body SHA-256 f4436e9f21bb7d3b9eef160a5967c34e25eeaf52fcfcc87d41f6524ececa61eb, and exact control flow: if signed this.weaponIdx is not below raw 0, return; otherwise call WeaponMan.inst.GetWeaponObj(widx), return if the resulting Unity object is false, then write this.weaponIdx=widx, Weapon.State=raw 1, Weapon.PlIdx=this.PlIdx, and parent the Weapon transform to this Player transform. FACT-0015 FormAnimator.PlayAnimationSE contains one direct callvirt to EquipWeapon at IL+0x00E9. In verified R6 raw bytes, all 11 observed direct EquipWeapon children of PlayAnimationSE have parent PRE weaponIdx=-1, child PRE weaponIdx=-1, equal parent/child owner slots, child raw argument equal to child POST weaponIdx, and parent POST weaponIdx equal to that raw argument.",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.EquipWeapon token 0x06004EE0 raw MethodDef row b01a2e0000008600a0250a009f490000553a -> RVA 0x002E1AB0; signature 20010108; fat-header code size 91; code sha256=f4436e9f21bb7d3b9eef160a5967c34e25eeaf52fcfcc87d41f6524ececa61eb; exact method structure in canonical/witnesses/CAP-R6-001/player_equip_weapon.summary.json; prover tools/prove_player_equip_weapon.py",
+      "observation": "Exact matching-DLL Player.EquipWeapon body and the single FACT-0015 direct caller seam."
+    },
+    {
+      "source_id": "CAP-R6-001",
+      "locator": "event_trace.tsv sha256=79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd; summary canonical/witnesses/CAP-R6-001/player_equip_weapon.summary.json; 11-record witness digest sha256=ee0f5723f7ae37c9742c154b75dd9055dc2b04cf84e8c9b60b76f82801fde1bf",
+      "observation": "Exactly 11 direct PlayAnimationSE -> EquipWeapon executions; all 11 directly corroborate the recorded owner relationship and Player.weaponIdx pre/post mutation."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0015 FormAnimator.PlayAnimationSE",
+      "to": "Player.EquipWeapon(widx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0015 caller token 0x06004E7D, RVA 0x002DB718, direct callvirt token 0x06004EE0 at IL+0x00E9; only one EquipWeapon callsite in the caller."
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "11 direct parent/child executions in player_equip_weapon.summary.json; parent and child owner_slot equal in 11/11."
+        }
+      ]
+    },
+    {
+      "from": "EquipWeapon raw Int32 argument widx",
+      "to": "Player.weaponIdx post value",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "EquipWeapon exact body writes arg1 to Player.weaponIdx field token 0x0400600B after the initial negative-current-index and null-object gates."
+        },
+        {
+          "source_id": "CAP-R6-001",
+          "locator": "child raw argument == child POST weaponIdx in 11/11 and parent POST weaponIdx == child raw argument in 11/11."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The R6 trace directly corroborates Player.weaponIdx mutation and the PlayAnimationSE child-call relationship; it does not directly expose Weapon.State, Weapon.PlIdx, or Unity transform-parent fields.",
+    "WeaponMan.GetWeaponObj token 0x06006AC8 remains a separate open in-assembly helper gate.",
+    "UnityEngine.Object, Component, GameObject, and Transform implementations remain external.",
+    "Raw State value 1 and metadata names are preserved exactly without assigning broader weapon-lifecycle semantics.",
+    "Authored weapon kinds, attack data, AI selection, damage behavior, and packed choreography remain outside this fact."
+  ]
+}
