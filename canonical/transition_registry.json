@@ -2708,6 +2708,22 @@
         "external Unity AudioSource pan implementation",
         "non-direct framework/interface invocation"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_UPDATE_V1",
+      "fact_id": "FACT-0159",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudioPlayer.Update time callback, flare_SongEnd and flg_source_destroy replay/recovery control flow; final open MethodDef closes the full 39-method uAudioPlayer range.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_update.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external Unity Update lifecycle",
+        "external Unity/backend/delegate implementations"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
