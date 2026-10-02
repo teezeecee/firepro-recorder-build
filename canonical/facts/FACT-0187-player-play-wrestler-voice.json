@@ -1,0 +1,70 @@
+{
+  "fact_id": "FACT-0187",
+  "claim": "In the matching retail DLL, instance Player.PlayWrestlerVoice (0x06004EB4) has raw MethodDef row 3ce52d00000086002b5a09005c480000383a, RVA 0x002DE53C, exact signature blob 200001, and an exact 272-byte body SHA-256 827f27896099f2fabf61cc8659bb91cfd1ef7c2cccee142cd3e754ba3e577d8d. Its fat header has maxstack 4 and local signature token 0x11001063 with blob 070312a788081287bc, declaring locals Player, Int32 and WrestlerVoiceAttr. The first 65 bytes reproduce the exact MatchMain/Fade fast-forward throttle shape already seen at FACT-0058: when MatchMain.inst is non-null, MatchMain.isFastForwardMatch is nonzero, FACT-0059 Fade.IsFadeFinish returns true, and unsigned MatchMain.MchFrameCnt % 20 is nonzero, the method returns; otherwise it continues. It then requires this.animator.AnmReqType == raw 1, obtains local Player through FACT-0109 PlayerMan.GetPlObj(this.animator.AnmHostPlayer), and returns on the exact null gates emitted for that local, this.animator and local.WresParam. It reads local voice index from local.WresParam.skillVoice[this.animator.SkillSlotID], returns when the signed value is below raw 0, and calls Menu_SoundManager.Play_WrestlerVoice(local.PlIdx,voiceIndex,1.0f). If Audience.inst is non-null, it then calls FACT-0183 WrestlerVoiceInfoManager.GetWrestlerVoiceAttr with local.WresParam.voiceType[SkillSlotID] and local.WresParam.voiceID[SkillSlotID], reads WrestlerVoiceAttr.cheerVoice, returns when that raw value equals -1, and otherwise calls FACT-0079 Audience.PlayCheerVoice(cheerVoice,4). FACT-0015 FormAnimator.PlayAnimationSE contains the DLL's only raw direct reference to Player.PlayWrestlerVoice, a callvirt at IL+0x008E on its raw seID 1 branch.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.PlayWrestlerVoice token 0x06004EB4 raw MethodDef row 3ce52d00000086002b5a09005c480000383a -> RVA 0x002DE53C; signature 200001; local sig 0x11001063 blob 070312a788081287bc; code size 272; code sha256=827f27896099f2fabf61cc8659bb91cfd1ef7c2cccee142cd3e754ba3e577d8d; exact throttle/request/host/null/array/voice/cheer flow and unique FACT-0015 inbound reference in canonical/witnesses/CAP-R6-001/player_play_wrestler_voice.summary.json; prover tools/prove_player_play_wrestler_voice.py",
+      "observation": "Exact matching-DLL Player.PlayWrestlerVoice body and direct canonical edges."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0015 FormAnimator.PlayAnimationSE raw seID 1 branch",
+      "to": "Player.PlayWrestlerVoice()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0015 pins callvirt token 0x06004EB4 at PlayAnimationSE IL+0x008E; raw token scan of DLL-001 finds this token operand exactly once."
+        }
+      ]
+    },
+    {
+      "from": "Player.PlayWrestlerVoice",
+      "to": "FACT-0059 Fade.IsFadeFinish()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayWrestlerVoice IL+0x0024 callvirt targets MethodDef 0x06004A7D after loading Fade.inst."
+        }
+      ]
+    },
+    {
+      "from": "Player.PlayWrestlerVoice",
+      "to": "FACT-0109 PlayerMan.GetPlObj(this.animator.AnmHostPlayer)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayWrestlerVoice IL+0x0063 callvirt targets MethodDef 0x06005065 after loading field 0x04005ED7 AnmHostPlayer."
+        }
+      ]
+    },
+    {
+      "from": "Player.PlayWrestlerVoice",
+      "to": "FACT-0183 WrestlerVoiceInfoManager.GetWrestlerVoiceAttr(type,idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayWrestlerVoice IL+0x00EC callvirt targets MethodDef 0x060011E8 using voiceType[SkillSlotID] and voiceID[SkillSlotID]."
+        }
+      ]
+    },
+    {
+      "from": "Player.PlayWrestlerVoice",
+      "to": "FACT-0079 Audience.PlayCheerVoice(cheerVoice,4)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayWrestlerVoice IL+0x010A callvirt targets MethodDef 0x060047D9 after raw cheerVoice != -1 gate and raw level 4 load."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Player.PlayWrestlerVoice code body and its direct canonical edges.",
+    "Menu_SoundManager.Play_WrestlerVoice token 0x060052B1 remains the next separate in-assembly leaf.",
+    "Authored skillVoice, voiceType, voiceID and wrestler-voice table contents remain outside this code-only fact.",
+    "The raw AnmReqType value 1, SkillSlotID indexing, raw level 4, and metadata names are preserved exactly without assigning broader gameplay meaning."
+  ]
+}
