@@ -1012,3 +1012,9 @@ jobs:
         run: python tests/test_wrestler_voice_info_manager_awake_summary.py
       - name: WrestlerVoiceInfoManager Awake prover syntax
         run: python -m py_compile tools/prove_wrestler_voice_info_manager_awake.py
+
+
+      - name: WrestlerVoiceInfoManager ParsePrm Int summary
+        run: python tests/test_wrestler_voice_info_manager_parse_prm_int_summary.py
+      - name: WrestlerVoiceInfoManager ParsePrm Int prover syntax
+        run: python -m py_compile tools/prove_wrestler_voice_info_manager_parse_prm_int.py
