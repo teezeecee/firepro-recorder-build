@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0186",
+  "claim": "In the matching retail DLL, instance WrestlerVoiceInfoManager.Parse (0x060011EA) has raw MethodDef row 8cf2060000008100505606005c480000a70d, RVA 0x0006F28C, exact signature blob 200001, and an exact 654-byte body SHA-256 51600ca58d83133003e36ec3afd834efa865af3cd33749c16af5e5f0e68d9a1d. Its fat header has maxstack 6 and local signature token 0x1100034E. The body loads user string 'DataBase/WrestlerVoiceList' through UnityEngine.Resources.Load, casts it to TextAsset, wraps its text in StringReader, reads lines into List<String[]> after String.Split on a one-element Char array containing raw decimal 9, then processes raw four-column blocks. At each block it tests row zero column local5+1 against user string 'end'; otherwise it constructs FACT-0182 WrestlerVoiceInfo, parses and writes type, walks exactly 16 successive cells for dlc where parsed raw 1 writes true and a protected Int32.Parse failure is caught as System.Object, then writes parentFolder, fileNamePrefix, parsed sortOrder, and name[0]/name[1]. It then walks attribute rows until column local5 equals 'end', constructs FACT-0182 WrestlerVoiceAttr, writes description[0]/description[1] and raw -1 cheerVoice, and only when column local5+3 is nonempty calls FACT-0185 ParsePrm_Int with raw digit count 2, local7.type, and exact user string '************************* Invalid cheer voice is specified.' before adding the attribute. It adds the completed WrestlerVoiceInfo to this.wrestlerVoiceInfo, advances the column base by raw 4, resets the row index through the loop back, and repeats. On the outer sentinel it stores Time.get_realtimeSinceStartup()-start in a local that is not read again, calls Resources.UnloadAsset on the TextAsset, and returns. FACT-0184 Awake directly calls Parse at IL+0x0037.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "WrestlerVoiceInfoManager.Parse token 0x060011EA raw MethodDef row 8cf2060000008100505606005c480000a70d -> RVA 0x0006F28C; signature 200001; local sig 0x1100034E blob 070d0c128391128661151209011d0e0e08081287c00802081287bc0c; code size 654; code sha256=51600ca58d83133003e36ec3afd834efa865af3cd33749c16af5e5f0e68d9a1d; 16-byte small catch section sha256=70456e60bd6570383da3640a430a402719684d70d8183af136792f90f11df539; exact resource/read/split/block/constructor/field/Add/Unload flow in canonical/witnesses/CAP-R6-001/wrestler_voice_info_manager_parse.summary.json; prover tools/prove_wrestler_voice_info_manager_parse.py",
+      "observation": "Exact matching-DLL WrestlerVoiceInfoManager.Parse body, exception clause, and direct internal edges."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0184 WrestlerVoiceInfoManager.Awake",
+      "to": "WrestlerVoiceInfoManager.Parse()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0184 Awake token 0x060011E6, RVA 0x0006F11E, code SHA-256 bcee56df40b0e166d956e871a4b165a2e11eed714129aff4e22590ffbe441aae, IL+0x0037 directly calls MethodDef 0x060011EA."
+        }
+      ]
+    },
+    {
+      "from": "WrestlerVoiceInfoManager.Parse",
+      "to": "FACT-0182 WrestlerVoiceInfo..ctor",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Parse IL+0x0080 directly newobjs MethodDef 0x060011E2."
+        }
+      ]
+    },
+    {
+      "from": "WrestlerVoiceInfoManager.Parse",
+      "to": "FACT-0182 WrestlerVoiceAttr..ctor",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Parse IL+0x01D5 directly newobjs MethodDef 0x060011E1."
+        }
+      ]
+    },
+    {
+      "from": "WrestlerVoiceInfoManager.Parse",
+      "to": "FACT-0185 WrestlerVoiceInfoManager.ParsePrm_Int",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Parse IL+0x0243 directly calls MethodDef 0x060011E9 after the nonempty column local5+3 gate."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes the exact Parse code body and direct in-assembly edges only.",
+    "The authored contents of DataBase/WrestlerVoiceList remain source-blocked from this code-only fact.",
+    "Unity Resources/TextAsset/Time behavior and System StringReader/List/String/Int32 implementations remain external.",
+    "No broader meaning is assigned to raw column positions, the raw 16-entry loop, raw values 0/1, or the raw four-column stride beyond the exact code operations."
+  ]
+}
