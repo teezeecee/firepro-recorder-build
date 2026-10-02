@@ -2577,6 +2577,23 @@
         "caller closure",
         "higher-level playback/file semantics"
       ]
+    },
+    {
+      "family_id": "DLL_U_AUDIO_QUIT_DISPOSE_V1",
+      "fact_id": "FACT-0151",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL uAudioPlayer.OnApplicationQuit wrapper and direct Dispose dependency: stream close, backend dispose/null and _loadedTarget reset.",
+      "summary": "canonical/witnesses/CAP-R6-001/u_audio_quit_dispose.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external Unity lifecycle invocation",
+        "System.IO.Stream.Close implementation",
+        "uAudio backend Dispose implementation"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
