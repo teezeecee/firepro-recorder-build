@@ -2909,6 +2909,22 @@
         "inbound caller closure",
         "higher-level BGM transition/fade policy"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_STOP_WRAPPERS_V1",
+      "fact_id": "FACT-0171",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager StopCheerVoice_Loop and StopSE(AudioSrcEnum) selection wrappers, both bridged to canonical FACT-0125 AudioSrcInfo.Stop.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_stop_wrappers.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "inbound caller closure",
+        "external Unity audio behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
