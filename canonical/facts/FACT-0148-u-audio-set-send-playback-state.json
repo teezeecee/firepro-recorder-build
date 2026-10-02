@@ -1,0 +1,8 @@
+{
+  "fact_id":"FACT-0148",
+  "claim":"In the matching retail DLL, instance property setter uAudio.uAudioPlayer.set_sendPlaybackState (0x060052CC) has raw MethodDef row 935632000000e6091c8a070055480100523d, RVA 0x00325693, exact signature blob 200101151280d1011182b5, one System.Action<uAudio.uAudio_backend.PlayBackState> parameter value, and an exact 8-byte body. It loads this, loads value, writes value directly to this._sendPlaybackState (0x040087E7), and returns. FACT-0127 already closes the paired getter over the same exact field token. No direct in-assembly caller of this setter is promoted.",
+  "status":"PROVEN_DLL",
+  "evidence":[{"source_id":"DLL-001","locator":"uAudio.uAudioPlayer.set_sendPlaybackState token 0x060052CC raw MethodDef row 935632000000e6091c8a070055480100523d -> RVA 0x00325693; signature 200101151280d1011182b5; code size 8; code sha256=8b12d7dcbce95657c6a5b8f58f76123dbc997c306b7976ba5e8419839add7a29; exact this/value/_sendPlaybackState/ret body in canonical/witnesses/CAP-R6-001/u_audio_set_send_playback_state.summary.json; prover tools/prove_u_audio_set_send_playback_state.py","observation":"Exact matching-DLL _sendPlaybackState writer body."}],
+  "chain_edges":[],
+  "limits":["This fact closes only the exact field writer.","No direct in-assembly caller is promoted.","Delegate subscriber/runtime behavior remains outside this fact."]
+}
