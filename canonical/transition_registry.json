@@ -2877,6 +2877,22 @@
         "external Unity Resources/AsyncOperation/ResourceRequest behavior",
         "Unity coroutine scheduler behavior"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_IS_WAIT_BGM_MP3_V1",
+      "fact_id": "FACT-0169",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL 2-byte Menu_SoundManager.IsWaitBGM_MP3 constant-true leaf; sole Dialog_Skill.Update direct reference recorded as raw caller observation only.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_is_wait_bgm_mp3.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Dialog_Skill.Update caller closure",
+        "higher-level MP3/wait semantics"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
