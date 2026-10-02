@@ -36,6 +36,6 @@
     "Fresh CAP-R6-001 contains no event_trace.tsv method rows whose recorded method string contains GetWeaponObj, so no R6 execution or caller bridge is claimed.",
     "WeaponObj array population, authored/runtime contents, and object lifecycle remain outside this fact.",
     "The broader behavior of callers without an existing canonical fact remains separate work.",
-    "No weapon kind, AI selection, attack, damage, choreography, or Unity behavior is inferred."
+    "No weapon kind, AI selection, attack, damage, choreography, or Unity behavior is claimed by this fact."
   ]
 }
