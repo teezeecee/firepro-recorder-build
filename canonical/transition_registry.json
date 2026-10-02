@@ -2811,6 +2811,22 @@
         "authored BGMInfo_Menu/resource contents",
         "higher-level raw MenuBGM semantics"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_CHANGE_BGM_BATTLE_V1",
+      "fact_id": "FACT-0165",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager.Change_BGM_Battle async/sync asset_dir routing, raw slot 34, shared field resets, plus direct BGMData.GetBGMInfo_Match leaf.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_change_bgm_battle.summary.json",
+      "dll_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external Unity AssetBundle/Resources/coroutine behavior",
+        "authored BGMInfo_Match rows and audio assets"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
