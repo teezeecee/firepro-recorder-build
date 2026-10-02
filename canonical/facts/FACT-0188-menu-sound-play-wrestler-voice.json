@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0188",
+  "claim": "In the matching retail DLL, static Menu_SoundManager.Play_WrestlerVoice (0x060052B1) has raw MethodDef row 342f320000009600bf610a00c5e402003f3d, RVA 0x00322F34, exact signature blob 00030108080c, returns Void, takes Int32 pl_idx, Int32 slot and Float32 volume, and has an exact 125-byte body SHA-256 89b773f755d9066b9ae0731733012e2c12839acab2548a261e022dbf7b158c12. Its fat header has maxstack 3 and local signature token 0x1100120F with blob 070412490c12aa2c1280b9, declaring UnityEngine.AudioClip, Float32, AudioSrcInfo and UnityEngine.AudioSource locals. The method returns when static Sound_ClipWrestlerVoice_List is null. It then enforces signed pl_idx >= 0 and pl_idx < raw 8, otherwise returning. It obtains local AudioClip by invoking the rectangular-array Get member on Sound_ClipWrestlerVoice_List with (pl_idx,slot), and returns when that clip compares equal to null. It computes local volume as static Volume_Voice * input volume. The emitted bge.un against raw 0.0f means only an ordered value below zero returns; unordered values continue. The emitted ble.un against raw 1.0f means ordered values above one are replaced by raw 1.0f, while unordered values continue without that replacement. It then selects audioSrcInfo[audio_source_index + raw 3], loads its sRefAudio UnityEngine.AudioSource, calls set_volume(localVolume), then PlayOneShot(localClip), and returns. FACT-0187 Player.PlayWrestlerVoice pins a direct call to this method at IL+0x00B8 with local.PlIdx, the selected skillVoice value and raw 1.0f.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Menu_SoundManager.Play_WrestlerVoice token 0x060052B1 raw MethodDef row 342f320000009600bf610a00c5e402003f3d -> RVA 0x00322F34; signature 00030108080c; parameters pl_idx/slot/volume; local sig 0x1100120F blob 070412490c12aa2c1280b9; code size 125; code sha256=89b773f755d9066b9ae0731733012e2c12839acab2548a261e022dbf7b158c12; exact clip-table/bounds/volume/audio-source flow in canonical/witnesses/CAP-R6-001/menu_sound_play_wrestler_voice.summary.json; prover tools/prove_menu_sound_play_wrestler_voice.py",
+      "observation": "Exact matching-DLL Menu_SoundManager.Play_WrestlerVoice leaf body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0187 Player.PlayWrestlerVoice",
+      "to": "Menu_SoundManager.Play_WrestlerVoice(pl_idx,slot,volume)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0187 pins direct call token 0x060052B1 at Player.PlayWrestlerVoice IL+0x00B8 with local Player.PlIdx, local skillVoice index and raw 1.0f."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Play_WrestlerVoice method body and the FACT-0187 caller bridge.",
+    "Authored Sound_ClipWrestlerVoice_List clip contents and their population provenance remain outside this code-only fact.",
+    "Volume_Voice, audioSrcInfo and audio_source_index runtime value/population provenance remain separate.",
+    "UnityEngine.AudioSource.set_volume, PlayOneShot, Unity object comparison, and rectangular-array runtime implementations remain external.",
+    "Other direct callers of Play_WrestlerVoice are not promoted by this fact."
+  ]
+}
