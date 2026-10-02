@@ -802,3 +802,9 @@ jobs:
         run: python tests/test_u_audio_not_implemented_stubs_summary.py
       - name: uAudio not implemented stubs prover syntax
         run: python -m py_compile tools/prove_u_audio_not_implemented_stubs.py
+
+
+      - name: uAudio field getters summary
+        run: python tests/test_u_audio_field_getters_summary.py
+      - name: uAudio field getters prover syntax
+        run: python -m py_compile tools/prove_u_audio_field_getters.py
