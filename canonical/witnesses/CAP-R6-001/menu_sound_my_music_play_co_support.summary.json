@@ -1,0 +1,72 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_MY_MUSIC_PLAY_CO_SUPPORT_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "owner_type":{"name":"<MyMusic_Play_Co>c__IteratorE","token":"0x02000F73","factory_fact_id":"FACT-0144","ctor_fact_id":"FACT-0145","movenext_fact_id":"FACT-0146"},
+    "fields":{
+      "current":{"token":"0x0400C26D","name":"$current","type":"Object"},
+      "disposing":{"token":"0x0400C26E","name":"$disposing","type":"Boolean"},
+      "pc":{"token":"0x0400C26F","name":"$PC","type":"Int32"}
+    },
+    "methods":[
+      {
+        "name":"System.Collections.Generic.IEnumerator<object>.get_Current",
+        "token":"0x06007510",
+        "methoddef_row_hex":"005632000000e10901c1070001520000d24f",
+        "rva":"0x00325600",
+        "signature_blob_hex":"20001c",
+        "code_size":7,
+        "code_sha256":"b8e8332bb9870be9197c321e9365333a1cc8b38ee55cb82ca1e204f0d455de8b",
+        "instruction_count":3,
+        "branch_instruction_count":0,
+        "call_instruction_count":0,
+        "exact_flow":["load this","load this.$current","return"]
+      },
+      {
+        "name":"System.Collections.IEnumerator.get_Current",
+        "token":"0x06007511",
+        "methoddef_row_hex":"085632000000e1093cc1070001520000d24f",
+        "rva":"0x00325608",
+        "signature_blob_hex":"20001c",
+        "code_size":7,
+        "code_sha256":"b8e8332bb9870be9197c321e9365333a1cc8b38ee55cb82ca1e204f0d455de8b",
+        "instruction_count":3,
+        "branch_instruction_count":0,
+        "call_instruction_count":0,
+        "exact_flow":["load this","load this.$current","return"]
+      },
+      {
+        "name":"Dispose",
+        "token":"0x06007512",
+        "methoddef_row_hex":"105632000000e601945a06005c480000d24f",
+        "rva":"0x00325610",
+        "signature_blob_hex":"200001",
+        "code_size":15,
+        "code_sha256":"02a2aa96e1a791fff16cf503f1e698d0ecfbf56270e49599e8042faf50fd0a18",
+        "instruction_count":7,
+        "branch_instruction_count":0,
+        "call_instruction_count":0,
+        "exact_flow":["this.$disposing=true","this.$PC=-1","return"]
+      },
+      {
+        "name":"Reset",
+        "token":"0x06007513",
+        "methoddef_row_hex":"205632000000e6010adf02005c480000d24f",
+        "rva":"0x00325620",
+        "signature_blob_hex":"200001",
+        "code_size":6,
+        "code_sha256":"feef1163dc69f21cc1201b1ec63d1a60afc2af2ce98036d760713f22a2968a49",
+        "instruction_count":2,
+        "branch_instruction_count":0,
+        "call_instruction_count":1,
+        "exact_flow":["construct System.NotSupportedException","throw"]
+      }
+    ],
+    "reset_constructor":{"token":"0x0A0000EE","resolved":"System.NotSupportedException..ctor","signature_blob_hex":"200001"},
+    "relationship_status":"SAME_GENERATED_TYPE_SUPPORT_METHODS_NOT_RUNTIME_CALL_EDGES"
+  },
+  "limits":["External exception constructor implementation and Unity coroutine scheduling remain outside this record."]
+}
