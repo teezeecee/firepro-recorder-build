@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0146",
+  "claim": "In the matching retail DLL, compiler-generated <MyMusic_Play_Co>c__IteratorE.MoveNext (0x0600750F), owned by exact TypeDef 0x02000F73 created by FACT-0144/0145, has raw MethodDef row ac5432000000e6017f5a0600db490000d24f, RVA 0x003254AC, exact signature blob 200002, and an exact 328-byte Boolean body with no exception section. It reads this.$PC (0x0400C26F) to UInt32 local0, writes raw -1 back to $PC, and switches raw prior states 0,1,2 to IL+0x0025, IL+0x006F and IL+0x00B6; all other prior states return false. State 0 writes <url>__0 = String.Concat('file://', Menu_SoundManager.MyMusic_SelectFile_Name), constructs UnityEngine.WWW into <www>__0, then joins the WWW poll. While <www>__0.get_isDone() is false it writes $current = new UnityEngine.WaitForEndOfFrame(); when $disposing is false writes $PC=1; then returns true. When WWW is done it writes <audioTrack>__0 = WWWAudioExtensions.GetAudioClip(<www>__0, false, true), then joins the AudioClip-load poll. While <audioTrack>__0.get_loadState() equals raw 1 it yields another WaitForEndOfFrame, writes $PC=2 only when not disposing, and returns true. Once loadState is not raw 1 it writes <s>__0 = Menu_SoundManager.audioSrcInfo[0], sets <s>__0.sRefAudio.volume from Menu_SoundManager.MyMusic_Volume, sets its clip to <audioTrack>__0, sets loop=true, calls Play(), and writes raw 0 to <s>__0.fadeOutFrm and fadeOutCnt before returning false. FACT-0144/0145 prove the exact generated TypeDef and constructor; this fact does not claim Unity StartCoroutine(String) directly invokes MoveNext because scheduler dispatch remains external.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "<MyMusic_Play_Co>c__IteratorE.MoveNext token 0x0600750F raw MethodDef row ac5432000000e6017f5a0600db490000d24f -> RVA 0x003254AC; signature 200002; code size 328; code sha256=19dabb20d473fa3b479ae5e4d54dd67e44063fc7b40e2537738b472ce9dbeb98; exact $PC/yield/WWW/AudioClip/audioSrcInfo state machine in canonical/witnesses/CAP-R6-001/menu_sound_my_music_play_co_movenext.summary.json; prover tools/prove_menu_sound_my_music_play_co_movenext.py",
+      "observation": "Exact matching-DLL generated coroutine execution body."
+    }
+  ],
+  "limits": [
+    "No runtime caller edge from FACT-0133 or Unity StartCoroutine(String) is promoted; only exact TypeDef/method ownership and code bytes are proven.",
+    "Unity WWW, WaitForEndOfFrame, WWWAudioExtensions, AudioClip/AudioSource and coroutine scheduler implementations remain external.",
+    "Raw $PC states 0,1,2 and raw AudioClip loadState value 1 are preserved without assigning broader semantic enum labels.",
+    "Generated get_Current/Dispose/Reset support methods remain separate small gates."
+  ],
+  "chain_edges": []
+}
