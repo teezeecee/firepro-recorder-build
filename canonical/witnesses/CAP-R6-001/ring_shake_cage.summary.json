@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_RING_SHAKE_CAGE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methoddef_row": {
+      "token": "0x0600510A",
+      "row_hex": "f0e2300000008600a94c0a005c480000893b",
+      "rva": "0x0030E2F0"
+    },
+    "method": {
+      "type": "Ring",
+      "method": "ShakeCage",
+      "token": "0x0600510A",
+      "rva": "0x0030E2F0",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "header_format": "tiny",
+      "code_size": 8,
+      "code_sha256": "dc90ddc959a5183de014264fdbd38c6d4f4b92fa95ac83949817fbbe1adb79b3",
+      "body_hex": "02167d6f6300042a"
+    },
+    "field": {
+      "token": "0x0400636F",
+      "owner": "Ring",
+      "name": "ShakeCageAnmCnt",
+      "type": "Int32",
+      "written_raw_value": 0
+    },
+    "exact_flow": [
+      "this.ShakeCageAnmCnt = raw 0",
+      "return"
+    ],
+    "inbound_direct_reference": {
+      "caller_type": "FormAnimator",
+      "caller_method": "PlayAnimationSE",
+      "caller_token": "0x06004E7D",
+      "caller_rva": "0x002DB718",
+      "caller_code_size": 364,
+      "caller_code_sha256": "ba7c6da321b3f5632756459a8a788abd92609da056981078f5fc7bbe04824085",
+      "call_il": "0x012A",
+      "opcode": "callvirt",
+      "callee_token": "0x0600510A",
+      "canonical_fact": "FACT-0015"
+    }
+  },
+  "limits": [
+    "Field meaning/update lifecycle and sibling Player.Process_ShakeCage remain separate.",
+    "Only the FACT-0015 caller seam is promoted here."
+  ]
+}
