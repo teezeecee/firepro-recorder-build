@@ -1,0 +1,13 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_QUIT_DISPOSE_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "on_application_quit":{"token":"0x060052EB","methoddef_row_hex":"1f5e320000008100bc6f09005c4800005f3d","rva":"0x00325E1F","signature_blob_hex":"200001","code_size":7,"code_sha256":"7a7dcc5d4b3ee0bb1933833a4e1db71ee2f4720b7d7084aea7ccca1bee9c4ee4","body_hex":"0228ec5200062a","call":{"token":"0x060052EC","name":"Dispose","call_il":"0x0001"}},
+    "dispose":{"token":"0x060052EC","methoddef_row_hex":"275e32000000e601945a06005c4800005f3d","rva":"0x00325E27","signature_blob_hex":"200001","code_size":59,"code_sha256":"e67d4211a0c7ec2b2eb5a67f694a81c4e43c78972d036dd2e856f8573244884c","body_hex":"027bef870004390b000000027bef8700046f5401000a027be38700043912000000027be38700046fd50f000a02147de387000402167df18700042a","fields":{"read_fully_stream":"0x040087EF","backend":"0x040087E3","loaded_target":"0x040087F1"},"calls":{"stream_close":{"token":"0x0A000154","resolved":"System.IO.Stream.Close","call_il":"0x0011"},"backend_dispose":{"token":"0x0A000FD5","resolved":"uAudio.uAudio_backend.uAudio.Dispose","call_il":"0x0027"}},"exact_flow":["if readFullyStream != null: readFullyStream.Close()","if _uAudio != null: _uAudio.Dispose(); _uAudio = null","_loadedTarget = false","return"]},
+    "exception_sections":{"on_application_quit":false,"dispose":false}
+  },
+  "limits":["External Unity lifecycle and backend/System.IO implementations remain outside this record."]
+}
