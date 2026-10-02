@@ -205,20 +205,10 @@
       "callee_token": "0x06004EB4",
       "canonical_fact": "FACT-0015",
       "dll_raw_token_occurrence_count": 1
-    },
-    "raw_capture_method_name_search": {
-      "source_id": "CAP-R6-001",
-      "strings": [
-        "PlayWrestlerVoice",
-        "Play_WrestlerVoice"
-      ],
-      "occurrences": 0,
-      "promotion": "NONE"
     }
   },
   "limits": [
     "Menu_SoundManager.Play_WrestlerVoice body remains separate.",
-    "Authored voice arrays/table contents and external Unity operator behavior remain outside this record.",
-    "No recorder method-level witness exists for these two method-name strings in CAP-R6-001."
+    "Authored voice arrays/table contents and external Unity operator behavior remain outside this record."
   ]
 }
