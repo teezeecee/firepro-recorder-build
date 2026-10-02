@@ -1,0 +1,51 @@
+{
+  "fact_id": "FACT-0189",
+  "claim": "In the matching retail DLL, instance Player.PlayStepSE (0x06004EB5) has raw MethodDef row 58e62d0000008600af220a005c480000383a, RVA 0x002DE658, exact signature blob 200001, and an exact 171-byte body SHA-256 efbedac2c1bed8042849458be9e4aab0aff8bbe2e7f42d4ca0a31ce98fd698dc. Its fat header has maxstack 3 and local signature token 0x11001064 with blob 07030c1d11aa0c12a408, declaring Float32, MatchSEEnum[] and MatchSetting locals. It initializes local volume to raw 1.0f, local table to static Player.on_mat_tbl, and local MatchSetting from GlobalWork.inst.MatchSetting. If this.Zone equals raw 9, raw 10, raw 3, or raw 8, it selects static Player.on_stage_tbl and joins the final dispatch. Otherwise, when this.FormRen.pos_OutOfRing is false it keeps on_mat_tbl. When pos_OutOfRing is true, MatchSetting.arena raw 9 or raw 10 selects static Player.on_birbed_wire; all other raw arena values select static Player.out_of_ring_tbl and replace local volume with raw Float32 0.6000000238418579. The final dispatch indexes the selected MatchSEEnum[] with the exact return from FACT-0032 MatchRandom.Range(0,3), then calls FACT-0058 MatchMisc.PlayMatchSE(selectedValue,localVolume,this.PlIdx) and returns. FACT-0015 FormAnimator.PlayAnimationSE pins the direct callvirt to Player.PlayStepSE at IL+0x014A on its raw seID 6 branch.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.PlayStepSE token 0x06004EB5 raw MethodDef row 58e62d0000008600af220a005c480000383a -> RVA 0x002DE658; signature 200001; local sig 0x11001064 blob 07030c1d11aa0c12a408; code size 171; code sha256=efbedac2c1bed8042849458be9e4aab0aff8bbe2e7f42d4ca0a31ce98fd698dc; exact table/zone/out-of-ring/arena/volume/random/PlayMatchSE flow in canonical/witnesses/CAP-R6-001/player_play_step_se.summary.json; prover tools/prove_player_play_step_se.py",
+      "observation": "Exact matching-DLL Player.PlayStepSE body and canonical helper edges."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0015 FormAnimator.PlayAnimationSE raw seID 6 branch",
+      "to": "Player.PlayStepSE()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0015 pins callvirt token 0x06004EB5 at PlayAnimationSE IL+0x014A."
+        }
+      ]
+    },
+    {
+      "from": "Player.PlayStepSE",
+      "to": "FACT-0032 MatchRandom.Range(0,3)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayStepSE IL+0x0098 directly calls MethodDef 0x0600497B after loading raw arguments 0 and 3."
+        }
+      ]
+    },
+    {
+      "from": "Player.PlayStepSE",
+      "to": "FACT-0058 MatchMisc.PlayMatchSE(selectedValue,localVolume,PlIdx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayStepSE IL+0x00A5 directly calls MethodDef 0x06004970 after selected-table indexing, local volume load and Player.PlIdx load."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact closes only the exact Player.PlayStepSE body and its direct canonical edges.",
+    "Authored contents of on_mat_tbl, on_stage_tbl, on_birbed_wire and out_of_ring_tbl remain outside this code-only fact.",
+    "Raw Zone values 9/10/3/8 and arena values 9/10 are preserved numerically without assigning venue or terrain semantics.",
+    "FACT-0032 deliberately does not promote UnityEngine.Random distribution or range-result semantics beyond the exact wrapper call.",
+    "GlobalWork/MatchSetting/FormRenderer population and runtime values remain separate provenance."
+  ]
+}

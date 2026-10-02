@@ -3208,6 +3208,23 @@
         "Volume_Voice/audioSrcInfo/audio_source_index runtime provenance",
         "external Unity AudioSource/Object and CLR rectangular-array behavior"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_PLAY_STEP_SE_V1",
+      "fact_id": "FACT-0189",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.PlayStepSE raw Zone/out-of-ring/arena table selection, Float32 volume selection, FACT-0032 random index and FACT-0058 PlayMatchSE dispatch.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_play_step_se.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored step-sound table contents",
+        "GlobalWork/MatchSetting/FormRenderer runtime field provenance",
+        "external UnityEngine.Random behavior behind FACT-0032"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

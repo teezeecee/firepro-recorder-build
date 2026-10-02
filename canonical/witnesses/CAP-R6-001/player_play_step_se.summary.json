@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_PLAY_STEP_SE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methoddef_row": {
+      "token": "0x06004EB5",
+      "row_hex": "58e62d0000008600af220a005c480000383a",
+      "rva": "0x002DE658"
+    },
+    "method": {
+      "type": "Player",
+      "method": "PlayStepSE",
+      "token": "0x06004EB5",
+      "rva": "0x002DE658",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 171,
+      "code_sha256": "efbedac2c1bed8042849458be9e4aab0aff8bbe2e7f42d4ca0a31ce98fd698dc",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 3,
+      "local_signature_token": "0x11001064",
+      "local_signature_blob_hex": "07030c1d11aa0c12a408",
+      "locals": [
+        {
+          "index": 0,
+          "type": "Float32"
+        },
+        {
+          "index": 1,
+          "type": "MatchSEEnum[]"
+        },
+        {
+          "index": 2,
+          "type": "MatchSetting"
+        }
+      ]
+    },
+    "fields": {
+      "on_mat_tbl": {
+        "token": "0x0400607A",
+        "owner": "Player",
+        "name": "on_mat_tbl",
+        "type": "MatchSEEnum[]"
+      },
+      "global_work_inst": {
+        "token": "0x04002AD1",
+        "owner": "GlobalWork",
+        "name": "inst"
+      },
+      "match_setting": {
+        "token": "0x04002AD2",
+        "owner": "GlobalWork",
+        "name": "MatchSetting",
+        "type": "MatchSetting"
+      },
+      "zone": {
+        "token": "0x04005FEE",
+        "owner": "Player",
+        "name": "Zone"
+      },
+      "on_stage_tbl": {
+        "token": "0x0400607B",
+        "owner": "Player",
+        "name": "on_stage_tbl",
+        "type": "MatchSEEnum[]"
+      },
+      "form_renderer": {
+        "token": "0x04005FA7",
+        "owner": "Player",
+        "name": "FormRen"
+      },
+      "pos_out_of_ring": {
+        "token": "0x04002744",
+        "owner": "FormRenderer",
+        "name": "pos_OutOfRing",
+        "type": "Boolean"
+      },
+      "arena": {
+        "token": "0x040057D4",
+        "owner": "MatchSetting",
+        "name": "arena"
+      },
+      "on_birbed_wire": {
+        "token": "0x0400607D",
+        "owner": "Player",
+        "name": "on_birbed_wire",
+        "type": "MatchSEEnum[]"
+      },
+      "out_of_ring_tbl": {
+        "token": "0x0400607C",
+        "owner": "Player",
+        "name": "out_of_ring_tbl",
+        "type": "MatchSEEnum[]"
+      },
+      "pl_idx": {
+        "token": "0x04005FA6",
+        "owner": "Player",
+        "name": "PlIdx",
+        "type": "Int32"
+      }
+    },
+    "calls": {
+      "range": {
+        "token": "0x0600497B",
+        "fact_id": "FACT-0032",
+        "resolved": "MatchRandom.Range(Int32,Int32)",
+        "call_il": "0x0098",
+        "raw_arguments": [
+          0,
+          3
+        ]
+      },
+      "play_match_se": {
+        "token": "0x06004970",
+        "fact_id": "FACT-0058",
+        "resolved": "MatchMisc.PlayMatchSE",
+        "call_il": "0x00A5"
+      }
+    },
+    "exact_flow": [
+      "local0 = raw Float32 1.0; local1 = Player.on_mat_tbl; local2 = GlobalWork.inst.MatchSetting",
+      "if this.Zone equals raw 9, 10, 3, or 8: local1 = Player.on_stage_tbl; join final dispatch",
+      "otherwise if this.FormRen.pos_OutOfRing is false: keep Player.on_mat_tbl; join final dispatch",
+      "otherwise if local2.arena equals raw 9 or raw 10: local1 = Player.on_birbed_wire; join final dispatch",
+      "otherwise local1 = Player.out_of_ring_tbl and local0 = raw Float32 0.6000000238418579",
+      "index = FACT-0032 MatchRandom.Range(raw 0,raw 3)",
+      "selectedValue = local1[index]",
+      "FACT-0058 MatchMisc.PlayMatchSE(selectedValue,local0,this.PlIdx)",
+      "return"
+    ],
+    "inbound_direct_reference": {
+      "caller_type": "FormAnimator",
+      "caller_method": "PlayAnimationSE",
+      "caller_token": "0x06004E7D",
+      "caller_rva": "0x002DB718",
+      "caller_code_size": 364,
+      "caller_code_sha256": "ba7c6da321b3f5632756459a8a788abd92609da056981078f5fc7bbe04824085",
+      "call_il": "0x014A",
+      "opcode": "callvirt",
+      "callee_token": "0x06004EB5",
+      "canonical_fact": "FACT-0015"
+    }
+  },
+  "limits": [
+    "Authored table contents and runtime field population remain outside this record.",
+    "Raw enum values are not semantically relabelled.",
+    "UnityEngine.Random implementation remains external behind FACT-0032."
+  ]
+}
