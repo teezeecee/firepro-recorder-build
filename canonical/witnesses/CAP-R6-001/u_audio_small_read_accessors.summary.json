@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_SMALL_READ_ACCESSORS_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methods":[
+      {"name":"get_IsPlaying","token":"0x060052D1","methoddef_row_hex":"3657320000008608dd620a00db490000543d","rva":"0x00325736","signature_blob_hex":"200002","return_type":"Boolean","parameters":[],"code_size":10,"code_sha256":"31bdeabeee44f72dd1178652ad52ed510e193721cfb4d8a60279ab7efe50000a","body_hex":"027be987000417fe012a","field":{"token":"0x040087E9","name":"State"},"exact_flow":["load this.State","compare equal to raw 1","return Boolean result"]},
+      {"name":"get_SongLength","token":"0x060052CD","methoddef_row_hex":"9c5632000000e609f58907005e490000533d","rva":"0x0032569C","signature_blob_hex":"200008","return_type":"Int32","parameters":[],"code_size":12,"code_sha256":"f0f5455681d30721da8b169ee1b718bbfa4efb609ee5cef8b3a702da1bbd4ec2","body_hex":"027be38700046faf0f000a2a","field":{"token":"0x040087E3","name":"_uAudio"},"call":{"token":"0x0A000FAF","resolved":"uAudio.uAudio_backend.uAudio.get_SongLength","call_il":"0x0006"},"exact_flow":["load this._uAudio","callvirt backend get_SongLength","return Int32 result"]},
+      {"name":"get_Volume","token":"0x060052DB","methoddef_row_hex":"1a5832000000e609ac8a07002a4c0000573d","rva":"0x0032581A","signature_blob_hex":"20000c","return_type":"Single","parameters":[],"code_size":12,"code_sha256":"20440b8eac4fe338ed6167908e7ef4c7029862c4280a8680173021bae4ca21a0","body_hex":"027be48700046fa102000a2a","field":{"token":"0x040087E4","name":"myAudioSource"},"call":{"token":"0x0A0002A1","resolved":"UnityEngine.AudioSource.get_volume","call_il":"0x0006"},"exact_flow":["load this.myAudioSource","callvirt AudioSource.get_volume","return Single result"]}
+    ],
+    "direct_methoddef_reference_scan":{"targets":["0x060052D1","0x060052CD","0x060052DB"],"opcodes":["call","callvirt","ldftn","ldvirtftn","newobj"],"all_counts_zero":true,"relationship_status":"NO_DIRECT_IN_ASSEMBLY_INBOUND_METHODDEF_REFERENCE"}
+  },
+  "limits":["External backend/Unity implementations and non-direct framework/interface invocation remain outside this record."]
+}
