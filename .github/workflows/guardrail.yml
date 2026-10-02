@@ -940,3 +940,9 @@ jobs:
         run: python tests/test_menu_sound_load_async_referee_voice_factory_support_summary.py
       - name: Menu Sound LoadAsync RefereeVoice factory support prover syntax
         run: python -m py_compile tools/prove_menu_sound_load_async_referee_voice_factory_support.py
+
+
+      - name: Menu Sound LoadAsync RefereeVoice MoveNext summary
+        run: python tests/test_menu_sound_load_async_referee_voice_movenext_summary.py
+      - name: Menu Sound LoadAsync RefereeVoice MoveNext prover syntax
+        run: python -m py_compile tools/prove_menu_sound_load_async_referee_voice_movenext.py
