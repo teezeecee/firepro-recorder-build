@@ -2844,6 +2844,23 @@
         "Unity StartCoroutine(String) dispatch/scheduler",
         "authored match-SE resources"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_LOAD_MATCH_SE_MOVENEXT_V1",
+      "fact_id": "FACT-0167",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL <Load_MatchSe>c__Iterator0.MoveNext raw 0..108 MatchSE load/yield loop plus direct closure callback, LoadAsyncAsset factory and generated support leaves.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_load_match_se_movenext.summary.json",
+      "dll_method_count": 9,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "LoadAsyncAsset generated MoveNext closure",
+        "external Unity coroutine/resource behavior",
+        "authored MatchSEParam/resource contents"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
