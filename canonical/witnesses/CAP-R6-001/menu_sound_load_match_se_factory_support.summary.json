@@ -1,0 +1,21 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_LOAD_MATCH_SE_FACTORY_SUPPORT_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "owner_type":{"name":"<Load_MatchSe>c__Iterator0","token":"0x02000F65"},
+    "factory":{"token":"0x06005284","methoddef_row_hex":"301a320000008100b85e0a006a550000e73c","rva":"0x00321A30","signature_blob_hex":"2000128181","code_size":15,"code_sha256":"65d2fa09b6d7e4734ea6ced8c7df63053cd00416b490ac5bbbebc2900df6eca3","header_flags_raw":"0x0013","max_stack":2,"local_signature_token":"0x110011F6","local_signature_blob_hex":"070112bd94","body_hex":"73b97400060a06027df1c10004062a","constructor_token":"0x060074B9","captured_this_field":"0x0400C1F1"},
+    "support_methods":[
+      {"name":".ctor","token":"0x060074B9","methoddef_row_hex":"9838320000008618eb4f06005c480000d24f","rva":"0x00323898","code_size":7,"code_sha256":"5d00b167bdfbaef5db8274a65cefd86c61b9e10c9a45527597133bf7d8e596e9","body_hex":"0228ef00000a2a","external_call":"System.Object..ctor","external_token":"0x0A0000EF"},
+      {"name":"System.Collections.Generic.IEnumerator<object>.get_Current","token":"0x060074BB","rva":"0x00323A15","code_size":7,"code_sha256":"2a8bce63c14acba20ed3137df6f67799c50ca87fe09910f877deff0c540107c9","body_hex":"027bf2c100042a","field":"0x0400C1F2"},
+      {"name":"System.Collections.IEnumerator.get_Current","token":"0x060074BC","rva":"0x00323A1D","code_size":7,"code_sha256":"2a8bce63c14acba20ed3137df6f67799c50ca87fe09910f877deff0c540107c9","body_hex":"027bf2c100042a","field":"0x0400C1F2"},
+      {"name":"Dispose","token":"0x060074BD","rva":"0x00323A25","code_size":15,"code_sha256":"844c294556c005d033b9b34558cf81e6ab28fcad3a83d72f006f969706a2b0ff","body_hex":"02177df3c1000402157df4c100042a","disposing_field":"0x0400C1F3","pc_field":"0x0400C1F4"},
+      {"name":"Reset","token":"0x060074BE","rva":"0x00323A35","code_size":6,"code_sha256":"feef1163dc69f21cc1201b1ec63d1a60afc2af2ce98036d760713f22a2968a49","body_hex":"73ee00000a7a","external_call":"System.NotSupportedException..ctor","external_token":"0x0A0000EE"}
+    ],
+    "fields":{"captured_this":{"token":"0x0400C1F1","name":"$this"},"current":{"token":"0x0400C1F2","name":"$current"},"disposing":{"token":"0x0400C1F3","name":"$disposing"},"pc":{"token":"0x0400C1F4","name":"$PC"}},
+    "fact_0160_related_string_observation":{"fact_id":"FACT-0160","string_value":"Load_MatchSe","relationship_status":"NAME_ONLY_EXTERNAL_DISPATCH_NOT_DIRECT_CALL"},
+    "open_execution_method":{"token":"0x060074BA","name":"MoveNext","rva":"0x003238A0","code_size":361,"code_sha256":"f80edfba4bbae0a9f8538fe6abf28795445ad07b7558bd988c5f9fec8b79eed0"}
+  },
+  "limits":["MoveNext, Unity string coroutine dispatch and authored resources remain outside this record."]
+}
