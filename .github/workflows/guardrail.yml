@@ -820,3 +820,9 @@ jobs:
         run: python tests/test_u_audio_eight_byte_helpers_summary.py
       - name: uAudio eight byte helpers prover syntax
         run: python -m py_compile tools/prove_u_audio_eight_byte_helpers.py
+
+
+      - name: uAudio small read accessors summary
+        run: python tests/test_u_audio_small_read_accessors_summary.py
+      - name: uAudio small read accessors prover syntax
+        run: python -m py_compile tools/prove_u_audio_small_read_accessors.py
