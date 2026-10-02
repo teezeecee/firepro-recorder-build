@@ -1033,3 +1033,8 @@ jobs:
         run: python tests/test_menu_sound_play_wrestler_voice_summary.py
       - name: Menu Sound Play WrestlerVoice prover syntax
         run: python -m py_compile tools/prove_menu_sound_play_wrestler_voice.py
+
+      - name: Player PlayStepSE summary
+        run: python tests/test_player_play_step_se_summary.py
+      - name: Player PlayStepSE prover syntax
+        run: python -m py_compile tools/prove_player_play_step_se.py
