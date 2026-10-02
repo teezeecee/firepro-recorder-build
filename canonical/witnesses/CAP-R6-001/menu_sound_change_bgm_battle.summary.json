@@ -1,0 +1,25 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_CHANGE_BGM_BATTLE_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "change_bgm_battle":{
+      "token":"0x0600529A","methoddef_row_hex":"e82432000000960057600a00fde302001a3d","rva":"0x003224E8","signature_blob_hex":"00030111a9f00202",
+      "parameters":[{"sequence":1,"name":"index","type":"MatchBGM","type_token":"0x02000A7C"},{"sequence":2,"name":"bAsync","type":"Boolean"},{"sequence":3,"name":"bStart","type":"Boolean"}],
+      "code_size":327,"code_sha256":"4ad21fa3a9b1dd5d1b2e36c8c169c7d9809a762ca4958bbb3649036346facc9e","header_format":"fat","header_flags_raw":"0x0013","max_stack":5,"local_signature_token":"0x11001206","local_signature_blob_hex":"070612a9f40e12867d124912491249","instruction_count":100,"branch_instruction_count":8,"call_instruction_count":24,
+      "fields":{"file_name":{"token":"0x04008629","name":"BGMInfo.fileName"},"asset_dir":{"token":"0x0400862C","name":"BGMInfo.asset_dir"},"audio_clip_info":{"token":"0x040086F4","name":"Menu_SoundManager.audioClipInfo"},"keep_bgm":{"token":"0x04008702","name":"Menu_SoundManager.g_KeepBgmNumber"},"continue_flag":{"token":"0x04008703","name":"Menu_SoundManager.g_ProgressBGM_Continue"}},
+      "string":{"token":"0x7008EAFC","value":"Sound/Bgm/"},
+      "canonical_calls":{"get_bgm_info_match":{"token":"0x0600526F","call_il":"0x0001"},"get_instance":{"token":"0x0600527C","fact_id":"FACT-0112","call_ils":["0x003C","0x0056"]},"cochange_resource":{"token":"0x06005294","fact_id":"FACT-0115","call_il":"0x006F"},"cochange_assetbundle":{"token":"0x06005295","fact_id":"FACT-0115","call_il":"0x0046"},"audio_clip_set":{"token":"0x060052C2","fact_id":"FACT-0113","call_ils":["0x00CD","0x0104","0x0134"]}},
+      "external_members":{"string_is_null_or_empty":{"token":"0x0A000015","call_ils":["0x0020","0x0085"]},"string_concat":{"token":"0x0A000012","call_ils":["0x0036","0x0066","0x009B","0x00E9","0x0119"]},"start_coroutine":{"token":"0x0A00035A","call_ils":["0x004B","0x0074"]},"assetbundle_load_from_file":{"token":"0x0A000799","call_il":"0x00A0"},"object_inequality":{"token":"0x0A00000F","call_il":"0x00A8"},"path_get_file_name":{"token":"0x0A00071A","call_il":"0x00B9"},"assetbundle_loadasset_audioclip":{"token":"0x2B000100","methodspec_base":"UnityEngine.AssetBundle.LoadAsset","instantiation_blob_hex":"0a011249","call_il":"0x00BE"},"assetbundle_unload":{"token":"0x0A00079E","call_il":"0x00D4"},"resources_load":{"token":"0x0A0006DA","call_ils":["0x00EE","0x011E"]}},
+      "paths":{
+        "async":["g_ProgressBGM_Continue=false","g_KeepBgmNumber=15","if asset_dir non-empty: asset_dir+fileName -> FACT-0115 FromAssetBundle, raw 34, bStart, null, StartCoroutine","else: 'Sound/Bgm/'+fileName -> FACT-0115 resource coroutine, raw 34, bStart, null, StartCoroutine","return"],
+        "sync_nonempty_bundle":["AssetBundle.LoadFromFile(asset_dir+fileName)","when bundle != null: LoadAsset<AudioClip>(Path.GetFileName(fileName))","FACT-0113 audioClipInfo[34].Set(clip)","bundle.Unload(false)"],
+        "sync_fallback":["when bundle is null, or asset_dir is empty: Resources.Load('Sound/Bgm/'+fileName), cast AudioClip, FACT-0113 audioClipInfo[34].Set(clip)","g_ProgressBGM_Continue=false","g_KeepBgmNumber=15","return"]
+      }
+    },
+    "get_bgm_info_match":{"token":"0x0600526F","methoddef_row_hex":"6602320000009600325e0a007ae20200da3c","rva":"0x00320266","signature_blob_hex":"000112a9f411a9f0","return_type":"BGMInfo","return_type_token":"0x02000A7D","parameters":[{"sequence":1,"name":"bgm","type":"MatchBGM","type_token":"0x02000A7C"}],"code_size":8,"code_sha256":"46a9d4d199f469f19a3c443ea30af3a1a2d46348d9781332c319c4a5d83f9b3c","body_hex":"7e2e860004029a2a","field":{"token":"0x0400862E","name":"BGMData.BGMInfo_Match"},"exact_flow":["return BGMInfo_Match[bgm]"]},
+    "fact_0161_bridge":{"fact_id":"FACT-0161","caller":"Menu_SoundManager.Resume_State","call_il":"0x0024","callee_token":"0x0600529A"}
+  },
+  "limits":["External Unity/string/path runtime behavior and authored BGM data/assets remain outside this record."]
+}

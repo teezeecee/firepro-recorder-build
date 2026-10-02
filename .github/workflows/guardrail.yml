@@ -892,3 +892,9 @@ jobs:
         run: python tests/test_menu_sound_change_bgm_progress_summary.py
       - name: Menu Sound Change BGM Progress prover syntax
         run: python -m py_compile tools/prove_menu_sound_change_bgm_progress.py
+
+
+      - name: Menu Sound Change BGM Battle summary
+        run: python tests/test_menu_sound_change_bgm_battle_summary.py
+      - name: Menu Sound Change BGM Battle prover syntax
+        run: python -m py_compile tools/prove_menu_sound_change_bgm_battle.py
