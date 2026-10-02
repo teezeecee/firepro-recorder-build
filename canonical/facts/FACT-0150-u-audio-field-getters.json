@@ -1,0 +1,8 @@
+{
+  "fact_id":"FACT-0150",
+  "claim":"In the matching retail DLL, three uAudio.uAudioPlayer methods are exact 7-byte direct field getters. get_Volume_Offset (0x060052CE), raw MethodDef row a956320000008608ae620a002a4c0000533d, RVA 0x003256A9, signature 20000c, loads and returns this.start_volume_Offset (0x040087F0). get_PlaybackState (0x060052DF), row 745832000000e6098a630a008de50200593d, RVA 0x00325874, signature 20001182b5, loads and returns this.State (0x040087E9). Explicit-interface uAudio.uAudio_backend.IAudioPlayer.get_current_TargetFile_Loaded (0x060052E1), row 855832000000e109b0630a00b24900005a3d, RVA 0x00325885, signature 20000e, loads and returns this.targetFile (0x040087E6). Each body is exactly ldarg.0; ldfld <field>; ret. No caller/writer relationship is promoted by this fact.",
+  "status":"PROVEN_DLL",
+  "evidence":[{"source_id":"DLL-001","locator":"uAudioPlayer get_Volume_Offset token 0x060052CE RVA 0x003256A9 code sha256=3b48fea46caaa08bb28913761369616052fa428e05ac01794405c97037077524; get_PlaybackState token 0x060052DF RVA 0x00325874 code sha256=de9e085e87cf7a30cee821d754f612492037d0724898532d5e64b3e83190f35b; IAudioPlayer.get_current_TargetFile_Loaded token 0x060052E1 RVA 0x00325885 code sha256=500993c92324149c54aae4e0fdb7fd72b686e983c05b0219ff6e1931181031c9; exact field getter family in canonical/witnesses/CAP-R6-001/u_audio_field_getters.summary.json; prover tools/prove_u_audio_field_getters.py","observation":"Exact matching-DLL three-method field-getter family."}],
+  "chain_edges":[],
+  "limits":["This fact closes only the three exact getter bodies.","Field writers, direct callers and higher-level playback/file semantics remain separate gates."]
+}
