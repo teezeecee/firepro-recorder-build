@@ -3260,6 +3260,24 @@
         "authored weapon kinds/attack data/AI selection/damage behavior",
         "external Unity object/component/GameObject/Transform behavior"
       ]
+    },
+    {
+      "family_id": "DLL_WEAPONMAN_GET_WEAPON_OBJ_V1",
+      "fact_id": "FACT-0192",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 25-byte matching-DLL WeaponMan.GetWeaponObj signed bounds/null/WeaponObj array-return helper plus exact nine-reference in-assembly caller map.",
+      "summary": "canonical/witnesses/CAP-R6-001/weaponman_get_weapon_obj.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 9,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "WeaponObj array population and authored/runtime contents",
+        "uncanonicalized caller behavior outside the exact reference edges",
+        "weapon kind/AI/attack/damage/choreography semantics"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
