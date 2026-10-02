@@ -2975,6 +2975,22 @@
         "caller body closure",
         "external Unity AudioSource state"
       ]
+    },
+    {
+      "family_id": "DLL_MENU_SOUND_STOP_RESET_FAMILY_V1",
+      "fact_id": "FACT-0175",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Menu_SoundManager Stop_WrestlerVoice, StopSE() and StopSystemSE AudioSrcInfo.Stop/reset family, bridged to canonical FACT-0125; inbound large callers retained as raw observations.",
+      "summary": "canonical/witnesses/CAP-R6-001/menu_sound_stop_reset_family.summary.json",
+      "dll_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "inbound caller body closure",
+        "external Unity AudioSource.Stop implementation"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
