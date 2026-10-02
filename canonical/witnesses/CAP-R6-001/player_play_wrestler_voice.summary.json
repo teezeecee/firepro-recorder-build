@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_PLAY_WRESTLER_VOICE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "methoddef_row": {
+      "token": "0x06004EB4",
+      "row_hex": "3ce52d00000086002b5a09005c480000383a",
+      "rva": "0x002DE53C"
+    },
+    "method": {
+      "type": "Player",
+      "method": "PlayWrestlerVoice",
+      "token": "0x06004EB4",
+      "rva": "0x002DE53C",
+      "signature_blob_hex": "200001",
+      "return_type": "Void",
+      "parameters": [],
+      "code_size": 272,
+      "code_sha256": "827f27896099f2fabf61cc8659bb91cfd1ef7c2cccee142cd3e754ba3e577d8d",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 4,
+      "local_signature_token": "0x11001063",
+      "local_signature_blob_hex": "070312a788081287bc",
+      "locals": [
+        {
+          "index": 0,
+          "type": "Player",
+          "type_token": "0x020009E2"
+        },
+        {
+          "index": 1,
+          "type": "Int32"
+        },
+        {
+          "index": 2,
+          "type": "WrestlerVoiceAttr",
+          "type_token": "0x020001EF"
+        }
+      ]
+    },
+    "fields": {
+      "match_main_inst": {
+        "token": "0x0400576C",
+        "owner": "MatchMain",
+        "name": "inst"
+      },
+      "is_fast_forward_match": {
+        "token": "0x04005752",
+        "owner": "MatchMain",
+        "name": "isFastForwardMatch"
+      },
+      "match_frame_count": {
+        "token": "0x04005738",
+        "owner": "MatchMain",
+        "name": "MchFrameCnt"
+      },
+      "fade_inst": {
+        "token": "0x0400591E",
+        "owner": "Fade",
+        "name": "inst"
+      },
+      "animator": {
+        "token": "0x04005FA8",
+        "owner": "Player",
+        "name": "animator"
+      },
+      "anm_req_type": {
+        "token": "0x04005ECF",
+        "owner": "FormAnimator",
+        "name": "AnmReqType"
+      },
+      "player_man_inst": {
+        "token": "0x040061FA",
+        "owner": "PlayerMan",
+        "name": "inst"
+      },
+      "anm_host_player": {
+        "token": "0x04005ED7",
+        "owner": "FormAnimator",
+        "name": "AnmHostPlayer"
+      },
+      "wres_param": {
+        "token": "0x04005FB3",
+        "owner": "Player",
+        "name": "WresParam"
+      },
+      "skill_voice": {
+        "token": "0x040010A8",
+        "owner": "WrestlerParam",
+        "name": "skillVoice",
+        "type": "Int32[]"
+      },
+      "skill_slot_id": {
+        "token": "0x04005ED9",
+        "owner": "FormAnimator",
+        "name": "SkillSlotID"
+      },
+      "pl_idx": {
+        "token": "0x04005FA6",
+        "owner": "Player",
+        "name": "PlIdx"
+      },
+      "audience_inst": {
+        "token": "0x040054C9",
+        "owner": "Audience",
+        "name": "inst"
+      },
+      "voice_manager_inst": {
+        "token": "0x040011E6",
+        "owner": "WrestlerVoiceInfoManager",
+        "name": "inst"
+      },
+      "voice_type": {
+        "token": "0x040010A1",
+        "owner": "WrestlerParam",
+        "name": "voiceType"
+      },
+      "voice_id": {
+        "token": "0x040010A2",
+        "owner": "WrestlerParam",
+        "name": "voiceID",
+        "type": "Int32[]"
+      },
+      "cheer_voice": {
+        "token": "0x040011DC",
+        "owner": "WrestlerVoiceAttr",
+        "name": "cheerVoice"
+      }
+    },
+    "calls": {
+      "object_inequality": {
+        "token": "0x0A00000F",
+        "resolved": "UnityEngine.Object.op_Inequality"
+      },
+      "object_equality": {
+        "token": "0x0A000006",
+        "resolved": "UnityEngine.Object.op_Equality"
+      },
+      "fade_is_fade_finish": {
+        "token": "0x06004A7D",
+        "fact_id": "FACT-0059",
+        "call_il": "0x0024"
+      },
+      "get_pl_obj": {
+        "token": "0x06005065",
+        "fact_id": "FACT-0109",
+        "call_il": "0x0063"
+      },
+      "play_wrestler_voice_leaf": {
+        "token": "0x060052B1",
+        "resolved": "Menu_SoundManager.Play_WrestlerVoice",
+        "call_il": "0x00B8",
+        "status": "BODY_NOT_YET_CANONICAL"
+      },
+      "get_wrestler_voice_attr": {
+        "token": "0x060011E8",
+        "fact_id": "FACT-0183",
+        "call_il": "0x00EC"
+      },
+      "audience_play_cheer_voice": {
+        "token": "0x060047D9",
+        "fact_id": "FACT-0079",
+        "call_il": "0x010A"
+      }
+    },
+    "throttle": {
+      "conditions": [
+        "MatchMain.inst != null",
+        "MatchMain.isFastForwardMatch != 0",
+        "Fade.inst.IsFadeFinish() != 0"
+      ],
+      "frame_expression": "unsigned MatchMain.MchFrameCnt % 20",
+      "immediate_return_when": "all three conditions are true and remainder != 0",
+      "continue_when": "any earlier condition is false OR remainder == 0"
+    },
+    "exact_flow": [
+      "apply the exact MatchMain/Fade unsigned-frame throttle through IL+0x0040",
+      "require this.animator.AnmReqType == raw 1; otherwise return",
+      "local0 = PlayerMan.inst.GetPlObj(this.animator.AnmHostPlayer)",
+      "return if local0 == null; return if this.animator == null; return if local0.WresParam == null",
+      "local1 = local0.WresParam.skillVoice[this.animator.SkillSlotID]",
+      "if signed local1 < raw 0: return",
+      "call Menu_SoundManager.Play_WrestlerVoice(local0.PlIdx,local1,raw 1.0f)",
+      "if Audience.inst == null: return",
+      "local2 = WrestlerVoiceInfoManager.inst.GetWrestlerVoiceAttr(local0.WresParam.voiceType[this.animator.SkillSlotID], local0.WresParam.voiceID[this.animator.SkillSlotID])",
+      "if local2.cheerVoice == raw -1: return",
+      "Audience.inst.PlayCheerVoice(local2.cheerVoice,raw 4)",
+      "return"
+    ],
+    "inbound_direct_reference": {
+      "caller_type": "FormAnimator",
+      "caller_method": "PlayAnimationSE",
+      "caller_token": "0x06004E7D",
+      "caller_rva": "0x002DB718",
+      "caller_code_size": 364,
+      "caller_code_sha256": "ba7c6da321b3f5632756459a8a788abd92609da056981078f5fc7bbe04824085",
+      "call_il": "0x008E",
+      "opcode": "callvirt",
+      "callee_token": "0x06004EB4",
+      "canonical_fact": "FACT-0015",
+      "dll_raw_token_occurrence_count": 1
+    },
+    "raw_capture_method_name_search": {
+      "source_id": "CAP-R6-001",
+      "strings": [
+        "PlayWrestlerVoice",
+        "Play_WrestlerVoice"
+      ],
+      "occurrences": 0,
+      "promotion": "NONE"
+    }
+  },
+  "limits": [
+    "Menu_SoundManager.Play_WrestlerVoice body remains separate.",
+    "Authored voice arrays/table contents and external Unity operator behavior remain outside this record.",
+    "No recorder method-level witness exists for these two method-name strings in CAP-R6-001."
+  ]
+}

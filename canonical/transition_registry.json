@@ -3174,6 +3174,23 @@
         "external Unity Resources/TextAsset/Time behavior",
         "external System StringReader/List/String/Int32 behavior"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_PLAY_WRESTLER_VOICE_V1",
+      "fact_id": "FACT-0187",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL Player.PlayWrestlerVoice fast-forward throttle, raw request/host/null gates, skillVoice lookup, sound dispatch, voice-attribute lookup and optional Audience cheer dispatch.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_play_wrestler_voice.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Menu_SoundManager.Play_WrestlerVoice internal closure",
+        "authored skillVoice/voiceType/voiceID and wrestler-voice contents",
+        "external Unity object operator behavior"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
