@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_FIELD_GETTERS_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methods":[
+      {"name":"get_Volume_Offset","token":"0x060052CE","methoddef_row_hex":"a956320000008608ae620a002a4c0000533d","rva":"0x003256A9","signature_blob_hex":"20000c","code_size":7,"code_sha256":"3b48fea46caaa08bb28913761369616052fa428e05ac01794405c97037077524","field_token":"0x040087F0","field_name":"start_volume_Offset","field_signature_blob_hex":"060c","body_hex":"027bf08700042a"},
+      {"name":"get_PlaybackState","token":"0x060052DF","methoddef_row_hex":"745832000000e6098a630a008de50200593d","rva":"0x00325874","signature_blob_hex":"20001182b5","code_size":7,"code_sha256":"de9e085e87cf7a30cee821d754f612492037d0724898532d5e64b3e83190f35b","field_token":"0x040087E9","field_name":"State","field_signature_blob_hex":"061182b5","body_hex":"027be98700042a"},
+      {"name":"uAudio.uAudio_backend.IAudioPlayer.get_current_TargetFile_Loaded","token":"0x060052E1","methoddef_row_hex":"855832000000e109b0630a00b24900005a3d","rva":"0x00325885","signature_blob_hex":"20000e","code_size":7,"code_sha256":"500993c92324149c54aae4e0fdb7fd72b686e983c05b0219ff6e1931181031c9","field_token":"0x040087E6","field_name":"targetFile","field_signature_blob_hex":"060e","body_hex":"027be68700042a"}
+    ],
+    "exact_shape":"ldarg.0; ldfld exact field token; ret"
+  },
+  "limits":["Writers/callers and higher-level semantics remain outside this record."]
+}
