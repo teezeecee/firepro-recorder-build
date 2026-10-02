@@ -65,7 +65,6 @@
     "This fact closes only the exact Player.PlayWrestlerVoice code body and its direct canonical edges.",
     "Menu_SoundManager.Play_WrestlerVoice token 0x060052B1 remains the next separate in-assembly leaf.",
     "Authored skillVoice, voiceType, voiceID and wrestler-voice table contents remain outside this code-only fact.",
-    "The raw AnmReqType value 1, SkillSlotID indexing, raw level 4, and metadata names are preserved exactly without assigning broader gameplay meaning.",
-    "CAP-R6-001 contains no PlayWrestlerVoice or Play_WrestlerVoice trace-string entry, so no raw method-level recorder witness is promoted here."
+    "The raw AnmReqType value 1, SkillSlotID indexing, raw level 4, and metadata names are preserved exactly without assigning broader gameplay meaning."
   ]
 }
