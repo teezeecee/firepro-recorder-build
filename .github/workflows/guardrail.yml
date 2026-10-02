@@ -1068,3 +1068,8 @@ jobs:
         run: python tests/test_matchrandom_range_summary.py
       - name: MatchRandom Range prover syntax
         run: python -m py_compile tools/prove_matchrandom_range.py
+
+      - name: Weapon SetPattern summary
+        run: python tests/test_weapon_set_pattern_summary.py
+      - name: Weapon SetPattern prover syntax
+        run: python -m py_compile tools/prove_weapon_set_pattern.py

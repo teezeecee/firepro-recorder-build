@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WEAPON_SET_PATTERN_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Weapon",
+      "method": "SetPattern",
+      "token": "0x06006AB7",
+      "rva": "0x00434C1A",
+      "methoddef_row_hex": "1a4c430000008600f5ce0a009f490000a04d",
+      "signature_blob_hex": "20010108",
+      "parameters": [
+        {"sequence": 1, "name": "pat", "type": "Int32"}
+      ],
+      "header_format": "tiny",
+      "header_flags_raw": "0x0002",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "code_size": 44,
+      "code_sha256": "9fd8e4c6ea0c03f75b3de3aabfbe56ed4bf2f902ffe76bb13f7f57dee7b2c1b3",
+      "body_hex": "7eeab60004282a00000a391c000000027bd6b6000428c06a0006027bd3b60004036fcd6a00066fad02000a2a"
+    },
+    "fields": [
+      {"token": "0x0400B6EA", "owner": "WeaponMan", "name": "inst", "signature_blob_hex": "0612b510", "role": "null-gate source"},
+      {"token": "0x0400B6D6", "owner": "Weapon", "name": "sprRen", "signature_blob_hex": "061280b1", "role": "sprite renderer target"},
+      {"token": "0x0400B6D3", "owner": "Weapon", "name": "kind", "signature_blob_hex": "0611b504", "role": "GetWeaponSprite kind argument"}
+    ],
+    "external_members": [
+      {"token": "0x0A00002A", "owner": "UnityEngine.Object", "name": "op_Implicit", "signature_blob_hex": "0001021269", "call_il": "0x0005"},
+      {"token": "0x0A0002AD", "owner": "UnityEngine.SpriteRenderer", "name": "set_sprite", "signature_blob_hex": "2001011215", "call_il": "0x0026"}
+    ],
+    "open_in_assembly_helpers": [
+      {
+        "token": "0x06006AC0",
+        "owner": "WeaponMan",
+        "name": "GetInst",
+        "rva": "0x00435282",
+        "methoddef_row_hex": "82524300000096003b7f080096370300a84d",
+        "signature_blob_hex": "000012b510",
+        "code_size": 6,
+        "code_sha256": "8efdce8690337e223d2f0de688a62b433f4d6515c73fa84c203aadbca4f524fb",
+        "call_il": "0x0015"
+      },
+      {
+        "token": "0x06006ACD",
+        "owner": "WeaponMan",
+        "name": "GetWeaponSprite",
+        "rva": "0x004355A0",
+        "methoddef_row_hex": "a05543000000860094cf0a00ed370300b94d",
+        "signature_blob_hex": "2002121511b50408",
+        "code_size": 98,
+        "code_sha256": "38d479af573bd1d4c4f72ad8947250d2ef5e4353f720d8c431daa0e3551dfb35",
+        "call_il": "0x0021"
+      }
+    ],
+    "exact_flow": [
+      "read WeaponMan.inst",
+      "call UnityEngine.Object.op_Implicit(inst)",
+      "if false: return",
+      "read this.sprRen",
+      "call WeaponMan.GetInst()",
+      "read this.kind",
+      "load pat",
+      "callvirt WeaponMan.GetWeaponSprite(this.kind, pat)",
+      "callvirt UnityEngine.SpriteRenderer.set_sprite on this.sprRen",
+      "return"
+    ],
+    "direct_in_assembly_references": [
+      {"caller_type":"FormRenderer","caller_method":"SetPrdItem","caller_token":"0x06001F53","caller_rva":"0x0010D328","caller_code_size":716,"caller_code_sha256":"377d58fe989ffa42ca0420eacc751c37c34e758004b7bd61e1e16faaa5e53162","call_il":"0x00A1","opcode":"callvirt"},
+      {"caller_type":"FormRenderer","caller_method":"SetWeaponObj","caller_token":"0x06001F54","caller_rva":"0x0010D600","caller_code_size":529,"caller_code_sha256":"9a90ee6e931c2e7e58f746ae75c41d44998fb63a7da7dac8972b34f1d2284ecf","call_il":"0x0104","opcode":"callvirt"},
+      {"caller_type":"Weapon","caller_method":"Init","caller_token":"0x06006AB5","caller_rva":"0x00434B64","caller_code_size":133,"caller_code_sha256":"87c87a97c51e7dc67d90e8443b62cebbad9ad52c255f9fd2983926fd4954bbe8","call_il":"0x002C","opcode":"call"},
+      {"caller_type":"Weapon","caller_method":"Drop","caller_token":"0x06006AB8","caller_rva":"0x00434C48","caller_code_size":167,"caller_code_sha256":"eac3737037ba8ea767d588f6988426f6fd38567d37400dda6e58cfdc20ccc25e","call_il":"0x0041","opcode":"call","canonical_fact":"FACT-0194"},
+      {"caller_type":"Weapon","caller_method":"ThrowIn","caller_token":"0x06006AB9","caller_rva":"0x00434CFC","caller_code_size":280,"caller_code_sha256":"23c35ec28a501e732d34f62b83dab6f4bd74257137cc413917967b48df1e265e","call_il":"0x0041","opcode":"call"}
+    ],
+    "direct_reference_count": 5,
+    "direct_caller_method_count": 5
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weapon_set_pattern_row_count": 0,
+    "weapon_init_row_count": 0,
+    "weapon_throw_in_row_count": 0,
+    "formrenderer_set_prd_item_row_count": 0,
+    "formrenderer_set_weapon_obj_row_count": 0,
+    "weapon_drop_row_count": 22,
+    "weapon_drop_execution_count": 11,
+    "promoted_as_evidence": false,
+    "meaning": "R6 directly records Weapon.Drop but not Weapon.SetPattern or its other direct callers; no SetPattern execution, sprite result, or runtime caller bridge is claimed from R6."
+  },
+  "limits": [
+    "This dataset closes only the exact Weapon.SetPattern wrapper body, field/member identities, open-helper identities, and exact direct in-assembly caller map.",
+    "WeaponMan.GetInst token 0x06006AC0 remains a separate open helper gate.",
+    "WeaponMan.GetWeaponSprite token 0x06006ACD remains a separate open helper gate.",
+    "UnityEngine.Object.op_Implicit and UnityEngine.SpriteRenderer.set_sprite implementations remain external.",
+    "Fresh R6 has zero direct Weapon.SetPattern rows and is retained only as a negative capture boundary, not positive evidence.",
+    "Authored weapon sprite/pattern data and broader rendering semantics remain outside this dataset."
+  ],
+  "reproducibility_tool": "tools/prove_weapon_set_pattern.py"
+}
