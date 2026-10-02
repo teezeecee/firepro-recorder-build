@@ -3059,6 +3059,22 @@
         "WrestlerVoiceInfo.CheckValidationDLC closure",
         "per-entry authored DLC meaning"
       ]
+    },
+    {
+      "family_id": "DLL_WRESTLER_VOICE_INFO_CHECK_VALIDATION_DLC_V1",
+      "fact_id": "FACT-0180",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact matching-DLL WrestlerVoiceInfo.CheckValidationDLC FACT-0179 IsDLC gate, Boolean[] dlc raw-13 scan and FACT-0119 SaveData.IsDLCInstalled dependency, bridged from FACT-0178.",
+      "summary": "canonical/witnesses/CAP-R6-001/wrestler_voice_info_check_validation_dlc.summary.json",
+      "dll_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "authored DLC-index meaning",
+        "external installation/ownership state"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

@@ -1,0 +1,28 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_WRESTLER_VOICE_INFO_CHECK_VALIDATION_DLC_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "methoddef_row":{"token":"0x060011E3","row_hex":"80f00600000086005c7d0800db490000a00d","rva":"0x0006F080"},
+    "method":{"type":"WrestlerVoiceInfo","method":"CheckValidationDLC","token":"0x060011E3","rva":"0x0006F080","signature_blob_hex":"200002","return_type":"Boolean","parameters":[],"code_size":65,"code_sha256":"d6297fd525cdb31260595c4e0a1705c380f1201b6392c91b59d5589ecba0ccc4","header_format":"fat","header_flags_raw":"0x0013","max_stack":2,"local_signature_token":"0x110002DE","local_signature_blob_hex":"07011185c8","locals":[{"index":0,"type":"DLCEnum","type_token":"0x02000172"}],"instruction_count":28,"branch_instruction_count":5,"call_instruction_count":2},
+    "fields":{
+      "dlc":{"token":"0x040011DE","name":"dlc","signature_blob_hex":"061d02","type":"Boolean[]"},
+      "save_data_inst":{"token":"0x040064EC","name":"SaveData.inst","owner":"SaveData"}
+    },
+    "calls":{
+      "is_dlc":{"token":"0x060011E4","resolved":"WrestlerVoiceInfo.IsDLC","fact_id":"FACT-0179","call_il":"0x0001"},
+      "is_dlc_installed":{"token":"0x060051C9","resolved":"SaveData.IsDLCInstalled(DLCEnum)","fact_id":"FACT-0119","call_il":"0x0027"}
+    },
+    "exact_flow":[
+      "if this.IsDLC() is false: return true",
+      "local0 = raw DLCEnum 0",
+      "while local0 < raw 13: if this.dlc[local0] is nonzero and SaveData.inst.IsDLCInstalled(local0) is true, return true; otherwise increment local0",
+      "after raw 13 is reached: return false"
+    ],
+    "exception_section":null,
+    "fact_0178_bridge":{"fact_id":"FACT-0178","caller":"<LoadAsync_WrestlerVoiceList>c__Iterator3.MoveNext","call_il":"0x01CF","callee_token":"0x060011E3"}
+  },
+  "limits":["Authored DLC-index meaning and installation-state contents remain outside this record."]
+}
