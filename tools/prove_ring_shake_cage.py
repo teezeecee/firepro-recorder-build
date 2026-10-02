@@ -25,7 +25,7 @@ def main():
  a=argparse.ArgumentParser();a.add_argument("--dll",required=True);x=a.parse_args()
  pe=Path(x.dll).read_bytes()
  if hashlib.sha256(pe).hexdigest()!=DLL_SHA:raise E("dll")
- ss=sections(pe);c=method(pe,ss,RVA)["code"];p=method_body=None
+ ss=sections(pe);c=method(pe,ss,RVA)["code"]
  if len(c)!=SIZE or hashlib.sha256(c).hexdigest()!=CODE_SHA:raise E("body")
  if c[0:2]!=bytes([0x02,0x16]):raise E("this/raw0")
  tok(c,0x0002,0x7D,0x0400636F,"ShakeCageAnmCnt")
