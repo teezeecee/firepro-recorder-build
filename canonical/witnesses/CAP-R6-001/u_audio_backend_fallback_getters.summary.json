@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_U_AUDIO_BACKEND_FALLBACK_GETTERS_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "backend_field":{"token":"0x040087E3","name":"_uAudio"},
+    "methods":[
+      {"name":"get_AudioTitle","token":"0x060052D5","methoddef_row_hex":"585732000000e609538a0700b2490000553d","rva":"0x00325758","signature_blob_hex":"20000e","return_type":"String","parameters":[],"code_size":29,"code_sha256":"c90322aba94a9bdb71409ad82330912a9b3749566383217b56951c45c2a42293","body_hex":"027be3870004390c000000027be38700046fb70f000a2a7e2500000a2a","instruction_count":9,"branch_instruction_count":1,"call_instruction_count":1,"backend_call":{"token":"0x0A000FB7","resolved":"uAudio.uAudio_backend.uAudio.get_AudioTitle","call_il":"0x0011"},"fallback":{"token":"0x0A000025","resolved":"System.String.Empty","load_il":"0x0017"},"exact_flow":["if _uAudio != null: return _uAudio.get_AudioTitle()","otherwise return System.String.Empty"]},
+      {"name":"get_TotalTime","token":"0x060052DA","methoddef_row_hex":"fc5732000000e6099e8a07006e480100573d","rva":"0x003257FC","signature_blob_hex":"20001182c1","return_type":"System.TimeSpan","parameters":[],"code_size":29,"code_sha256":"c2d0be581347b6907ae28115746372eaad0f60669f9234113bc3e38abfbd3994","body_hex":"027be3870004390c000000027be38700046fbc0f000a2a7ebd0f000a2a","instruction_count":9,"branch_instruction_count":1,"call_instruction_count":1,"backend_call":{"token":"0x0A000FBC","resolved":"uAudio.uAudio_backend.uAudio.get_TotalTime","call_il":"0x0011"},"fallback":{"token":"0x0A000FBD","resolved":"System.TimeSpan.Zero","load_il":"0x0017"},"exact_flow":["if _uAudio != null: return _uAudio.get_TotalTime()","otherwise return System.TimeSpan.Zero"]}
+    ],
+    "direct_methoddef_reference_scan":{"targets":["0x060052D5","0x060052DA"],"opcodes":["call","callvirt","ldftn","ldvirtftn","newobj"],"all_counts_zero":true,"relationship_status":"NO_DIRECT_IN_ASSEMBLY_INBOUND_METHODDEF_REFERENCE"}
+  },
+  "limits":["External backend/framework implementations and non-direct invocation remain outside this record."]
+}
