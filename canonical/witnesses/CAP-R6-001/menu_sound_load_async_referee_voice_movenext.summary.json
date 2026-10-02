@@ -1,0 +1,30 @@
+{
+  "schema_version":1,
+  "dataset_id":"DLL_MENU_SOUND_LOAD_ASYNC_REFEREE_VOICE_MOVENEXT_V1",
+  "source_ids":["DLL-001"],
+  "dll":{
+    "sha256":"9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes":8171008,
+    "owner_type":{"name":"<LoadAsync_RefereeVoice>c__Iterator4","token":"0x02000F69","factory_support_fact_id":"FACT-0172"},
+    "methoddef_row":{"token":"0x060074D2","row_hex":"704432000000e6017f5a0600db490000d24f","rva":"0x00324470"},
+    "method":{"method":"MoveNext","token":"0x060074D2","rva":"0x00324470","signature_blob_hex":"200002","return_type":"Boolean","parameters":[],"code_size":311,"code_sha256":"b7cd1752de05dfc07cc79a9b416fd025358fd0f6d9041e7c03f72b564c054b64","header_format":"fat","header_flags_raw":"0x0013","max_stack":4,"local_signature_token":"0x1100121A","local_signature_blob_hex":"070309080e","locals":[{"index":0,"type":"UInt32"},{"index":1,"type":"Int32"},{"index":2,"type":"String"}],"instruction_count":105,"branch_instruction_count":12,"call_instruction_count":6},
+    "generated_fields":{"type":{"token":"0x0400C21B","type":"RefereeVoiceTypeEnum"},"res_req":{"token":"0x0400C21C","name":"<resReq>__0","type":"UnityEngine.ResourceRequest[]"},"index":{"token":"0x0400C21D","name":"<i>__1","type":"Int32"},"current":{"token":"0x0400C21E","name":"$current","type":"Object"},"disposing":{"token":"0x0400C21F","name":"$disposing","type":"Boolean"},"pc":{"token":"0x0400C220","name":"$PC","type":"Int32"}},
+    "static_fields":{"clips":{"token":"0x040086FF","name":"Sound_ClipRefereeVoice_List","signature_blob_hex":"061d1249","type":"UnityEngine.AudioClip[]"},"data_num":{"token":"0x0400866C","name":"RefereeVoiceDataNum","signature_blob_hex":"061d08","type":"Int32[]"},"file_prefix":{"token":"0x0400866D","name":"RefereeVoiceFilePrefix","signature_blob_hex":"061d0e","type":"String[]"}},
+    "strings":{"index_format":{"token":"0x700082AA","value":"{0:D3}","load_il":"0x0066"}},
+    "calls":{"string_format":{"token":"0x0A00050B","resolved":"System.String.Format(String,Object)","signature_blob_hex":"00020e0e1c","call_il":"0x0071"},"string_concat":{"token":"0x0A000012","resolved":"System.String.Concat(String,String)","signature_blob_hex":"00020e0e0e","call_il":"0x0076"},"resources_load_async":{"token":"0x0A000675","resolved":"UnityEngine.Resources.LoadAsync(String)","signature_blob_hex":"00011286410e","call_il":"0x0084"},"wait_for_seconds_ctor":{"token":"0x0A000679","resolved":"UnityEngine.WaitForSeconds..ctor(Single)","signature_blob_hex":"2001010c","newobj_il":"0x00B3"},"request_is_done":{"token":"0x0A000676","resolved":"UnityEngine.AsyncOperation.get_isDone","signature_blob_hex":"200002","call_il":"0x00DE"},"request_get_asset":{"token":"0x0A000677","resolved":"UnityEngine.ResourceRequest.get_asset","signature_blob_hex":"20001269","call_il":"0x0100"}},
+    "state_switch":{"prior_state_field":"$PC","stores_minus_one_before_switch":true,"targets":[{"raw_state":0,"target_il":"0x0021"},{"raw_state":1,"target_il":"0x00D1"}],"default_target_il":"0x0133"},
+    "exact_flow":[
+      "local0=this.$PC; this.$PC=-1; switch local0: raw 0 -> IL+0x0021, raw 1 -> IL+0x00D1, default -> return false",
+      "raw state 0: if Sound_ClipRefereeVoice_List != null return false; else Sound_ClipRefereeVoice_List = new AudioClip[24]",
+      "this.<resReq>__0 = new ResourceRequest[RefereeVoiceDataNum[this.type]]",
+      "for local1 from 0 to resReq.Length-1: local2 = RefereeVoiceFilePrefix[this.type] + String.Format('{0:D3}', boxed local1); resReq[local1] = Resources.LoadAsync(local2)",
+      "this.<i>__1=0; while i < resReq.Length, examine resReq[i]",
+      "if resReq[i].isDone is false: this.$current = new WaitForSeconds(0.0f); if !this.$disposing set this.$PC=1; return true",
+      "if resReq[i].isDone is true: Sound_ClipRefereeVoice_List[i] = resReq[i].asset as AudioClip; i++; continue",
+      "after all requests: this.$PC=-1; return false"
+    ],
+    "exception_section":null,
+    "metadata_relationship":{"factory_support_fact_id":"FACT-0172","owner_type_token":"0x02000F69","relationship_status":"SAME_GENERATED_TYPE_METHOD_NOT_RUNTIME_CALL"}
+  },
+  "limits":["Unity scheduler and resource implementations plus authored referee-voice assets remain outside this record."]
+}
