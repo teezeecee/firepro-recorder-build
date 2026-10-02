@@ -874,3 +874,9 @@ jobs:
         run: python tests/test_menu_sound_resume_state_summary.py
       - name: Menu Sound Resume State prover syntax
         run: python -m py_compile tools/prove_menu_sound_resume_state.py
+
+
+      - name: Menu Sound Load SystemSe summary
+        run: python tests/test_menu_sound_load_system_se_summary.py
+      - name: Menu Sound Load SystemSe prover syntax
+        run: python -m py_compile tools/prove_menu_sound_load_system_se.py
