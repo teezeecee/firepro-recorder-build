@@ -1172,3 +1172,8 @@ jobs:
         run: python tests/test_steammanager_get_initialized_summary.py
       - name: SteamManager get Initialized prover syntax
         run: python -m py_compile tools/prove_steammanager_get_initialized.py
+
+      - name: Network OnlineCheck summary
+        run: python tests/test_network_online_check_summary.py
+      - name: Network OnlineCheck prover syntax
+        run: python -m py_compile tools/prove_network_online_check.py
