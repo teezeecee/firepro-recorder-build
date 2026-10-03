@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0229",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.Process_AfterVictory() (0x06005020) has raw MethodDef row 3cf52f0000008100ac3f0a00db490000de3a, RVA 0x002FF53C, signature blob 200002 (parameterless Boolean return), raw ImplFlags 0x0000 and MethodAttributes 0x0081, local signature token 0x1100113F with blob 070111a39c, and an exact 119-byte fat-header body SHA-256 5334c091183b118519531eb8a6518584bff6b89ddf64bb343899315321cd59dc. The body returns false when this.doneVictoryPerformance is true, when MatchMain.inst.isMatchEnd is false, or when this.PlObj.State is greater than raw 3. It then loads MatchEvaluation.inst.PlResult[this.PlObj.PlIdx].resultPosition into one local of metadata type ResultPosition. Raw local values 0 and 1 both enter the success path; every other raw value returns false. The success path writes raw 16384 to inherited PlayerController.padPush, raw 0 to inherited padOn, raw true to this.doneVictoryPerformance, then returns true. The body contains no MethodDef or MemberRef calls. Exact matching-DLL scanning finds one direct MethodDef-token reference: PlayerController_AI.Update() call at IL+0x028C.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Process_AfterVictory token 0x06005020 -> RVA 0x002FF53C; exact 119-byte body sha256=5334c091183b118519531eb8a6518584bff6b89ddf64bb343899315321cd59dc; exact MethodDef/local signature, ResultPosition local TypeDef RID 2279, field records, raw branch/write constants, zero call surface and complete one-reference / one-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_process_after_victory.summary.json; prover tools/prove_playercontroller_ai_process_after_victory.py.",
+      "observation": "Exact AI Process_AfterVictory Boolean leaf with raw completion/match/state/result-position gates, raw pad writes, no child calls and sole AI.Update caller."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Update()",
+      "to": "PlayerController_AI.Process_AfterVictory()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_AI.Update token 0x0600502B direct call token 0x06005020 at IL+0x028C; Update exact body size 984 and SHA-256 6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method and field names are preserved metadata identifiers; this fact does not assign authored gameplay meaning beyond the exact Boolean gates and stores.",
+    "Raw Player.State threshold 3, ResultPosition values 0/1, padPush value 16384, padOn value 0, and doneVictoryPerformance Boolean values receive no higher-level labels.",
+    "MatchMain.inst and MatchEvaluation.inst lifecycle/population and the contents of MatchEvaluation.PlResult remain separate provenance.",
+    "PlayerController_AI.Update remains an open 984-byte parent body.",
+    "Fresh CAP-R6-001 contains zero Process_AfterVictory and PlayerController_AI.Update rows; no runtime bridge is claimed."
+  ]
+}
