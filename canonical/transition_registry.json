@@ -3618,6 +3618,27 @@
         "PlayerController_GamePad.Update and PlayerController_AI.Prepare caller bodies remain separate seams",
         "fresh R6 has zero helper/caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_GAMEPAD_UPDATE_V1",
+      "fact_id": "FACT-0210",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 59-byte matching-DLL PlayerController_GamePad.Update reuse-slot override: copies GamePadMan padOn/padPush elements selected by port into inherited controller fields, writes inherited grappleResult from canonical FACT-0209 using inherited plIdx, then returns; zero direct MethodDef-token references.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_gamepad_update.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 0,
+      "direct_caller_method_count": 0,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "runtime selection of PlayerController_GamePad instances is not established",
+        "GamePadMan pad arrays and port population/provenance remain separate",
+        "base-token callvirt sites do not by themselves prove this override receives dispatch",
+        "Network, Tutorial and AI Update overrides remain separate seams",
+        "fresh R6 has zero override/helper/base-caller rows and provides no runtime dispatch bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

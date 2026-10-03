@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_GAMEPAD_UPDATE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "base_type": {
+      "type": "PlayerController",
+      "typedef_rid": 2542,
+      "update_method_token": "0x06004F97",
+      "canonical_fact": "FACT-0206"
+    },
+    "subtype": {
+      "type": "PlayerController_GamePad",
+      "typedef_rid": 2557,
+      "typedef_row_hex": "010010001e7a000000000000b827c5613350",
+      "extends_typedeforref_raw": "0x27B8",
+      "extends_tag": "TypeDef",
+      "extends_rid": 2542
+    },
+    "method": {
+      "type": "PlayerController_GamePad",
+      "method": "Update",
+      "token": "0x06005035",
+      "rva": "0x003005EA",
+      "methoddef_row_hex": "ea0530000000c600edc800005c480000e83a",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x00C6",
+      "method_attribute_bits": [
+        "Public",
+        "Virtual",
+        "HideBySig"
+      ],
+      "newslot_bit_set": false,
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0xEE",
+      "code_size": 59,
+      "code_sha256": "7e6adb5aef2f2ce9384861ba006f6c2604af02cd16a87c245b92b5dee816658f",
+      "body_hex": "027e00280004027bc5610004947d17610004027e01280004027bc5610004947d18610004027efa5e0004027b166100046f864e00067d196100042a",
+      "exact_flow": [
+        "this.padOn = GamePadMan.padOn[this.port]",
+        "this.padPush = GamePadMan.padPush[this.port]",
+        "this.grappleResult = GrappleHost.inst.GetGrappleResult_ForOfflineTest(this.plIdx)",
+        "ret"
+      ]
+    },
+    "fields": [
+      {
+        "token": "0x04002800",
+        "owner": "GamePadMan",
+        "name": "padOn",
+        "field_row_hex": "1600f71f0200e0190000",
+        "signature_blob_hex": "061d11904c",
+        "access": "ldsfld IL+0x0001"
+      },
+      {
+        "token": "0x040061C5",
+        "owner": "PlayerController_GamePad",
+        "name": "port",
+        "field_row_hex": "060064f70300100f0000",
+        "signature_blob_hex": "06119050",
+        "access_ils": [
+          "0x0007",
+          "0x0019"
+        ]
+      },
+      {
+        "token": "0x04006117",
+        "owner": "PlayerController",
+        "name": "padOn",
+        "field_row_hex": "0600f71f0200440c0000",
+        "signature_blob_hex": "0611904c",
+        "access": "stfld IL+0x000D"
+      },
+      {
+        "token": "0x04002801",
+        "owner": "GamePadMan",
+        "name": "padPush",
+        "field_row_hex": "1600f66a0100e0190000",
+        "signature_blob_hex": "061d11904c",
+        "access": "ldsfld IL+0x0013"
+      },
+      {
+        "token": "0x04006118",
+        "owner": "PlayerController",
+        "name": "padPush",
+        "field_row_hex": "0600f66a0100440c0000",
+        "signature_blob_hex": "0611904c",
+        "access": "stfld IL+0x001F"
+      },
+      {
+        "token": "0x04005EFA",
+        "owner": "GrappleHost",
+        "name": "inst",
+        "field_row_hex": "160006220100a2370000",
+        "signature_blob_hex": "0612a760",
+        "access": "ldsfld IL+0x0025"
+      },
+      {
+        "token": "0x04006116",
+        "owner": "PlayerController",
+        "name": "plIdx",
+        "field_row_hex": "06004964020001000000",
+        "signature_blob_hex": "0608",
+        "access": "ldfld IL+0x002B"
+      },
+      {
+        "token": "0x04006119",
+        "owner": "PlayerController",
+        "name": "grappleResult",
+        "field_row_hex": "06000ad8030070380000",
+        "signature_blob_hex": "0612a75c",
+        "access": "stfld IL+0x0035"
+      }
+    ],
+    "canonical_internal_calls": [
+      {
+        "call_il": "0x0030",
+        "opcode": "callvirt",
+        "token": "0x06004E86",
+        "method": "GrappleHost.GetGrappleResult_ForOfflineTest",
+        "canonical_fact": "FACT-0209"
+      }
+    ],
+    "direct_in_assembly_references": [],
+    "direct_reference_count": 0,
+    "direct_caller_method_count": 0,
+    "remaining_open_override_frontier": [
+      {
+        "type": "PlayerController_Network",
+        "token": "0x06005038",
+        "code_size": 94,
+        "code_sha256": "6263d3075a2b1147709139a168d07a8b4f9b6773a41b67ff169759a6fe4482ed"
+      },
+      {
+        "type": "PlayerController_Tutorial",
+        "token": "0x0600503D",
+        "code_size": 352,
+        "code_sha256": "ee9742c42475c1d0a1ab0513f2cab8c4e25b5f3d3e10b750adf9ecd498573bbe"
+      },
+      {
+        "type": "PlayerController_AI",
+        "token": "0x0600502B",
+        "code_size": 984,
+        "code_sha256": "6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9"
+      }
+    ]
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_gamepad_update_row_count": 0,
+    "grapplehost_offline_result_row_count": 0,
+    "playercontroller_update_row_count": 0,
+    "matchmain_update_entrance_scene_row_count": 0,
+    "matchmain_update_match_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for the GamePad override, its canonical helper, the base Update surface, or either MatchMain base-token caller; no runtime virtual-dispatch target is observed."
+  },
+  "selection_boundary": {
+    "candidate_reason": "FACT-0209 closes the only in-assembly child call in the 59-byte GamePad override. Among the remaining concrete Update overrides, GamePad is now the smallest dependency-clean seam.",
+    "remaining_override_sizes": [
+      [
+        "PlayerController_Network.Update",
+        94
+      ],
+      [
+        "PlayerController_Tutorial.Update",
+        352
+      ],
+      [
+        "PlayerController_AI.Update",
+        984
+      ]
+    ]
+  },
+  "limits": [
+    "Metadata/IL close the override body only, not runtime instance selection.",
+    "GamePadMan pad arrays and port population remain separate provenance.",
+    "No direct IL references to MethodDef 0x06005035 exist.",
+    "Base-token callvirt dispatch remains unresolved at runtime.",
+    "Fresh R6 is a negative boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_gamepad_update.py"
+}
