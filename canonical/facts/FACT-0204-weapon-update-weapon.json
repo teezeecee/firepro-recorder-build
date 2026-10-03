@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0204",
+  "claim": "In the matching retail DLL, instance Weapon.UpdateWeapon() (0x06006ABD) has raw MethodDef row 005043000000860033cf0a005c480000a84d, RVA 0x00435000, signature blob 200001, local signature blob 07030c0c11b500, and an exact 351-byte fat-header body SHA-256 e8abda8319bdbcd424c4a521ed8decbb056271a54e759da39759a0eb46748263. It initializes two Single locals to 1.0, negates the first when signed Dir is not less than raw 3, switches exactly on raw State values 0..3, calls canonical FACT-0201/0202/0203 on raw states 1/2/3 respectively, and writes Unity transform position as Vector3(Pos.x,Pos.z,Pos.y) plus localScale Vector3(local0,local1,1.0) on raw state 0 and after raw states 2/3. All other raw State values return. Exact matching-DLL scanning finds one direct caller, WeaponMan.UpdateWeapon, at IL+0x0021.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Weapon.UpdateWeapon token 0x06006ABD -> RVA 0x00435000; exact 351-byte body sha256=e8abda8319bdbcd424c4a521ed8decbb056271a54e759da39759a0eb46748263; full field/member/switch/call/caller evidence in canonical/witnesses/CAP-R6-001/weapon_update_weapon.summary.json; prover tools/prove_weapon_update_weapon.py.",
+      "observation": "Exact matching-DLL raw Dir transform-sign branch, raw State 0..3 switch, canonical child-call routing, transform position/localScale writes, and one-reference / one-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Weapon.UpdateWeapon()",
+      "to": "Weapon.Update_Equipped()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call at IL+0x009A; canonical FACT-0201"
+        }
+      ]
+    },
+    {
+      "from": "Weapon.UpdateWeapon()",
+      "to": "Weapon.Update_Falling()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call at IL+0x00A5; canonical FACT-0202"
+        }
+      ]
+    },
+    {
+      "from": "Weapon.UpdateWeapon()",
+      "to": "Weapon.Update_ThrowIn()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call at IL+0x0102; canonical FACT-0203"
+        }
+      ]
+    },
+    {
+      "from": "WeaponMan.UpdateWeapon()",
+      "to": "Weapon.UpdateWeapon()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "WeaponMan.UpdateWeapon token 0x06006AD0 direct callvirt at IL+0x0021"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw State values 0..3 and raw Dir comparison literal 3 are not assigned gameplay labels.",
+    "Fresh CAP-R6-001 contains zero Weapon.UpdateWeapon and WeaponMan.UpdateWeapon rows; no runtime bridge is claimed.",
+    "UnityEngine transform/vector behavior remains external.",
+    "WeaponMan.UpdateWeapon remains a separate caller seam."
+  ]
+}
