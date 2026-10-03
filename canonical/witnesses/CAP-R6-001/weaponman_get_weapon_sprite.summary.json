@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WEAPONMAN_GET_WEAPON_SPRITE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "WeaponMan",
+      "method": "GetWeaponSprite",
+      "token": "0x06006ACD",
+      "rva": "0x004355A0",
+      "methoddef_row_hex": "a05543000000860094cf0a00ed370300b94d",
+      "signature_blob_hex": "2002121511b50408",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "kind",
+          "type": "WeaponEnum"
+        },
+        {
+          "sequence": 2,
+          "name": "pat",
+          "type": "Int32"
+        }
+      ],
+      "return_type": "UnityEngine.Sprite",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 3,
+      "local_signature_token": "0x1100003A",
+      "local_signature_blob_hex": "070108",
+      "locals": [
+        {
+          "index": 0,
+          "type": "Int32"
+        }
+      ],
+      "code_size": 98,
+      "code_sha256": "38d479af573bd1d4c4f72ad8947250d2ef5e4353f720d8c431daa0e3551dfb35",
+      "body_hex": "040a03450c00000005000000050000000c0000000c0000000c0000000c0000000c00000015000000150000001500000015000000050000003817000000040a3810000000041c5d0a3807000000160a3800000000027bedb600040306287011000a2a"
+    },
+    "field": {
+      "token": "0x0400B6ED",
+      "owner": "WeaponMan",
+      "name": "WeaponSprite",
+      "raw_field_row_hex": "0600b44f060052480000",
+      "signature_blob_hex": "061412150200020000",
+      "decoded_type": "UnityEngine.Sprite[,]"
+    },
+    "array_get_member": {
+      "token": "0x0A001170",
+      "raw_memberref_row_hex": "84190000d8590600da570100",
+      "memberref_parent_coded_raw": 6532,
+      "name": "Get",
+      "signature_blob_hex": "200212150808",
+      "decoded_signature": "instance UnityEngine.Sprite Get(Int32, Int32)",
+      "call_il": "0x005C"
+    },
+    "switch": {
+      "input": "kind",
+      "case_count": 12,
+      "raw_case_targets": {
+        "0": "pat",
+        "1": "pat",
+        "2": "pat % 6",
+        "3": "pat % 6",
+        "4": "pat % 6",
+        "5": "pat % 6",
+        "6": "pat % 6",
+        "7": "0",
+        "8": "0",
+        "9": "0",
+        "10": "0",
+        "11": "pat"
+      },
+      "default": "pat"
+    },
+    "exact_flow": [
+      "local0 = pat",
+      "switch on raw kind 0..11",
+      "raw kind 0, 1, or 11: local0 = pat",
+      "raw kind 2 through 6: local0 = pat % 6",
+      "raw kind 7 through 10: local0 = 0",
+      "default raw kind outside 0..11: local0 remains pat",
+      "load this.WeaponSprite",
+      "load kind and local0",
+      "call MemberRef 0x0A001170 Get(Int32, Int32)",
+      "return UnityEngine.Sprite"
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PartsAllBtn",
+        "caller_method": "SetBtnIdx",
+        "caller_token": "0x06006250",
+        "caller_rva": "0x003BA0AC",
+        "caller_code_size": 803,
+        "caller_code_sha256": "7e84c893b56541fcd52c58e1b6bb702745dacd99223cb9a9de52328d25a61663",
+        "call_il": "0x01E0",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "FormRenderer_Craft",
+        "caller_method": "SetForm",
+        "caller_token": "0x06006885",
+        "caller_rva": "0x00420B80",
+        "caller_code_size": 2551,
+        "caller_code_sha256": "1484ea60834605c7a2d269f1a7d1b2449cd9fc49e8549d8893824663d1a28413",
+        "call_il": "0x0440",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "FormRenderer_Craft",
+        "caller_method": "SetAtkRangForm",
+        "caller_token": "0x06006888",
+        "caller_rva": "0x004217AC",
+        "caller_code_size": 2212,
+        "caller_code_sha256": "9b9c1b949c09da761e0b466cf93018f76da86747097e634cfa52073723a950fd",
+        "call_il": "0x04AB",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Weapon",
+        "caller_method": "SetPattern",
+        "caller_token": "0x06006AB7",
+        "caller_rva": "0x00434C1A",
+        "caller_code_size": 44,
+        "caller_code_sha256": "9fd8e4c6ea0c03f75b3de3aabfbe56ed4bf2f902ffe76bb13f7f57dee7b2c1b3",
+        "call_il": "0x0021",
+        "opcode": "callvirt",
+        "canonical_fact": "FACT-0196"
+      }
+    ],
+    "direct_reference_count": 4,
+    "direct_caller_method_count": 4
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weaponman_get_weapon_sprite_row_count": 0,
+    "partsallbtn_set_btn_idx_row_count": 0,
+    "formrenderer_craft_set_form_row_count": 0,
+    "formrenderer_craft_set_atk_rang_form_row_count": 0,
+    "weapon_set_pattern_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no GetWeaponSprite rows and no rows for any of its four direct callers; no runtime execution, returned sprite, or caller bridge is claimed from the capture."
+  },
+  "limits": [
+    "This dataset closes only the exact WeaponMan.GetWeaponSprite code body, raw kind-to-pattern-index rewrite, WeaponSprite field identity/type, raw Get MemberRef identity/signature, and exact direct in-assembly caller map.",
+    "Raw WeaponEnum values are preserved as integers; no weapon-kind names are assigned by this dataset.",
+    "The CLR/Unity implementation behind MemberRef 0x0A001170 and the actual Sprite objects remain external.",
+    "Authored WeaponSprite array population, sprite contents, and broader weapon rendering semantics remain outside this dataset.",
+    "Fresh R6 is retained only as a negative capture boundary, not positive evidence."
+  ],
+  "reproducibility_tool": "tools/prove_weaponman_get_weapon_sprite.py"
+}
