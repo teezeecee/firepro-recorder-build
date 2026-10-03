@@ -3922,7 +3922,8 @@
         "Player.Start_ForceControl remains a separate wrapper seam",
         "PlayerController_Tutorial.Update remains a separate parent seam",
         "fresh R6 has zero leaf/wrapper/tutorial rows and provides no runtime bridge"
-      ],
+      ]
+    },
     {
       "family_id": "DLL_PLAYER_START_FORCE_CONTROL_V1",
       "fact_id": "FACT-0225",
