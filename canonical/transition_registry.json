@@ -3984,6 +3984,27 @@
         "PlayerController_AI.Update remains a separate concrete override body",
         "fresh R6 has zero Tutorial.Update and child rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_DROP_WEAPON_V1",
+      "fact_id": "FACT-0228",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 109-byte matching-DLL PlayerController_AI.Process_DropWeapon Boolean leaf: raw weaponIdx/referee/player/referee-state/count gates, canonical FACT-0065 RefereeMan.GetRefereeObj child, external UnityEngine.Object.op_Implicit boundary, raw padPush 128 write, and exact one-call / one-caller surface from PlayerController_AI.Update.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_process_drop_weapon.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "raw weapon/referee/state/count/pad values receive no added gameplay labels",
+        "UnityEngine.Object.op_Implicit remains an external MemberRef implementation boundary",
+        "RefereeMan.inst lifecycle and RefereeObj population remain separate provenance",
+        "PlayerController_AI.Update remains an open 984-byte parent body",
+        "fresh R6 has zero Process_DropWeapon, GetRefereeObj and AI.Update rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
