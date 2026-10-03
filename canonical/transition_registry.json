@@ -3519,6 +3519,26 @@
         "WeaponMan.UpdateWeapon caller body",
         "fresh R6 has zero parent/caller/child rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_WEAPONMAN_UPDATE_WEAPON_V1",
+      "fact_id": "FACT-0205",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 50-byte matching-DLL WeaponMan.UpdateWeapon raw 0-through-7 WeaponObj loop, Unity Object truth gate, canonical FACT-0204 Weapon.UpdateWeapon callvirt, and exact two-reference / two-caller map.",
+      "summary": "canonical/witnesses/CAP-R6-001/weaponman_update_weapon.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 2,
+      "direct_caller_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external UnityEngine.Object.op_Implicit behavior",
+        "WeaponObj array population and weapon object lifecycle provenance",
+        "MatchMain.Update_EntranceScene and MatchMain.Update_Match caller bodies remain separate seams",
+        "fresh R6 has zero wrapper/caller rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

@@ -1,0 +1,51 @@
+{
+  "fact_id": "FACT-0205",
+  "claim": "In the matching retail DLL, instance WeaponMan.UpdateWeapon() (0x06006AD0) has raw MethodDef row 345643000000860033cf0a005c480000bf4d, RVA 0x00435634, signature blob 200001, local signature blob 07020812b508, and an exact 50-byte fat-header body SHA-256 35d1ad134ac75a73b958fd378c3a108d4911f9faddf0d99b383f0062de3c2b6a. It initializes an Int32 local to raw 0, loops while signed local < raw 8, loads WeaponObj[local], stores that element in a Weapon local, calls external UnityEngine.Object.op_Implicit on it, and when true calls canonical FACT-0204 Weapon.UpdateWeapon() via callvirt. It then increments the index and repeats. Exact matching-DLL scanning finds two direct callers: MatchMain.Update_EntranceScene at IL+0x0242 and MatchMain.Update_Match at IL+0x03E8.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "WeaponMan.UpdateWeapon token 0x06006AD0 -> RVA 0x00435634; exact 50-byte body sha256=35d1ad134ac75a73b958fd378c3a108d4911f9faddf0d99b383f0062de3c2b6a; full field/member/loop/call/caller evidence in canonical/witnesses/CAP-R6-001/weaponman_update_weapon.summary.json; prover tools/prove_weaponman_update_weapon.py.",
+      "observation": "Exact matching-DLL raw 0-through-7 WeaponObj loop, external Unity object truth gate, canonical FACT-0204 child call, and two-reference / two-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "WeaponMan.UpdateWeapon()",
+      "to": "Weapon.UpdateWeapon()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06006ABD at IL+0x0021; canonical FACT-0204"
+        }
+      ]
+    },
+    {
+      "from": "MatchMain.Update_EntranceScene()",
+      "to": "WeaponMan.UpdateWeapon()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "MatchMain.Update_EntranceScene token 0x06004935, RVA 0x002AA570, direct callvirt at IL+0x0242"
+        }
+      ]
+    },
+    {
+      "from": "MatchMain.Update_Match()",
+      "to": "WeaponMan.UpdateWeapon()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "MatchMain.Update_Match token 0x06004936, RVA 0x002AA8B4, direct callvirt at IL+0x03E8"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The raw loop bound 8 is preserved numerically; no gameplay label is assigned to the eight WeaponObj slots.",
+    "Fresh CAP-R6-001 contains zero WeaponMan.UpdateWeapon, Weapon.UpdateWeapon, MatchMain.Update_EntranceScene, and MatchMain.Update_Match rows; no runtime bridge is claimed.",
+    "UnityEngine.Object.op_Implicit behavior remains external.",
+    "WeaponObj population/object lifecycle provenance remains separate.",
+    "MatchMain.Update_EntranceScene and MatchMain.Update_Match remain separate caller seams."
+  ]
+}

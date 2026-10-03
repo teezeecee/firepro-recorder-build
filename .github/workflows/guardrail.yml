@@ -1114,3 +1114,8 @@ jobs:
         run: python tests/test_weapon_update_weapon_summary.py
       - name: Weapon UpdateWeapon prover syntax
         run: python -m py_compile tools/prove_weapon_update_weapon.py
+
+      - name: WeaponMan UpdateWeapon summary
+        run: python tests/test_weaponman_update_weapon_summary.py
+      - name: WeaponMan UpdateWeapon prover syntax
+        run: python -m py_compile tools/prove_weaponman_update_weapon.py
