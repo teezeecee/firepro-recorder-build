@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERMAN_GET_INST_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerMan",
+      "method": "GetInst",
+      "token": "0x0600505D",
+      "rva": "0x00304880",
+      "methoddef_row_hex": "80483000000096003b7f0800b8d40200f73a",
+      "signature_blob_hex": "000012a818",
+      "static": true,
+      "parameters": [],
+      "return_type": "PlayerMan",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0096",
+      "header_format": "tiny",
+      "header_byte_raw": "0x1A",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "code_size": 6,
+      "code_sha256": "592555acaf96cbd806fb44a0dfd643c83f27267edcf79fe7ab57ec6c0457b1ff",
+      "body_hex": "7efa6100042a",
+      "exact_flow": [
+        "load static PlayerMan.inst",
+        "return"
+      ]
+    },
+    "field": {
+      "token": "0x040061FA",
+      "owner": "PlayerMan",
+      "name": "inst",
+      "field_row_hex": "160006220100cf380000",
+      "signature_blob_hex": "0612a818",
+      "load_il": "0x0000"
+    },
+    "direct_reference_surface": {
+      "direct_reference_count": 171,
+      "direct_caller_method_count": 102,
+      "opcode_counts": {
+        "call": 171,
+        "callvirt": 0,
+        "newobj": 0,
+        "jmp": 0,
+        "ldftn": 0,
+        "ldvirtftn": 0
+      },
+      "normalized_reference_map_sha256": "fd83acc3062a77a8dee1dde7084c989511249701cff57fb1100cb89a6446400c",
+      "normalized_caller_token_set_sha256": "bc51127accf19d7f10201296d4ab08f4904ba0cc486761926070068406e95ff9",
+      "meaning": "The prover rebuilds the complete MethodDef-body reference map from the matching DLL, normalizes caller type/namespace/method/token/RVA/body-size/body-hash/IL/opcode records, and pins the resulting digest. No caller semantics are promoted from membership in this surface."
+    },
+    "pinned_caller_boundaries": [
+      {
+        "status": "CANONICAL",
+        "fact_id": "FACT-0201",
+        "caller_type": "Weapon",
+        "caller_method": "Update_Equipped",
+        "caller_token": "0x06006ABA",
+        "caller_rva": "0x00434E20",
+        "caller_code_size": 92,
+        "caller_code_sha256": "3aa49b941ea49de68211c6b8bd98672b796ea36dc5eb99deeae75ef911aa737d",
+        "call_ils": [
+          "0x0000"
+        ],
+        "opcode": "call"
+      },
+      {
+        "status": "OPEN",
+        "caller_type": "Network",
+        "caller_method": "IsSyncInputData",
+        "caller_token": "0x06004B48",
+        "caller_rva": "0x002C1C50",
+        "caller_code_size": 603,
+        "caller_code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d",
+        "call_ils": [
+          "0x0051",
+          "0x0164"
+        ],
+        "opcode": "call"
+      }
+    ]
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "player_man_get_inst_row_count": 0,
+    "network_is_sync_input_data_row_count": 0,
+    "weapon_update_equipped_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for the getter or the two pinned caller boundaries; it is a negative capture boundary only."
+  },
+  "selection_boundary": {
+    "candidate_reason": "FACT-0218 closes Player.SetPlayerController, leaving PlayerMan.GetInst as the last open in-assembly child of Network.IsSyncInputData. The getter body is only 6 bytes; its broad 171-reference / 102-caller surface is mechanically closed here by exact normalized digests.",
+    "parent_open_method": {
+      "method": "Network.IsSyncInputData",
+      "token": "0x06004B48",
+      "code_size": 603,
+      "code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d"
+    },
+    "canonical_sibling_children": [
+      {
+        "fact_id": "FACT-0215",
+        "method": "Network.Network_OnlineCheck",
+        "token": "0x06004B65"
+      },
+      {
+        "fact_id": "FACT-0216",
+        "method": "DispNotification.Show",
+        "token": "0x060049C3"
+      },
+      {
+        "fact_id": "FACT-0217",
+        "method": "PlayerMan.GetPlObjFromPadPort",
+        "token": "0x06005066"
+      },
+      {
+        "fact_id": "FACT-0218",
+        "method": "Player.SetPlayerController",
+        "token": "0x06004EAC"
+      }
+    ],
+    "next_frontier": {
+      "method": "Network.IsSyncInputData",
+      "token": "0x06004B48",
+      "code_size": 603,
+      "meaning": "With FACT-0219, all five in-assembly child methods reached by this body are canonical; the parent method itself becomes the next bounded seam."
+    }
+  },
+  "limits": [
+    "PlayerMan.inst assignment/lifecycle remains separate provenance.",
+    "The direct-reference surface is promoted only as an exact call map, not as semantics for its 102 caller methods.",
+    "Network.IsSyncInputData remains open as the parent seam; its in-assembly child set is now closed through FACT-0219.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_playerman_get_inst.py"
+}
