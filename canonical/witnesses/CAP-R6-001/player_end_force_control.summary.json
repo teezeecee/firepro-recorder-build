@@ -249,7 +249,7 @@
       "child_token": "0x0600503F",
       "child_code_size": 29,
       "child_code_sha256": "ede6d069634bd8695534188e0ff9ca8fb6cd7a4669425c39b4407cd7c3327320",
-      "meaning": "This is the next smaller Tutorial.Update subtree after End_ForceControl. The 29-byte child leaf must be closed before the 20-byte parent."
+      "meaning": "Mechanically selected next Tutorial.Update subtree: close the 29-byte child leaf before the 20-byte parent wrapper."
     }
   },
   "limits": [
