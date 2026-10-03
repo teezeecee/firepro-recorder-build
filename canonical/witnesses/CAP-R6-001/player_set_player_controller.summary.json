@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_SET_PLAYER_CONTROLLER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "SetPlayerController",
+      "token": "0x06004EAC",
+      "rva": "0x002DE380",
+      "methoddef_row_hex": "80e32d00000086006c70030072c40200303a",
+      "signature_blob_hex": "20010111a7b4",
+      "parameters": [
+        "PlayerControllerKind"
+      ],
+      "return_type_metadata": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "fat",
+      "fat_flags_size_raw": "0x3013",
+      "max_stack": 2,
+      "local_signature_token": "0x00000000",
+      "code_size": 138,
+      "code_sha256": "5dd13b1056dacf616fe2c9832bf85dbc4901c3911bfc2b75200c1f23b9301acb",
+      "body_hex": "03450600000049000000050000001600000027000000380000005a000000386600000002027b2e6000047d2b600004385500000002027b2f6000047d2b600004384400000002027b306000047d2b600004383300000002027b316000047d2b600004382200000002027b2c6000047d2b600004381100000002027b2d6000047d2b60000438000000002a",
+      "switch_targets": {
+        "raw_0": {
+          "source_field": "plCont_NoControl",
+          "source_token": "0x0400602C",
+          "entry_il": "0x0067"
+        },
+        "raw_1": {
+          "source_field": "plCont_Pad",
+          "source_token": "0x0400602E",
+          "entry_il": "0x0023"
+        },
+        "raw_2": {
+          "source_field": "plCont_AI",
+          "source_token": "0x0400602F",
+          "entry_il": "0x0034"
+        },
+        "raw_3": {
+          "source_field": "plCont_Tutorial",
+          "source_token": "0x04006030",
+          "entry_il": "0x0045"
+        },
+        "raw_4": {
+          "source_field": "plCont_NetCom",
+          "source_token": "0x04006031",
+          "entry_il": "0x0056"
+        },
+        "raw_5": {
+          "source_field": "plCont_External",
+          "source_token": "0x0400602D",
+          "entry_il": "0x0078"
+        },
+        "default": {
+          "effect": "return without writing plController",
+          "entry_il": "0x001E"
+        }
+      }
+    },
+    "fields": [
+      {
+        "token": "0x0400602B",
+        "owner": "Player",
+        "name": "plController",
+        "field_row_hex": "0600f6e5030011380000",
+        "signature_blob_hex": "0612a7b8",
+        "write_ils": [
+          "0x002A",
+          "0x003B",
+          "0x004C",
+          "0x005D",
+          "0x006E",
+          "0x007F"
+        ]
+      },
+      {
+        "token": "0x0400602C",
+        "owner": "Player",
+        "name": "plCont_NoControl",
+        "field_row_hex": "060003e6030016380000",
+        "signature_blob_hex": "0612a7fc",
+        "read_il": "0x0069"
+      },
+      {
+        "token": "0x0400602D",
+        "owner": "Player",
+        "name": "plCont_External",
+        "field_row_hex": "060014e603001b380000",
+        "signature_blob_hex": "0612a7f0",
+        "read_il": "0x007A"
+      },
+      {
+        "token": "0x0400602E",
+        "owner": "Player",
+        "name": "plCont_Pad",
+        "field_row_hex": "060024e6030020380000",
+        "signature_blob_hex": "0612a7f4",
+        "read_il": "0x0025"
+      },
+      {
+        "token": "0x0400602F",
+        "owner": "Player",
+        "name": "plCont_AI",
+        "field_row_hex": "06002fe6030025380000",
+        "signature_blob_hex": "0612a7c0",
+        "read_il": "0x0036"
+      },
+      {
+        "token": "0x04006030",
+        "owner": "Player",
+        "name": "plCont_Tutorial",
+        "field_row_hex": "060039e603002a380000",
+        "signature_blob_hex": "0612a800",
+        "read_il": "0x0047"
+      },
+      {
+        "token": "0x04006031",
+        "owner": "Player",
+        "name": "plCont_NetCom",
+        "field_row_hex": "060049e603002f380000",
+        "signature_blob_hex": "0612a7f8",
+        "read_il": "0x0058"
+      }
+    ],
+    "internal_methoddef_calls": [],
+    "direct_reference_surface": {
+      "direct_reference_count": 25,
+      "direct_caller_method_count": 11,
+      "opcode_counts": {
+        "call": 4,
+        "callvirt": 21,
+        "newobj": 0,
+        "jmp": 0,
+        "ldftn": 0,
+        "ldvirtftn": 0
+      },
+      "normalized_reference_map_sha256": "59539d1a2da184455e68f1c4a254cb2ba24645dcf251f48b646ee6c1676ec5e5",
+      "normalized_caller_token_set_sha256": "9a826bc7a67969b1c67eeeb20453a0cf8ee774d385bb1f93705af97b4286305a"
+    },
+    "pinned_caller_boundaries": [
+      {
+        "status": "OPEN",
+        "caller_type": "Network",
+        "caller_method": "IsSyncInputData",
+        "caller_token": "0x06004B48",
+        "caller_rva": "0x002C1C50",
+        "caller_code_size": 603,
+        "caller_code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d",
+        "call_ils": [
+          "0x006F",
+          "0x0186"
+        ],
+        "opcode": "callvirt"
+      }
+    ]
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "player_set_player_controller_row_count": 0,
+    "network_is_sync_input_data_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "candidate_reason": "After FACT-0217, Player.SetPlayerController is the remaining bounded child of Network.IsSyncInputData before the broad singleton getter. It is dependency-clean at 138 bytes; its 25-reference / 11-caller surface is finite and mechanically pinnable.",
+    "remaining_open_child": {
+      "method": "PlayerMan.GetInst",
+      "token": "0x0600505D",
+      "rva": "0x00304880",
+      "code_size": 6,
+      "code_sha256": "592555acaf96cbd806fb44a0dfd643c83f27267edcf79fe7ab57ec6c0457b1ff",
+      "direct_reference_count": 171,
+      "direct_caller_method_count": 102
+    }
+  },
+  "limits": [
+    "No enum semantics beyond metadata name and raw values are promoted.",
+    "Controller instance construction/behavior remains separate.",
+    "Caller semantics remain separate.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_player_set_player_controller.py"
+}

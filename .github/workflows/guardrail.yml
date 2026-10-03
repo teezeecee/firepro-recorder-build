@@ -1187,3 +1187,8 @@ jobs:
         run: python tests/test_playerman_get_plobj_from_pad_port_summary.py
       - name: PlayerMan GetPlObjFromPadPort prover syntax
         run: python -m py_compile tools/prove_playerman_get_plobj_from_pad_port.py
+
+      - name: Player SetPlayerController summary
+        run: python tests/test_player_set_player_controller_summary.py
+      - name: Player SetPlayerController prover syntax
+        run: python -m py_compile tools/prove_player_set_player_controller.py
