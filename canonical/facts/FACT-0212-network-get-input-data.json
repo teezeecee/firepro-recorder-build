@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0212",
+  "claim": "In the matching retail DLL, instance Network.GetInputData(Int32 playerId) (0x06004B49) has raw MethodDef row b81e2c0000008600170e0a003ab60200ba37, RVA 0x002C1EB8, signature blob 200111a5ac08, local signature token 0x11000FBB with blob 07030811a5ac11a5ac, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 47-byte fat-header body SHA-256 cc873352d36cbd8a43a791fa41ddce1e8815f39b47564fa45f6645c3f53565bd. The exact body stores playerId in an Int32 local, calls external get_Count on this.m_InputBuffer[playerId], returns an initobj/default PadData when the count is zero, otherwise calls external get_Item with raw index 0 on this.m_InputBuffer[playerId] and returns that PadData. It contains no in-assembly game-method calls. Exact matching-DLL scanning finds one direct callvirt reference, PlayerController_Network.Update at IL+0x001A.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Network.GetInputData token 0x06004B49 -> RVA 0x002C1EB8; exact 47-byte body sha256=cc873352d36cbd8a43a791fa41ddce1e8815f39b47564fa45f6645c3f53565bd; full field/member/local/branch/caller evidence in canonical/witnesses/CAP-R6-001/network_get_input_data.summary.json; prover tools/prove_network_get_input_data.py.",
+      "observation": "Exact m_InputBuffer Count gate, default PadData return, item-zero return, absence of internal game calls, and one-reference / one-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_Network.Update()",
+      "to": "Network.GetInputData(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_Network.Update token 0x06005038 direct callvirt at IL+0x001A."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The method reads raw item index 0 when Count is nonzero; queue/list ordering semantics and buffer population are separate provenance.",
+    "External generic collection get_Count and get_Item behavior remains external.",
+    "Fresh CAP-R6-001 contains zero Network.GetInputData and PlayerController_Network.Update rows; no runtime bridge is claimed.",
+    "PlayerController_Network.Update remains a separate caller seam; Network.IsSyncInputData is its remaining open in-assembly child."
+  ]
+}

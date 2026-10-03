@@ -3658,6 +3658,26 @@
         "PlayerController_Network.Update and PlayerController_AI.Prepare caller bodies remain separate seams",
         "fresh R6 has zero helper/caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_NETWORK_GET_INPUT_DATA_V1",
+      "fact_id": "FACT-0212",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 47-byte matching-DLL Network.GetInputData(Int32) body: checks m_InputBuffer[playerId].Count, returns default PadData when zero, otherwise returns item zero; no in-assembly child calls and exact one-reference / one-caller map.",
+      "summary": "canonical/witnesses/CAP-R6-001/network_get_input_data.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Network.m_InputBuffer population, ordering and lifetime provenance remain separate",
+        "external generic collection Count/get_Item behavior remains external",
+        "PlayerController_Network.Update remains a separate caller seam",
+        "fresh R6 has zero helper/caller rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
