@@ -1227,3 +1227,8 @@ jobs:
         run: python tests/test_player_start_force_control_summary.py
       - name: Player Start ForceControl prover syntax
         run: python -m py_compile tools/prove_player_start_force_control.py
+
+      - name: Tutorial Process Grapple summary
+        run: python tests/test_playercontroller_tutorial_process_grapple_summary.py
+      - name: Tutorial Process Grapple prover syntax
+        run: python -m py_compile tools/prove_playercontroller_tutorial_process_grapple.py

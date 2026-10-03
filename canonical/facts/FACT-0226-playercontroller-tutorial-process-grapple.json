@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0226",
+  "claim": "In the matching retail DLL, instance PlayerController_Tutorial.Process_Grapple() (0x0600503C) has raw MethodDef row 1807300000008100bc3a0a005c480000ed3a, RVA 0x00300718, signature blob 200001, raw ImplFlags 0x0000 and MethodAttributes 0x0081, and an exact 109-byte fat-header body SHA-256 0e53fcf88961297caf1853917b18bd92786b40b340e2b81da12b5f1ac4447c54. The body has no in-assembly MethodDef call. It compares raw Player.State to 22; when unequal it writes raw 6 to atkWaitTimer and returns. When equal, it continues only if penaltyTime <= 0 and animator.isAnmPause is true, decrements atkWaitTimer, and when the decremented value is <= 0 writes raw 16 to padPush and raw 1 to padOn. Exact matching-DLL scanning finds one direct reference: PlayerController_Tutorial.Update call at IL+0x010B.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_Tutorial.Process_Grapple token 0x0600503C -> RVA 0x00300718; exact 109-byte body sha256=0e53fcf88961297caf1853917b18bd92786b40b340e2b81da12b5f1ac4447c54; exact field records, raw constants/branches, zero MethodDef children and one-reference / one-caller surface in canonical/witnesses/CAP-R6-001/playercontroller_tutorial_process_grapple.summary.json; prover tools/prove_playercontroller_tutorial_process_grapple.py.",
+      "observation": "Exact Tutorial Process_Grapple leaf, raw timer/input writes, and sole parent call boundary."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_Tutorial.Update()",
+      "to": "PlayerController_Tutorial.Process_Grapple()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_Tutorial.Update token 0x0600503D call token 0x0600503C at IL+0x010B."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw Player.State value 22 receives no gameplay-state label.",
+    "Raw atkWaitTimer values, padPush value 16 and padOn value 1 receive no input or timing semantics beyond the exact stores and comparisons in the DLL.",
+    "Field names are preserved as metadata identifiers only.",
+    "PlayerController_Tutorial.Update remains a separate parent seam; this fact does not promote the parent body.",
+    "Fresh CAP-R6-001 contains zero Process_Grapple and Tutorial.Update rows; no runtime bridge is claimed."
+  ]
+}
