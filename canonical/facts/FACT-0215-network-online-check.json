@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0215",
+  "claim": "In the matching retail DLL, static Network.Network_OnlineCheck() (0x06004B65) has raw MethodDef row 5c2c2c000000960014100a00634a0000c337, RVA 0x002C2C5C, signature blob 000002, raw ImplFlags 0x0000 and MethodAttributes 0x0096, and an exact 26-byte tiny-header body SHA-256 ac5bd6e06bc7d05f1d7ee9c98ceac6a1b2977018dbcf86cfe907dd7648953dad. The body calls canonical FACT-0214 SteamManager.get_Initialized at IL+0x0000; if that result is false it returns false. Otherwise it calls external MemberRef 0x0A000E34 named BLoggedOn at IL+0x000C; if that result is false it returns false, otherwise it returns true. Exact matching-DLL MethodDef-body scanning finds 22 direct references, all opcode call, across 16 caller methods; the normalized reference-map SHA-256 is b3adc0cc33c4c6c00d6d6e95044da098b1acabe34f6055dee111af9a3e49a863. The open Network.IsSyncInputData caller references this helper at IL+0x000D.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Network.Network_OnlineCheck token 0x06004B65 -> RVA 0x002C2C5C; exact 26-byte body sha256=ac5bd6e06bc7d05f1d7ee9c98ceac6a1b2977018dbcf86cfe907dd7648953dad; canonical FACT-0214 child, external BLoggedOn MemberRef, complete 22-reference / 16-caller normalized-map digest, and IsSyncInputData boundary in canonical/witnesses/CAP-R6-001/network_online_check.summary.json; prover tools/prove_network_online_check.py.",
+      "observation": "Exact two-gate Boolean helper body, canonical initialized child edge, external BLoggedOn boundary, and complete direct-call surface."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Network.Network_OnlineCheck()",
+      "to": "FACT-0214 SteamManager.get_Initialized()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x060052F1 at IL+0x0000."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "External MemberRef 0x0A000E34 BLoggedOn implementation and platform semantics remain external.",
+    "The 22 direct references / 16 callers are mechanically pinned call boundaries only; caller semantics are not promoted.",
+    "Network.IsSyncInputData remains an open 603-byte caller seam.",
+    "Fresh CAP-R6-001 contains zero Network.Network_OnlineCheck, SteamManager.get_Initialized and Network.IsSyncInputData rows; no runtime bridge is claimed."
+  ]
+}
