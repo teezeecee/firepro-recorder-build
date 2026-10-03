@@ -3559,6 +3559,26 @@
         "MatchMain.Update_EntranceScene and MatchMain.Update_Match bodies remain separate caller seams",
         "fresh R6 has zero base/caller rows and provides no runtime dispatch bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_EXTERNAL_UPDATE_V1",
+      "fact_id": "FACT-0207",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact one-byte matching-DLL PlayerController_External.Update override body (ret), direct TypeDef inheritance from PlayerController, raw reuse-slot virtual MethodAttributes, zero direct MethodDef-token references, and mechanically smallest position among the six concrete PlayerController Update overrides.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_external_update.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 0,
+      "direct_caller_method_count": 0,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "runtime selection of PlayerController_External instances is not established",
+        "the base-token callvirt sites do not by themselves prove this override receives dispatch",
+        "five sibling PlayerController.Update overrides remain separate seams",
+        "fresh R6 has zero base/override/caller rows and provides no runtime dispatch bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
