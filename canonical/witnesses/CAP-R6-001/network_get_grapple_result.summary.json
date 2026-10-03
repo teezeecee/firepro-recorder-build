@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_NETWORK_GET_GRAPPLE_RESULT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "type": {
+      "type": "Network",
+      "typedef_rid": 2375,
+      "typedef_row_hex": "01001000726f00000000000096067f5ae74a"
+    },
+    "method": {
+      "type": "Network",
+      "method": "GetGrappleResult",
+      "token": "0x06004B58",
+      "rva": "0x002C23F5",
+      "methoddef_row_hex": "f5232c0000008600320f0a008cb60200bf37",
+      "signature_blob_hex": "200112a75c08",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "pl_idx",
+          "decoded_type": "Int32",
+          "param_row_hex": "000001005e970200"
+        }
+      ],
+      "return_type_metadata": "TypeDef RID 2519 (GrappleResultWork)",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x26",
+      "code_size": 9,
+      "code_sha256": "96fe199528ac76a9fff0c97bc3756699c17bad16faee068b22be044a933242da",
+      "body_hex": "027b8f5a0004039a2a",
+      "exact_flow": [
+        "return this.grappleResultWork[pl_idx]"
+      ]
+    },
+    "field": {
+      "token": "0x04005A8F",
+      "owner": "Network",
+      "name": "grappleResultWork",
+      "field_row_hex": "01006eae0300f9330000",
+      "signature_blob_hex": "061d12a75c",
+      "decoded_type_metadata": "GrappleResultWork[]"
+    },
+    "internal_game_method_calls": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_method": "Prepare",
+        "caller_token": "0x06005029",
+        "caller_rva": "0x002FFB54",
+        "caller_code_size": 210,
+        "caller_code_sha256": "c217a11dcecafe819b6af42c0015265302fd359ec62a1758dc35a935c8a2917d",
+        "call_il": "0x0016",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerController_Network",
+        "caller_method": "Update",
+        "caller_token": "0x06005038",
+        "caller_rva": "0x00300658",
+        "caller_code_size": 94,
+        "caller_code_sha256": "6263d3075a2b1147709139a168d07a8b4f9b6773a41b67ff169759a6fe4482ed",
+        "call_il": "0x0053",
+        "opcode": "callvirt"
+      }
+    ],
+    "direct_reference_count": 2,
+    "direct_caller_method_count": 2
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "network_get_grapple_result_row_count": 0,
+    "playercontroller_network_update_row_count": 0,
+    "playercontroller_ai_prepare_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for the helper or either direct caller; no runtime helper invocation or caller bridge is claimed."
+  },
+  "selection_boundary": {
+    "candidate_reason": "The 94-byte Network Update override exposed three in-assembly Network child calls. GetGrappleResult is the smallest at 9 bytes, ahead of GetInputData at 47 bytes and IsSyncInputData at 603 bytes.",
+    "remaining_network_update_children": [
+      [
+        "Network.GetInputData",
+        47
+      ],
+      [
+        "Network.IsSyncInputData",
+        603
+      ]
+    ],
+    "next_after_helper": "Network.GetInputData is the next smaller unclosed dependency before PlayerController_Network.Update can be promoted."
+  },
+  "limits": [
+    "No bounds check occurs in this method.",
+    "grappleResultWork population/lifecycle remains separate.",
+    "Both caller bodies remain separate gates.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_network_get_grapple_result.py"
+}

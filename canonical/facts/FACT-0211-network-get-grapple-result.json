@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0211",
+  "claim": "In the matching retail DLL, instance Network.GetGrappleResult(Int32 pl_idx) (0x06004B58) has raw MethodDef row f5232c0000008600320f0a008cb60200bf37, RVA 0x002C23F5, signature blob 200112a75c08, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 9-byte tiny-header body SHA-256 96fe199528ac76a9fff0c97bc3756699c17bad16faee068b22be044a933242da. Its exact body returns this.grappleResultWork[pl_idx] from Network field 0x04005A8F and contains no branch and no in-assembly game-method call. Exact matching-DLL scanning finds two direct callvirt references: PlayerController_AI.Prepare at IL+0x0016 and PlayerController_Network.Update at IL+0x0053.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Network.GetGrappleResult token 0x06004B58 -> RVA 0x002C23F5; exact 9-byte body sha256=96fe199528ac76a9fff0c97bc3756699c17bad16faee068b22be044a933242da; full field/caller evidence in canonical/witnesses/CAP-R6-001/network_get_grapple_result.summary.json; prover tools/prove_network_get_grapple_result.py.",
+      "observation": "Exact grappleResultWork array lookup leaf, no branch/calls, and exact two-reference / two-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_Network.Update()",
+      "to": "Network.GetGrappleResult(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_Network.Update token 0x06005038 direct callvirt at IL+0x0053."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Prepare()",
+      "to": "Network.GetGrappleResult(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_AI.Prepare token 0x06005029 direct callvirt at IL+0x0016."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This method performs no bounds check; valid pl_idx provenance and any external array-index behavior remain outside this fact.",
+    "The metadata field name grappleResultWork is preserved; population and lifecycle of the array remain separate provenance.",
+    "Fresh CAP-R6-001 contains zero helper, Network.Update, and AI.Prepare rows; no runtime bridge is claimed.",
+    "PlayerController_Network.Update and PlayerController_AI.Prepare remain separate caller seams."
+  ]
+}
