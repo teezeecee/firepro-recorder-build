@@ -1,0 +1,81 @@
+{
+  "fact_id": "FACT-0220",
+  "claim": "In the matching retail DLL, instance Network.IsSyncInputData() (0x06004B48) has raw MethodDef row 501c2c0000008600070e0a00db490000ba37, RVA 0x002C1C50, signature blob 200002, local signature token 0x11000FBA with blob 0708080812a78802080812a78808, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 603-byte fat-header body SHA-256 ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d. The body first returns true when Match_Disconnect_Myself is already true. Otherwise it gates on canonical FACT-0215 Network.Network_OnlineCheck and external get_internetReachability; when either raw result is zero it marks every player slot asynchronous-time 10.0 / timeout true, switches non-self players with an existing Player object through canonical FACT-0219 -> FACT-0217 -> FACT-0218 using raw controller argument 2, displays a raw-language-selected 240-duration disconnect notification through FACT-0216, sets Match_Disconnect_Myself and Match_Disconnect true, and returns false. On the nonzero-connectivity path, a null m_InputBuffer sets Match_Disconnect true and returns false. Otherwise it scans non-self, non-timeout slots: nonempty buffers reset AsynchronousTime to 0; empty buffers clear the method-result local, add external deltaTime, and when the accumulated value exceeds raw 10.0 mark timeout true, switch any found Player through the same canonical controller path, display a username-bearing 240-duration notification selected by raw language zero/nonzero, and set Match_Disconnect true. At exit, if Match_Disconnect is true or the result local is false it returns that result; only the true/no-disconnect path clears all AsynchronousTime entries before returning true. All five in-assembly callees are canonical through FACT-0219. Exact matching-DLL scanning finds three direct references across three callers: Network.Is_Ready_KeyData, Network.Clear_KeyBuffer, and PlayerController_Network.Update.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Network.IsSyncInputData token 0x06004B48 -> RVA 0x002C1C50; exact 603-byte body sha256=ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d; exact local signature, fields, external MemberRefs, six user strings, canonical child call map, control blocks and three-caller surface in canonical/witnesses/CAP-R6-001/network_is_sync_input_data.summary.json; prover tools/prove_network_is_sync_input_data.py.",
+      "observation": "Exact synchronization/disconnect Boolean control body with all five game-method dependencies already canonical."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_Network.Update()",
+      "to": "Network.IsSyncInputData()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_Network.Update token 0x06005038 direct callvirt token 0x06004B48 at IL+0x0005."
+        }
+      ]
+    },
+    {
+      "from": "Network.IsSyncInputData()",
+      "to": "FACT-0215 Network.Network_OnlineCheck()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004B65 at IL+0x000D."
+        }
+      ]
+    },
+    {
+      "from": "Network.IsSyncInputData()",
+      "to": "FACT-0219 PlayerMan.GetInst()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x0600505D at IL+0x0051 and IL+0x0164."
+        }
+      ]
+    },
+    {
+      "from": "Network.IsSyncInputData()",
+      "to": "FACT-0217 PlayerMan.GetPlObjFromPadPort(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06005066 at IL+0x0057 and IL+0x016B."
+        }
+      ]
+    },
+    {
+      "from": "Network.IsSyncInputData()",
+      "to": "FACT-0218 Player.SetPlayerController(PlayerControllerKind)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06004EAC at IL+0x006F and IL+0x0186, each fed raw ldc.i4.2."
+        }
+      ]
+    },
+    {
+      "from": "Network.IsSyncInputData()",
+      "to": "FACT-0216 DispNotification.Show(String,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x060049C3 at IL+0x00A7, 0x00C0, 0x01C1 and 0x01ED, each with raw duration 240."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "External get_internetReachability, Unity object truth conversion, generic collection get_Count, Time.get_deltaTime and String.Concat behavior remain external boundaries.",
+    "Raw OptionSettings.language zero/nonzero branches are preserved only by their selected source strings; no enum label is assigned.",
+    "Raw controller selector value 2 is preserved without adding meaning beyond canonical FACT-0218's exact switch.",
+    "m_InputBuffer population, ordering and producer timing remain separate provenance.",
+    "Fresh CAP-R6-001 contains zero Network.IsSyncInputData and zero rows for its three direct callers; no runtime bridge is claimed."
+  ]
+}
