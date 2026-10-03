@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0228",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.Process_DropWeapon() (0x06005022) has raw MethodDef row 10f72f0000008100d73f0a00db490000de3a, RVA 0x002FF710, signature blob 200002 (parameterless Boolean return), raw ImplFlags 0x0000 and MethodAttributes 0x0081, local signature token 0x11000969 with blob 070112a838, and an exact 109-byte fat-header body SHA-256 b7c63a31c3fd694f21dc16ae22caf91866d1eb98336000f37e5b763c71d672dd. The body returns false when PlObj.weaponIdx is below raw zero. Otherwise it loads RefereeMan.inst, calls canonical FACT-0065 RefereeMan.GetRefereeObj(), stores the returned Referee local, and passes that local through external MemberRef UnityEngine.Object.op_Implicit. A false conversion returns false. The remaining raw gates require Referee.TargetPlIdx == PlObj.PlIdx, Referee.State == 14, and Referee.RefeCount >= 4; any failed gate returns false. Only after all gates pass does the body write raw 128 to inherited PlayerController.padPush and return true. Exact matching-DLL scanning finds one direct MethodDef-token reference: PlayerController_AI.Update() call at IL+0x01B5.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Process_DropWeapon token 0x06005022 -> RVA 0x002FF710; exact 109-byte body sha256=b7c63a31c3fd694f21dc16ae22caf91866d1eb98336000f37e5b763c71d672dd; exact MethodDef/local signature, field records, external Object.op_Implicit boundary, canonical FACT-0065 child edge, raw branch constants and complete one-reference / one-caller surface in canonical/witnesses/CAP-R6-001/playercontroller_ai_process_drop_weapon.summary.json; prover tools/prove_playercontroller_ai_process_drop_weapon.py.",
+      "observation": "Exact AI Process_DropWeapon Boolean leaf with one canonical in-assembly child, one external null/false boundary, raw referee/player gates, raw padPush write and sole AI.Update caller."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Process_DropWeapon()",
+      "to": "RefereeMan.GetRefereeObj()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x060050B6 at IL+0x0018; canonical FACT-0065 exact 9-byte RefereeObj[0] accessor."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Update()",
+      "to": "PlayerController_AI.Process_DropWeapon()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_AI.Update token 0x0600502B direct call token 0x06005022 at IL+0x01B5; Update exact body size 984 and SHA-256 6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The method name Process_DropWeapon and metadata field names are preserved identifiers; this fact does not infer authored gameplay intent beyond the exact Boolean gates and stores.",
+    "Raw Referee.State value 14, RefeCount threshold 4, weaponIdx threshold 0, and padPush value 128 receive no higher-level labels.",
+    "UnityEngine.Object.op_Implicit is an external MemberRef boundary; its implementation is not promoted here.",
+    "RefereeMan.inst lifecycle and RefereeObj population remain outside this fact even though canonical FACT-0065 closes the GetRefereeObj accessor body.",
+    "Fresh CAP-R6-001 contains zero Process_DropWeapon, RefereeMan.GetRefereeObj, and PlayerController_AI.Update rows; no runtime bridge is claimed."
+  ]
+}
