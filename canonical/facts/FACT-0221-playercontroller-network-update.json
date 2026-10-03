@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0221",
+  "claim": "In the matching retail DLL, instance PlayerController_Network.Update() (0x06005038) has raw MethodDef row 580630000000c600edc800005c480000eb3a, RVA 0x00300658, signature blob 200001, local signature token 0x11001143 with blob 070111a5ac, raw ImplFlags 0x0000 and MethodAttributes 0x00C6, and an exact 94-byte fat-header body SHA-256 6263d3075a2b1147709139a168d07a8b4f9b6773a41b67ff169759a6fe4482ed. The body first calls external get_instance and canonical FACT-0220 Network.IsSyncInputData; a false result returns immediately. On true, it calls external get_instance, passes this.port to canonical FACT-0212 Network.GetInputData, stores the returned PadData local, then copies PadData.PadOn to inherited PlayerController.padOn, PadData.PadPush to inherited padPush, and PadData.Frame to PlayerController_Network.frame. Finally it calls external get_instance, passes inherited this.plIdx to canonical FACT-0211 Network.GetGrappleResult, stores the result into inherited PlayerController.grappleResult, and returns. Exact matching-DLL MethodDef-body scanning finds zero direct call/callvirt/newobj/jmp/ldftn/ldvirtftn references to this override.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_Network.Update token 0x06005038 -> RVA 0x00300658; exact 94-byte body sha256=6263d3075a2b1147709139a168d07a8b4f9b6773a41b67ff169759a6fe4482ed; exact local signature, external get_instance boundary, three canonical child calls, field transfers and zero direct-reference surface in canonical/witnesses/CAP-R6-001/playercontroller_network_update.summary.json; prover tools/prove_playercontroller_network_update.py.",
+      "observation": "Exact network-controller update override body with dependency-clean in-assembly child set."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_Network.Update()",
+      "to": "FACT-0220 Network.IsSyncInputData()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06004B48 at IL+0x0005."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_Network.Update()",
+      "to": "FACT-0212 Network.GetInputData(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06004B49 at IL+0x001A using this.port."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_Network.Update()",
+      "to": "FACT-0211 Network.GetGrappleResult(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06004B58 at IL+0x0053 using this.plIdx."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "External get_instance implementation and singleton lifecycle remain outside this fact.",
+    "The metadata field names PadOn, PadPush, Frame, padOn, padPush, frame, plIdx and grappleResult are preserved exactly; no additional gameplay meaning is promoted.",
+    "Zero direct MethodDef-body references does not prove the override is unreachable; virtual/base dispatch remains separate provenance.",
+    "Fresh CAP-R6-001 contains zero PlayerController_Network.Update and zero rows for its three canonical child methods; no runtime bridge is claimed."
+  ]
+}

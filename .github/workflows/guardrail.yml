@@ -1202,3 +1202,8 @@ jobs:
         run: python tests/test_network_is_sync_input_data_summary.py
       - name: Network IsSyncInputData prover syntax
         run: python -m py_compile tools/prove_network_is_sync_input_data.py
+
+      - name: PlayerController Network Update summary
+        run: python tests/test_playercontroller_network_update_summary.py
+      - name: PlayerController Network Update prover syntax
+        run: python -m py_compile tools/prove_playercontroller_network_update.py
