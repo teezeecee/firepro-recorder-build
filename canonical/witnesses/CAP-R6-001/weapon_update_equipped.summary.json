@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WEAPON_UPDATE_EQUIPPED_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Weapon",
+      "method": "Update_Equipped",
+      "token": "0x06006ABA",
+      "rva": "0x00434E20",
+      "methoddef_row_hex": "204e43000000860005cf0a005c480000a84d",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type": "Void",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 2,
+      "local_signature_token": "0x1100028E",
+      "local_signature_blob_hex": "070112a788",
+      "locals": [
+        {
+          "index": 0,
+          "type": "Player"
+        }
+      ],
+      "code_size": 92,
+      "code_sha256": "3aa49b941ea49de68211c6b8bd98672b796ea36dc5eb99deeae75ef911aa737d",
+      "body_hex": "285d500006027bdcb600046f655000060a06282a00000a3a1100000028c06a0006027bd2b600046fc66a00062a02067bee5f00047ddab6000402167ddbb6000402282800000a067ba75f00047b3127000428764800066fd700000a2a"
+    },
+    "fields": [
+      {
+        "token": "0x0400B6DC",
+        "owner": "Weapon",
+        "name": "PlIdx",
+        "signature_blob_hex": "0608",
+        "decoded_type": "Int32",
+        "call_ils": [
+          "0x0006"
+        ]
+      },
+      {
+        "token": "0x0400B6D2",
+        "owner": "Weapon",
+        "name": "Idx",
+        "signature_blob_hex": "0608",
+        "decoded_type": "Int32",
+        "call_ils": [
+          "0x0022"
+        ]
+      },
+      {
+        "token": "0x04005FEE",
+        "owner": "Player",
+        "name": "Zone",
+        "signature_blob_hex": "0611a85c",
+        "decoded_type": "ZoneEnum",
+        "call_ils": [
+          "0x002F"
+        ]
+      },
+      {
+        "token": "0x0400B6DA",
+        "owner": "Weapon",
+        "name": "Zone",
+        "signature_blob_hex": "0611a85c",
+        "decoded_type": "ZoneEnum",
+        "call_ils": [
+          "0x0034"
+        ]
+      },
+      {
+        "token": "0x0400B6DB",
+        "owner": "Weapon",
+        "name": "Dir",
+        "signature_blob_hex": "0611a768",
+        "decoded_type": "PlDirEnum",
+        "call_ils": [
+          "0x003B"
+        ]
+      },
+      {
+        "token": "0x04005FA7",
+        "owner": "Player",
+        "name": "FormRen",
+        "signature_blob_hex": "06129024",
+        "decoded_type": "FormRenderer",
+        "call_ils": [
+          "0x0047"
+        ]
+      },
+      {
+        "token": "0x04002731",
+        "owner": "FormRenderer",
+        "name": "playerLayerLocation",
+        "signature_blob_hex": "0611a368",
+        "decoded_type": "LayerLocation",
+        "call_ils": [
+          "0x004C"
+        ]
+      }
+    ],
+    "external_member_refs": [
+      {
+        "token": "0x0A00002A",
+        "owner": "UnityEngine.Object",
+        "name": "op_Implicit",
+        "signature_blob_hex": "0001021269",
+        "call_il": "0x0012"
+      },
+      {
+        "token": "0x0A000028",
+        "owner": "UnityEngine.Component",
+        "name": "get_gameObject",
+        "signature_blob_hex": "2000120d",
+        "call_il": "0x0041"
+      },
+      {
+        "token": "0x0A0000D7",
+        "owner": "UnityEngine.GameObject",
+        "name": "set_layer",
+        "signature_blob_hex": "20010108",
+        "call_il": "0x0056"
+      }
+    ],
+    "internal_game_method_calls": [
+      {
+        "token": "0x0600505D",
+        "owner": "PlayerMan",
+        "method": "GetInst",
+        "call_il": "0x0000",
+        "opcode": "call",
+        "canonical_fact": null
+      },
+      {
+        "token": "0x06005065",
+        "owner": "PlayerMan",
+        "method": "GetPlObj",
+        "call_il": "0x000B",
+        "opcode": "callvirt",
+        "canonical_fact": "FACT-0109"
+      },
+      {
+        "token": "0x06006AC0",
+        "owner": "WeaponMan",
+        "method": "GetInst",
+        "call_il": "0x001C",
+        "opcode": "call",
+        "canonical_fact": "FACT-0197"
+      },
+      {
+        "token": "0x06006AC6",
+        "owner": "WeaponMan",
+        "method": "DeleteWeapon",
+        "call_il": "0x0027",
+        "opcode": "callvirt",
+        "canonical_fact": "FACT-0199"
+      },
+      {
+        "token": "0x06004876",
+        "owner": "LayerMan",
+        "method": "GetLayerID",
+        "call_il": "0x0051",
+        "opcode": "call",
+        "canonical_fact": "FACT-0057"
+      }
+    ],
+    "exact_flow": [
+      "player = PlayerMan.GetInst().GetPlObj(this.PlIdx)",
+      "if UnityEngine.Object.op_Implicit(player) is false: WeaponMan.GetInst().DeleteWeapon(this.Idx); return",
+      "this.Zone = player.Zone",
+      "this.Dir = raw 0",
+      "this.gameObject.layer = LayerMan.GetLayerID(player.FormRen.playerLayerLocation)",
+      "return"
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "Weapon",
+        "caller_method": "UpdateWeapon",
+        "caller_token": "0x06006ABD",
+        "caller_rva": "0x00435000",
+        "caller_code_size": 351,
+        "caller_code_sha256": "e8abda8319bdbcd424c4a521ed8decbb056271a54e759da39759a0eb46748263",
+        "call_il": "0x009A",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weapon_update_equipped_row_count": 0,
+    "weapon_update_weapon_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no Weapon.Update_Equipped rows and no Weapon.UpdateWeapon rows; no runtime branch, deletion, zone/direction write, layer write, or caller bridge is claimed from the capture."
+  },
+  "selection_boundary": {
+    "open_player_man_get_inst": {
+      "token": "0x0600505D",
+      "rva": "0x00304880",
+      "code_size": 6,
+      "code_sha256": "592555acaf96cbd806fb44a0dfd643c83f27267edcf79fe7ab57ec6c0457b1ff",
+      "direct_reference_count": 171,
+      "direct_caller_method_count": 102
+    },
+    "candidate_reason": "PlayerMan.GetInst is smaller in code bytes but its exact whole-assembly caller surface is 171 references across 102 methods. Weapon.Update_Equipped is 92 bytes with one direct caller; every other in-assembly game callee is already canonical as FACT-0109, FACT-0057, FACT-0197 or FACT-0199. The one-caller seam is therefore the smaller bounded proof surface, while PlayerMan.GetInst remains explicitly open."
+  },
+  "limits": [
+    "PlayerMan.GetInst singleton getter closure remains open and is not promoted by this dataset.",
+    "UnityEngine.Object.op_Implicit, UnityEngine.Component.get_gameObject and UnityEngine.GameObject.set_layer implementations remain external.",
+    "LayerMan.layerID table contents remain outside FACT-0057 and this dataset.",
+    "Weapon.UpdateWeapon remains a separate caller seam.",
+    "Fresh R6 is retained only as a negative capture boundary, not positive evidence."
+  ],
+  "reproducibility_tool": "tools/prove_weapon_update_equipped.py"
+}
