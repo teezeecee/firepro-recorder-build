@@ -1192,3 +1192,8 @@ jobs:
         run: python tests/test_player_set_player_controller_summary.py
       - name: Player SetPlayerController prover syntax
         run: python -m py_compile tools/prove_player_set_player_controller.py
+
+      - name: PlayerMan GetInst summary
+        run: python tests/test_playerman_get_inst_summary.py
+      - name: PlayerMan GetInst prover syntax
+        run: python -m py_compile tools/prove_playerman_get_inst.py
