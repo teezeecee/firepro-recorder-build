@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0207",
+  "claim": "In the matching retail DLL, TypeDef PlayerController_External (RID 2556) has raw TypeDef row 01001000047a000000000000b827c5613150 and extends TypeDef PlayerController (RID 2542) through raw TypeDefOrRef coded value 0x27B8. Its instance Update() MethodDef 0x06005032 has raw MethodDef row b80530000000c600edc800005c480000e53a, RVA 0x003005B8, signature blob 200001, raw ImplFlags 0x0000 and MethodAttributes 0x00C6, and an exact one-byte tiny-header body SHA-256 684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1 consisting only of ret. The raw MethodAttributes carry Public, Virtual and HideBySig while NewSlot is clear, so within the direct-subclass/same-signature metadata surface this is a reuse-slot Update override of canonical FACT-0206. Exact matching-DLL scanning finds zero direct IL token references to MethodDef 0x06005032. Enumerating all six direct PlayerController subclasses with same-signature reuse-slot Update methods gives exact body sizes External 1, NoControl 15, GamePad 59, Network 94, Tutorial 352, AI 984 bytes, making PlayerController_External.Update the smallest concrete override seam.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_External TypeDef RID 2556 raw row 01001000047a000000000000b827c5613150; extends coded TypeDefOrRef 0x27B8 -> PlayerController RID 2542. Update token 0x06005032 -> RVA 0x003005B8; raw MethodDef row b80530000000c600edc800005c480000e53a; exact one-byte body sha256=684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1. Full subtype/override/sibling boundary in canonical/witnesses/CAP-R6-001/playercontroller_external_update.summary.json; prover tools/prove_playercontroller_external_update.py.",
+      "observation": "Exact matching-DLL direct subtype metadata, reuse-slot virtual Update MethodDef, one-byte ret body, zero direct MethodDef-token references, and six-override size frontier."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_External.Update()",
+      "to": "PlayerController.Update()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_External directly extends PlayerController; Update has identical 200001 signature, raw MethodAttributes 0x00C6 (Virtual with NewSlot clear), while canonical FACT-0206 base Update has raw MethodAttributes 0x01C6 (Virtual with NewSlot set)."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This closes the PlayerController_External override MethodDef and metadata relationship only; it does not prove any runtime instance is PlayerController_External.",
+    "The two canonical FACT-0206 MatchMain callsites target the base PlayerController.Update token with callvirt; no claim is made that either dispatches to PlayerController_External.Update.",
+    "Fresh CAP-R6-001 contains zero PlayerController.Update, PlayerController_External.Update, MatchMain.Update_EntranceScene, and MatchMain.Update_Match rows; no runtime dispatch bridge is claimed.",
+    "The five sibling concrete Update overrides remain separate seams."
+  ]
+}

@@ -1125,3 +1125,9 @@ jobs:
         run: python tests/test_playercontroller_update_base_summary.py
       - name: PlayerController Update base prover syntax
         run: python -m py_compile tools/prove_playercontroller_update_base.py
+
+
+      - name: PlayerController External Update summary
+        run: python tests/test_playercontroller_external_update_summary.py
+      - name: PlayerController External Update prover syntax
+        run: python -m py_compile tools/prove_playercontroller_external_update.py

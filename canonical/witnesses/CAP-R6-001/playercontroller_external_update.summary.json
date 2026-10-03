@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_EXTERNAL_UPDATE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "base_type": {
+      "type": "PlayerController",
+      "typedef_rid": 2542,
+      "update_method_token": "0x06004F97",
+      "update_method_attributes_raw": "0x01C6",
+      "canonical_fact": "FACT-0206"
+    },
+    "subtype": {
+      "type": "PlayerController_External",
+      "typedef_rid": 2556,
+      "typedef_row_hex": "01001000047a000000000000b827c5613150",
+      "extends_typedeforref_raw": "0x27B8",
+      "extends_tag": "TypeDef",
+      "extends_rid": 2542
+    },
+    "method": {
+      "type": "PlayerController_External",
+      "method": "Update",
+      "token": "0x06005032",
+      "rva": "0x003005B8",
+      "methoddef_row_hex": "b80530000000c600edc800005c480000e53a",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x00C6",
+      "method_attribute_bits": [
+        "Public",
+        "Virtual",
+        "HideBySig"
+      ],
+      "newslot_bit_set": false,
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x06",
+      "code_size": 1,
+      "code_sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+      "body_hex": "2a",
+      "exact_flow": [
+        "ret"
+      ]
+    },
+    "direct_in_assembly_references": [],
+    "direct_reference_count": 0,
+    "direct_caller_method_count": 0,
+    "override_frontier": [
+      {
+        "type": "PlayerController_External",
+        "token": "0x06005032",
+        "code_size": 1,
+        "code_sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+      },
+      {
+        "type": "PlayerController_NoControl",
+        "token": "0x0600503A",
+        "code_size": 15,
+        "code_sha256": "1fb22e770dcbf84240bd60523215799d14585f3c5de15394803c5bffb8944298"
+      },
+      {
+        "type": "PlayerController_GamePad",
+        "token": "0x06005035",
+        "code_size": 59,
+        "code_sha256": "7e6adb5aef2f2ce9384861ba006f6c2604af02cd16a87c245b92b5dee816658f"
+      },
+      {
+        "type": "PlayerController_Network",
+        "token": "0x06005038",
+        "code_size": 94,
+        "code_sha256": "6263d3075a2b1147709139a168d07a8b4f9b6773a41b67ff169759a6fe4482ed"
+      },
+      {
+        "type": "PlayerController_Tutorial",
+        "token": "0x0600503D",
+        "code_size": 352,
+        "code_sha256": "ee9742c42475c1d0a1ab0513f2cab8c4e25b5f3d3e10b750adf9ecd498573bbe"
+      },
+      {
+        "type": "PlayerController_AI",
+        "token": "0x0600502B",
+        "code_size": 984,
+        "code_sha256": "6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9"
+      }
+    ]
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_update_row_count": 0,
+    "playercontroller_external_update_row_count": 0,
+    "matchmain_update_entrance_scene_row_count": 0,
+    "matchmain_update_match_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for the base Update surface, PlayerController_External.Update, or either MatchMain base-token caller; no concrete runtime dispatch target is observed."
+  },
+  "selection_boundary": {
+    "candidate_reason": "Among the six direct PlayerController subclasses carrying same-signature reuse-slot Update methods, PlayerController_External.Update is the unique smallest body at one byte.",
+    "remaining_override_sizes": [
+      [
+        "PlayerController_NoControl.Update",
+        15
+      ],
+      [
+        "PlayerController_GamePad.Update",
+        59
+      ],
+      [
+        "PlayerController_Network.Update",
+        94
+      ],
+      [
+        "PlayerController_Tutorial.Update",
+        352
+      ],
+      [
+        "PlayerController_AI.Update",
+        984
+      ]
+    ]
+  },
+  "limits": [
+    "The metadata proves a direct subtype and reuse-slot virtual Update MethodDef, not runtime instance selection.",
+    "No direct IL token references to MethodDef 0x06005032 exist in the matching DLL.",
+    "Base-token callvirt dispatch remains unresolved at runtime.",
+    "Fresh R6 is a negative capture boundary only.",
+    "Five sibling concrete Update overrides remain open."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_external_update.py"
+}
