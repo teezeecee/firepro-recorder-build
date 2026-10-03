@@ -1217,3 +1217,8 @@ jobs:
         run: python tests/test_player_end_force_control_summary.py
       - name: Player End ForceControl prover syntax
         run: python -m py_compile tools/prove_player_end_force_control.py
+
+      - name: PlayerForcedController Start FoceControl summary
+        run: python tests/test_playerforcedcontroller_start_foce_control_summary.py
+      - name: PlayerForcedController Start FoceControl prover syntax
+        run: python -m py_compile tools/prove_playerforcedcontroller_start_foce_control.py
