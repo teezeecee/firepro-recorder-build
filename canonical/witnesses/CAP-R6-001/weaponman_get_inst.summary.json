@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WEAPONMAN_GET_INST_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "WeaponMan",
+      "method": "GetInst",
+      "token": "0x06006AC0",
+      "rva": "0x00435282",
+      "methoddef_row_hex": "82524300000096003b7f080096370300a84d",
+      "signature_blob_hex": "000012b510",
+      "parameters": [],
+      "header_format": "tiny",
+      "header_flags_raw": "0x0002",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "code_size": 6,
+      "code_sha256": "8efdce8690337e223d2f0de688a62b433f4d6515c73fa84c203aadbca4f524fb",
+      "body_hex": "7eeab600042a"
+    },
+    "field": {
+      "token": "0x0400B6EA",
+      "owner": "WeaponMan",
+      "name": "inst",
+      "signature_blob_hex": "0612b510",
+      "role": "static singleton value returned by GetInst"
+    },
+    "exact_flow": [
+      "read static WeaponMan.inst",
+      "return"
+    ],
+    "direct_in_assembly_references": [
+      {"caller_type":"FormRenderer","caller_method":"ApplySortingOrder","caller_token":"0x06001F4F","caller_rva":"0x0010D064","caller_code_size":386,"caller_code_sha256":"7d8231de8b396ae2209938f3104bd31a271a1009ceb600276f47492872f47066","call_il":"0x0068","opcode":"call"},
+      {"caller_type":"FormRenderer","caller_method":"ApplySortingOrder","caller_token":"0x06001F4F","caller_rva":"0x0010D064","caller_code_size":386,"caller_code_sha256":"7d8231de8b396ae2209938f3104bd31a271a1009ceb600276f47492872f47066","call_il":"0x0087","opcode":"call"},
+      {"caller_type":"FormRenderer","caller_method":"SetPrdItem","caller_token":"0x06001F53","caller_rva":"0x0010D328","caller_code_size":716,"caller_code_sha256":"377d58fe989ffa42ca0420eacc751c37c34e758004b7bd61e1e16faaa5e53162","call_il":"0x0000","opcode":"call"},
+      {"caller_type":"FormRenderer","caller_method":"SetWeaponObj","caller_token":"0x06001F54","caller_rva":"0x0010D600","caller_code_size":529,"caller_code_sha256":"9a90ee6e931c2e7e58f746ae75c41d44998fb63a7da7dac8972b34f1d2284ecf","call_il":"0x0000","opcode":"call"},
+      {"caller_type":"FormRenderer","caller_method":"SetWeaponObj","caller_token":"0x06001F54","caller_rva":"0x0010D600","caller_code_size":529,"caller_code_sha256":"9a90ee6e931c2e7e58f746ae75c41d44998fb63a7da7dac8972b34f1d2284ecf","call_il":"0x0010","opcode":"call"},
+      {"caller_type":"FormAnimator","caller_method":"PlayAnimationSE","caller_token":"0x06004E7D","caller_rva":"0x002DB718","caller_code_size":364,"caller_code_sha256":"ba7c6da321b3f5632756459a8a788abd92609da056981078f5fc7bbe04824085","call_il":"0x0098","opcode":"call","canonical_fact":"FACT-0015"},
+      {"caller_type":"Weapon","caller_method":"SetPattern","caller_token":"0x06006AB7","caller_rva":"0x00434C1A","caller_code_size":44,"caller_code_sha256":"9fd8e4c6ea0c03f75b3de3aabfbe56ed4bf2f902ffe76bb13f7f57dee7b2c1b3","call_il":"0x0015","opcode":"call","canonical_fact":"FACT-0196"},
+      {"caller_type":"Weapon","caller_method":"Update_Equipped","caller_token":"0x06006ABA","caller_rva":"0x00434E20","caller_code_size":92,"caller_code_sha256":"3aa49b941ea49de68211c6b8bd98672b796ea36dc5eb99deeae75ef911aa737d","call_il":"0x001C","opcode":"call"}
+    ],
+    "direct_reference_count": 8,
+    "direct_caller_method_count": 6
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weaponman_get_inst_row_count": 0,
+    "formanimator_play_animation_se_row_count": 90916,
+    "formanimator_play_animation_se_execution_count": 45458,
+    "formrenderer_apply_sorting_order_row_count": 0,
+    "formrenderer_set_prd_item_row_count": 0,
+    "formrenderer_set_weapon_obj_row_count": 0,
+    "weapon_set_pattern_row_count": 0,
+    "weapon_update_equipped_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "R6 traces PlayAnimationSE heavily but never traces WeaponMan.GetInst itself; no helper execution, return value, or runtime caller bridge is claimed from the capture."
+  },
+  "limits": [
+    "This dataset closes only the exact WeaponMan.GetInst getter body, WeaponMan.inst field identity, and exact direct in-assembly caller map.",
+    "Fresh R6 contains zero direct WeaponMan.GetInst rows and is retained only as a negative capture boundary, not positive evidence.",
+    "FACT-0015 proves a GetInst callsite inside PlayAnimationSE, but traced PlayAnimationSE executions are not promoted into unobserved GetInst executions.",
+    "WeaponMan singleton creation, assignment, lifetime, destruction, and Unity object semantics remain outside this dataset.",
+    "Caller behavior remains separate except where already canonicalized by FACT-0015 and FACT-0196."
+  ],
+  "reproducibility_tool": "tools/prove_weaponman_get_inst.py"
+}
