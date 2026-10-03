@@ -3903,27 +3903,6 @@
         "PlayerController_Tutorial.Update remains a separate parent seam",
         "fresh R6 has zero wrapper/leaf/tutorial rows and provides no runtime bridge"
       ]
-    },
-    {
-      "family_id": "DLL_PLAYER_END_CONTROL_V1",
-      "fact_id": "FACT-0223",
-      "source_ids": [
-        "DLL-001"
-      ],
-      "scope": "PROVEN_DLL",
-      "definition": "Exact 19-byte Player wrapper over canonical FACT-0222, with the complete 13-reference / 12-caller surface.",
-      "summary": "canonical/witnesses/CAP-R6-001/player_end_force_control.summary.json",
-      "dll_method_count": 1,
-      "direct_in_assembly_reference_count": 13,
-      "direct_caller_method_count": 12,
-      "runtime_eligible": false,
-      "semantic_promotion_blockers": [
-        "raw field zero receives no added state label",
-        "owned controller object lifecycle remains separate provenance",
-        "caller semantics remain separate from the token-reference surface",
-        "the tutorial controller Update body remains a separate parent seam",
-        "fresh R6 has no positive runtime bridge for this wrapper"
-      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
