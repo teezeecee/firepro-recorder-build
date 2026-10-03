@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0224",
+  "claim": "In the matching retail DLL, instance PlayerForcedController.Start_FoceControl(ForceCtrlEnum) (0x0600503F) has raw MethodDef row 1a093000000086006d400a008dcc0200ee3a, RVA 0x0030091A, signature blob 20010111a804, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 29-byte tiny-header body SHA-256 ede6d069634bd8695534188e0ff9ca8fb6cd7a4669425c39b4407cd7c3327320. The body stores the raw argument into PlayerForcedController.mode, then writes raw zero to step, pauseByPrevPlayer and isComplete, and returns. It contains no in-assembly MethodDef child call. Exact matching-DLL scanning finds exactly one direct reference: Player.Start_ForceControl callvirt at IL+0x000E.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerForcedController.Start_FoceControl token 0x0600503F -> RVA 0x0030091A; exact 29-byte body sha256=ede6d069634bd8695534188e0ff9ca8fb6cd7a4669425c39b4407cd7c3327320; exact mode/step/pauseByPrevPlayer/isComplete field records, no MethodDef children, and one-reference / one-caller surface in canonical/witnesses/CAP-R6-001/playerforcedcontroller_start_foce_control.summary.json; prover tools/prove_playerforcedcontroller_start_foce_control.py.",
+      "observation": "Exact forced-controller start leaf and sole direct caller boundary."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Player.Start_ForceControl(ForceCtrlEnum)",
+      "to": "PlayerForcedController.Start_FoceControl(ForceCtrlEnum)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Player.Start_ForceControl token 0x06004F74 callvirt token 0x0600503F at IL+0x000E."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "ForceCtrlEnum is preserved as the metadata parameter type; no enum-member meaning is assigned to the raw argument.",
+    "Field names mode, step, pauseByPrevPlayer and isComplete are metadata identifiers; the raw stores receive no additional state labels.",
+    "Player.Start_ForceControl remains a separate wrapper seam.",
+    "PlayerController_Tutorial.Update remains a separate parent seam.",
+    "Fresh CAP-R6-001 contains zero PlayerForcedController.Start_FoceControl, Player.Start_ForceControl and PlayerController_Tutorial.Update rows; no runtime bridge is claimed."
+  ]
+}
