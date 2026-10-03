@@ -44,6 +44,8 @@ def verify_dll(path):
  ss,q=ov.base.secs(pe);st,hs,rows,tp=ov.base.mdstreams(pe,ss,q);s,b,ix,z,o=ov.base.tables(pe,st,hs,rows,tp);sb=st['#Strings'][0];bb=st['#Blob'][0];fm,owners=ov.base.owner_maps(pe,rows,s,ix,z,o,sb)
  raw,rva,impl,flags,name,sig,plist,owner,start,body=mm(pe,ss,s,b,ix,z,o,sb,bb,owners,T)
  if (raw,rva,impl,flags,name,sig,owner)!=(ROW,RVA,0,FLAGS,'Start_FoceControl',SIG,('PlayerForcedController','')):raise E('method metadata')
+ extz=4 if max(rows.get(t,0) for t in (2,1,27))>=16384 else 2;tp=o[2]+(2561-1)*z[2];tr=pe[tp:tp+z[2]];tq=tp+4;tni,tq=ov.base.rd(pe,tq,s);tnsi,tq=ov.base.rd(pe,tq,s)
+ if tr.hex()!='01010000857a0000000000004503cb613e50' or ov.base.s_at(pe,sb,tni)!='ForceCtrlEnum' or ov.base.s_at(pe,sb,tnsi)!='':raise E('ForceCtrlEnum metadata')
  if pe[ov.base.off(ss,RVA)]!=0x76:raise E('tiny header')
  if body!=BODY or hashlib.sha256(body).hexdigest()!=SHA:raise E('body')
  for tok,(own,nm,row,sg,il,val) in FIELDS.items():
