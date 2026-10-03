@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0213",
+  "claim": "In the matching retail DLL, static SteamManager.get_Instance() (0x060052F0) has raw MethodDef row 805e32000000910835640a00d7e50200603d, RVA 0x00325E80, signature blob 000012aa44, raw ImplFlags 0x0000 and MethodAttributes 0x0891, and an exact 38-byte tiny-header body SHA-256 076c5c279b25adcb3393894e49a79529bb680282eeac30b4d08826cacfe852a7. The exact body loads static SteamManager.s_instance, compares it with null through external UnityEngine.Object.op_Equality (MemberRef 0x0A000006), and when that comparison is false returns s_instance. Otherwise it loads user string \"SteamManager\", constructs an external object through MemberRef 0x0A0000D6, calls raw external MethodSpec 0x2B0003E3, and returns that result. It contains no in-assembly MethodDef child call. Exact matching-DLL scanning finds one direct MethodDef-token reference: SteamManager.get_Initialized at IL+0x0000.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SteamManager.get_Instance token 0x060052F0 -> RVA 0x00325E80; exact 38-byte body sha256=076c5c279b25adcb3393894e49a79529bb680282eeac30b4d08826cacfe852a7; full field/external-token/string/caller evidence in canonical/witnesses/CAP-R6-001/steammanager_get_instance.summary.json; prover tools/prove_steammanager_get_instance.py.",
+      "observation": "Exact static singleton-field null comparison, external construction/MethodSpec path, existing-instance path, absence of in-assembly MethodDef child calls, and one-reference / one-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "SteamManager.get_Initialized()",
+      "to": "SteamManager.get_Instance()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "SteamManager.get_Initialized token 0x060052F1 direct call token 0x060052F0 at IL+0x0000."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The behavior of external UnityEngine.Object.op_Equality, the external constructor, and MethodSpec 0x2B0003E3 is not promoted.",
+    "The exact user string \"SteamManager\" is proven; no broader object-lifecycle semantics are inferred.",
+    "The write/population path for SteamManager.s_instance remains separate provenance.",
+    "Fresh CAP-R6-001 contains zero SteamManager.get_Instance and SteamManager.get_Initialized rows; no runtime bridge is claimed."
+  ]
+}
