@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0213",
+  "claim": "In the matching retail DLL, static PlayerMan.GetInst() (0x0600505D) has raw MethodDef row 80483000000096003b7f0800b8d40200f73a, RVA 0x00304880, signature blob 000012a818, raw ImplFlags 0x0000 and MethodAttributes 0x0096, and an exact 6-byte tiny-header body SHA-256 592555acaf96cbd806fb44a0dfd643c83f27267edcf79fe7ab57ec6c0457b1ff. The body is exactly ldsfld PlayerMan.inst (0x040061FA) followed by ret; PlayerMan.inst has raw Field row 160006220100cf380000 and signature blob 0612a818. Exact matching-DLL MethodDef-body scanning finds 171 direct references, all opcode call, across 102 caller methods; the normalized reference-map SHA-256 is fd83acc3062a77a8dee1dde7084c989511249701cff57fb1100cb89a6446400c. Canonical FACT-0201 Weapon.Update_Equipped calls the getter at IL+0x0000. The still-open Network.IsSyncInputData caller contains two getter calls at IL+0x0051 and IL+0x0164.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerMan.GetInst token 0x0600505D -> RVA 0x00304880; exact 6-byte body sha256=592555acaf96cbd806fb44a0dfd643c83f27267edcf79fe7ab57ec6c0457b1ff; exact field, whole-DLL 171-reference / 102-caller map digest, FACT-0201 bridge and open Network.IsSyncInputData boundary in canonical/witnesses/CAP-R6-001/playerman_get_inst.summary.json; prover tools/prove_playerman_get_inst.py.",
+      "observation": "Exact PlayerMan singleton-field getter body and complete mechanically enumerated direct-call surface."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0201 Weapon.Update_Equipped()",
+      "to": "PlayerMan.GetInst()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Weapon.Update_Equipped token 0x06006ABA direct call token 0x0600505D at IL+0x0000."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact proves only the getter load from PlayerMan.inst; assignment, construction, destruction and singleton lifecycle remain separate provenance.",
+    "The 171 references / 102 callers are mechanically enumerated as a call-surface boundary only; this fact does not promote the semantics of those caller methods.",
+    "Network.IsSyncInputData remains a separate open 603-byte caller seam; its two getter references are pinned only as caller boundaries here.",
+    "Fresh CAP-R6-001 contains zero PlayerMan.GetInst, Network.IsSyncInputData and Weapon.Update_Equipped rows; no runtime singleton or caller bridge is claimed."
+  ]
+}
