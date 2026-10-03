@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_STEAMMANAGER_GET_INSTANCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "type": {
+      "type": "SteamManager",
+      "typedef_rid": 2705,
+      "typedef_row_hex": "01001000fc820000000000005500f387ef52"
+    },
+    "method": {
+      "type": "SteamManager",
+      "method": "get_Instance",
+      "token": "0x060052F0",
+      "rva": "0x00325E80",
+      "methoddef_row_hex": "805e32000000910835640a00d7e50200603d",
+      "signature_blob_hex": "000012aa44",
+      "parameters": [],
+      "return_type_metadata": "SteamManager",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0891",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x9A",
+      "code_size": 38,
+      "code_sha256": "076c5c279b25adcb3393894e49a79529bb680282eeac30b4d08826cacfe852a7",
+      "body_hex": "7ef387000414280600000a391000000072f2f3087073d600000a28e303002b2a7ef38700042a",
+      "exact_flow": [
+        "load static s_instance",
+        "compare s_instance with null through external MemberRef 0x0A000006",
+        "if comparison is false: return s_instance",
+        "otherwise load exact user string \"SteamManager\"",
+        "construct through external MemberRef 0x0A0000D6",
+        "call raw external MethodSpec 0x2B0003E3",
+        "return that result"
+      ]
+    },
+    "field": {
+      "token": "0x040087F3",
+      "owner": "SteamManager",
+      "name": "s_instance",
+      "field_row_hex": "11007fd10500963b0000",
+      "signature_blob_hex": "0612aa44",
+      "access_ils": [
+        "0x0000",
+        "0x0020"
+      ]
+    },
+    "external_tokens": [
+      {
+        "token": "0x0A000006",
+        "kind": "MemberRef",
+        "name": "op_Equality",
+        "memberref_row_hex": "d100000021500600b6480000",
+        "signature_blob_hex": "00020212691269",
+        "call_il": "0x0006"
+      },
+      {
+        "token": "0x7008F3F2",
+        "kind": "UserString",
+        "value": "SteamManager",
+        "load_il": "0x0010"
+      },
+      {
+        "token": "0x0A0000D6",
+        "kind": "MemberRef",
+        "name": ".ctor",
+        "memberref_row_hex": "19000000eb4f060079480000",
+        "signature_blob_hex": "2001010e",
+        "newobj_il": "0x0015"
+      },
+      {
+        "token": "0x2B0003E3",
+        "kind": "MethodSpec",
+        "call_il": "0x001A"
+      }
+    ],
+    "internal_methoddef_calls": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "SteamManager",
+        "caller_method": "get_Initialized",
+        "caller_token": "0x060052F1",
+        "caller_rva": "0x00325EA7",
+        "caller_code_size": 11,
+        "caller_code_sha256": "c1bdb25bf14d1778175cda4ec73d358c1891fcc0a65d3b566308883ea29c40ff",
+        "call_il": "0x0000",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "steammanager_get_instance_row_count": 0,
+    "steammanager_get_initialized_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for the getter or its sole direct caller; no runtime singleton construction or caller bridge is claimed."
+  },
+  "selection_boundary": {
+    "candidate_reason": "The remaining Network.IsSyncInputData path reaches Network_OnlineCheck -> SteamManager.get_Initialized -> SteamManager.get_Instance. The 38-byte get_Instance body is dependency-clean and has one caller, unlike the 6-byte PlayerMan.GetInst surface with 171 references across 102 callers.",
+    "next_after_helper": "SteamManager.get_Initialized is an 11-byte caller whose only MethodDef child is this getter."
+  },
+  "limits": [
+    "External Unity/MethodSpec behavior remains external.",
+    "s_instance population/write provenance remains separate.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_steammanager_get_instance.py"
+}
