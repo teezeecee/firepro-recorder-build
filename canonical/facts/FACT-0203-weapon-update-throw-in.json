@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0203",
+  "claim": "In the matching retail DLL, instance Weapon.Update_ThrowIn() (0x06006ABC) has raw MethodDef row 384f43000000860024cf0a005c480000a84d, RVA 0x00434F38, signature blob 200001, one Single local via local signature blob 07010c, and an exact 188-byte fat-header body SHA-256 0c414a06ab008a72015d27a098c79d068c39a442248446c4245d541423a35bf1. Its exact body computes this.Vel = Vector3.op_Addition(this.Vel, this.Acc); multiplies this.Vel.x and this.Vel.y independently by this.Damping; computes this.Pos = Vector3.op_Addition(this.Pos, this.Vel); stores Mathf.Sqrt((this.Vel.x*this.Vel.x) + (this.Vel.y*this.Vel.y)) in local0; and an unsigned greater-than branch on local0 versus raw Float32 0.0020000000949949026 returns immediately when taken. If not taken, it writes raw State = 0, Vel = Vector3.zero, Acc = Vector3.zero, then returns. The method contains no in-assembly game-method calls. Exact matching-DLL scanning finds one direct caller, Weapon.UpdateWeapon, at IL+0x0102.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Weapon.Update_ThrowIn token 0x06006ABC raw MethodDef row 384f43000000860024cf0a005c480000a84d -> RVA 0x00434F38; signature 200001; local signature 07010c; fat-header code size 188; code sha256=0c414a06ab008a72015d27a098c79d068c39a442248446c4245d541423a35bf1. Exact arithmetic, branch constant, field/member identities, absence of internal game calls, parent MethodDef call patterns, and one-reference / one-caller map are pinned in canonical/witnesses/CAP-R6-001/weapon_update_throw_in.summary.json; prover tools/prove_weapon_update_throw_in.py.",
+      "observation": "Exact matching-DLL Weapon.Update_ThrowIn acceleration integration, x/y damping, position integration, planar-magnitude calculation, raw settle threshold, raw State-zero transition, zero-vector writes, no internal game-method calls, and exact one-reference / one-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Weapon.UpdateWeapon()",
+      "to": "Weapon.Update_ThrowIn()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Weapon.UpdateWeapon token 0x06006ABD, RVA 0x00435000, direct call token 0x06006ABC at IL+0x0102."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw Weapon.State value 0 is preserved numerically without assigning a gameplay label.",
+    "Fresh CAP-R6-001 contains zero Weapon.Update_ThrowIn rows and zero Weapon.UpdateWeapon rows, so no runtime integration, damping evolution, planar-speed threshold, settle transition, or caller bridge is claimed.",
+    "UnityEngine.Vector3 operator/field behavior and UnityEngine.Mathf.Sqrt remain external.",
+    "Weapon.Damping authored/populated values remain outside this dataset.",
+    "Weapon.UpdateWeapon remains a separate parent seam."
+  ]
+}
