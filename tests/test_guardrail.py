@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import copy
 import importlib.util
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -11,6 +12,22 @@ spec.loader.exec_module(guard)
 manifest = guard.load_json(ROOT / "canonical" / "source_manifest.json")
 sources = {s["source_id"]: s for s in manifest["sources"]}
 good = guard.load_json(ROOT / "canonical" / "facts" / "FACT-0001-matching-dll.json")
+
+guard.validate_canonical_json(ROOT)
+print("PASS canonical JSON syntax")
+
+with tempfile.TemporaryDirectory() as tmp:
+    tmp_root = Path(tmp)
+    (tmp_root / "canonical").mkdir()
+    (tmp_root / "canonical" / "broken.json").write_text("{", encoding="utf-8")
+    try:
+        guard.validate_canonical_json(tmp_root)
+    except guard.GuardrailError as e:
+        if "invalid canonical JSON" not in str(e):
+            raise
+        print(f"PASS blocks malformed canonical JSON: {e}")
+    else:
+        raise AssertionError("guardrail incorrectly allowed malformed canonical JSON")
 
 
 def must_fail(label, fact, expected):

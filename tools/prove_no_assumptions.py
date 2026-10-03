@@ -14,6 +14,13 @@ def load_json(path: Path):
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
+def validate_canonical_json(root=ROOT):
+    for p in sorted((root / "canonical").rglob("*.json")):
+        try:
+            load_json(p)
+        except (json.JSONDecodeError, OSError) as e:
+            raise GuardrailError(f"invalid canonical JSON {p.relative_to(root)}: {e}") from e
+
 def validate_fact(fact, sources):
     missing = [k for k in ("fact_id", "claim", "status", "evidence", "chain_edges") if k not in fact]
     if missing:
@@ -50,6 +57,7 @@ def validate_fact(fact, sources):
                 raise GuardrailError(f"{fact['fact_id']}: chain edge {i} evidence lacks locator")
 
 def validate_repo(root=ROOT):
+    validate_canonical_json(root)
     milestone = load_json(root / "MILESTONE.json")
     manifest = load_json(root / "canonical" / "source_manifest.json")
     sources = {s["source_id"]: s for s in manifest["sources"]}
