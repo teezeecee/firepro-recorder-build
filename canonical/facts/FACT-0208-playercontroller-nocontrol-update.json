@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0208",
+  "claim": "In the matching retail DLL, direct subclass PlayerController_NoControl (TypeDef RID 2559; raw TypeDef row 01001000507a000000000000b827c8613950; raw extends TypeDefOrRef 0x27B8 -> PlayerController RID 2542) defines reuse-slot virtual instance Update() MethodDef 0x0600503A at RVA 0x003006D8, raw MethodDef row d80630000000c600edc800005c480000ec3a, signature blob 200001, ImplFlags 0x0000 and MethodAttributes 0x00C6. Its exact 15-byte tiny-header body SHA-256 is 1fb22e770dcbf84240bd60523215799d14585f3c5de15394803c5bffb8944298 and is exactly: store raw zero to inherited PlayerController field padOn (0x04006117), store raw zero to inherited PlayerController field padPush (0x04006118), return. It contains no calls, and exact matching-DLL scanning finds zero direct IL token references to MethodDef 0x0600503A. After canonical FACT-0207 closes the one-byte External override, this is the smallest still-open concrete PlayerController.Update override; the remaining open sibling bodies are GamePad 59, Network 94, Tutorial 352, and AI 984 bytes.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_NoControl TypeDef RID 2559 raw row 01001000507a000000000000b827c8613950; Update token 0x0600503A -> RVA 0x003006D8; raw MethodDef row d80630000000c600edc800005c480000ec3a; exact 15-byte body sha256=1fb22e770dcbf84240bd60523215799d14585f3c5de15394803c5bffb8944298; field and sibling frontier evidence in canonical/witnesses/CAP-R6-001/playercontroller_nocontrol_update.summary.json; prover tools/prove_playercontroller_nocontrol_update.py.",
+      "observation": "Exact direct-subtype/reuse-slot metadata, inherited padOn/padPush raw-zero stores, return, zero direct MethodDef-token references, and remaining override-size frontier."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_NoControl.Update()",
+      "to": "PlayerController.Update()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_NoControl directly extends PlayerController; Update has identical signature 200001 and raw MethodAttributes 0x00C6 (Virtual, NewSlot clear), against canonical FACT-0206 base Update raw 0x01C6."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Field names padOn and padPush are metadata identifiers; raw zero stores are preserved without assigning higher-level input semantics.",
+    "This fact does not prove any runtime PlayerController instance is PlayerController_NoControl.",
+    "The canonical FACT-0206 MatchMain callsites target the base PlayerController.Update token with callvirt; no claim is made that either dispatches to this override.",
+    "Fresh CAP-R6-001 contains zero base/NoControl/caller rows; no runtime dispatch bridge is claimed.",
+    "GamePad, Network, Tutorial and AI Update overrides remain separate open seams."
+  ]
+}
