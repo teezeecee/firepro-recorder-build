@@ -1,0 +1,588 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_NETWORK_IS_SYNC_INPUT_DATA_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Network",
+      "method": "IsSyncInputData",
+      "token": "0x06004B48",
+      "rva": "0x002C1C50",
+      "methoddef_row_hex": "501c2c0000008600070e0a00db490000ba37",
+      "signature_blob_hex": "200002",
+      "parameters": [],
+      "return_type_metadata": "Boolean",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "fat",
+      "fat_flags_size_raw": "0x3013",
+      "max_stack": 4,
+      "local_signature_token": "0x11000FBA",
+      "local_signature_blob_hex": "0708080812a78802080812a78808",
+      "local_types_metadata": [
+        "Int32",
+        "Int32",
+        "Player",
+        "Boolean",
+        "Int32",
+        "Int32",
+        "Player",
+        "Int32"
+      ],
+      "code_size": 603,
+      "code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d",
+      "body_hex": "027b915a00043902000000172a28654b0006390a00000028e70b000a3ab4000000160a3850000000060b027b9c5a0004072200002041a0027b9d5a000407179c06027b855a000440050000003823000000285d500006076f665000060c08282a00000a3a05000000380700000008186fac4e00060617580a06027b875a00043fa4ffffff7eec6400047bf26400047bcf6400043a190000007e4458000472f18d087020f00000006fc349000638140000007e44580004720f8e087020f00000006fc349000602177d915a000402177d905a0004162a027b8a5a00043a0900000002177d905a0004162a170d161304381f010000110413051104027b855a000440050000003803010000027b9d5a0004110591390500000038f0000000027b8a5a000411049a6f2c0e000a3acf000000160d027b9c5a000411058fce000001254e289902000a5856027b9c5a00041105982200002041439f000000027b9d5a00041105179c285d50000611056f6650000613061106282a00000a3a0500000038890000001106186fac4e00067eec6400047bf26400047bcf6400043a2c0000007e44580004724f8e0870027b945a000411049a725f8e0870281b00000a20f00000006fc349000638270000007e4458000472998e0870027b945a000411049a72bd8e0870281b00000a20f00000006fc349000602177d905a0004380e000000027b9c5a000411052200000000a01104175813041104027b875a00043fd4feffff027b905a00043a2f0000000939290000001613073814000000027b9c5a000411072200000000a01107175813071107027b875a00043fdfffffff092a"
+    },
+    "canonical_methoddef_calls": [
+      {
+        "fact_id": "FACT-0215",
+        "token": "0x06004B65",
+        "method": "Network.Network_OnlineCheck",
+        "sites": [
+          {
+            "il": "0x000D",
+            "opcode": "call"
+          }
+        ]
+      },
+      {
+        "fact_id": "FACT-0219",
+        "token": "0x0600505D",
+        "method": "PlayerMan.GetInst",
+        "sites": [
+          {
+            "il": "0x0051",
+            "opcode": "call"
+          },
+          {
+            "il": "0x0164",
+            "opcode": "call"
+          }
+        ]
+      },
+      {
+        "fact_id": "FACT-0217",
+        "token": "0x06005066",
+        "method": "PlayerMan.GetPlObjFromPadPort",
+        "sites": [
+          {
+            "il": "0x0057",
+            "opcode": "callvirt"
+          },
+          {
+            "il": "0x016B",
+            "opcode": "callvirt"
+          }
+        ]
+      },
+      {
+        "fact_id": "FACT-0218",
+        "token": "0x06004EAC",
+        "method": "Player.SetPlayerController",
+        "sites": [
+          {
+            "il": "0x006F",
+            "opcode": "callvirt"
+          },
+          {
+            "il": "0x0186",
+            "opcode": "callvirt"
+          }
+        ]
+      },
+      {
+        "fact_id": "FACT-0216",
+        "token": "0x060049C3",
+        "method": "DispNotification.Show",
+        "sites": [
+          {
+            "il": "0x00A7",
+            "opcode": "callvirt"
+          },
+          {
+            "il": "0x00C0",
+            "opcode": "callvirt"
+          },
+          {
+            "il": "0x01C1",
+            "opcode": "callvirt"
+          },
+          {
+            "il": "0x01ED",
+            "opcode": "callvirt"
+          }
+        ]
+      }
+    ],
+    "external_member_refs": [
+      {
+        "token": "0x0A000BE7",
+        "name": "get_internetReachability",
+        "memberref_row_hex": "29060000710e070065db0000",
+        "signature_blob_hex": "0000118755",
+        "sites": [
+          {
+            "il": "0x0017",
+            "opcode": "call"
+          }
+        ]
+      },
+      {
+        "token": "0x0A00002A",
+        "name": "op_Implicit",
+        "memberref_row_hex": "d100000085510600e9490000",
+        "signature_blob_hex": "0001021269",
+        "sites": [
+          {
+            "il": "0x005E",
+            "opcode": "call"
+          },
+          {
+            "il": "0x0174",
+            "opcode": "call"
+          }
+        ]
+      },
+      {
+        "token": "0x0A000E2C",
+        "name": "get_Count",
+        "memberref_row_hex": "dc130000f55206005e490000",
+        "signature_blob_hex": "200008",
+        "sites": [
+          {
+            "il": "0x0125",
+            "opcode": "callvirt"
+          }
+        ]
+      },
+      {
+        "token": "0x0A000299",
+        "name": "get_deltaTime",
+        "memberref_row_hex": "510600003b6a0600a94d0000",
+        "signature_blob_hex": "00000c",
+        "sites": [
+          {
+            "il": "0x0140",
+            "opcode": "call"
+          }
+        ]
+      },
+      {
+        "token": "0x0A00001B",
+        "name": "Concat",
+        "memberref_row_hex": "f9050000e15006008b490000",
+        "signature_blob_hex": "00030e0e0e0e",
+        "sites": [
+          {
+            "il": "0x01B7",
+            "opcode": "call"
+          },
+          {
+            "il": "0x01E3",
+            "opcode": "call"
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "token": "0x04005A91",
+        "owner": "Network",
+        "name": "Match_Disconnect_Myself",
+        "field_row_hex": "060091ae030008000000",
+        "signature_blob_hex": "0602",
+        "sites": [
+          [
+            "0x0001",
+            "ldfld"
+          ],
+          [
+            "0x00C7",
+            "stfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005A9C",
+        "owner": "Network",
+        "name": "AsynchronousTime",
+        "field_row_hex": "01005eaf0300a7020000",
+        "signature_blob_hex": "061d0c",
+        "sites": [
+          [
+            "0x002B",
+            "ldfld"
+          ],
+          [
+            "0x0132",
+            "ldfld"
+          ],
+          [
+            "0x0148",
+            "ldfld"
+          ],
+          [
+            "0x01FF",
+            "ldfld"
+          ],
+          [
+            "0x0239",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005A9D",
+        "owner": "Network",
+        "name": "isAsynchronous_Timeout",
+        "field_row_hex": "01006faf030084090000",
+        "signature_blob_hex": "061d02",
+        "sites": [
+          [
+            "0x0038",
+            "ldfld"
+          ],
+          [
+            "0x010A",
+            "ldfld"
+          ],
+          [
+            "0x015B",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005A85",
+        "owner": "Network",
+        "name": "m_PlayerId",
+        "field_row_hex": "0100e7ad030001000000",
+        "signature_blob_hex": "0608",
+        "sites": [
+          [
+            "0x0042",
+            "ldfld"
+          ],
+          [
+            "0x00FA",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005A87",
+        "owner": "Network",
+        "name": "m_MaxPlayerNum",
+        "field_row_hex": "060004ae030001000000",
+        "signature_blob_hex": "0608",
+        "sites": [
+          [
+            "0x007A",
+            "ldfld"
+          ],
+          [
+            "0x0215",
+            "ldfld"
+          ],
+          [
+            "0x024F",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x040064EC",
+        "owner": "SaveData",
+        "name": "inst",
+        "field_row_hex": "160006220100413a0000",
+        "signature_blob_hex": "0612a938",
+        "sites": [
+          [
+            "0x0084",
+            "ldsfld"
+          ],
+          [
+            "0x018B",
+            "ldsfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x040064F2",
+        "owner": "SaveData",
+        "name": "optionSettings",
+        "field_row_hex": "0600fe110400543a0000",
+        "signature_blob_hex": "0612a924",
+        "sites": [
+          [
+            "0x0089",
+            "ldfld"
+          ],
+          [
+            "0x0190",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x040064CF",
+        "owner": "OptionSettings",
+        "name": "language",
+        "field_row_hex": "06006bae010079080000",
+        "signature_blob_hex": "0611850c",
+        "sites": [
+          [
+            "0x008E",
+            "ldfld"
+          ],
+          [
+            "0x0195",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005844",
+        "owner": "DispNotification",
+        "name": "inst",
+        "field_row_hex": "160006220100ea320000",
+        "signature_blob_hex": "0612a440",
+        "sites": [
+          [
+            "0x0098",
+            "ldsfld"
+          ],
+          [
+            "0x00B1",
+            "ldsfld"
+          ],
+          [
+            "0x019F",
+            "ldsfld"
+          ],
+          [
+            "0x01CB",
+            "ldsfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005A90",
+        "owner": "Network",
+        "name": "Match_Disconnect",
+        "field_row_hex": "060080ae030008000000",
+        "signature_blob_hex": "0602",
+        "sites": [
+          [
+            "0x00CE",
+            "stfld"
+          ],
+          [
+            "0x00E2",
+            "stfld"
+          ],
+          [
+            "0x01F4",
+            "stfld"
+          ],
+          [
+            "0x0220",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005A8A",
+        "owner": "Network",
+        "name": "m_InputBuffer",
+        "field_row_hex": "010031ae0300ef330000",
+        "signature_blob_hex": "061d1512090111a5ac",
+        "sites": [
+          [
+            "0x00D6",
+            "ldfld"
+          ],
+          [
+            "0x011D",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005A94",
+        "owner": "Network",
+        "name": "UserName_List",
+        "field_row_hex": "0600ceae03006e020000",
+        "signature_blob_hex": "061d0e",
+        "sites": [
+          [
+            "0x01AA",
+            "ldfld"
+          ],
+          [
+            "0x01D6",
+            "ldfld"
+          ]
+        ]
+      }
+    ],
+    "user_strings": [
+      {
+        "token": "0x70088DF1",
+        "text": "告知　：　通信が切れました。",
+        "load_il": "0x009D"
+      },
+      {
+        "token": "0x70088E0F",
+        "text": "Notification : Connection lost.",
+        "load_il": "0x00B6"
+      },
+      {
+        "token": "0x70088E4F",
+        "text": "告知　 :　[",
+        "load_il": "0x01A4"
+      },
+      {
+        "token": "0x70088E5F",
+        "text": " ] との通信が切れました。操作をＣＯＭに切り替えます。",
+        "load_il": "0x01B2"
+      },
+      {
+        "token": "0x70088E99",
+        "text": "Notification : [ ",
+        "load_il": "0x01D0"
+      },
+      {
+        "token": "0x70088EBD",
+        "text": " ] lost connection.Switching to CPU. ",
+        "load_il": "0x01DE"
+      }
+    ],
+    "exact_control_blocks": [
+      {
+        "range": "IL+0x0000..0x000C",
+        "effect": "If Match_Disconnect_Myself is nonzero, return true; otherwise continue."
+      },
+      {
+        "range": "IL+0x000D..0x0020",
+        "effect": "Call FACT-0215 Network_OnlineCheck. Raw zero enters the disconnect-all path. Nonzero then calls external get_internetReachability; raw zero enters the same path and nonzero branches to IL+0x00D5."
+      },
+      {
+        "range": "IL+0x0021..0x00D4",
+        "effect": "For every raw player index below m_MaxPlayerNum write AsynchronousTime[index]=10.0 and isAsynchronous_Timeout[index]=true; for non-self indices find a Player through FACT-0219/FACT-0217 and, when non-null, call FACT-0218 with raw selector 2. Select one of two fixed disconnect messages by raw language zero/nonzero, call FACT-0216 with duration 240, set Match_Disconnect_Myself and Match_Disconnect true, return false."
+      },
+      {
+        "range": "IL+0x00D5..0x00E8",
+        "effect": "If m_InputBuffer is null, set Match_Disconnect true and return false; otherwise continue with result local initialized true."
+      },
+      {
+        "range": "IL+0x00E9..0x021A",
+        "effect": "Scan all non-self indices below m_MaxPlayerNum, skipping entries whose timeout byte is nonzero. A nonzero m_InputBuffer[index].Count resets AsynchronousTime[index] to 0. A zero Count sets the result local false, adds external deltaTime to AsynchronousTime[index], and only when the accumulated value is greater than raw 10.0 sets timeout true, looks up the Player, applies raw controller selector 2 when non-null, shows a username-bearing 240-duration message chosen by raw language zero/nonzero, and sets Match_Disconnect true."
+      },
+      {
+        "range": "IL+0x021F..0x025A",
+        "effect": "If Match_Disconnect is nonzero or the result local is false, return the result local. Otherwise clear every AsynchronousTime entry to 0 and return the result local (true)."
+      }
+    ],
+    "direct_reference_surface": {
+      "direct_reference_count": 3,
+      "direct_caller_method_count": 3,
+      "opcode_counts": {
+        "call": 2,
+        "callvirt": 1,
+        "newobj": 0,
+        "jmp": 0,
+        "ldftn": 0,
+        "ldvirtftn": 0
+      },
+      "normalized_reference_map_sha256": "cfe844844eb440116d5e4c6af0a210c7cde294b4162cb9b60fc836c894837fba",
+      "normalized_caller_token_set_sha256": "cc7198ef2ba8c683813e4a48d298e10ef5d7223a6d1d91459291249f87ffa5c3"
+    },
+    "direct_callers": [
+      {
+        "status": "OPEN",
+        "caller_type": "Network",
+        "caller_method": "Is_Ready_KeyData",
+        "caller_token": "0x06004B59",
+        "caller_rva": "0x002C23FF",
+        "caller_code_size": 15,
+        "caller_code_sha256": "0bb47ea1adba6ba5b814a984c6dc750c6fa34654de36bb1cf0cdcf0d4f4900d7",
+        "call_il": "0x0001",
+        "opcode": "call"
+      },
+      {
+        "status": "OPEN",
+        "caller_type": "Network",
+        "caller_method": "Clear_KeyBuffer",
+        "caller_token": "0x06004B5B",
+        "caller_rva": "0x002C254C",
+        "caller_code_size": 90,
+        "caller_code_sha256": "c23cc7fb302fb011ee0533f280479a6ef72ee79e358b7f4cfdeac9455158befa",
+        "call_il": "0x0001",
+        "opcode": "call"
+      },
+      {
+        "status": "OPEN_PARENT",
+        "caller_type": "PlayerController_Network",
+        "caller_method": "Update",
+        "caller_token": "0x06005038",
+        "caller_rva": "0x00300658",
+        "caller_code_size": 94,
+        "caller_code_sha256": "6263d3075a2b1147709139a168d07a8b4f9b6773a41b67ff169759a6fe4482ed",
+        "call_il": "0x0005",
+        "opcode": "callvirt"
+      }
+    ]
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "network_is_sync_input_data_row_count": 0,
+    "network_is_ready_key_data_row_count": 0,
+    "network_clear_key_buffer_row_count": 0,
+    "playercontroller_network_update_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "candidate_reason": "FACT-0219 closes the final open in-assembly child of Network.IsSyncInputData, making the 603-byte parent method dependency-clean on the game-method side.",
+    "next_parent_seam": {
+      "method": "PlayerController_Network.Update",
+      "token": "0x06005038",
+      "rva": "0x00300658",
+      "code_size": 94,
+      "code_sha256": "6263d3075a2b1147709139a168d07a8b4f9b6773a41b67ff169759a6fe4482ed",
+      "canonical_child_calls": [
+        {
+          "fact_id": "FACT-0220",
+          "method": "Network.IsSyncInputData",
+          "token": "0x06004B48",
+          "call_il": "0x0005"
+        },
+        {
+          "fact_id": "FACT-0212",
+          "method": "Network.GetInputData",
+          "token": "0x06004B49",
+          "call_il": "0x001A"
+        },
+        {
+          "fact_id": "FACT-0211",
+          "method": "Network.GetGrappleResult",
+          "token": "0x06004B58",
+          "call_il": "0x0053"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "External runtime/member behavior remains external.",
+    "Raw language and controller selector values are preserved without extra labels.",
+    "Input-buffer producer timing remains separate provenance.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_network_is_sync_input_data.py"
+}
