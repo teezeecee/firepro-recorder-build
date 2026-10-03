@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_NETWORK_UPDATE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_Network",
+      "method": "Update",
+      "token": "0x06005038",
+      "rva": "0x00300658",
+      "methoddef_row_hex": "580630000000c600edc800005c480000eb3a",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type_metadata": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x00C6",
+      "header_format": "fat",
+      "fat_flags_size_raw": "0x3013",
+      "max_stack": 3,
+      "local_signature_token": "0x11001143",
+      "local_signature_blob_hex": "070111a5ac",
+      "local_types_metadata": [
+        "PadData"
+      ],
+      "code_size": 94,
+      "code_sha256": "6263d3075a2b1147709139a168d07a8b4f9b6773a41b67ff169759a6fe4482ed",
+      "body_hex": "281e0a000a6f484b0006394e000000281e0a000a027bc66100046f494b00060a0212007bf25a00047d176100040212007bf35a00047d186100040212007bf15a00047dc761000402281e0a000a027b166100046f584b00067d196100042a"
+    },
+    "external_member_refs": [
+      {
+        "token": "0x0A000A1E",
+        "name": "get_instance",
+        "memberref_row_hex": "2c0d000071ee060058cd0000",
+        "signature_blob_hex": "00001300",
+        "sites": [
+          {
+            "il": "0x0000",
+            "opcode": "call"
+          },
+          {
+            "il": "0x000F",
+            "opcode": "call"
+          },
+          {
+            "il": "0x0048",
+            "opcode": "call"
+          }
+        ]
+      }
+    ],
+    "canonical_methoddef_calls": [
+      {
+        "fact_id": "FACT-0220",
+        "token": "0x06004B48",
+        "method": "Network.IsSyncInputData",
+        "sites": [
+          {
+            "il": "0x0005",
+            "opcode": "callvirt"
+          }
+        ]
+      },
+      {
+        "fact_id": "FACT-0212",
+        "token": "0x06004B49",
+        "method": "Network.GetInputData",
+        "sites": [
+          {
+            "il": "0x001A",
+            "opcode": "callvirt"
+          }
+        ]
+      },
+      {
+        "fact_id": "FACT-0211",
+        "token": "0x06004B58",
+        "method": "Network.GetGrappleResult",
+        "sites": [
+          {
+            "il": "0x0053",
+            "opcode": "callvirt"
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "token": "0x040061C6",
+        "owner": "PlayerController_Network",
+        "name": "port",
+        "field_row_hex": "060064f70300100f0000",
+        "signature_blob_hex": "06119050",
+        "sites": [
+          [
+            "0x0015",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005AF2",
+        "owner": "PadData",
+        "name": "PadOn",
+        "field_row_hex": "060087b2030001000000",
+        "signature_blob_hex": "0608",
+        "sites": [
+          [
+            "0x0023",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04006117",
+        "owner": "PlayerController",
+        "name": "padOn",
+        "field_row_hex": "0600f71f0200440c0000",
+        "signature_blob_hex": "0611904c",
+        "sites": [
+          [
+            "0x0028",
+            "stfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005AF3",
+        "owner": "PadData",
+        "name": "PadPush",
+        "field_row_hex": "06008db2030001000000",
+        "signature_blob_hex": "0608",
+        "sites": [
+          [
+            "0x0030",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04006118",
+        "owner": "PlayerController",
+        "name": "padPush",
+        "field_row_hex": "0600f66a0100440c0000",
+        "signature_blob_hex": "0611904c",
+        "sites": [
+          [
+            "0x0035",
+            "stfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04005AF1",
+        "owner": "PadData",
+        "name": "Frame",
+        "field_row_hex": "060081b2030001000000",
+        "signature_blob_hex": "0608",
+        "sites": [
+          [
+            "0x003D",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x040061C7",
+        "owner": "PlayerController_Network",
+        "name": "frame",
+        "field_row_hex": "06008cd8030001000000",
+        "signature_blob_hex": "0608",
+        "sites": [
+          [
+            "0x0042",
+            "stfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04006116",
+        "owner": "PlayerController",
+        "name": "plIdx",
+        "field_row_hex": "06004964020001000000",
+        "signature_blob_hex": "0608",
+        "sites": [
+          [
+            "0x004E",
+            "ldfld"
+          ]
+        ]
+      },
+      {
+        "token": "0x04006119",
+        "owner": "PlayerController",
+        "name": "grappleResult",
+        "field_row_hex": "06000ad8030070380000",
+        "signature_blob_hex": "0612a75c",
+        "sites": [
+          [
+            "0x0058",
+            "stfld"
+          ]
+        ]
+      }
+    ],
+    "exact_control_blocks": [
+      {
+        "range": "IL+0x0000..0x000E",
+        "effect": "Call external get_instance then FACT-0220 Network.IsSyncInputData. A false Boolean branches directly to return at IL+0x005D."
+      },
+      {
+        "range": "IL+0x000F..0x001F",
+        "effect": "Call external get_instance, load this.port, call FACT-0212 Network.GetInputData, and store the returned PadData in local 0."
+      },
+      {
+        "range": "IL+0x0020..0x0047",
+        "effect": "Copy local0.PadOn to this.padOn, local0.PadPush to this.padPush, and local0.Frame to this.frame."
+      },
+      {
+        "range": "IL+0x0048..0x005D",
+        "effect": "Call external get_instance, load this.plIdx, call FACT-0211 Network.GetGrappleResult, store into this.grappleResult, and return."
+      }
+    ],
+    "direct_reference_surface": {
+      "direct_reference_count": 0,
+      "direct_caller_method_count": 0,
+      "opcode_counts": {
+        "call": 0,
+        "callvirt": 0,
+        "newobj": 0,
+        "jmp": 0,
+        "ldftn": 0,
+        "ldvirtftn": 0
+      },
+      "normalized_reference_map_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e06ecb64b4a728a08c04f7d",
+      "normalized_caller_token_set_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_network_update_row_count": 0,
+    "network_is_sync_input_data_row_count": 0,
+    "network_get_input_data_row_count": 0,
+    "network_get_grapple_result_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "candidate_reason": "FACT-0220 closes Network.IsSyncInputData, leaving PlayerController_Network.Update with all three in-assembly children canonical and an exact 94-byte body.",
+    "next_frontier": {
+      "meaning": "The network-controller Update override is now dependency-closed on the game-method side. The next frontier should be selected from its surrounding controller/dispatch seam rather than reopening a child.",
+      "runtime_viewer_locked": true
+    }
+  },
+  "limits": [
+    "External get_instance remains external.",
+    "Field names are preserved without added gameplay labels.",
+    "No direct MethodDef-body caller does not close virtual dispatch provenance.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_network_update.py"
+}
