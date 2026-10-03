@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0200",
+  "claim": "In the matching retail DLL, instance WeaponMan.DeleteAllWeapons() (0x06006AC7) has raw MethodDef row dc534300000086005acf0a005c480000ac4d, RVA 0x004353DC, signature blob 200001, and an exact 26-byte fat-header body SHA-256 3e9811a875cf2dd7f62779e8ecf7cedaaf32084fcdeec863aa8e829aaa3c6467. Its exact body initializes an Int32 local to 0, loops while the signed local is less than 8, calls WeaponMan.DeleteWeapon(local) at IL+0x0009, increments the local by one, and returns after processing raw indices 0 through 7. The callee is canonical FACT-0199. Exact matching-DLL scanning finds three direct callvirt references across MatchMain.ProceedNextRound, MatchMain.Update, and MatchMainCp.Update.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "WeaponMan.DeleteAllWeapons token 0x06006AC7 raw MethodDef row dc534300000086005acf0a005c480000ac4d -> RVA 0x004353DC; signature 200001; fat-header code size 26; code sha256=3e9811a875cf2dd7f62779e8ecf7cedaaf32084fcdeec863aa8e829aaa3c6467. Exact loop, FACT-0199 DeleteWeapon call at IL+0x0009, and three-reference / three-caller map are pinned in canonical/witnesses/CAP-R6-001/weaponman_delete_all_weapons.summary.json; prover tools/prove_weaponman_delete_all_weapons.py.",
+      "observation": "Exact matching-DLL WeaponMan.DeleteAllWeapons 0-through-7 loop, direct call to canonical FACT-0199 DeleteWeapon, and exact three-reference / three-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "WeaponMan.DeleteAllWeapons()",
+      "to": "FACT-0199 WeaponMan.DeleteWeapon(Int32 idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "WeaponMan.DeleteAllWeapons token 0x06006AC7, RVA 0x004353DC, direct call token 0x06006AC6 at IL+0x0009."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Fresh CAP-R6-001 contains zero WeaponMan.DeleteAllWeapons rows and zero rows for all three direct callers, so no runtime loop execution or caller bridge is claimed.",
+    "DeleteWeapon object-destruction semantics remain separately owned by FACT-0199 and are not re-proven here.",
+    "The three direct caller bodies remain separate work unless independently canonicalized."
+  ]
+}

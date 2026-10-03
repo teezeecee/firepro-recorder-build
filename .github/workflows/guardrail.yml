@@ -1088,3 +1088,8 @@ jobs:
         run: python tests/test_weaponman_delete_weapon_summary.py
       - name: WeaponMan DeleteWeapon prover syntax
         run: python -m py_compile tools/prove_weaponman_delete_weapon.py
+
+      - name: WeaponMan DeleteAllWeapons summary
+        run: python tests/test_weaponman_delete_all_weapons_summary.py
+      - name: WeaponMan DeleteAllWeapons prover syntax
+        run: python -m py_compile tools/prove_weaponman_delete_all_weapons.py
