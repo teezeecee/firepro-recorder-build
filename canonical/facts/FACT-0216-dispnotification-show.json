@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0216",
+  "claim": "In the matching retail DLL, instance DispNotification.Show(String,Int32) (0x060049C3) has raw MethodDef row 332c2b0000008600ee930100377b01008036, RVA 0x002B2C33, signature blob 2002010e08, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 39-byte tiny-header body SHA-256 ce3eb15bbbe9c74bd34eb1405194a3556fbdfabec4a4c4cb4c53f72389a61a14. The exact body obtains this.gameObject through external MemberRef 0x0A000028, calls external SetActive(true) (0x0A000103), loads this.text_Message and calls external set_text(arg1) (0x0A000363), stores arg2 into this.duration, writes raw 1 into this.State, and returns. It contains no in-assembly MethodDef child call. Exact matching-DLL MethodDef-body scanning finds six direct references, all callvirt, across two caller methods: two in MatchDebug.Test_Notification and four in the still-open Network.IsSyncInputData.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "DispNotification.Show token 0x060049C3 -> RVA 0x002B2C33; exact 39-byte body sha256=ce3eb15bbbe9c74bd34eb1405194a3556fbdfabec4a4c4cb4c53f72389a61a14; exact external MemberRefs, three field records, no MethodDef children, and six-callvirt/two-caller map in canonical/witnesses/CAP-R6-001/dispnotification_show.summary.json; prover tools/prove_dispnotification_show.py.",
+      "observation": "Exact notification activation/text/duration/raw-state write sequence and complete direct caller surface."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Network.IsSyncInputData()",
+      "to": "DispNotification.Show(String,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "open Network.IsSyncInputData token 0x06004B48 callvirt sites at IL+0x00A7, IL+0x00C0, IL+0x01C1 and IL+0x01ED."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "UnityEngine.Component.get_gameObject, GameObject.SetActive and UI text set_text behavior remain external.",
+    "The raw State value 1 is preserved without assigning an enum-name or gameplay meaning.",
+    "MatchDebug.Test_Notification and Network.IsSyncInputData remain separate caller seams; this fact does not promote their semantics.",
+    "Fresh CAP-R6-001 contains zero DispNotification.Show, Network.IsSyncInputData and MatchDebug.Test_Notification rows; no runtime bridge is claimed."
+  ]
+}

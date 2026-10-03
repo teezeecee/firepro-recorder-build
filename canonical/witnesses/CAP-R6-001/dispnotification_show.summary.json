@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DISPNOTIFICATION_SHOW_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "DispNotification",
+      "method": "Show",
+      "token": "0x060049C3",
+      "rva": "0x002B2C33",
+      "methoddef_row_hex": "332c2b0000008600ee930100377b01008036",
+      "signature_blob_hex": "2002010e08",
+      "parameters": [
+        "String",
+        "Int32"
+      ],
+      "return_type_metadata": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x9E",
+      "code_size": 39,
+      "code_sha256": "ce3eb15bbbe9c74bd34eb1405194a3556fbdfabec4a4c4cb4c53f72389a61a14",
+      "body_hex": "02282800000a176f0301000a027b46580004036f6303000a02047d4758000402177d455800042a",
+      "exact_flow": [
+        "load this; call external get_gameObject; load raw true; callvirt external SetActive",
+        "load this.text_Message; load String arg1; callvirt external set_text",
+        "load this; load Int32 arg2; store this.duration",
+        "load this; load raw Int32 1; store this.State",
+        "return"
+      ]
+    },
+    "internal_methoddef_calls": [],
+    "external_member_refs": [
+      {
+        "token": "0x0A000028",
+        "name": "get_gameObject",
+        "memberref_row_hex": "0901000076510600df490000",
+        "signature_blob_hex": "2000120d",
+        "call_il": "0x0001",
+        "opcode": "call"
+      },
+      {
+        "token": "0x0A000103",
+        "name": "SetActive",
+        "memberref_row_hex": "19000000a7590600f4490000",
+        "signature_blob_hex": "20010102",
+        "call_il": "0x0007",
+        "opcode": "callvirt"
+      },
+      {
+        "token": "0x0A000363",
+        "name": "set_text",
+        "memberref_row_hex": "99010000f764060079480000",
+        "signature_blob_hex": "2001010e",
+        "call_il": "0x0013",
+        "opcode": "callvirt"
+      }
+    ],
+    "fields": [
+      {
+        "token": "0x04005846",
+        "owner": "DispNotification",
+        "name": "text_Message",
+        "field_row_hex": "0100037003009f050000",
+        "signature_blob_hex": "061280cd",
+        "access_il": "0x000D",
+        "opcode": "ldfld"
+      },
+      {
+        "token": "0x04005847",
+        "owner": "DispNotification",
+        "name": "duration",
+        "field_row_hex": "0100d0a7000001000000",
+        "signature_blob_hex": "0608",
+        "access_il": "0x001A",
+        "opcode": "stfld"
+      },
+      {
+        "token": "0x04005845",
+        "owner": "DispNotification",
+        "name": "State",
+        "field_row_hex": "01006e000000ef320000",
+        "signature_blob_hex": "0611a444",
+        "access_il": "0x0021",
+        "opcode": "stfld",
+        "raw_value": 1
+      }
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "MatchDebug",
+        "caller_method": "Test_Notification",
+        "caller_token": "0x060048C1",
+        "caller_rva": "0x002A4840",
+        "caller_code_size": 73,
+        "caller_code_sha256": "fa3b5df89334cdee4b1d8a5ebc7f3f5f8f19496d7ef16525f257d2c6038e0767",
+        "call_il": "0x001F",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "MatchDebug",
+        "caller_method": "Test_Notification",
+        "caller_token": "0x060048C1",
+        "caller_rva": "0x002A4840",
+        "caller_code_size": 73,
+        "caller_code_sha256": "fa3b5df89334cdee4b1d8a5ebc7f3f5f8f19496d7ef16525f257d2c6038e0767",
+        "call_il": "0x0043",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Network",
+        "caller_method": "IsSyncInputData",
+        "caller_token": "0x06004B48",
+        "caller_rva": "0x002C1C50",
+        "caller_code_size": 603,
+        "caller_code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d",
+        "call_il": "0x00A7",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Network",
+        "caller_method": "IsSyncInputData",
+        "caller_token": "0x06004B48",
+        "caller_rva": "0x002C1C50",
+        "caller_code_size": 603,
+        "caller_code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d",
+        "call_il": "0x00C0",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Network",
+        "caller_method": "IsSyncInputData",
+        "caller_token": "0x06004B48",
+        "caller_rva": "0x002C1C50",
+        "caller_code_size": 603,
+        "caller_code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d",
+        "call_il": "0x01C1",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Network",
+        "caller_method": "IsSyncInputData",
+        "caller_token": "0x06004B48",
+        "caller_rva": "0x002C1C50",
+        "caller_code_size": 603,
+        "caller_code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d",
+        "call_il": "0x01ED",
+        "opcode": "callvirt"
+      }
+    ],
+    "direct_reference_count": 6,
+    "direct_caller_method_count": 2,
+    "normalized_reference_map_sha256": "1d5050de4c98c6eacfc0231b8ecfcbaeee541df288bc959a74430f8e9168bae3",
+    "normalized_caller_token_set_sha256": "14959fdadc85181fe585afa86fad4ed99d8a1b2c11217deafc0f714f3f29e3cc"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "dispnotification_show_row_count": 0,
+    "network_is_sync_input_data_row_count": 0,
+    "matchdebug_test_notification_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for the helper or either direct caller; no runtime notification bridge is claimed."
+  },
+  "selection_boundary": {
+    "candidate_reason": "After FACT-0215, the open Network.IsSyncInputData method still depends on PlayerMan.GetInst, DispNotification.Show, PlayerMan.GetPlObjFromPadPort and Player.SetPlayerController. Although PlayerMan.GetInst is only 6 code bytes, its direct surface is 171 references across 102 callers. DispNotification.Show is 39 bytes, has no in-assembly MethodDef child, and has only six references across two callers, making it the smaller bounded proof surface.",
+    "next_bounded_child": {
+      "method": "PlayerMan.GetPlObjFromPadPort",
+      "token": "0x06005066",
+      "rva": "0x00304B88",
+      "code_size": 103,
+      "code_sha256": "9a4d894da22ead6979e399924710d5823a3a505447e40ef6b8c838c6e4b5123e",
+      "direct_reference_count": 2,
+      "direct_caller_method_count": 1
+    }
+  },
+  "limits": [
+    "External Unity/UI behavior remains external.",
+    "Raw State value 1 is not assigned an enum meaning.",
+    "Caller semantics remain separate.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_dispnotification_show.py"
+}

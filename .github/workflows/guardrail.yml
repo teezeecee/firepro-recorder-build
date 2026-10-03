@@ -1177,3 +1177,8 @@ jobs:
         run: python tests/test_network_online_check_summary.py
       - name: Network OnlineCheck prover syntax
         run: python -m py_compile tools/prove_network_online_check.py
+
+      - name: DispNotification Show summary
+        run: python tests/test_dispnotification_show_summary.py
+      - name: DispNotification Show prover syntax
+        run: python -m py_compile tools/prove_dispnotification_show.py
