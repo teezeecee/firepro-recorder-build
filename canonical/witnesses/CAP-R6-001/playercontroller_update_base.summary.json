@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_UPDATE_BASE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController",
+      "method": "Update",
+      "token": "0x06004F97",
+      "rva": "0x002F5A67",
+      "methoddef_row_hex": "675a2f000000c601edc800005c480000a43a",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x01C6",
+      "method_attribute_bits": [
+        "Public",
+        "Virtual",
+        "HideBySig",
+        "NewSlot"
+      ],
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x06",
+      "code_size": 1,
+      "code_sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+      "body_hex": "2a",
+      "exact_flow": [
+        "ret"
+      ]
+    },
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "MatchMain",
+        "caller_method": "Update_EntranceScene",
+        "caller_token": "0x06004935",
+        "caller_rva": "0x002AA570",
+        "caller_code_size": 822,
+        "caller_code_sha256": "574be9a2193d91b436a4a241a5dee31bd03c08b32ca09d28dbdf4afd60990cde",
+        "call_il": "0x006F",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "MatchMain",
+        "caller_method": "Update_Match",
+        "caller_token": "0x06004936",
+        "caller_rva": "0x002AA8B4",
+        "caller_code_size": 1152,
+        "caller_code_sha256": "b6841694e03be5ca4c73e966a13802de9fe7339ab63540ffdf5edaee96ea9dfe",
+        "call_il": "0x0129",
+        "opcode": "callvirt"
+      }
+    ],
+    "direct_reference_count": 2,
+    "direct_caller_method_count": 2
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_update_row_count": 0,
+    "matchmain_update_entrance_scene_row_count": 0,
+    "matchmain_update_match_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for the base Update token-name surface or either direct MatchMain caller; no runtime virtual dispatch target is inferred."
+  },
+  "dispatch_boundary": {
+    "call_opcode": "callvirt",
+    "base_method_attributes_raw": "0x01C6",
+    "proven": "Both direct in-assembly references target the base PlayerController.Update MethodDef token with callvirt.",
+    "not_proven": "Which concrete PlayerController subtype implementation receives either runtime dispatch."
+  },
+  "limits": [
+    "The one-byte ret body belongs to the base MethodDef only.",
+    "Runtime virtual dispatch and concrete controller subtype selection remain open.",
+    "Fresh R6 is a negative capture boundary only.",
+    "Both MatchMain caller bodies remain open separately."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_update_base.py"
+}

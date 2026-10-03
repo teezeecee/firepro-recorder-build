@@ -3539,6 +3539,26 @@
         "MatchMain.Update_EntranceScene and MatchMain.Update_Match caller bodies remain separate seams",
         "fresh R6 has zero wrapper/caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_UPDATE_BASE_V1",
+      "fact_id": "FACT-0206",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact one-byte matching-DLL base PlayerController.Update MethodDef body (ret), raw virtual/new-slot MethodAttributes, and exact two callvirt references from MatchMain.Update_EntranceScene and MatchMain.Update_Match.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_update_base.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 2,
+      "direct_caller_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "callvirt runtime dispatch target is not established by the base MethodDef token alone",
+        "concrete PlayerController instance/subclass selection remains separate provenance",
+        "MatchMain.Update_EntranceScene and MatchMain.Update_Match bodies remain separate caller seams",
+        "fresh R6 has zero base/caller rows and provides no runtime dispatch bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
