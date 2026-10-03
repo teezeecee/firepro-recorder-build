@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_START_FORCE_CONTROL_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "Start_ForceControl",
+      "token": "0x06004F74",
+      "rva": "0x002F2E89",
+      "methoddef_row_hex": "892e2f0000008600f9320a008dcc0200913a",
+      "signature_blob_hex": "20010111a804",
+      "parameters": ["ForceCtrlEnum"],
+      "return_type_metadata": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x52",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "code_size": 20,
+      "code_sha256": "5f7e39e4415fbe3bb7d6ddf30d6f7eceda02db18649b443d4f44f0a07a291d49",
+      "body_hex": "02037dfa5f0004027b32600004036f3f5000062a",
+      "exact_flow": [
+        "write raw ForceCtrlEnum argument to this.forceControl",
+        "load this.plForcedController",
+        "forward the same raw ForceCtrlEnum argument to PlayerForcedController.Start_FoceControl by callvirt",
+        "return"
+      ]
+    },
+    "parameter_type": {
+      "metadata_name": "ForceCtrlEnum",
+      "typedef_rid": 2561,
+      "typedef_row_hex": "01010000857a0000000000004503cb613e50"
+    },
+    "fields": [
+      {"token":"0x04005FFA","owner":"Player","name":"forceControl","field_row_hex":"06008fe30300f8370000","signature_blob_hex":"0611a804","write_il":"0x0002","source":"argument_1"},
+      {"token":"0x04006032","owner":"Player","name":"plForcedController","field_row_hex":"060057e6030034380000","signature_blob_hex":"0612a80c","load_il":"0x0009"}
+    ],
+    "internal_methoddef_calls": [
+      {"fact_id":"FACT-0224","callee_type":"PlayerForcedController","callee_method":"Start_FoceControl","callee_token":"0x0600503F","call_il":"0x000E","opcode":"callvirt","argument_source":"argument_1"}
+    ],
+    "direct_in_assembly_references": [
+      {"caller_token":"0x0600482F","caller_type":"EntranceScene","caller_namespace":"","caller_method":"StartEntranceScene","caller_rva":"0x00297CAC","caller_code_size":4507,"caller_code_sha256":"e496197610b19762e100d295ca5449a4f2aea12077fccd05f2d09086ea73cb78","call_il":"0x0279","opcode":"callvirt"},
+      {"caller_token":"0x06004830","caller_type":"EntranceScene","caller_namespace":"","caller_method":"End","caller_rva":"0x00298E54","caller_code_size":2294,"caller_code_sha256":"4b48e06349f5cb97df7d0d66bc84a34b5fb7272b8f6fcb04dedc27ba92da8f5c","call_il":"0x00B5","opcode":"callvirt"},
+      {"caller_token":"0x06004847","caller_type":"EntranceScene","caller_namespace":"","caller_method":"MoveStart_ToStage","caller_rva":"0x0029BB78","caller_code_size":449,"caller_code_sha256":"7c32aca2cf52761767a6ad4878236908f4f00fa807bbcccf786e30225bf76478","call_il":"0x0125","opcode":"callvirt"},
+      {"caller_token":"0x0600484A","caller_type":"EntranceScene","caller_namespace":"","caller_method":"MoveStart_ToRing","caller_rva":"0x0029BFD0","caller_code_size":391,"caller_code_sha256":"54a8ef738fac3b7d4b161885d7197dc92bd70f1b207ad44a612c870b2558bb58","call_il":"0x012C","opcode":"callvirt"},
+      {"caller_token":"0x0600484B","caller_type":"EntranceScene","caller_namespace":"","caller_method":"Update_RingIn","caller_rva":"0x0029C164","caller_code_size":2211,"caller_code_sha256":"b8832d291fedaaa850133c0587f49053d4906aa4c7d1157f861f2a53d8e92a41","call_il":"0x01DA","opcode":"callvirt"},
+      {"caller_token":"0x060048AD","caller_type":"MatchDebug","caller_namespace":"","caller_method":"Test_ForcedControl","caller_rva":"0x002A3BC8","caller_code_size":77,"caller_code_sha256":"6c75467939e2312182452a3e3421ae0d1419f6157349cfad09229a6902df1fdb","call_il":"0x001E","opcode":"callvirt"},
+      {"caller_token":"0x0600491C","caller_type":"MatchMain","caller_namespace":"","caller_method":"ProceedNextRound","caller_rva":"0x002A8E98","caller_code_size":353,"caller_code_sha256":"f604d7a67afc50f501ac9ba6067303e7f7c4cabe1840cd7039da6c21ff03f79d","call_il":"0x0136","opcode":"callvirt"},
+      {"caller_token":"0x06004F21","caller_type":"Player","caller_namespace":"","caller_method":"ProcessRecover","caller_rva":"0x002E84BC","caller_code_size":1479,"caller_code_sha256":"b15d39435219a1a63f3738c0e1c69609be4feb85acc407e4a223407c44f78211","call_il":"0x05C1","opcode":"call"},
+      {"caller_token":"0x06004F87","caller_type":"Player","caller_namespace":"","caller_method":"UpdatePlayer","caller_rva":"0x002F4308","caller_code_size":836,"caller_code_sha256":"da9fecfe8759295bfca091cebf9c3d58f54802008907127c9658db73eadfbf15","call_il":"0x0331","opcode":"call"},
+      {"caller_token":"0x0600500E","caller_type":"PlayerController_AI","caller_namespace":"","caller_method":"Process_Second","caller_rva":"0x002FD73C","caller_code_size":646,"caller_code_sha256":"eaa00ca466ac8ed88940cb307ffb3af44e1b89393d29b5a1c4a32eaf4120a1a8","call_il":"0x0132","opcode":"callvirt"},
+      {"caller_token":"0x0600500E","caller_type":"PlayerController_AI","caller_namespace":"","caller_method":"Process_Second","caller_rva":"0x002FD73C","caller_code_size":646,"caller_code_sha256":"eaa00ca466ac8ed88940cb307ffb3af44e1b89393d29b5a1c4a32eaf4120a1a8","call_il":"0x024D","opcode":"callvirt"},
+      {"caller_token":"0x0600503D","caller_type":"PlayerController_Tutorial","caller_namespace":"","caller_method":"Update","caller_rva":"0x00300794","caller_code_size":352,"caller_code_sha256":"ee9742c42475c1d0a1ab0513f2cab8c4e25b5f3d3e10b750adf9ecd498573bbe","call_il":"0x0025","opcode":"callvirt"},
+      {"caller_token":"0x06005093","caller_type":"Referee","caller_namespace":"","caller_method":"SentenceLose","caller_rva":"0x003078B0","caller_code_size":1265,"caller_code_sha256":"c28f208215092f7ae05b0b5a083820b269ca0365d2fecb8840a04b17ea3b85fe","call_il":"0x040C","opcode":"callvirt"},
+      {"caller_token":"0x060050A1","caller_type":"Referee","caller_namespace":"","caller_method":"CheckStartRefereeing","caller_rva":"0x00308920","caller_code_size":1112,"caller_code_sha256":"8531aa20df597f7d7a37246779e58c39c7c7a2fdc6e34d4d38dcd1fd56f6f7e5","call_il":"0x0419","opcode":"callvirt"},
+      {"caller_token":"0x060050AA","caller_type":"Referee","caller_namespace":"","caller_method":"ReturnWrestlers","caller_rva":"0x003095F8","caller_code_size":235,"caller_code_sha256":"900adf502b720ab62e4ef8ab361828f0cf6fdbb57f7a12711cbb6c0bc6fe8f41","call_il":"0x0073","opcode":"callvirt"},
+      {"caller_token":"0x060050AA","caller_type":"Referee","caller_namespace":"","caller_method":"ReturnWrestlers","caller_rva":"0x003095F8","caller_code_size":235,"caller_code_sha256":"900adf502b720ab62e4ef8ab361828f0cf6fdbb57f7a12711cbb6c0bc6fe8f41","call_il":"0x0092","opcode":"callvirt"},
+      {"caller_token":"0x060050AA","caller_type":"Referee","caller_namespace":"","caller_method":"ReturnWrestlers","caller_rva":"0x003095F8","caller_code_size":235,"caller_code_sha256":"900adf502b720ab62e4ef8ab361828f0cf6fdbb57f7a12711cbb6c0bc6fe8f41","call_il":"0x00DA","opcode":"callvirt"},
+      {"caller_token":"0x060050AB","caller_type":"Referee","caller_namespace":"","caller_method":"ReturnWrestlers_Lumberjack","caller_rva":"0x003096F0","caller_code_size":190,"caller_code_sha256":"14ab382fb432be2ef9f96c3d59ad2f4bb087b81b5e8e4d757e4b3c9af19b0984","call_il":"0x00AD","opcode":"callvirt"}
+    ],
+    "direct_reference_count":18,
+    "direct_caller_method_count":15,
+    "opcode_counts":{"call":2,"callvirt":16,"newobj":0,"jmp":0,"ldftn":0,"ldvirtftn":0},
+    "normalized_reference_map_sha256":"44ad08326b234ca5a8d5a921fad79c66a37ed5cc4a82adb1e3f61147a399b402",
+    "normalized_caller_token_set_sha256":"75fe7eae110dd770f572eb87d17cb99ef25cd0a75f70c5cb32d74572ab81a024"
+  },
+  "capture_boundary":{
+    "source_id":"CAP-R6-001",
+    "archive_sha256":"93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256":"79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "player_start_force_control_row_count":0,
+    "playerforcedcontroller_start_foce_control_row_count":0,
+    "playercontroller_tutorial_update_row_count":0,
+    "playercontroller_tutorial_process_grapple_row_count":0,
+    "promoted_as_evidence":false
+  },
+  "selection_boundary":{
+    "tutorial_parent":{"method":"PlayerController_Tutorial.Update","token":"0x0600503D","rva":"0x00300794","code_size":352,"code_sha256":"ee9742c42475c1d0a1ab0513f2cab8c4e25b5f3d3e10b750adf9ecd498573bbe","start_force_control_call_il":"0x0025","end_force_control_call_il":"0x0035","process_grapple_call_il":"0x010B"},
+    "canonical_child":{"fact_id":"FACT-0224","method":"PlayerForcedController.Start_FoceControl","token":"0x0600503F","call_il":"0x000E","opcode":"callvirt"},
+    "next_dependency_clean_child":{"method":"PlayerController_Tutorial.Process_Grapple","token":"0x0600503C","rva":"0x00300718","code_size":109,"code_sha256":"0e53fcf88961297caf1853917b18bd92786b40b340e2b81da12b5f1ac4447c54","internal_methoddef_call_count":0,"direct_reference_count":1,"direct_caller_method_count":1,"tutorial_call_il":"0x010B"}
+  },
+  "limits":[
+    "ForceCtrlEnum is preserved as the metadata parameter type; no enum-member meaning is assigned to the raw argument.",
+    "forceControl and plForcedController are metadata field identifiers; the raw forceControl value receives no added state label.",
+    "The complete 18-reference / 15-caller surface is provenance only; those caller methods are not semantically collapsed into one behavior.",
+    "PlayerController_Tutorial.Process_Grapple remains open, so PlayerController_Tutorial.Update is not yet dependency-clean.",
+    "Fresh CAP-R6-001 contains zero wrapper/child/tutorial/process-grapple rows; no runtime bridge is claimed."
+  ]
+}
