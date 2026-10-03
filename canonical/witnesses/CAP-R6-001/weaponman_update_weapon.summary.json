@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WEAPONMAN_UPDATE_WEAPON_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "WeaponMan",
+      "method": "UpdateWeapon",
+      "token": "0x06006AD0",
+      "rva": "0x00435634",
+      "methoddef_row_hex": "345643000000860033cf0a005c480000bf4d",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type": "Void",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 2,
+      "local_signature_token": "0x11001611",
+      "local_signature_blob_hex": "07020812b508",
+      "locals": [
+        {
+          "index": 0,
+          "decoded_type": "Int32"
+        },
+        {
+          "index": 1,
+          "decoded_type": "Weapon"
+        }
+      ],
+      "code_size": 50,
+      "code_sha256": "35d1ad134ac75a73b958fd378c3a108d4911f9faddf0d99b383f0062de3c2b6a",
+      "body_hex": "160a3823000000027becb60004069a0b07282a00000a3a050000003806000000076fbd6a00060617580a061e3fd6ffffff2a"
+    },
+    "fields": [
+      {
+        "token": "0x0400B6EC",
+        "owner": "WeaponMan",
+        "name": "WeaponObj",
+        "methoddef_row_hex": "0600aa4f06009d190000",
+        "signature_blob_hex": "061d12b508",
+        "decoded_type": "Weapon[]"
+      }
+    ],
+    "external_member_refs": [
+      {
+        "token": "0x0A00002A",
+        "owner": "UnityEngine.Object",
+        "name": "op_Implicit",
+        "memberref_row_hex": "d100000085510600e9490000",
+        "signature_blob_hex": "0001021269",
+        "call_ils": [
+          "0x0011"
+        ]
+      }
+    ],
+    "canonical_internal_calls": [
+      {
+        "call_il": "0x0021",
+        "opcode": "callvirt",
+        "token": "0x06006ABD",
+        "method": "Weapon.UpdateWeapon",
+        "canonical_fact": "FACT-0204"
+      }
+    ],
+    "exact_flow": [
+      "local0 = raw Int32 0",
+      "branch to loop condition",
+      "local1 = this.WeaponObj[local0]",
+      "call external UnityEngine.Object.op_Implicit(local1)",
+      "if true, callvirt canonical FACT-0204 Weapon.UpdateWeapon() on local1; if false, skip that call",
+      "local0 = local0 + raw 1",
+      "repeat while signed local0 < raw 8",
+      "return"
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "MatchMain",
+        "caller_method": "Update_EntranceScene",
+        "caller_token": "0x06004935",
+        "caller_rva": "0x002AA570",
+        "caller_code_size": 822,
+        "caller_code_sha256": "574be9a2193d91b436a4a241a5dee31bd03c08b32ca09d28dbdf4afd60990cde",
+        "call_il": "0x0242",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "MatchMain",
+        "caller_method": "Update_Match",
+        "caller_token": "0x06004936",
+        "caller_rva": "0x002AA8B4",
+        "caller_code_size": 1152,
+        "caller_code_sha256": "b6841694e03be5ca4c73e966a13802de9fe7339ab63540ffdf5edaee96ea9dfe",
+        "call_il": "0x03E8",
+        "opcode": "callvirt"
+      }
+    ],
+    "direct_reference_count": 2,
+    "direct_caller_method_count": 2
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weaponman_update_weapon_row_count": 0,
+    "weapon_update_weapon_row_count": 0,
+    "matchmain_update_entrance_scene_row_count": 0,
+    "matchmain_update_match_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for the wrapper, its canonical Weapon child, or either direct MatchMain caller; no runtime loop, dispatch, or caller bridge is claimed."
+  },
+  "selection_boundary": {
+    "direct_caller_frontier": [
+      {
+        "token": "0x06004935",
+        "type": "MatchMain",
+        "method": "Update_EntranceScene",
+        "code_size": 822,
+        "code_sha256": "574be9a2193d91b436a4a241a5dee31bd03c08b32ca09d28dbdf4afd60990cde",
+        "call_il": "0x0242"
+      },
+      {
+        "token": "0x06004936",
+        "type": "MatchMain",
+        "method": "Update_Match",
+        "code_size": 1152,
+        "code_sha256": "b6841694e03be5ca4c73e966a13802de9fe7339ab63540ffdf5edaee96ea9dfe",
+        "call_il": "0x03E8"
+      }
+    ],
+    "meaning": "After this 50-byte wrapper is closed, the direct upward caller frontier consists of two substantially larger MatchMain methods. Their bodies remain separate gates."
+  },
+  "limits": [
+    "Raw loop bound 8 is preserved numerically without a gameplay slot label.",
+    "UnityEngine.Object.op_Implicit remains external.",
+    "WeaponObj population and weapon lifecycle provenance remain separate.",
+    "Fresh R6 is retained only as a negative capture boundary, not positive evidence.",
+    "Both MatchMain caller bodies remain open separately."
+  ],
+  "reproducibility_tool": "tools/prove_weaponman_update_weapon.py"
+}
