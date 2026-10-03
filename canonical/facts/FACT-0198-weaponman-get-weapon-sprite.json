@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0198",
+  "claim": "In the matching retail DLL, instance WeaponMan.GetWeaponSprite(WeaponEnum kind, Int32 pat) (0x06006ACD) has raw MethodDef row a05543000000860094cf0a00ed370300b94d, RVA 0x004355A0, signature blob 2002121511b50408, and an exact 98-byte fat-header body SHA-256 38d479af573bd1d4c4f72ad8947250d2ef5e4353f720d8c431daa0e3551dfb35. The exact raw kind switch leaves pat unchanged for cases 0, 1 and 11 and by default, rewrites it to pat % 6 for cases 2 through 6, and rewrites it to 0 for cases 7 through 10. The tail reads WeaponMan.WeaponSprite field 0x0400B6ED / signature 061412150200020000 (UnityEngine.Sprite[,]), calls MemberRef 0x0A001170 named Get with signature 200212150808 using kind and the rewritten Int32 index, then returns the Sprite. Exact matching-DLL scanning finds four direct callvirt references across four caller methods, including canonical FACT-0196 Weapon.SetPattern at IL+0x0021.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "WeaponMan.GetWeaponSprite token 0x06006ACD raw MethodDef row a05543000000860094cf0a00ed370300b94d -> RVA 0x004355A0; signature 2002121511b50408; fat-header code size 98; code sha256=38d479af573bd1d4c4f72ad8947250d2ef5e4353f720d8c431daa0e3551dfb35. Exact switch targets, WeaponSprite field, Get MemberRef identity and four-reference / four-caller map are pinned in canonical/witnesses/CAP-R6-001/weaponman_get_weapon_sprite.summary.json; prover tools/prove_weaponman_get_weapon_sprite.py.",
+      "observation": "Exact matching-DLL WeaponMan.GetWeaponSprite body, raw kind-to-pattern-index rewrite, WeaponSprite field identity/type, raw Get MemberRef identity/signature, and exact four-reference / four-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0196 Weapon.SetPattern",
+      "to": "WeaponMan.GetWeaponSprite(kind, pat)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Weapon.SetPattern token 0x06006AB7, RVA 0x00434C1A, direct callvirt token 0x06006ACD at IL+0x0021."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw WeaponEnum values are preserved as integers; no weapon-kind names are assigned by this fact.",
+    "Fresh CAP-R6-001 contains zero WeaponMan.GetWeaponSprite rows and zero rows for all four direct callers, so no runtime execution, returned Sprite, or caller bridge is claimed.",
+    "The CLR/Unity implementation behind MemberRef 0x0A001170 and the actual Sprite objects remain external.",
+    "Authored WeaponSprite array population, sprite contents, and broader weapon rendering semantics remain outside this fact."
+  ]
+}
