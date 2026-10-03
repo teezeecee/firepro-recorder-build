@@ -1,0 +1,61 @@
+{
+  "fact_id": "FACT-0201",
+  "claim": "In the matching retail DLL, instance Weapon.Update_Equipped() (0x06006ABA) has raw MethodDef row 204e43000000860005cf0a005c480000a84d, RVA 0x00434E20, signature blob 200001, and an exact 92-byte fat-header body SHA-256 3aa49b941ea49de68211c6b8bd98672b796ea36dc5eb99deeae75ef911aa737d. The body resolves PlayerMan.GetInst().GetPlObj(this.PlIdx); if UnityEngine.Object.op_Implicit(player) is false it calls canonical FACT-0197 WeaponMan.GetInst and FACT-0199 WeaponMan.DeleteWeapon(this.Idx) then returns. Otherwise it writes player.Zone to this.Zone, writes raw zero to this.Dir, obtains player.FormRen.playerLayerLocation, maps it through canonical FACT-0057 LayerMan.GetLayerID, writes the result to this.gameObject.layer, and returns. PlayerMan.GetPlObj is canonical FACT-0109. Exact matching-DLL scanning finds one direct caller, Weapon.UpdateWeapon, at IL+0x009A.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Weapon.Update_Equipped token 0x06006ABA raw MethodDef row 204e43000000860005cf0a005c480000a84d -> RVA 0x00434E20; signature 200001; fat-header code size 92; code sha256=3aa49b941ea49de68211c6b8bd98672b796ea36dc5eb99deeae75ef911aa737d. Exact field/member tokens, canonical helper calls, one-reference / one-caller map, and explicit PlayerMan.GetInst blocker are pinned in canonical/witnesses/CAP-R6-001/weapon_update_equipped.summary.json; prover tools/prove_weapon_update_equipped.py.",
+      "observation": "Exact matching-DLL Weapon.Update_Equipped player lookup, null/deletion branch, zone/direction writes, render-layer write, canonical helper calls, and exact one-reference / one-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Weapon.Update_Equipped()",
+      "to": "FACT-0109 PlayerMan.GetPlObj(Int32 idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Weapon.Update_Equipped token 0x06006ABA, direct callvirt token 0x06005065 at IL+0x000B after loading this.PlIdx."
+        }
+      ]
+    },
+    {
+      "from": "Weapon.Update_Equipped() null-player branch",
+      "to": "FACT-0197 WeaponMan.GetInst()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Weapon.Update_Equipped direct call token 0x06006AC0 at IL+0x001C."
+        }
+      ]
+    },
+    {
+      "from": "Weapon.Update_Equipped() null-player branch",
+      "to": "FACT-0199 WeaponMan.DeleteWeapon(Int32 idx)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Weapon.Update_Equipped direct callvirt token 0x06006AC6 at IL+0x0027 after loading this.Idx."
+        }
+      ]
+    },
+    {
+      "from": "Weapon.Update_Equipped() layer branch",
+      "to": "FACT-0057 LayerMan.GetLayerID(raw layer)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Weapon.Update_Equipped direct call token 0x06004876 at IL+0x0051 after loading player.FormRen.playerLayerLocation."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "PlayerMan.GetInst token 0x0600505D remains open; its exact 6-byte getter body is pinned only as a blocker boundary here, and its 171 references across 102 caller methods are not promoted by this fact.",
+    "Fresh CAP-R6-001 contains zero Weapon.Update_Equipped rows and zero Weapon.UpdateWeapon rows, so no runtime branch, deletion, zone/direction write, layer write, or caller bridge is claimed.",
+    "UnityEngine.Object.op_Implicit, UnityEngine.Component.get_gameObject, and UnityEngine.GameObject.set_layer implementations remain external.",
+    "LayerMan.layerID table contents remain outside FACT-0057 and this fact.",
+    "Weapon.UpdateWeapon remains a separate caller seam."
+  ]
+}

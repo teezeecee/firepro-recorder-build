@@ -3435,6 +3435,27 @@
         "uncanonicalized direct caller bodies",
         "fresh R6 has zero helper/caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_WEAPON_UPDATE_EQUIPPED_V1",
+      "fact_id": "FACT-0201",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 92-byte matching-DLL Weapon.Update_Equipped player lookup/null-delete branch, zone/direction writes, render-layer write, canonical helper calls, exact one-reference / one-caller map, and explicit PlayerMan.GetInst selection boundary.",
+      "summary": "canonical/witnesses/CAP-R6-001/weapon_update_equipped.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "PlayerMan.GetInst singleton getter closure remains open across 171 references / 102 caller methods",
+        "external Unity Object/Component/GameObject behavior",
+        "LayerMan.layerID table contents",
+        "Weapon.UpdateWeapon caller body",
+        "fresh R6 has zero helper/caller rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
