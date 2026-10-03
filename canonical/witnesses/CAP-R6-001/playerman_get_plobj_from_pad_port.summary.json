@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERMAN_GET_PLOBJ_FROM_PAD_PORT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerMan",
+      "method": "GetPlObjFromPadPort",
+      "token": "0x06005066",
+      "rva": "0x00304B88",
+      "methoddef_row_hex": "884b3000000086003a430a00d5d40200fe3a",
+      "signature_blob_hex": "200112a78808",
+      "parameters": [
+        "Int32"
+      ],
+      "return_type_metadata": "Player",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "fat",
+      "fat_flags_size_raw": "0x3013",
+      "max_stack": 2,
+      "local_signature_token": "0x1100003A",
+      "code_size": 103,
+      "code_sha256": "9a4d894da22ead6979e399924710d5823a3a505447e40ef6b8c838c6e4b5123e",
+      "body_hex": "160a3850000000027bff610004069a14280f00000a3939000000027bff610004069a7b2b6000047b156100041a4021000000027bff610004069a7b316000047bc6610004034009000000027bff610004069a2a0617580a06027bff6100048e693fa2ffffff142a",
+      "exact_flow": [
+        "initialize local scan index to 0",
+        "while index is less than PlayerMan.PlObj length, inspect PlObj[index]",
+        "compare PlObj[index] with null through external UnityEngine.Object.op_Inequality",
+        "for a non-null Player require Player.plController.kind == raw 4",
+        "then require Player.plCont_NetCom.port == Int32 argument",
+        "return the first matching Player",
+        "otherwise increment index and continue",
+        "return null when the scan is exhausted"
+      ]
+    },
+    "external_member_refs": [
+      {
+        "token": "0x0A00000F",
+        "name": "op_Inequality",
+        "memberref_row_hex": "d100000088500600b6480000",
+        "signature_blob_hex": "00020212691269",
+        "call_il": "0x0010",
+        "opcode": "call"
+      }
+    ],
+    "fields": [
+      {
+        "token": "0x040061FF",
+        "owner": "PlayerMan",
+        "name": "PlObj",
+        "field_row_hex": "0600b7f203000d210000",
+        "signature_blob_hex": "061d12a788",
+        "access_ils": [
+          "0x0008",
+          "0x001B",
+          "0x0033",
+          "0x004B",
+          "0x0059"
+        ]
+      },
+      {
+        "token": "0x0400602B",
+        "owner": "Player",
+        "name": "plController",
+        "field_row_hex": "0600f6e5030011380000",
+        "signature_blob_hex": "0612a7b8",
+        "access_ils": [
+          "0x0022"
+        ]
+      },
+      {
+        "token": "0x04006115",
+        "owner": "PlayerController",
+        "name": "kind",
+        "field_row_hex": "0600635101006b380000",
+        "signature_blob_hex": "0611a7b4",
+        "access_ils": [
+          "0x0027"
+        ],
+        "raw_required_value": 4
+      },
+      {
+        "token": "0x04006031",
+        "owner": "Player",
+        "name": "plCont_NetCom",
+        "field_row_hex": "060049e603002f380000",
+        "signature_blob_hex": "0612a7f8",
+        "access_ils": [
+          "0x003A"
+        ]
+      },
+      {
+        "token": "0x040061C6",
+        "owner": "PlayerController_Network",
+        "name": "port",
+        "field_row_hex": "060064f70300100f0000",
+        "signature_blob_hex": "06119050",
+        "access_ils": [
+          "0x003F"
+        ]
+      }
+    ],
+    "internal_methoddef_calls": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "Network",
+        "caller_namespace": "",
+        "caller_method": "IsSyncInputData",
+        "caller_token": "0x06004B48",
+        "caller_rva": "0x002C1C50",
+        "caller_code_size": 603,
+        "caller_code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d",
+        "call_il": "0x0057",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Network",
+        "caller_namespace": "",
+        "caller_method": "IsSyncInputData",
+        "caller_token": "0x06004B48",
+        "caller_rva": "0x002C1C50",
+        "caller_code_size": 603,
+        "caller_code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d",
+        "call_il": "0x016B",
+        "opcode": "callvirt"
+      }
+    ],
+    "direct_reference_count": 2,
+    "direct_caller_method_count": 1,
+    "normalized_reference_map_sha256": "c50055b67a32cc2fba819ec1c1e2bd555bebd543a466406f7e99677d0481cf91",
+    "normalized_caller_token_set_sha256": "529c4c3a546bb03ece175162a02d143ed3392c759a5889a0c3b8df278a7cd4d8"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playerman_get_plobj_from_pad_port_row_count": 0,
+    "network_is_sync_input_data_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for this lookup or its sole direct caller; no runtime player/port lookup bridge is claimed."
+  },
+  "selection_boundary": {
+    "candidate_reason": "After FACT-0216, Network.IsSyncInputData still depends on PlayerMan.GetInst, PlayerMan.GetPlObjFromPadPort and Player.SetPlayerController. GetPlObjFromPadPort is a 103-byte child with no in-assembly MethodDef descendants and only two direct references from the single open parent, making it the next bounded proof surface.",
+    "next_bounded_child": {
+      "method": "Player.SetPlayerController",
+      "token": "0x06004EAC",
+      "rva": "0x002DE380",
+      "code_size": 138,
+      "code_sha256": "5dd13b1056dacf616fe2c9832bf85dbc4901c3911bfc2b75200c1f23b9301acb",
+      "direct_reference_count": 25,
+      "direct_caller_method_count": 11
+    },
+    "broad_deferred_child": {
+      "method": "PlayerMan.GetInst",
+      "token": "0x0600505D",
+      "rva": "0x00304880",
+      "code_size": 6,
+      "code_sha256": "592555acaf96cbd806fb44a0dfd643c83f27267edcf79fe7ab57ec6c0457b1ff",
+      "direct_reference_count": 171,
+      "direct_caller_method_count": 102
+    }
+  },
+  "limits": [
+    "External Unity object comparison remains external.",
+    "Raw controller kind 4 has no assigned enum meaning.",
+    "Player-array population/lifecycle remains separate provenance.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_playerman_get_plobj_from_pad_port.py"
+}
