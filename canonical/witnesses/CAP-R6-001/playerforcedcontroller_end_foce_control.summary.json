@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERFORCEDCONTROLLER_END_FOCE_CONTROL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerForcedController",
+      "method": "End_FoceControl",
+      "token": "0x06005040",
+      "rva": "0x00300938",
+      "methoddef_row_hex": "38093000000086007f400a005c480000ef3a",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type_metadata": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x5A",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "code_size": 22,
+      "code_sha256": "4bce19fe9959b584ef14908126404a2afd4c862fc4d271de03b82729964915a3",
+      "body_hex": "02167dde61000402167de261000402177de36100042a",
+      "exact_flow": [
+        "write raw zero to this.mode",
+        "write raw zero to this.step",
+        "write raw one to this.isComplete",
+        "return"
+      ]
+    },
+    "fields": [
+      {
+        "token": "0x040061DE",
+        "owner": "PlayerForcedController",
+        "name": "mode",
+        "field_row_hex": "0100ffda0100f8370000",
+        "signature_blob_hex": "0611a804",
+        "write_il": "0x0002",
+        "raw_value": 0
+      },
+      {
+        "token": "0x040061E2",
+        "owner": "PlayerForcedController",
+        "name": "step",
+        "field_row_hex": "0100baf8030001000000",
+        "signature_blob_hex": "0608",
+        "write_il": "0x0009",
+        "raw_value": 0
+      },
+      {
+        "token": "0x040061E3",
+        "owner": "PlayerForcedController",
+        "name": "isComplete",
+        "field_row_hex": "0100bff8030008000000",
+        "signature_blob_hex": "0602",
+        "write_il": "0x0010",
+        "raw_value": 1
+      }
+    ],
+    "internal_methoddef_calls": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "Player",
+        "caller_namespace": "",
+        "caller_method": "End_ForceControl",
+        "caller_token": "0x06004F75",
+        "caller_rva": "0x002F2E9E",
+        "caller_code_size": 19,
+        "caller_code_sha256": "4321518c766e7855fee13fe8c71e345755accee937ddefec62ce07a84efcb40f",
+        "call_il": "0x000D",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerForcedController",
+        "caller_namespace": "",
+        "caller_method": "MakeKeyData_ForceControl",
+        "caller_token": "0x06005055",
+        "caller_rva": "0x003041C4",
+        "caller_code_size": 422,
+        "caller_code_sha256": "b2ad3cb3708c342f97a112f03df4d64b092f72071128d3a8868521d48c402eb7",
+        "call_il": "0x010B",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerForcedController",
+        "caller_namespace": "",
+        "caller_method": "MakeKeyData_ForceControl",
+        "caller_token": "0x06005055",
+        "caller_rva": "0x003041C4",
+        "caller_code_size": 422,
+        "caller_code_sha256": "b2ad3cb3708c342f97a112f03df4d64b092f72071128d3a8868521d48c402eb7",
+        "call_il": "0x012C",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 3,
+    "direct_caller_method_count": 2,
+    "normalized_reference_map_sha256": "2c3426da596fc724458f6d3cdcc1e461081535933d89e2968b6dff0b9c190dec",
+    "normalized_caller_token_set_sha256": "0c05f793b48ce953db504be8e309305e2f3850091bc2f0b88cf76e64b09014f4"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playerforcedcontroller_end_foce_control_row_count": 0,
+    "player_end_force_control_row_count": 0,
+    "playerforcedcontroller_make_key_data_force_control_row_count": 0,
+    "playercontroller_tutorial_update_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "dispatch_frontier": {
+      "base_fact_id": "FACT-0206",
+      "base_method": "PlayerController.Update",
+      "already_canonical_overrides": [
+        {
+          "fact_id": "FACT-0207",
+          "method": "PlayerController_External.Update",
+          "code_size": 1
+        },
+        {
+          "fact_id": "FACT-0208",
+          "method": "PlayerController_NoControl.Update",
+          "code_size": 15
+        },
+        {
+          "fact_id": "FACT-0210",
+          "method": "PlayerController_GamePad.Update",
+          "code_size": 59
+        },
+        {
+          "fact_id": "FACT-0221",
+          "method": "PlayerController_Network.Update",
+          "code_size": 94
+        }
+      ],
+      "remaining_open_overrides": [
+        {
+          "method": "PlayerController_Tutorial.Update",
+          "token": "0x0600503D",
+          "rva": "0x00300794",
+          "code_size": 352,
+          "code_sha256": "ee9742c42475c1d0a1ab0513f2cab8c4e25b5f3d3e10b750adf9ecd498573bbe"
+        },
+        {
+          "method": "PlayerController_AI.Update",
+          "token": "0x0600502B",
+          "rva": "0x002FFC68",
+          "code_size": 984,
+          "code_sha256": "6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9"
+        }
+      ]
+    },
+    "tutorial_update_methoddef_calls": [
+      {
+        "status": "OPEN",
+        "method": "Player.Start_ForceControl",
+        "token": "0x06004F74",
+        "code_size": 20,
+        "call_il": "0x0025",
+        "opcode": "callvirt"
+      },
+      {
+        "status": "OPEN",
+        "method": "Player.End_ForceControl",
+        "token": "0x06004F75",
+        "code_size": 19,
+        "call_il": "0x0035",
+        "opcode": "callvirt"
+      },
+      {
+        "status": "OPEN",
+        "method": "PlayerController_Tutorial.Process_Grapple",
+        "token": "0x0600503C",
+        "code_size": 109,
+        "call_il": "0x010B",
+        "opcode": "call"
+      },
+      {
+        "status": "CANONICAL",
+        "fact_id": "FACT-0025",
+        "method": "MatchMisc.mRate100Check",
+        "token": "0x06004955",
+        "code_size": 38,
+        "call_ils": [
+          "0x0122",
+          "0x014E"
+        ],
+        "opcode": "call"
+      }
+    ],
+    "smallest_open_leaf_reason": "Player.End_ForceControl is the smallest open Tutorial.Update child at 19 bytes, but it directly calls PlayerForcedController.End_FoceControl. That 22-byte target has no in-assembly MethodDef child calls and is smaller than the corresponding Start_FoceControl leaf (29 bytes), making End_FoceControl the smallest dependency-clean leaf on the smaller remaining Tutorial override path.",
+    "next_parent_candidate": {
+      "method": "Player.End_ForceControl",
+      "token": "0x06004F75",
+      "rva": "0x002F2E9E",
+      "code_size": 19,
+      "code_sha256": "4321518c766e7855fee13fe8c71e345755accee937ddefec62ce07a84efcb40f"
+    }
+  },
+  "limits": [
+    "Raw field values are preserved without added state labels.",
+    "The two caller methods remain separate seams.",
+    "Runtime virtual dispatch remains unbridged by fresh R6.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_playerforcedcontroller_end_foce_control.py"
+}
