@@ -1103,3 +1103,9 @@ jobs:
         run: python tests/test_weapon_update_falling_summary.py
       - name: Weapon Update_Falling prover syntax
         run: python -m py_compile tools/prove_weapon_update_falling.py
+
+
+      - name: Weapon Update_ThrowIn summary
+        run: python tests/test_weapon_update_throw_in_summary.py
+      - name: Weapon Update_ThrowIn prover syntax
+        run: python -m py_compile tools/prove_weapon_update_throw_in.py
