@@ -1137,3 +1137,9 @@ jobs:
         run: python tests/test_playercontroller_nocontrol_update_summary.py
       - name: PlayerController NoControl Update prover syntax
         run: python -m py_compile tools/prove_playercontroller_nocontrol_update.py
+
+
+      - name: GrappleHost offline result summary
+        run: python tests/test_grapplehost_offline_result_summary.py
+      - name: GrappleHost offline result prover syntax
+        run: python -m py_compile tools/prove_grapplehost_offline_result.py
