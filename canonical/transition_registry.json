@@ -3820,6 +3820,27 @@
         "Network.IsSyncInputData remains a separate parent seam",
         "fresh R6 has zero getter/pinned-caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_NETWORK_IS_SYNC_INPUT_DATA_V1",
+      "fact_id": "FACT-0220",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 603-byte matching-DLL Network.IsSyncInputData Boolean synchronization/disconnect body with all five in-assembly callees canonical through FACT-0219, exact fields/external-member boundaries/control blocks, and complete three-reference / three-caller surface.",
+      "summary": "canonical/witnesses/CAP-R6-001/network_is_sync_input_data.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 3,
+      "direct_caller_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external connectivity/runtime/collection/time/string member behavior remains external",
+        "raw language and controller selector values have no additional promoted labels",
+        "m_InputBuffer population and producer timing remain separate provenance",
+        "PlayerController_Network.Update remains a separate parent seam",
+        "fresh R6 has zero method/caller rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
