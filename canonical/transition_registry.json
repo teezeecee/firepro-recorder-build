@@ -3964,6 +3964,26 @@
         "PlayerController_Tutorial.Update remains a separate parent body",
         "fresh R6 has zero Process_Grapple and Tutorial.Update rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_TUTORIAL_UPDATE_V1",
+      "fact_id": "FACT-0227",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 352-byte matching-DLL PlayerController_Tutorial.Update reuse-slot override: raw pad reset, Zone-dependent canonical Start/End ForceControl path, exact HomePos +/-0.1f directional padOn writes, canonical Process_Grapple call, raw pinfall/submission defense gates through canonical mRate100Check(30), zero direct MethodDef-token references, and direct-subclass metadata against canonical PlayerController.Update.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_tutorial_update.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 0,
+      "direct_caller_method_count": 0,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "raw pad, Zone, threshold and defense values receive no added gameplay labels",
+        "base-token virtual dispatch remains unresolved at runtime",
+        "PlayerController_AI.Update remains a separate concrete override body",
+        "fresh R6 has zero Tutorial.Update and child rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
