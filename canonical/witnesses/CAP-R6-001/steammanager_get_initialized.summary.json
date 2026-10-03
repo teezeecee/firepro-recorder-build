@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_STEAMMANAGER_GET_INITIALIZED_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "SteamManager",
+      "method": "get_Initialized",
+      "token": "0x060052F1",
+      "rva": "0x00325EA7",
+      "methoddef_row_hex": "a75e32000000960842640a00634a0000603d",
+      "signature_blob_hex": "000002",
+      "parameters": [],
+      "return_type_metadata": "Boolean",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0896",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x2E",
+      "code_size": 11,
+      "code_sha256": "c1bdb25bf14d1778175cda4ec73d358c1891fcc0a65d3b566308883ea29c40ff",
+      "body_hex": "28f05200067bf58700042a",
+      "exact_flow": [
+        "call FACT-0213 SteamManager.get_Instance",
+        "load instance field m_bInitialized from returned SteamManager",
+        "return Boolean field"
+      ]
+    },
+    "field": {
+      "token": "0x040087F5",
+      "owner": "SteamManager",
+      "name": "m_bInitialized",
+      "field_row_hex": "01009ad1050008000000",
+      "signature_blob_hex": "0602",
+      "load_il": "0x0005"
+    },
+    "internal_methoddef_calls": [
+      {
+        "token": "0x060052F0",
+        "method": "SteamManager.get_Instance",
+        "fact_id": "FACT-0213",
+        "call_il": "0x0000"
+      }
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "Network",
+        "caller_method": "Update",
+        "caller_token": "0x06004AEF",
+        "caller_rva": "0x002BFBD0",
+        "caller_code_size": 85,
+        "caller_code_sha256": "3dba758b8d9de56bff6a5ba05fd34fb112fcd2fd17353a138eea05858014de9e",
+        "call_il": "0x0000",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Network",
+        "caller_method": "Network_OnlineCheck",
+        "caller_token": "0x06004B65",
+        "caller_rva": "0x002C2C5C",
+        "caller_code_size": 26,
+        "caller_code_sha256": "ac5bd6e06bc7d05f1d7ee9c98ceac6a1b2977018dbcf86cfe907dd7648953dad",
+        "call_il": "0x0000",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SteamAchievement",
+        "caller_method": "OnEnable",
+        "caller_token": "0x06004BF8",
+        "caller_rva": "0x002C4EA4",
+        "caller_code_size": 111,
+        "caller_code_sha256": "1dfbf3c6356f45db0a83ac1e230dacb69ddbb80fccb1461cb5e5d647aa27cccd",
+        "call_il": "0x0000",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SteamAchievement",
+        "caller_method": "IsStatsValid",
+        "caller_token": "0x06004BF9",
+        "caller_rva": "0x002C4F1F",
+        "caller_code_size": 27,
+        "caller_code_sha256": "7d1ab3fa18c77f08602676f68a5c11dd9337399da3fbd322636ca1863c81f5c3",
+        "call_il": "0x0000",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SteamAchievement",
+        "caller_method": "UnlockArchivement",
+        "caller_token": "0x06004BFA",
+        "caller_rva": "0x002C4F3B",
+        "caller_code_size": 38,
+        "caller_code_sha256": "05dbcda85d33e3578b76a40d85e690c854799958555e3ff2dca0ee09740a943e",
+        "call_il": "0x0000",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SteamAchievement",
+        "caller_method": "Update",
+        "caller_token": "0x06004BFC",
+        "caller_rva": "0x002C4F90",
+        "caller_code_size": 43,
+        "caller_code_sha256": "d704280aa1f90ac5c229c55959e889d6cbb361e4e1eedae84e7085efe4a65bbf",
+        "call_il": "0x000B",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SteamAchievement",
+        "caller_method": "OnUserStatsReceived",
+        "caller_token": "0x06004BFD",
+        "caller_rva": "0x002C4FC8",
+        "caller_code_size": 192,
+        "caller_code_sha256": "a79d16ffa067e95c3a3ecf1a95068b152a8f9b388eafac73db1b389b4efe3a6f",
+        "call_il": "0x0000",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SteamCheck",
+        "caller_method": "Start",
+        "caller_token": "0x06004C04",
+        "caller_rva": "0x002C51B0",
+        "caller_code_size": 17,
+        "caller_code_sha256": "ccbe089140c1f497636b8b1535e3b86be453e670d52b8c18e083bac5e59a9120",
+        "call_il": "0x0000",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SteamGameClient",
+        "caller_method": "Awake",
+        "caller_token": "0x06004C28",
+        "caller_rva": "0x002C58C4",
+        "caller_code_size": 395,
+        "caller_code_sha256": "f7c8b6c8ffd0a9cc28a67a2fca1bc37b3b32945501780866eea43d27ef13e178",
+        "call_il": "0x0000",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SteamGameClient",
+        "caller_method": "OnDestroy",
+        "caller_token": "0x06004C29",
+        "caller_rva": "0x002C5A5C",
+        "caller_code_size": 192,
+        "caller_code_sha256": "e240a8682cffb41e6e377aa75c86ea960e78288a504f1165433b201497de70b2",
+        "call_il": "0x0000",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SteamWorkshop_UGC",
+        "caller_method": "OnEnable",
+        "caller_token": "0x06004CAB",
+        "caller_rva": "0x002C9008",
+        "caller_code_size": 144,
+        "caller_code_sha256": "71bed08ccf22a5f40dfe8f32a3ceb11ce9d78586e320185bc595c18a6bb126a4",
+        "call_il": "0x0000",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "ResidentObj",
+        "caller_method": "Awake",
+        "caller_token": "0x060050B8",
+        "caller_rva": "0x0030A4D8",
+        "caller_code_size": 1264,
+        "caller_code_sha256": "0adb9265d2f975075ccf2477ba81bc57a8f095bfa8ea849aa7805909ca97ac94",
+        "call_il": "0x0000",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 12,
+    "direct_caller_method_count": 12
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "steammanager_get_initialized_row_count": 0,
+    "steammanager_get_instance_row_count": 0,
+    "network_online_check_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for this getter, its canonical child, or Network_OnlineCheck; no runtime bridge is claimed."
+  },
+  "selection_boundary": {
+    "candidate_reason": "Recovered FACT-0213 explicitly leaves SteamManager.get_Initialized as its next caller seam. Its only in-assembly MethodDef child is now canonical FACT-0213, and its exact body is 11 bytes.",
+    "next_after_helper": {
+      "method": "Network.Network_OnlineCheck",
+      "token": "0x06004B65",
+      "rva": "0x002C2C5C",
+      "code_size": 26,
+      "code_sha256": "ac5bd6e06bc7d05f1d7ee9c98ceac6a1b2977018dbcf86cfe907dd7648953dad",
+      "direct_reference_count": 22,
+      "direct_caller_method_count": 16
+    }
+  },
+  "limits": [
+    "m_bInitialized write/population provenance remains separate.",
+    "Direct-reference membership does not promote caller semantics.",
+    "Network.Network_OnlineCheck remains open.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_steammanager_get_initialized.py"
+}
