@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_END_FORCE_CONTROL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Player",
+      "method": "End_ForceControl",
+      "token": "0x06004F75",
+      "rva": "0x002F2E9E",
+      "methoddef_row_hex": "9e2e2f00000086000c330a005c480000923a",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type_metadata": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x4E",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "code_size": 19,
+      "code_sha256": "4321518c766e7855fee13fe8c71e345755accee937ddefec62ce07a84efcb40f",
+      "body_hex": "02167dfa5f0004027b326000046f405000062a",
+      "exact_flow": [
+        "write raw zero to this.forceControl",
+        "load this.plForcedController",
+        "callvirt canonical FACT-0222 PlayerForcedController.End_FoceControl",
+        "return"
+      ]
+    },
+    "fields": [
+      {
+        "token": "0x04005FFA",
+        "owner": "Player",
+        "name": "forceControl",
+        "field_row_hex": "06008fe30300f8370000",
+        "signature_blob_hex": "0611a804",
+        "write_il": "0x0002",
+        "raw_value": 0
+      },
+      {
+        "token": "0x04006032",
+        "owner": "Player",
+        "name": "plForcedController",
+        "field_row_hex": "060057e6030034380000",
+        "signature_blob_hex": "0612a80c",
+        "load_il": "0x0009"
+      }
+    ],
+    "canonical_methoddef_calls": [
+      {
+        "fact_id": "FACT-0222",
+        "token": "0x06005040",
+        "method": "PlayerForcedController.End_FoceControl",
+        "sites": [
+          {
+            "il": "0x000D",
+            "opcode": "callvirt"
+          }
+        ]
+      }
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "EntranceScene",
+        "caller_namespace": "",
+        "caller_method": "CheckControlChange",
+        "caller_token": "0x0600484E",
+        "caller_rva": "0x0029E1AC",
+        "caller_code_size": 266,
+        "caller_code_sha256": "4e2f0f576ef2c40127811908bd8d87c9faaa59912185960701814b90c34e0a8f",
+        "call_il": "0x00D8",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "MatchDebug",
+        "caller_namespace": "",
+        "caller_method": "Test_ForcedControl",
+        "caller_token": "0x060048AD",
+        "caller_rva": "0x002A3BC8",
+        "caller_code_size": 77,
+        "caller_code_sha256": "6c75467939e2312182452a3e3421ae0d1419f6157349cfad09229a6902df1fdb",
+        "call_il": "0x0040",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerController_Tutorial",
+        "caller_namespace": "",
+        "caller_method": "Update",
+        "caller_token": "0x0600503D",
+        "caller_rva": "0x00300794",
+        "caller_code_size": 352,
+        "caller_code_sha256": "ee9742c42475c1d0a1ab0513f2cab8c4e25b5f3d3e10b750adf9ecd498573bbe",
+        "call_il": "0x0035",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerForcedController",
+        "caller_namespace": "",
+        "caller_method": "FoceControl_GoBackToRing",
+        "caller_token": "0x06005042",
+        "caller_rva": "0x00300958",
+        "caller_code_size": 1496,
+        "caller_code_sha256": "f560bdc0cfa889145059cc70cd13649883c3f2019a540295d42aa689e7e5d310",
+        "call_il": "0x0092",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerForcedController",
+        "caller_namespace": "",
+        "caller_method": "FoceControl_GoBackToApron_LeftCorner_U",
+        "caller_token": "0x06005043",
+        "caller_rva": "0x00300F3C",
+        "caller_code_size": 993,
+        "caller_code_sha256": "7c3ba97f13012f8782e89dbaefc0849941f012ffc4fe0bd993beed6057a7c334",
+        "call_il": "0x0342",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerForcedController",
+        "caller_namespace": "",
+        "caller_method": "FoceControl_GoBackToApron_RightCorner_U",
+        "caller_token": "0x06005044",
+        "caller_rva": "0x0030132C",
+        "caller_code_size": 767,
+        "caller_code_sha256": "f63fcb3ce7b1cf3a406d3fd9c7ba6fb4ecd788c5436b230c52a4ec9dea8230cb",
+        "call_il": "0x02A1",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerForcedController",
+        "caller_namespace": "",
+        "caller_method": "FoceControl_GoBackToApron_LeftCorner_D",
+        "caller_token": "0x06005045",
+        "caller_rva": "0x00301638",
+        "caller_code_size": 932,
+        "caller_code_sha256": "9b29ecf6d58078bb981669f9687700783ca336883fde814b0b577999591ee397",
+        "call_il": "0x0355",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerForcedController",
+        "caller_namespace": "",
+        "caller_method": "FoceControl_GoBackToApron_RightCorner_D",
+        "caller_token": "0x06005046",
+        "caller_rva": "0x003019E8",
+        "caller_code_size": 936,
+        "caller_code_sha256": "90314f45f4f2a79cc01079163d83efd1d76f8dc9a7e0c0019c5130f38db1b81b",
+        "call_il": "0x0369",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerForcedController",
+        "caller_namespace": "",
+        "caller_method": "ForceControl_GoToNeutralCorner",
+        "caller_token": "0x0600504A",
+        "caller_rva": "0x00302618",
+        "caller_code_size": 249,
+        "caller_code_sha256": "12bd1da120e86497338c976e8761a9fbd85450f4596d3ec4b482d36cdda9b275",
+        "call_il": "0x00F3",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerForcedController",
+        "caller_namespace": "",
+        "caller_method": "FoceControl_SecondStandby",
+        "caller_token": "0x0600504C",
+        "caller_rva": "0x003027D8",
+        "caller_code_size": 1714,
+        "caller_code_sha256": "7023e97abccc90575bcd6e0698a912ef4eb423f04fe09c21cb79ea4adb17e037",
+        "call_il": "0x04B4",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Referee",
+        "caller_namespace": "",
+        "caller_method": "PostProcessAnimation",
+        "caller_token": "0x0600507F",
+        "caller_rva": "0x00305E08",
+        "caller_code_size": 1405,
+        "caller_code_sha256": "9b1289adbe32d2145b2ff9a35d89323d7fc3fbb26ec0d59c49af3f85b115bffe",
+        "call_il": "0x03C1",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Referee",
+        "caller_namespace": "",
+        "caller_method": "FinishCheck",
+        "caller_token": "0x06005089",
+        "caller_rva": "0x00306AEC",
+        "caller_code_size": 1403,
+        "caller_code_sha256": "e7d62e5272bf454055b559103f4bf517ed20d8206e76db5acdd0a42bff74d810",
+        "call_il": "0x049D",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Referee",
+        "caller_namespace": "",
+        "caller_method": "FinishCheck",
+        "caller_token": "0x06005089",
+        "caller_rva": "0x00306AEC",
+        "caller_code_size": 1403,
+        "caller_code_sha256": "e7d62e5272bf454055b559103f4bf517ed20d8206e76db5acdd0a42bff74d810",
+        "call_il": "0x054C",
+        "opcode": "callvirt"
+      }
+    ],
+    "direct_reference_count": 13,
+    "direct_caller_method_count": 12,
+    "opcode_counts": {
+      "call": 0,
+      "callvirt": 13,
+      "newobj": 0,
+      "jmp": 0,
+      "ldftn": 0,
+      "ldvirtftn": 0
+    },
+    "normalized_reference_map_sha256": "0d514dda57375578c8776e675b24e79cab34db6f1bca46569a65c9774c15d572",
+    "normalized_caller_token_set_sha256": "bb386065dcc6a0f7ba33c97d1afb993a7db3487c1279a253558f5982b3079136"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "player_end_force_control_row_count": 0,
+    "playerforcedcontroller_end_foce_control_row_count": 0,
+    "playercontroller_tutorial_update_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "tutorial_update_parent": {
+      "method": "PlayerController_Tutorial.Update",
+      "token": "0x0600503D",
+      "rva": "0x00300794",
+      "code_size": 352,
+      "code_sha256": "ee9742c42475c1d0a1ab0513f2cab8c4e25b5f3d3e10b750adf9ecd498573bbe",
+      "end_force_control_call_il": "0x0035"
+    },
+    "next_open_subtree": {
+      "parent_method": "Player.Start_ForceControl",
+      "token": "0x0600503F",
+      "code_size": 29,
+      "parent_code_sha256": "5f7e39e4415fbe3bb7d6ddf30d6f7eceda02db18649b443d4f44f0a07a291d49",
+      "child_method": "PlayerForcedController.Start_FoceControl",
+      "child_code_sha256": "ede6d069634bd8695534188e0ff9ca8fb6cd7a4669425c39b4407cd7c3327320",
+      "meaning": "This is the next smaller Tutorial.Update subtree after End_ForceControl. The child leaf must be closed before the 20-byte parent."
+    }
+  },
+  "limits": [
+    "Raw field values receive no added labels.",
+    "Caller semantics remain separate.",
+    "PlayerController_Tutorial.Update remains open.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_player_end_force_control.py"
+}
