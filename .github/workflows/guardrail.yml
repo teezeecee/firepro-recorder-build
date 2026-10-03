@@ -1098,3 +1098,8 @@ jobs:
         run: python tests/test_weapon_update_equipped_summary.py
       - name: Weapon Update_Equipped prover syntax
         run: python -m py_compile tools/prove_weapon_update_equipped.py
+
+      - name: Weapon Update_Falling summary
+        run: python tests/test_weapon_update_falling_summary.py
+      - name: Weapon Update_Falling prover syntax
+        run: python -m py_compile tools/prove_weapon_update_falling.py

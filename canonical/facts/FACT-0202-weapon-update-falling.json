@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0202",
+  "claim": "In the matching retail DLL, instance Weapon.Update_Falling() (0x06006ABB) has raw MethodDef row 884e43000000860015cf0a005c480000a84d, RVA 0x00434E88, signature blob 200001, and an exact 164-byte fat-header body SHA-256 a6c62583dc93b0e5f367e45b8ea8bb2499f87333aa6f39cd3c666d188b973e44. Its exact body computes this.Vel = Vector3.op_Addition(this.Vel, this.Acc), then this.Pos = Vector3.op_Addition(this.Pos, this.Vel); an unsigned greater-than branch on this.Pos.z versus this.GroundY returns immediately when taken. Otherwise it clamps this.Pos.z to GroundY, multiplies this.Vel.z by raw Float32 -0.30000001192092896, and an unsigned greater-than branch on Mathf.Abs(this.Vel.z) versus raw Float32 0.0020000000949949026 returns immediately when taken. If not taken, it writes raw State = 0, Vel = Vector3.zero, Acc = Vector3.zero, then returns. The method contains no in-assembly game-method calls. Exact matching-DLL scanning finds one direct caller, Weapon.UpdateWeapon, at IL+0x00A5.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Weapon.Update_Falling token 0x06006ABB raw MethodDef row 884e43000000860015cf0a005c480000a84d -> RVA 0x00434E88; signature 200001; fat-header code size 164; code sha256=a6c62583dc93b0e5f367e45b8ea8bb2499f87333aa6f39cd3c666d188b973e44. Exact branch constants, field/member identities, absence of internal game calls, one-reference / one-caller map, and sibling-selection boundary are pinned in canonical/witnesses/CAP-R6-001/weapon_update_falling.summary.json; prover tools/prove_weapon_update_falling.py.",
+      "observation": "Exact matching-DLL Weapon.Update_Falling velocity/acceleration integration, ground clamp, vertical rebound, settle threshold, raw State zero write, zero-vector writes, no internal game-method calls, and exact one-reference / one-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Weapon.UpdateWeapon()",
+      "to": "Weapon.Update_Falling()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Weapon.UpdateWeapon token 0x06006ABD, RVA 0x00435000, direct call token 0x06006ABB at IL+0x00A5."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw Weapon.State value 0 is preserved numerically without assigning a gameplay label.",
+    "Fresh CAP-R6-001 contains zero Weapon.Update_Falling rows and zero Weapon.UpdateWeapon rows, so no runtime integration, ground-contact branch, bounce, settle transition, or caller bridge is claimed.",
+    "UnityEngine.Vector3 operator/property behavior and UnityEngine.Mathf.Abs remain external.",
+    "Weapon.UpdateWeapon remains a separate caller seam.",
+    "Weapon.Update_ThrowIn token 0x06006ABC remains a separate open child seam."
+  ]
+}
