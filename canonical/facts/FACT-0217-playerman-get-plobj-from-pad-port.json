@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0217",
+  "claim": "In the matching retail DLL, instance PlayerMan.GetPlObjFromPadPort(Int32) (0x06005066) has raw MethodDef row 884b3000000086003a430a00d5d40200fe3a, RVA 0x00304B88, signature blob 200112a78808, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 103-byte fat-header body SHA-256 9a4d894da22ead6979e399924710d5823a3a505447e40ef6b8c838c6e4b5123e. The body scans PlayerMan.PlObj from index 0 upward. For each element it first compares the Player reference with null through external UnityEngine.Object.op_Inequality; only non-null elements continue. It then requires raw Player.plController.kind == 4 and Player.plCont_NetCom.port == the Int32 argument, returning that Player on the first match. Otherwise the scan continues; exhaustion returns null. The raw controller-kind value 4 is preserved without assigning an enum meaning. There are no in-assembly MethodDef child calls. Exact matching-DLL scanning finds exactly two direct references, both callvirt sites inside the still-open Network.IsSyncInputData at IL+0x0057 and IL+0x016B.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerMan.GetPlObjFromPadPort token 0x06005066 -> RVA 0x00304B88; exact 103-byte body sha256=9a4d894da22ead6979e399924710d5823a3a505447e40ef6b8c838c6e4b5123e; exact PlObj/plController/kind/plCont_NetCom/port field records, external op_Inequality boundary, no MethodDef children and exact two-callvirt/one-caller surface in canonical/witnesses/CAP-R6-001/playerman_get_plobj_from_pad_port.summary.json; prover tools/prove_playerman_get_plobj_from_pad_port.py.",
+      "observation": "Exact PlayerMan player-array scan and raw controller-kind/port match logic, with complete direct caller surface."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Network.IsSyncInputData()",
+      "to": "PlayerMan.GetPlObjFromPadPort(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "open Network.IsSyncInputData token 0x06004B48 callvirt token 0x06005066 at IL+0x0057 and IL+0x016B."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "External UnityEngine.Object.op_Inequality implementation remains external.",
+    "Raw PlayerController.kind value 4 is not assigned an enum or gameplay meaning.",
+    "This fact does not promote PlayerMan.PlObj population/lifecycle, controller object construction, or Network.IsSyncInputData semantics.",
+    "Fresh CAP-R6-001 contains zero PlayerMan.GetPlObjFromPadPort and zero Network.IsSyncInputData rows; no runtime bridge is claimed."
+  ]
+}
