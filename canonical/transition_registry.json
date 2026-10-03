@@ -3882,6 +3882,26 @@
         "runtime virtual dispatch remains unbridged by fresh R6",
         "fresh R6 has zero leaf/caller/tutorial rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_END_FORCE_CONTROL_V1",
+      "fact_id": "FACT-0223",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 19-byte matching-DLL Player.End_ForceControl wrapper: raw zero write to forceControl, plForcedController load, canonical FACT-0222 End_FoceControl call, and complete 13-reference / 12-caller surface.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_end_force_control.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 13,
+      "direct_caller_method_count": 12,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "raw forceControl field value receives no added state label",
+        "the 12 caller methods remain separate provenance seams",
+        "PlayerController_Tutorial.Update remains a separate parent seam",
+        "fresh R6 has zero wrapper/child/tutorial/start rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
