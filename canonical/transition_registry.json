@@ -3922,6 +3922,26 @@
         "Player.Start_ForceControl remains a separate wrapper seam",
         "PlayerController_Tutorial.Update remains a separate parent seam",
         "fresh R6 has zero leaf/wrapper/tutorial rows and provides no runtime bridge"
+      ],
+    {
+      "family_id": "DLL_PLAYER_START_FORCE_CONTROL_V1",
+      "fact_id": "FACT-0225",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 20-byte matching-DLL Player.Start_ForceControl(ForceCtrlEnum) wrapper: raw argument stored to forceControl, plForcedController load, canonical FACT-0224 Start_FoceControl callvirt, and complete 18-reference / 15-caller surface.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_start_force_control.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 18,
+      "direct_caller_method_count": 15,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "ForceCtrlEnum member meanings are not promoted",
+        "raw forceControl value receives no added state label",
+        "the 15 direct caller methods remain separate provenance seams",
+        "PlayerController_Tutorial.Process_Grapple remains an open child before Tutorial.Update can close",
+        "fresh R6 has zero wrapper/child/tutorial/process-grapple rows and provides no runtime bridge"
       ]
     }
   ],
