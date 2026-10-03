@@ -3841,6 +3841,26 @@
         "PlayerController_Network.Update remains a separate parent seam",
         "fresh R6 has zero method/caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_NETWORK_UPDATE_V1",
+      "fact_id": "FACT-0221",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 94-byte matching-DLL PlayerController_Network.Update override: FACT-0220 sync gate, FACT-0212 PadData fetch/copy, FACT-0211 grapple-result fetch, external get_instance boundary, and zero direct MethodDef-body reference surface.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_network_update.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 0,
+      "direct_caller_method_count": 0,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external get_instance implementation/singleton lifecycle remains external",
+        "field names are preserved without additional gameplay labels",
+        "zero direct MethodDef-body callers does not close virtual/base dispatch provenance",
+        "fresh R6 has zero override/child rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
