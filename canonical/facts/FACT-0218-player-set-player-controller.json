@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0218",
+  "claim": "In the matching retail DLL, instance Player.SetPlayerController(PlayerControllerKind) (0x06004EAC) has raw MethodDef row 80e32d00000086006c70030072c40200303a, RVA 0x002DE380, signature blob 20010111a7b4, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 138-byte fat-header body SHA-256 5dd13b1056dacf616fe2c9832bf85dbc4901c3911bfc2b75200c1f23b9301acb. The body is a six-target switch on the raw input. Raw 0 assigns this.plCont_NoControl to this.plController; raw 1 assigns plCont_Pad; raw 2 plCont_AI; raw 3 plCont_Tutorial; raw 4 plCont_NetCom; raw 5 plCont_External. Any other raw value branches directly to return without writing plController. The method contains no in-assembly MethodDef child call. Exact matching-DLL MethodDef-body scanning finds 25 direct references across 11 caller methods: 21 callvirt and four call. The still-open Network.IsSyncInputData caller invokes it at IL+0x006F and IL+0x0186.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.SetPlayerController token 0x06004EAC -> RVA 0x002DE380; exact 138-byte body sha256=5dd13b1056dacf616fe2c9832bf85dbc4901c3911bfc2b75200c1f23b9301acb; exact six raw switch mappings, seven controller field records, no MethodDef children, complete 25-reference / 11-caller map digest, and IsSyncInputData call boundaries in canonical/witnesses/CAP-R6-001/player_set_player_controller.summary.json; prover tools/prove_player_set_player_controller.py.",
+      "observation": "Exact controller-field selector switch and complete direct-call surface, without assigning semantics beyond metadata names and raw switch values."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Network.IsSyncInputData()",
+      "to": "Player.SetPlayerController(PlayerControllerKind)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "open Network.IsSyncInputData token 0x06004B48 callvirt token 0x06004EAC at IL+0x006F and IL+0x0186."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "PlayerControllerKind metadata name is preserved, but no additional enum semantics are inferred from the raw switch values.",
+    "The selected controller objects' construction, state and behavior remain separate provenance.",
+    "The 25 direct references / 11 callers are pinned only as call boundaries; their caller semantics are not promoted.",
+    "Fresh CAP-R6-001 contains zero Player.SetPlayerController and zero Network.IsSyncInputData rows; no runtime bridge is claimed."
+  ]
+}
