@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_GRAPPLEHOST_OFFLINE_RESULT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "type": {
+      "type": "GrappleHost",
+      "typedef_rid": 2520,
+      "typedef_row_hex": "01001000e4770000000000005500fa5e824e"
+    },
+    "method": {
+      "type": "GrappleHost",
+      "method": "GetGrappleResult_ForOfflineTest",
+      "token": "0x06004E86",
+      "rva": "0x002DBC7D",
+      "methoddef_row_hex": "7dbc2d000000860060200a008cb602000c3a",
+      "signature_blob_hex": "200112a75c08",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "pl_idx",
+          "decoded_type": "Int32",
+          "param_row_hex": "000001005e970200"
+        }
+      ],
+      "return_type_metadata": "TypeDef RID 2519 (GrappleResultWork)",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x66",
+      "code_size": 25,
+      "code_sha256": "bf842a3657431d2f1f462688a7c150fe32593bd1a4db78283487cfcd576cedf0",
+      "body_hex": "03163f07000000031e3f02000000142a027bfc5e0004039a2a",
+      "exact_flow": [
+        "if signed pl_idx < raw 0, return null",
+        "if signed pl_idx is not less than raw 8, return null",
+        "otherwise return this.grappleResult[pl_idx]"
+      ]
+    },
+    "field": {
+      "token": "0x04005EFC",
+      "owner": "GrappleHost",
+      "name": "grappleResult",
+      "field_row_hex": "06000ad80300f9330000",
+      "signature_blob_hex": "061d12a75c",
+      "decoded_type_metadata": "GrappleResultWork[]"
+    },
+    "internal_game_method_calls": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_method": "Prepare",
+        "caller_token": "0x06005029",
+        "caller_rva": "0x002FFB54",
+        "caller_code_size": 210,
+        "caller_code_sha256": "c217a11dcecafe819b6af42c0015265302fd359ec62a1758dc35a935c8a2917d",
+        "call_il": "0x0031",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerController_GamePad",
+        "caller_method": "Update",
+        "caller_token": "0x06005035",
+        "caller_rva": "0x003005EA",
+        "caller_code_size": 59,
+        "caller_code_sha256": "7e6adb5aef2f2ce9384861ba006f6c2604af02cd16a87c245b92b5dee816658f",
+        "call_il": "0x0030",
+        "opcode": "callvirt"
+      }
+    ],
+    "direct_reference_count": 2,
+    "direct_caller_method_count": 2
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "grapplehost_offline_result_row_count": 0,
+    "playercontroller_gamepad_update_row_count": 0,
+    "playercontroller_ai_prepare_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for the helper or either direct caller; no runtime helper invocation or caller bridge is claimed."
+  },
+  "selection_boundary": {
+    "candidate_reason": "FACT-0208 exposed PlayerController_GamePad.Update as the next 59-byte override. Its only in-assembly child call is this 25-byte helper, which is smaller and was not canonical, so the dependency is closed first.",
+    "caller_sizes": [
+      [
+        "PlayerController_GamePad.Update",
+        59
+      ],
+      [
+        "PlayerController_AI.Prepare",
+        210
+      ]
+    ],
+    "next_after_helper": "PlayerController_GamePad.Update remains the smaller caller and the pending concrete Update override."
+  },
+  "limits": [
+    "Raw bounds are preserved numerically without semantic slot labels.",
+    "grappleResult population/lifecycle remains separate.",
+    "Both caller bodies remain separate gates.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_grapplehost_offline_result.py"
+}

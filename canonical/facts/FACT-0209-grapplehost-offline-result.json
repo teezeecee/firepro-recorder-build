@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0209",
+  "claim": "In the matching retail DLL, instance GrappleHost.GetGrappleResult_ForOfflineTest(Int32 pl_idx) (0x06004E86) has raw MethodDef row 7dbc2d000000860060200a008cb602000c3a, RVA 0x002DBC7D, signature blob 200112a75c08, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 25-byte tiny-header body SHA-256 bf842a3657431d2f1f462688a7c150fe32593bd1a4db78283487cfcd576cedf0. The exact body returns null when signed pl_idx < raw 0 or when signed pl_idx is not less than raw 8; otherwise it returns this.grappleResult[pl_idx] from GrappleHost field 0x04005EFC. It contains no in-assembly game-method calls. Exact matching-DLL scanning finds two direct callvirt references: PlayerController_AI.Prepare at IL+0x0031 and PlayerController_GamePad.Update at IL+0x0030.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "GrappleHost.GetGrappleResult_ForOfflineTest token 0x06004E86 -> RVA 0x002DBC7D; exact 25-byte body sha256=bf842a3657431d2f1f462688a7c150fe32593bd1a4db78283487cfcd576cedf0; full field/branch/caller evidence in canonical/witnesses/CAP-R6-001/grapplehost_offline_result.summary.json; prover tools/prove_grapplehost_offline_result.py.",
+      "observation": "Exact signed bounds gate, grappleResult array lookup, null paths, absence of child game calls, and exact two-reference / two-caller map."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_GamePad.Update()",
+      "to": "GrappleHost.GetGrappleResult_ForOfflineTest(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_GamePad.Update token 0x06005035 direct callvirt at IL+0x0030."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Prepare()",
+      "to": "GrappleHost.GetGrappleResult_ForOfflineTest(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_AI.Prepare token 0x06005029 direct callvirt at IL+0x0031."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The raw accepted index interval 0 through 7 is preserved numerically without assigning gameplay participant semantics.",
+    "The metadata field name grappleResult is preserved; population and lifecycle of the array remain separate provenance.",
+    "Fresh CAP-R6-001 contains zero helper, GamePad.Update, and AI.Prepare rows; no runtime bridge is claimed.",
+    "PlayerController_GamePad.Update and PlayerController_AI.Prepare remain separate caller seams."
+  ]
+}
