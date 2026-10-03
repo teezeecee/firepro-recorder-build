@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_NETWORK_ONLINE_CHECK_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Network",
+      "method": "Network_OnlineCheck",
+      "token": "0x06004B65",
+      "rva": "0x002C2C5C",
+      "methoddef_row_hex": "5c2c2c000000960014100a00634a0000c337",
+      "signature_blob_hex": "000002",
+      "parameters": [],
+      "return_type_metadata": "Boolean",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0096",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x6A",
+      "code_size": 26,
+      "code_sha256": "ac5bd6e06bc7d05f1d7ee9c98ceac6a1b2977018dbcf86cfe907dd7648953dad",
+      "body_hex": "28f15200063a02000000162a28340e000a3a02000000162a172a",
+      "exact_flow": [
+        "call FACT-0214 SteamManager.get_Initialized",
+        "if false return false",
+        "call external MemberRef 0x0A000E34 BLoggedOn",
+        "if false return false",
+        "return true"
+      ]
+    },
+    "internal_methoddef_calls": [
+      {
+        "token": "0x060052F1",
+        "method": "SteamManager.get_Initialized",
+        "fact_id": "FACT-0214",
+        "call_il": "0x0000"
+      }
+    ],
+    "external_member_refs": [
+      {
+        "token": "0x0A000E34",
+        "name": "BLoggedOn",
+        "memberref_row_hex": "910f000059530700634a0000",
+        "signature_blob_hex": "000002",
+        "call_il": "0x000C"
+      }
+    ],
+    "direct_reference_surface": {
+      "direct_reference_count": 22,
+      "direct_caller_method_count": 16,
+      "opcode_counts": {
+        "call": 22,
+        "callvirt": 0,
+        "newobj": 0,
+        "jmp": 0,
+        "ldftn": 0,
+        "ldvirtftn": 0
+      },
+      "normalized_reference_map_sha256": "b3adc0cc33c4c6c00d6d6e95044da098b1acabe34f6055dee111af9a3e49a863",
+      "normalized_caller_token_set_sha256": "7cd18ccf031bc7cd391d14885901accf25d342887966210b78d6150a4f856c38",
+      "meaning": "The prover reconstructs the complete MethodDef-body reference map and pins its normalized digest; membership does not promote caller behavior."
+    },
+    "pinned_caller_boundaries": [
+      {
+        "status": "OPEN",
+        "caller_type": "Network",
+        "caller_method": "IsSyncInputData",
+        "caller_token": "0x06004B48",
+        "caller_rva": "0x002C1C50",
+        "caller_code_size": 603,
+        "caller_code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d",
+        "call_ils": [
+          "0x000D"
+        ],
+        "opcode": "call"
+      },
+      {
+        "status": "OPEN",
+        "caller_type": "Network",
+        "caller_method": "Is_Result_Disconnect",
+        "caller_token": "0x06004B47",
+        "caller_rva": "0x002C1BEC",
+        "caller_code_size": 86,
+        "caller_code_sha256": "49ed3ecf79b05452b69b98323353306a6b08f1446e316a60b12e160743252802",
+        "call_ils": [
+          "0x0002"
+        ],
+        "opcode": "call"
+      }
+    ]
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "network_online_check_row_count": 0,
+    "steammanager_get_initialized_row_count": 0,
+    "network_is_sync_input_data_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for the helper, its canonical child, or IsSyncInputData; no runtime bridge is claimed."
+  },
+  "selection_boundary": {
+    "candidate_reason": "FACT-0214 closes the only in-assembly MethodDef child of Network.Network_OnlineCheck. The helper is now a dependency-clean 26-byte Boolean gate with an exact external BLoggedOn boundary.",
+    "remaining_is_sync_children": [
+      {
+        "method": "PlayerMan.GetInst",
+        "token": "0x0600505D",
+        "code_size": 6,
+        "code_sha256": "592555acaf96cbd806fb44a0dfd643c83f27267edcf79fe7ab57ec6c0457b1ff",
+        "direct_reference_count": 171,
+        "direct_caller_method_count": 102
+      },
+      {
+        "method": "DispNotification.Show",
+        "token": "0x060049C3",
+        "code_size": 39,
+        "code_sha256": "ce3eb15bbbe9c74bd34eb1405194a3556fbdfabec4a4c4cb4c53f72389a61a14"
+      },
+      {
+        "method": "PlayerMan.GetPlObjFromPadPort",
+        "token": "0x06005066",
+        "code_size": 103,
+        "code_sha256": "9a4d894da22ead6979e399924710d5823a3a505447e40ef6b8c838c6e4b5123e"
+      },
+      {
+        "method": "Player.SetPlayerController",
+        "token": "0x06004EAC",
+        "code_size": 138,
+        "code_sha256": "5dd13b1056dacf616fe2c9832bf85dbc4901c3911bfc2b75200c1f23b9301acb"
+      }
+    ]
+  },
+  "limits": [
+    "BLoggedOn implementation remains external.",
+    "Direct-reference membership does not promote caller semantics.",
+    "Network.IsSyncInputData remains open.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_network_online_check.py"
+}
