@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0222",
+  "claim": "In the matching retail DLL, instance PlayerForcedController.End_FoceControl() (0x06005040) has raw MethodDef row 38093000000086007f400a005c480000ef3a, RVA 0x00300938, signature blob 200001, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 22-byte tiny-header body SHA-256 4bce19fe9959b584ef14908126404a2afd4c862fc4d271de03b82729964915a3. The body writes raw zero to PlayerForcedController.mode, raw zero to PlayerForcedController.step, raw one to PlayerForcedController.isComplete, then returns. It contains no in-assembly MethodDef child call. Exact matching-DLL scanning finds three direct references across two caller methods: Player.End_ForceControl callvirt at IL+0x000D and PlayerForcedController.MakeKeyData_ForceControl calls at IL+0x010B and IL+0x012C.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerForcedController.End_FoceControl token 0x06005040 -> RVA 0x00300938; exact 22-byte body sha256=4bce19fe9959b584ef14908126404a2afd4c862fc4d271de03b82729964915a3; exact mode/step/isComplete field records, no MethodDef children, complete three-reference/two-caller map, and Tutorial override selection boundary in canonical/witnesses/CAP-R6-001/playerforcedcontroller_end_foce_control.summary.json; prover tools/prove_playerforcedcontroller_end_foce_control.py.",
+      "observation": "Exact forced-controller leaf reset body and complete direct-call surface."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Player.End_ForceControl()",
+      "to": "PlayerForcedController.End_FoceControl()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Player.End_ForceControl token 0x06004F75 callvirt token 0x06005040 at IL+0x000D."
+        }
+      ]
+    },
+    {
+      "from": "PlayerForcedController.MakeKeyData_ForceControl()",
+      "to": "PlayerForcedController.End_FoceControl()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerForcedController.MakeKeyData_ForceControl token 0x06005055 direct call token 0x06005040 at IL+0x010B and IL+0x012C."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Field names mode, step and isComplete are metadata identifiers; the raw stores are preserved without adding higher-level state meaning.",
+    "Player.End_ForceControl and PlayerForcedController.MakeKeyData_ForceControl remain separate caller seams.",
+    "This fact does not promote the broader PlayerController_Tutorial.Update body; it only closes the smallest open leaf reached while mechanically tracing the remaining concrete Update overrides.",
+    "Fresh CAP-R6-001 contains zero rows for this leaf, both direct caller methods, and PlayerController_Tutorial.Update; no runtime bridge is claimed."
+  ]
+}
