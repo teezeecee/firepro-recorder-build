@@ -3639,6 +3639,25 @@
         "Network, Tutorial and AI Update overrides remain separate seams",
         "fresh R6 has zero override/helper/base-caller rows and provides no runtime dispatch bridge"
       ]
+    },
+    {
+      "family_id": "DLL_NETWORK_GET_GRAPPLE_RESULT_V1",
+      "fact_id": "FACT-0211",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 9-byte matching-DLL Network.GetGrappleResult(Int32) leaf returning grappleResultWork[index], with no internal calls and exact two-reference / two-caller map.",
+      "summary": "canonical/witnesses/CAP-R6-001/network_get_grapple_result.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 2,
+      "direct_caller_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Network.grappleResultWork population and index-validity provenance remain separate",
+        "PlayerController_Network.Update and PlayerController_AI.Prepare caller bodies remain separate seams",
+        "fresh R6 has zero helper/caller rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
