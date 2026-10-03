@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0223",
+  "claim": "In the matching retail DLL, instance Player.End_ForceControl() (0x06004F75) has raw MethodDef row 9e2e2f00000086000c330a005c480000923a, RVA 0x002F2E9E, signature blob 200001, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 19-byte tiny-header body SHA-256 4321518c766e7855fee13fe8c71e345755accee937ddefec62ce07a84efcb40f. The body writes raw zero to Player.forceControl, then calls canonical FACT-0222 PlayerForcedController.End_FoceControl through this.plForcedController, and returns. Exact matching-DLL scanning finds 13 direct references, all callvirt, across 12 caller methods. One of those sites is open PlayerController_Tutorial.Update at IL+0x0035.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.End_ForceControl token 0x06004F75 -> RVA 0x002F2E9E; exact 19-byte body sha256=4321518c766e7855fee13fe8c71e345755accee937ddefec62ce07a84efcb40f; exact forceControl/plForcedController fields, canonical FACT-0222 child call, complete 13-reference / 12-caller map and Tutorial.Update boundary in canonical/witnesses/CAP-R6-001/player_end_force_control.summary.json; prover tools/prove_player_end_force_control.py.",
+      "observation": "Exact Player wrapper body and complete direct-call surface."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Player.End_ForceControl()",
+      "to": "FACT-0222 PlayerForcedController.End_FoceControl()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06005040 at IL+0x000D through this.plForcedController."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_Tutorial.Update()",
+      "to": "Player.End_ForceControl()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_Tutorial.Update token 0x0600503D direct callvirt token 0x06004F75 at IL+0x0035."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The metadata field name forceControl is preserved; raw zero is not assigned an additional state label.",
+    "Player.plForcedController object construction/lifecycle remains separate provenance.",
+    "The 12 direct caller methods are pinned as a complete token-reference surface only; their surrounding semantics are not promoted here.",
+    "PlayerController_Tutorial.Update remains a separate open parent seam.",
+    "Fresh CAP-R6-001 contains zero Player.End_ForceControl, FACT-0222 leaf, and PlayerController_Tutorial.Update rows; no runtime bridge is claimed."
+  ]
+}
