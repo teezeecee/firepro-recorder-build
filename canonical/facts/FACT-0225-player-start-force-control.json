@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0225",
+  "claim": "In the matching retail DLL, instance Player.Start_ForceControl(ForceCtrlEnum) (0x06004F74) has raw MethodDef row 892e2f0000008600f9320a008dcc0200913a, RVA 0x002F2E89, signature blob 20010111a804, raw ImplFlags 0x0000 and MethodAttributes 0x0086, and an exact 20-byte tiny-header body SHA-256 5f7e39e4415fbe3bb7d6ddf30d6f7eceda02db18649b443d4f44f0a07a291d49. The body stores the raw ForceCtrlEnum argument into Player.forceControl, loads Player.plForcedController, forwards the same raw argument to canonical FACT-0224 PlayerForcedController.Start_FoceControl by callvirt at IL+0x000E, then returns. Exact matching-DLL scanning finds 18 direct references across 15 caller methods.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Player.Start_ForceControl token 0x06004F74 -> RVA 0x002F2E89; exact 20-byte body sha256=5f7e39e4415fbe3bb7d6ddf30d6f7eceda02db18649b443d4f44f0a07a291d49; exact forceControl/plForcedController field records, canonical FACT-0224 child edge, and complete 18-reference / 15-caller surface in canonical/witnesses/CAP-R6-001/player_start_force_control.summary.json; prover tools/prove_player_start_force_control.py.",
+      "observation": "Exact Player force-control start wrapper, child bridge and complete direct caller surface."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Player.Start_ForceControl(ForceCtrlEnum)",
+      "to": "PlayerForcedController.Start_FoceControl(ForceCtrlEnum)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Player.Start_ForceControl token 0x06004F74 callvirt token 0x0600503F at IL+0x000E; child is canonical FACT-0224."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_Tutorial.Update()",
+      "to": "Player.Start_ForceControl(ForceCtrlEnum)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_Tutorial.Update token 0x0600503D callvirt token 0x06004F74 at IL+0x0025."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "ForceCtrlEnum is preserved as the metadata parameter type; no enum-member meaning is assigned to the raw argument.",
+    "forceControl and plForcedController are metadata field identifiers; the raw forceControl value receives no added state label.",
+    "The complete 18-reference / 15-caller surface is provenance only; those caller methods are not semantically collapsed into one behavior.",
+    "PlayerController_Tutorial.Process_Grapple remains open, so PlayerController_Tutorial.Update is not yet dependency-clean.",
+    "Fresh CAP-R6-001 contains zero wrapper/child/tutorial/process-grapple rows; no runtime bridge is claimed."
+  ]
+}
