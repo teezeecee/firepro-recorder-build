@@ -1155,3 +1155,9 @@ jobs:
         run: python tests/test_network_get_grapple_result_summary.py
       - name: Network GetGrappleResult prover syntax
         run: python -m py_compile tools/prove_network_get_grapple_result.py
+
+
+      - name: Network GetInputData summary
+        run: python tests/test_network_get_input_data_summary.py
+      - name: Network GetInputData prover syntax
+        run: python -m py_compile tools/prove_network_get_input_data.py

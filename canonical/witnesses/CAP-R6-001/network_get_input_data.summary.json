@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_NETWORK_GET_INPUT_DATA_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "return_type": {
+      "type": "PadData",
+      "typedef_rid": 2411,
+      "typedef_row_hex": "0901100055720000000000000507f15ace4b"
+    },
+    "method": {
+      "type": "Network",
+      "method": "GetInputData",
+      "token": "0x06004B49",
+      "rva": "0x002C1EB8",
+      "methoddef_row_hex": "b81e2c0000008600170e0a003ab60200ba37",
+      "signature_blob_hex": "200111a5ac08",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "playerId",
+          "decoded_type": "Int32",
+          "param_row_hex": "00000100e9d50000"
+        }
+      ],
+      "return_type_metadata": "PadData",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 2,
+      "local_signature_token": "0x11000FBB",
+      "local_signature_blob_hex": "07030811a5ac11a5ac",
+      "locals": [
+        {
+          "index": 0,
+          "decoded_type": "Int32"
+        },
+        {
+          "index": 1,
+          "decoded_type": "PadData"
+        },
+        {
+          "index": 2,
+          "decoded_type": "PadData"
+        }
+      ],
+      "code_size": 47,
+      "code_sha256": "cc873352d36cbd8a43a791fa41ddce1e8815f39b47564fa45f6645c3f53565bd",
+      "body_hex": "030a027b8a5a0004069a6f2c0e000a3a0a0000001201fe156b090002072a027b8a5a0004069a166f2d0e000a0c082a",
+      "exact_flow": [
+        "local0 = playerId",
+        "call external get_Count on this.m_InputBuffer[local0]",
+        "if count is zero: initobj/default local1 PadData and return local1",
+        "otherwise call external get_Item(raw 0) on this.m_InputBuffer[local0], store local2 and return local2"
+      ]
+    },
+    "field": {
+      "token": "0x04005A8A",
+      "owner": "Network",
+      "name": "m_InputBuffer",
+      "field_row_hex": "010031ae0300ef330000",
+      "signature_blob_hex": "061d1512090111a5ac",
+      "access_ils": [
+        "0x0003",
+        "0x001F"
+      ]
+    },
+    "external_member_refs": [
+      {
+        "token": "0x0A000E2C",
+        "name": "get_Count",
+        "memberref_row_hex": "dc130000f55206005e490000",
+        "signature_blob_hex": "200008",
+        "call_il": "0x000A"
+      },
+      {
+        "token": "0x0A000E2D",
+        "name": "get_Item",
+        "memberref_row_hex": "dc1300001b51060092490000",
+        "signature_blob_hex": "2001130008",
+        "call_il": "0x0027",
+        "raw_index_argument": 0
+      }
+    ],
+    "internal_game_method_calls": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_Network",
+        "caller_method": "Update",
+        "caller_token": "0x06005038",
+        "caller_rva": "0x00300658",
+        "caller_code_size": 94,
+        "caller_code_sha256": "6263d3075a2b1147709139a168d07a8b4f9b6773a41b67ff169759a6fe4482ed",
+        "call_il": "0x001A",
+        "opcode": "callvirt"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "network_get_input_data_row_count": 0,
+    "playercontroller_network_update_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no rows for Network.GetInputData or its sole direct caller; no runtime helper invocation or caller bridge is claimed."
+  },
+  "selection_boundary": {
+    "candidate_reason": "After FACT-0211 closes the 9-byte Network.GetGrappleResult child, the next unclosed child of the 94-byte PlayerController_Network.Update is Network.GetInputData at 47 bytes; the other remaining child Network.IsSyncInputData is 603 bytes.",
+    "remaining_network_update_child": {
+      "method": "Network.IsSyncInputData",
+      "token": "0x06004B48",
+      "code_size": 603,
+      "code_sha256": "ac9ee661178e8c57fa83c0572a6bc65d650c99c1aff55185cc942f5e5c52c89d"
+    }
+  },
+  "limits": [
+    "m_InputBuffer population/order/lifetime remains separate provenance.",
+    "External generic collection behavior remains external.",
+    "PlayerController_Network.Update remains open.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_network_get_input_data.py"
+}
