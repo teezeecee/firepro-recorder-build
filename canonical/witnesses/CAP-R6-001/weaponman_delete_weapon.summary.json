@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WEAPONMAN_DELETE_WEAPON_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "WeaponMan",
+      "method": "DeleteWeapon",
+      "token": "0x06006AC6",
+      "rva": "0x00435394",
+      "methoddef_row_hex": "94534300000086004dcf0a009f490000ab4d",
+      "signature_blob_hex": "20010108",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "idx",
+          "type": "Int32"
+        }
+      ],
+      "return_type": "Void",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 3,
+      "local_signature_token": "0x11001074",
+      "local_signature_blob_hex": "070112b508",
+      "locals": [
+        {
+          "index": 0,
+          "type": "Weapon"
+        }
+      ],
+      "code_size": 57,
+      "code_sha256": "8855138052c3fa6baf7847766f20a3ff5ded2a517364b594dc4a7af747239be1",
+      "body_hex": "03163f07000000031e3f010000002a027becb60004039a0a06282a00000a3a010000002a066f2800000a286f11000a027becb600040314a22a"
+    },
+    "field": {
+      "token": "0x0400B6EC",
+      "owner": "WeaponMan",
+      "name": "WeaponObj",
+      "raw_field_row_hex": "0600aa4f06009d190000",
+      "signature_blob_hex": "061d12b508",
+      "decoded_type": "Weapon[]",
+      "access_ils": [
+        "0x0010",
+        "0x0030"
+      ]
+    },
+    "external_member_refs": [
+      {
+        "token": "0x0A00002A",
+        "raw_memberref_row_hex": "d100000085510600e9490000",
+        "owner": "UnityEngine.Object",
+        "name": "op_Implicit",
+        "signature_blob_hex": "0001021269",
+        "call_il": "0x0019"
+      },
+      {
+        "token": "0x0A000028",
+        "raw_memberref_row_hex": "0901000076510600df490000",
+        "owner": "UnityEngine.Component",
+        "name": "get_gameObject",
+        "signature_blob_hex": "2000120d",
+        "call_il": "0x0025"
+      },
+      {
+        "token": "0x0A00116F",
+        "raw_memberref_row_hex": "d100000062b90700cc510000",
+        "owner": "UnityEngine.Object",
+        "name": "DestroyObject",
+        "signature_blob_hex": "0001011269",
+        "call_il": "0x002A"
+      }
+    ],
+    "exact_flow": [
+      "if signed idx < raw 0: return",
+      "if signed idx < raw 8: continue; otherwise return",
+      "local0 = this.WeaponObj[idx]",
+      "if UnityEngine.Object.op_Implicit(local0) is false: return",
+      "UnityEngine.Object.DestroyObject(local0.gameObject)",
+      "this.WeaponObj[idx] = null",
+      "return"
+    ],
+    "internal_game_method_calls": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "Player",
+        "caller_method": "ProcessAttackHit_Normal",
+        "caller_token": "0x06004F2A",
+        "caller_rva": "0x002E9D80",
+        "caller_code_size": 1272,
+        "caller_code_sha256": "9b0ee15ab9d50d7c55f283494967415fb4b3ab70e096088cafdafba068efe313",
+        "call_il": "0x013C",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "Weapon",
+        "caller_method": "Update_Equipped",
+        "caller_token": "0x06006ABA",
+        "caller_rva": "0x00434E20",
+        "caller_code_size": 92,
+        "caller_code_sha256": "3aa49b941ea49de68211c6b8bd98672b796ea36dc5eb99deeae75ef911aa737d",
+        "call_il": "0x0027",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "WeaponMan",
+        "caller_method": "DeleteAllWeapons",
+        "caller_token": "0x06006AC7",
+        "caller_rva": "0x004353DC",
+        "caller_code_size": 26,
+        "caller_code_sha256": "3e9811a875cf2dd7f62779e8ecf7cedaaf32084fcdeec863aa8e829aaa3c6467",
+        "call_il": "0x0009",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 3,
+    "direct_caller_method_count": 3
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weaponman_delete_weapon_row_count": 0,
+    "player_process_attack_hit_normal_row_count": 0,
+    "weapon_update_equipped_row_count": 0,
+    "weaponman_delete_all_weapons_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no WeaponMan.DeleteWeapon rows and no rows for any of its three direct callers; no runtime helper execution, object destruction, array mutation, or caller bridge is claimed from the capture."
+  },
+  "selection_boundary": {
+    "candidate_reason": "DeleteWeapon is the smallest bounded proof surface directly blocking the open Weapon.Update_Equipped seam: 57 code bytes and 3 direct references. PlayerMan.GetInst is only 6 code bytes but has 171 direct references across 102 caller methods, so its exact whole-assembly closure is broader work."
+  },
+  "limits": [
+    "This dataset closes only the exact WeaponMan.DeleteWeapon bounds/object/null/array-clear body, WeaponObj field identity, exact external MemberRef identities, and exact three-reference in-assembly caller map.",
+    "UnityEngine.Object.op_Implicit, UnityEngine.Component.get_gameObject, and UnityEngine.Object.DestroyObject implementations remain external.",
+    "Weapon object creation, WeaponObj population, authored weapon data, rendering, attacks, damage and AI behavior remain outside this dataset.",
+    "The three direct caller bodies remain separate work unless independently canonicalized.",
+    "Fresh R6 is retained only as a negative capture boundary, not positive evidence."
+  ],
+  "reproducibility_tool": "tools/prove_weaponman_delete_weapon.py"
+}

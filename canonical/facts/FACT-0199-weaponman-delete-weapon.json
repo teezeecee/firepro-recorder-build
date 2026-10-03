@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0199",
+  "claim": "In the matching retail DLL, instance WeaponMan.DeleteWeapon(Int32 idx) (0x06006AC6) has raw MethodDef row 94534300000086004dcf0a009f490000ab4d, RVA 0x00435394, signature blob 20010108, and an exact 57-byte fat-header body SHA-256 8855138052c3fa6baf7847766f20a3ff5ded2a517364b594dc4a7af747239be1. Its exact body returns for signed idx < 0, continues only for signed idx < 8, loads WeaponObj[idx], returns if UnityEngine.Object.op_Implicit is false, otherwise obtains the GameObject, calls UnityEngine.Object.DestroyObject, writes null back to WeaponObj[idx], and returns. Exact matching-DLL scanning finds three direct references across three caller methods: Player.ProcessAttackHit_Normal, Weapon.Update_Equipped, and WeaponMan.DeleteAllWeapons.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "WeaponMan.DeleteWeapon token 0x06006AC6 raw MethodDef row 94534300000086004dcf0a009f490000ab4d -> RVA 0x00435394; signature 20010108; fat-header code size 57; code sha256=8855138052c3fa6baf7847766f20a3ff5ded2a517364b594dc4a7af747239be1. Exact bounds, WeaponObj field/local identity, Unity MemberRefs, and three-reference / three-caller map are pinned in canonical/witnesses/CAP-R6-001/weaponman_delete_weapon.summary.json; prover tools/prove_weaponman_delete_weapon.py.",
+      "observation": "Exact matching-DLL WeaponMan.DeleteWeapon signed bounds, WeaponObj lookup/null gate, GameObject destroy call, array null write, external member identities, and exact three-reference / three-caller map."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Fresh CAP-R6-001 contains zero WeaponMan.DeleteWeapon rows and zero rows for all three direct callers, so no runtime execution, object destruction, array mutation, or caller bridge is claimed.",
+    "UnityEngine.Object.op_Implicit, UnityEngine.Component.get_gameObject, and UnityEngine.Object.DestroyObject implementations remain external.",
+    "Weapon object creation, WeaponObj population, authored weapon data, rendering, attacks, damage and AI behavior remain outside this fact.",
+    "The three direct caller bodies remain separate work unless independently canonicalized."
+  ]
+}
