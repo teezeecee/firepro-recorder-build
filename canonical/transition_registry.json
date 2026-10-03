@@ -3456,6 +3456,27 @@
         "Weapon.UpdateWeapon caller body",
         "fresh R6 has zero helper/caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_WEAPON_UPDATE_FALLING_V1",
+      "fact_id": "FACT-0202",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 164-byte matching-DLL Weapon.Update_Falling velocity/acceleration integration, ground clamp, vertical rebound, settle threshold, raw State-zero transition, zero-vector writes, absence of internal game calls, and exact one-reference / one-caller map.",
+      "summary": "canonical/witnesses/CAP-R6-001/weapon_update_falling.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "external UnityEngine.Vector3 and Mathf behavior",
+        "raw Weapon.State value 0 remains unlabeled",
+        "Weapon.UpdateWeapon caller body",
+        "Weapon.Update_ThrowIn sibling seam",
+        "fresh R6 has zero helper/caller/sibling rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

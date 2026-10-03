@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WEAPON_UPDATE_FALLING_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Weapon",
+      "method": "Update_Falling",
+      "token": "0x06006ABB",
+      "rva": "0x00434E88",
+      "methoddef_row_hex": "884e43000000860015cf0a005c480000a84d",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type": "Void",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 3,
+      "local_signature_token": "0x00000000",
+      "code_size": 164,
+      "code_sha256": "a6c62583dc93b0e5f367e45b8ea8bb2499f87333aa6f39cd3c666d188b973e44",
+      "body_hex": "02257bd7b60004027bd8b60004283c00000a7dd7b6000402257bd4b60004027bd7b60004283c00000a7dd4b60004027cd4b600047b5600000a027bddb60004425f000000027cd4b60004027bddb600047d5600000a027cd7b60004257b5600000a229a9999be5a7d5600000a027cd7b600047b5600000a284500000a226f12033b421d00000002167dd5b6000402283d00000a7dd7b6000402283d00000a7dd8b600042a"
+    },
+    "fields": [
+      {
+        "token": "0x0400B6D7",
+        "owner": "Weapon",
+        "name": "Vel",
+        "signature_blob_hex": "061119",
+        "decoded_type": "UnityEngine.Vector3"
+      },
+      {
+        "token": "0x0400B6D8",
+        "owner": "Weapon",
+        "name": "Acc",
+        "signature_blob_hex": "061119",
+        "decoded_type": "UnityEngine.Vector3"
+      },
+      {
+        "token": "0x0400B6D4",
+        "owner": "Weapon",
+        "name": "Pos",
+        "signature_blob_hex": "061119",
+        "decoded_type": "UnityEngine.Vector3"
+      },
+      {
+        "token": "0x0400B6DD",
+        "owner": "Weapon",
+        "name": "GroundY",
+        "signature_blob_hex": "060c",
+        "decoded_type": "Single"
+      },
+      {
+        "token": "0x0400B6D5",
+        "owner": "Weapon",
+        "name": "State",
+        "signature_blob_hex": "0611b500",
+        "decoded_type": "WeaponStatus1Enum"
+      }
+    ],
+    "external_member_refs": [
+      {
+        "token": "0x0A00003C",
+        "owner": "UnityEngine.Vector3",
+        "name": "op_Addition",
+        "signature_blob_hex": "0002111911191119",
+        "call_ils": [
+          "0x000D",
+          "0x0024"
+        ]
+      },
+      {
+        "token": "0x0A000056",
+        "owner": "UnityEngine.Vector3",
+        "name": "z",
+        "signature_blob_hex": "060c",
+        "access_ils": [
+          "0x0034",
+          "0x0050",
+          "0x005C",
+          "0x0067",
+          "0x0072"
+        ]
+      },
+      {
+        "token": "0x0A000045",
+        "owner": "UnityEngine.Mathf",
+        "name": "Abs",
+        "signature_blob_hex": "00010c0c",
+        "call_ils": [
+          "0x0077"
+        ]
+      },
+      {
+        "token": "0x0A00003D",
+        "owner": "UnityEngine.Vector3",
+        "name": "get_zero",
+        "signature_blob_hex": "00001119",
+        "call_ils": [
+          "0x008E",
+          "0x0099"
+        ]
+      }
+    ],
+    "internal_game_method_calls": [],
+    "exact_flow": [
+      "this.Vel = UnityEngine.Vector3.op_Addition(this.Vel, this.Acc)",
+      "this.Pos = UnityEngine.Vector3.op_Addition(this.Pos, this.Vel)",
+      "raw bgt.un(this.Pos.z, this.GroundY) branches directly to return",
+      "otherwise this.Pos.z = this.GroundY",
+      "this.Vel.z = this.Vel.z * raw Float32 -0.30000001192092896",
+      "raw bgt.un(UnityEngine.Mathf.Abs(this.Vel.z), raw Float32 0.0020000000949949026) branches directly to return",
+      "otherwise this.State = raw 0",
+      "this.Vel = UnityEngine.Vector3.zero",
+      "this.Acc = UnityEngine.Vector3.zero",
+      "return"
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "Weapon",
+        "caller_method": "UpdateWeapon",
+        "caller_token": "0x06006ABD",
+        "caller_rva": "0x00435000",
+        "caller_code_size": 351,
+        "caller_code_sha256": "e8abda8319bdbcd424c4a521ed8decbb056271a54e759da39759a0eb46748263",
+        "call_il": "0x00A5",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weapon_update_falling_row_count": 0,
+    "weapon_update_weapon_row_count": 0,
+    "weapon_update_throw_in_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no Weapon.Update_Falling, Weapon.UpdateWeapon, or Weapon.Update_ThrowIn rows; no runtime integration, ground-contact branch, bounce, settle transition, or caller bridge is claimed from the capture."
+  },
+  "selection_boundary": {
+    "competing_direct_child": {
+      "token": "0x06006ABC",
+      "type": "Weapon",
+      "method": "Update_ThrowIn",
+      "rva": "0x00434F38",
+      "code_size": 188,
+      "code_sha256": "0c414a06ab008a72015d27a098c79d068c39a442248446c4245d541423a35bf1",
+      "direct_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "update_weapon_call_il": "0x0102"
+    },
+    "parent": {
+      "token": "0x06006ABD",
+      "type": "Weapon",
+      "method": "UpdateWeapon",
+      "code_size": 351,
+      "code_sha256": "e8abda8319bdbcd424c4a521ed8decbb056271a54e759da39759a0eb46748263"
+    },
+    "candidate_reason": "Update_Falling is 164 bytes, has exactly one caller, and contains no in-assembly game-method calls. The other open direct child Update_ThrowIn is 188 bytes with one caller, while parent UpdateWeapon is 351 bytes. Update_Falling is therefore the smaller bounded open child seam."
+  },
+  "limits": [
+    "Raw State value 0 is preserved numerically without assigning a gameplay label.",
+    "The behavior of UnityEngine.Vector3 operators/properties and UnityEngine.Mathf.Abs remains external.",
+    "Weapon.UpdateWeapon remains a separate caller seam.",
+    "Weapon.Update_ThrowIn remains a separate open child seam.",
+    "Fresh R6 is retained only as a negative capture boundary, not positive evidence."
+  ],
+  "reproducibility_tool": "tools/prove_weapon_update_falling.py"
+}
