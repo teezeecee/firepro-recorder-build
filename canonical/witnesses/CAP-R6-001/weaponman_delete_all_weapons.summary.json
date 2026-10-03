@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WEAPONMAN_DELETE_ALL_WEAPONS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "WeaponMan",
+      "method": "DeleteAllWeapons",
+      "token": "0x06006AC7",
+      "rva": "0x004353DC",
+      "methoddef_row_hex": "dc534300000086005acf0a005c480000ac4d",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type": "Void",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 2,
+      "local_signature_token": "0x1100003A",
+      "local_signature_blob_hex": "070108",
+      "locals": [
+        {
+          "index": 0,
+          "type": "Int32"
+        }
+      ],
+      "code_size": 26,
+      "code_sha256": "3e9811a875cf2dd7f62779e8ecf7cedaaf32084fcdeec863aa8e829aaa3c6467",
+      "body_hex": "160a380b000000020628c66a00060617580a061e3feeffffff2a"
+    },
+    "exact_flow": [
+      "local0 = 0",
+      "branch to signed local0 < 8 test",
+      "call this.DeleteWeapon(local0)",
+      "local0 = local0 + 1",
+      "if signed local0 < 8: loop",
+      "return"
+    ],
+    "internal_game_method_calls": [
+      {
+        "token": "0x06006AC6",
+        "owner": "WeaponMan",
+        "method": "DeleteWeapon",
+        "call_il": "0x0009",
+        "opcode": "call",
+        "canonical_fact": "FACT-0199"
+      }
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "MatchMain",
+        "caller_method": "ProceedNextRound",
+        "caller_token": "0x0600491C",
+        "caller_rva": "0x002A8E98",
+        "caller_code_size": 353,
+        "caller_code_sha256": "f604d7a67afc50f501ac9ba6067303e7f7c4cabe1840cd7039da6c21ff03f79d",
+        "call_il": "0x0091",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "MatchMain",
+        "caller_method": "Update",
+        "caller_token": "0x06004938",
+        "caller_rva": "0x002AB3EC",
+        "caller_code_size": 1387,
+        "caller_code_sha256": "984f158c2da0fa72e67938d2970400e4e59fd96be8a32c0b256ca80109cc29ac",
+        "call_il": "0x0463",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "MatchMainCp",
+        "caller_method": "Update",
+        "caller_token": "0x06004943",
+        "caller_rva": "0x002AD660",
+        "caller_code_size": 920,
+        "caller_code_sha256": "2ae0da4a7e54fd7f3a74034bad7db65239cbcfedbf76d9d48ae767e7c0fff92a",
+        "call_il": "0x02B1",
+        "opcode": "callvirt"
+      }
+    ],
+    "direct_reference_count": 3,
+    "direct_caller_method_count": 3
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weaponman_delete_all_weapons_row_count": 0,
+    "matchmain_proceed_next_round_row_count": 0,
+    "matchmain_update_row_count": 0,
+    "matchmaincp_update_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains no WeaponMan.DeleteAllWeapons rows and no rows for any of its three direct callers; no runtime loop execution or caller bridge is claimed from the capture."
+  },
+  "selection_boundary": {
+    "candidate_reason": "DeleteAllWeapons is a bounded 26-byte child of newly canonical FACT-0199 DeleteWeapon, with exactly three direct callers and no other internal game-method calls. It is smaller than the open 92-byte Weapon.Update_Equipped seam and keeps the dependency closure narrow."
+  },
+  "limits": [
+    "This dataset closes only the exact WeaponMan.DeleteAllWeapons 0-through-7 loop, its direct call to canonical FACT-0199 DeleteWeapon, and its exact three-reference in-assembly caller map.",
+    "DeleteWeapon object-destruction semantics remain separately owned by FACT-0199 and are not re-proven here.",
+    "The three direct caller bodies remain separate work unless independently canonicalized.",
+    "Fresh R6 is retained only as a negative capture boundary, not positive evidence."
+  ],
+  "reproducibility_tool": "tools/prove_weaponman_delete_all_weapons.py"
+}
