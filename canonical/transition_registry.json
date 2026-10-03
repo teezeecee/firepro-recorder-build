@@ -3779,6 +3779,27 @@
         "Network.IsSyncInputData remains a separate caller seam",
         "fresh R6 has zero helper/caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYER_SET_PLAYER_CONTROLLER_V1",
+      "fact_id": "FACT-0218",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 138-byte matching-DLL Player.SetPlayerController(PlayerControllerKind) six-target raw switch assigning one of six held controller fields into plController, with no in-assembly MethodDef child and exact 25-reference / 11-caller surface digest.",
+      "summary": "canonical/witnesses/CAP-R6-001/player_set_player_controller.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 25,
+      "direct_caller_method_count": 11,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "no enum semantics beyond metadata name and raw switch values are promoted",
+        "selected controller object construction/state/behavior remain separate provenance",
+        "the 11 caller methods are not semantically promoted by call-surface membership",
+        "Network.IsSyncInputData remains a separate caller seam",
+        "fresh R6 has zero helper/caller rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
