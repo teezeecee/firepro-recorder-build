@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_WEAPON_UPDATE_WEAPON_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Weapon",
+      "method": "UpdateWeapon",
+      "token": "0x06006ABD",
+      "rva": "0x00435000",
+      "methoddef_row_hex": "005043000000860033cf0a005c480000a84d",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type": "Void",
+      "header_format": "fat",
+      "header_flags_raw": "0x0013",
+      "max_stack": 4,
+      "local_signature_token": "0x1100160D",
+      "local_signature_blob_hex": "07030c0c11b500",
+      "locals": [
+        {
+          "index": 0,
+          "decoded_type": "Single"
+        },
+        {
+          "index": 1,
+          "decoded_type": "Single"
+        },
+        {
+          "index": 2,
+          "decoded_type": "WeaponStatus1Enum"
+        }
+      ],
+      "code_size": 351,
+      "code_sha256": "e8abda8319bdbcd424c4a521ed8decbb056271a54e759da39759a0eb46748263",
+      "body_hex": "220000803f0a220000803f0b027bdbb60004193f080000000622000080bf5a0a027bd5b600040c084504000000050000005c00000067000000c4000000381c01000002282800000a6f5000000a027cd4b600047b0900000a027cd4b600047b5600000a027cd4b600047b0a00000a734400000a6f7a00000a02282800000a6f5000000a0607220000803f734400000a6f5d00000a38c50000000228ba6a000638ba0000000228bb6a000602282800000a6f5000000a027cd4b600047b0900000a027cd4b600047b5600000a027cd4b600047b0a00000a734400000a6f7a00000a02282800000a6f5000000a0607220000803f734400000a6f5d00000a385d0000000228bc6a000602282800000a6f5000000a027cd4b600047b0900000a027cd4b600047b5600000a027cd4b600047b0a00000a734400000a6f7a00000a02282800000a6f5000000a0607220000803f734400000a6f5d00000a38000000002a"
+    },
+    "fields": [
+      {
+        "token": "0x0400B6DB",
+        "owner": "Weapon",
+        "name": "Dir",
+        "signature_blob_hex": "0611a768"
+      },
+      {
+        "token": "0x0400B6D5",
+        "owner": "Weapon",
+        "name": "State",
+        "signature_blob_hex": "0611b500"
+      },
+      {
+        "token": "0x0400B6D4",
+        "owner": "Weapon",
+        "name": "Pos",
+        "signature_blob_hex": "061119"
+      }
+    ],
+    "external_member_refs": [
+      {
+        "token": "0x0A000028",
+        "owner": "UnityEngine.Component",
+        "name": "get_gameObject",
+        "signature_blob_hex": "2000120d",
+        "call_ils": [
+          "0x0043",
+          "0x0079",
+          "0x00AB",
+          "0x00E1",
+          "0x0108",
+          "0x013E"
+        ]
+      },
+      {
+        "token": "0x0A000050",
+        "owner": "UnityEngine.GameObject",
+        "name": "get_transform",
+        "signature_blob_hex": "20001205",
+        "call_ils": [
+          "0x0048",
+          "0x007E",
+          "0x00B0",
+          "0x00E6",
+          "0x010D",
+          "0x0143"
+        ]
+      },
+      {
+        "token": "0x0A000009",
+        "owner": "UnityEngine.Vector3",
+        "name": "x",
+        "signature_blob_hex": "060c",
+        "access_ils": [
+          "0x0053",
+          "0x00BB",
+          "0x0118"
+        ]
+      },
+      {
+        "token": "0x0A000056",
+        "owner": "UnityEngine.Vector3",
+        "name": "z",
+        "signature_blob_hex": "060c",
+        "access_ils": [
+          "0x005E",
+          "0x00C6",
+          "0x0123"
+        ]
+      },
+      {
+        "token": "0x0A00000A",
+        "owner": "UnityEngine.Vector3",
+        "name": "y",
+        "signature_blob_hex": "060c",
+        "access_ils": [
+          "0x0069",
+          "0x00D1",
+          "0x012E"
+        ]
+      },
+      {
+        "token": "0x0A000044",
+        "owner": "UnityEngine.Vector3",
+        "name": ".ctor",
+        "signature_blob_hex": "2003010c0c0c",
+        "call_ils": [
+          "0x006E",
+          "0x0085",
+          "0x00D6",
+          "0x00ED",
+          "0x0133",
+          "0x014A"
+        ]
+      },
+      {
+        "token": "0x0A00007A",
+        "owner": "UnityEngine.Transform",
+        "name": "set_position",
+        "signature_blob_hex": "2001011119",
+        "call_ils": [
+          "0x0073",
+          "0x00DB",
+          "0x0138"
+        ]
+      },
+      {
+        "token": "0x0A00005D",
+        "owner": "UnityEngine.Transform",
+        "name": "set_localScale",
+        "signature_blob_hex": "2001011119",
+        "call_ils": [
+          "0x008F",
+          "0x00F7",
+          "0x0154"
+        ]
+      }
+    ],
+    "canonical_internal_calls": [
+      {
+        "call_il": "0x009A",
+        "token": "0x06006ABA",
+        "method": "Weapon.Update_Equipped",
+        "canonical_fact": "FACT-0201"
+      },
+      {
+        "call_il": "0x00A5",
+        "token": "0x06006ABB",
+        "method": "Weapon.Update_Falling",
+        "canonical_fact": "FACT-0202"
+      },
+      {
+        "call_il": "0x0102",
+        "token": "0x06006ABC",
+        "method": "Weapon.Update_ThrowIn",
+        "canonical_fact": "FACT-0203"
+      }
+    ],
+    "exact_flow": [
+      "local0 = raw Float32 1.0; local1 = raw Float32 1.0",
+      "if signed this.Dir < raw 3, keep local0; otherwise local0 = local0 * raw Float32 -1.0",
+      "local2 = this.State",
+      "switch on raw local2 values 0..3; all other values branch directly to return",
+      "raw State 0: write gameObject.transform.position = new Vector3(this.Pos.x,this.Pos.z,this.Pos.y), then localScale = new Vector3(local0,local1,1.0)",
+      "raw State 1: call canonical FACT-0201 Weapon.Update_Equipped(), then return",
+      "raw State 2: call canonical FACT-0202 Weapon.Update_Falling(), then write the same transform position/localScale pair",
+      "raw State 3: call canonical FACT-0203 Weapon.Update_ThrowIn(), then write the same transform position/localScale pair",
+      "return"
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "WeaponMan",
+        "caller_method": "UpdateWeapon",
+        "caller_token": "0x06006AD0",
+        "caller_rva": "0x00435634",
+        "caller_code_size": 50,
+        "caller_code_sha256": "35d1ad134ac75a73b958fd378c3a108d4911f9faddf0d99b383f0062de3c2b6a",
+        "call_il": "0x0021",
+        "opcode": "callvirt"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "weapon_update_weapon_row_count": 0,
+    "weaponman_update_weapon_row_count": 0,
+    "weapon_update_equipped_row_count": 0,
+    "weapon_update_falling_row_count": 0,
+    "weapon_update_throw_in_row_count": 0,
+    "promoted_as_evidence": false,
+    "meaning": "Fresh R6 contains zero rows for Weapon.UpdateWeapon, WeaponMan.UpdateWeapon, and all three direct Weapon child update methods; no runtime state-switch, transform-write, or caller integration is claimed."
+  },
+  "selection_boundary": {
+    "next_direct_caller": {
+      "token": "0x06006AD0",
+      "type": "WeaponMan",
+      "method": "UpdateWeapon",
+      "rva": "0x00435634",
+      "code_size": 50,
+      "code_sha256": "35d1ad134ac75a73b958fd378c3a108d4911f9faddf0d99b383f0062de3c2b6a",
+      "direct_reference_count": 2,
+      "direct_caller_method_count": 2,
+      "callers": [
+        {
+          "token": "0x06004935",
+          "type": "MatchMain",
+          "method": "Update_EntranceScene",
+          "code_size": 822,
+          "call_il": "0x0242"
+        },
+        {
+          "token": "0x06004936",
+          "type": "MatchMain",
+          "method": "Update_Match",
+          "code_size": 1152,
+          "call_il": "0x03E8"
+        }
+      ]
+    },
+    "candidate_reason": "With FACT-0201 through FACT-0203 closing all three raw direct child calls, the 351-byte Weapon.UpdateWeapon parent can be closed without leaving an unproven in-assembly child call. Its sole direct caller is the separate 50-byte WeaponMan.UpdateWeapon wrapper."
+  },
+  "limits": [
+    "Raw Weapon.State values 0..3 and Weapon.Dir comparison literal 3 are preserved numerically without gameplay labels.",
+    "UnityEngine Component/GameObject/Transform/Vector3 behavior remains external.",
+    "Fresh R6 is a negative capture boundary only.",
+    "WeaponMan.UpdateWeapon remains a separate caller seam."
+  ],
+  "reproducibility_tool": "tools/prove_weapon_update_weapon.py"
+}
