@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0210",
+  "claim": "In the matching retail DLL, direct subclass PlayerController_GamePad (TypeDef RID 2557; raw TypeDef row 010010001e7a000000000000b827c5613350; raw extends TypeDefOrRef 0x27B8 -> PlayerController RID 2542) defines reuse-slot virtual instance Update() MethodDef 0x06005035 at RVA 0x003005EA, raw MethodDef row ea0530000000c600edc800005c480000e83a, signature blob 200001, ImplFlags 0x0000 and MethodAttributes 0x00C6. Its exact 59-byte tiny-header body SHA-256 is 7e6adb5aef2f2ce9384861ba006f6c2604af02cd16a87c245b92b5dee816658f. The body writes inherited PlayerController.padOn from static GamePadMan.padOn[this.port], writes inherited PlayerController.padPush from static GamePadMan.padPush[this.port], then writes inherited PlayerController.grappleResult from GrappleHost.inst.GetGrappleResult_ForOfflineTest(this.plIdx), whose sole internal call is canonical FACT-0209 at IL+0x0030, and returns. Exact matching-DLL scanning finds zero direct IL token references to MethodDef 0x06005035.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_GamePad TypeDef RID 2557 raw row 010010001e7a000000000000b827c5613350; Update token 0x06005035 -> RVA 0x003005EA; raw MethodDef row ea0530000000c600edc800005c480000e83a; exact 59-byte body sha256=7e6adb5aef2f2ce9384861ba006f6c2604af02cd16a87c245b92b5dee816658f; full field/call/override evidence in canonical/witnesses/CAP-R6-001/playercontroller_gamepad_update.summary.json; prover tools/prove_playercontroller_gamepad_update.py.",
+      "observation": "Exact direct-subtype/reuse-slot metadata, static pad-array reads through port, inherited field writes, canonical FACT-0209 helper call, return, and zero direct MethodDef-token references."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_GamePad.Update()",
+      "to": "GrappleHost.GetGrappleResult_ForOfflineTest(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06004E86 at IL+0x0030; canonical FACT-0209"
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_GamePad.Update()",
+      "to": "PlayerController.Update()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_GamePad directly extends PlayerController; Update signature 200001 and raw MethodAttributes 0x00C6 reuse the canonical FACT-0206 virtual slot metadata surface."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "GamePadMan.padOn, GamePadMan.padPush, PlayerController_GamePad.port and inherited field names are preserved as metadata identifiers; their authored/runtime population is separate provenance.",
+    "This fact does not prove any runtime PlayerController instance is PlayerController_GamePad.",
+    "The canonical FACT-0206 MatchMain callsites target the base PlayerController.Update token with callvirt; no claim is made that either dispatches to this override.",
+    "Fresh CAP-R6-001 contains zero GamePad.Update, canonical helper, base Update, and MatchMain caller rows; no runtime dispatch bridge is claimed.",
+    "PlayerController_Network, PlayerController_Tutorial and PlayerController_AI Update overrides remain separate open seams."
+  ]
+}
