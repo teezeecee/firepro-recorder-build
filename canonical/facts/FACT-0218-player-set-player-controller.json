@@ -22,7 +22,7 @@
     }
   ],
   "limits": [
-    "PlayerControllerKind metadata name is preserved, but no additional enum semantics are inferred from the raw switch values.",
+    "PlayerControllerKind metadata name is preserved, but no additional enum semantics are promoted from the raw switch values.",
     "The selected controller objects' construction, state and behavior remain separate provenance.",
     "The 25 direct references / 11 callers are pinned only as call boundaries; their caller semantics are not promoted.",
     "Fresh CAP-R6-001 contains zero Player.SetPlayerController and zero Network.IsSyncInputData rows; no runtime bridge is claimed."
