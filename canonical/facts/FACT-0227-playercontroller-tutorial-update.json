@@ -1,0 +1,71 @@
+{
+  "fact_id": "FACT-0227",
+  "claim": "In the matching retail DLL, direct subclass PlayerController_Tutorial (TypeDef RID 2560; raw TypeDef row 010010006b7a000000000000b827c8613b50; raw extends TypeDefOrRef 0x27B8 -> PlayerController RID 2542) defines reuse-slot virtual instance Update() MethodDef 0x0600503D at RVA 0x00300794, raw MethodDef row 940730000000c600edc800005c480000ed3a, signature blob 200001, raw ImplFlags 0x0000 and MethodAttributes 0x00C6, with an exact 352-byte fat-header body SHA-256 ee9742c42475c1d0a1ab0513f2cab8c4e25b5f3d3e10b750adf9ecd498573bbe. The body first writes raw zero to inherited padOn and padPush. If plObj.Zone is nonzero it calls canonical FACT-0225 Player.Start_ForceControl with raw argument 4 and skips the home-position steering block; if Zone is zero it calls canonical FACT-0223 Player.End_ForceControl and compares Player.PlPos x/y against HomePos x/y at exact +/-0.1f thresholds, OR-ing raw padOn bits 4, 8, 2, and 1 on the four directional branches. It then calls canonical FACT-0226 PlayerController_Tutorial.Process_Grapple. If plObj.isPinfallDef is true it calls canonical FACT-0025 MatchMisc.mRate100Check with raw argument 30; a true result writes raw 32 to padPush, and padOn is then written raw 32 regardless of that random result. If plObj.isSubmissionDef is true it calls the same canonical FACT-0025 helper with raw 30 and, on true, writes raw 8 to padPush. Exact matching-DLL MethodDef-body scanning finds zero direct token references to this override.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_Tutorial TypeDef RID 2560 raw row 010010006b7a000000000000b827c8613b50; Update token 0x0600503D -> RVA 0x00300794; exact 352-byte body sha256=ee9742c42475c1d0a1ab0513f2cab8c4e25b5f3d3e10b750adf9ecd498573bbe; exact field/member references, branch constants, canonical child-call set, direct-subclass/reuse-slot metadata and zero direct-reference surface in canonical/witnesses/CAP-R6-001/playercontroller_tutorial_update.summary.json; prover tools/prove_playercontroller_tutorial_update.py.",
+      "observation": "Exact Tutorial Update override body, metadata relationship, dependency-clean in-assembly child set and zero direct MethodDef-token references."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_Tutorial.Update()",
+      "to": "PlayerController.Update()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_Tutorial directly extends PlayerController through raw TypeDefOrRef 0x27B8; Update has signature 200001 and raw MethodAttributes 0x00C6 (Virtual with NewSlot clear), against canonical FACT-0206 base Update raw MethodAttributes 0x01C6."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_Tutorial.Update()",
+      "to": "Player.Start_ForceControl(ForceCtrlEnum)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06004F74 at IL+0x0025 using raw argument 4; canonical FACT-0225."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_Tutorial.Update()",
+      "to": "Player.End_ForceControl()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06004F75 at IL+0x0035; canonical FACT-0223."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_Tutorial.Update()",
+      "to": "PlayerController_Tutorial.Process_Grapple()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x0600503C at IL+0x010B; canonical FACT-0226."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_Tutorial.Update()",
+      "to": "MatchMisc.mRate100Check(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004955 at IL+0x0122 and IL+0x014E, each immediately preceded by raw argument 30; canonical FACT-0025."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw Zone, padOn, padPush, ForceCtrlEnum argument, threshold, and defense values are preserved without assigning higher-level control meanings beyond the exact branches and stores.",
+    "Field names PlPos, HomePos, isPinfallDef and isSubmissionDef are metadata identifiers; their authored/runtime population remains separate provenance.",
+    "Zero direct MethodDef-body references does not prove this override is unreachable; canonical FACT-0206 base-token callvirt dispatch remains separate provenance.",
+    "Fresh CAP-R6-001 contains zero Tutorial.Update and zero rows for the four canonical child methods represented here; no runtime virtual-dispatch bridge is claimed.",
+    "PlayerController_AI.Update remains a separate concrete override body."
+  ]
+}
