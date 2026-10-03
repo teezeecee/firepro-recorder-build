@@ -23,7 +23,7 @@
   ],
   "limits": [
     "The behavior of external UnityEngine.Object.op_Equality, the external constructor, and MethodSpec 0x2B0003E3 is not promoted.",
-    "The exact user string \"SteamManager\" is proven; no broader object-lifecycle semantics are inferred.",
+    "The exact user string \"SteamManager\" is proven; no broader object-lifecycle semantics are claimed.",
     "The write/population path for SteamManager.s_instance remains separate provenance.",
     "Fresh CAP-R6-001 contains zero SteamManager.get_Instance and SteamManager.get_Initialized rows; no runtime bridge is claimed."
   ]
