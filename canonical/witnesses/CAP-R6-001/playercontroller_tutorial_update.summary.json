@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_TUTORIAL_UPDATE_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "base_type": {
+      "type": "PlayerController",
+      "typedef_rid": 2542,
+      "update_method_token": "0x06004F97",
+      "canonical_fact": "FACT-0206"
+    },
+    "subtype": {
+      "type": "PlayerController_Tutorial",
+      "typedef_rid": 2560,
+      "typedef_row_hex": "010010006b7a000000000000b827c8613b50",
+      "extends_typedeforref_raw": "0x27B8",
+      "extends_tag": "TypeDef",
+      "extends_rid": 2542
+    },
+    "method": {
+      "type": "PlayerController_Tutorial",
+      "method": "Update",
+      "token": "0x0600503D",
+      "rva": "0x00300794",
+      "methoddef_row_hex": "940730000000c600edc800005c480000ed3a",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x00C6",
+      "method_attribute_bits": ["Public","Virtual","HideBySig"],
+      "newslot_bit_set": false,
+      "header_format": "fat",
+      "fat_header_hex": "133003006001000000000000",
+      "max_stack": 3,
+      "local_signature_token": "0x00000000",
+      "code_size": 352,
+      "code_sha256": "ee9742c42475c1d0a1ab0513f2cab8c4e25b5f3d3e10b750adf9ecd498573bbe",
+      "body_hex": "02167d1761000402167d18610004027bc86100047bee5f00043911000000027bc86100041a6f744f000638db000000027bc86100046f754f0006027bc86100047caa5f00047b0900000a027cca6100047b5900000a22cdcccc3d58430e00000002257b176100041a607d17610004027bc86100047caa5f00047b0900000a027cca6100047b5900000a22cdcccc3d59410e00000002257b176100041e607d17610004027bc86100047caa5f00047b0a00000a027cca6100047b5a00000a22cdcccc3d58430e00000002257b1761000418607d17610004027bc86100047caa5f00047b0a00000a027cca6100047b5a00000a22cdcccc3d59410e00000002257b1761000417607d1761000402283c500006027bc86100047b49600004391c0000001f1e28554900063908000000021f207d18610004021f207d17610004027bc86100047b4c60000439130000001f1e28554900063907000000021e7d186100042a",
+      "exact_flow": [
+        "write raw 0 to inherited padOn and padPush",
+        "if plObj.Zone is nonzero: call Player.Start_ForceControl(raw 4), then branch to Process_Grapple",
+        "if plObj.Zone is zero: call Player.End_ForceControl",
+        "compare PlPos.x to HomePos.x + 0.1f; when greater and ordered, OR raw 4 into padOn",
+        "compare PlPos.x to HomePos.x - 0.1f; when less and ordered, OR raw 8 into padOn",
+        "compare PlPos.y to HomePos.y + 0.1f; when greater and ordered, OR raw 2 into padOn",
+        "compare PlPos.y to HomePos.y - 0.1f; when less and ordered, OR raw 1 into padOn",
+        "call Process_Grapple",
+        "if isPinfallDef: call mRate100Check(raw 30); when true write raw 32 to padPush; then write raw 32 to padOn",
+        "if isSubmissionDef: call mRate100Check(raw 30); when true write raw 8 to padPush",
+        "return"
+      ]
+    },
+    "fields": [
+      {"token":"0x04006117","owner":"PlayerController","name":"padOn","field_row_hex":"0600f71f0200440c0000","signature_blob_hex":"0611904c"},
+      {"token":"0x04006118","owner":"PlayerController","name":"padPush","field_row_hex":"0600f66a0100440c0000","signature_blob_hex":"0611904c"},
+      {"token":"0x040061C8","owner":"PlayerController_Tutorial","name":"plObj","field_row_hex":"01004f1902005e190000","signature_blob_hex":"0612a788"},
+      {"token":"0x04005FEE","owner":"Player","name":"Zone","field_row_hex":"0600dde203009f300000","signature_blob_hex":"0611a85c"},
+      {"token":"0x04005FAA","owner":"Player","name":"PlPos","field_row_hex":"060039e0030070000000","signature_blob_hex":"061119"},
+      {"token":"0x040061CA","owner":"PlayerController_Tutorial","name":"HomePos","field_row_hex":"060076f70300cb000000","signature_blob_hex":"061131"},
+      {"token":"0x04006049","owner":"Player","name":"isPinfallDef","field_row_hex":"060071e7030008000000","signature_blob_hex":"0602"},
+      {"token":"0x0400604C","owner":"Player","name":"isSubmissionDef","field_row_hex":"06009ce7030008000000","signature_blob_hex":"0602"}
+    ],
+    "member_fields": [
+      {"token":"0x0A000009","owner":"UnityEngine.Vector3","name":"x","memberref_row_hex":"31000000dfb6000014000000","signature_blob_hex":"060c"},
+      {"token":"0x0A00000A","owner":"UnityEngine.Vector3","name":"y","memberref_row_hex":"31000000e1b6000014000000","signature_blob_hex":"060c"},
+      {"token":"0x0A000059","owner":"UnityEngine.Vector2","name":"x","memberref_row_hex":"61000000dfb6000014000000","signature_blob_hex":"060c"},
+      {"token":"0x0A00005A","owner":"UnityEngine.Vector2","name":"y","memberref_row_hex":"61000000e1b6000014000000","signature_blob_hex":"060c"}
+    ],
+    "normalized_field_access_map_sha256": "c4011f423dd22a5bd5030ec5d1d0ac332605ed8ecbd5d25b186d00d3bc58f045",
+    "canonical_internal_calls": [
+      {"call_il":"0x0025","opcode":"callvirt","token":"0x06004F74","method":"Player.Start_ForceControl","canonical_fact":"FACT-0225","raw_argument":4},
+      {"call_il":"0x0035","opcode":"callvirt","token":"0x06004F75","method":"Player.End_ForceControl","canonical_fact":"FACT-0223"},
+      {"call_il":"0x010B","opcode":"call","token":"0x0600503C","method":"PlayerController_Tutorial.Process_Grapple","canonical_fact":"FACT-0226"},
+      {"call_il":"0x0122","opcode":"call","token":"0x06004955","method":"MatchMisc.mRate100Check","canonical_fact":"FACT-0025","raw_argument":30},
+      {"call_il":"0x014E","opcode":"call","token":"0x06004955","method":"MatchMisc.mRate100Check","canonical_fact":"FACT-0025","raw_argument":30}
+    ],
+    "direct_in_assembly_references": [],
+    "direct_reference_count": 0,
+    "direct_caller_method_count": 0,
+    "normalized_reference_map_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "normalized_caller_token_set_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "remaining_open_override_frontier": [
+      {"type":"PlayerController_AI","token":"0x0600502B","rva":"0x002FFC68","code_size":984,"code_sha256":"6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9"}
+    ]
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_tutorial_update_row_count": 0,
+    "playercontroller_tutorial_process_grapple_row_count": 0,
+    "player_start_force_control_row_count": 0,
+    "player_end_force_control_row_count": 0,
+    "matchmisc_rate100_check_row_count": 0,
+    "playercontroller_ai_update_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "candidate_reason": "FACT-0226 closes the final open in-assembly child beneath the 352-byte Tutorial override. All five Tutorial.Update MethodDef references are now canonical, making the override dependency-clean.",
+    "remaining_override_sizes": [["PlayerController_AI.Update",984]]
+  },
+  "limits": [
+    "Metadata/IL close the override body only, not runtime instance selection.",
+    "Raw thresholds and pad/defense values are not assigned higher-level semantics beyond exact branches and stores.",
+    "No direct IL references to MethodDef 0x0600503D exist.",
+    "Base-token callvirt dispatch remains unresolved at runtime.",
+    "Fresh R6 is a negative boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_tutorial_update.py"
+}
