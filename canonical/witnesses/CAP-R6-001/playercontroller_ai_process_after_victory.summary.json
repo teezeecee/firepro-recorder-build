@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_AFTER_VICTORY_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "Process_AfterVictory",
+      "token": "0x06005020",
+      "rva": "0x002FF53C",
+      "methoddef_row_hex": "3cf52f0000008100ac3f0a00db490000de3a",
+      "signature_blob_hex": "200002",
+      "parameters": [],
+      "return_type_metadata": "Boolean",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "header_format": "fat",
+      "fat_header_hex": "13300200770000003f110011",
+      "max_stack": 2,
+      "local_signature_token": "0x1100113F",
+      "local_signature_row_hex": "41d30200",
+      "local_signature_blob_hex": "070111a39c",
+      "local_type": {
+        "kind": "valuetype",
+        "typedef_rid": 2279,
+        "type": "ResultPosition",
+        "namespace": "",
+        "typedef_row_hex": "01010000da6a0000000000004503ad56d048"
+      },
+      "code_size": 119,
+      "code_sha256": "5334c091183b118519531eb8a6518584bff6b89ddf64bb343899315321cd59dc",
+      "body_hex": "027b666100043902000000162a7e6c5700047b535700043a02000000162a027b4a6100047bb75f0004193e02000000162a7eff5600047b00570004027b4a6100047ba65f00049a7bcf5600040a0639070000000617401b0000000220004000007d1861000402167d1761000402177d66610004172a162a",
+      "exact_flow": [
+        "if this.doneVictoryPerformance is true: return false",
+        "if MatchMain.inst.isMatchEnd is false: return false",
+        "if this.PlObj.State is greater than raw 3: return false",
+        "load MatchEvaluation.inst.PlResult[this.PlObj.PlIdx].resultPosition into local ResultPosition",
+        "if local raw value is 0: enter success path",
+        "otherwise compare local raw value to 1; if not 1 return false",
+        "success path: write raw 16384 to inherited this.padPush",
+        "write raw 0 to inherited this.padOn",
+        "write raw true to this.doneVictoryPerformance",
+        "return true"
+      ]
+    },
+    "fields": [
+      {"token":"0x04006166","owner":"PlayerController_AI","name":"doneVictoryPerformance","field_row_hex":"010030f4030008000000","signature_blob_hex":"0602"},
+      {"token":"0x0400576C","owner":"MatchMain","name":"inst","field_row_hex":"16000622010079320000","signature_blob_hex":"0612a3c8"},
+      {"token":"0x04005753","owner":"MatchMain","name":"isMatchEnd","field_row_hex":"0600f788030008000000","signature_blob_hex":"0602"},
+      {"token":"0x0400614A","owner":"PlayerController_AI","name":"PlObj","field_row_hex":"0100b7f203005e190000","signature_blob_hex":"0612a788"},
+      {"token":"0x04005FB7","owner":"Player","name":"State","field_row_hex":"06006e000000da370000","signature_blob_hex":"0611a828"},
+      {"token":"0x040056FF","owner":"MatchEvaluation","name":"inst","field_row_hex":"1600062201004c320000","signature_blob_hex":"0612a3bc"},
+      {"token":"0x04005700","owner":"MatchEvaluation","name":"PlResult","field_row_hex":"06007a84030051320000","signature_blob_hex":"061d12a3b0"},
+      {"token":"0x04005FA6","owner":"Player","name":"PlIdx","field_row_hex":"0600bdb2030001000000","signature_blob_hex":"0608"},
+      {"token":"0x040056CF","owner":"PlayerMatchResult","name":"resultPosition","field_row_hex":"06009682030028320000","signature_blob_hex":"0611a39c"},
+      {"token":"0x04006118","owner":"PlayerController","name":"padPush","field_row_hex":"0600f66a0100440c0000","signature_blob_hex":"0611904c"},
+      {"token":"0x04006117","owner":"PlayerController","name":"padOn","field_row_hex":"0600f71f0200440c0000","signature_blob_hex":"0611904c"}
+    ],
+    "field_accesses": [
+      {"il":"0x0001","opcode":"ldfld","token":"0x04006166"},
+      {"il":"0x000D","opcode":"ldsfld","token":"0x0400576C"},
+      {"il":"0x0012","opcode":"ldfld","token":"0x04005753"},
+      {"il":"0x001F","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0024","opcode":"ldfld","token":"0x04005FB7"},
+      {"il":"0x0031","opcode":"ldsfld","token":"0x040056FF"},
+      {"il":"0x0036","opcode":"ldfld","token":"0x04005700"},
+      {"il":"0x003C","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0041","opcode":"ldfld","token":"0x04005FA6"},
+      {"il":"0x0047","opcode":"ldfld","token":"0x040056CF"},
+      {"il":"0x0060","opcode":"stfld","token":"0x04006118"},
+      {"il":"0x0067","opcode":"stfld","token":"0x04006117"},
+      {"il":"0x006E","opcode":"stfld","token":"0x04006166"}
+    ],
+    "normalized_field_access_map_sha256": "d15eb9ead3cef5447ef970087f12de574c66c52c8b64285d8e2b51311962c92f",
+    "canonical_internal_calls": [],
+    "external_memberrefs": [],
+    "branch_sites": [
+      {"il":"0x0006","opcode":"brfalse","comparison":"doneVictoryPerformance == false","target_il":"0x000D","failed_path":"return false"},
+      {"il":"0x0017","opcode":"brtrue","comparison":"MatchMain.inst.isMatchEnd == true","target_il":"0x001E","failed_path":"return false"},
+      {"il":"0x002A","opcode":"ble","comparison":"PlObj.State <= raw 3","target_il":"0x0031","failed_path":"return false"},
+      {"il":"0x004E","opcode":"brfalse","comparison":"local ResultPosition raw value == 0","target_il":"0x005A","fallthrough":"compare raw value to 1"},
+      {"il":"0x0055","opcode":"bne.un","comparison":"local ResultPosition raw value != 1","target_il":"0x0075","fallthrough":"success path"}
+    ],
+    "raw_writes": [
+      {"field":"PlayerController.padPush","raw_value":16384,"value_il":"0x005B","write_il":"0x0060"},
+      {"field":"PlayerController.padOn","raw_value":0,"value_il":"0x0066","write_il":"0x0067"},
+      {"field":"PlayerController_AI.doneVictoryPerformance","raw_value":true,"value_il":"0x006D","write_il":"0x006E"}
+    ],
+    "return_sites": [
+      {"ret_il":"0x000C","raw_boolean":false},
+      {"ret_il":"0x001D","raw_boolean":false},
+      {"ret_il":"0x0030","raw_boolean":false},
+      {"ret_il":"0x0074","raw_boolean":true},
+      {"ret_il":"0x0076","raw_boolean":false}
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Update",
+        "caller_token": "0x0600502B",
+        "caller_rva": "0x002FFC68",
+        "caller_code_size": 984,
+        "caller_code_sha256": "6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9",
+        "call_il": "0x028C",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1,
+    "normalized_reference_map_sha256": "2cca62a08c4daa6d8de2163b0d991ec736ecc55decd5e89746b5859603cc0dc2",
+    "normalized_caller_token_set_sha256": "8ac1dfd1d928208b427b89fc6c0c23e9bda7b0f8a86a44a10454754a87056c63",
+    "parent_boundary": {
+      "method": "PlayerController_AI.Update",
+      "token": "0x0600502B",
+      "rva": "0x002FFC68",
+      "code_size": 984,
+      "code_sha256": "6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9",
+      "call_il": "0x028C"
+    }
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_process_after_victory_row_count": 0,
+    "playercontroller_ai_update_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Raw values and metadata identifiers are preserved without added gameplay labels.",
+    "MatchMain.inst, MatchEvaluation.inst and MatchEvaluation.PlResult population remain separate provenance.",
+    "The 984-byte PlayerController_AI.Update parent remains open.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_process_after_victory.py"
+}
