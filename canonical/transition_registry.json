@@ -4005,6 +4005,26 @@
         "PlayerController_AI.Update remains an open 984-byte parent body",
         "fresh R6 has zero Process_DropWeapon, GetRefereeObj and AI.Update rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_AFTER_VICTORY_V1",
+      "fact_id": "FACT-0229",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 119-byte matching-DLL PlayerController_AI.Process_AfterVictory Boolean leaf: raw doneVictoryPerformance/match-end/State gates, raw ResultPosition 0-or-1 acceptance, raw padPush 16384 / padOn 0 / doneVictoryPerformance true writes, zero MethodDef or MemberRef calls, and exact one-call / one-caller surface from PlayerController_AI.Update.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_process_after_victory.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "raw State, ResultPosition and pad/completion values receive no added gameplay labels",
+        "MatchMain.inst and MatchEvaluation.inst/PlResult population remain separate provenance",
+        "PlayerController_AI.Update remains an open 984-byte parent body",
+        "fresh R6 has zero Process_AfterVictory and AI.Update rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

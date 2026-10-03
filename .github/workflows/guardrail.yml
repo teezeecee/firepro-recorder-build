@@ -1242,3 +1242,8 @@ jobs:
         run: python tests/test_playercontroller_ai_process_drop_weapon_summary.py
       - name: AI Process DropWeapon prover syntax
         run: python -m py_compile tools/prove_playercontroller_ai_process_drop_weapon.py
+
+      - name: AI Process AfterVictory summary
+        run: python tests/test_playercontroller_ai_process_after_victory_summary.py
+      - name: AI Process AfterVictory prover syntax
+        run: python -m py_compile tools/prove_playercontroller_ai_process_after_victory.py
