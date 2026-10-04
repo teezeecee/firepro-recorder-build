@@ -27,7 +27,7 @@
     }
   ],
   "limits": [
-    "Method and parameter names are preserved metadata identifiers; no gameplay meaning is inferred for Misc.rnd_prm or for the raw 256 and 65536 constants beyond the exact body.",
+    "Method and parameter names are preserved metadata identifiers; no gameplay meaning is added for Misc.rnd_prm or for the raw 256 and 65536 constants beyond the exact body.",
     "FACT-0032 governs the MatchRandom.Range wrapper and does not promote UnityEngine.Random distribution, seed, determinism or independence properties.",
     "FACT-0236 governs QuickSort_Int and no additional semantic label is assigned to its raw selector argument 0 here.",
     "PlayerController_AI.MakeRapidPushTbl remains a separate 308-byte caller body until independently closed.",
