@@ -1302,3 +1302,8 @@ jobs:
         run: python tests/test_playercontroller_ai_process_exchange_of_striking_summary.py
       - name: AI Process ExchangeOfStriking prover syntax
         run: python -m py_compile tools/prove_playercontroller_ai_process_exchange_of_striking.py
+
+      - name: AI Process PinfallDef summary
+        run: python tests/test_playercontroller_ai_process_pinfall_def_summary.py
+      - name: AI Process PinfallDef prover syntax
+        run: python -m py_compile tools/prove_playercontroller_ai_process_pinfall_def.py
