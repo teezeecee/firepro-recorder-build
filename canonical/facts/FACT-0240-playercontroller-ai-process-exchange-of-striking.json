@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0240",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.Process_ExchangeOfStriking() (0x06005027) has raw MethodDef row 88f92f000000810043400a00db490000de3a, RVA 0x002FF988, signature blob 200002, raw ImplFlags 0x0000 and MethodAttributes 0x0081, fat header 133003004b00000000000000, no parameters, no locals, and an exact 75-byte body SHA-256 a9a368c56b9037b055142a1976b78a5dd686b761947964ed3a8809aa4f17e16d. The body loads this.PlObj.State and compares it with raw 71; when they differ it returns false, while equality continues. It then tests initializedRapidPushTbl; when false it calls canonical FACT-0238 PlayerController_AI.MakeRapidPushTbl(), writes initializedRapidPushTbl=true, and continues. It loads rapidPushTbl[this.frmCnt % 60]; when that Boolean element is nonzero it writes raw 16 to inherited PlayerController.padPush. The method then returns true regardless of that final Boolean element once the raw State==71 gate has passed. Its only MethodDef child is FACT-0238 MakeRapidPushTbl at IL+0x0020 and it has zero MemberRef method calls. Exact matching-DLL scanning finds one direct MethodDef-token reference, a call from PlayerController_AI.Update at IL+0x01E5.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Process_ExchangeOfStriking token 0x06005027 -> RVA 0x002FF988; exact 75-byte body sha256=a9a368c56b9037b055142a1976b78a5dd686b761947964ed3a8809aa4f17e16d; exact MethodDef/header/field/control-flow metadata and complete one-reference / one-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_process_exchange_of_striking.summary.json; prover tools/prove_playercontroller_ai_process_exchange_of_striking.py.",
+      "observation": "Exact matching-DLL Boolean AI helper whose only in-assembly MethodDef child is canonical FACT-0238 MakeRapidPushTbl."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Process_ExchangeOfStriking()",
+      "to": "PlayerController_AI.MakeRapidPushTbl()",
+      "evidence": [{"source_id": "DLL-001", "locator": "direct call token 0x06004FD4 at IL+0x0020; child is canonical FACT-0238."}]
+    },
+    {
+      "from": "PlayerController_AI.Update()",
+      "to": "PlayerController_AI.Process_ExchangeOfStriking()",
+      "evidence": [{"source_id": "DLL-001", "locator": "direct call token 0x06005027 at IL+0x01E5."}]
+    }
+  ],
+  "limits": [
+    "Method and field metadata names are preserved identifiers; this fact adds no authored gameplay label for raw Player.State value 71, raw modulo constant 60, or raw padPush value 16.",
+    "FACT-0238 governs MakeRapidPushTbl; this fact adds no new meaning to rapidPushTbl generation or timing.",
+    "PlayerController_AI.Update remains a separate 984-byte caller body.",
+    "Fresh CAP-R6-001 contains zero Process_ExchangeOfStriking, MakeRapidPushTbl and PlayerController_AI.Update rows; no runtime bridge is claimed."
+  ]
+}
