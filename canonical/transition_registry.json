@@ -4103,6 +4103,23 @@
         "PlayerController_AI.Update remains an open 984-byte parent body",
         "fresh R6 has zero Process_InStage, GetPlObj and AI.Update rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_COMLEVELDATAMANAGER_GET_COM_LEVEL_DATA_V1",
+      "fact_id": "FACT-0234",
+      "source_ids": ["DLL-001"],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 9-byte matching-DLL COMLevelDataManager.GetCOMLevelData(Int32) zero-child getter: returns this.comLevelData[lv] through one array-field read and ldelem.ref; exact four-call / four-caller surface from PlayerController_AI.IsHappenPowerCompetition, MakeRapidPushTbl, Process_Grapple and Check_FoxSleep.",
+      "summary": "canonical/witnesses/CAP-R6-001/comleveldatamanager_get_com_level_data.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 4,
+      "direct_caller_method_count": 4,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "COM level authored meaning and array population remain separate provenance",
+        "the four AI callers remain separate method bodies whose semantics are not promoted by this leaf",
+        "fresh R6 has zero GetCOMLevelData and zero rows for all four callers and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
