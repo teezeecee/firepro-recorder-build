@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0245",
+  "claim": "In the matching retail DLL, static MatchMisc.LotOption(Int32[]) (0x0600495B) has raw MethodDef row 30022b000000960095fb090089af01003636, RVA 0x002B0230, signature blob 0001081d08, raw ImplFlags 0x0000 and MethodAttributes 0x0096, one parameter rate_tbl with raw Param row 000001006f4f0700, a fat header 133003003400000073000011 with max stack 3 and local-signature token 0x11000073, four Int32 locals, and an exact 52-byte body SHA-256 6d094b5b2ba805a275e1d97aa553088f42a9dbe4937cb83440b230ade378851f. The body calls canonical FACT-0032 MatchRandom.Range(Int32,Int32) at IL+0x0003 with raw arguments 0 and 100, stores that result, reads rate_tbl.Length, initializes a running total and index to zero, then loops by adding rate_tbl[index] into the running total. If the sampled Int32 is below the running total it returns that index; otherwise it increments the index and continues while index is below the array length. If the loop completes, it returns array length minus one. Its only MethodDef child is FACT-0032 MatchRandom.Range and it has zero MemberRef method calls. Exact matching-DLL scanning finds 24 direct references across 15 caller methods, including PlayerController_AI.Process_OpponentStands_AfterHammerThrow at IL+0x0075.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MatchMisc.LotOption token 0x0600495B -> RVA 0x002B0230; exact 52-byte body sha256=6d094b5b2ba805a275e1d97aa553088f42a9dbe4937cb83440b230ade378851f; exact MethodDef/Param/local-signature/call metadata and complete 24-reference / 15-caller map in canonical/witnesses/CAP-R6-001/matchmisc_lotoption.summary.json; prover tools/prove_matchmisc_lotoption.py.",
+      "observation": "Exact matching-DLL static Int32-array helper whose only in-assembly MethodDef child is canonical FACT-0032 MatchRandom.Range(Int32,Int32)."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "MatchMisc.LotOption(Int32[])",
+      "to": "MatchRandom.Range(Int32,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x0600497B at IL+0x0003 with raw arguments 0 and 100; child is canonical FACT-0032."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_OpponentStands_AfterHammerThrow()",
+      "to": "MatchMisc.LotOption(Int32[])",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x0600495B at IL+0x0075 inside the exact 248-byte parent body."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "rate_tbl is preserved as the metadata parameter name and Int32[] type; this fact assigns no authored gameplay meaning to its elements.",
+    "The raw MatchRandom.Range arguments 0 and 100 are preserved without a gameplay label.",
+    "FACT-0032 governs MatchRandom.Range; this fact adds only the exact LotOption call boundary and raw control flow.",
+    "The broad 24-reference / 15-caller surface is preserved mechanically; closure of those callers remains separate.",
+    "Fresh CAP-R6-001 contains zero MatchMisc.LotOption, MatchRandom.Range and PlayerController_AI.Process_OpponentStands_AfterHammerThrow rows; no runtime bridge is claimed."
+  ]
+}
