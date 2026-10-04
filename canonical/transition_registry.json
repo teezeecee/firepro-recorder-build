@@ -4334,6 +4334,26 @@
         "ChangeCounter and Process_OpponentStands_AfterHammerThrow remain separate caller bodies",
         "fresh R6 has zero target, child and both caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_MATCHMISC_LOTOPTION_V1",
+      "fact_id": "FACT-0245",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 52-byte matching-DLL MatchMisc.LotOption(Int32[]) helper: canonical FACT-0032 MatchRandom.Range(0,100) child, raw cumulative-array loop and fallback return, zero MemberRef method calls, and complete 24-reference / 15-caller surface.",
+      "summary": "canonical/witnesses/CAP-R6-001/matchmisc_lotoption.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 24,
+      "direct_caller_method_count": 15,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "rate_tbl is preserved as an Int32[] metadata parameter with no authored gameplay interpretation",
+        "raw MatchRandom.Range arguments 0 and 100 receive no gameplay label",
+        "caller semantics across the 24-reference / 15-caller surface remain separate",
+        "fresh R6 has zero target, child and hammer-throw-parent rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
