@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MATCHMISC_LOTOPTION_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "MatchMisc",
+      "method": "LotOption",
+      "token": "0x0600495B",
+      "rva": "0x002B0230",
+      "methoddef_row_hex": "30022b000000960095fb090089af01003636",
+      "signature_blob_hex": "0001081d08",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "rate_tbl",
+          "metadata_type": "Int32[]",
+          "param_row_hex": "000001006f4f0700",
+          "flags_raw": "0x0000"
+        }
+      ],
+      "return_type_metadata": "Int32",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0096",
+      "header_format": "fat",
+      "fat_header_bytes_raw": "133003003400000073000011",
+      "max_stack": 3,
+      "local_signature_token": "0x11000073",
+      "local_signature_row_hex": "755f0100",
+      "local_signature_blob_hex": "070408080808",
+      "locals": [
+        {
+          "index": 0,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 1,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 2,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 3,
+          "metadata_type": "Int32"
+        }
+      ],
+      "code_size": 52,
+      "code_sha256": "6d094b5b2ba805a275e1d97aa553088f42a9dbe4937cb83440b230ade378851f",
+      "body_hex": "161f64287b4900060a028e690b160c160d381300000008020994580c06083c02000000092a0917580d09073fe6ffffff0717592a",
+      "instruction_count": 35,
+      "branch_instruction_count": 3,
+      "call_instruction_count": 1,
+      "exact_flow": [
+        "call MatchRandom.Range with raw Int32 arguments 0 and 100; store result in local 0",
+        "store rate_tbl.Length in local 1; initialize local 2 and local 3 to zero",
+        "loop from local 3: local 2 = local 2 + rate_tbl[local 3]",
+        "if local 0 is below local 2, return local 3",
+        "otherwise increment local 3 and continue while local 3 is below local 1",
+        "if the loop completes, return local 1 minus one"
+      ]
+    },
+    "canonical_internal_calls": [
+      {
+        "il": "0x0003",
+        "opcode": "call",
+        "token": "0x0600497B",
+        "owner": "MatchRandom",
+        "method": "Range",
+        "overload": "Int32",
+        "fact_id": "FACT-0032",
+        "code_size": 30,
+        "code_sha256": "d6ed5dd5c1cdf595ca459ddc1c740ce66543e9630786cfdc9bf3404247f643f6",
+        "raw_arguments": [
+          0,
+          100
+        ]
+      }
+    ],
+    "normalized_internal_call_map_sha256": "7f29a5a0588dcc84dee0116cdfa0835c9b4e05f281e4738922ef6f77024240b5",
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_Grapple_Front",
+        "caller_token": "0x06004FE1",
+        "caller_rva": "0x002F9AB8",
+        "caller_code_size": 407,
+        "caller_code_sha256": "dd85a5c42843eb544814588585369b933af988f9a25a544093517603bde570ec",
+        "call_il": "0x0158",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_Grapple_BackAtk",
+        "caller_token": "0x06004FE3",
+        "caller_rva": "0x002F9D40",
+        "caller_code_size": 334,
+        "caller_code_sha256": "cd3deb24c9c49730460a7d595105d48c8d342600d53947160adc8feaffd546b0",
+        "call_il": "0x00CB",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_Grapple",
+        "caller_token": "0x06004FE4",
+        "caller_rva": "0x002F9E9C",
+        "caller_code_size": 709,
+        "caller_code_sha256": "221fc977746121dd811fe1d13e59502c160992648d03561b81e6b7555e04ea42",
+        "call_il": "0x01A3",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_Grapple",
+        "caller_token": "0x06004FE4",
+        "caller_rva": "0x002F9E9C",
+        "caller_code_size": 709,
+        "caller_code_sha256": "221fc977746121dd811fe1d13e59502c160992648d03561b81e6b7555e04ea42",
+        "call_il": "0x0204",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_Grapple",
+        "caller_token": "0x06004FE4",
+        "caller_rva": "0x002F9E9C",
+        "caller_code_size": 709,
+        "caller_code_sha256": "221fc977746121dd811fe1d13e59502c160992648d03561b81e6b7555e04ea42",
+        "call_il": "0x024A",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_Grapple",
+        "caller_token": "0x06004FE4",
+        "caller_rva": "0x002F9E9C",
+        "caller_code_size": 709,
+        "caller_code_sha256": "221fc977746121dd811fe1d13e59502c160992648d03561b81e6b7555e04ea42",
+        "call_il": "0x0290",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OnCorner",
+        "caller_token": "0x06004FE7",
+        "caller_rva": "0x002FA500",
+        "caller_code_size": 368,
+        "caller_code_sha256": "06a72d71e5418f10209cb6731fae3bae41c98d4a1b98a759f5e6ec2e63fc53bf",
+        "call_il": "0x0109",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentDown_DownAttack",
+        "caller_token": "0x06004FEA",
+        "caller_rva": "0x002FA718",
+        "caller_code_size": 252,
+        "caller_code_sha256": "52ce42d4aae99b7986e46e5efdb1bc462f061e3b235c40346c237942b745a211",
+        "call_il": "0x00B7",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentDown_Dive",
+        "caller_token": "0x06004FED",
+        "caller_rva": "0x002FA89C",
+        "caller_code_size": 366,
+        "caller_code_sha256": "113579d5d828a5604a57b58e74cd969ad4516645249c10fe412a7d5f03a32cac",
+        "call_il": "0x0093",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentDown_Dive",
+        "caller_token": "0x06004FED",
+        "caller_rva": "0x002FA89C",
+        "caller_code_size": 366,
+        "caller_code_sha256": "113579d5d828a5604a57b58e74cd969ad4516645249c10fe412a7d5f03a32cac",
+        "call_il": "0x00A5",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentDown_Dive_Stun",
+        "caller_token": "0x06004FEE",
+        "caller_rva": "0x002FAA18",
+        "caller_code_size": 505,
+        "caller_code_sha256": "8d5273fae9c0e6ba9fb560dd8e34d26f3c95488a620abc08c74271f6deb513ec",
+        "call_il": "0x00A7",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentDown_Dive_Stun",
+        "caller_token": "0x06004FEE",
+        "caller_rva": "0x002FAA18",
+        "caller_code_size": 505,
+        "caller_code_sha256": "8d5273fae9c0e6ba9fb560dd8e34d26f3c95488a620abc08c74271f6deb513ec",
+        "call_il": "0x00B9",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentDown_Center",
+        "caller_token": "0x06004FEF",
+        "caller_rva": "0x002FAC20",
+        "caller_code_size": 416,
+        "caller_code_sha256": "1410b445d0837d6040c935b8480105867ff163b67a92c97e4f2b5b9ab1d720b2",
+        "call_il": "0x0082",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentDown",
+        "caller_token": "0x06004FF0",
+        "caller_rva": "0x002FADCC",
+        "caller_code_size": 662,
+        "caller_code_sha256": "47e35ee574cf3791c43a6aa4b3146bb8004ef595b87cbe5722ee9ff63540e05e",
+        "call_il": "0x009F",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_OpponentOutOfRing",
+        "caller_token": "0x06004FF1",
+        "caller_rva": "0x002FB070",
+        "caller_code_size": 835,
+        "caller_code_sha256": "c03a26efa47d9bf1adb178df7fbbbc4557e348b2f28ab393b744d9e8f1c53e6c",
+        "call_il": "0x00BB",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_OpponentOutOfRing",
+        "caller_token": "0x06004FF1",
+        "caller_rva": "0x002FB070",
+        "caller_code_size": 835,
+        "caller_code_sha256": "c03a26efa47d9bf1adb178df7fbbbc4557e348b2f28ab393b744d9e8f1c53e6c",
+        "call_il": "0x00E1",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_AfterHammerThrow",
+        "caller_token": "0x06004FF2",
+        "caller_rva": "0x002FB3C0",
+        "caller_code_size": 248,
+        "caller_code_sha256": "f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3",
+        "call_il": "0x0075",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_LeanOnCorner",
+        "caller_token": "0x06004FF3",
+        "caller_rva": "0x002FB4C4",
+        "caller_code_size": 191,
+        "caller_code_sha256": "28bfe6a69c54e94e619895bbbeda071dd3c66089585068a17eeacaafc28ee1d8",
+        "call_il": "0x006F",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Stun",
+        "caller_token": "0x06004FF5",
+        "caller_rva": "0x002FB600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+        "call_il": "0x0045",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Stun",
+        "caller_token": "0x06004FF5",
+        "caller_rva": "0x002FB600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+        "call_il": "0x00CD",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Stun",
+        "caller_token": "0x06004FF5",
+        "caller_rva": "0x002FB600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+        "call_il": "0x0195",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Far",
+        "caller_token": "0x06004FF6",
+        "caller_rva": "0x002FB820",
+        "caller_code_size": 565,
+        "caller_code_sha256": "c8e5ed6f584710bef2d8b8522a13843c1ff8f23e5c5149748add48816b79d646",
+        "call_il": "0x009B",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Far",
+        "caller_token": "0x06004FF6",
+        "caller_rva": "0x002FB820",
+        "caller_code_size": 565,
+        "caller_code_sha256": "c8e5ed6f584710bef2d8b8522a13843c1ff8f23e5c5149748add48816b79d646",
+        "call_il": "0x0113",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "WeaponMan",
+        "caller_namespace": "",
+        "caller_method": "GetGenerateWeaponKind",
+        "caller_token": "0x06006ACE",
+        "caller_rva": "0x0043560E",
+        "caller_code_size": 13,
+        "caller_code_sha256": "227467008fa96c68f2acce6672b5d1e78c57c24453499501e32b7f6a16b42d4d",
+        "call_il": "0x0007",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 24,
+    "direct_caller_method_count": 15,
+    "normalized_reference_map_sha256": "3e5bf66dd56899a8fe42ff08972f56478275e3887dca0a61848d99426fbac7cc",
+    "normalized_caller_token_set_sha256": "afa0d52d08d97e2072d7561b6bcbf3ea02737d28587f66785e8302a5cd14eb38"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "matchmisc_lotoption_row_count": 0,
+    "matchrandom_range_row_count": 0,
+    "playercontroller_ai_process_opponent_stands_after_hammer_throw_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "parent": {
+      "method": "PlayerController_AI.Process_OpponentStands_AfterHammerThrow",
+      "token": "0x06004FF2",
+      "rva": "0x002FB3C0",
+      "code_size": 248,
+      "code_sha256": "f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3",
+      "call_il": "0x0075"
+    },
+    "canonical_child": {
+      "fact_id": "FACT-0032",
+      "method": "MatchRandom.Range",
+      "overload": "Int32",
+      "token": "0x0600497B",
+      "call_il": "0x0003",
+      "opcode": "call"
+    }
+  },
+  "limits": [
+    "rate_tbl is a metadata parameter identifier with Int32[] type; no authored gameplay meaning is assigned to its elements.",
+    "Raw MatchRandom.Range arguments 0 and 100 receive no gameplay label.",
+    "FACT-0032 governs MatchRandom.Range; this dataset proves only LotOption's exact call boundary and raw control flow.",
+    "The complete 24-reference / 15-caller surface is preserved mechanically; caller semantics remain outside this record.",
+    "Fresh R6 is a negative capture boundary only and provides no runtime bridge."
+  ],
+  "reproducibility_tool": "tools/prove_matchmisc_lotoption.py"
+}
