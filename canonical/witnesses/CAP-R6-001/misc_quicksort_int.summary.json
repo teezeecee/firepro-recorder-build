@@ -1,0 +1,394 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_MISC_QUICKSORT_INT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "Misc",
+      "method": "QuickSort_Int",
+      "token": "0x06004AA1",
+      "rva": "0x002B8318",
+      "methoddef_row_hex": "18832b0000009600e2050a0002b302004537",
+      "signature_blob_hex": "0005011d081d08080808",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "sort_param",
+          "metadata_type": "Int32[]",
+          "param_row_hex": "00000100ec510700",
+          "flags_raw": "0x0000"
+        },
+        {
+          "sequence": 2,
+          "name": "sort_idx",
+          "metadata_type": "Int32[]",
+          "param_row_hex": "00000200f7510700",
+          "flags_raw": "0x0000"
+        },
+        {
+          "sequence": 3,
+          "name": "asdes",
+          "metadata_type": "Int32",
+          "param_row_hex": "0000030000520700",
+          "flags_raw": "0x0000"
+        },
+        {
+          "sequence": 4,
+          "name": "first",
+          "metadata_type": "Int32",
+          "param_row_hex": "0000040024100200",
+          "flags_raw": "0x0000"
+        },
+        {
+          "sequence": 5,
+          "name": "last",
+          "metadata_type": "Int32",
+          "param_row_hex": "000005006cc80000",
+          "flags_raw": "0x0000"
+        }
+      ],
+      "return_type": {
+        "metadata_type": "Void"
+      },
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0096",
+      "header_format": "fat",
+      "fat_header_hex": "13300600c4000000d1060011",
+      "max_stack": 6,
+      "local_signature_token": "0x110006D1",
+      "code_size": 196,
+      "code_sha256": "14e7deca98e8fbf64b0564a069032b864cbea75e70eeabe0051e1091470c5718",
+      "body_hex": "050a0e040b02060758185b940c043a2900000038040000000617580a020694083ff3ffffff38040000000717590b020794083df3ffffff382400000038040000000617580a020694083df3ffffff38040000000717590b020794083ff3ffffff06073f05000000382b0000000206940d030694130402060207949e03060307949e0207099e030711049e0617580a0717590b3876ffffff050617593c0c0000000203040506175928a14a00060e040717583e0d0000000203040717580e0428a14a00062a"
+    },
+    "local_signature": {
+      "token": "0x110006D1",
+      "standalone_sig_row_hex": "9afc0100",
+      "blob_hex": "07050808080808",
+      "locals": [
+        {
+          "index": 0,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 1,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 2,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 3,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 4,
+          "metadata_type": "Int32"
+        }
+      ]
+    },
+    "raw_control_flow": {
+      "initialization": [
+        "local0 = first",
+        "local1 = last",
+        "local2 = sort_param[(local0 + local1) / 2]"
+      ],
+      "selector": "At IL+0x000E raw brtrue selects the nonzero-asdes comparison block at IL+0x003C.",
+      "zero_selector_scans": [
+        "IL+0x0020 blt returns to IL+0x0018 while sort_param[local0] < local2",
+        "IL+0x0032 bgt returns to IL+0x002A while sort_param[local1] > local2"
+      ],
+      "nonzero_selector_scans": [
+        "IL+0x0049 bgt returns to IL+0x0041 while sort_param[local0] > local2",
+        "IL+0x005B blt returns to IL+0x0053 while sort_param[local1] < local2"
+      ],
+      "exchange": "IL+0x0062 blt enters the paired exchange block at IL+0x006C when local0 < local1; both sort_param and sort_idx exchange the values at local0/local1; local0 then increments and local1 decrements; IL+0x0092 branches back to IL+0x000D.",
+      "recursion": [
+        "IL+0x009B bge skips the IL+0x00A7 self-call when first >= local0-1; otherwise arguments are sort_param, sort_idx, asdes, first, local0-1.",
+        "IL+0x00B1 ble skips the IL+0x00BE self-call when last <= local1+1; otherwise arguments are sort_param, sort_idx, asdes, local1+1, last."
+      ]
+    },
+    "field_accesses": [],
+    "canonical_internal_calls": [
+      {
+        "il": "0x00A7",
+        "opcode": "call",
+        "token": "0x06004AA1",
+        "owner": "Misc",
+        "method": "QuickSort_Int",
+        "recursive": true,
+        "code_size": 196,
+        "code_sha256": "14e7deca98e8fbf64b0564a069032b864cbea75e70eeabe0051e1091470c5718"
+      },
+      {
+        "il": "0x00BE",
+        "opcode": "call",
+        "token": "0x06004AA1",
+        "owner": "Misc",
+        "method": "QuickSort_Int",
+        "recursive": true,
+        "code_size": 196,
+        "code_sha256": "14e7deca98e8fbf64b0564a069032b864cbea75e70eeabe0051e1091470c5718"
+      }
+    ],
+    "normalized_internal_call_map_sha256": "5dbc3db6e89d2cca543cf50d4aba38d0680d37055c36b11942d5130624eb2f44",
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "CountryDataManager",
+        "caller_namespace": "",
+        "caller_method": "GetCountryList_AccordingToDispOrder",
+        "caller_token": "0x06001063",
+        "caller_rva": "0x000621C8",
+        "caller_code_size": 138,
+        "caller_code_sha256": "cdd5d409f162a0b323ca64d93cadbb0f7e48bd216ed3427daca22381af13830f",
+        "call_il": "0x005B",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SkillInfoManager",
+        "caller_namespace": "",
+        "caller_method": "ArrangeSortingOrder",
+        "caller_token": "0x06001167",
+        "caller_rva": "0x00069BBC",
+        "caller_code_size": 302,
+        "caller_code_sha256": "a174f60f4e890277e7abdbc2d3745ead0f93d53ecd17ad6488759bb2ae12017c",
+        "call_il": "0x00EA",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "TableConvert",
+        "caller_namespace": "",
+        "caller_method": "WriteWrestlerParam_CSV",
+        "caller_token": "0x0600126E",
+        "caller_rva": "0x00077AC4",
+        "caller_code_size": 3775,
+        "caller_code_sha256": "473bcbed17c0ba935a5a14f63def8251fb064c6e8cad6cd7940979aae79df61d",
+        "call_il": "0x004D",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "FP_ProgressData",
+        "caller_namespace": "",
+        "caller_method": "Set_WrestlerAffinityID",
+        "caller_token": "0x06001462",
+        "caller_rva": "0x00087AC0",
+        "caller_code_size": 127,
+        "caller_code_sha256": "ae4cce272707936fe6955fc34bc9e22c848828a5340fc4c1ac276cddf0fc598c",
+        "call_il": "0x004D",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "FP_MatchCardMaker",
+        "caller_namespace": "",
+        "caller_method": "MakeMatchList_Tournament",
+        "caller_token": "0x06001851",
+        "caller_rva": "0x000BC814",
+        "caller_code_size": 410,
+        "caller_code_sha256": "83f85d1160e7d5d44dcfd2a6c92e8c23f2585a90ced5058b9f07a965d63c2dbf",
+        "call_il": "0x0061",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "FP_NewGameSetting",
+        "caller_namespace": "",
+        "caller_method": "DecideFoundFreeWrestlers",
+        "caller_token": "0x06001DCA",
+        "caller_rva": "0x000F70D8",
+        "caller_code_size": 197,
+        "caller_code_sha256": "d0df807acb7fa9a294da647428f04ebd796f7152a7b6adaf11c48e5d49b60daf",
+        "call_il": "0x0082",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Dialog_MoveList",
+        "caller_namespace": "",
+        "caller_method": "CalcSort",
+        "caller_token": "0x06002469",
+        "caller_rva": "0x00133040",
+        "caller_code_size": 402,
+        "caller_code_sha256": "e07dbd9b4854959ef1629c85ffb275c3605f01180525bbb54e92fa760241c0dc",
+        "call_il": "0x005E",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Dialog_ArtsSet",
+        "caller_namespace": "",
+        "caller_method": "GenerateButton",
+        "caller_token": "0x060029EC",
+        "caller_rva": "0x00186D20",
+        "caller_code_size": 774,
+        "caller_code_sha256": "b11483fffbd90b8f6424877970327176e1d795bea506d27fd773ebcdcd788b90",
+        "call_il": "0x01A3",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Skill_List",
+        "caller_namespace": "",
+        "caller_method": "MakeVoiceTypeList",
+        "caller_token": "0x06002B40",
+        "caller_rva": "0x001A17D4",
+        "caller_code_size": 266,
+        "caller_code_sha256": "44d6f936e06564a4f2aabccbe1ff0b50a30fb73232532575fbc8d5b1b8de3753",
+        "call_il": "0x00A3",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Menu_Result_BattleRoyal",
+        "caller_namespace": "",
+        "caller_method": "Update_WrestlerModel",
+        "caller_token": "0x06003A15",
+        "caller_rva": "0x0021B068",
+        "caller_code_size": 764,
+        "caller_code_sha256": "e58b4dedf18c7e8c2d1aa8ff6245b960b6e9c1b62e775f8587dac80ba45a5bea",
+        "call_il": "0x00D4",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "LeagueController",
+        "caller_namespace": "",
+        "caller_method": "GetNextMatchCard",
+        "caller_token": "0x06004748",
+        "caller_rva": "0x0028A9C8",
+        "caller_code_size": 327,
+        "caller_code_sha256": "0b881117c0186f1c2da7768659927cdd7cbf5c7d2aea6dc0fd75ab59e00762b8",
+        "call_il": "0x00E2",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "LeagueController",
+        "caller_namespace": "",
+        "caller_method": "MakeRanking",
+        "caller_token": "0x06004754",
+        "caller_rva": "0x0028B140",
+        "caller_code_size": 258,
+        "caller_code_sha256": "02d4fc2322d76c94f44a9fe4da877f93d629462570eca1add1f7400364c257dc",
+        "call_il": "0x00B4",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Misc",
+        "caller_namespace": "",
+        "caller_method": "QuickSort_Int",
+        "caller_token": "0x06004AA1",
+        "caller_rva": "0x002B8318",
+        "caller_code_size": 196,
+        "caller_code_sha256": "14e7deca98e8fbf64b0564a069032b864cbea75e70eeabe0051e1091470c5718",
+        "call_il": "0x00A7",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Misc",
+        "caller_namespace": "",
+        "caller_method": "QuickSort_Int",
+        "caller_token": "0x06004AA1",
+        "caller_rva": "0x002B8318",
+        "caller_code_size": 196,
+        "caller_code_sha256": "14e7deca98e8fbf64b0564a069032b864cbea75e70eeabe0051e1091470c5718",
+        "call_il": "0x00BE",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Misc",
+        "caller_namespace": "",
+        "caller_method": "Shuffle",
+        "caller_token": "0x06004AA7",
+        "caller_rva": "0x002B8560",
+        "caller_code_size": 65,
+        "caller_code_sha256": "d8e87deae43facf68b16b094188ade6c7db1915caa3c59031cb85f891529b5c1",
+        "call_il": "0x003B",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SaveData",
+        "caller_namespace": "",
+        "caller_method": "InitDefaultParam",
+        "caller_token": "0x06005177",
+        "caller_rva": "0x00314B04",
+        "caller_code_size": 608,
+        "caller_code_sha256": "5ccddd0f0091b71927bfb2bb7788ece8a6380da5b33b7bf73ae28d8f1d4dfe43",
+        "call_il": "0x019F",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "SaveData",
+        "caller_namespace": "",
+        "caller_method": "InitPresetOrgList",
+        "caller_token": "0x0600517E",
+        "caller_rva": "0x003150C4",
+        "caller_code_size": 303,
+        "caller_code_sha256": "f8035eb142e956bb51b90763d09f7ffb511884c30cc8ea89196722fa3cd1a0fa",
+        "call_il": "0x00F9",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Cos_PartsSelectWindow",
+        "caller_namespace": "",
+        "caller_method": "SetupFilterList",
+        "caller_token": "0x060054FC",
+        "caller_rva": "0x003317C8",
+        "caller_code_size": 711,
+        "caller_code_sha256": "726608f56b70fee3deb3d450654d646fee40bc9a19bc6a77f8eee03395301d8d",
+        "call_il": "0x00F6",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Cos_ClippingPartsTexResourceManager",
+        "caller_namespace": "",
+        "caller_method": "GetSumbnailTexIDToRelease",
+        "caller_token": "0x06005588",
+        "caller_rva": "0x00338E5C",
+        "caller_code_size": 154,
+        "caller_code_sha256": "0fa42be82ace8f682a13ed31134f1ef662160dc99d87a2d2d407dfe59302e87d",
+        "call_il": "0x0081",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Dialog_MoveList_Craft",
+        "caller_namespace": "",
+        "caller_method": "Init_MoveList",
+        "caller_token": "0x06005F1D",
+        "caller_rva": "0x00393660",
+        "caller_code_size": 730,
+        "caller_code_sha256": "0f0fe45861e3356343209fa924e3b200184f75e83092188dc0eba1c017d8288f",
+        "call_il": "0x0242",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "WazaDialog_MoveList_Craft",
+        "caller_namespace": "",
+        "caller_method": "CalcSort",
+        "caller_token": "0x06006464",
+        "caller_rva": "0x003EA2E8",
+        "caller_code_size": 410,
+        "caller_code_sha256": "19f43ee52206bad62674fd81b127d1efdf087eb3d661cb936028ec4f863a5c3e",
+        "call_il": "0x005E",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 21,
+    "direct_caller_method_count": 20,
+    "normalized_reference_map_sha256": "dadf2d5ce33ff219cc19f391ac05cc7499cc0983466534264f590ad22b4cb71f",
+    "normalized_caller_token_set_sha256": "6e22fe6addfd2305992cadf1ee3f15508915bf2eac08a5da5d00cb88d8050b24"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "misc_quicksort_int_row_count": 0,
+    "misc_shuffle_row_count": 0,
+    "playercontroller_ai_make_rapid_push_tbl_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Method and parameter names are preserved metadata identifiers; no authored meaning is assigned to the raw asdes selector beyond the exact comparison-opcode split.",
+    "The 20 caller methods are not semantically promoted by membership in the exact reference surface.",
+    "Misc.Shuffle remains a separate 65-byte caller body and PlayerController_AI.MakeRapidPushTbl remains a separate 308-byte caller-chain seam.",
+    "Fresh CAP-R6-001 contains zero QuickSort_Int, Shuffle and MakeRapidPushTbl rows; no runtime bridge is claimed."
+  ],
+  "reproducibility_tool": "tools/prove_misc_quicksort_int.py"
+}
