@@ -1,0 +1,52 @@
+{
+  "fact_id": "FACT-0230",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.EndFallSubmission_Won() (0x06005025) has raw MethodDef row 70f82f000000810013400a00db490000de3a, RVA 0x002FF870, signature blob 200002 (parameterless Boolean return), raw ImplFlags 0x0000 and MethodAttributes 0x0081, local signature token 0x11000C98 with blob 070212a78808, and an exact 180-byte fat-header body SHA-256 e43bed886326ec138725263c219956e6246d4a71aaaf3553d40b7c16ed2b7b89. The two locals are Player and Int32. The body obtains PlayerMan.inst.GetPlObj(this.PlObj.TargetPlIdx) through canonical FACT-0109 and stores the returned Player local. External UnityEngine.Object.op_Implicit gates that local; a false conversion returns false. If this.PlObj.isPinfallAtk is false, this.PlObj.isSubmissionAtk must be true or endFallTimer is reset to raw -1 and the method returns false. The target Player must have isLose true or isKO true; otherwise endFallTimer is reset to raw -1 and the method returns false. When those gates pass, a negative endFallTimer is initialized to raw 60 and the method returns false. Otherwise endFallTimer is decremented by raw 1; while the decremented value is greater than raw 0 the method returns false. When the decremented value is <= 0, endFallTimer is written raw -1, inherited PlayerController.padPush is written raw 32, and the method returns true. Exact matching-DLL scanning finds two direct MethodDef-token references: PlayerController_AI.Process_AfterMatchEnd at IL+0x003E and PlayerController_AI.Update at IL+0x00AE.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.EndFallSubmission_Won token 0x06005025 -> RVA 0x002FF870; exact 180-byte body sha256=e43bed886326ec138725263c219956e6246d4a71aaaf3553d40b7c16ed2b7b89; exact MethodDef/local signature, field records, canonical FACT-0109 child edge, external Object.op_Implicit boundary, raw timer/branch constants and complete two-reference / two-caller surface in canonical/witnesses/CAP-R6-001/playercontroller_ai_end_fall_submission_won.summary.json; prover tools/prove_playercontroller_ai_end_fall_submission_won.py.",
+      "observation": "Exact AI EndFallSubmission_Won Boolean timer leaf with canonical player lookup, external null/false boundary, raw attack/target gates, raw timer lifecycle, raw padPush completion write and two callers."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.EndFallSubmission_Won()",
+      "to": "PlayerMan.GetPlObj(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06005065 at IL+0x0010 after loading PlayerMan.inst and this.PlObj.TargetPlIdx; canonical FACT-0109."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_AfterMatchEnd()",
+      "to": "PlayerController_AI.EndFallSubmission_Won()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Process_AfterMatchEnd token 0x06005021 direct call token 0x06005025 at IL+0x003E; caller exact body size 324 and SHA-256 d628435e41eb6e76aa71c35f069f841c85bcf149e7c08317b910cff04add458b."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Update()",
+      "to": "PlayerController_AI.EndFallSubmission_Won()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_AI.Update token 0x0600502B direct call token 0x06005025 at IL+0x00AE; caller exact body size 984 and SHA-256 6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method and field names are preserved metadata identifiers; this fact does not assign authored gameplay meaning beyond the exact gates, timer updates, stores and Boolean returns.",
+    "Raw timer values -1 and 60, padPush value 32, and Player attack/result Boolean fields receive no higher-level labels.",
+    "UnityEngine.Object.op_Implicit is an external MemberRef boundary; its implementation is not promoted here.",
+    "PlayerMan.inst lifecycle and PlayerMan.PlObj population remain separate provenance even though FACT-0109 closes the GetPlObj helper body.",
+    "PlayerController_AI.Process_AfterMatchEnd and PlayerController_AI.Update remain separate open parent bodies.",
+    "Fresh CAP-R6-001 contains zero EndFallSubmission_Won, PlayerMan.GetPlObj, Process_AfterMatchEnd and PlayerController_AI.Update rows; no runtime bridge is claimed."
+  ]
+}
