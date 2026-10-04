@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0243",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.SetAIAct_RunAttackAfterHammerThrow(RunAtkEnum,Int32) (0x06004FA8) has raw MethodDef row a4602f0000008100a2350a00e3cd0200c03a, RVA 0x002F60A4, signature blob 20020111a7d008, raw ImplFlags 0x0000 and MethodAttributes 0x0081, tiny header byte 0x46, two parameters kind/tm with raw Param rows 0000010063510100 and 00000200d7610700, no locals, and an exact 17-byte body SHA-256 2db5766f26c4ae6a892727404beaf78a217dfffc6413441ad9b174a58fcb2a7c. The body calls canonical FACT-0043 PlayerController_AI.SetAIAct at IL+0x0004 with raw first argument 14 and forwards the Int32 tm argument, then writes the raw RunAtkEnum kind argument to PlayerController_AI.aiActPrm at IL+0x000B and returns. Its only MethodDef child is FACT-0043 SetAIAct and it has zero MemberRef method calls. Exact matching-DLL scanning finds one direct MethodDef-token reference, a call from PlayerController_AI.Process_OpponentStands_AfterHammerThrow at IL+0x00D7.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.SetAIAct_RunAttackAfterHammerThrow token 0x06004FA8 -> RVA 0x002F60A4; exact 17-byte body sha256=2db5766f26c4ae6a892727404beaf78a217dfffc6413441ad9b174a58fcb2a7c; exact MethodDef/Param/RunAtkEnum/field/call metadata and complete one-reference / one-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_run_attack_after_hammer_throw.summary.json; prover tools/prove_playercontroller_ai_set_ai_act_run_attack_after_hammer_throw.py.",
+      "observation": "Exact matching-DLL 17-byte AI wrapper whose only in-assembly MethodDef child is canonical FACT-0043 SetAIAct."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.SetAIAct_RunAttackAfterHammerThrow(RunAtkEnum,Int32)",
+      "to": "PlayerController_AI.SetAIAct",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004F9D at IL+0x0004; raw first argument 14; second argument is tm; child is canonical FACT-0043."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_OpponentStands_AfterHammerThrow()",
+      "to": "PlayerController_AI.SetAIAct_RunAttackAfterHammerThrow(RunAtkEnum,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004FA8 at IL+0x00D7."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "RunAtkEnum, kind, tm and aiActPrm are preserved metadata identifiers; this fact assigns no enum-member or authored gameplay meaning to them.",
+    "The raw SetAIAct first argument 14 is preserved as an observed constant and receives no authored gameplay label.",
+    "FACT-0043 governs PlayerController_AI.SetAIAct; this fact adds only the exact wrapper call boundary and argument flow.",
+    "PlayerController_AI.Process_OpponentStands_AfterHammerThrow remains a separate 248-byte caller body with other open MethodDef dependencies.",
+    "Fresh CAP-R6-001 contains zero SetAIAct_RunAttackAfterHammerThrow, SetAIAct and Process_OpponentStands_AfterHammerThrow rows; no runtime bridge is claimed."
+  ]
+}
