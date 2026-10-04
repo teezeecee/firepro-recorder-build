@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_IS_HAPPEN_POWER_COMPETITION_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "IsHappenPowerCompetition",
+      "token": "0x06004FD3",
+      "rva": "0x002F8D90",
+      "methoddef_row_hex": "908d2f00000096007e390a00634a0000c93a",
+      "signature_blob_hex": "000002",
+      "parameters": [],
+      "return_type": {"metadata_type": "Boolean"},
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0096",
+      "header_format": "fat",
+      "fat_header_hex": "133002002800000006110011",
+      "max_stack": 2,
+      "local_signature_token": "0x11001106",
+      "code_size": 40,
+      "code_sha256": "6d6d6ede32b0294d70267f18c929adf5a196a0ca8f720d77547385aa1df8c414",
+      "body_hex": "7ed12a00047bd22a00040a7e380d0004067bd65700046f491000060b077b350d000428554900062a",
+      "exact_flow": [
+        "load GlobalWork.inst.MatchSetting and store local 0",
+        "load COMLevelDataManager.inst",
+        "load local0.ComLevel",
+        "callvirt canonical FACT-0234 COMLevelDataManager.GetCOMLevelData(Int32) and store local 1",
+        "load local1.powerCompetitionProbability",
+        "call canonical FACT-0025 MatchMisc.mRate100Check(Int32)",
+        "return the resulting Boolean"
+      ]
+    },
+    "local_signature": {
+      "token": "0x11001106",
+      "standalone_sig_row_hex": "f2ce0200",
+      "blob_hex": "070212a408128634",
+      "locals": [
+        {"index": 0, "kind": "class", "typedef_rid": 2306, "type": "MatchSetting", "namespace": "", "typedef_row_hex": "01001000646c0000000000000903ce578749"},
+        {"index": 1, "kind": "class", "typedef_rid": 397, "type": "COMLevelData", "namespace": "", "typedef_row_hex": "0100100063140000000000000903310d4410"}
+      ]
+    },
+    "fields": [
+      {"token": "0x04002AD1", "owner": "GlobalWork", "name": "inst", "field_row_hex": "1600062201008d1a0000", "signature_blob_hex": "061290c0"},
+      {"token": "0x04002AD2", "owner": "GlobalWork", "name": "MatchSetting", "field_row_hex": "0600646c00007c1a0000", "signature_blob_hex": "0612a408"},
+      {"token": "0x04000D38", "owner": "COMLevelDataManager", "name": "inst", "field_row_hex": "1600062201007d0a0000", "signature_blob_hex": "06128638"},
+      {"token": "0x040057D6", "owner": "MatchSetting", "name": "ComLevel", "field_row_hex": "0600c54d000001000000", "signature_blob_hex": "0608", "metadata_type": "Int32"},
+      {"token": "0x04000D35", "owner": "COMLevelData", "name": "powerCompetitionProbability", "field_row_hex": "0600103e010001000000", "signature_blob_hex": "0608", "metadata_type": "Int32"}
+    ],
+    "field_accesses": [
+      {"il": "0x0000", "opcode": "ldsfld", "token": "0x04002AD1"},
+      {"il": "0x0005", "opcode": "ldfld", "token": "0x04002AD2"},
+      {"il": "0x000B", "opcode": "ldsfld", "token": "0x04000D38"},
+      {"il": "0x0011", "opcode": "ldfld", "token": "0x040057D6"},
+      {"il": "0x001D", "opcode": "ldfld", "token": "0x04000D35"}
+    ],
+    "normalized_field_access_map_sha256": "0d82e900d994aa16f6dcba6c1997d958f532f93942c1c3a2a2517363747a57ea",
+    "canonical_internal_calls": [
+      {"il": "0x0016", "opcode": "callvirt", "token": "0x06001049", "owner": "COMLevelDataManager", "method": "GetCOMLevelData", "fact_id": "FACT-0234", "code_size": 9, "code_sha256": "c78e8c870f4c865dfd55914f2c66fdca2c3d729088260483ece8ec917996123d"},
+      {"il": "0x0022", "opcode": "call", "token": "0x06004955", "owner": "MatchMisc", "method": "mRate100Check", "fact_id": "FACT-0025", "code_size": 38, "code_sha256": "6899b69e72e4f0b5853a85c1cb3796e28442d2abbd4ca2378d72dd59ce7bba58"}
+    ],
+    "normalized_internal_call_map_sha256": "17c876cb0d2798f3c6cf17a2b3a7c251f68043c89721221f0424eb92fddf495f",
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "Player",
+        "caller_namespace": "",
+        "caller_method": "CheckStartPowerCompetition",
+        "caller_token": "0x06004EF4",
+        "caller_rva": "0x002E3320",
+        "caller_code_size": 309,
+        "caller_code_sha256": "014d272b72f5c823d163e2f95b9346fd02b807cd12c664c21bb5ca70f702c486",
+        "call_il": "0x0091",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1,
+    "normalized_reference_map_sha256": "c82055581e56aa04315cd68fcbcd0be36b84b86173219a87aab1cc8c2674ad9f",
+    "normalized_caller_token_set_sha256": "544c8e0063de5501ba82bd3fffb3548fdcf570f7061c0b4ed01a33a29e84bca9"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_is_happen_power_competition_row_count": 0,
+    "player_check_start_power_competition_row_count": 0,
+    "comleveldatamanager_get_com_level_data_row_count": 0,
+    "matchmisc_rate100_check_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Method, type and field names are preserved metadata identifiers; this fact adds no authored gameplay meaning for COM levels, MatchSetting fields or the probability field.",
+    "GlobalWork.inst, COMLevelDataManager.inst, MatchSetting contents, ComLevel index validity and COMLevelDataManager.comLevelData population remain separate provenance.",
+    "FACT-0025 governs the exact mRate100Check child body; this fact adds no probabilistic interpretation beyond forwarding the recorded Int32 field and returning that child's Boolean result.",
+    "Player.CheckStartPowerCompetition remains a separate 309-byte parent body; its broader semantics are not promoted here.",
+    "Fresh CAP-R6-001 contains zero rows for IsHappenPowerCompetition, CheckStartPowerCompetition, GetCOMLevelData and mRate100Check; no runtime bridge is claimed."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_is_happen_power_competition.py"
+}

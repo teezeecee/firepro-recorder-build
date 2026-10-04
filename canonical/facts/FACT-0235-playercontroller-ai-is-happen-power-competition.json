@@ -1,0 +1,36 @@
+{
+  "fact_id": "FACT-0235",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.IsHappenPowerCompetition() (0x06004FD3) has raw MethodDef row 908d2f00000096007e390a00634a0000c93a, RVA 0x002F8D90, signature blob 000002 (zero parameters and Boolean return), raw ImplFlags 0x0000 and MethodAttributes 0x0096, fat header 133002002800000006110011, and an exact 40-byte body SHA-256 6d6d6ede32b0294d70267f18c929adf5a196a0ca8f720d77547385aa1df8c414. Its two locals are matching-DLL metadata types MatchSetting and COMLevelData. The exact body loads GlobalWork.inst.MatchSetting into local 0; loads COMLevelDataManager.inst; passes local0.ComLevel to canonical FACT-0234 COMLevelDataManager.GetCOMLevelData(Int32); stores the returned COMLevelData in local 1; loads local1.powerCompetitionProbability; passes that Int32 to canonical FACT-0025 MatchMisc.mRate100Check(Int32); and directly returns the resulting Boolean. It has zero external MemberRef calls. Exact matching-DLL scanning finds one direct MethodDef-token reference, a call from Player.CheckStartPowerCompetition at IL+0x0091.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.IsHappenPowerCompetition token 0x06004FD3 -> RVA 0x002F8D90; exact 40-byte body sha256=6d6d6ede32b0294d70267f18c929adf5a196a0ca8f720d77547385aa1df8c414; exact MethodDef/local/field/call metadata and complete one-reference / one-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_is_happen_power_competition.summary.json; prover tools/prove_playercontroller_ai_is_happen_power_competition.py.",
+      "observation": "Exact dependency-clean PlayerController_AI Boolean helper whose only in-assembly MethodDef children are canonical FACT-0234 GetCOMLevelData and FACT-0025 mRate100Check."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.IsHappenPowerCompetition()",
+      "to": "COMLevelDataManager.GetCOMLevelData(Int32)",
+      "evidence": [{"source_id": "DLL-001", "locator": "direct callvirt token 0x06001049 at IL+0x0016; child is canonical FACT-0234."}]
+    },
+    {
+      "from": "PlayerController_AI.IsHappenPowerCompetition()",
+      "to": "MatchMisc.mRate100Check(Int32)",
+      "evidence": [{"source_id": "DLL-001", "locator": "direct call token 0x06004955 at IL+0x0022; child is canonical FACT-0025."}]
+    },
+    {
+      "from": "Player.CheckStartPowerCompetition()",
+      "to": "PlayerController_AI.IsHappenPowerCompetition()",
+      "evidence": [{"source_id": "DLL-001", "locator": "direct call token 0x06004FD3 at IL+0x0091."}]
+    }
+  ],
+  "limits": [
+    "Method, type and field names are preserved metadata identifiers; this fact adds no authored gameplay meaning for COM levels, MatchSetting fields or the probability field.",
+    "GlobalWork.inst, COMLevelDataManager.inst, MatchSetting contents, ComLevel index validity and COMLevelDataManager.comLevelData population remain separate provenance.",
+    "FACT-0025 governs the exact mRate100Check child body; this fact adds no probabilistic interpretation beyond forwarding the recorded Int32 field and returning that child's Boolean result.",
+    "Player.CheckStartPowerCompetition remains a separate 309-byte parent body; its broader semantics are not promoted here.",
+    "Fresh CAP-R6-001 contains zero rows for IsHappenPowerCompetition, CheckStartPowerCompetition, GetCOMLevelData and mRate100Check; no runtime bridge is claimed."
+  ]
+}
