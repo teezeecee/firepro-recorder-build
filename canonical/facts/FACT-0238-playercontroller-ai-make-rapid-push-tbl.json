@@ -1,0 +1,91 @@
+{
+  "fact_id": "FACT-0238",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.MakeRapidPushTbl() (0x06004FD4) has raw MethodDef row c48d2f000000860097390a005c480000c93a, RVA 0x002F8DC4, signature blob 200001, raw ImplFlags 0x0000 and MethodAttributes 0x0086, fat header 133004003401000007110011, nine locals, and an exact 308-byte body SHA-256 63b284583be3198f0647d16649fe43126b7f5c5d0b0c6a5c2ba73ad233530db7. The body first writes false to rapidPushTbl indices 0 through 59. It then loads GlobalWork.inst.MatchSetting into local1, obtains COMLevelData through canonical FACT-0234 COMLevelDataManager.GetCOMLevelData(MatchSetting.ComLevel) into local2, and writes rapidPushRate from canonical FACT-0032 MatchRandom.Range(local2.pushButtonNumPerSecond_Min, local2.pushButtonNumPerSecond_Max + 1). A raw rapidPushRate <= 0 path writes zero and returns; values greater than 60 are clamped to 60. The body stores 60 / rapidPushRate in local3 and 60 % rapidPushRate in local4, writes local3 into itv_tbl for indices below rapidPushRate, increments the first local4 entries of itv_tbl by one, then calls canonical FACT-0237 Misc.Shuffle(itv_tbl, rapidPushRate). Finally it accumulates shuffled itv_tbl entries into local7 across local8 < rapidPushRate, caps local7 at raw 60, and writes true to rapidPushTbl[local7 - 1] on each iteration. It has zero MemberRef method calls. Its complete MethodDef child surface is FACT-0234 at IL+0x0032, FACT-0032 at IL+0x0047, and FACT-0237 at IL+0x00E9. Exact matching-DLL scanning finds four direct calls across four callers: Process_PinfallDef at IL+0x0030, Process_SubmissionDef at IL+0x0030, Process_ContestOfStrength at IL+0x0020, and Process_ExchangeOfStriking at IL+0x0020.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.MakeRapidPushTbl token 0x06004FD4 -> RVA 0x002F8DC4; exact 308-byte body sha256=63b284583be3198f0647d16649fe43126b7f5c5d0b0c6a5c2ba73ad233530db7; exact MethodDef/local/field/control-flow metadata, canonical child call surface and complete four-reference / four-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_make_rapid_push_tbl.summary.json; prover tools/prove_playercontroller_ai_make_rapid_push_tbl.py.",
+      "observation": "Exact matching-DLL rapid-push table constructor whose complete in-assembly MethodDef child surface is already canonical."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.MakeRapidPushTbl()",
+      "to": "COMLevelDataManager.GetCOMLevelData(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06001049 at IL+0x0032; child is canonical FACT-0234."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.MakeRapidPushTbl()",
+      "to": "MatchRandom.Range(Int32,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x0600497B at IL+0x0047; child is canonical FACT-0032."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.MakeRapidPushTbl()",
+      "to": "Misc.Shuffle(Int32[],Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004AA7 at IL+0x00E9; child is canonical FACT-0237."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_PinfallDef()",
+      "to": "PlayerController_AI.MakeRapidPushTbl()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004FD4 at IL+0x0030."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_SubmissionDef()",
+      "to": "PlayerController_AI.MakeRapidPushTbl()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004FD4 at IL+0x0030."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_ContestOfStrength()",
+      "to": "PlayerController_AI.MakeRapidPushTbl()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004FD4 at IL+0x0020."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_ExchangeOfStriking()",
+      "to": "PlayerController_AI.MakeRapidPushTbl()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004FD4 at IL+0x0020."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method, field and parameter metadata names are preserved identifiers; this fact adds no authored gameplay interpretation beyond the exact body and raw constants.",
+    "FACT-0032 governs the MatchRandom.Range wrapper and does not add UnityEngine.Random implementation properties.",
+    "The contents, allocation and lifecycle of rapidPushTbl and itv_tbl outside this method remain separate provenance.",
+    "The four caller methods remain separate method bodies and are not promoted by membership in the exact reference surface.",
+    "Fresh CAP-R6-001 contains zero MakeRapidPushTbl, child and four-caller rows; no runtime bridge is claimed."
+  ]
+}
