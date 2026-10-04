@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0242",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.Process_SubmissionDef() (0x06005024) has raw MethodDef row fcf72f0000008100fd3f0a00db490000de3a, RVA 0x002FF7FC, signature blob 200002, raw ImplFlags 0x0000 and MethodAttributes 0x0081, fat header 133003006500000000000000, no parameters, no locals, and an exact 101-byte body SHA-256 a21e1f86232c9164c51d563bf7a8a425e873a25be4f142ccbdcb020c0bcc241e. The body first requires this.PlObj.isSubmissionDef to be nonzero; otherwise it returns false. It then requires this.PlObj.isLose to be zero; otherwise it returns false. It tests initializedRapidPushTbl; when false it calls canonical FACT-0238 PlayerController_AI.MakeRapidPushTbl(), writes initializedRapidPushTbl=true, and continues. It then unconditionally writes raw 256 to inherited PlayerController.padOn before probing rapidPushTbl[this.frmCnt % 60]. A nonzero Boolean element additionally writes raw 8 to inherited PlayerController.padPush; a zero element skips that write. The method returns true after the two leading gates regardless of the final probe. Its only MethodDef child is FACT-0238 MakeRapidPushTbl at IL+0x0030 and it has zero MemberRef method calls. Exact matching-DLL scanning finds one direct MethodDef-token reference, a call from PlayerController_AI.Update at IL+0x01CD.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Process_SubmissionDef token 0x06005024 -> RVA 0x002FF7FC; exact 101-byte body sha256=a21e1f86232c9164c51d563bf7a8a425e873a25be4f142ccbdcb020c0bcc241e; exact MethodDef/header/field/control-flow metadata and complete one-reference / one-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_process_submission_def.summary.json; prover tools/prove_playercontroller_ai_process_submission_def.py.",
+      "observation": "Exact matching-DLL Boolean AI helper whose only in-assembly MethodDef child is canonical FACT-0238 MakeRapidPushTbl."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Process_SubmissionDef()",
+      "to": "PlayerController_AI.MakeRapidPushTbl()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004FD4 at IL+0x0030; child is canonical FACT-0238."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Update()",
+      "to": "PlayerController_AI.Process_SubmissionDef()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06005024 at IL+0x01CD."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method and field metadata names are preserved identifiers; this fact adds no authored gameplay label for the recorded Boolean fields, raw modulo constant 60, raw padOn value 256, or raw padPush value 8.",
+    "FACT-0238 governs MakeRapidPushTbl; this fact adds no new meaning to rapidPushTbl generation or timing.",
+    "The exact body distinguishes the unconditional padOn write before the table probe from the conditional padPush write after that probe; no broader input semantics are added.",
+    "PlayerController_AI.Update remains a separate 984-byte caller body.",
+    "Fresh CAP-R6-001 contains zero Process_SubmissionDef, MakeRapidPushTbl and PlayerController_AI.Update rows; no runtime bridge is claimed."
+  ]
+}
