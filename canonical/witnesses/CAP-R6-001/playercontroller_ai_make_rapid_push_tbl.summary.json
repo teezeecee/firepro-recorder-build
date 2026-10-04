@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_MAKE_RAPID_PUSH_TBL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "MakeRapidPushTbl",
+      "token": "0x06004FD4",
+      "rva": "0x002F8DC4",
+      "methoddef_row_hex": "c48d2f000000860097390a005c480000c93a",
+      "signature_blob_hex": "200001",
+      "parameters": [],
+      "return_type": {
+        "metadata_type": "Void"
+      },
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "fat",
+      "fat_header_hex": "133004003401000007110011",
+      "max_stack": 4,
+      "local_signature_token": "0x11001107",
+      "code_size": 308,
+      "code_sha256": "63b284583be3198f0647d16649fe43126b7f5c5d0b0c6a5c2ba73ad233530db7",
+      "body_hex": "160a380d000000027b6361000406169c0617580a061f3c3febffffff7ed12a00047bd22a00040b7e380d0004077bd65700046f491000060c02087b330d0004087b340d00041758287b4900067d62610004027b62610004163d0800000002167d626100042a027b626100041f3c3e08000000021f3c7d626100041f3c027b626100045b0d1f3c027b626100045d13041613053810000000027b6f6100041105099e1105175813051105027b626100043fe3ffffff1613063818000000027b6f61000411068fd7000001254a175854110617581306110611043fdfffffff027b6f610004027b6261000428a74a0006161307161308382d0000001107027b6f61000411089458130711071f3c3e040000001f3c1307027b6361000411071759179c1108175813081108027b626100043fc6ffffff2a"
+    },
+    "local_signature": {
+      "token": "0x11001107",
+      "standalone_sig_row_hex": "fbce0200",
+      "blob_hex": "07090812a408128634080808080808",
+      "locals": [
+        {
+          "index": 0,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 1,
+          "kind": "class",
+          "typedef_rid": 2306,
+          "type": "MatchSetting",
+          "namespace": "",
+          "typedef_row_hex": "01001000646c0000000000000903ce578749"
+        },
+        {
+          "index": 2,
+          "kind": "class",
+          "typedef_rid": 397,
+          "type": "COMLevelData",
+          "namespace": "",
+          "typedef_row_hex": "0100100063140000000000000903310d4410"
+        },
+        {
+          "index": 3,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 4,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 5,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 6,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 7,
+          "metadata_type": "Int32"
+        },
+        {
+          "index": 8,
+          "metadata_type": "Int32"
+        }
+      ]
+    },
+    "fields": [
+      {
+        "token": "0x04006163",
+        "owner": "PlayerController_AI",
+        "name": "rapidPushTbl",
+        "field_row_hex": "010004f4030084090000",
+        "signature_blob_hex": "061d02",
+        "metadata_type": "Boolean[]"
+      },
+      {
+        "token": "0x04002AD1",
+        "owner": "GlobalWork",
+        "name": "inst",
+        "field_row_hex": "1600062201008d1a0000",
+        "signature_blob_hex": "061290c0"
+      },
+      {
+        "token": "0x04002AD2",
+        "owner": "GlobalWork",
+        "name": "MatchSetting",
+        "field_row_hex": "0600646c00007c1a0000",
+        "signature_blob_hex": "0612a408"
+      },
+      {
+        "token": "0x04000D38",
+        "owner": "COMLevelDataManager",
+        "name": "inst",
+        "field_row_hex": "1600062201007d0a0000",
+        "signature_blob_hex": "06128638"
+      },
+      {
+        "token": "0x040057D6",
+        "owner": "MatchSetting",
+        "name": "ComLevel",
+        "field_row_hex": "0600c54d000001000000",
+        "signature_blob_hex": "0608",
+        "metadata_type": "Int32"
+      },
+      {
+        "token": "0x04000D33",
+        "owner": "COMLevelData",
+        "name": "pushButtonNumPerSecond_Min",
+        "field_row_hex": "0600da3d010001000000",
+        "signature_blob_hex": "0608",
+        "metadata_type": "Int32"
+      },
+      {
+        "token": "0x04000D34",
+        "owner": "COMLevelData",
+        "name": "pushButtonNumPerSecond_Max",
+        "field_row_hex": "0600f53d010001000000",
+        "signature_blob_hex": "0608",
+        "metadata_type": "Int32"
+      },
+      {
+        "token": "0x04006162",
+        "owner": "PlayerController_AI",
+        "name": "rapidPushRate",
+        "field_row_hex": "0100f6f3030001000000",
+        "signature_blob_hex": "0608",
+        "metadata_type": "Int32"
+      },
+      {
+        "token": "0x0400616F",
+        "owner": "PlayerController_AI",
+        "name": "itv_tbl",
+        "field_row_hex": "0100c4f403008d030000",
+        "signature_blob_hex": "061d08",
+        "metadata_type": "Int32[]"
+      }
+    ],
+    "field_accesses": [
+      {
+        "il": "0x0008",
+        "opcode": "ldfld",
+        "token": "0x04006163"
+      },
+      {
+        "il": "0x001C",
+        "opcode": "ldsfld",
+        "token": "0x04002AD1"
+      },
+      {
+        "il": "0x0021",
+        "opcode": "ldfld",
+        "token": "0x04002AD2"
+      },
+      {
+        "il": "0x0027",
+        "opcode": "ldsfld",
+        "token": "0x04000D38"
+      },
+      {
+        "il": "0x002D",
+        "opcode": "ldfld",
+        "token": "0x040057D6"
+      },
+      {
+        "il": "0x003A",
+        "opcode": "ldfld",
+        "token": "0x04000D33"
+      },
+      {
+        "il": "0x0040",
+        "opcode": "ldfld",
+        "token": "0x04000D34"
+      },
+      {
+        "il": "0x004C",
+        "opcode": "stfld",
+        "token": "0x04006162"
+      },
+      {
+        "il": "0x0052",
+        "opcode": "ldfld",
+        "token": "0x04006162"
+      },
+      {
+        "il": "0x005F",
+        "opcode": "stfld",
+        "token": "0x04006162"
+      },
+      {
+        "il": "0x0066",
+        "opcode": "ldfld",
+        "token": "0x04006162"
+      },
+      {
+        "il": "0x0075",
+        "opcode": "stfld",
+        "token": "0x04006162"
+      },
+      {
+        "il": "0x007D",
+        "opcode": "ldfld",
+        "token": "0x04006162"
+      },
+      {
+        "il": "0x0087",
+        "opcode": "ldfld",
+        "token": "0x04006162"
+      },
+      {
+        "il": "0x0098",
+        "opcode": "ldfld",
+        "token": "0x0400616F"
+      },
+      {
+        "il": "0x00AA",
+        "opcode": "ldfld",
+        "token": "0x04006162"
+      },
+      {
+        "il": "0x00BD",
+        "opcode": "ldfld",
+        "token": "0x0400616F"
+      },
+      {
+        "il": "0x00DE",
+        "opcode": "ldfld",
+        "token": "0x0400616F"
+      },
+      {
+        "il": "0x00E4",
+        "opcode": "ldfld",
+        "token": "0x04006162"
+      },
+      {
+        "il": "0x00FC",
+        "opcode": "ldfld",
+        "token": "0x0400616F"
+      },
+      {
+        "il": "0x0115",
+        "opcode": "ldfld",
+        "token": "0x04006163"
+      },
+      {
+        "il": "0x0129",
+        "opcode": "ldfld",
+        "token": "0x04006162"
+      }
+    ],
+    "normalized_field_access_map_sha256": "cdc1b72f1fe728d903a08a26adc43ef79cecfd76e804c2c4de31b0c48586404c",
+    "raw_control_flow": {
+      "clear_table": "local0 starts at 0; IL+0x0007..0x0013 writes false to rapidPushTbl[local0], increments local0, and IL+0x0017 loops while local0 < 60.",
+      "rate_selection": "MatchSetting and COMLevelData are loaded into locals 1 and 2; MatchRandom.Range receives pushButtonNumPerSecond_Min and pushButtonNumPerSecond_Max + 1 and its Int32 result is stored to rapidPushRate.",
+      "rate_gates": "IL+0x0058 bgt enters the continuing path only when rapidPushRate > 0; otherwise rapidPushRate is written as 0 and the method returns at IL+0x0064. IL+0x006D ble skips the raw-60 clamp when rapidPushRate <= 60; otherwise rapidPushRate is written as 60.",
+      "interval_build": "local3 receives 60 / rapidPushRate and local4 receives 60 % rapidPushRate. local5 fills itv_tbl[0..rapidPushRate-1] with local3. local6 then increments itv_tbl[0..local4-1] by one through ldelema System.Int32 and stind.i4.",
+      "shuffle": "Misc.Shuffle(itv_tbl, rapidPushRate) is called at IL+0x00E9.",
+      "output_build": "locals7 and 8 start at zero. For each local8 < rapidPushRate, local7 adds itv_tbl[local8], is capped to raw 60 when greater than 60, and rapidPushTbl[local7 - 1] is written true; local8 then increments."
+    },
+    "canonical_internal_calls": [
+      {
+        "il": "0x0032",
+        "opcode": "callvirt",
+        "token": "0x06001049",
+        "owner": "COMLevelDataManager",
+        "method": "GetCOMLevelData",
+        "fact_id": "FACT-0234",
+        "code_size": 9,
+        "code_sha256": "c78e8c870f4c865dfd55914f2c66fdca2c3d729088260483ece8ec917996123d"
+      },
+      {
+        "il": "0x0047",
+        "opcode": "call",
+        "token": "0x0600497B",
+        "owner": "MatchRandom",
+        "method": "Range",
+        "fact_id": "FACT-0032",
+        "code_size": 30,
+        "code_sha256": "d6ed5dd5c1cdf595ca459ddc1c740ce66543e9630786cfdc9bf3404247f643f6"
+      },
+      {
+        "il": "0x00E9",
+        "opcode": "call",
+        "token": "0x06004AA7",
+        "owner": "Misc",
+        "method": "Shuffle",
+        "fact_id": "FACT-0237",
+        "code_size": 65,
+        "code_sha256": "d8e87deae43facf68b16b094188ade6c7db1915caa3c59031cb85f891529b5c1"
+      }
+    ],
+    "normalized_internal_call_map_sha256": "bd2dc1ae5dc6ed8d33aa24d9c1c37f2bcc913c0bfb52a06fcda815c7f0eeb6df",
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_PinfallDef",
+        "caller_token": "0x06005023",
+        "caller_rva": "0x002FF78C",
+        "caller_code_size": 99,
+        "caller_code_sha256": "8cd99966c2f677c3c5adb0b93e5ff520f7cccecc1d4c80f260694ad88c091a0a",
+        "call_il": "0x0030",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_SubmissionDef",
+        "caller_token": "0x06005024",
+        "caller_rva": "0x002FF7FC",
+        "caller_code_size": 101,
+        "caller_code_sha256": "a21e1f86232c9164c51d563bf7a8a425e873a25be4f142ccbdcb020c0bcc241e",
+        "call_il": "0x0030",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_ContestOfStrength",
+        "caller_token": "0x06005026",
+        "caller_rva": "0x002FF930",
+        "caller_code_size": 74,
+        "caller_code_sha256": "55f0bb53b03f366663707771d918a6cbe62aae003288dd23d7b1588c027de95b",
+        "call_il": "0x0020",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_ExchangeOfStriking",
+        "caller_token": "0x06005027",
+        "caller_rva": "0x002FF988",
+        "caller_code_size": 75,
+        "caller_code_sha256": "a9a368c56b9037b055142a1976b78a5dd686b761947964ed3a8809aa4f17e16d",
+        "call_il": "0x0020",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 4,
+    "direct_caller_method_count": 4,
+    "normalized_reference_map_sha256": "2e789241bd7737ce018112b13a13f2ea82fe94b8f156d1d6e90dce4f16df7441",
+    "normalized_caller_token_set_sha256": "f93c47431bbc224c1fc332b07524951e4f1741e5a9de328ce0b58e8f2b8dbfb0"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_make_rapid_push_tbl_row_count": 0,
+    "comleveldatamanager_get_com_level_data_row_count": 0,
+    "matchrandom_range_row_count": 0,
+    "misc_shuffle_row_count": 0,
+    "playercontroller_ai_process_pinfall_def_row_count": 0,
+    "playercontroller_ai_process_submission_def_row_count": 0,
+    "playercontroller_ai_process_contest_of_strength_row_count": 0,
+    "playercontroller_ai_process_exchange_of_striking_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Method, field and parameter metadata names are preserved identifiers; this fact adds no authored gameplay interpretation beyond the exact body and raw constants.",
+    "FACT-0032 governs the MatchRandom.Range wrapper and does not add UnityEngine.Random implementation properties.",
+    "The contents, allocation and lifecycle of rapidPushTbl and itv_tbl outside this method remain separate provenance.",
+    "The four caller methods remain separate method bodies and are not promoted by membership in the exact reference surface.",
+    "Fresh CAP-R6-001 contains zero MakeRapidPushTbl, child and four-caller rows; no runtime bridge is claimed."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_make_rapid_push_tbl.py"
+}
