@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_IN_STAGE_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "Process_InStage",
+      "token": "0x06005013",
+      "rva": "0x002FDEE8",
+      "methoddef_row_hex": "e8de2f0000008100863e0a00db490000de3a",
+      "signature_blob_hex": "200002",
+      "parameters": [],
+      "return_type_metadata": "Boolean",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "header_format": "fat",
+      "fat_header_hex": "13300200040100008e020011",
+      "max_stack": 2,
+      "local_signature_token": "0x1100028E",
+      "local_signature_row_hex": "6b940100",
+      "local_signature_blob_hex": "070112a788",
+      "locals": [
+        {"index":0,"kind":"class","typedef_rid":2530,"type":"Player","namespace":"","typedef_row_hex":"01001000fd480000000000005500565fa74e"}
+      ],
+      "code_size": 260,
+      "code_sha256": "689a04f4f28bef50f618fd9599e843cc189efae42457ebde181d5429c34bbc5d",
+      "body_hex": "027b4a6100047bee5f00041f093b02000000162a027b4a6100047bb75f00041f164002000000162a02167d5d610004027b4a6100047b49600004390d000000021f207d1761000438b6000000027b4a6100047b77600004396c0000007efa610004027b4a6100047bb15f00046f655000060a067bee5f00041f093b47000000067bee5f00041f0a3b3a000000027b4a6100047caa5f00047b0a00000a027b4a6100047caa5f00047b0900000a430c00000002187d176100043807000000021a7d17610004172a162a027b4a6100047caa5f00047b0a00000a027b4a6100047caa5f00047b0900000a430c00000002187d176100043807000000021a7d17610004172a162a",
+      "exact_flow": [
+        "require this.PlObj.Zone raw 9; otherwise return false",
+        "if this.PlObj.State is raw 22 return false; every other raw State continues",
+        "write raw false to this.isThrowOppopnentToRope",
+        "if this.PlObj.isPinfallDef is true write raw 32 to inherited padOn and return false",
+        "if this.PlObj.isIntruder is true call canonical FACT-0109 PlayerMan.GetPlObj(this.PlObj.TargetPlIdx) and store Player local0",
+        "on the intruder path, if local0.Zone is raw 9 or raw 10 return false",
+        "on every remaining intruder path load this.PlObj.PlPos.y then this.PlObj.PlPos.x and execute raw ble.un; target writes raw 4 to padOn, fallthrough writes raw 2; return true",
+        "on the non-intruder path perform the same raw PlPos.y then PlPos.x ble.un selection; target writes raw 4 to padOn, fallthrough writes raw 2; return true"
+      ]
+    },
+    "fields": [
+      {"token":"0x0400614A","owner":"PlayerController_AI","name":"PlObj","field_row_hex":"0100b7f203005e190000","signature_blob_hex":"0612a788"},
+      {"token":"0x04005FEE","owner":"Player","name":"Zone","field_row_hex":"0600dde203009f300000","signature_blob_hex":"0611a85c"},
+      {"token":"0x04005FB7","owner":"Player","name":"State","field_row_hex":"06006e000000da370000","signature_blob_hex":"0611a828"},
+      {"token":"0x0400615D","owner":"PlayerController_AI","name":"isThrowOppopnentToRope","field_row_hex":"0600a0f3030008000000","signature_blob_hex":"0602"},
+      {"token":"0x04006049","owner":"Player","name":"isPinfallDef","field_row_hex":"060071e7030008000000","signature_blob_hex":"0602"},
+      {"token":"0x04006117","owner":"PlayerController","name":"padOn","field_row_hex":"0600f71f0200440c0000","signature_blob_hex":"0611904c"},
+      {"token":"0x04006077","owner":"Player","name":"isIntruder","field_row_hex":"0600b48c030008000000","signature_blob_hex":"0602"},
+      {"token":"0x040061FA","owner":"PlayerMan","name":"inst","field_row_hex":"160006220100cf380000","signature_blob_hex":"0612a818"},
+      {"token":"0x04005FB1","owner":"Player","name":"TargetPlIdx","field_row_hex":"060071e0030001000000","signature_blob_hex":"0608"},
+      {"token":"0x04005FAA","owner":"Player","name":"PlPos","field_row_hex":"060039e0030070000000","signature_blob_hex":"061119"}
+    ],
+    "member_fields": [
+      {"token":"0x0A000009","owner":"UnityEngine.Vector3","name":"x","memberref_row_hex":"31000000dfb6000014000000","signature_blob_hex":"060c"},
+      {"token":"0x0A00000A","owner":"UnityEngine.Vector3","name":"y","memberref_row_hex":"31000000e1b6000014000000","signature_blob_hex":"060c"}
+    ],
+    "field_accesses": [
+      {"il":"0x0001","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0006","opcode":"ldfld","token":"0x04005FEE"},
+      {"il":"0x0015","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x001A","opcode":"ldfld","token":"0x04005FB7"},
+      {"il":"0x002A","opcode":"stfld","token":"0x0400615D"},
+      {"il":"0x0030","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0035","opcode":"ldfld","token":"0x04006049"},
+      {"il":"0x0042","opcode":"stfld","token":"0x04006117"},
+      {"il":"0x004D","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0052","opcode":"ldfld","token":"0x04006077"},
+      {"il":"0x005C","opcode":"ldsfld","token":"0x040061FA"},
+      {"il":"0x0062","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0067","opcode":"ldfld","token":"0x04005FB1"},
+      {"il":"0x0073","opcode":"ldfld","token":"0x04005FEE"},
+      {"il":"0x0080","opcode":"ldfld","token":"0x04005FEE"},
+      {"il":"0x008D","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0092","opcode":"ldflda","token":"0x04005FAA"},
+      {"il":"0x0097","opcode":"ldfld","token":"0x0A00000A"},
+      {"il":"0x009D","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x00A2","opcode":"ldflda","token":"0x04005FAA"},
+      {"il":"0x00A7","opcode":"ldfld","token":"0x0A000009"},
+      {"il":"0x00B3","opcode":"stfld","token":"0x04006117"},
+      {"il":"0x00BF","opcode":"stfld","token":"0x04006117"},
+      {"il":"0x00C9","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x00CE","opcode":"ldflda","token":"0x04005FAA"},
+      {"il":"0x00D3","opcode":"ldfld","token":"0x0A00000A"},
+      {"il":"0x00D9","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x00DE","opcode":"ldflda","token":"0x04005FAA"},
+      {"il":"0x00E3","opcode":"ldfld","token":"0x0A000009"},
+      {"il":"0x00EF","opcode":"stfld","token":"0x04006117"},
+      {"il":"0x00FB","opcode":"stfld","token":"0x04006117"}
+    ],
+    "normalized_field_access_map_sha256": "24c3e38f3901443214d521c6eebcc6eaab6a535d3154f5d6e2c70a98b333bbe2",
+    "canonical_internal_calls": [
+      {"call_il":"0x006C","opcode":"callvirt","token":"0x06005065","method":"PlayerMan.GetPlObj","canonical_fact":"FACT-0109","callee_code_size":25,"callee_code_sha256":"32cbd360156f7bbbf97ed096e6afa8d4e7e4e500ff3d37179f32aecfafcf05d8"}
+    ],
+    "external_memberref_calls": [],
+    "branch_sites": [
+      {"il":"0x000D","opcode":"beq","comparison":"PlObj.Zone == raw 9","target_il":"0x0014","target_effect":"continue","fallthrough_effect":"return false"},
+      {"il":"0x0021","opcode":"bne.un","comparison":"PlObj.State != raw 22","target_il":"0x0028","target_effect":"continue","fallthrough_effect":"return false"},
+      {"il":"0x003A","opcode":"brfalse","comparison":"PlObj.isPinfallDef false","target_il":"0x004C","fallthrough_effect":"padOn = raw 32 then shared false return"},
+      {"il":"0x0047","opcode":"br","target_il":"0x0102","target_effect":"return false"},
+      {"il":"0x0057","opcode":"brfalse","comparison":"PlObj.isIntruder false","target_il":"0x00C8","target_effect":"non-intruder PlPos branch"},
+      {"il":"0x007A","opcode":"beq","comparison":"target Player.Zone == raw 9","target_il":"0x00C6","target_effect":"return false"},
+      {"il":"0x0087","opcode":"beq","comparison":"target Player.Zone == raw 10","target_il":"0x00C6","target_effect":"return false"},
+      {"il":"0x00AC","opcode":"ble.un","comparison":"raw stack order PlPos.y then PlPos.x","target_il":"0x00BD","target_effect":"padOn = raw 4","fallthrough_effect":"padOn = raw 2"},
+      {"il":"0x00B8","opcode":"br","target_il":"0x00C4"},
+      {"il":"0x00E8","opcode":"ble.un","comparison":"raw stack order PlPos.y then PlPos.x","target_il":"0x00F9","target_effect":"padOn = raw 4","fallthrough_effect":"padOn = raw 2"},
+      {"il":"0x00F4","opcode":"br","target_il":"0x0100"}
+    ],
+    "raw_writes": [
+      {"field":"PlayerController_AI.isThrowOppopnentToRope","raw_value":false,"value_il":"0x0029","write_il":"0x002A"},
+      {"field":"PlayerController.padOn","raw_value":32,"value_il":"0x0040","write_il":"0x0042"},
+      {"field":"PlayerController.padOn","raw_value":2,"value_il":"0x00B2","write_il":"0x00B3"},
+      {"field":"PlayerController.padOn","raw_value":4,"value_il":"0x00BE","write_il":"0x00BF"},
+      {"field":"PlayerController.padOn","raw_value":2,"value_il":"0x00EE","write_il":"0x00EF"},
+      {"field":"PlayerController.padOn","raw_value":4,"value_il":"0x00FA","write_il":"0x00FB"}
+    ],
+    "return_sites": [
+      {"ret_il":"0x0013","raw_boolean":false},
+      {"ret_il":"0x0027","raw_boolean":false},
+      {"ret_il":"0x00C5","raw_boolean":true},
+      {"ret_il":"0x00C7","raw_boolean":false},
+      {"ret_il":"0x0101","raw_boolean":true},
+      {"ret_il":"0x0103","raw_boolean":false}
+    ],
+    "direct_in_assembly_references": [
+      {"caller_type":"PlayerController_AI","caller_namespace":"","caller_method":"Update","caller_token":"0x0600502B","caller_rva":"0x002FFC68","caller_code_size":984,"caller_code_sha256":"6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9","call_il":"0x0316","opcode":"call"}
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1,
+    "normalized_reference_map_sha256": "c7c0815170574360afc45486afe6ceb91f06badddb65f76a85f5642b16651c90",
+    "normalized_caller_token_set_sha256": "8ac1dfd1d928208b427b89fc6c0c23e9bda7b0f8a86a44a10454754a87056c63"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_process_in_stage_row_count": 0,
+    "playerman_get_pl_obj_row_count": 0,
+    "playercontroller_ai_update_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Raw Zone/State/pad/Boolean values and ble.un branch order are preserved without added gameplay labels.",
+    "UnityEngine.Vector3 x/y MemberRef fields are metadata boundaries only; no external MemberRef methods are invoked.",
+    "PlayerMan.inst and PlayerMan.PlObj population remain separate provenance; the returned Player is dereferenced without an explicit null/false gate in this body.",
+    "PlayerController_AI.Update remains an open parent body.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_process_in_stage.py"
+}
