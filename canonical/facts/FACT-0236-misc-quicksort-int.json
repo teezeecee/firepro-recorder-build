@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0236",
+  "claim": "In the matching retail DLL, static Misc.QuickSort_Int(Int32[] sort_param, Int32[] sort_idx, Int32 asdes, Int32 first, Int32 last) (0x06004AA1) has raw MethodDef row 18832b0000009600e2050a0002b302004537, RVA 0x002B8318, signature blob 0005011d081d08080808, raw ImplFlags 0x0000 and MethodAttributes 0x0096, fat header 13300600c4000000d1060011, five Int32 locals, and an exact 196-byte body SHA-256 14e7deca98e8fbf64b0564a069032b864cbea75e70eeabe0051e1091470c5718. The body sets local0=first and local1=last, loads local2 from sort_param[(local0+local1)/2], then selects between two raw comparison directions using asdes. The raw-zero path advances local0 while sort_param[local0] < local2 and decreases local1 while sort_param[local1] > local2; the raw-nonzero path reverses those two comparison opcodes. When local0 < local1, the body exchanges the two indexed Int32 values in both sort_param and sort_idx, increments local0, decrements local1, and loops. It recursively calls itself at IL+0x00A7 for the raw first..local0-1 range only when first < local0-1, and at IL+0x00BE for the raw local1+1..last range only when last > local1+1. It contains no field access and no MemberRef method call; its only MethodDef calls are those two self-recursive calls. Exact matching-DLL scanning finds 21 direct MethodDef-token references across 20 caller methods, including the two self references and Misc.Shuffle at IL+0x003B.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Misc.QuickSort_Int token 0x06004AA1 -> RVA 0x002B8318; exact 196-byte body sha256=14e7deca98e8fbf64b0564a069032b864cbea75e70eeabe0051e1091470c5718; exact MethodDef/Param/local/control-flow metadata and complete 21-reference / 20-caller map in canonical/witnesses/CAP-R6-001/misc_quicksort_int.summary.json; prover tools/prove_misc_quicksort_int.py.",
+      "observation": "Exact matching-DLL Int32-array recursive sort helper with paired-array exchange and two self-recursive call sites."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Misc.QuickSort_Int(...)",
+      "to": "Misc.QuickSort_Int(...)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "recursive call token 0x06004AA1 at IL+0x00A7."
+        }
+      ]
+    },
+    {
+      "from": "Misc.QuickSort_Int(...)",
+      "to": "Misc.QuickSort_Int(...)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "recursive call token 0x06004AA1 at IL+0x00BE."
+        }
+      ]
+    },
+    {
+      "from": "Misc.Shuffle(...)",
+      "to": "Misc.QuickSort_Int(...)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004AA1 at Shuffle IL+0x003B."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method and parameter names are preserved metadata identifiers; no authored meaning is assigned to the raw asdes selector beyond the exact comparison-opcode split.",
+    "The 20 caller methods are not semantically promoted by membership in the exact reference surface.",
+    "Misc.Shuffle remains a separate 65-byte caller body and PlayerController_AI.MakeRapidPushTbl remains a separate 308-byte caller-chain seam.",
+    "Fresh CAP-R6-001 contains zero QuickSort_Int, Shuffle and MakeRapidPushTbl rows; no runtime bridge is claimed."
+  ]
+}
