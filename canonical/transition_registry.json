@@ -4070,7 +4070,9 @@
     {
       "family_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_IN_RUNWAY_V1",
       "fact_id": "FACT-0232",
-      "source_ids": ["DLL-001"],
+      "source_ids": [
+        "DLL-001"
+      ],
       "scope": "PROVEN_DLL",
       "definition": "Exact 212-byte matching-DLL PlayerController_AI.Process_InRunway Boolean leaf: raw self Zone 3/8 gate followed by State==22 false return / State!=22 continuation, raw isThrowOppopnentToRope false write, pinfall/intruder branches, canonical FACT-0109 target-player lookup, raw target Zone 9/10/3/8 handling, raw padOn 32/9/6 writes, and exact one-call / one-caller surface from PlayerController_AI.Update.",
       "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_process_in_runway.summary.json",
@@ -4088,7 +4090,9 @@
     {
       "family_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_IN_STAGE_V1",
       "fact_id": "FACT-0233",
-      "source_ids": ["DLL-001"],
+      "source_ids": [
+        "DLL-001"
+      ],
       "scope": "PROVEN_DLL",
       "definition": "Exact 260-byte matching-DLL PlayerController_AI.Process_InStage Boolean leaf: raw self Zone-9 entry, State==22 false return / State!=22 continuation, raw isThrowOppopnentToRope false write, pinfall/intruder branches, canonical FACT-0109 target-player lookup, target Zone 9/10 false return, duplicated raw PlPos.y/PlPos.x ble.un selection writing padOn 4 on branch target or 2 on fallthrough, and exact one-call / one-caller surface from PlayerController_AI.Update.",
       "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_process_in_stage.summary.json",
@@ -4107,7 +4111,9 @@
     {
       "family_id": "DLL_COMLEVELDATAMANAGER_GET_COM_LEVEL_DATA_V1",
       "fact_id": "FACT-0234",
-      "source_ids": ["DLL-001"],
+      "source_ids": [
+        "DLL-001"
+      ],
       "scope": "PROVEN_DLL",
       "definition": "Exact 9-byte matching-DLL COMLevelDataManager.GetCOMLevelData(Int32) zero-child getter: returns this.comLevelData[lv] through one array-field read and ldelem.ref; exact four-call / four-caller surface from PlayerController_AI.IsHappenPowerCompetition, MakeRapidPushTbl, Process_Grapple and Check_FoxSleep.",
       "summary": "canonical/witnesses/CAP-R6-001/comleveldatamanager_get_com_level_data.summary.json",
@@ -4119,6 +4125,27 @@
         "COM level authored meaning and array population remain separate provenance",
         "the four AI callers remain separate method bodies whose semantics are not promoted by this leaf",
         "fresh R6 has zero GetCOMLevelData and zero rows for all four callers and provides no runtime bridge"
+      ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_IS_HAPPEN_POWER_COMPETITION_V1",
+      "fact_id": "FACT-0235",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 40-byte matching-DLL PlayerController_AI.IsHappenPowerCompetition Boolean helper: loads GlobalWork.inst.MatchSetting, forwards MatchSetting.ComLevel through canonical FACT-0234 COMLevelDataManager.GetCOMLevelData, forwards the returned COMLevelData.powerCompetitionProbability through canonical FACT-0025 MatchMisc.mRate100Check, directly returns that Boolean, and has an exact one-call / one-caller surface from Player.CheckStartPowerCompetition.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_is_happen_power_competition.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "metadata names receive no added authored gameplay meaning",
+        "GlobalWork.inst, COMLevelDataManager.inst, MatchSetting contents, ComLevel validity and COMLevelDataManager.comLevelData population remain separate provenance",
+        "FACT-0025 governs mRate100Check; no additional probabilistic interpretation is promoted",
+        "Player.CheckStartPowerCompetition remains a separate 309-byte parent body",
+        "fresh R6 has zero helper/parent/child rows and provides no runtime bridge"
       ]
     }
   ],
