@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_IN_RUNWAY_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "Process_InRunway",
+      "token": "0x06005014",
+      "rva": "0x002FDFF8",
+      "methoddef_row_hex": "f8df2f0000008600963e0a00db490000de3a",
+      "signature_blob_hex": "200002",
+      "parameters": [],
+      "return_type_metadata": "Boolean",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "fat",
+      "fat_header_hex": "13300200d40000008e020011",
+      "max_stack": 2,
+      "local_signature_token": "0x1100028E",
+      "local_signature_row_hex": "6b940100",
+      "local_signature_blob_hex": "070112a788",
+      "locals": [
+        {"index":0,"kind":"class","typedef_rid":2530,"type":"Player","namespace":"","typedef_row_hex":"01001000fd480000000000005500565fa74e"}
+      ],
+      "code_size": 212,
+      "code_sha256": "8b5a78b8955fd7840b28de78ca0cb21326e13d2e484cd2064e163ca13953b6b4",
+      "body_hex": "027b4a6100047bee5f0004193b13000000027b4a6100047bee5f00041e3b02000000162a027b4a6100047bb75f00041f164002000000162a02167d5d610004027b4a6100047b49600004390d000000021f207d176100043876000000027b4a6100047b77600004395d0000007efa610004027b4a6100047bb15f00046f655000060a067bee5f00041f093b0d000000067bee5f00041f0a400a000000021f097d17610004172a067bee5f0004193b15000000067bee5f00041e3b09000000021c7d17610004172a162a021c7d17610004172a162a",
+      "exact_flow": [
+        "require this.PlObj.Zone raw 3 or raw 8; otherwise return false",
+        "require this.PlObj.State raw 22; otherwise return false",
+        "write raw false to this.isThrowOppopnentToRope",
+        "if this.PlObj.isPinfallDef is true write raw 32 to inherited padOn and return false",
+        "if this.PlObj.isIntruder is false write raw 6 to inherited padOn and return true",
+        "otherwise call canonical FACT-0109 PlayerMan.GetPlObj(this.PlObj.TargetPlIdx) and store Player local0",
+        "if local0.Zone is raw 9 or raw 10 write raw 9 to padOn and return true",
+        "if local0.Zone is raw 3 or raw 8 return false",
+        "for every other local0.Zone write raw 6 to padOn and return true"
+      ]
+    },
+    "fields": [
+      {"token":"0x0400614A","owner":"PlayerController_AI","name":"PlObj","field_row_hex":"0100b7f203005e190000","signature_blob_hex":"0612a788"},
+      {"token":"0x04005FEE","owner":"Player","name":"Zone","field_row_hex":"0600dde203009f300000","signature_blob_hex":"0611a85c"},
+      {"token":"0x04005FB7","owner":"Player","name":"State","field_row_hex":"06006e000000da370000","signature_blob_hex":"0611a828"},
+      {"token":"0x0400615D","owner":"PlayerController_AI","name":"isThrowOppopnentToRope","field_row_hex":"0600a0f3030008000000","signature_blob_hex":"0602"},
+      {"token":"0x04006049","owner":"Player","name":"isPinfallDef","field_row_hex":"060071e7030008000000","signature_blob_hex":"0602"},
+      {"token":"0x04006117","owner":"PlayerController","name":"padOn","field_row_hex":"0600f71f0200440c0000","signature_blob_hex":"0611904c"},
+      {"token":"0x04006077","owner":"Player","name":"isIntruder","field_row_hex":"0600b48c030008000000","signature_blob_hex":"0602"},
+      {"token":"0x040061FA","owner":"PlayerMan","name":"inst","field_row_hex":"160006220100cf380000","signature_blob_hex":"0612a818"},
+      {"token":"0x04005FB1","owner":"Player","name":"TargetPlIdx","field_row_hex":"060071e0030001000000","signature_blob_hex":"0608"}
+    ],
+    "field_accesses": [
+      {"il":"0x0001","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0006","opcode":"ldfld","token":"0x04005FEE"},
+      {"il":"0x0012","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0017","opcode":"ldfld","token":"0x04005FEE"},
+      {"il":"0x0025","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x002A","opcode":"ldfld","token":"0x04005FB7"},
+      {"il":"0x003A","opcode":"stfld","token":"0x0400615D"},
+      {"il":"0x0040","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0045","opcode":"ldfld","token":"0x04006049"},
+      {"il":"0x0052","opcode":"stfld","token":"0x04006117"},
+      {"il":"0x005D","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0062","opcode":"ldfld","token":"0x04006077"},
+      {"il":"0x006C","opcode":"ldsfld","token":"0x040061FA"},
+      {"il":"0x0072","opcode":"ldfld","token":"0x0400614A"},
+      {"il":"0x0077","opcode":"ldfld","token":"0x04005FB1"},
+      {"il":"0x0083","opcode":"ldfld","token":"0x04005FEE"},
+      {"il":"0x0090","opcode":"ldfld","token":"0x04005FEE"},
+      {"il":"0x009F","opcode":"stfld","token":"0x04006117"},
+      {"il":"0x00A7","opcode":"ldfld","token":"0x04005FEE"},
+      {"il":"0x00B3","opcode":"ldfld","token":"0x04005FEE"},
+      {"il":"0x00C0","opcode":"stfld","token":"0x04006117"},
+      {"il":"0x00CB","opcode":"stfld","token":"0x04006117"}
+    ],
+    "normalized_field_access_map_sha256": "3f9d53efc63865e184a11cc2100456ee27ffe8263eef121c0429c6343c3845f7",
+    "canonical_internal_calls": [
+      {"call_il":"0x007C","opcode":"callvirt","token":"0x06005065","method":"PlayerMan.GetPlObj","canonical_fact":"FACT-0109","callee_code_size":25,"callee_code_sha256":"32cbd360156f7bbbf97ed096e6afa8d4e7e4e500ff3d37179f32aecfafcf05d8"}
+    ],
+    "external_memberrefs": [],
+    "branch_sites": [
+      {"il":"0x000C","opcode":"beq","comparison":"PlObj.Zone == raw 3","target_il":"0x0024"},
+      {"il":"0x001D","opcode":"beq","comparison":"PlObj.Zone == raw 8","target_il":"0x0024","fallthrough":"return false"},
+      {"il":"0x0031","opcode":"bne.un","comparison":"PlObj.State != raw 22","target_il":"0x0038","target_effect":"return false"},
+      {"il":"0x004A","opcode":"brfalse","comparison":"PlObj.isPinfallDef false","target_il":"0x005C"},
+      {"il":"0x0057","opcode":"br","target_il":"0x00D2","target_effect":"return false"},
+      {"il":"0x0067","opcode":"brfalse","comparison":"PlObj.isIntruder false","target_il":"0x00C9"},
+      {"il":"0x008A","opcode":"beq","comparison":"target Player.Zone == raw 9","target_il":"0x009C"},
+      {"il":"0x0097","opcode":"bne.un","comparison":"target Player.Zone != raw 10","target_il":"0x00A6"},
+      {"il":"0x00AD","opcode":"beq","comparison":"target Player.Zone == raw 3","target_il":"0x00C7"},
+      {"il":"0x00B9","opcode":"beq","comparison":"target Player.Zone == raw 8","target_il":"0x00C7"}
+    ],
+    "raw_writes": [
+      {"field":"PlayerController_AI.isThrowOppopnentToRope","raw_value":false,"value_il":"0x0039","write_il":"0x003A"},
+      {"field":"PlayerController.padOn","raw_value":32,"value_il":"0x0050","write_il":"0x0052"},
+      {"field":"PlayerController.padOn","raw_value":9,"value_il":"0x009D","write_il":"0x009F"},
+      {"field":"PlayerController.padOn","raw_value":6,"value_il":"0x00BF","write_il":"0x00C0"},
+      {"field":"PlayerController.padOn","raw_value":6,"value_il":"0x00CA","write_il":"0x00CB"}
+    ],
+    "return_sites": [
+      {"ret_il":"0x0023","raw_boolean":false},
+      {"ret_il":"0x0037","raw_boolean":false},
+      {"ret_il":"0x00A5","raw_boolean":true},
+      {"ret_il":"0x00C6","raw_boolean":true},
+      {"ret_il":"0x00C8","raw_boolean":false},
+      {"ret_il":"0x00D1","raw_boolean":true},
+      {"ret_il":"0x00D3","raw_boolean":false}
+    ],
+    "direct_in_assembly_references": [
+      {"caller_type":"PlayerController_AI","caller_namespace":"","caller_method":"Update","caller_token":"0x0600502B","caller_rva":"0x002FFC68","caller_code_size":984,"caller_code_sha256":"6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9","call_il":"0x0322","opcode":"call"}
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1,
+    "normalized_reference_map_sha256": "473134c674093f35692fff64e08399f97c47a6b6abb21b9dafb333df369c718d",
+    "normalized_caller_token_set_sha256": "8ac1dfd1d928208b427b89fc6c0c23e9bda7b0f8a86a44a10454754a87056c63"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_process_in_runway_row_count": 0,
+    "playerman_get_pl_obj_row_count": 0,
+    "playercontroller_ai_update_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Raw Zone/State/pad/Boolean values are preserved without added gameplay labels.",
+    "PlayerMan.inst and PlayerMan.PlObj population remain separate provenance.",
+    "PlayerController_AI.Update remains an open parent body.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_process_in_runway.py"
+}
