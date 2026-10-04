@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0232",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.Process_InRunway() (0x06005014) has raw MethodDef row f8df2f0000008600963e0a00db490000de3a, RVA 0x002FDFF8, signature blob 200002 (parameterless Boolean return), raw ImplFlags 0x0000 and MethodAttributes 0x0086, local signature token 0x1100028E with blob 070112a788, and an exact 212-byte fat-header body SHA-256 8b5a78b8955fd7840b28de78ca0cb21326e13d2e484cd2064e163ca13953b6b4. The single local is Player. The body returns false unless this.PlObj.Zone is raw 3 or raw 8, then returns false unless this.PlObj.State is raw 22. It writes raw false to this.isThrowOppopnentToRope. If this.PlObj.isPinfallDef is true it writes raw 32 to inherited PlayerController.padOn and returns false. Otherwise, if this.PlObj.isIntruder is false it writes raw 6 to padOn and returns true. When isIntruder is true it obtains PlayerMan.inst.GetPlObj(this.PlObj.TargetPlIdx) through canonical FACT-0109 and stores that Player local. Target Player.Zone raw 9 or raw 10 writes raw 9 to padOn and returns true. Target Player.Zone raw 3 or raw 8 returns false. Any other target Zone writes raw 6 to padOn and returns true. The body contains no external MemberRef calls. Exact matching-DLL scanning finds one direct MethodDef-token reference: PlayerController_AI.Update() call at IL+0x0322.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Process_InRunway token 0x06005014 -> RVA 0x002FDFF8; exact 212-byte body sha256=8b5a78b8955fd7840b28de78ca0cb21326e13d2e484cd2064e163ca13953b6b4; exact MethodDef/local signature, field records, canonical FACT-0109 child edge, raw Zone/State/Boolean/pad branches and complete one-reference / one-caller surface in canonical/witnesses/CAP-R6-001/playercontroller_ai_process_in_runway.summary.json; prover tools/prove_playercontroller_ai_process_in_runway.py.",
+      "observation": "Exact AI Process_InRunway Boolean leaf with raw self Zone/State gates, forced raw flag clear, pinfall/intruder paths, canonical target-player lookup, raw target-Zone pad selections, and sole AI.Update caller."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Process_InRunway()",
+      "to": "PlayerMan.GetPlObj(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06005065 at IL+0x007C after loading PlayerMan.inst and this.PlObj.TargetPlIdx; canonical FACT-0109."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Update()",
+      "to": "PlayerController_AI.Process_InRunway()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_AI.Update token 0x0600502B direct call token 0x06005014 at IL+0x0322; Update exact body size 984 and SHA-256 6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method and field names are preserved metadata identifiers; this fact does not assign authored gameplay meaning beyond the exact gates, stores and Boolean returns.",
+    "Raw Zone values 3/8/9/10, State value 22, padOn values 32/9/6, and isThrowOppopnentToRope false receive no higher-level labels.",
+    "PlayerMan.inst lifecycle and PlayerMan.PlObj population remain separate provenance even though FACT-0109 closes GetPlObj.",
+    "PlayerController_AI.Update remains an open 984-byte parent body.",
+    "Fresh CAP-R6-001 contains zero Process_InRunway, PlayerMan.GetPlObj and PlayerController_AI.Update rows; no runtime bridge is claimed."
+  ]
+}
