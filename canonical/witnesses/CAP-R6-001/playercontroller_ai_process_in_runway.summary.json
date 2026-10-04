@@ -30,7 +30,7 @@
       "body_hex": "027b4a6100047bee5f0004193b13000000027b4a6100047bee5f00041e3b02000000162a027b4a6100047bb75f00041f164002000000162a02167d5d610004027b4a6100047b49600004390d000000021f207d176100043876000000027b4a6100047b77600004395d0000007efa610004027b4a6100047bb15f00046f655000060a067bee5f00041f093b0d000000067bee5f00041f0a400a000000021f097d17610004172a067bee5f0004193b15000000067bee5f00041e3b09000000021c7d17610004172a162a021c7d17610004172a162a",
       "exact_flow": [
         "require this.PlObj.Zone raw 3 or raw 8; otherwise return false",
-        "require this.PlObj.State raw 22; otherwise return false",
+        "if this.PlObj.State is raw 22 return false; every other raw State continues",
         "write raw false to this.isThrowOppopnentToRope",
         "if this.PlObj.isPinfallDef is true write raw 32 to inherited padOn and return false",
         "if this.PlObj.isIntruder is false write raw 6 to inherited padOn and return true",
@@ -83,7 +83,7 @@
     "branch_sites": [
       {"il":"0x000C","opcode":"beq","comparison":"PlObj.Zone == raw 3","target_il":"0x0024"},
       {"il":"0x001D","opcode":"beq","comparison":"PlObj.Zone == raw 8","target_il":"0x0024","fallthrough":"return false"},
-      {"il":"0x0031","opcode":"bne.un","comparison":"PlObj.State != raw 22","target_il":"0x0038","target_effect":"return false"},
+      {"il":"0x0031","opcode":"bne.un","comparison":"PlObj.State != raw 22","target_il":"0x0038","target_effect":"continue","fallthrough_effect":"return false"},
       {"il":"0x004A","opcode":"brfalse","comparison":"PlObj.isPinfallDef false","target_il":"0x005C"},
       {"il":"0x0057","opcode":"br","target_il":"0x00D2","target_effect":"return false"},
       {"il":"0x0067","opcode":"brfalse","comparison":"PlObj.isIntruder false","target_il":"0x00C9"},
