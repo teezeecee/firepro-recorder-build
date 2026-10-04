@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_RUN_ATTACK_AFTER_HAMMER_THROW_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "SetAIAct_RunAttackAfterHammerThrow",
+      "token": "0x06004FA8",
+      "rva": "0x002F60A4",
+      "methoddef_row_hex": "a4602f0000008100a2350a00e3cd0200c03a",
+      "signature_blob_hex": "20020111a7d008",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "kind",
+          "metadata_type": "RunAtkEnum",
+          "param_row_hex": "0000010063510100",
+          "flags_raw": "0x0000"
+        },
+        {
+          "sequence": 2,
+          "name": "tm",
+          "metadata_type": "Int32",
+          "param_row_hex": "00000200d7610700",
+          "flags_raw": "0x0000"
+        }
+      ],
+      "return_type_metadata": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x46",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "locals": [],
+      "code_size": 17,
+      "code_sha256": "2db5766f26c4ae6a892727404beaf78a217dfffc6413441ad9b174a58fcb2a7c",
+      "body_hex": "021f0e04289d4f000602037d4e6100042a",
+      "exact_flow": [
+        "load this, raw Int32 constant 14, and Int32 parameter tm; call canonical PlayerController_AI.SetAIAct",
+        "load this and RunAtkEnum parameter kind; store kind into PlayerController_AI.aiActPrm",
+        "return"
+      ]
+    },
+    "parameter_types": [
+      {
+        "sequence": 1,
+        "metadata_name": "RunAtkEnum",
+        "typedef_rid": 2548,
+        "typedef_row_hex": "0301000093790000000000004503a8612d50",
+        "namespace": ""
+      },
+      {
+        "sequence": 2,
+        "metadata_name": "Int32"
+      }
+    ],
+    "fields": [
+      {
+        "token": "0x0400614E",
+        "owner": "PlayerController_AI",
+        "name": "aiActPrm",
+        "field_row_hex": "0100dbf2030001000000",
+        "signature_blob_hex": "0608",
+        "metadata_type": "Int32"
+      }
+    ],
+    "field_accesses": [
+      {
+        "il": "0x000B",
+        "opcode": "stfld",
+        "token": "0x0400614E",
+        "source": "argument_1"
+      }
+    ],
+    "normalized_field_access_map_sha256": "d5718d050bd7e511e13bf4a3689b08e71f09a2eb9147f8bf1ef35f45a30e95ca",
+    "canonical_internal_calls": [
+      {
+        "il": "0x0004",
+        "opcode": "call",
+        "token": "0x06004F9D",
+        "owner": "PlayerController_AI",
+        "method": "SetAIAct",
+        "fact_id": "FACT-0043",
+        "code_size": 102,
+        "code_sha256": "58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065",
+        "raw_argument_1": 14,
+        "argument_2_source": "argument_2"
+      }
+    ],
+    "normalized_internal_call_map_sha256": "50353803322a8a677c90ee71b786cfc1ce6d91e5b879abd11fb8eedc3e1f0c3b",
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_AfterHammerThrow",
+        "caller_token": "0x06004FF2",
+        "caller_rva": "0x002FB3C0",
+        "caller_code_size": 248,
+        "caller_code_sha256": "f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3",
+        "call_il": "0x00D7",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1,
+    "normalized_reference_map_sha256": "1279b165d1ce55d686cbf9b888cdf38e23ad97ade09f75cf69345a0ec7a71242",
+    "normalized_caller_token_set_sha256": "ce6cb38f9a20f9bbe7382609d15ffc01ef848e1554a79b07cbbe62742f9a3d39"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_set_ai_act_run_attack_after_hammer_throw_row_count": 0,
+    "playercontroller_ai_set_ai_act_row_count": 0,
+    "playercontroller_ai_process_opponent_stands_after_hammer_throw_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "caller": {
+      "method": "PlayerController_AI.Process_OpponentStands_AfterHammerThrow",
+      "token": "0x06004FF2",
+      "rva": "0x002FB3C0",
+      "code_size": 248,
+      "code_sha256": "f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3",
+      "call_il": "0x00D7"
+    },
+    "canonical_child": {
+      "fact_id": "FACT-0043",
+      "method": "PlayerController_AI.SetAIAct",
+      "token": "0x06004F9D",
+      "call_il": "0x0004",
+      "opcode": "call"
+    }
+  },
+  "limits": [
+    "RunAtkEnum, kind, tm and aiActPrm are metadata identifiers; no enum-member or authored gameplay meaning is added.",
+    "Raw SetAIAct first argument 14 is preserved without an authored gameplay label.",
+    "FACT-0043 governs SetAIAct; this dataset proves only the exact wrapper call and argument flow.",
+    "The 248-byte Process_OpponentStands_AfterHammerThrow caller remains a separate body.",
+    "Fresh R6 is a negative capture boundary only and provides no runtime bridge."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_set_ai_act_run_attack_after_hammer_throw.py"
+}
