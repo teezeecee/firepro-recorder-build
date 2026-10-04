@@ -1,0 +1,36 @@
+{
+  "fact_id": "FACT-0237",
+  "claim": "In the matching retail DLL, static Misc.Shuffle(Int32[] a, Int32 num) (0x06004AA7) has raw MethodDef row 60852b00000096003a060a0029b302005b37, RVA 0x002B8560, signature blob 0002011d0808, raw ImplFlags 0x0000 and MethodAttributes 0x0096, fat header 13300600410000003a000011, one Int32 local, and an exact 65-byte body SHA-256 d8e87deae43facf68b16b094188ade6c7db1915caa3c59031cb85f891529b5c1. The body returns immediately when raw num is greater than 256; otherwise it initializes local0 to zero, loops while local0 < num, writes Misc.rnd_prm[local0] = MatchRandom.Range(0,65536), increments local0, and after the loop calls Misc.QuickSort_Int(Misc.rnd_prm,a,0,0,num-1) before returning. The only field touched is static Int32[] Misc.rnd_prm through two ldsfld sites. Its only MethodDef children are canonical FACT-0032 MatchRandom.Range(Int32,Int32) at IL+0x001F and canonical FACT-0236 Misc.QuickSort_Int at IL+0x003B; it has zero MemberRef method calls. Exact matching-DLL scanning finds one direct MethodDef-token reference, a call from PlayerController_AI.MakeRapidPushTbl at IL+0x00E9.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Misc.Shuffle token 0x06004AA7 -> RVA 0x002B8560; exact 65-byte body sha256=d8e87deae43facf68b16b094188ade6c7db1915caa3c59031cb85f891529b5c1; exact MethodDef/Param/local/field/control-flow metadata and complete one-reference / one-caller map in canonical/witnesses/CAP-R6-001/misc_shuffle.summary.json; prover tools/prove_misc_shuffle.py.",
+      "observation": "Exact matching-DLL helper linking canonical MatchRandom.Range and QuickSort_Int before its sole direct caller PlayerController_AI.MakeRapidPushTbl."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Misc.Shuffle(Int32[],Int32)",
+      "to": "MatchRandom.Range(Int32,Int32)",
+      "evidence": [{"source_id": "DLL-001", "locator": "direct call token 0x0600497B at IL+0x001F; child is canonical FACT-0032."}]
+    },
+    {
+      "from": "Misc.Shuffle(Int32[],Int32)",
+      "to": "Misc.QuickSort_Int(Int32[],Int32[],Int32,Int32,Int32)",
+      "evidence": [{"source_id": "DLL-001", "locator": "direct call token 0x06004AA1 at IL+0x003B; child is canonical FACT-0236."}]
+    },
+    {
+      "from": "PlayerController_AI.MakeRapidPushTbl",
+      "to": "Misc.Shuffle(Int32[],Int32)",
+      "evidence": [{"source_id": "DLL-001", "locator": "direct call token 0x06004AA7 at IL+0x00E9."}]
+    }
+  ],
+  "limits": [
+    "Method and parameter names are preserved metadata identifiers; no gameplay meaning is added for Misc.rnd_prm or for the raw 256 and 65536 constants beyond the exact body.",
+    "FACT-0032 governs the MatchRandom.Range wrapper and does not promote UnityEngine.Random distribution, seed, determinism or independence properties.",
+    "FACT-0236 governs QuickSort_Int and no additional semantic label is assigned to its raw selector argument 0 here.",
+    "PlayerController_AI.MakeRapidPushTbl remains a separate 308-byte caller body until independently closed.",
+    "Fresh CAP-R6-001 contains zero Shuffle, QuickSort_Int, MatchRandom.Range and MakeRapidPushTbl rows; no runtime bridge is claimed."
+  ]
+}
