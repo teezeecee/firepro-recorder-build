@@ -1,0 +1,51 @@
+{
+  "fact_id": "FACT-0244",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.SetAIAct_Counter(CounterAtkEnum,Int32) (0x06004FAB) has raw MethodDef row da602f0000008100fd350a00ebcd0200c63a, RVA 0x002F60DA, signature blob 20020111a7d808, raw ImplFlags 0x0000 and MethodAttributes 0x0081, tiny header byte 0x46, two parameters kind/tm with raw Param rows 0000010063510100 and 00000200d7610700, no locals, and an exact 17-byte body SHA-256 d693e192b2928d1a36497d9296bc697e14ada6ab9d936c6cbc1134813b9d07e5. The body calls canonical FACT-0043 PlayerController_AI.SetAIAct at IL+0x0004 with raw first argument 26 and forwards the Int32 tm argument, then writes the raw CounterAtkEnum kind argument to PlayerController_AI.aiActPrm at IL+0x000B and returns. Its only MethodDef child is FACT-0043 SetAIAct and it has zero MemberRef method calls. Exact matching-DLL scanning finds three direct MethodDef-token references across two caller methods: PlayerController_AI.ChangeCounter at IL+0x014D and PlayerController_AI.Process_OpponentStands_AfterHammerThrow at IL+0x00C2 and IL+0x00EC.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.SetAIAct_Counter token 0x06004FAB -> RVA 0x002F60DA; exact 17-byte body sha256=d693e192b2928d1a36497d9296bc697e14ada6ab9d936c6cbc1134813b9d07e5; exact MethodDef/Param/CounterAtkEnum/field/call metadata and complete three-reference / two-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_counter.summary.json; prover tools/prove_playercontroller_ai_set_ai_act_counter.py.",
+      "observation": "Exact matching-DLL 17-byte AI wrapper whose only in-assembly MethodDef child is canonical FACT-0043 SetAIAct."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.SetAIAct_Counter(CounterAtkEnum,Int32)",
+      "to": "PlayerController_AI.SetAIAct",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004F9D at IL+0x0004; raw first argument 26; second argument is tm; child is canonical FACT-0043."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.ChangeCounter()",
+      "to": "PlayerController_AI.SetAIAct_Counter(CounterAtkEnum,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004FAB at IL+0x014D."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_OpponentStands_AfterHammerThrow()",
+      "to": "PlayerController_AI.SetAIAct_Counter(CounterAtkEnum,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004FAB at IL+0x00C2 and IL+0x00EC."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "CounterAtkEnum, kind, tm and aiActPrm are preserved metadata identifiers; this fact assigns no enum-member or authored gameplay meaning to them.",
+    "The raw SetAIAct first argument 26 is preserved as an observed constant and receives no authored gameplay label.",
+    "FACT-0043 governs PlayerController_AI.SetAIAct; this fact adds only the exact wrapper call boundary and argument flow.",
+    "PlayerController_AI.ChangeCounter remains a separate 339-byte caller body and PlayerController_AI.Process_OpponentStands_AfterHammerThrow remains a separate 248-byte caller body.",
+    "Fresh CAP-R6-001 contains zero SetAIAct_Counter, SetAIAct, ChangeCounter and Process_OpponentStands_AfterHammerThrow rows; no runtime bridge is claimed."
+  ]
+}
