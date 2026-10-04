@@ -1,0 +1,51 @@
+{
+  "fact_id": "FACT-0231",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.Process_Uke() (0x06004FE6) has raw MethodDef row 2ca42f0000008100eb3a0a005c480000d43a, RVA 0x002FA42C, signature blob 200001 (parameterless Void return), raw ImplFlags 0x0000 and MethodAttributes 0x0081, local signature token 0x11001114 with blob 07041286300211a7c408, and an exact 199-byte fat-header body SHA-256 5a01db6954a400136e9050584744d4bedd5962586fa1d731211e9c0f313d9295. The four locals are AIParam, Boolean, DamageLevelEnum_LMH, and Int32. The body snapshots this.PlObj.WresParam.aiParam, starts a raw Boolean local false, and sets that local true for raw PlObj.State 17 or 18; for raw State 22 it sets the local true only when (inherited padPush & raw 752) == 0. If the local remains false the method returns. Otherwise it calls canonical FACT-0038 PlayerController_AI.GetDamageLevel_LMH(this.PlObj.HP), stores the result in the DamageLevelEnum_LMH local, and selects an Int32 from aiParam.breakFall_LDmg when the raw returned value is 0, aiParam.breakFall_MDmg when the raw returned value is 1, or aiParam.breakFall_HDmg otherwise. It passes that Int32 to canonical FACT-0025 MatchMisc.mRate100Check; a false result returns. On true, inherited padOn is replaced by padOn OR raw 256, then the method returns. Exact matching-DLL scanning finds one direct MethodDef-token reference: PlayerController_AI.Update() call at IL+0x03D2.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Process_Uke token 0x06004FE6 -> RVA 0x002FA42C; exact 199-byte body sha256=5a01db6954a400136e9050584744d4bedd5962586fa1d731211e9c0f313d9295; exact MethodDef/local signature, field records, canonical FACT-0038/FACT-0025 child edges, raw State/mask/value branches and complete one-reference / one-caller surface in canonical/witnesses/CAP-R6-001/playercontroller_ai_process_uke.summary.json; prover tools/prove_playercontroller_ai_process_uke.py.",
+      "observation": "Exact AI Process_Uke void leaf with raw State/mask gate, raw AIParam selector, canonical damage-level/rate helpers, raw padOn OR write, and sole AI.Update caller."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Process_Uke()",
+      "to": "PlayerController_AI.GetDamageLevel_LMH(Single)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004F9B at IL+0x0075 after loading this.PlObj.HP; canonical FACT-0038."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_Uke()",
+      "to": "MatchMisc.mRate100Check(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004955 at IL+0x00AA after selecting the raw Int32 local from breakFall_LDmg/MDmg/HDmg; canonical FACT-0025."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Update()",
+      "to": "PlayerController_AI.Process_Uke()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_AI.Update token 0x0600502B direct call token 0x06004FE6 at IL+0x03D2; Update exact body size 984 and SHA-256 6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method, field and type names are preserved metadata identifiers; this fact does not assign authored gameplay meaning beyond the exact gates, selections, call order and stores.",
+    "Raw State values 17, 18 and 22, padPush mask 752, GetDamageLevel_LMH raw return values 0/1/other, and padOn value 256 receive no higher-level labels.",
+    "The authored meaning of AIParam.breakFall_LDmg/MDmg/HDmg values remains separate provenance even though the exact field-selection code is pinned.",
+    "PlayerController_AI.Update remains an open 984-byte parent body.",
+    "Fresh CAP-R6-001 contains zero Process_Uke, GetDamageLevel_LMH, mRate100Check and PlayerController_AI.Update rows; no runtime bridge is claimed."
+  ]
+}
