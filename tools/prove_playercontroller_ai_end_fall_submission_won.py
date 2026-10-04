@@ -98,6 +98,43 @@ def compressed_uint(blob,pos):
         return ((x&0x3f)<<8)|blob[pos+1],pos+2
     return ((x&0x1f)<<24)|(blob[pos+1]<<16)|(blob[pos+2]<<8)|blob[pos+3],pos+4
 
+def refs(pe,ss,s,b,ix,z,o,sb,bb,owners,rows):
+    needle=struct.pack('<I',T)
+    pats=[
+        (bytes([0x28])+needle,'call'),
+        (bytes([0x6f])+needle,'callvirt'),
+        (bytes([0x73])+needle,'newobj'),
+        (bytes([0x27])+needle,'jmp'),
+        (bytes([0xfe,0x06])+needle,'ldftn'),
+        (bytes([0xfe,0x07])+needle,'ldvirtftn')
+    ]
+    out=[]
+    for rid in range(1,rows[6]+1):
+        tok=0x06000000|rid
+        raw,rva,impl,flags,name,sig,plist,owner,start,body=drop.method(pe,ss,s,b,ix,z,o,sb,bb,owners,tok)
+        if not body:
+            continue
+        for pat,opname in pats:
+            pos=0
+            while True:
+                x=body.find(pat,pos)
+                if x<0:
+                    break
+                out.append({
+                    'caller_type':owner[0] if owner else None,
+                    'caller_namespace':owner[1] if owner else None,
+                    'caller_method':name,
+                    'caller_token':f'0x{tok:08X}',
+                    'caller_rva':f'0x{rva:08X}',
+                    'caller_code_size':len(body),
+                    'caller_code_sha256':hashlib.sha256(body).hexdigest(),
+                    'call_il':f'0x{x:04X}',
+                    'opcode':opname
+                })
+                pos=x+1
+    out.sort(key=lambda x:(int(x['caller_token'],16),int(x['call_il'],16),x['opcode']))
+    return out
+
 def verify_dll(path):
     pe=Path(path).read_bytes()
     if len(pe)!=DLL_SIZE or hashlib.sha256(pe).hexdigest()!=DLL_SHA:
@@ -200,7 +237,7 @@ def verify_dll(path):
     if not (body[0x00B2]==0x16 and body[0x00B3]==0x2A):
         raise E('shared false return')
 
-    rr=drop.refs(pe,ss,s,b,ix,z,o,sb,bb,owners,rows)
+    rr=refs(pe,ss,s,b,ix,z,o,sb,bb,owners,rows)
     expected=[
       {
         'caller_type':'PlayerController_AI','caller_namespace':'','caller_method':'Process_AfterMatchEnd',
