@@ -35,6 +35,11 @@ assert [(x["il"],x["opcode"],x["target_il"]) for x in s["dll"]["branch_sites"]]=
     ("0x008A","beq","0x009C"),("0x0097","bne.un","0x00A6"),("0x00AD","beq","0x00C7"),
     ("0x00B9","beq","0x00C7")
 ]
+state_gate=s["dll"]["branch_sites"][2]
+assert state_gate["comparison"]=="PlObj.State != raw 22"
+assert state_gate["target_effect"]=="continue"
+assert state_gate["fallthrough_effect"]=="return false"
+assert m["exact_flow"][1]=="if this.PlObj.State is raw 22 return false; every other raw State continues"
 assert [x["raw_boolean"] for x in s["dll"]["return_sites"]]==[False,False,True,True,False,True,False]
 assert s["dll"]["direct_in_assembly_references"]==[{
     "caller_type":"PlayerController_AI","caller_namespace":"","caller_method":"Update",
