@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0234",
+  "claim": "In the matching retail DLL, instance COMLevelDataManager.GetCOMLevelData(Int32) (0x06001049) has raw MethodDef row 57130600000086003f780800699701001d0c, RVA 0x00061357, signature blob 200112863408 (one Int32 parameter named lv and COMLevelData reference return), raw ImplFlags 0x0000 and MethodAttributes 0x0086, tiny header byte 0x26, and an exact 9-byte body SHA-256 c78e8c870f4c865dfd55914f2c66fdca2c3d729088260483ece8ec917996123d. The body is exactly: load this.comLevelData, load parameter lv, ldelem.ref, return. Field COMLevelDataManager.comLevelData (0x04000D39) has signature blob 061d128634, an array of COMLevelData (TypeDef RID 397). The body contains zero MethodDef or MemberRef calls. Exact matching-DLL scanning finds four direct MethodDef-token references, all callvirt: PlayerController_AI.IsHappenPowerCompetition at IL+0x0016, PlayerController_AI.MakeRapidPushTbl at IL+0x0032, PlayerController_AI.Process_Grapple at IL+0x0064, and PlayerController_AI.Check_FoxSleep at IL+0x0076.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "COMLevelDataManager.GetCOMLevelData token 0x06001049 -> RVA 0x00061357; exact 9-byte body sha256=c78e8c870f4c865dfd55914f2c66fdca2c3d729088260483ece8ec917996123d; exact MethodDef/Param/field/return-TypeDef metadata and complete four-reference / four-caller map in canonical/witnesses/CAP-R6-001/comleveldatamanager_get_com_level_data.summary.json; prover tools/prove_comleveldatamanager_get_com_level_data.py.",
+      "observation": "Exact zero-child COMLevelDataManager getter leaf returning comLevelData[lv], with four direct AI callers."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.IsHappenPowerCompetition()",
+      "to": "COMLevelDataManager.GetCOMLevelData(Int32)",
+      "evidence": [{"source_id":"DLL-001","locator":"direct callvirt token 0x06001049 at IL+0x0016."}]
+    },
+    {
+      "from": "PlayerController_AI.MakeRapidPushTbl()",
+      "to": "COMLevelDataManager.GetCOMLevelData(Int32)",
+      "evidence": [{"source_id":"DLL-001","locator":"direct callvirt token 0x06001049 at IL+0x0032."}]
+    },
+    {
+      "from": "PlayerController_AI.Process_Grapple()",
+      "to": "COMLevelDataManager.GetCOMLevelData(Int32)",
+      "evidence": [{"source_id":"DLL-001","locator":"direct callvirt token 0x06001049 at IL+0x0064."}]
+    },
+    {
+      "from": "PlayerController_AI.Check_FoxSleep()",
+      "to": "COMLevelDataManager.GetCOMLevelData(Int32)",
+      "evidence": [{"source_id":"DLL-001","locator":"direct callvirt token 0x06001049 at IL+0x0076."}]
+    }
+  ],
+  "limits": [
+    "Method, parameter, field and type names are preserved metadata identifiers; this fact does not infer authored gameplay semantics for COM levels.",
+    "The contents, indexing guarantees and population lifecycle of COMLevelDataManager.comLevelData remain separate provenance.",
+    "This fact proves the direct getter body only; it does not promote semantics from its four callers.",
+    "Fresh CAP-R6-001 contains zero GetCOMLevelData and zero rows for all four direct callers; no runtime bridge is claimed."
+  ]
+}

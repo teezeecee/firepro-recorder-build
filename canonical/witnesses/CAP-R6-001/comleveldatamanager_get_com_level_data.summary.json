@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_COMLEVELDATAMANAGER_GET_COM_LEVEL_DATA_V1",
+  "source_ids": ["DLL-001"],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "COMLevelDataManager",
+      "method": "GetCOMLevelData",
+      "token": "0x06001049",
+      "rva": "0x00061357",
+      "methoddef_row_hex": "57130600000086003f780800699701001d0c",
+      "signature_blob_hex": "200112863408",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "lv",
+          "metadata_type": "Int32",
+          "param_row_hex": "00000100e9850100",
+          "flags_raw": "0x0000"
+        }
+      ],
+      "return_type": {
+        "kind": "class",
+        "typedef_rid": 397,
+        "type": "COMLevelData",
+        "namespace": "",
+        "typedef_row_hex": "0100100063140000000000000903310d4410"
+      },
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "header_format": "tiny",
+      "tiny_header_hex": "26",
+      "max_stack_implicit": 8,
+      "local_signature_token": "0x00000000",
+      "code_size": 9,
+      "code_sha256": "c78e8c870f4c865dfd55914f2c66fdca2c3d729088260483ece8ec917996123d",
+      "body_hex": "027b390d0004039a2a",
+      "exact_flow": [
+        "load this",
+        "load field COMLevelDataManager.comLevelData",
+        "load Int32 parameter lv",
+        "ldelem.ref",
+        "return selected reference"
+      ]
+    },
+    "fields": [
+      {
+        "token": "0x04000D39",
+        "owner": "COMLevelDataManager",
+        "name": "comLevelData",
+        "field_row_hex": "0100483e0100820a0000",
+        "signature_blob_hex": "061d128634",
+        "metadata_type": "COMLevelData[]"
+      }
+    ],
+    "field_accesses": [
+      {"il":"0x0001","opcode":"ldfld","token":"0x04000D39"}
+    ],
+    "normalized_field_access_map_sha256": "9224c351b8ac43b7cbe994bfa4df3363ca01e644911b62a0127ef74798e35d4c",
+    "canonical_internal_calls": [],
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type":"PlayerController_AI",
+        "caller_namespace":"",
+        "caller_method":"IsHappenPowerCompetition",
+        "caller_token":"0x06004FD3",
+        "caller_rva":"0x002F8D90",
+        "caller_code_size":40,
+        "caller_code_sha256":"6d6d6ede32b0294d70267f18c929adf5a196a0ca8f720d77547385aa1df8c414",
+        "call_il":"0x0016",
+        "opcode":"callvirt"
+      },
+      {
+        "caller_type":"PlayerController_AI",
+        "caller_namespace":"",
+        "caller_method":"MakeRapidPushTbl",
+        "caller_token":"0x06004FD4",
+        "caller_rva":"0x002F8DC4",
+        "caller_code_size":308,
+        "caller_code_sha256":"63b284583be3198f0647d16649fe43126b7f5c5d0b0c6a5c2ba73ad233530db7",
+        "call_il":"0x0032",
+        "opcode":"callvirt"
+      },
+      {
+        "caller_type":"PlayerController_AI",
+        "caller_namespace":"",
+        "caller_method":"Process_Grapple",
+        "caller_token":"0x06004FE4",
+        "caller_rva":"0x002F9E9C",
+        "caller_code_size":709,
+        "caller_code_sha256":"221fc977746121dd811fe1d13e59502c160992648d03561b81e6b7555e04ea42",
+        "call_il":"0x0064",
+        "opcode":"callvirt"
+      },
+      {
+        "caller_type":"PlayerController_AI",
+        "caller_namespace":"",
+        "caller_method":"Check_FoxSleep",
+        "caller_token":"0x06005028",
+        "caller_rva":"0x002FF9E0",
+        "caller_code_size":359,
+        "caller_code_sha256":"bb62bc0b7810c42b19734ccb5523d60cc4dd70c32c896c314b58d1aa07213bae",
+        "call_il":"0x0076",
+        "opcode":"callvirt"
+      }
+    ],
+    "direct_reference_count": 4,
+    "direct_caller_method_count": 4,
+    "normalized_reference_map_sha256": "13d6ab1931848d868c91a13dfdf800e3a6d27355281f8a74741e51aef1a70c79",
+    "normalized_caller_token_set_sha256": "ffa09db9952975b9f41544ea8e0e0ad4319ea6d6b01fa032029225255aa37a83"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "comleveldatamanager_get_com_level_data_row_count": 0,
+    "playercontroller_ai_is_happen_power_competition_row_count": 0,
+    "playercontroller_ai_make_rapid_push_tbl_row_count": 0,
+    "playercontroller_ai_process_grapple_row_count": 0,
+    "playercontroller_ai_check_fox_sleep_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Metadata identifiers are preserved without added gameplay labels.",
+    "Array population and index-validity guarantees remain separate provenance.",
+    "The four callers remain separate method bodies; this leaf alone does not promote their semantics.",
+    "Fresh R6 is a negative capture boundary only."
+  ],
+  "reproducibility_tool": "tools/prove_comleveldatamanager_get_com_level_data.py"
+}
