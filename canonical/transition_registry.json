@@ -4189,6 +4189,27 @@
         "PlayerController_AI.MakeRapidPushTbl remains a separate 308-byte caller body",
         "fresh R6 has zero Shuffle, QuickSort_Int, MatchRandom.Range and MakeRapidPushTbl rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_MAKE_RAPID_PUSH_TBL_V1",
+      "fact_id": "FACT-0238",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 308-byte matching-DLL PlayerController_AI.MakeRapidPushTbl body: clears rapidPushTbl[0..59], selects/clamps raw rapidPushRate from canonical COM-level and MatchRandom helpers, builds and adjusts itv_tbl from raw 60 division/remainder, canonical FACT-0237 Shuffle call, accumulated/capped Boolean-table writes, zero MemberRef calls, and complete four-call / four-caller surface.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_make_rapid_push_tbl.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 4,
+      "direct_caller_method_count": 4,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "field names and raw constants receive no added authored gameplay meaning",
+        "FACT-0032 does not add UnityEngine.Random implementation properties",
+        "rapidPushTbl and itv_tbl allocation/lifecycle outside this method remain separate provenance",
+        "the four direct caller methods remain separate bodies",
+        "fresh R6 has zero method/child/caller rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
