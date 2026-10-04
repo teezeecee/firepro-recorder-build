@@ -1312,3 +1312,8 @@ jobs:
         run: python tests/test_playercontroller_ai_process_submission_def_summary.py
       - name: AI Process SubmissionDef prover syntax
         run: python -m py_compile tools/prove_playercontroller_ai_process_submission_def.py
+
+      - name: AI SetAIAct RunAttackAfterHammerThrow summary
+        run: python tests/test_playercontroller_ai_set_ai_act_run_attack_after_hammer_throw_summary.py
+      - name: AI SetAIAct RunAttackAfterHammerThrow prover syntax
+        run: python -m py_compile tools/prove_playercontroller_ai_set_ai_act_run_attack_after_hammer_throw.py
