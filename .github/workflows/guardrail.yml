@@ -1262,3 +1262,8 @@ jobs:
         run: python tests/test_playercontroller_ai_process_in_runway_summary.py
       - name: AI Process InRunway prover syntax
         run: python -m py_compile tools/prove_playercontroller_ai_process_in_runway.py
+
+      - name: AI Process InStage summary
+        run: python tests/test_playercontroller_ai_process_in_stage_summary.py
+      - name: AI Process InStage prover syntax
+        run: python -m py_compile tools/prove_playercontroller_ai_process_in_stage.py
