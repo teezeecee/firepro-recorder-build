@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0241",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.Process_PinfallDef() (0x06005023) has raw MethodDef row 8cf72f0000008100ea3f0a00db490000de3a, RVA 0x002FF78C, signature blob 200002, raw ImplFlags 0x0000 and MethodAttributes 0x0081, fat header 133003006300000000000000, no parameters, no locals, and an exact 99-byte body SHA-256 8cd99966c2f677c3c5adb0b93e5ff520f7cccecc1d4c80f260694ad88c091a0a. The body first requires this.PlObj.isPinfallDef to be nonzero; otherwise it returns false. It then requires this.PlObj.isLose to be zero; otherwise it returns false. It tests initializedRapidPushTbl; when false it calls canonical FACT-0238 PlayerController_AI.MakeRapidPushTbl(), writes initializedRapidPushTbl=true, and continues. It probes rapidPushTbl[this.frmCnt % 60]. A nonzero Boolean element writes raw 32 to inherited PlayerController.padPush; a zero element skips that write. After either probe result, the body unconditionally writes raw 32 to inherited PlayerController.padOn and returns true. Its only MethodDef child is FACT-0238 MakeRapidPushTbl at IL+0x0030 and it has zero MemberRef method calls. Exact matching-DLL scanning finds one direct MethodDef-token reference, a call from PlayerController_AI.Update at IL+0x01C1.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Process_PinfallDef token 0x06005023 -> RVA 0x002FF78C; exact 99-byte body sha256=8cd99966c2f677c3c5adb0b93e5ff520f7cccecc1d4c80f260694ad88c091a0a; exact MethodDef/header/field/control-flow metadata and complete one-reference / one-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_process_pinfall_def.summary.json; prover tools/prove_playercontroller_ai_process_pinfall_def.py.",
+      "observation": "Exact matching-DLL Boolean AI helper whose only in-assembly MethodDef child is canonical FACT-0238 MakeRapidPushTbl."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Process_PinfallDef()",
+      "to": "PlayerController_AI.MakeRapidPushTbl()",
+      "evidence": [{"source_id": "DLL-001", "locator": "direct call token 0x06004FD4 at IL+0x0030; child is canonical FACT-0238."}]
+    },
+    {
+      "from": "PlayerController_AI.Update()",
+      "to": "PlayerController_AI.Process_PinfallDef()",
+      "evidence": [{"source_id": "DLL-001", "locator": "direct call token 0x06005023 at IL+0x01C1."}]
+    }
+  ],
+  "limits": [
+    "Method and field metadata names are preserved identifiers; this fact adds no authored gameplay label for the recorded Boolean fields, raw modulo constant 60, or raw controller value 32.",
+    "FACT-0238 governs MakeRapidPushTbl; this fact adds no new meaning to rapidPushTbl generation or timing.",
+    "The exact body distinguishes the conditional padPush write from the unconditional padOn write after the two leading gates; no broader input semantics are added.",
+    "PlayerController_AI.Update remains a separate 984-byte caller body.",
+    "Fresh CAP-R6-001 contains zero Process_PinfallDef, MakeRapidPushTbl and PlayerController_AI.Update rows; no runtime bridge is claimed."
+  ]
+}
