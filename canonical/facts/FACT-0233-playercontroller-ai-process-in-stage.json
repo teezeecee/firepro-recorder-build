@@ -1,0 +1,42 @@
+{
+  "fact_id": "FACT-0233",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.Process_InStage() (0x06005013) has raw MethodDef row e8de2f0000008100863e0a00db490000de3a, RVA 0x002FDEE8, signature blob 200002 (parameterless Boolean return), raw ImplFlags 0x0000 and MethodAttributes 0x0081, local signature token 0x1100028E with blob 070112a788, and an exact 260-byte fat-header body SHA-256 689a04f4f28bef50f618fd9599e843cc189efae42457ebde181d5429c34bbc5d. The single local is Player. The body returns false unless this.PlObj.Zone is raw 9. It then returns false when this.PlObj.State is raw 22; every other raw State continues. It writes raw false to this.isThrowOppopnentToRope. If this.PlObj.isPinfallDef is true it writes raw 32 to inherited PlayerController.padOn and returns false. Otherwise, when this.PlObj.isIntruder is true it obtains PlayerMan.inst.GetPlObj(this.PlObj.TargetPlIdx) through canonical FACT-0109 and stores that Player local; raw target Player.Zone 9 or 10 returns false. For every remaining intruder path, and for all non-intruder paths, the body loads this.PlObj.PlPos.y followed by this.PlObj.PlPos.x and executes raw ble.un: the branch target writes raw 4 to padOn, while the fallthrough writes raw 2 to padOn; both then return true. The body contains no external MemberRef method calls. Exact matching-DLL scanning finds one direct MethodDef-token reference: PlayerController_AI.Update() call at IL+0x0316.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Process_InStage token 0x06005013 -> RVA 0x002FDEE8; exact 260-byte body sha256=689a04f4f28bef50f618fd9599e843cc189efae42457ebde181d5429c34bbc5d; exact MethodDef/local signature, field/MemberRef-field records, canonical FACT-0109 child edge, raw Zone/State/Boolean/pad/ble.un branches and complete one-reference / one-caller surface in canonical/witnesses/CAP-R6-001/playercontroller_ai_process_in_stage.summary.json; prover tools/prove_playercontroller_ai_process_in_stage.py.",
+      "observation": "Exact AI Process_InStage Boolean leaf with raw self Zone/State gates, forced raw flag clear, pinfall/intruder handling, canonical target-player lookup, duplicated raw PlPos.y/PlPos.x ble.un pad selection, and sole AI.Update caller."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Process_InStage()",
+      "to": "PlayerMan.GetPlObj(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct callvirt token 0x06005065 at IL+0x006C after loading PlayerMan.inst and this.PlObj.TargetPlIdx; canonical FACT-0109."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Update()",
+      "to": "PlayerController_AI.Process_InStage()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "PlayerController_AI.Update token 0x0600502B direct call token 0x06005013 at IL+0x0316; Update exact body size 984 and SHA-256 6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method and field names are preserved metadata identifiers; this fact does not assign authored gameplay meaning beyond the exact gates, stores, branch operands and Boolean returns.",
+    "Raw Zone values 9/10, State value 22, padOn values 32/2/4, and isThrowOppopnentToRope false receive no higher-level labels.",
+    "The raw ble.un comparisons are preserved as PlPos.y then PlPos.x stack order without assigning directional gameplay semantics.",
+    "PlayerMan.inst lifecycle and PlayerMan.PlObj population remain separate provenance even though FACT-0109 closes GetPlObj; the body performs no explicit null/false check on the returned Player before reading Zone.",
+    "PlayerController_AI.Update remains an open 984-byte parent body.",
+    "Fresh CAP-R6-001 contains zero Process_InStage, PlayerMan.GetPlObj and PlayerController_AI.Update rows; no runtime bridge is claimed."
+  ]
+}
