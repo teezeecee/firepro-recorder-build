@@ -4168,6 +4168,27 @@
         "PlayerController_AI.MakeRapidPushTbl remains a separate 308-byte caller-chain seam",
         "fresh R6 has zero QuickSort_Int, Shuffle and MakeRapidPushTbl rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_MISC_SHUFFLE_V1",
+      "fact_id": "FACT-0237",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 65-byte matching-DLL static Misc.Shuffle(Int32[],Int32): raw num>256 early return, raw loop filling static Int32[] rnd_prm with canonical FACT-0032 MatchRandom.Range(0,65536), canonical FACT-0236 QuickSort_Int(rnd_prm,a,0,0,num-1) tail, zero MemberRef method calls, and exact one-call / one-caller surface from PlayerController_AI.MakeRapidPushTbl.",
+      "summary": "canonical/witnesses/CAP-R6-001/misc_shuffle.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Misc.rnd_prm and raw constants receive no added gameplay meaning",
+        "FACT-0032 does not promote UnityEngine.Random implementation properties",
+        "FACT-0236 governs QuickSort_Int and its raw selector remains unlabeled",
+        "PlayerController_AI.MakeRapidPushTbl remains a separate 308-byte caller body",
+        "fresh R6 has zero Shuffle, QuickSort_Int, MatchRandom.Range and MakeRapidPushTbl rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
