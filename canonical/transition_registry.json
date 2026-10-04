@@ -4271,6 +4271,27 @@
         "PlayerController_AI.Update remains a separate 984-byte caller body",
         "fresh R6 has zero Process_PinfallDef, MakeRapidPushTbl and Update rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_SUBMISSION_DEF_V1",
+      "fact_id": "FACT-0242",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 101-byte matching-DLL PlayerController_AI.Process_SubmissionDef Boolean helper: raw PlObj.isSubmissionDef nonzero gate, raw PlObj.isLose zero gate, canonical FACT-0238 MakeRapidPushTbl one-time initialization gate, unconditional raw padOn=256 write, raw rapidPushTbl[frmCnt % 60] probe, conditional raw padPush=8 write, direct true return, zero MemberRef calls, and exact one-call / one-caller surface from PlayerController_AI.Update.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_process_submission_def.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "recorded Boolean field names, raw modulo constant 60, padOn value 256 and padPush value 8 receive no added authored gameplay label",
+        "FACT-0238 governs MakeRapidPushTbl and its table generation",
+        "the exact body distinguishes unconditional padOn before the table probe from conditional padPush after the probe; no broader input semantics are added",
+        "PlayerController_AI.Update remains a separate 984-byte caller body",
+        "fresh R6 has zero Process_SubmissionDef, MakeRapidPushTbl and Update rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
