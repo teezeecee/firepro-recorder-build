@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_SUBMISSION_DEF_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "Process_SubmissionDef",
+      "token": "0x06005024",
+      "rva": "0x002FF7FC",
+      "methoddef_row_hex": "fcf72f0000008100fd3f0a00db490000de3a",
+      "signature_blob_hex": "200002",
+      "parameters": [],
+      "return_type": {
+        "metadata_type": "Boolean"
+      },
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "header_format": "fat",
+      "fat_header_hex": "133003006500000000000000",
+      "max_stack": 3,
+      "local_signature_token": "0x00000000",
+      "locals": [],
+      "code_size": 101,
+      "code_sha256": "a21e1f86232c9164c51d563bf7a8a425e873a25be4f142ccbdcb020c0bcc241e",
+      "body_hex": "027b4a6100047b4c6000043a02000000162a027b4a6100047b526000043902000000162a027b646100043a0d0000000228d44f000602177d646100040220000100007d17610004027b63610004027b656100041f3c5d913907000000021e7d18610004172a"
+    },
+    "fields": [
+      {
+        "token": "0x0400614A",
+        "owner": "PlayerController_AI",
+        "name": "PlObj",
+        "field_row_hex": "0100b7f203005e190000",
+        "signature_blob_hex": "0612a788"
+      },
+      {
+        "token": "0x0400604C",
+        "owner": "Player",
+        "name": "isSubmissionDef",
+        "field_row_hex": "06009ce7030008000000",
+        "signature_blob_hex": "0602",
+        "metadata_type": "Boolean"
+      },
+      {
+        "token": "0x04006052",
+        "owner": "Player",
+        "name": "isLose",
+        "field_row_hex": "06000ee8030008000000",
+        "signature_blob_hex": "0602",
+        "metadata_type": "Boolean"
+      },
+      {
+        "token": "0x04006164",
+        "owner": "PlayerController_AI",
+        "name": "initializedRapidPushTbl",
+        "field_row_hex": "010011f4030008000000",
+        "signature_blob_hex": "0602",
+        "metadata_type": "Boolean"
+      },
+      {
+        "token": "0x04006117",
+        "owner": "PlayerController",
+        "name": "padOn",
+        "field_row_hex": "0600f71f0200440c0000",
+        "signature_blob_hex": "0611904c"
+      },
+      {
+        "token": "0x04006163",
+        "owner": "PlayerController_AI",
+        "name": "rapidPushTbl",
+        "field_row_hex": "010004f4030084090000",
+        "signature_blob_hex": "061d02",
+        "metadata_type": "Boolean[]"
+      },
+      {
+        "token": "0x04006165",
+        "owner": "PlayerController_AI",
+        "name": "frmCnt",
+        "field_row_hex": "010029f4030001000000",
+        "signature_blob_hex": "0608",
+        "metadata_type": "Int32"
+      },
+      {
+        "token": "0x04006118",
+        "owner": "PlayerController",
+        "name": "padPush",
+        "field_row_hex": "0600f66a0100440c0000",
+        "signature_blob_hex": "0611904c"
+      }
+    ],
+    "field_accesses": [
+      {
+        "il": "0x0001",
+        "opcode": "ldfld",
+        "token": "0x0400614A"
+      },
+      {
+        "il": "0x0006",
+        "opcode": "ldfld",
+        "token": "0x0400604C"
+      },
+      {
+        "il": "0x0013",
+        "opcode": "ldfld",
+        "token": "0x0400614A"
+      },
+      {
+        "il": "0x0018",
+        "opcode": "ldfld",
+        "token": "0x04006052"
+      },
+      {
+        "il": "0x0025",
+        "opcode": "ldfld",
+        "token": "0x04006164"
+      },
+      {
+        "il": "0x0037",
+        "opcode": "stfld",
+        "token": "0x04006164"
+      },
+      {
+        "il": "0x0042",
+        "opcode": "stfld",
+        "token": "0x04006117"
+      },
+      {
+        "il": "0x0048",
+        "opcode": "ldfld",
+        "token": "0x04006163"
+      },
+      {
+        "il": "0x004E",
+        "opcode": "ldfld",
+        "token": "0x04006165"
+      },
+      {
+        "il": "0x005E",
+        "opcode": "stfld",
+        "token": "0x04006118"
+      }
+    ],
+    "normalized_field_access_map_sha256": "0a4b91725f7a35b7ac0369961b4eb7e15775731ca67dc7f42047b6dc317f8e29",
+    "raw_control_flow": {
+      "submission_gate": "IL+0x0006 loads PlObj.isSubmissionDef; IL+0x000B brtrue reaches IL+0x0012 only when nonzero; otherwise IL+0x0010 loads false and IL+0x0011 returns.",
+      "lose_gate": "IL+0x0018 loads PlObj.isLose; IL+0x001D brfalse reaches IL+0x0024 only when zero; otherwise IL+0x0022 loads false and IL+0x0023 returns.",
+      "table_init_gate": "IL+0x0025 loads initializedRapidPushTbl; IL+0x002A brtrue reaches IL+0x003C when already true. Otherwise IL+0x0030 calls canonical FACT-0238 MakeRapidPushTbl and IL+0x0035..0x003B writes initializedRapidPushTbl=true.",
+      "pad_on_write": "IL+0x003C..0x0047 unconditionally writes raw 256 to inherited PlayerController.padOn after the two leading gates and table initialization path.",
+      "table_probe": "IL+0x0048 loads rapidPushTbl; IL+0x004E loads frmCnt; IL+0x0053 loads raw 60; IL+0x0055 performs the raw remainder opcode; IL+0x0056 loads the Boolean-array element; IL+0x0057 brfalse reaches IL+0x0063 when the element is zero.",
+      "pad_push_and_return": "When the probe is nonzero, IL+0x005C..0x0062 writes raw 8 to inherited PlayerController.padPush. IL+0x0063 loads true and IL+0x0064 returns."
+    },
+    "canonical_internal_calls": [
+      {
+        "il": "0x0030",
+        "opcode": "call",
+        "token": "0x06004FD4",
+        "owner": "PlayerController_AI",
+        "method": "MakeRapidPushTbl",
+        "fact_id": "FACT-0238",
+        "code_size": 308,
+        "code_sha256": "63b284583be3198f0647d16649fe43126b7f5c5d0b0c6a5c2ba73ad233530db7"
+      }
+    ],
+    "normalized_internal_call_map_sha256": "13fbb5ce22b7d241c4f2425461755f7b0fc66b497be3e43ea0e3386a0b069418",
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Update",
+        "caller_token": "0x0600502B",
+        "caller_rva": "0x002FFC68",
+        "caller_code_size": 984,
+        "caller_code_sha256": "6cea6fc2585177a22c56446c0be26152eed5061fdb0239837f775cad0c2be6d9",
+        "call_il": "0x01CD",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1,
+    "normalized_reference_map_sha256": "bc9c04e0f63fbcff320c4006cb6d90084cda0c0df70545c944008e402efb631c",
+    "normalized_caller_token_set_sha256": "8ac1dfd1d928208b427b89fc6c0c23e9bda7b0f8a86a44a10454754a87056c63"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_process_submission_def_row_count": 0,
+    "playercontroller_ai_make_rapid_push_tbl_row_count": 0,
+    "playercontroller_ai_update_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Method and field metadata names are preserved identifiers; this fact adds no authored gameplay label for the recorded Boolean fields, raw modulo constant 60, raw padOn value 256, or raw padPush value 8.",
+    "FACT-0238 governs MakeRapidPushTbl; this fact adds no new meaning to rapidPushTbl generation or timing.",
+    "The exact body distinguishes the unconditional padOn write before the table probe from the conditional padPush write after that probe; no broader input semantics are added.",
+    "PlayerController_AI.Update remains a separate 984-byte caller body.",
+    "Fresh CAP-R6-001 contains zero Process_SubmissionDef, MakeRapidPushTbl and PlayerController_AI.Update rows; no runtime bridge is claimed."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_process_submission_def.py"
+}
