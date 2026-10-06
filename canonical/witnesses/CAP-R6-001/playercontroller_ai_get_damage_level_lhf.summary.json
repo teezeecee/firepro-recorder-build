@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_GET_DAMAGE_LEVEL_LHF_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "GetDamageLevel_LHF",
+      "token": "0x06004F9C",
+      "rva": "0x002F5F14",
+      "methoddef_row_hex": "145f2f0000009100b2340a0096cd0200a83a",
+      "signature_blob_hex": "000111a7c80c",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "hp",
+          "metadata_type": "Float32",
+          "param_row_hex": "000001003caa0100"
+        }
+      ],
+      "return_type": {
+        "kind": "ValueType",
+        "metadata_type": "DamageLevelEnum_LHF",
+        "typedef_rid": 2546,
+        "typedef_row_hex": "03010000727900000000000045039e612d50",
+        "namespace": ""
+      },
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0091",
+      "header_format": "fat",
+      "fat_header_hex": "13300300310000001f000011",
+      "max_stack": 3,
+      "init_locals": true,
+      "local_signature_token": "0x1100001F",
+      "code_size": 49,
+      "code_sha256": "b4eb2ae2869d79032fa0ad8a1ed654496300f2fed1cc8736cdb82f037c089329",
+      "body_hex": "0228754900060a067e380d00047b3a0d000416984402000000162a067e380d00047b3a0d000417984402000000172a182a",
+      "instruction_count": 21,
+      "field_access_count": 4,
+      "branch_instruction_count": 2,
+      "methoddef_call_site_count": 1,
+      "memberref_method_call_count": 0,
+      "exact_flow": [
+        "local0 = canonical FACT-0031 MatchMisc.GetParamRate(hp)",
+        "compare local0 with COMLevelDataManager.inst.damageLevelThreshold_LHF[0] using emitted blt.un at IL+0x0014; fallthrough returns raw 0",
+        "on the first branch, compare local0 with COMLevelDataManager.inst.damageLevelThreshold_LHF[1] using emitted blt.un at IL+0x0028; fallthrough returns raw 1",
+        "on the second branch, return raw 2"
+      ]
+    },
+    "local_signature": {
+      "token": "0x1100001F",
+      "standalone_sig_row_hex": "a8590100",
+      "blob_hex": "07010c",
+      "locals": [
+        {
+          "index": 0,
+          "metadata_type": "Float32"
+        }
+      ]
+    },
+    "fields": [
+      {
+        "token": "0x04000D38",
+        "owner": "COMLevelDataManager",
+        "name": "inst",
+        "field_row_hex": "1600062201007d0a0000",
+        "signature_blob_hex": "06128638"
+      },
+      {
+        "token": "0x04000D3A",
+        "owner": "COMLevelDataManager",
+        "name": "damageLevelThreshold_LHF",
+        "field_row_hex": "0600553e0100a7020000",
+        "signature_blob_hex": "061d0c",
+        "metadata_type": "Float32[]"
+      }
+    ],
+    "field_accesses": [
+      {
+        "il": "0x0008",
+        "opcode": "ldsfld",
+        "token": "0x04000D38"
+      },
+      {
+        "il": "0x000D",
+        "opcode": "ldfld",
+        "token": "0x04000D3A"
+      },
+      {
+        "il": "0x001C",
+        "opcode": "ldsfld",
+        "token": "0x04000D38"
+      },
+      {
+        "il": "0x0021",
+        "opcode": "ldfld",
+        "token": "0x04000D3A"
+      }
+    ],
+    "normalized_field_access_map_sha256": "ba5bd824c6362063a086eddb054ebfdc3bf47338c261b80157d07b3b02bdd3c4",
+    "canonical_internal_calls": [
+      {
+        "il": "0x0001",
+        "opcode": "call",
+        "token": "0x06004975",
+        "owner": "MatchMisc",
+        "method": "GetParamRate",
+        "fact_id": "FACT-0031",
+        "signature_blob_hex": "00010c0c",
+        "code_size": 16,
+        "code_sha256": "60de3a243171244b6e09508e9a73f00d82aa76207ad3e8dd046322bc7b849e6c"
+      }
+    ],
+    "normalized_internal_call_map_sha256": "b87deb45729697e188e61d504a1c624647acae90f54c60caa88f0f2593b37d70",
+    "external_memberref_method_calls": [],
+    "branch_map": [
+      {
+        "il": "0x0014",
+        "opcode": "blt.un",
+        "target": "0x001B"
+      },
+      {
+        "il": "0x0028",
+        "opcode": "blt.un",
+        "target": "0x002F"
+      }
+    ],
+    "normalized_branch_map_sha256": "9655d77aabe239d7d5c59d2d4c61dc3ce6e56b3e648112502717e1436045c229",
+    "raw_returns": [
+      0,
+      1,
+      2
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentDown_DownAttack",
+        "caller_token": "0x06004FEA",
+        "caller_rva": "0x002FA718",
+        "caller_code_size": 252,
+        "caller_code_sha256": "52ce42d4aae99b7986e46e5efdb1bc462f061e3b235c40346c237942b745a211",
+        "call_il": "0x0040",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentDown_Dive",
+        "caller_token": "0x06004FED",
+        "caller_rva": "0x002FA89C",
+        "caller_code_size": 366,
+        "caller_code_sha256": "113579d5d828a5604a57b58e74cd969ad4516645249c10fe412a7d5f03a32cac",
+        "call_il": "0x007D",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentDown_Dive_Stun",
+        "caller_token": "0x06004FEE",
+        "caller_rva": "0x002FAA18",
+        "caller_code_size": 505,
+        "caller_code_sha256": "8d5273fae9c0e6ba9fb560dd8e34d26f3c95488a620abc08c74271f6deb513ec",
+        "call_il": "0x008F",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Stun",
+        "caller_token": "0x06004FF5",
+        "caller_rva": "0x002FB600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+        "call_il": "0x015F",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "CheckOverTheTopRope",
+        "caller_token": "0x0600500F",
+        "caller_rva": "0x002FD9D0",
+        "caller_code_size": 185,
+        "caller_code_sha256": "012aa7bca99f0e1526dccdfcf9a5eda3c63bfb902526b92b66100bf24e6fd93b",
+        "call_il": "0x0053",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 5,
+    "direct_caller_method_count": 5,
+    "normalized_reference_map_sha256": "55742080af9dbdefe43d7a5664854d641b0c8d7df250f3e1f1307c32b8195403",
+    "normalized_caller_token_set_sha256": "b0c8a1ab8a339ba9d344c9781a3389709e20acd5fd61bd8d6628b97c3ff63867"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_get_damage_level_lhf_row_count": 0,
+    "matchmisc_get_param_rate_row_count": 0,
+    "playercontroller_ai_process_opponent_down_down_attack_row_count": 0,
+    "playercontroller_ai_process_opponent_down_dive_row_count": 0,
+    "playercontroller_ai_process_opponent_down_dive_stun_row_count": 0,
+    "playercontroller_ai_process_opponent_stands_stun_row_count": 0,
+    "playercontroller_ai_check_over_the_top_rope_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Method, enum and field names are preserved metadata identifiers; this record adds no authored gameplay meaning to the LHF label or threshold array.",
+    "The authored/runtime contents and initialization of COMLevelDataManager.damageLevelThreshold_LHF remain separate provenance.",
+    "The two emitted blt.un Float32 branches and raw return values 0, 1 and 2 are preserved exactly without adding semantic labels to those values.",
+    "FACT-0031 governs MatchMisc.GetParamRate; no additional interpretation of its Float32 result is added here.",
+    "The five direct caller methods remain separate method bodies; membership in the reference surface does not promote their broader behavior.",
+    "Fresh CAP-R6-001 contains zero rows for the target, canonical child and all five direct callers; no runtime bridge is claimed.",
+    "Runtime/viewer remains locked."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_get_damage_level_lhf.py"
+}

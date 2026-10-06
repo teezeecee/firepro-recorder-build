@@ -1,0 +1,52 @@
+{
+  "fact_id": "FACT-0248",
+  "claim": "In the matching retail DLL, static PlayerController_AI.GetDamageLevel_LHF(Float32 hp) (0x06004F9C) has raw MethodDef row 145f2f0000009100b2340a0096cd0200a83a, RVA 0x002F5F14, signature blob 000111a7c80c, raw ImplFlags 0x0000 and MethodAttributes 0x0091, fat header 13300300310000001f000011, one Float32 local, and an exact 49-byte body SHA-256 b4eb2ae2869d79032fa0ad8a1ed654496300f2fed1cc8736cdb82f037c089329. The body calls canonical FACT-0031 MatchMisc.GetParamRate(hp), then reads COMLevelDataManager.inst.damageLevelThreshold_LHF[0] and [1]. It preserves the emitted blt.un branches at IL+0x0014 -> 0x001B and IL+0x0028 -> 0x002F: the first fallthrough returns raw 0, the second fallthrough returns raw 1, and the second branch target returns raw 2. There are no MemberRef method calls. Exact matching-DLL scanning finds five direct MethodDef-token references across five callers: Process_OpponentDown_DownAttack at IL+0x0040, Process_OpponentDown_Dive at IL+0x007D, Process_OpponentDown_Dive_Stun at IL+0x008F, Process_OpponentStands_Stun at IL+0x015F, and CheckOverTheTopRope at IL+0x0053.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.GetDamageLevel_LHF token 0x06004F9C -> RVA 0x002F5F14; exact 49-byte body sha256=b4eb2ae2869d79032fa0ad8a1ed654496300f2fed1cc8736cdb82f037c089329; exact MethodDef/signature/parameter/local/field/call/branch/reference metadata in canonical/witnesses/CAP-R6-001/playercontroller_ai_get_damage_level_lhf.summary.json; prover tools/prove_playercontroller_ai_get_damage_level_lhf.py.",
+      "observation": "Exact matching-DLL dependency-clean Float32 threshold helper with one canonical in-assembly MethodDef child and a complete five-reference / five-caller surface."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.GetDamageLevel_LHF(Float32 hp)",
+      "to": "MatchMisc.GetParamRate(Float32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004975 at IL+0x0001; child is canonical FACT-0031."
+        }
+      ]
+    },
+    {
+      "from": "MatchMisc.GetParamRate result",
+      "to": "raw DamageLevelEnum_LHF return values 0/1/2",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "threshold field token 0x04000D3A at IL+0x000D and IL+0x0021; blt.un branches IL+0x0014 -> 0x001B and IL+0x0028 -> 0x002F; return sites IL+0x0019/0x001A, 0x002D/0x002E and 0x002F/0x0030."
+        }
+      ]
+    },
+    {
+      "from": "five matching-DLL direct callers",
+      "to": "PlayerController_AI.GetDamageLevel_LHF(Float32 hp)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "complete direct MethodDef-token surface: 0x06004FEA IL+0x0040; 0x06004FED IL+0x007D; 0x06004FEE IL+0x008F; 0x06004FF5 IL+0x015F; 0x0600500F IL+0x0053."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method, enum and field names are preserved metadata identifiers; this record adds no authored gameplay meaning to the LHF label or threshold array.",
+    "The authored/runtime contents and initialization of COMLevelDataManager.damageLevelThreshold_LHF remain separate provenance.",
+    "The two emitted blt.un Float32 branches and raw return values 0, 1 and 2 are preserved exactly without adding semantic labels to those values.",
+    "FACT-0031 governs MatchMisc.GetParamRate; no additional interpretation of its Float32 result is added here.",
+    "The five direct caller methods remain separate method bodies; membership in the reference surface does not promote their broader behavior.",
+    "Fresh CAP-R6-001 contains zero rows for the target, canonical child and all five direct callers; no runtime bridge is claimed."
+  ]
+}

@@ -4394,6 +4394,26 @@
         "PlayerController_AI.Process_Grapple remains a separate caller body",
         "fresh R6 has zero target, child and caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_GET_DAMAGE_LEVEL_LHF_V1",
+      "fact_id": "FACT-0248",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 49-byte matching-DLL static PlayerController_AI.GetDamageLevel_LHF(Float32) helper: canonical FACT-0031 MatchMisc.GetParamRate child, exact COMLevelDataManager.damageLevelThreshold_LHF[0]/[1] field reads and blt.un branch graph, raw 0/1/2 returns, zero MemberRef method calls, and complete five-reference / five-caller surface.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_get_damage_level_lhf.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 5,
+      "direct_caller_method_count": 5,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "LHF metadata label, threshold contents and threshold initialization remain separate provenance",
+        "raw return values 0, 1 and 2 receive no authored gameplay labels",
+        "the five direct caller methods remain separate bodies",
+        "fresh R6 has zero target, child and caller rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
