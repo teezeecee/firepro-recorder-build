@@ -4354,6 +4354,26 @@
         "caller semantics across the 24-reference / 15-caller surface remain separate",
         "fresh R6 has zero target, child and hammer-throw-parent rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_PROCESS_OPPONENT_STANDS_AFTER_HAMMER_THROW_V1",
+      "fact_id": "FACT-0246",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact dependency-clean 248-byte matching-DLL PlayerController_AI.Process_OpponentStands_AfterHammerThrow body: seven-local signature, 18 exact field accesses, six canonical MethodDef call sites, raw Zone/damage/table/ringKind branch structure, zero MemberRef calls, and complete four-caller reference surface.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_process_opponent_stands_after_hammer_throw.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 4,
+      "direct_caller_method_count": 4,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "enum, field and table names remain metadata identifiers rather than authored gameplay meanings",
+        "raw values 0, 2, 3, 0..6 and 384 receive no semantic labels",
+        "the four caller bodies remain separate seams",
+        "fresh R6 has zero parent and child rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
