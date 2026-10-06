@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0246",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.Process_OpponentStands_AfterHammerThrow() (0x06004FF2) has raw MethodDef row c0b32f0000008100f83b0a00db490000d93a, RVA 0x002FB3C0, signature blob 200002, raw ImplFlags 0x0000 and MethodAttributes 0x0081, no parameters, a fat header 13300300f80000001d110011 with max stack 3 and local-signature token 0x1100111D, seven locals, and an exact 248-byte body SHA-256 f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3. Exact IL has 72 instructions, 9 branch/switch instructions, 18 field accesses, six MethodDef call sites and zero MemberRef method calls. Its MethodDef children are all canonical: FACT-0109 PlayerMan.GetPlObj at IL+0x0010; FACT-0038 PlayerController_AI.GetDamageLevel_LMH at IL+0x0051; FACT-0245 MatchMisc.LotOption at IL+0x0075; FACT-0244 PlayerController_AI.SetAIAct_Counter at IL+0x00C2 and IL+0x00EC; and FACT-0243 PlayerController_AI.SetAIAct_RunAttackAfterHammerThrow at IL+0x00D7. Raw control flow gates on Player.Zone being zero, stores false to PlayerController_AI.isThrowOppopnentToRope, selects between AIParam.throwToRope_HDmg and AIParam.throwToRope_LDmg using raw DamageLevelEnum_LMH value 2, calls LotOption on the selected Int32 array, stores raw Int32 384, then dispatches raw LotOption results 0..2 to a VenueSetting.ringKind raw-3 split between SetAIAct_Counter and SetAIAct_RunAttackAfterHammerThrow, raw results 3..6 to SetAIAct_Counter, and default directly to the final true return. Exact matching-DLL scanning finds four direct references: AIActFunc_CounterAttack IL+0x01C6, Process_Grapple_Front IL+0x0190, Process_Grapple_BackAtk IL+0x0147, and PlayerController_AI.Update IL+0x0276.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Process_OpponentStands_AfterHammerThrow token 0x06004FF2 -> RVA 0x002FB3C0; exact 248-byte body sha256=f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3; exact MethodDef/header/local-signature/local-type/field-access/call/branch metadata and complete four-reference map in canonical/witnesses/CAP-R6-001/playercontroller_ai_process_opponent_stands_after_hammer_throw.summary.json; prover tools/prove_playercontroller_ai_process_opponent_stands_after_hammer_throw.py.",
+      "observation": "Exact matching-DLL dependency-clean 248-byte AI parent body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Process_OpponentStands_AfterHammerThrow()",
+      "to": "canonical MethodDef children",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "six direct call sites: GetPlObj 0x0010; GetDamageLevel_LMH 0x0051; LotOption 0x0075; SetAIAct_Counter 0x00C2 and 0x00EC; SetAIAct_RunAttackAfterHammerThrow 0x00D7."
+        }
+      ]
+    },
+    {
+      "from": "direct callers",
+      "to": "PlayerController_AI.Process_OpponentStands_AfterHammerThrow()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "AIActFunc_CounterAttack 0x01C6; Process_Grapple_Front 0x0190; Process_Grapple_BackAtk 0x0147; PlayerController_AI.Update 0x0276."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "DamageLevelEnum_LMH, AIOpt_HammerThrough, Zone, ringKind, field names and table names are preserved metadata identifiers; this fact assigns no authored gameplay meaning to their values.",
+    "Raw values 0, 2, 3, 0..6 and 384 are preserved exactly without semantic labels.",
+    "All six MethodDef call sites resolve to already-canonical children, but this fact does not promote wider caller semantics.",
+    "Fresh CAP-R6-001 contains zero parent and child method rows; no runtime bridge is claimed.",
+    "Runtime/viewer remains locked."
+  ]
+}
