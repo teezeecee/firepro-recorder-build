@@ -1,0 +1,42 @@
+{
+  "fact_id": "FACT-0249",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.SetAIAct_GoFrontGrapple(SkillSlotEnum skill,Int32 tm) (0x06004F9F) has raw MethodDef row de5f2f0000008100e1340a00bca80200ae3a, RVA 0x002F5FDE, signature blob 20020111870c08, raw ImplFlags 0x0000 and MethodAttributes 0x0081, tiny header byte 0x42, two parameters skill/tm with raw Param rows 0000010029a40200 and 00000200d7610700, no locals, and an exact 16-byte body SHA-256 a56c6e589ca381688f49aa4eb215ea17e3016373b6e0c445e186af503396aecc. The body calls canonical FACT-0043 PlayerController_AI.SetAIAct at IL+0x0003 with raw first argument 2 and forwards the Int32 tm argument, then writes the raw SkillSlotEnum skill argument to PlayerController_AI.nextSkill at IL+0x000A and returns. Its only MethodDef child is FACT-0043 SetAIAct and it has zero MemberRef method calls. Exact matching-DLL scanning finds one direct MethodDef-token reference, from PlayerController_AI.Process_OpponentStands_Stun at IL+0x01C7.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.SetAIAct_GoFrontGrapple token 0x06004F9F -> RVA 0x002F5FDE; exact 16-byte body sha256=a56c6e589ca381688f49aa4eb215ea17e3016373b6e0c445e186af503396aecc; exact MethodDef/Param/SkillSlotEnum/field/call metadata and complete one-reference / one-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_go_front_grapple.summary.json; prover tools/prove_playercontroller_ai_set_ai_act_go_front_grapple.py.",
+      "observation": "Exact matching-DLL 16-byte AI wrapper whose only in-assembly MethodDef child is canonical FACT-0043 SetAIAct."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.SetAIAct_GoFrontGrapple(SkillSlotEnum,Int32)",
+      "to": "PlayerController_AI.SetAIAct",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004F9D at IL+0x0003; raw first argument 2; second argument is tm; child is canonical FACT-0043."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_OpponentStands_Stun()",
+      "to": "PlayerController_AI.SetAIAct_GoFrontGrapple(SkillSlotEnum,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004F9F at IL+0x01C7."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "SkillSlotEnum, skill, tm and nextSkill are preserved metadata identifiers; this fact assigns no enum-member or authored gameplay meaning to them.",
+    "The raw SetAIAct first argument 2 is preserved as an observed constant and receives no authored gameplay label.",
+    "FACT-0043 governs PlayerController_AI.SetAIAct; this fact adds only the exact wrapper call boundary and argument flow.",
+    "PlayerController_AI.Process_OpponentStands_Stun remains a separate 529-byte caller body.",
+    "The smaller 15-byte Ring.TestCollision_OctagonEdge_InRing wrapper remains separate because its only MethodDef child Ring.TestCollision_OctagonEdge is still outside canonical closure.",
+    "Fresh CAP-R6-001 contains zero SetAIAct_GoFrontGrapple, SetAIAct and Process_OpponentStands_Stun rows; no runtime bridge is claimed."
+  ]
+}

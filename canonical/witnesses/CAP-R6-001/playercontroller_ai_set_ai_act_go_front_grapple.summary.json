@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_GO_FRONT_GRAPPLE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "SetAIAct_GoFrontGrapple",
+      "token": "0x06004F9F",
+      "rva": "0x002F5FDE",
+      "methoddef_row_hex": "de5f2f0000008100e1340a00bca80200ae3a",
+      "signature_blob_hex": "20020111870c08",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "skill",
+          "metadata_type": "SkillSlotEnum",
+          "param_row_hex": "0000010029a40200",
+          "flags_raw": "0x0000"
+        },
+        {
+          "sequence": 2,
+          "name": "tm",
+          "metadata_type": "Int32",
+          "param_row_hex": "00000200d7610700",
+          "flags_raw": "0x0000"
+        }
+      ],
+      "return_type_metadata": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x42",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "locals": [],
+      "code_size": 16,
+      "code_sha256": "a56c6e589ca381688f49aa4eb215ea17e3016373b6e0c445e186af503396aecc",
+      "body_hex": "021804289d4f000602037d606100042a",
+      "exact_flow": [
+        "load this, raw Int32 constant 2, and Int32 parameter tm; call canonical PlayerController_AI.SetAIAct",
+        "load this and SkillSlotEnum parameter skill; store skill into PlayerController_AI.nextSkill",
+        "return"
+      ]
+    },
+    "parameter_types": [
+      {
+        "sequence": 1,
+        "metadata_name": "SkillSlotEnum",
+        "typedef_rid": 451,
+        "typedef_row_hex": "01010000b7170000000000004503e80e6f11",
+        "namespace": ""
+      },
+      {
+        "sequence": 2,
+        "metadata_name": "Int32"
+      }
+    ],
+    "fields": [
+      {
+        "token": "0x04006160",
+        "owner": "PlayerController_AI",
+        "name": "nextSkill",
+        "field_row_hex": "0100daf30300720a0000",
+        "signature_blob_hex": "0611870c",
+        "metadata_type": "SkillSlotEnum"
+      }
+    ],
+    "field_accesses": [
+      {
+        "il": "0x000A",
+        "opcode": "stfld",
+        "token": "0x04006160",
+        "source": "argument_1"
+      }
+    ],
+    "normalized_field_access_map_sha256": "24d4bdb6d1f5f6686df83a3a922b09a121debc0bd5e327702efd7898e66e4a2c",
+    "canonical_internal_calls": [
+      {
+        "il": "0x0003",
+        "opcode": "call",
+        "token": "0x06004F9D",
+        "owner": "PlayerController_AI",
+        "method": "SetAIAct",
+        "fact_id": "FACT-0043",
+        "code_size": 102,
+        "code_sha256": "58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065",
+        "raw_argument_1": 2,
+        "argument_2_source": "argument_2"
+      }
+    ],
+    "normalized_internal_call_map_sha256": "4dfec0c9d6a73c697ad119023c11863164928934ceea4d69fb242dd0f63a6bb8",
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Stun",
+        "caller_token": "0x06004FF5",
+        "caller_rva": "0x002FB600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+        "call_il": "0x01C7",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1,
+    "normalized_reference_map_sha256": "4da84c8c17a929a917c7dbc7acfbad84133979cc51a1ed70e7501b4d8b15782b",
+    "normalized_caller_token_set_sha256": "e48a1362b562dd41abab3f01e7ea30008538d8f7ac165edbac1edc490495f47d"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_set_ai_act_go_front_grapple_row_count": 0,
+    "playercontroller_ai_set_ai_act_row_count": 0,
+    "playercontroller_ai_process_opponent_stands_stun_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "source_parent": "PlayerController_AI.Process_OpponentStands_Stun",
+    "smaller_open_wrapper": {
+      "method": "Ring.TestCollision_OctagonEdge_InRing",
+      "token": "0x060050EE",
+      "code_size": 15,
+      "dependency": "Ring.TestCollision_OctagonEdge",
+      "dependency_token": "0x060050ED",
+      "dependency_code_size": 569
+    },
+    "selected_leaf": {
+      "method": "PlayerController_AI.SetAIAct_GoFrontGrapple",
+      "token": "0x06004F9F",
+      "code_size": 16,
+      "canonical_child_fact_id": "FACT-0043"
+    }
+  },
+  "limits": [
+    "SkillSlotEnum, skill, tm and nextSkill are metadata identifiers; no enum-member or authored gameplay meaning is added.",
+    "Raw SetAIAct first argument 2 is preserved without an authored gameplay label.",
+    "FACT-0043 governs SetAIAct; this dataset proves only the exact wrapper call and argument flow.",
+    "Process_OpponentStands_Stun remains a separate caller body.",
+    "Ring.TestCollision_OctagonEdge_InRing and its open MethodDef child remain separate.",
+    "Fresh R6 is a negative capture boundary only and provides no runtime bridge."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_set_ai_act_go_front_grapple.py"
+}
