@@ -1,0 +1,43 @@
+{
+  "fact_id": "FACT-0250",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.SetAIAct_StandAtk(StandAtkEnum atk_kind,Int32 tm) (0x06004FA5) has raw MethodDef row 6e602f000000810066350a00cbcd0200ba3a, RVA 0x002F606E, signature blob 20020111a7cc08, raw ImplFlags 0x0000 and MethodAttributes 0x0081, tiny header byte 0x46, two parameters atk_kind/tm with raw Param rows 00000100976d0700 and 00000200d7610700, no locals, and an exact 17-byte body SHA-256 6cf419de21ddef2550f679f589ce58fe6b76a8b665220f170bc8a739fa93ef2f. The body calls canonical FACT-0043 PlayerController_AI.SetAIAct at IL+0x0004 with raw first argument 23 and forwards the Int32 tm argument, then writes the raw StandAtkEnum atk_kind argument to PlayerController_AI.aiActPrm at IL+0x000B and returns. Its only MethodDef child is FACT-0043 SetAIAct and it has zero MemberRef method calls. Exact matching-DLL scanning finds 11 direct MethodDef-token references across five caller methods: vpc_wait2, Process_OpponentStands_Stun, Process_OpponentStands_Far, Process_OpponentStands, and Process_Second.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.SetAIAct_StandAtk token 0x06004FA5 -> RVA 0x002F606E; exact 17-byte body sha256=6cf419de21ddef2550f679f589ce58fe6b76a8b665220f170bc8a739fa93ef2f; exact MethodDef/Param/StandAtkEnum/field/call metadata and complete 11-reference / five-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_stand_atk.summary.json; prover tools/prove_playercontroller_ai_set_ai_act_stand_atk.py.",
+      "observation": "Exact matching-DLL 17-byte AI wrapper whose only in-assembly MethodDef child is canonical FACT-0043 SetAIAct."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.SetAIAct_StandAtk(StandAtkEnum,Int32)",
+      "to": "PlayerController_AI.SetAIAct",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06004F9D at IL+0x0004; raw first argument 23; second argument is tm; child is canonical FACT-0043."
+        }
+      ]
+    },
+    {
+      "from": "five matching-DLL direct caller methods",
+      "to": "PlayerController_AI.SetAIAct_StandAtk(StandAtkEnum,Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "complete direct MethodDef-token surface: vpc_wait2 0x06004FCD IL+0x008B; Process_OpponentStands_Stun 0x06004FF5 IL+0x014C/0x01E3/0x01F1/0x01FF; Process_OpponentStands_Far 0x06004FF6 IL+0x0105/0x0224; Process_OpponentStands 0x06004FFA IL+0x007D/0x00CF/0x0110; Process_Second 0x0600500E IL+0x0277."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "StandAtkEnum, atk_kind, tm and aiActPrm are preserved metadata identifiers; this fact assigns no enum-member or authored gameplay meaning to them.",
+    "The raw SetAIAct first argument 23 is preserved as an observed constant and receives no authored gameplay label.",
+    "FACT-0043 governs PlayerController_AI.SetAIAct; this fact adds only the exact wrapper call boundary and argument flow.",
+    "The five direct caller methods remain separate method bodies; membership in the reference surface does not promote their broader behavior.",
+    "The smaller 15-byte Ring.TestCollision_OctagonEdge_InRing wrapper remains separate because its only MethodDef child Ring.TestCollision_OctagonEdge is still outside canonical closure.",
+    "The equal-size SetAIAct_RunAtkToStunnedOpponent wrapper remains separate; equal code size was resolved by the lower MethodDef token.",
+    "Fresh CAP-R6-001 contains zero SetAIAct_StandAtk, SetAIAct and direct-caller rows; no runtime bridge is claimed."
+  ]
+}

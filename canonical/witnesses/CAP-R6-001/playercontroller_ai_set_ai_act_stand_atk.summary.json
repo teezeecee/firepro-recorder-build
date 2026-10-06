@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_STAND_ATK_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "SetAIAct_StandAtk",
+      "token": "0x06004FA5",
+      "rva": "0x002F606E",
+      "methoddef_row_hex": "6e602f000000810066350a00cbcd0200ba3a",
+      "signature_blob_hex": "20020111a7cc08",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "atk_kind",
+          "metadata_type": "StandAtkEnum",
+          "param_row_hex": "00000100976d0700",
+          "flags_raw": "0x0000"
+        },
+        {
+          "sequence": 2,
+          "name": "tm",
+          "metadata_type": "Int32",
+          "param_row_hex": "00000200d7610700",
+          "flags_raw": "0x0000"
+        }
+      ],
+      "return_type_metadata": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x46",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "locals": [],
+      "code_size": 17,
+      "code_sha256": "6cf419de21ddef2550f679f589ce58fe6b76a8b665220f170bc8a739fa93ef2f",
+      "body_hex": "021f1704289d4f000602037d4e6100042a",
+      "exact_flow": [
+        "load this, raw Int32 constant 23, and Int32 parameter tm; call canonical PlayerController_AI.SetAIAct",
+        "load this and StandAtkEnum parameter atk_kind; store atk_kind into PlayerController_AI.aiActPrm",
+        "return"
+      ]
+    },
+    "parameter_types": [
+      {
+        "sequence": 1,
+        "metadata_name": "StandAtkEnum",
+        "typedef_rid": 2547,
+        "typedef_row_hex": "0301000086790000000000004503a2612d50",
+        "namespace": ""
+      },
+      {
+        "sequence": 2,
+        "metadata_name": "Int32"
+      }
+    ],
+    "fields": [
+      {
+        "token": "0x0400614E",
+        "owner": "PlayerController_AI",
+        "name": "aiActPrm",
+        "field_row_hex": "0100dbf2030001000000",
+        "signature_blob_hex": "0608",
+        "metadata_type": "Int32"
+      }
+    ],
+    "field_accesses": [
+      {
+        "il": "0x000B",
+        "opcode": "stfld",
+        "token": "0x0400614E",
+        "source": "argument_1"
+      }
+    ],
+    "normalized_field_access_map_sha256": "d5718d050bd7e511e13bf4a3689b08e71f09a2eb9147f8bf1ef35f45a30e95ca",
+    "canonical_internal_calls": [
+      {
+        "il": "0x0004",
+        "opcode": "call",
+        "token": "0x06004F9D",
+        "owner": "PlayerController_AI",
+        "method": "SetAIAct",
+        "fact_id": "FACT-0043",
+        "code_size": 102,
+        "code_sha256": "58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065",
+        "raw_argument_1": 23,
+        "argument_2_source": "argument_2"
+      }
+    ],
+    "normalized_internal_call_map_sha256": "50353803322a8a677c90ee71b786cfc1ce6d91e5b879abd11fb8eedc3e1f0c3b",
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "vpc_wait2",
+        "caller_token": "0x06004FCD",
+        "caller_rva": "0x002F8994",
+        "caller_code_size": 146,
+        "caller_code_sha256": "3741d325192e27e78fa06d59a18679c12f3ac2ef2073fe017db7a8217ed07393",
+        "call_il": "0x008B",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Stun",
+        "caller_token": "0x06004FF5",
+        "caller_rva": "0x002FB600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+        "call_il": "0x014C",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Stun",
+        "caller_token": "0x06004FF5",
+        "caller_rva": "0x002FB600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+        "call_il": "0x01E3",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Stun",
+        "caller_token": "0x06004FF5",
+        "caller_rva": "0x002FB600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+        "call_il": "0x01F1",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Stun",
+        "caller_token": "0x06004FF5",
+        "caller_rva": "0x002FB600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+        "call_il": "0x01FF",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Far",
+        "caller_token": "0x06004FF6",
+        "caller_rva": "0x002FB820",
+        "caller_code_size": 565,
+        "caller_code_sha256": "c8e5ed6f584710bef2d8b8522a13843c1ff8f23e5c5149748add48816b79d646",
+        "call_il": "0x0105",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Far",
+        "caller_token": "0x06004FF6",
+        "caller_rva": "0x002FB820",
+        "caller_code_size": 565,
+        "caller_code_sha256": "c8e5ed6f584710bef2d8b8522a13843c1ff8f23e5c5149748add48816b79d646",
+        "call_il": "0x0224",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands",
+        "caller_token": "0x06004FFA",
+        "caller_rva": "0x002FBC78",
+        "caller_code_size": 511,
+        "caller_code_sha256": "06e26cc768d8d7b287fa87e2462328a6c46211fec42aa4a56f4872d5281f017f",
+        "call_il": "0x007D",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands",
+        "caller_token": "0x06004FFA",
+        "caller_rva": "0x002FBC78",
+        "caller_code_size": 511,
+        "caller_code_sha256": "06e26cc768d8d7b287fa87e2462328a6c46211fec42aa4a56f4872d5281f017f",
+        "call_il": "0x00CF",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands",
+        "caller_token": "0x06004FFA",
+        "caller_rva": "0x002FBC78",
+        "caller_code_size": 511,
+        "caller_code_sha256": "06e26cc768d8d7b287fa87e2462328a6c46211fec42aa4a56f4872d5281f017f",
+        "call_il": "0x0110",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_Second",
+        "caller_token": "0x0600500E",
+        "caller_rva": "0x002FD73C",
+        "caller_code_size": 646,
+        "caller_code_sha256": "eaa00ca466ac8ed88940cb307ffb3af44e1b89393d29b5a1c4a32eaf4120a1a8",
+        "call_il": "0x0277",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 11,
+    "direct_caller_method_count": 5,
+    "normalized_reference_map_sha256": "728ef6545f9a114d98ea24ad7e20b2e22c9a29d494c187596f035415678f8f38",
+    "normalized_caller_token_set_sha256": "00401fd225d658d3e6e796b6a8fbd79090c46d0544edb505dde81f55bd6d5124"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_set_ai_act_stand_atk_row_count": 0,
+    "playercontroller_ai_set_ai_act_row_count": 0,
+    "playercontroller_ai_vpc_wait2_row_count": 0,
+    "playercontroller_ai_process_opponent_stands_stun_row_count": 0,
+    "playercontroller_ai_process_opponent_stands_far_row_count": 0,
+    "playercontroller_ai_process_opponent_stands_row_count": 0,
+    "playercontroller_ai_process_second_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "parent": {
+      "method": "PlayerController_AI.Process_OpponentStands_Stun",
+      "token": "0x06004FF5",
+      "rva": "0x002FB600",
+      "code_size": 529,
+      "code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+      "call_ils": [
+        "0x014C",
+        "0x01E3",
+        "0x01F1",
+        "0x01FF"
+      ]
+    },
+    "smaller_blocked_wrapper": {
+      "method": "Ring.TestCollision_OctagonEdge_InRing",
+      "token": "0x060050EE",
+      "code_size": 15,
+      "dependency": "Ring.TestCollision_OctagonEdge",
+      "dependency_token": "0x060050ED",
+      "dependency_code_size": 569
+    },
+    "equal_size_alternative": {
+      "method": "PlayerController_AI.SetAIAct_RunAtkToStunnedOpponent",
+      "token": "0x06004FA9",
+      "code_size": 17,
+      "parent_call_il": "0x0119"
+    },
+    "tie_break_rule": "equal code size -> lower MethodDef token",
+    "selected_leaf": {
+      "method": "PlayerController_AI.SetAIAct_StandAtk",
+      "token": "0x06004FA5",
+      "code_size": 17,
+      "canonical_child_fact_id": "FACT-0043"
+    },
+    "larger_open_child": {
+      "method": "PlayerController_AI.IsTargetStunned",
+      "token": "0x06004FF4",
+      "code_size": 100,
+      "parent_call_il": "0x0033"
+    }
+  },
+  "limits": [
+    "StandAtkEnum, atk_kind, tm and aiActPrm are metadata identifiers; no enum-member or authored gameplay meaning is added.",
+    "Raw SetAIAct first argument 23 is preserved without an authored gameplay label.",
+    "FACT-0043 governs SetAIAct; this dataset proves only the exact wrapper call and argument flow.",
+    "The five direct caller methods remain separate bodies.",
+    "Ring.TestCollision_OctagonEdge_InRing and its open MethodDef child remain separate.",
+    "The equal-size SetAIAct_RunAtkToStunnedOpponent wrapper remains separate.",
+    "Fresh R6 is a negative capture boundary only and provides no runtime bridge."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_set_ai_act_stand_atk.py"
+}
