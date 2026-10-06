@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0247",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.Process_Grapple_BackAtk() (0x06004FE3) has raw MethodDef row 409d2f0000008100a43a0a005c480000d43a, RVA 0x002F9D40, signature blob 200001, raw ImplFlags 0x0000 and MethodAttributes 0x0081, no parameters, a fat header 133003004e01000011110011 with max stack 3 and local-signature token 0x11001111, six locals, and an exact 334-byte body SHA-256 cd3deb24c9c49730460a7d595105d48c8d342600d53947160adc8feaffd546b0. Exact IL has 105 instructions, 34 field-access sites, 13 branch instructions, five MethodDef call sites and zero MemberRef method calls. All five MethodDef children are canonical: FACT-0109 PlayerMan.GetPlObj at IL+0x0021; FACT-0035 SkillSlotDataMan.GetSkillSlotData at IL+0x007B; FACT-0038 PlayerController_AI.GetDamageLevel_LMH at IL+0x00A7; FACT-0245 MatchMisc.LotOption at IL+0x00CB; and FACT-0246 PlayerController_AI.Process_OpponentStands_AfterHammerThrow at IL+0x0147. Raw control flow first tests PlayerController_AI.nextSkill against values 39 through 44; a match reads SkillSlotData.attackButton into both inherited padPush and padOn and returns. Otherwise it stores nextSkill=-1, selects between AIParam.holdBack_HDmg and AIParam.holdBack_LDmg using raw DamageLevelEnum_LMH value 2, calls LotOption, writes the selected _BackButTbl and _BackKeyTbl elements into padPush and padOn, and only when the raw LotOption result equals 6 continues into a Zone / Player.PlPos.y boundary. That boundary uses two UnityEngine.Vector3.y field MemberRefs and raw Float32 values +0.4166666269302368 and -0.4166666269302368; the interior raw range writes padOn=4, otherwise it calls canonical FACT-0246 and discards the Boolean result. Exact matching-DLL scanning finds one direct reference: PlayerController_AI.Process_Grapple at IL+0x0193.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.Process_Grapple_BackAtk token 0x06004FE3 -> RVA 0x002F9D40; exact 334-byte body sha256=cd3deb24c9c49730460a7d595105d48c8d342600d53947160adc8feaffd546b0; exact MethodDef/header/local-signature/local-type/field-access/call/branch/reference metadata in canonical/witnesses/CAP-R6-001/playercontroller_ai_process_grapple_back_atk.summary.json; prover tools/prove_playercontroller_ai_process_grapple_back_atk.py.",
+      "observation": "Exact matching-DLL dependency-clean 334-byte AI caller body."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Process_Grapple_BackAtk()",
+      "to": "canonical MethodDef children",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "five direct call sites: GetPlObj 0x0021; GetSkillSlotData 0x007B; GetDamageLevel_LMH 0x00A7; LotOption 0x00CB; Process_OpponentStands_AfterHammerThrow 0x0147."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_Grapple()",
+      "to": "PlayerController_AI.Process_Grapple_BackAtk()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "single direct call token 0x06004FE3 at IL+0x0193."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "nextSkill, attackButton, holdBack_HDmg, holdBack_LDmg, _BackButTbl, _BackKeyTbl, Zone, PlPos and AIOpt_BackGrapple are preserved metadata identifiers; this fact assigns no authored gameplay meaning to them.",
+    "Raw values 39 through 44, 2, 6, 4 and the two Float32 boundary constants are preserved exactly without gameplay labels.",
+    "UnityEngine.Vector3.y is an external field MemberRef used twice; there are zero MemberRef method calls.",
+    "Fresh CAP-R6-001 contains zero Process_Grapple_BackAtk, child-method and Process_Grapple rows; no runtime bridge is claimed.",
+    "Runtime/viewer remains locked."
+  ]
+}
