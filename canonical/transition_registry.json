@@ -4476,6 +4476,26 @@
         "the smaller SetAIAct_GoBackGrapple wrapper is already canonical inside FACT-0042 and is not re-promoted",
         "fresh R6 has zero target, child and caller rows and provides no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_IS_TARGET_STUNNED_V1",
+      "fact_id": "FACT-0252",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 100-byte matching-DLL instance PlayerController_AI.IsTargetStunned() Boolean helper: canonical FACT-0109 GetPlObj and FACT-0031 GetParamRate children, exact one-Player local, field/branch surface, zero MemberRef method calls, and complete two-reference / two-caller surface.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_is_target_stunned.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 2,
+      "direct_caller_method_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "raw State values 21 and 11 and Float32 bits 0x4015C28F receive no authored gameplay labels",
+        "AIActFunc_GoBackGrapple and Process_OpponentStands_Stun remain separate caller bodies",
+        "the smaller Ring.TestCollision_OctagonEdge_InRing wrapper remains blocked on its still-open MethodDef child",
+        "fresh R6 has zero target, child and caller rows and provides no runtime bridge"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

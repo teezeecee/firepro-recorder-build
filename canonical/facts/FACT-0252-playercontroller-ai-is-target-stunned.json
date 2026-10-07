@@ -1,0 +1,52 @@
+{
+  "fact_id": "FACT-0252",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.IsTargetStunned() (0x06004FF4) has raw MethodDef row 90b52f0000008100443c0a00db490000d93a, RVA 0x002FB590, signature blob 200002, raw ImplFlags 0x0000 and MethodAttributes 0x0081, fat header 13300200640000008e020011, max stack 2, local signature token 0x1100028E, one Player local, no parameters, and an exact 100-byte body SHA-256 6be0ad496b10e6b013a20cf29ce0fa8f50b2c835aad2392dee083cfedca721e0. The body obtains PlayerMan.inst, reads this.PlObj.TargetPlIdx, calls canonical FACT-0109 PlayerMan.GetPlObj and stores the returned Player local. It then has three raw true-return paths: target State equals raw 21; otherwise canonical FACT-0031 MatchMisc.GetParamRate(target.BP) falls through the emitted bge.un against Float32 bits 0x4015C28F; otherwise target State equals raw 11 while isStandingStunOK is nonzero and StunTime is greater than raw 0. All other paths return raw false. The only MethodDef children are FACT-0109 GetPlObj and FACT-0031 GetParamRate; there are zero MemberRef method calls. Exact matching-DLL scanning finds two direct references: AIActFunc_GoBackGrapple at IL+0x0017 and Process_OpponentStands_Stun at IL+0x0033.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.IsTargetStunned token 0x06004FF4 -> RVA 0x002FB590; exact 100-byte body sha256=6be0ad496b10e6b013a20cf29ce0fa8f50b2c835aad2392dee083cfedca721e0; exact MethodDef/local/field/branch/call metadata and complete two-reference / two-caller map in canonical/witnesses/CAP-R6-001/playercontroller_ai_is_target_stunned.summary.json; prover tools/prove_playercontroller_ai_is_target_stunned.py.",
+      "observation": "Exact matching-DLL Boolean helper with both in-assembly MethodDef children already canonical."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.IsTargetStunned()",
+      "to": "PlayerMan.GetPlObj(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "callvirt token 0x06005065 at IL+0x0010; child is canonical FACT-0109."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.IsTargetStunned()",
+      "to": "MatchMisc.GetParamRate(Float32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "call token 0x06004975 at IL+0x002B after Player.BP load; child is canonical FACT-0031."
+        }
+      ]
+    },
+    {
+      "from": "AIActFunc_GoBackGrapple / Process_OpponentStands_Stun",
+      "to": "PlayerController_AI.IsTargetStunned()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "complete direct MethodDef-token surface: AIActFunc_GoBackGrapple 0x06004FB1 IL+0x0017; Process_OpponentStands_Stun 0x06004FF5 IL+0x0033."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "State, BP, isStandingStunOK and StunTime are preserved metadata identifiers; raw State values 21 and 11 receive no authored gameplay labels here.",
+    "Float32 bits 0x4015C28F and the emitted bge.un branch are preserved directly; this fact adds no authored threshold meaning.",
+    "FACT-0109 governs PlayerMan.GetPlObj and FACT-0031 governs MatchMisc.GetParamRate; this fact adds only their exact call boundaries inside IsTargetStunned.",
+    "AIActFunc_GoBackGrapple and Process_OpponentStands_Stun remain separate caller bodies.",
+    "The smaller 15-byte Ring.TestCollision_OctagonEdge_InRing wrapper remains separate because its only MethodDef child Ring.TestCollision_OctagonEdge is still outside canonical closure.",
+    "Fresh CAP-R6-001 contains zero target, child and direct-caller rows; no runtime bridge is claimed."
+  ]
+}
