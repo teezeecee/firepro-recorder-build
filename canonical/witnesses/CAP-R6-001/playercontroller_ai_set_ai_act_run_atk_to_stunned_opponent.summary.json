@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_RUN_ATK_TO_STUNNED_OPPONENT_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "SetAIAct_RunAtkToStunnedOpponent",
+      "token": "0x06004FA9",
+      "rva": "0x002F60B6",
+      "methoddef_row_hex": "b6602f0000008100c5350a00e3cd0200c23a",
+      "signature_blob_hex": "20020111a7d008",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "kind",
+          "metadata_type": "RunAtkEnum",
+          "param_row_hex": "0000010063510100",
+          "flags_raw": "0x0000"
+        },
+        {
+          "sequence": 2,
+          "name": "tm",
+          "metadata_type": "Int32",
+          "param_row_hex": "00000200d7610700",
+          "flags_raw": "0x0000"
+        }
+      ],
+      "return_type_metadata": "Void",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x46",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "locals": [],
+      "code_size": 17,
+      "code_sha256": "14e962309d03585018de393653c8b4dd4508649084262fbd1bff8fcd9a70e49f",
+      "body_hex": "021f0f04289d4f000602037d4e6100042a",
+      "exact_flow": [
+        "load this, raw Int32 constant 15, and Int32 parameter tm; call canonical PlayerController_AI.SetAIAct",
+        "load this and RunAtkEnum parameter kind; store kind into PlayerController_AI.aiActPrm",
+        "return"
+      ]
+    },
+    "parameter_types": [
+      {
+        "sequence": 1,
+        "metadata_name": "RunAtkEnum",
+        "typedef_rid": 2548,
+        "typedef_row_hex": "0301000093790000000000004503a8612d50",
+        "namespace": ""
+      },
+      {
+        "sequence": 2,
+        "metadata_name": "Int32"
+      }
+    ],
+    "fields": [
+      {
+        "token": "0x0400614E",
+        "owner": "PlayerController_AI",
+        "name": "aiActPrm",
+        "field_row_hex": "0100dbf2030001000000",
+        "signature_blob_hex": "0608",
+        "metadata_type": "Int32"
+      }
+    ],
+    "field_accesses": [
+      {
+        "il": "0x000B",
+        "opcode": "stfld",
+        "token": "0x0400614E",
+        "source": "argument_1"
+      }
+    ],
+    "normalized_field_access_map_sha256": "d5718d050bd7e511e13bf4a3689b08e71f09a2eb9147f8bf1ef35f45a30e95ca",
+    "canonical_internal_calls": [
+      {
+        "il": "0x0004",
+        "opcode": "call",
+        "token": "0x06004F9D",
+        "owner": "PlayerController_AI",
+        "method": "SetAIAct",
+        "fact_id": "FACT-0043",
+        "code_size": 102,
+        "code_sha256": "58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065",
+        "raw_argument_1": 15,
+        "argument_2_source": "argument_2"
+      }
+    ],
+    "normalized_internal_call_map_sha256": "50353803322a8a677c90ee71b786cfc1ce6d91e5b879abd11fb8eedc3e1f0c3b",
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_OpponentStands_Stun",
+        "caller_token": "0x06004FF5",
+        "caller_rva": "0x002FB600",
+        "caller_code_size": 529,
+        "caller_code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+        "call_il": "0x0119",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1,
+    "normalized_reference_map_sha256": "e9d0ee20e1f8a635e56757aa09a1b5fd5349358ca7dbfc4a5cf3d32d938561ff",
+    "normalized_caller_token_set_sha256": "e48a1362b562dd41abab3f01e7ea30008538d8f7ac165edbac1edc490495f47d"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_set_ai_act_run_atk_to_stunned_opponent_row_count": 0,
+    "playercontroller_ai_set_ai_act_row_count": 0,
+    "playercontroller_ai_process_opponent_stands_stun_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "parent": {
+      "method": "PlayerController_AI.Process_OpponentStands_Stun",
+      "token": "0x06004FF5",
+      "rva": "0x002FB600",
+      "code_size": 529,
+      "code_sha256": "5fbd6ae8165dddc79955e82707aae05da98fb26cfcef5bc9ce69929944189037",
+      "call_il": "0x0119"
+    },
+    "smaller_blocked_wrapper": {
+      "method": "Ring.TestCollision_OctagonEdge_InRing",
+      "token": "0x060050EE",
+      "code_size": 15,
+      "dependency": "Ring.TestCollision_OctagonEdge",
+      "dependency_token": "0x060050ED",
+      "dependency_code_size": 569
+    },
+    "smaller_already_canonical_wrapper": {
+      "method": "PlayerController_AI.SetAIAct_GoBackGrapple",
+      "token": "0x06004FA0",
+      "code_size": 16,
+      "fact_id": "FACT-0042"
+    },
+    "selected_leaf": {
+      "method": "PlayerController_AI.SetAIAct_RunAtkToStunnedOpponent",
+      "token": "0x06004FA9",
+      "code_size": 17,
+      "canonical_child_fact_id": "FACT-0043"
+    },
+    "larger_open_child": {
+      "method": "PlayerController_AI.IsTargetStunned",
+      "token": "0x06004FF4",
+      "code_size": 100,
+      "parent_call_il": "0x0033"
+    }
+  },
+  "limits": [
+    "RunAtkEnum, kind, tm and aiActPrm are metadata identifiers; no enum-member or authored gameplay meaning is added.",
+    "Raw SetAIAct first argument 15 is preserved without an authored gameplay label.",
+    "FACT-0043 governs SetAIAct; this dataset proves only the exact wrapper call and argument flow.",
+    "Process_OpponentStands_Stun remains a separate caller body.",
+    "Ring.TestCollision_OctagonEdge_InRing and its open MethodDef child remain separate.",
+    "SetAIAct_GoBackGrapple is already canonical inside FACT-0042 and is not re-promoted.",
+    "Fresh R6 is a negative capture boundary only and provides no runtime bridge."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_set_ai_act_run_atk_to_stunned_opponent.py"
+}
