@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYER_STATUS_DATA_MAN_GET_PLAYER_STATUS_DATA_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerStatusDataMan",
+      "method": "GetPlayerStatusData",
+      "token": "0x06005074",
+      "rva": "0x00305440",
+      "methoddef_row_hex": "405430000000960015440a0027d502000b3b",
+      "signature_blob_hex": "000112a82c11a828",
+      "parameters": [
+        {
+          "sequence": 1,
+          "name": "st",
+          "metadata_type": "PlStateEnum",
+          "param_row_hex": "00000100c4bd0600",
+          "flags_raw": "0x0000"
+        }
+      ],
+      "return_type_metadata": "PlayerStatusData",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0096",
+      "header_format": "tiny",
+      "tiny_header_byte_raw": "0x66",
+      "max_stack": 8,
+      "local_signature_token": "0x00000000",
+      "locals": [],
+      "code_size": 25,
+      "code_sha256": "3654b9b747fafe496cea44043ad40832a25d81f2537b71d46331b87e7bac4cb3",
+      "body_hex": "02163f08000000021f4a3f02000000142a7e6c620004029a2a",
+      "exact_flow": [
+        "if raw st < 0, return null",
+        "else if raw st < 74, return PlayerStatusDataTbl[st]",
+        "otherwise return null"
+      ]
+    },
+    "metadata_types": [
+      {
+        "role": "parameter",
+        "metadata_name": "PlStateEnum",
+        "typedef_rid": 2570,
+        "typedef_row_hex": "01010000207b000000000000450318627250",
+        "namespace": ""
+      },
+      {
+        "role": "return",
+        "metadata_name": "PlayerStatusData",
+        "typedef_rid": 2571,
+        "typedef_row_hex": "010010002c7b000000000000090364627250",
+        "namespace": ""
+      }
+    ],
+    "fields": [
+      {
+        "token": "0x0400626C",
+        "owner": "PlayerStatusDataMan",
+        "name": "PlayerStatusDataTbl",
+        "field_row_hex": "160020ff030001390000",
+        "signature_blob_hex": "061d12a82c",
+        "metadata_type": "PlayerStatusData[]"
+      }
+    ],
+    "field_accesses": [
+      {
+        "il": "0x0011",
+        "opcode": "ldsfld",
+        "token": "0x0400626C"
+      }
+    ],
+    "normalized_field_access_map_sha256": "c9b51cc2f79b5c8e3f47fcecf675f1aa6d82027e2895d6f265ad17e47b07dfdc",
+    "branches": [
+      {
+        "il": "0x0002",
+        "opcode": "blt",
+        "target": "0x000F",
+        "raw_compare_rhs": 0
+      },
+      {
+        "il": "0x000A",
+        "opcode": "blt",
+        "target": "0x0011",
+        "raw_compare_rhs": 74
+      }
+    ],
+    "normalized_branch_map_sha256": "8a94d1d858e3f15daf52b688184e3ae0c5f1ac9a5e432f659e782ea295143b9a",
+    "canonical_internal_calls": [],
+    "external_memberrefs": [],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "MatchMisc",
+        "caller_namespace": "",
+        "caller_method": "GetPlayer_OccupyingSideCorner",
+        "caller_token": "0x06004974",
+        "caller_rva": "0x002B0CF4",
+        "caller_code_size": 116,
+        "caller_code_sha256": "cfe33066c9b298c006d47e6b6e4085e25d089a4efd4318eaba25184fcae10220",
+        "call_il": "0x0039",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "FormAnimator",
+        "caller_namespace": "",
+        "caller_method": "UpdateAnimation",
+        "caller_token": "0x06004E7E",
+        "caller_rva": "0x002DB890",
+        "caller_code_size": 738,
+        "caller_code_sha256": "1e18c732ea0674fae8fdecc0b0d06fc976ec4494df663156925e99c4485b4c00",
+        "call_il": "0x00A6",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Player",
+        "caller_namespace": "",
+        "caller_method": "IsCounterable",
+        "caller_token": "0x06004EE1",
+        "caller_rva": "0x002E1B18",
+        "caller_code_size": 112,
+        "caller_code_sha256": "6af5dc209d32410f737552138880bd5b41041a6cfe68e348f12d65df447331e2",
+        "call_il": "0x0063",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Player",
+        "caller_namespace": "",
+        "caller_method": "ProcessRecover",
+        "caller_token": "0x06004F21",
+        "caller_rva": "0x002E84BC",
+        "caller_code_size": 1479,
+        "caller_code_sha256": "b15d39435219a1a63f3738c0e1c69609be4feb85acc407e4a223407c44f78211",
+        "call_il": "0x0379",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Player",
+        "caller_namespace": "",
+        "caller_method": "SetPlayerDirToTarget",
+        "caller_token": "0x06004F2F",
+        "caller_rva": "0x002EAE48",
+        "caller_code_size": 217,
+        "caller_code_sha256": "d18ae3baa08bd0d4b8f5da362e1022cd7fa6549688bb48b5d0d8cb9496a71e4e",
+        "call_il": "0x0006",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Player",
+        "caller_namespace": "",
+        "caller_method": "DecideTargetEnemy",
+        "caller_token": "0x06004F30",
+        "caller_rva": "0x002EAF30",
+        "caller_code_size": 664,
+        "caller_code_sha256": "814ed9b33e55f6ee913712435969f0eddc8a28d0d6855ef0fa6fd15c21ccaec4",
+        "call_il": "0x003B",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Player",
+        "caller_namespace": "",
+        "caller_method": "CheckStartRun",
+        "caller_token": "0x06004F53",
+        "caller_rva": "0x002EF048",
+        "caller_code_size": 1054,
+        "caller_code_sha256": "91a0b3441fc9064e6b823c5fe61caae3e2e1268b979bbb8d1905c0e2694c9646",
+        "call_il": "0x001C",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Player",
+        "caller_namespace": "",
+        "caller_method": "MakeKeyData",
+        "caller_token": "0x06004F76",
+        "caller_rva": "0x002F2EB4",
+        "caller_code_size": 359,
+        "caller_code_sha256": "e8494d2c34a3a826ef643c98a6e26a1ed73867ae5f02bfe1cbdecbbdce5766f0",
+        "call_il": "0x000C",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "AIActFunc_DownAttack",
+        "caller_token": "0x06004FC1",
+        "caller_rva": "0x002F793C",
+        "caller_code_size": 556,
+        "caller_code_sha256": "05150e275be0b075543801fa0e5ba414133133dcbc4496c832a282ce5f3c0665",
+        "call_il": "0x005F",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "vpc_wait2",
+        "caller_token": "0x06004FCD",
+        "caller_rva": "0x002F8994",
+        "caller_code_size": 146,
+        "caller_code_sha256": "3741d325192e27e78fa06d59a18679c12f3ac2ef2073fe017db7a8217ed07393",
+        "call_il": "0x001C",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "AIActFunc_PrepareWeapon",
+        "caller_token": "0x06004FD1",
+        "caller_rva": "0x002F8BDC",
+        "caller_code_size": 221,
+        "caller_code_sha256": "7e3d62e541c065e43aca91cde328cd8e249a8747186b04d8ae3dbde2e5950f44",
+        "call_il": "0x0049",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "AIActFunc_DisturbReferee",
+        "caller_token": "0x06004FD2",
+        "caller_rva": "0x002F8CC8",
+        "caller_code_size": 185,
+        "caller_code_sha256": "0bfb1878dd5709c91d63a375bf2e3b0e3fd1b75167d0c577a2d3c7b68dd2506a",
+        "call_il": "0x0081",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "HungUpCheck",
+        "caller_token": "0x06004FD9",
+        "caller_rva": "0x002F91E4",
+        "caller_code_size": 250,
+        "caller_code_sha256": "bd6e95d91e9c741be24e1cd719aa40f61488fd454e77e8003688abb237bb2106",
+        "call_il": "0x000B",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_Second",
+        "caller_token": "0x0600500E",
+        "caller_rva": "0x002FD73C",
+        "caller_code_size": 646,
+        "caller_code_sha256": "eaa00ca466ac8ed88940cb307ffb3af44e1b89393d29b5a1c4a32eaf4120a1a8",
+        "call_il": "0x00E4",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "ProcessOutOfRing",
+        "caller_token": "0x06005019",
+        "caller_rva": "0x002FE958",
+        "caller_code_size": 813,
+        "caller_code_sha256": "f0f5ae7ad014e90cecae63ad73e45fa334a9555eb321ada27e10373dd01b04dc",
+        "call_il": "0x011A",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "Referee",
+        "caller_namespace": "",
+        "caller_method": "CheckStartRefereeing",
+        "caller_token": "0x060050A1",
+        "caller_rva": "0x00308920",
+        "caller_code_size": 1112,
+        "caller_code_sha256": "8531aa20df597f7d7a37246779e58c39c7c7a2fdc6e34d4d38dcd1fd56f6f7e5",
+        "call_il": "0x0346",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 16,
+    "direct_caller_method_count": 16,
+    "normalized_reference_map_sha256": "7f26ea4578d18ca3013fa11e1b82bbdf5fa8d65f1f13c5ccae1704c68870d544",
+    "normalized_caller_token_set_sha256": "d651bbe59276fdc0f99e12d13e8e0a18c3a45a50f93d1e5fdcc7c19596737d3a"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playerstatusdataman_getplayerstatusdata_row_count": 0,
+    "matchmisc_getplayer_occupyingsidecorner_row_count": 0,
+    "formanimator_updateanimation_row_count": 0,
+    "player_iscounterable_row_count": 0,
+    "player_processrecover_row_count": 0,
+    "player_setplayerdirtotarget_row_count": 0,
+    "player_decidetargetenemy_row_count": 0,
+    "player_checkstartrun_row_count": 0,
+    "player_makekeydata_row_count": 0,
+    "playercontroller_ai_aiactfunc_downattack_row_count": 0,
+    "playercontroller_ai_vpc_wait2_row_count": 0,
+    "playercontroller_ai_aiactfunc_prepareweapon_row_count": 0,
+    "playercontroller_ai_aiactfunc_disturbreferee_row_count": 0,
+    "playercontroller_ai_hungupcheck_row_count": 0,
+    "playercontroller_ai_process_second_row_count": 0,
+    "playercontroller_ai_processoutofring_row_count": 0,
+    "referee_checkstartrefereeing_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "current_ai_frontier": {
+      "method": "PlayerController_AI.AIActFunc_GoBackGrapple",
+      "token": "0x06004FB1",
+      "code_size": 235,
+      "code_sha256": "05aa37f29b638f8da45743303251598eea9a5bf501388a75d7f0208ea0a2175c"
+    },
+    "open_children": [
+      {
+        "method": "PlayerController_AI.GetGoAroundDir",
+        "token": "0x06004FD7",
+        "code_size": 126,
+        "canonical_child_fact_ids": [
+          "FACT-0109"
+        ]
+      },
+      {
+        "method": "PlayerController_AI.HungUpCheck",
+        "token": "0x06004FD9",
+        "code_size": 250,
+        "open_dependency": "PlayerStatusDataMan.GetPlayerStatusData",
+        "open_dependency_token": "0x06005074",
+        "open_dependency_code_size": 25
+      }
+    ],
+    "selected_leaf": {
+      "method": "PlayerStatusDataMan.GetPlayerStatusData",
+      "token": "0x06005074",
+      "code_size": 25,
+      "methoddef_child_count": 0,
+      "memberref_method_call_count": 0
+    },
+    "smaller_blocked_wrapper": {
+      "method": "Ring.TestCollision_OctagonEdge_InRing",
+      "token": "0x060050EE",
+      "code_size": 15,
+      "dependency": "Ring.TestCollision_OctagonEdge",
+      "dependency_token": "0x060050ED",
+      "dependency_code_size": 569
+    }
+  },
+  "limits": [
+    "PlStateEnum and PlayerStatusData metadata names are preserved without authored enum or table semantics.",
+    "Raw bounds 0 and 74 are preserved directly.",
+    "PlayerStatusDataTbl authored contents remain separate.",
+    "All 16 caller methods remain separate bodies.",
+    "HungUpCheck and GetGoAroundDir remain open.",
+    "Ring.TestCollision_OctagonEdge_InRing remains blocked by its open MethodDef child.",
+    "Fresh R6 is a negative capture boundary only and provides no runtime bridge."
+  ],
+  "reproducibility_tool": "tools/prove_player_status_data_man_get_player_status_data.py"
+}

@@ -1,0 +1,43 @@
+{
+  "fact_id": "FACT-0253",
+  "claim": "In the matching retail DLL, static PlayerStatusDataMan.GetPlayerStatusData(PlStateEnum st) (0x06005074) has raw MethodDef row 405430000000960015440a0027d502000b3b, RVA 0x00305440, signature blob 000112a82c11a828, raw ImplFlags 0x0000 and MethodAttributes 0x0096, tiny header byte 0x66, one parameter st with raw Param row 00000100c4bd0600, no locals, and an exact 25-byte body SHA-256 3654b9b747fafe496cea44043ad40832a25d81f2537b71d46331b87e7bac4cb3. The return metadata type is PlayerStatusData and the parameter metadata type is PlStateEnum. The body returns null when the raw st value is less than 0 or not less than 74; otherwise it loads PlayerStatusDataMan.PlayerStatusDataTbl and returns the reference at raw index st. The body has zero MethodDef children and zero MemberRef method calls. Exact matching-DLL scanning finds 16 direct call references across 16 caller methods.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerStatusDataMan.GetPlayerStatusData token 0x06005074 -> RVA 0x00305440; exact 25-byte body sha256=3654b9b747fafe496cea44043ad40832a25d81f2537b71d46331b87e7bac4cb3; exact MethodDef/Param/type/field/branch metadata and complete 16-reference / 16-caller map in canonical/witnesses/CAP-R6-001/player_status_data_man_get_player_status_data.summary.json; prover tools/prove_player_status_data_man_get_player_status_data.py.",
+      "observation": "Exact matching-DLL static table getter with no in-assembly or MemberRef method calls."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.HungUpCheck()",
+      "to": "PlayerStatusDataMan.GetPlayerStatusData(PlStateEnum)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call token 0x06005074 at HungUpCheck IL+0x000B; HungUpCheck is an open dependency reached from AIActFunc_GoBackGrapple."
+        }
+      ]
+    },
+    {
+      "from": "16 matching-DLL caller methods",
+      "to": "PlayerStatusDataMan.GetPlayerStatusData(PlStateEnum)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "complete direct MethodDef-token surface recorded in canonical/witnesses/CAP-R6-001/player_status_data_man_get_player_status_data.summary.json."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "PlStateEnum, st, PlayerStatusData and PlayerStatusDataTbl are preserved metadata identifiers; this fact assigns no authored gameplay meaning to enum members or table entries.",
+    "Raw bounds 0 and 74 are preserved directly without authored state labels.",
+    "The authored PlayerStatusDataTbl contents remain outside this fact.",
+    "The 16 direct caller methods remain separate bodies.",
+    "HungUpCheck and GetGoAroundDir remain separate open methods on the current AI frontier.",
+    "The smaller 15-byte Ring.TestCollision_OctagonEdge_InRing wrapper remains separate because its only MethodDef child Ring.TestCollision_OctagonEdge is still outside canonical closure.",
+    "Fresh CAP-R6-001 contains zero target and direct-caller rows; no runtime bridge is claimed."
+  ]
+}
