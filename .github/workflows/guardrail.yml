@@ -1332,3 +1332,17 @@ jobs:
         run: python tests/test_playercontroller_ai_process_opponent_stands_after_hammer_throw_summary.py
       - name: AI Process OpponentStands AfterHammerThrow prover syntax
         run: python -m py_compile tools/prove_playercontroller_ai_process_opponent_stands_after_hammer_throw.py
+
+      - name: Full summary coverage including later canonical facts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess, sys
+          tests = sorted(Path("tests").glob("test_*_summary.py"))
+          assert tests, "missing source witness summary tests"
+          for test in tests:
+              subprocess.run([sys.executable, str(test)], check=True)
+          print(f"FULL SUMMARY COVERAGE PASS: {len(tests)} tests")
+          PY
+      - name: Full source prover syntax coverage
+        run: python -m compileall -q tools
