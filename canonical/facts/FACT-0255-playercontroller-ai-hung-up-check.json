@@ -1,0 +1,52 @@
+{
+  "fact_id": "FACT-0255",
+  "claim": "In matching retail DLL-001, PlayerController_AI.HungUpCheck() (MethodDef 0x06004FD9, RVA 0x002F91E4, 250-byte body SHA-256 bd6e95d91e9c741be24e1cd719aa40f61488fd454e77e8003688abb237bb2106) is a parameterless Boolean instance method with a 12-byte fat header, max stack 3, and local signature 0x11001109. The method loads this.PlObj.State and invokes canonical FACT-0253 PlayerStatusDataMan.GetPlayerStatusData at IL+0x000B, reading its controllable field. If that field is false, or this.PlObj.forceControl is nonzero, it invokes canonical FACT-0038 Reset_HungUpCheck at IL+0x002D and returns false. Otherwise it writes the current position through MemberRef op_Implicit into MoveCheckPosBuf at MoveCheckPosPtr, increments MoveCheckPosRecordNum, increments MoveCheckPosPtr and applies signed remainder 8. When the record count is less than 8 the method returns false. Otherwise, it calls external Vector2 get_zero, iteratively accumulates all eight buffer entries using external op_Addition, divides the sum by raw Float32 8.0 via external op_Division, subtracts the current externally converted position via external op_Subtraction, calls external get_magnitude and uses the emitted bgt.un branch against raw Float32 bits 0x3CA3D70A, returning false on the branch and true on fallthrough. All six distinct external MemberRef methods, 19 field-access sites, six control-branch sites, nine call sites, and five direct MethodDef-body caller references are pinned to matching raw metadata; no live animation or authored player-state meaning is assigned.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.HungUpCheck token 0x06004FD9; exact raw MethodDef row e4912f0000008100f7390a00db490000ce3a; RVA 0x002F91E4; 250-byte code sha256 bd6e95d91e9c741be24e1cd719aa40f61488fd454e77e8003688abb237bb2106; full byte, header, field/MemberRef/call/branch/caller provenance in canonical/witnesses/CAP-R6-001/playercontroller_ai_hung_up_check.summary.json and reproducibility prover tools/prove_playercontroller_ai_hung_up_check.py.",
+      "observation": "Exact matching-DLL Boolean method; CAP-R6-001 contributes only a negative method-event boundary."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.HungUpCheck()",
+      "to": "PlayerStatusDataMan.GetPlayerStatusData(PlStateEnum)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call 0x06005074 at HungUpCheck IL+0x000B; child already canonical FACT-0253; code sha256 3654b9b747fafe496cea44043ad40832a25d81f2537b71d46331b87e7bac4cb3."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.HungUpCheck()",
+      "to": "PlayerController_AI.Reset_HungUpCheck()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "direct call 0x06004FD8 at HungUpCheck IL+0x002D; child already canonical FACT-0038; code sha256 9bea2fa5e79dc6e2c45acd5a83161a0ce0bec614c28ca0c2f0e63037bb0b2e01."
+        }
+      ]
+    },
+    {
+      "from": "five direct PlayerController_AI callers",
+      "to": "PlayerController_AI.HungUpCheck()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "all five exact MethodDef-body call references: AIActFunc_GoFrontGrapple IL+0x00F4; AIActFunc_GoBackGrapple IL+0x00D5; AIActFunc_DownAttack IL+0x0203; AIActFunc_GoAround IL+0x0074; AIActFunc_StandAtk IL+0x02C1; full caller sizes/hashes in witness summary."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "All emitted raw State/controllable/forceControl names and values are retained only as metadata and control flow, not as authored grappling or AI design semantics.",
+    "UnityEngine Vector2 methods are outside the matching DLL; no floating-point runtime equivalence claim is made from MethodDef evidence alone.",
+    "The five direct caller bodies are independently open and remain separate evidence boundaries.",
+    "The raw R6 event trace has zero rows for HungUpCheck and those five direct callers, therefore no runtime choreography/frame oracle is promoted.",
+    "Smaller Ring.TestCollision_OctagonEdge_InRing wrapper still requires its open Ring.TestCollision_OctagonEdge child.",
+    "The authored packed-retail decode vault is still missing and runtime/viewer construction remains locked."
+  ]
+}
