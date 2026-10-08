@@ -4581,6 +4581,27 @@
         "no authored animation or packed data selection proven",
         "retail decode vault raw archive absent; runtime/viewer remains locked"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_AI_ACT_FUNC_GO_BACK_GRAPPLE_V1",
+      "fact_id": "FACT-0257",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 235-byte PlayerController_AI.AIActFunc_GoBackGrapple raw Boolean body; six already canonical MethodDef children, 74 instructions, nine branches, 20 field accesses, sole ldftn delegate reference in AI Init and no direct live R6 event rows.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_go_back_grapple.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Raw status, direction, control values and pad fields are preserved without invented gameplay labels.",
+        "The unique matching DLL reference is an ldftn delegate binding in PlayerController_AI.Init, not an invocation.",
+        "Original R6 event trace has no direct rows for the method or its six child functions; no live animation or choreography is claimed.",
+        "All six MethodDef child implementations have already been separately admitted as canonical facts.",
+        "The packed retail decode vault remains missing and runtime/viewer work remains locked."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
