@@ -1,0 +1,51 @@
+{
+  "fact_id": "FACT-0256",
+  "claim": "In matching retail DLL-001, instance PlayerController_AI.SetAIAct_GoGrapple(SkillSlotEnum skill, GoAroundDir dir, Int32 tm), MethodDef token 0x06004F9E and RVA 0x002F5FC6, has exact MethodDef row c65f2f0000008100ce340a00a5cd0200ab3a, signature blob 20030111870c11a7dc08, tiny header 0x5E, three parameter metadata rows, and 23-byte code body SHA-256 978e82da32179445718786287df804ca334ac6f1889e726bec8774e5a13ccf12. The emitted eleven instructions call canonical FACT-0043 PlayerController_AI.SetAIAct with raw first argument 1 and forwarded tm argument 3 at IL+0x0003, store skill arg1 to field nextSkill at IL+0x000A, store dir arg2 to field aiActPrm at IL+0x0011, then return. The only MethodDef call is canonical SetAIAct, and there are zero external MemberRef calls, no branches, and no other field accesses. Raw parameter, enum TypeDef, field and callee metadata plus exactly six direct matching-DLL references and raw R6 no-event boundary are pinned by the witness/prover. No authored grapple action, animation, or scene transition is assigned.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.SetAIAct_GoGrapple token 0x06004F9E RVA 0x002F5FC6; MethodDef c65f2f0000008100ce340a00a5cd0200ab3a; signature 20030111870c11a7dc08; exact 23-byte SHA-256 978e82da32179445718786287df804ca334ac6f1889e726bec8774e5a13ccf12; full byte, parameter, field, TypeDef, call, and six-caller maps in canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_go_grapple.summary.json, checked by tools/prove_playercontroller_ai_set_ai_act_go_grapple.py.",
+      "observation": "Exact DLL parameter forwarding, field writes and in-assembly callsite surface; no R6 method events."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.SetAIAct_GoGrapple IL+0x0003",
+      "to": "PlayerController_AI.SetAIAct raw first argument 1, forwarded tm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IL body offset +0x0003 call token 0x06004F9D; canonical FACT-0043, 102-byte callee SHA-256 58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.SetAIAct_GoGrapple parameters",
+      "to": "nextSkill and aiActPrm stored fields",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "raw this/skill → stfld nextSkill token 0x04006160 at IL+0x000A; raw this/dir → stfld aiActPrm token 0x0400614E at IL+0x0011; exact field signatures and parameter rows witness-pinned."
+        }
+      ]
+    },
+    {
+      "from": "six direct DLL caller sites",
+      "to": "PlayerController_AI.SetAIAct_GoGrapple",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "GoFrontGrapple IL+0x0103; GoBackGrapple IL+0x00E4; GoAround IL+0x0083; StandAtk IL+0x02D0; Process_OpponentStands_Far IL+0x013F; TryToDoPriorityAct IL+0x022C. Exact caller RVA, size, SHA-256 and caller token list in witness."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw action id 1 is retained without an authored movement or match-rule interpretation.",
+    "The method's two field writes are proven; downstream use of the stored skill and direction is not established here.",
+    "All six direct caller method bodies are separate boundaries.",
+    "R6 direct instrumented event rows for this method and all six callers are zero, so no live frame/animation link is claimed.",
+    "Original packed-retail decode vault raw archive is absent; runtime/viewer construction remains locked."
+  ]
+}
