@@ -1,0 +1,52 @@
+{
+  "fact_id": "FACT-0254",
+  "claim": "In the matching retail DLL, instance PlayerController_AI.GetGoAroundDir() (MethodDef 0x06004FD7) has raw MethodDef row 14912f0000008100d6390a0031cf0200ce3a, RVA 0x002F9114, signature blob 200011a7dc, raw ImplFlags 0x0000, MethodAttributes 0x0081, fat header 133002007e0000008e020011, max stack 2, one Player local from StandAloneSig 0x1100028E, zero parameters, and an exact 126-byte body SHA-256 6b1b83ca72c103a69a8f1ee79dfef7e6d7024e829b9a338b9589b198d118ab10. Its only MethodDef child is canonical FACT-0109 PlayerMan.GetPlObj at IL+0x0010 (callvirt). The body loads PlObj.TargetPlIdx and the returned Player local, compares their stored PlPos.y fields using blt.un at IL+0x0031, and compares PlPos.x fields with bgt.un at IL+0x0051 or IL+0x0075. The first branch path has raw returns 0 or 1, and the other has raw returns 1 or 0, preserving emitted unordered comparison semantics without imposing authored direction labels. Six MemberRef field reads resolve to metadata names x/y, and no MemberRef methods are called. Matching-DLL scanning finds exactly two direct call references: AIActFunc_GoFrontGrapple IL+0x000D and AIActFunc_GoBackGrapple IL+0x0036.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "PlayerController_AI.GetGoAroundDir token 0x06004FD7 RVA 0x002F9114; 126-byte body sha256=6b1b83ca72c103a69a8f1ee79dfef7e6d7024e829b9a338b9589b198d118ab10; exact MethodDef, local signature, IL branch, field/MemberRef field and complete two-reference/two-caller maps in canonical/witnesses/CAP-R6-001/playercontroller_ai_get_go_around_dir.summary.json; byte prover tools/prove_playercontroller_ai_get_go_around_dir.py.",
+      "observation": "Matching-DLL exact call-free-with-exception-of-FACT-0109 coordinate comparison helper; R6 contains no relevant direct instrumented rows."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.GetGoAroundDir()",
+      "to": "PlayerMan.GetPlObj(Int32)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "callvirt 0x06005065 at GetGoAroundDir IL+0x0010; child SHA-256 32cbd360156f7bbbf97ed096e6afa8d4e7e4e500ff3d37179f32aecfafcf05d8; canonical FACT-0109."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.AIActFunc_GoFrontGrapple()",
+      "to": "PlayerController_AI.GetGoAroundDir()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "call 0x06004FD7 at caller 0x06004FB0 IL+0x000D; caller body 266 bytes sha256 fe0478463f631f1ff67e0445960fb13a4d4e7b436d2a261f50716bb116f6ba3f."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.AIActFunc_GoBackGrapple()",
+      "to": "PlayerController_AI.GetGoAroundDir()",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "call 0x06004FD7 at caller 0x06004FB1 IL+0x0036; caller body 235 bytes sha256 05aa37f29b638f8da45743303251598eea9a5bf501388a75d7f0208ea0a2175c."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The raw returned enum-like values 0 and 1 are not assigned authored world-direction or move semantics.",
+    "The MemberRef field metadata names x and y and raw PlPos field access do not establish scene orientation or relative movement requirements.",
+    "AIActFunc_GoFrontGrapple and AIActFunc_GoBackGrapple remain open caller bodies.",
+    "HungUpCheck remains separate; its Reset_HungUpCheck dependency was already closed by FACT-0038.",
+    "Ring.TestCollision_OctagonEdge_InRing remains blocked on its open MethodDef child Ring.TestCollision_OctagonEdge.",
+    "The R6 capture has zero instrumented rows for the method and both callers and does not establish a runtime animation bridge."
+  ]
+}
