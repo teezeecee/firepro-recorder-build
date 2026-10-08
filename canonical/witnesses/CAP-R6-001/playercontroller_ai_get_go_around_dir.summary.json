@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_GET_GO_AROUND_DIR_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "type": "PlayerController_AI",
+      "method": "GetGoAroundDir",
+      "token": "0x06004FD7",
+      "rva": "0x002F9114",
+      "methoddef_row_hex": "14912f0000008100d6390a0031cf0200ce3a",
+      "signature_blob_hex": "200011a7dc",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "fat_header_hex": "133002007e0000008e020011",
+      "max_stack": 2,
+      "local_signature_token": "0x1100028E",
+      "local_signature_row_hex": "6b940100",
+      "local_signature_blob_hex": "070112a788",
+      "locals": [
+        {
+          "index": 0,
+          "metadata_type": "Player"
+        }
+      ],
+      "parameter_count": 0,
+      "code_size": 126,
+      "code_sha256": "6b1b83ca72c103a69a8f1ee79dfef7e6d7024e829b9a338b9589b198d118ab10",
+      "body_hex": "7efa610004027b4a6100047bb15f00046f655000060a027b4a6100047caa5f00047b0a00000a067caa5f00047b0a00000a4424000000027b4a6100047caa5f00047b0900000a067caa5f00047b0900000a4202000000172a162a027b4a6100047caa5f00047b0900000a067caa5f00047b0900000a4202000000162a172a"
+    },
+    "fields": [
+      {
+        "token": "0x040061FA",
+        "owner": "PlayerMan",
+        "name": "inst",
+        "row_hex": "160006220100cf380000",
+        "signature_blob_hex": "0612a818"
+      },
+      {
+        "token": "0x0400614A",
+        "owner": "PlayerController_AI",
+        "name": "PlObj",
+        "row_hex": "0100b7f203005e190000",
+        "signature_blob_hex": "0612a788"
+      },
+      {
+        "token": "0x04005FB1",
+        "owner": "Player",
+        "name": "TargetPlIdx",
+        "row_hex": "060071e0030001000000",
+        "signature_blob_hex": "0608"
+      },
+      {
+        "token": "0x04005FAA",
+        "owner": "Player",
+        "name": "PlPos",
+        "row_hex": "060039e0030070000000",
+        "signature_blob_hex": "061119"
+      }
+    ],
+    "memberref_fields": [
+      {
+        "token": "0x0A000009",
+        "metadata_name": "x",
+        "memberref_row_hex": "31000000dfb6000014000000",
+        "signature_blob_hex": "060c"
+      },
+      {
+        "token": "0x0A00000A",
+        "metadata_name": "y",
+        "memberref_row_hex": "31000000e1b6000014000000",
+        "signature_blob_hex": "060c"
+      }
+    ],
+    "field_accesses": [
+      {
+        "il": "0x0000",
+        "opcode": "ldsfld",
+        "token": "0x040061FA"
+      },
+      {
+        "il": "0x0006",
+        "opcode": "ldfld",
+        "token": "0x0400614A"
+      },
+      {
+        "il": "0x000B",
+        "opcode": "ldfld",
+        "token": "0x04005FB1"
+      },
+      {
+        "il": "0x0017",
+        "opcode": "ldfld",
+        "token": "0x0400614A"
+      },
+      {
+        "il": "0x001C",
+        "opcode": "ldflda",
+        "token": "0x04005FAA"
+      },
+      {
+        "il": "0x0027",
+        "opcode": "ldflda",
+        "token": "0x04005FAA"
+      },
+      {
+        "il": "0x0037",
+        "opcode": "ldfld",
+        "token": "0x0400614A"
+      },
+      {
+        "il": "0x003C",
+        "opcode": "ldflda",
+        "token": "0x04005FAA"
+      },
+      {
+        "il": "0x0047",
+        "opcode": "ldflda",
+        "token": "0x04005FAA"
+      },
+      {
+        "il": "0x005B",
+        "opcode": "ldfld",
+        "token": "0x0400614A"
+      },
+      {
+        "il": "0x0060",
+        "opcode": "ldflda",
+        "token": "0x04005FAA"
+      },
+      {
+        "il": "0x006B",
+        "opcode": "ldflda",
+        "token": "0x04005FAA"
+      }
+    ],
+    "normalized_field_access_map_sha256": "a48fdfad43d24078fde692cf854dc544d7e73db494ab9acdaf097ffaecfc34af",
+    "memberref_field_accesses": [
+      {
+        "il": "0x0021",
+        "opcode": "ldfld",
+        "token": "0x0A00000A"
+      },
+      {
+        "il": "0x002C",
+        "opcode": "ldfld",
+        "token": "0x0A00000A"
+      },
+      {
+        "il": "0x0041",
+        "opcode": "ldfld",
+        "token": "0x0A000009"
+      },
+      {
+        "il": "0x004C",
+        "opcode": "ldfld",
+        "token": "0x0A000009"
+      },
+      {
+        "il": "0x0065",
+        "opcode": "ldfld",
+        "token": "0x0A000009"
+      },
+      {
+        "il": "0x0070",
+        "opcode": "ldfld",
+        "token": "0x0A000009"
+      }
+    ],
+    "branches": [
+      {
+        "il": "0x0031",
+        "opcode": "blt.un",
+        "target": "0x005A"
+      },
+      {
+        "il": "0x0051",
+        "opcode": "bgt.un",
+        "target": "0x0058"
+      },
+      {
+        "il": "0x0075",
+        "opcode": "bgt.un",
+        "target": "0x007C"
+      }
+    ],
+    "normalized_branch_map_sha256": "89168870fe4dce524cadca483afbac2b8e65d3c62afc3b68265e6c74d42ec1a2",
+    "canonical_internal_calls": [
+      {
+        "il": "0x0010",
+        "opcode": "callvirt",
+        "token": "0x06005065",
+        "owner": "PlayerMan",
+        "method": "GetPlObj",
+        "canonical_fact_id": "FACT-0109",
+        "child_code_size": 25,
+        "child_code_sha256": "32cbd360156f7bbbf97ed096e6afa8d4e7e4e500ff3d37179f32aecfafcf05d8"
+      }
+    ],
+    "normalized_internal_call_map_sha256": "13b4ef5227d073a59ac75ece81a4948af794e5f04580d44e10d275866565883c",
+    "memberref_method_calls": [],
+    "raw_flow": [
+      "Read PlayerMan.inst and PlObj.TargetPlIdx, callvirt PlayerMan.GetPlObj, store local Player.",
+      "Compare self.PlPos.y with local.PlPos.y using blt.un at IL+0x0031; branch target 0x005A.",
+      "Nonbranch path compares self.PlPos.x and local.PlPos.x with bgt.un at IL+0x0051; fallthrough returns raw 1, branch returns raw 0.",
+      "Branch path compares self.PlPos.x and local.PlPos.x with bgt.un at IL+0x0075; fallthrough returns raw 0, branch returns raw 1.",
+      "All comparisons preserve emitted .un branch semantics; no authored meaning assigned to the return enum."
+    ],
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "AIActFunc_GoFrontGrapple",
+        "caller_token": "0x06004FB0",
+        "caller_rva": "0x002F6234",
+        "caller_code_size": 266,
+        "caller_code_sha256": "fe0478463f631f1ff67e0445960fb13a4d4e7b436d2a261f50716bb116f6ba3f",
+        "call_il": "0x000D",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "AIActFunc_GoBackGrapple",
+        "caller_token": "0x06004FB1",
+        "caller_rva": "0x002F634C",
+        "caller_code_size": 235,
+        "caller_code_sha256": "05aa37f29b638f8da45743303251598eea9a5bf501388a75d7f0208ea0a2175c",
+        "call_il": "0x0036",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 2,
+    "direct_caller_method_count": 2,
+    "normalized_reference_map_sha256": "f0445964c004ae70ce4d578835e89c0356d8bf43e0f3d6b184548137d8095a60",
+    "normalized_caller_token_set_sha256": "f5ba886b8ff566cd53e8d0c9c16e7ae72eabe7372dcc5f3bc427e9576e777540"
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "playercontroller_ai_get_go_around_dir_row_count": 0,
+    "playerman_get_pl_obj_row_count": 0,
+    "playercontroller_ai_aiactfunc_go_front_grapple_row_count": 0,
+    "playercontroller_ai_aiactfunc_go_back_grapple_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "selection_boundary": {
+    "selected_method": "PlayerController_AI.GetGoAroundDir",
+    "selected_code_size": 126,
+    "only_methoddef_child": "FACT-0109",
+    "other_current_open_method": "PlayerController_AI.HungUpCheck",
+    "other_code_size": 250,
+    "reset_hung_up_check_already_canonical": "FACT-0038",
+    "smaller_ring_wrapper_status": "Ring.TestCollision_OctagonEdge_InRing is 15 bytes but its Ring.TestCollision_OctagonEdge child (569 bytes) is not canonical"
+  },
+  "limits": [
+    "Raw return values 0 and 1 remain uninterpreted metadata enum values.",
+    "The source code names x and y denote only resolved MemberRef fields and not a world-direction promise.",
+    "AIActFunc_GoFrontGrapple and AIActFunc_GoBackGrapple remain separate open bodies.",
+    "HungUpCheck is not closed by this fact.",
+    "Fresh R6 provides no method-call evidence for this seam.",
+    "MMA ring and authored geometry data remain separate source boundaries."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_get_go_around_dir.py"
+}
