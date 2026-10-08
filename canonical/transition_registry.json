@@ -4560,6 +4560,27 @@
         "smaller Ring.TestCollision_OctagonEdge_InRing remains blocked by its open child",
         "packed retail decode vault remains unavailable; runtime/viewer stays locked"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_GO_GRAPPLE_V1",
+      "fact_id": "FACT-0256",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 23-byte matching-DLL PlayerController_AI.SetAIAct_GoGrapple wrapper: literal 1 and forwarded tm passed to FACT-0043 SetAIAct, authored metadata parameter fields nextSkill/aiActPrm written from SkillSlotEnum skill and GoAroundDir dir, six complete source-pinned direct DLL callers.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_go_grapple.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 6,
+      "direct_caller_method_count": 6,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "raw action id 1 is not assigned a gameplay label",
+        "six caller bodies remain separately open, including position/state consumers",
+        "CAP-R6-001 has zero direct instrumented method or caller event rows",
+        "no authored animation or packed data selection proven",
+        "retail decode vault raw archive absent; runtime/viewer remains locked"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
