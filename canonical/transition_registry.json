@@ -4538,6 +4538,28 @@
         "the smaller Ring.TestCollision_OctagonEdge_InRing remains blocked by an open MethodDef child",
         "fresh R6 contains zero target, child and caller rows and supplies no runtime bridge"
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_HUNG_UP_CHECK_V1",
+      "fact_id": "FACT-0255",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 250-byte PlayerController_AI.HungUpCheck: canonical FACT-0253 status getter and FACT-0038 history reset, eight-entry positional history and pointer remainder, raw Vector2 call/branch sequence, complete five direct-caller map.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_hung_up_check.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 5,
+      "direct_caller_method_count": 5,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "no authored PlayerStatusData controllable table meanings or State enum labels are assigned",
+        "external UnityEngine Vector2 method implementations remain outside matching DLL",
+        "five AI caller bodies remain separate method/behavior boundaries",
+        "R6 contains no direct method or caller rows; no frame or choreography bridge",
+        "smaller Ring.TestCollision_OctagonEdge_InRing remains blocked by its open child",
+        "packed retail decode vault remains unavailable; runtime/viewer stays locked"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
