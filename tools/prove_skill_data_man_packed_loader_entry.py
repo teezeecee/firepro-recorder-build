@@ -21,7 +21,7 @@ def verify(path,w):
     need(pe[base.off(ss,rva):start].hex()==m["header_hex"],"method header")
     need(body.hex()==m["body_hex"] and len(body)==m["code_size"]==51 and hashlib.sha256(body).hexdigest()==m["code_sha256"],"exact original code")
     us=st["#US"][0]+0xCEAC
-    need(pe[us]==15 and pe[us+1:us+15-1].decode("utf-16-le")=="fprwaza","literal #US")
+    need(pe[us]==15 and pe[us+1:us+15].decode("utf-16-le")=="fprwaza","literal #US")
     need(w["dll"]["resource_string"]=={"token":"0x7000CEAC","value":"fprwaza"},"witness string")
     sites=[(0,0x72,0x7000CEAC),(6,0x28,0x0A00055A),(13,0x28,0x0A0006DA),
            (18,0x75,0x010000E4),(26,0x6F,0x0A00014F),(31,0x28,0x06005257),
