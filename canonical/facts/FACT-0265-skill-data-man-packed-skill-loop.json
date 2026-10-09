@@ -1,0 +1,60 @@
+{
+  "fact_id": "FACT-0265",
+  "status": "PROVEN_DLL",
+  "claim": "Original retail SHA-pinned SkillDataMan._loadPackedSkillData MethodDef 0x06005257 has exact 354-byte source body SHA 9a502219cf3c64f9b5971f6b3ccaa74b719c1f5477c61a980806bc6e2d4f0545. Raw IL computes a four-byte Int32 from byte-array indices 8*i through 8*i+3 using shifts 8/16/24, checks the resulting Int32 against the array length, conditionally uses a literal 2675 threshold, and passes the value to separate ParseRSFData MethodDef 0x0600525F before assigning skillData[i]. First loop bound is literally 4188. A separate second loop has raw bound 2000 and uses SkillInfoManager validation/info, AnmBankData.GetAnmFileNum, SkillIDToAnmIDTbl, a SkillData array, and skillAnmDataTbl.Add. Exactly 148 IL instructions, 16 branches, six distinct MethodDef callees. The DLL source alone establishes no retail resource/export equivalence or named animation-frame meaning.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MethodDef 0x06005257 RVA 0x0031F290 exact raw row 90f2310000008100f95c0a00f49d0000ba3c, original code SHA 9a502219cf3c64f9b5971f6b3ccaa74b719c1f5477c61a980806bc6e2d4f0545, indexed token and branch audit in canonical/witnesses/CAP-R6-001/skill_data_man_packed_skill_loop.summary.json; independent original-byte prover tools/prove_skill_data_man_packed_skill_loop.py",
+      "observation": "DLL-only bounded two-pass loader source and six distinct MethodDef token dependencies."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0264 LoadPackedSkillData at IL+0x001F",
+      "to": "_loadPackedSkillData MethodDef 0x06005257",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact 51-byte caller source and direct MethodDef call token at 0x001F."
+        }
+      ]
+    },
+    {
+      "from": "_loadPackedSkillData original indexed first pass",
+      "to": "ParseRSFData MethodDef 0x0600525F",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original offset 0x0075 direct call, raw index×8 four-byte construction, literal 4188 first-loop bound at 0x00B0."
+        }
+      ]
+    },
+    {
+      "from": "_loadPackedSkillData original conditional input check",
+      "to": "SkillInfoManager and AnmIDToSkillID source methods",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original call tokens at IL+0x004D, 0x005B, 0x008D, 0x00A6, and raw threshold 2675."
+        }
+      ]
+    },
+    {
+      "from": "_loadPackedSkillData second pass",
+      "to": "GetAnmFileNum / SkillIDToAnmIDTbl / skillAnmDataTbl.Add",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original call and field token offsets IL+0x00DF, 0x00FE, 0x0105, 0x0111, 0x0141, 0x014A; loop bound 2000 at 0x0157."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The first-pass raw 4188 bound does not establish that the separately exported fprwaza TextAsset uses this loader's exact indexed layout; the export-to-DLL format mapping and parent-container identity remain open.",
+    "The raw boundary 2675 and second-pass bound 2000 are not asserted to count or name retail moves or distinguish authored DLC.",
+    "Separate ParseRSFData's 1735-byte body and all artwork, timing, bank, positional and retail-match semantics remain open.",
+    "No original proprietary asset payload is committed; milestone SOURCE_CONSOLIDATION_V1 and runtime/viewer LOCK are unchanged."
+  ]
+}

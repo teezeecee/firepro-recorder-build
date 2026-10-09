@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_PACKED_SKILL_LOOP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "_loadPackedSkillData",
+      "token": "0x06005257",
+      "rva": "0x0031F290",
+      "methoddef_row_hex": "90f2310000008100f95c0a00f49d0000ba3c",
+      "signature_blob_hex": "2001011c",
+      "parameter_name": "o",
+      "parameter_row_hex": "0000010051a80600",
+      "header_hex": "1330070062010000e5110011",
+      "code_size": 354,
+      "code_sha256": "9a502219cf3c64f9b5971f6b3ccaa74b719c1f5477c61a980806bc6e2d4f0545",
+      "instructions": 148,
+      "branches": 16
+    },
+    "constants": [
+      {
+        "il": "0x0042",
+        "value": 2675
+      },
+      {
+        "il": "0x007C",
+        "value": 2675
+      },
+      {
+        "il": "0x00B0",
+        "value": 4188
+      },
+      {
+        "il": "0x0157",
+        "value": 2000
+      }
+    ],
+    "branch_sites": [
+      {
+        "il": "0x0034",
+        "op": "blt",
+        "target": "0x003E"
+      },
+      {
+        "il": "0x0081",
+        "op": "bge",
+        "target": "0x00AB"
+      },
+      {
+        "il": "0x00B5",
+        "op": "blt",
+        "target": "0x000E"
+      },
+      {
+        "il": "0x015C",
+        "op": "blt",
+        "target": "0x00C2"
+      }
+    ],
+    "methoddef_children": [
+      {
+        "token": "0x06005268",
+        "owner": "SkillDataMan",
+        "name": "AnmIDToSkillID",
+        "body_size": 81,
+        "body_sha256": "ee0b44183026d662cf7ccef95bb94adc16396d85a8854828e972484569d9c307"
+      },
+      {
+        "token": "0x06001163",
+        "owner": "SkillInfoManager",
+        "name": "IsValidSkillID",
+        "body_size": 21,
+        "body_sha256": "9fe678f08e9083c8b36482f038cd33969c3d78bfb5ea3cc4c47db02cf9b01992"
+      },
+      {
+        "token": "0x0600525F",
+        "owner": "SkillDataMan",
+        "name": "ParseRSFData",
+        "body_size": 1735,
+        "body_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+      },
+      {
+        "token": "0x06001166",
+        "owner": "SkillInfoManager",
+        "name": "ApplySkillParam",
+        "body_size": 386,
+        "body_sha256": "49f3fdacd9378d68c7c474766af4ba146ebccc86a8acbb27e240f63353640291"
+      },
+      {
+        "token": "0x06001164",
+        "owner": "SkillInfoManager",
+        "name": "GetSkillInfo",
+        "body_size": 32,
+        "body_sha256": "20b9e57db76492a26682a8438d6b177137717b54048168d56fa33ab8505032bd"
+      },
+      {
+        "token": "0x06005244",
+        "owner": "AnmBankData",
+        "name": "GetAnmFileNum",
+        "body_size": 62,
+        "body_sha256": "e14414c9db821065dd7627fb267798d6659affcb7acce76019717bd19664ca9c"
+      }
+    ],
+    "direct_caller": {
+      "method": "SkillDataMan.LoadPackedSkillData",
+      "token": "0x06005256",
+      "il": "0x001F",
+      "body_size": 51,
+      "body_sha256": "e04ad14f86708279e782875a103814dcee242d1f0af8b01d8923a2197cbbe8d2"
+    },
+    "field_tokens": {
+      "skillData": "0x04007CF7",
+      "skillAnmDataTbl": "0x04007CF8",
+      "SkillIDToAnmIDTbl": "0x040085C3"
+    },
+    "last_pass_memberref": "0x0A000F99"
+  },
+  "limits": [
+    "The first-pass raw 4188 bound does not establish that the separately exported fprwaza TextAsset uses this loader's exact indexed layout; the export-to-DLL format mapping and parent-container identity remain open.",
+    "The raw boundary 2675 and second-pass bound 2000 are not asserted to count or name retail moves or distinguish authored DLC.",
+    "Separate ParseRSFData's 1735-byte body and all artwork, timing, bank, positional and retail-match semantics remain open.",
+    "No original proprietary asset payload is committed; milestone SOURCE_CONSOLIDATION_V1 and runtime/viewer LOCK are unchanged."
+  ]
+}

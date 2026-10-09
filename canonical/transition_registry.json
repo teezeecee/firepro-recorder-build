@@ -4750,6 +4750,25 @@
         "User-provided UABEA exports have separately observed SHA hashes but do not establish original parent resources.assets provenance or author a decoded frame.",
         "No match event, artwork alignment, or runtime/viewer implementation is established; SOURCE_CONSOLIDATION_V1 lock remains intact."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_PACKED_SKILL_LOOP_V1",
+      "fact_id": "FACT-0265",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 354-byte original SkillDataMan._loadPackedSkillData with raw 4188 first-loop bound, 2675 threshold, 2000 second-loop bound, six source children, direct ParseRSFData boundary, original typed field accesses.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_packed_skill_loop.summary.json",
+      "dll_method_count": 1,
+      "direct_methoddef_child_count": 6,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The first-pass raw 4188 bound does not establish that the separately exported fprwaza TextAsset uses this loader's exact indexed layout; the export-to-DLL format mapping and parent-container identity remain open.",
+        "The raw boundary 2675 and second-pass bound 2000 are not asserted to count or name retail moves or distinguish authored DLC.",
+        "Separate ParseRSFData's 1735-byte body and all artwork, timing, bank, positional and retail-match semantics remain open.",
+        "No original proprietary asset payload is committed; milestone SOURCE_CONSOLIDATION_V1 and runtime/viewer LOCK are unchanged."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
