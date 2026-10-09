@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0264",
+  "claim": "Matching original DLL-001 SkillDataMan.LoadPackedSkillData, MethodDef 0x06005256 RVA 0x0031F250, has an exact 51-byte IL body with SHA-256 e04ad14f86708279e782875a103814dcee242d1f0af8b01d8923a2197cbbe8d2. Its literal source string is fprwaza; it calls MemberRef Load (0x0A0006DA), tests TypeRef UnityEngine.TextAsset (0x010000E4), invokes get_bytes (0x0A00014F), passes those bytes to distinct MethodDef _loadPackedSkillData (0x06005257), and calls UnloadAsset (0x0A0006DF). The body also takes two get_realtimeSinceStartup readings and subtracts their results. Exactly 19 IL instructions, zero branch instructions. This is only the DLL resource-entry boundary; neither the 354-byte child loader, the 1735-byte ParseRSFData method, nor individual animation record meanings are source-closed.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MethodDef 0x06005256 raw row 50f2310000008100e55c0a005c480000ba3c, signature 200001, 51-byte IL SHA e04ad14f86708279e782875a103814dcee242d1f0af8b01d8923a2197cbbe8d2; exact fprwaza #US string, call/TypeRef token offsets and source metadata witnessed in canonical/witnesses/CAP-R6-001/skill_data_man_packed_loader_entry.summary.json and replayable by tools/prove_skill_data_man_packed_loader_entry.py",
+      "observation": "Exact DLL resource-loading wrapper only."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "SkillDataMan.LoadPackedSkillData IL+0x0000 fprwaza literal",
+      "to": "UnityEngine Resources.Load MemberRef 0x0A0006DA IL+0x000D",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IL+0x0000 ldstr token 0x7000CEAC resolves to fprwaza; IL+0x000D call token 0x0A0006DA; original MemberRef row name Load."
+        }
+      ]
+    },
+    {
+      "from": "Load result, IL+0x0012 TextAsset isinst; IL+0x001A get_bytes",
+      "to": "SkillDataMan._loadPackedSkillData MethodDef 0x06005257 IL+0x001F",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original code bytes at 0x0012, 0x001A and 0x001F; distinct 354-byte MethodDef 0x06005257 hash 9a502219cf3c64f9b5971f6b3ccaa74b719c1f5477c61a980806bc6e2d4f0545."
+        }
+      ]
+    },
+    {
+      "from": "SkillDataMan.LoadPackedSkillData IL+0x0024 ldloc.2",
+      "to": "UnityEngine UnloadAsset MemberRef 0x0A0006DF IL+0x0025",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact IL bytes 08 28 df 06 00 0a; MemberRef row name UnloadAsset with raw signature 0001011269."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The literal resource name and IL source calls are proven. UnityEngine resource implementation is external to DLL-001.",
+    "The 354-byte _loadPackedSkillData and 1735-byte ParseRSFData bodies remain open; no record index, frame, bank or timing interpretation is claimed.",
+    "User-provided UABEA exports have separately observed SHA hashes but do not establish original parent resources.assets provenance or author a decoded frame.",
+    "No match event, artwork alignment, or runtime/viewer implementation is established; SOURCE_CONSOLIDATION_V1 lock remains intact."
+  ]
+}

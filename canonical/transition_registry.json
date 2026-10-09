@@ -4729,6 +4729,27 @@
         "Original R6 event trace has no directly instrumented MoveToDest or AIActFunc_RunAndFlyToOutOfRing rows. No recording-backed runtime bridge is claimed.",
         "Packed retail decode vault is still missing; runtime/viewer remains LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_PACKED_LOADER_ENTRY_V1",
+      "fact_id": "FACT-0264",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact original-DLL SkillDataMan.LoadPackedSkillData 51-byte wrapper, fprwaza #US literal, Resources Load/TextAsset bytes, distinct 354-byte _loadPackedSkillData boundary, UnloadAsset and elapsed-time arithmetic. Does not decode moves.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_packed_loader_entry.summary.json",
+      "dll_method_count": 1,
+      "resource_literal_count": 1,
+      "memberref_call_site_count": 4,
+      "methoddef_child_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The literal resource name and IL source calls are proven. UnityEngine resource implementation is external to DLL-001.",
+        "The 354-byte _loadPackedSkillData and 1735-byte ParseRSFData bodies remain open; no record index, frame, bank or timing interpretation is claimed.",
+        "User-provided UABEA exports have separately observed SHA hashes but do not establish original parent resources.assets provenance or author a decoded frame.",
+        "No match event, artwork alignment, or runtime/viewer implementation is established; SOURCE_CONSOLIDATION_V1 lock remains intact."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

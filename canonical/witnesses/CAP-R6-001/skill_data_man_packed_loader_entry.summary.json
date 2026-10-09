@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_PACKED_LOADER_ENTRY_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "LoadPackedSkillData",
+      "token": "0x06005256",
+      "rva": "0x0031F250",
+      "methoddef_row_hex": "50f2310000008100e55c0a005c480000ba3c",
+      "signature_blob_hex": "200001",
+      "header_hex": "1330020033000000e4110011",
+      "code_size": 51,
+      "code_sha256": "e04ad14f86708279e782875a103814dcee242d1f0af8b01d8923a2197cbbe8d2",
+      "body_hex": "72acce00700a285a05000a0b0628da06000a75e40000010c02086f4f01000a28575200060828df06000a285a05000a07590d2a",
+      "instruction_count": 19
+    },
+    "resource_string": {
+      "token": "0x7000CEAC",
+      "value": "fprwaza"
+    },
+    "exact_token_sites": [
+      {
+        "il": "0x0000",
+        "opcode": "ldstr",
+        "operand": "0x7000CEAC",
+        "literal": "fprwaza"
+      },
+      {
+        "il": "0x0006",
+        "opcode": "call",
+        "operand": "0x0A00055A",
+        "name": "get_realtimeSinceStartup"
+      },
+      {
+        "il": "0x000D",
+        "opcode": "call",
+        "operand": "0x0A0006DA",
+        "name": "Load"
+      },
+      {
+        "il": "0x0012",
+        "opcode": "isinst",
+        "operand": "0x010000E4",
+        "name": "UnityEngine.TextAsset"
+      },
+      {
+        "il": "0x001A",
+        "opcode": "callvirt",
+        "operand": "0x0A00014F",
+        "name": "get_bytes"
+      },
+      {
+        "il": "0x001F",
+        "opcode": "call",
+        "operand": "0x06005257",
+        "name": "_loadPackedSkillData"
+      },
+      {
+        "il": "0x0025",
+        "opcode": "call",
+        "operand": "0x0A0006DF",
+        "name": "UnloadAsset"
+      },
+      {
+        "il": "0x002A",
+        "opcode": "call",
+        "operand": "0x0A00055A",
+        "name": "get_realtimeSinceStartup"
+      }
+    ],
+    "memberrefs": [
+      {
+        "token": "0x0A00055A",
+        "name": "get_realtimeSinceStartup",
+        "parent_coded": 1617,
+        "signature_blob_hex": "00000c",
+        "raw_row_hex": "51060000e48c0600a94d0000"
+      },
+      {
+        "token": "0x0A0006DA",
+        "name": "Load",
+        "parent_coded": 1929,
+        "signature_blob_hex": "000112690e",
+        "raw_row_hex": "890700009f0c020095a90000"
+      },
+      {
+        "token": "0x0A00014F",
+        "name": "get_bytes",
+        "parent_coded": 1825,
+        "signature_blob_hex": "20001d05",
+        "raw_row_hex": "21070000f35b060032560000"
+      },
+      {
+        "token": "0x0A0006DF",
+        "name": "UnloadAsset",
+        "parent_coded": 1929,
+        "signature_blob_hex": "0001011269",
+        "raw_row_hex": "89070000d8a40600cc510000"
+      }
+    ],
+    "child": {
+      "token": "0x06005257",
+      "name": "_loadPackedSkillData",
+      "rva": "0x0031F290",
+      "code_size": 354,
+      "code_sha256": "9a502219cf3c64f9b5971f6b3ccaa74b719c1f5477c61a980806bc6e2d4f0545"
+    },
+    "neighbor": {
+      "token": "0x0600525F",
+      "name": "ParseRSFData",
+      "rva": "0x0031F694",
+      "code_size": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "branch_count": 0
+  },
+  "limits": [
+    "The literal resource name and IL source calls are proven. UnityEngine resource implementation is external to DLL-001.",
+    "The 354-byte _loadPackedSkillData and 1735-byte ParseRSFData bodies remain open; no record index, frame, bank or timing interpretation is claimed.",
+    "User-provided UABEA exports have separately observed SHA hashes but do not establish original parent resources.assets provenance or author a decoded frame.",
+    "No match event, artwork alignment, or runtime/viewer implementation is established; SOURCE_CONSOLIDATION_V1 lock remains intact."
+  ],
+  "reproducibility_tool": "tools/prove_skill_data_man_packed_loader_entry.py"
+}
