@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_MOVE_TO_DEST_VECTOR_WRAPPER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "PlayerController_AI",
+      "namespace": "",
+      "name": "MoveToDest",
+      "token": "0x06004FDB",
+      "methoddef_row_hex": "4b942f0000008100113a0a000bcf0200ce3a",
+      "rva": "0x002F944B",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "signature_blob_hex": "200111904c1131",
+      "tiny_header_hex": "56",
+      "parameter_count": 1,
+      "parameter_name": "dest",
+      "parameter_row_hex": "0000010092ed0600",
+      "code_size": 21,
+      "code_sha256": "11eb9cbb8fd8c2952d6bd659ac309e96e21f77918209a8584bae8cdc24e55c8e",
+      "body_hex": "020f017b5900000a0f017b5a00000a28dc4f00062a",
+      "decoded_instruction_count": 7
+    },
+    "instructions": [
+      {
+        "il": "0x0000",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0001",
+        "opcode": "ldarga.s",
+        "argument_index": 1
+      },
+      {
+        "il": "0x0003",
+        "opcode": "ldfld",
+        "operand": "0x0A000059"
+      },
+      {
+        "il": "0x0008",
+        "opcode": "ldarga.s",
+        "argument_index": 1
+      },
+      {
+        "il": "0x000A",
+        "opcode": "ldfld",
+        "operand": "0x0A00005A"
+      },
+      {
+        "il": "0x000F",
+        "opcode": "call",
+        "operand": "0x06004FDC"
+      },
+      {
+        "il": "0x0014",
+        "opcode": "ret"
+      }
+    ],
+    "memberref_field_sites": [
+      {
+        "il": "0x0003",
+        "opcode": "ldfld",
+        "token": "0x0A000059",
+        "name": "x",
+        "memberref_parent_coded": 97,
+        "raw_row_hex": "61000000dfb6000014000000",
+        "signature_blob_hex": "060c"
+      },
+      {
+        "il": "0x000A",
+        "opcode": "ldfld",
+        "token": "0x0A00005A",
+        "name": "y",
+        "memberref_parent_coded": 97,
+        "raw_row_hex": "61000000e1b6000014000000",
+        "signature_blob_hex": "060c"
+      }
+    ],
+    "memberref_field_site_count": 2,
+    "direct_methoddef_call_sites": [
+      {
+        "il": "0x000F",
+        "opcode": "call",
+        "token": "0x06004FDC",
+        "owner": "PlayerController_AI",
+        "name": "MoveToDest",
+        "callee_rva": "0x002F9464",
+        "callee_code_size": 142,
+        "callee_code_sha256": "3f9d8816c85afca89e72a9f2fbb744ecdb15ddc77d699383c096870921377526"
+      }
+    ],
+    "direct_methoddef_call_count": 1,
+    "branch_count": 0,
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "AIActFunc_RunAndFlyToOutOfRing",
+        "caller_token": "0x06004FBB",
+        "caller_rva": "0x002F7048",
+        "caller_code_size": 381,
+        "caller_code_sha256": "a9fef818ac551e87a8b4683539244329c2febaabb398d07764793733d426c676",
+        "call_il": "0x00F9",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "checked_method_event_counts": {
+      "PlayerController_AI.MoveToDest": 0,
+      "PlayerController_AI.AIActFunc_RunAndFlyToOutOfRing": 0
+    },
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "The two MemberRef fields are raw source identifiers x/y with signature 060c; no physical coordinate system, scale, elevation, move speed, or authored motion semantics are established.",
+    "The single MethodDef child PlayerController_AI.MoveToDest overload token 0x06004FDC has a separate 142-byte body and is not source-closed by this wrapper fact.",
+    "The only matching-DLL direct reference is one call from AIActFunc_RunAndFlyToOutOfRing token 0x06004FBB IL+0x00F9. This does not close that 381-byte caller or demonstrate its execution.",
+    "Original R6 event trace has no directly instrumented MoveToDest or AIActFunc_RunAndFlyToOutOfRing rows. No recording-backed runtime bridge is claimed.",
+    "Packed retail decode vault is still missing; runtime/viewer remains LOCKED."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_move_to_dest_vector_wrapper.py"
+}
