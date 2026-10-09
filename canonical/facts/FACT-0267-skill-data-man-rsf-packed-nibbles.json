@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0267",
+  "status": "PROVEN_DLL",
+  "claim": "Matching original retail DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F (RVA 0x0031F694, 1,735 byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae) reads two packed source bytes at indices arg2+14 and arg2+15, after original ten-byte initial advance and prior arg2+10/+11 fields, a separate read at arg2+12, and one explicit additional cursor skip over arg2+13. Original FieldDefs show byte14 low nibble -> SkillData.winningTechDispType; byte14 high nibble -> SkillData.artPoint; byte15 low nibble -> SkillData.cheerLevel; byte15 bits 4..6 -> SkillData.cheerType. Original byte15 bit7 is tested via 0x80 and brfalse; on nonzero source flag branch it ORs SkillData.flags with 0x100 before optional reads. This is source-proven byte packing and branching only, not evidence of named moves, animation semantics or actual exported source binding.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original MethodDef 0x0600525F full-body SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae, IL+0x001D..0x00D1 original byte arithmetic/masks/stfld and original FieldDef metadata rows 0x04007C72 through 0x04007C75 plus 0x04007C55. Replay tools/prove_skill_data_man_rsf_packed_nibbles.py against SHA-checked DLL with immutable witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_packed_nibbles.summary.json",
+      "observation": "Two source bytes, four original FieldDef destinations and one high-bit-controlled flags write."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Corrected FACT-0266 source cursor (arg2+10, arg2+11)",
+      "to": "ParseRSFData arg2+14/15 packed bytes",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x005F..0x007B reads +12, explicitly increments cursor once at +13, then consumes +14 and +15 with dup/stloc.2/ldelem.u1."
+        }
+      ]
+    },
+    {
+      "from": "arg2+14 low/high nibble",
+      "to": "SkillData.winningTechDispType / artPoint",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x007B..0x0092, mask 0x0F, >>4 mask 0x0F, source stfld FieldDef 0x04007C72/0x04007C73."
+        }
+      ]
+    },
+    {
+      "from": "arg2+15 low/seven-high bits",
+      "to": "SkillData.cheerLevel / cheerType / flags",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x009C..0x00D1, low nibble and high bits 4..6, conditional byte15 & 0x80 flag, then SkillData.flags |= 0x100."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "PROVEN_DLL means only matching original IL and FieldDef metadata, not any claimed gameplay interpretation of these fields.",
+    "Field byte positions are relative to parser argument2. Parent export / resources.assets relationship is still unverified and no exported input records are promoted.",
+    "Original flag high bit selects an optional branch, but the later conditional layout, authored animation frames, timing, bank orientation, move names, and root offsets remain OPEN.",
+    "Milestone SOURCE_CONSOLIDATION_V1 remains runtime/viewer LOCKED; no proprietary binary resources committed."
+  ]
+}

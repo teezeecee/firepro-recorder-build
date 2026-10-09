@@ -4788,6 +4788,29 @@
         "No original proprietary bytes committed. Runtime/viewer construction stays locked."
       ],
       "correction_audit": "FACT-0266 originally wrote +11/+12 due to misinterpreted postincrement. Original IL+0x001D..0x005A now independently checked: raw reads consume previous cursor at +10/+11. No new FACT issued for this correction."
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_PACKED_NIBBLES_V1",
+      "fact_id": "FACT-0267",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData IL+0x006E–0x00D1: two packed bytes arg2+14/+15, exact masks and shift, 4 original SkillData field writes, byte15 high-bit branch and flags OR 0x100, with corrected postincrement source derivation.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_packed_nibbles.summary.json",
+      "dll_method_count": 1,
+      "fielddef_count": 5,
+      "source_byte_positions": [
+        14,
+        15
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "PROVEN_DLL means only matching original IL and FieldDef metadata, not any claimed gameplay interpretation of these fields.",
+        "Field byte positions are relative to parser argument2. Parent export / resources.assets relationship is still unverified and no exported input records are promoted.",
+        "Original flag high bit selects an optional branch, but the later conditional layout, authored animation frames, timing, bank orientation, move names, and root offsets remain OPEN.",
+        "Milestone SOURCE_CONSOLIDATION_V1 remains runtime/viewer LOCKED; no proprietary binary resources committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
