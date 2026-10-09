@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_ATTACK_BYTE_RUN_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "filename": "Assembly-CSharp.dll",
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "methoddef_row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "code_size": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae",
+      "header_hex": "13300600c7060000ec110011"
+    },
+    "prior_control_flow": {
+      "source_flag_branch_il": "0x00BB",
+      "source_zero_flag_target": "0x00D2",
+      "source_true_flag_path_end_il": "0x00CD",
+      "nine_unconditional_writes_begin_il": "0x00D2",
+      "cursor_relative_start": 16
+    },
+    "field_writes": [
+      {
+        "name": "anmType",
+        "token": "0x04007C53",
+        "row_hex": "0600ec7201008e370000",
+        "read_input_relative_offset": 16,
+        "il_offset": "0x00D2",
+        "il_body_hex": "0703082517580c917d537c0004"
+      },
+      {
+        "name": "comboAnmPosMdf",
+        "token": "0x04007C56",
+        "row_hex": "0600fb720100ea3a0000",
+        "read_input_relative_offset": 17,
+        "il_offset": "0x00DF",
+        "il_body_hex": "0703082517580c917d567c0004"
+      },
+      {
+        "name": "atkPow_HP",
+        "token": "0x04007C5A",
+        "row_hex": "06005c4b010001000000",
+        "read_input_relative_offset": 18,
+        "il_offset": "0x00EC",
+        "il_body_hex": "0703082517580c917d5a7c0004"
+      },
+      {
+        "name": "atkPow_SP",
+        "token": "0x04007C5B",
+        "row_hex": "0600664b010001000000",
+        "read_input_relative_offset": 19,
+        "il_offset": "0x00F9",
+        "il_body_hex": "0703082517580c917d5b7c0004"
+      },
+      {
+        "name": "atkPow_Neck",
+        "token": "0x04007C5D",
+        "row_hex": "06007a4b010001000000",
+        "read_input_relative_offset": 20,
+        "il_offset": "0x0106",
+        "il_body_hex": "0703082517580c917d5d7c0004"
+      },
+      {
+        "name": "atkPow_Arm",
+        "token": "0x04007C5E",
+        "row_hex": "0600864b010001000000",
+        "read_input_relative_offset": 21,
+        "il_offset": "0x0113",
+        "il_body_hex": "0703082517580c917d5e7c0004"
+      },
+      {
+        "name": "atkPow_Waist",
+        "token": "0x04007C5F",
+        "row_hex": "0600914b010001000000",
+        "read_input_relative_offset": 22,
+        "il_offset": "0x0120",
+        "il_body_hex": "0703082517580c917d5f7c0004"
+      },
+      {
+        "name": "atkPow_Leg",
+        "token": "0x04007C60",
+        "row_hex": "06009e4b010001000000",
+        "read_input_relative_offset": 23,
+        "il_offset": "0x012D",
+        "il_body_hex": "0703082517580c917d607c0004"
+      },
+      {
+        "name": "atkPow_BP",
+        "token": "0x04007C5C",
+        "row_hex": "0600704b010001000000",
+        "read_input_relative_offset": 24,
+        "il_offset": "0x013A",
+        "il_body_hex": "0703082517580c917d5c7c0004"
+      }
+    ],
+    "split": {
+      "raw_input_relative_offset": 25,
+      "start_il": "0x0147",
+      "end_exclusive_il": "0x017F",
+      "exact_source_hex": "03082517580c91130411041f323c140000000711047d6b7c000407167d6c7c0004381200000007167d6b7c00040711041f32597d6c7c0004",
+      "signed_compare_literal": 50,
+      "bge_il": "0x0154",
+      "bge_target": "0x016D",
+      "br_il": "0x0168",
+      "br_target": "0x017F",
+      "below_threshold": {
+        "bleedingRate": "raw byte25",
+        "anmLoopTimes": 0
+      },
+      "at_or_above_threshold": {
+        "bleedingRate": 0,
+        "anmLoopTimes": "raw byte25 - 50"
+      },
+      "fields": [
+        {
+          "name": "bleedingRate",
+          "token": "0x04007C6B",
+          "row_hex": "0600164c010001000000"
+        },
+        {
+          "name": "anmLoopTimes",
+          "token": "0x04007C6C",
+          "row_hex": "06008573010001000000"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Field names and signed comparison are original DLL metadata and IL, not the author's gameplay purpose, move ID, stock/DLC split, attack impact, or animation meaning.",
+    "Nine writes from arg2+16..+24 follow both paths of prior bit7 guard: they are unconditional in this local block, not an optional record extension; only bit7 flag write is conditional.",
+    "This fact closes exactly original parser IL+0x00D2..0x017E. Following parser bytes, frame banks, timing, root offsets, and transition semantics are still open.",
+    "Source export TextAsset and Unity resources.assets parent or actual Resources.Load routing are not source-verified in this fact. SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+  ]
+}

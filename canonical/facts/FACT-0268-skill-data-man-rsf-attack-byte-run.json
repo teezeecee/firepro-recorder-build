@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0268",
+  "status": "PROVEN_DLL",
+  "claim": "Original SHA-pinned retail DLL-001 SkillDataMan.ParseRSFData (MethodDef 0x0600525F, exact 1,735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae) writes nine consecutive unsigned bytes from input argument1 at indices original argument2+16 through +24 into source-named SkillData FieldDefs, in source order: anmType, comboAnmPosMdf, atkPow_HP, atkPow_SP, atkPow_Neck, atkPow_Arm, atkPow_Waist, atkPow_Leg, atkPow_BP. The exact straight-line block IL+0x00D2..0x0146 is reached both when the preceding byte15 bit7 condition is zero and nonzero, so these nine reads are unconditional relative to that flag. The tenth byte, at arg2+25, is compared against literal signed 50. If lower than 50, original IL writes bleedingRate=byte25 and anmLoopTimes=0; otherwise writes bleedingRate=0 and anmLoopTimes=byte25-50. Both field names and all related metadata tokens and branch targets are original DLL bytes. No authored gameplay effects, animation frame/bank semantics, or installed resource mapping are claimed.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original MethodDef 0x0600525F SHA-pinned 1,735 IL bytes. Exact nine 13-byte stfld sequences IL+0x00D2..0x0146 and tenth byte/bge/br partition IL+0x0147..0x017E. Exact original FieldDef rows 0x04007C53/56/5A/5B/5D/5E/5F/60/5C/6B/6C. Independently replay with tools/prove_skill_data_man_rsf_attack_byte_run.py and witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_attack_byte_run.summary.json",
+      "observation": "Unconditional nine field writes and tenth-byte cutoff 50 in original parser source."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0267 byte15 bit7 branch",
+      "to": "Parser IL+0x00D2 unconditionally joins nine stfld writes",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "At IL+0x00BB brfalse directly targets IL+0x00D2; other branch performs flags|=0x100 at IL+0x00C0..0x00D1 and falls through to IL+0x00D2."
+        }
+      ]
+    },
+    {
+      "from": "Parser arg2+16..+24",
+      "to": "Nine original SkillData FieldDef assignments",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exactly nine 13-byte ldloc.1/ldarg.1/ldloc.2/dup/add/stloc.2/ldelem.u1/stfld sequences IL+0x00D2..0x0146; nine original FieldDef metadata names."
+        }
+      ]
+    },
+    {
+      "from": "Parser arg2+25",
+      "to": "bleedingRate / anmLoopTimes mutually exclusive source assignments",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x0147..0x017E, ldc.i4.s 50 at IL+0x0152, bge IL+0x0154 to IL+0x016D, unconditional br IL+0x0168 to IL+0x017F, stfld rows for bleedingRate and anmLoopTimes."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Field names and signed comparison are original DLL metadata and IL, not the author's gameplay purpose, move ID, stock/DLC split, attack impact, or animation meaning.",
+    "Nine writes from arg2+16..+24 follow both paths of prior bit7 guard: they are unconditional in this local block, not an optional record extension; only bit7 flag write is conditional.",
+    "This fact closes exactly original parser IL+0x00D2..0x017E. Following parser bytes, frame banks, timing, root offsets, and transition semantics are still open.",
+    "Source export TextAsset and Unity resources.assets parent or actual Resources.Load routing are not source-verified in this fact. SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+  ]
+}
