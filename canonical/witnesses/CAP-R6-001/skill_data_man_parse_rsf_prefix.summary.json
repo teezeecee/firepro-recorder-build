@@ -25,7 +25,7 @@
         "token": "0x04007C77",
         "field": "reversalSkillType",
         "row_hex": "06004b4c010001000000",
-        "relative_offset": 11
+        "relative_offset": 10
       },
       {
         "il": "0x0052",
@@ -33,9 +33,19 @@
         "token": "0x04007C78",
         "field": "reversalRateType",
         "row_hex": "06005d4c010001000000",
-        "relative_offset": 12
+        "relative_offset": 11
       }
-    ]
+    ],
+    "cursor_derivation": {
+      "base": "arg2",
+      "initial_advances": 10,
+      "advance_pattern_hex": "0817580c",
+      "advance_repeat_count": 10,
+      "read_pattern_hex": "03082517580c91",
+      "first_read_il": "0x0046",
+      "second_read_il": "0x0053",
+      "postincrement_semantics": "ldelem.u1 uses the old local cursor copied to evaluation stack before dup/ldc.i4.1/add/stloc.2 updates the local; so first two byte positions are base+10 and base+11."
+    }
   },
   "loader_guard": {
     "source_method": "SkillDataMan._loadPackedSkillData",
