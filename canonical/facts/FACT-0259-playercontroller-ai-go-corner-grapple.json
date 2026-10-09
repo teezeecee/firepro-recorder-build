@@ -1,0 +1,51 @@
+{
+  "fact_id": "FACT-0259",
+  "claim": "In the original SHA-matched retail DLL, PlayerController_AI.AIActFunc_GoCornerGrapple() (MethodDef 0x06004FB2, RVA 0x002F6444, raw MethodDef row 44642f000000810080360a00db490000c93a) has exact 54-byte IL SHA-256 3d9416da2398348a2eb7fd294fb81c3c87c1b39f9599a76eda4305b1bd80513d. Its 17 instruction body has one beq branch, five field accesses and two MethodDef calls, both previously canonical: FACT-0109 PlayerMan.GetPlObj and FACT-0044 PlayerController_AI.EndAIAct. It loads PlayerMan.inst and controller PlObj.TargetPlIdx, calls GetPlObj, writes raw 513 to controller padOn, reads target State and branches on raw 19 equality; otherwise invokes EndAIAct, then returns raw false (0). A complete matching-DLL MethodDef reference scan finds precisely one ldftn pointer at PlayerController_AI.Init IL+0x005F, not direct gameplay invocation. CAP-R6-001 has zero directly instrumented rows for this method or either child. No authored animation, named state semantics, or runtime execution behavior is claimed.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MethodDef 0x06004FB2 / raw header, exact code, full field/callee/branch/reference scan in canonical/witnesses/CAP-R6-001/playercontroller_ai_go_corner_grapple.summary.json and independent raw DLL/R6 source verifier tools/prove_playercontroller_ai_go_corner_grapple.py.",
+      "observation": "Source-closed IL and metadata, separate no-event recording boundary."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.AIActFunc_GoCornerGrapple 0x0010",
+      "to": "PlayerMan.GetPlObj",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "callvirt 0x06005065 already canonical in FACT-0109, child SHA-256 32cbd360156f7bbbf97ed096e6afa8d4e7e4e500ff3d37179f32aecfafcf05d8."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.AIActFunc_GoCornerGrapple 0x002F",
+      "to": "PlayerController_AI.EndAIAct",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "call 0x06004FAD already canonical in FACT-0044, child SHA-256 596a7249879f79a09b58884b3296525e4a2fd50a7549e53565f10b10b6d91d2f."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Init IL+0x005F ldftn",
+      "to": "PlayerController_AI.AIActFunc_GoCornerGrapple delegate binding",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Unique matching-DLL MethodDef reference; delegate binding, not observed invocation."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Raw integer State 19 and padOn value 513 are preserved without assigning authored movement/state meanings.",
+    "The sole matching-DLL reference is an ldftn delegate pointer in PlayerController_AI.Init, not direct observed execution.",
+    "CAP-R6-001 shows no direct event rows for the target method or either MethodDef child, and does not establish animation or choreography.",
+    "Both MethodDef child bodies are already canonical (FACT-0109 GetPlObj and FACT-0044 EndAIAct); no external MemberRef calls are emitted.",
+    "Packed retail asset decode vault remains unavailable; no runtime or viewer work is permitted."
+  ]
+}

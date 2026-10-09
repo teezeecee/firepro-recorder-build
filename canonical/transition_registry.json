@@ -4623,6 +4623,27 @@
         "All seven MethodDef children are separately canonical, but runtime implementations of external scene resources are not proven by this body.",
         "Original packed-retail decode vault archive remains missing; runtime/viewer construction stays locked."
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_AI_ACT_FUNC_GO_CORNER_GRAPPLE_V1",
+      "fact_id": "FACT-0259",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 54-byte source-matching PlayerController_AI.AIActFunc_GoCornerGrapple raw body; 17 instructions, one branch, five field accesses, two already canonical MethodDef children, unique ldftn delegate binding in AI Init; R6 no direct events.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_go_corner_grapple.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Raw integer State 19 and padOn value 513 are preserved without assigning inferred authored movement/state meanings.",
+        "The sole matching-DLL reference is an ldftn delegate pointer in PlayerController_AI.Init, not direct observed execution.",
+        "CAP-R6-001 shows no direct event rows for the target method or either MethodDef child, and does not establish animation or choreography.",
+        "Both MethodDef child bodies are already canonical (FACT-0109 GetPlObj and FACT-0044 EndAIAct); no external MemberRef calls are emitted.",
+        "Packed retail asset decode vault remains unavailable; no runtime or viewer work is permitted."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
