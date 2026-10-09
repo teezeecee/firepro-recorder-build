@@ -4706,6 +4706,29 @@
         "Original SHA/CRC-verified CAP-R6-001 has no CheckTouch_Time or Process_Touch directly instrumented event rows; it does not show when this helper executes.",
         "Packed retail decode vault remains unavailable; runtime and viewer construction are LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_MOVE_TO_DEST_VECTOR_WRAPPER_V1",
+      "fact_id": "FACT-0263",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "21-byte overloaded PlayerController_AI.MoveToDest(dest) original-DLL wrapper; two x/y MemberRef field reads, one call into distinct 142-byte MoveToDest overload, one incoming call site in a 381-byte AIActFunc, with no R6 invocation bridge.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_move_to_dest_vector_wrapper.summary.json",
+      "dll_method_count": 1,
+      "memberref_field_site_count": 2,
+      "direct_methoddef_child_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The two MemberRef fields are raw source identifiers x/y with signature 060c; no physical coordinate system, scale, elevation, move speed, or authored motion semantics are established.",
+        "The single MethodDef child PlayerController_AI.MoveToDest overload token 0x06004FDC has a separate 142-byte body and is not source-closed by this wrapper fact.",
+        "The only matching-DLL direct reference is one call from AIActFunc_RunAndFlyToOutOfRing token 0x06004FBB IL+0x00F9. This does not close that 381-byte caller or demonstrate its execution.",
+        "Original R6 event trace has no directly instrumented MoveToDest or AIActFunc_RunAndFlyToOutOfRing rows. No recording-backed runtime bridge is claimed.",
+        "Packed retail decode vault is still missing; runtime/viewer remains LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

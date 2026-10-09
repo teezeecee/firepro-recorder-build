@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0263",
+  "claim": "Matching original retail DLL MethodDef 0x06004FDB, PlayerController_AI.MoveToDest(dest), is a distinct 21-byte wrapper overload at RVA 0x002F944B, raw SHA-256 11eb9cbb8fd8c2952d6bd659ac309e96e21f77918209a8584bae8cdc24e55c8e. It loads this and the address of its single parameter dest, reads two MemberRef fields 0x0A000059 (x) and 0x0A00005A (y), calls distinct PlayerController_AI.MoveToDest overload MethodDef 0x06004FDC at IL+0x000F, then returns. The exact 7 IL instructions include zero branches. A complete matching-DLL direct token-reference scan finds exactly one caller reference, PlayerController_AI.AIActFunc_RunAndFlyToOutOfRing IL+0x00F9. This wrapper source-fact does not close either the downstream 142-byte MoveToDest overload or the 381-byte caller. Original SHA-pinned R6 has zero directly instrumented event rows for the named methods. No positional/gameplay/animation interpretation is established.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MethodDef 0x06004FDB exact raw metadata, 21 byte body, MemberRef rows 0x0A000059 and 0x0A00005A, distinct call MethodDef 0x06004FDC, and complete matching-DLL MethodDef-token reference scan, witnessed in canonical/witnesses/CAP-R6-001/playercontroller_ai_move_to_dest_vector_wrapper.summary.json and replayed by tools/prove_playercontroller_ai_move_to_dest_vector_wrapper.py",
+      "observation": "Exact overload wrapper, two memberfield source operands, one outgoing overload call, one inbound caller site."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.MoveToDest(MethodDef 0x06004FDB) IL+0x000F",
+      "to": "PlayerController_AI.MoveToDest(MethodDef 0x06004FDC)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "IL token 0x06004FDC at 0x000F; 142-byte callee SHA 3f9d8816c85afca89e72a9f2fbb744ecdb15ddc77d699383c096870921377526; child not yet closed."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.AIActFunc_RunAndFlyToOutOfRing IL+0x00F9",
+      "to": "PlayerController_AI.MoveToDest(MethodDef 0x06004FDB)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "MethodDef 0x06004FBB single direct call; 381-byte caller SHA a9fef818ac551e87a8b4683539244329c2febaabb398d07764793733d426c676."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The two MemberRef fields are raw source identifiers x/y with signature 060c; no physical coordinate system, scale, elevation, move speed, or authored motion semantics are established.",
+    "The single MethodDef child PlayerController_AI.MoveToDest overload token 0x06004FDC has a separate 142-byte body and is not source-closed by this wrapper fact.",
+    "The only matching-DLL direct reference is one call from AIActFunc_RunAndFlyToOutOfRing token 0x06004FBB IL+0x00F9. This does not close that 381-byte caller or demonstrate its execution.",
+    "Original R6 event trace has no directly instrumented MoveToDest or AIActFunc_RunAndFlyToOutOfRing rows. No recording-backed runtime bridge is claimed.",
+    "Packed retail decode vault is still missing; runtime/viewer remains LOCKED."
+  ]
+}
