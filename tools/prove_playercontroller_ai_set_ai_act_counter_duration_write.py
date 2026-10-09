@@ -91,7 +91,7 @@ def main():
     a=ap.parse_args()
     try:
         w=json.loads(W.read_text(encoding="utf-8"))
-        need(w["dataset_id"]=="DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_V1" and w["source_ids"]==["DLL-001"],"witness identity")
+        need(w["dataset_id"]=="DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_DURATION_WRITE_REFERENCES_V1" and w["source_ids"]==["DLL-001"],"witness identity")
         print(json.dumps({"dll":verify_dll(a.dll,w),"r6":verify_r6(a.r6,w)},indent=2,sort_keys=True))
         print("PROVE_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER: PASS")
         return 0

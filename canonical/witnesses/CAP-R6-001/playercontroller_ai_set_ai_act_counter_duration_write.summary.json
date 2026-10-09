@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "dataset_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_V1",
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_DURATION_WRITE_REFERENCES_V1",
   "source_ids": [
     "DLL-001"
   ],
