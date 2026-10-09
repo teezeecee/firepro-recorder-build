@@ -4769,6 +4769,24 @@
         "Separate ParseRSFData's 1735-byte body and all artwork, timing, bank, positional and retail-match semantics remain open.",
         "No original proprietary asset payload is committed; milestone SOURCE_CONSOLIDATION_V1 and runtime/viewer LOCK are unchanged."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_PARSE_RSF_PREFIX_V1",
+      "fact_id": "FACT-0266",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original 1735-byte ParseRSFData method SHA and entry prefix, original first two FieldDefs at byte offsets +11/+12, source 4188-loop guard; conditional exported source terminator stays unverified provenance.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_parse_rsf_prefix.summary.json",
+      "dll_method_count": 1,
+      "fielddef_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Prefix-only: the remaining 1640 IL bytes are not interpreted as authored choreography, animation, or gameplay behavior.",
+        "Matching exact export bytes remains a conditional observation: parent Unity resources.assets SHA and actual retail binding have not been established.",
+        "No original proprietary bytes committed. Runtime/viewer construction stays locked."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

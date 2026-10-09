@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_PARSE_RSF_PREFIX_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll_sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+  "dll_size": 8171008,
+  "parser": {
+    "owner": "SkillDataMan",
+    "name": "ParseRSFData",
+    "token": "0x0600525F",
+    "rva": "0x0031F694",
+    "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+    "header_hex": "13300600c7060000ec110011",
+    "code_bytes": 1735,
+    "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae",
+    "instruction_count": 971,
+    "entry_hex": "140a05153b0c0000007ed90e0004056f641100060a734c5200060b",
+    "cursor_skip_hex": "040c0817580c0817580c0817580c0817580c0817580c0817580c0817580c0817580c0817580c0817580c",
+    "byte_field_sites": [
+      {
+        "il": "0x0045",
+        "hex": "0703082517580c917d777c0004",
+        "token": "0x04007C77",
+        "field": "reversalSkillType",
+        "row_hex": "06004b4c010001000000",
+        "relative_offset": 11
+      },
+      {
+        "il": "0x0052",
+        "hex": "0703082517580c917d787c0004",
+        "token": "0x04007C78",
+        "field": "reversalRateType",
+        "row_hex": "06005d4c010001000000",
+        "relative_offset": 12
+      }
+    ]
+  },
+  "loader_guard": {
+    "source_method": "SkillDataMan._loadPackedSkillData",
+    "token": "0x06005257",
+    "code_sha256": "9a502219cf3c64f9b5971f6b3ccaa74b719c1f5477c61a980806bc6e2d4f0545",
+    "il_offset": "0x0030",
+    "hex": "09068e693f05000000387c000000",
+    "loop_maximum": 4188,
+    "exit_if_offset_ge_length": true
+  },
+  "quarantined_export_observation": {
+    "filename": "fprwaza-resources.assets-22804.dat",
+    "raw_sha256": "7bba8a12d2cd835969a982e757fd986897b1c3ac076e777c8cca2aacd11b997d",
+    "size": 1511048,
+    "script_start": 16,
+    "script_length": 1511028,
+    "script_sha256": "2d8dd223214b0c45e3e3b3dcc092dbba4bec2cd2ba1c71940bd05d9a519bcdc1",
+    "first_offset": 31008,
+    "index_pair_count": 3876,
+    "first_offset_ge_length_index": 3875,
+    "first_offset_ge_length_value": 1511028,
+    "populated_before_stop": 3054,
+    "zero_length_before_stop": 821,
+    "terminator_length": 0,
+    "source_status": "PARENT_UNVERIFIED_NONCANONICAL"
+  },
+  "limits": [
+    "Prefix-only: the remaining 1640 IL bytes are not interpreted as authored choreography, animation, or gameplay behavior.",
+    "Matching exact export bytes remains a conditional observation: parent Unity resources.assets SHA and actual retail binding have not been established.",
+    "No original proprietary bytes committed. Runtime/viewer construction stays locked."
+  ]
+}
