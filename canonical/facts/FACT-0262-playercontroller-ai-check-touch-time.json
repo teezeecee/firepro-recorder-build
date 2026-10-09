@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0262",
+  "claim": "In the matching original retail DLL, PlayerController_AI.CheckTouch_Time() (MethodDef 0x06005000, RVA 0x002FC1A0, exact 26-byte IL SHA256 ec0c4e18703199e422dda614cb0e1d9571c2848c7f95180f32bb8371dbd0a211) reads PlayerController_AI.PlObj (FieldDef 0x0400614A), reads Player.hasRightFrm (0x0400603F), reads its own PlayerController_AI.touchFrm (0x04006170), performs signed bgt with target IL+0x0018, and returns raw Boolean 1 on the fall-through branch or raw Boolean 0 on the branch-target path. Exactly 10 decoded instructions, one branch, three FieldDef loads, zero child method calls. Full matching-DLL MethodDef-token scan finds precisely one direct reference, call from PlayerController_AI.Process_Touch (0x06005001) IL+0x0020. Source-only control flow; no actual touch/event frame timing or authored animation is inferred. CAP-R6-001 has no direct event rows for this helper or caller.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MethodDef 0x06005000 and full byte/field/branch/direct reference proof; witness canonical/witnesses/CAP-R6-001/playercontroller_ai_check_touch_time.summary.json and verifier tools/prove_playercontroller_ai_check_touch_time.py",
+      "observation": "Original IL, three fields, one signed branch and precisely one caller site."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.CheckTouch_Time IL+0x0001/0x0006/0x000C",
+      "to": "PlayerController_AI.PlObj / Player.hasRightFrm / PlayerController_AI.touchFrm",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Three FieldDef tokens 0x0400614A, 0x0400603F, 0x04006170 with exact metadata and raw IL, SHA ec0c4e18703199e422dda614cb0e1d9571c2848c7f95180f32bb8371dbd0a211"
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Process_Touch IL+0x0020",
+      "to": "PlayerController_AI.CheckTouch_Time",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "MethodDef caller token 0x06005001, RVA 0x002FC1BC, code SHA a09a556323cab95f9e04f3c232d05d6baa4bb404947df32710d62965890a267e, call opcode."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The Boolean result and signed IL bgt branch are exact source facts; names such as hasRightFrm and touchFrm do not establish real-time units, a measured frame interval, match action or authored animation.",
+    "The only direct matching-DLL MethodDef-token reference is one call from Process_Touch at IL+0x0020; this does not close the full 832-byte caller.",
+    "Original SHA/CRC-verified CAP-R6-001 has no CheckTouch_Time or Process_Touch directly instrumented event rows; it does not show when this helper executes.",
+    "Packed retail decode vault remains unavailable; runtime and viewer construction are LOCKED."
+  ]
+}

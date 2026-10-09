@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_CHECK_TOUCH_TIME_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "PlayerController_AI",
+      "namespace": "",
+      "name": "CheckTouch_Time",
+      "token": "0x06005000",
+      "methoddef_row_hex": "a0c12f0000008100343d0a00db490000dc3a",
+      "rva": "0x002FC1A0",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "signature_blob_hex": "200002",
+      "tiny_header_hex": "6a",
+      "parameter_count": 0,
+      "code_size": 26,
+      "code_sha256": "ec0c4e18703199e422dda614cb0e1d9571c2848c7f95180f32bb8371dbd0a211",
+      "body_hex": "027b4a6100047b3f600004027b706100043f02000000172a162a",
+      "decoded_instruction_count": 10
+    },
+    "instructions": [
+      {
+        "il": "0x0000",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0001",
+        "opcode": "ldfld",
+        "operand": "0x0400614A"
+      },
+      {
+        "il": "0x0006",
+        "opcode": "ldfld",
+        "operand": "0x0400603F"
+      },
+      {
+        "il": "0x000B",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x000C",
+        "opcode": "ldfld",
+        "operand": "0x04006170"
+      },
+      {
+        "il": "0x0011",
+        "opcode": "bgt",
+        "relative_i32": 2,
+        "target_il": "0x0018"
+      },
+      {
+        "il": "0x0016",
+        "opcode": "ldc.i4.1"
+      },
+      {
+        "il": "0x0017",
+        "opcode": "ret"
+      },
+      {
+        "il": "0x0018",
+        "opcode": "ldc.i4.0"
+      },
+      {
+        "il": "0x0019",
+        "opcode": "ret"
+      }
+    ],
+    "fields": [
+      {
+        "il": "0x0001",
+        "opcode": "ldfld",
+        "token": "0x0400614A",
+        "owner": "PlayerController_AI",
+        "name": "PlObj",
+        "raw_row_hex": "0100b7f203005e190000",
+        "signature_blob_hex": "0612a788"
+      },
+      {
+        "il": "0x0006",
+        "opcode": "ldfld",
+        "token": "0x0400603F",
+        "owner": "Player",
+        "name": "hasRightFrm",
+        "raw_row_hex": "0600eae6030001000000",
+        "signature_blob_hex": "0608"
+      },
+      {
+        "il": "0x000C",
+        "opcode": "ldfld",
+        "token": "0x04006170",
+        "owner": "PlayerController_AI",
+        "name": "touchFrm",
+        "raw_row_hex": "0100ccf4030001000000",
+        "signature_blob_hex": "0608"
+      }
+    ],
+    "field_site_count": 3,
+    "branch_count": 1,
+    "branch_sites": [
+      {
+        "il": "0x0011",
+        "opcode": "bgt",
+        "relative_i32": 2,
+        "target_il": "0x0018"
+      }
+    ],
+    "direct_methoddef_call_count": 0,
+    "memberref_method_call_count": 0,
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Process_Touch",
+        "caller_token": "0x06005001",
+        "caller_rva": "0x002FC1BC",
+        "caller_code_size": 832,
+        "caller_code_sha256": "a09a556323cab95f9e04f3c232d05d6baa4bb404947df32710d62965890a267e",
+        "call_il": "0x0020",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "checked_method_event_counts": {
+      "PlayerController_AI.CheckTouch_Time": 0,
+      "PlayerController_AI.Process_Touch": 0
+    },
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "The Boolean result and signed IL bgt branch are exact source facts; names such as hasRightFrm and touchFrm do not establish real-time units, a measured frame interval, match action or authored animation.",
+    "The only direct matching-DLL MethodDef-token reference is one call from Process_Touch at IL+0x0020; this does not close the full 832-byte caller.",
+    "Original SHA/CRC-verified CAP-R6-001 has no CheckTouch_Time or Process_Touch directly instrumented event rows; it does not show when this helper executes.",
+    "Packed retail decode vault remains unavailable; runtime and viewer construction are LOCKED."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_check_touch_time.py"
+}
