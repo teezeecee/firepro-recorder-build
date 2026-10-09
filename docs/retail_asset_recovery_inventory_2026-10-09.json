@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "kind": "asset_recovery_checkpoint_not_canonical_fact",
+  "checkpoint_date": "2026-10-09",
+  "canonical_branch": "canonical-retail-rebuild-v1",
+  "based_on_commit": "949323da086cf6d0242b4f5efce02ad3c539871d",
+  "retail_fact_count_unchanged": 263,
+  "verified_registry_family_count_unchanged": 262,
+  "runtime_locked": true,
+  "milestone_id": "SOURCE_CONSOLIDATION_V1",
+  "unavailable_archive": {
+    "name": "FirePro_RETAIL_DECODE_VAULT_v001_2026-09-20.zip",
+    "expected_sha256": "810e9149be0869094ff5dd266afa754745bb708bda648ed0c9e6999c266cf68a",
+    "status": "not_available_or_ingested",
+    "contents_confirmed": false,
+    "manifest_available": false,
+    "interpretation": "Exact former ZIP inventory cannot be stated; recover original bytes independently from installed retail resources, do not recreate old unverifiable checkpoint."
+  },
+  "source_exports": [
+    {
+      "name": "fprwaza-resources.assets-22804.dat",
+      "source": "user UABEA Export Raw from installed resources.assets TextAsset fprwaza",
+      "path_id": 22804,
+      "file_bytes": 1511048,
+      "sha256": "7bba8a12d2cd835969a982e757fd986897b1c3ac076e777c8cca2aacd11b997d",
+      "embedded_payload_bytes": 1511028,
+      "embedded_payload_sha256": "2d8dd223214b0c45e3e3b3dcc092dbba4bec2cd2ba1c71940bd05d9a519bcdc1",
+      "offset_length_slots": 3876,
+      "nonempty_rs_records": 3054,
+      "empty_slots": 822,
+      "status": "raw export structure checked; not full retail move/choreography mapping"
+    },
+    {
+      "name": "fpw_6172-resources.assets-21353.dat",
+      "source": "user UABEA Export Raw from installed resources.assets TextAsset fpw_6172",
+      "path_id": 21353,
+      "file_bytes": 1716,
+      "sha256": "de13a6efdff9727d63542134096b056f2c680c606b7703e82b4fd6839fc30cf1",
+      "embedded_payload_bytes": 1696,
+      "signature": "RS",
+      "same_bytes_as_any_nonempty_fprwaza_record": false,
+      "status": "individual raw export checked; format semantics unresolved"
+    },
+    {
+      "name": "FIREPRO_REFERENCE_ASSEMBLER_v001(3).zip",
+      "source": "historical user-provided assembler ZIP, not canonical",
+      "file_bytes": 14565474,
+      "sha256": "7fa5da3cf0a17e2d35dce7d7b5faf7b997b0254f047ae462a63c6b9528976281",
+      "archive_entries": 2604,
+      "zip_crc": "pass",
+      "historical_raw_textasset_files": 69,
+      "contains_wcos_files": 46,
+      "contains_rcos_files": 9,
+      "contains_original_fprwaza_raw_export": false,
+      "status": "quarantined historical reference; verify every candidate from installed originals"
+    }
+  ],
+  "other_provenance": {
+    "original_dll": {
+      "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+      "size_bytes": 8171008,
+      "role": "matching DLL independent parser/control-flow source"
+    },
+    "retail_installation": "E:\\Programs E\\SteamLibrary\\steamapps\\common\\Fire Prowrestling World\\FireProWrestlingW_Data",
+    "parent_resources_assets_sha256": "not verified; UABEA exports are independently hashed",
+    "prior_historical_audit": "2026-09-23 audit marked many asset routes pass but is not canonical evidence in 2026-09-29 gated restart"
+  },
+  "categories": [
+    {
+      "id": "base_move_records",
+      "name": "Base wrestling move records",
+      "status": "export_received_structure_checked_not_decoded",
+      "evidence": [
+        "retail resources.assets UABEA TextAsset fprwaza export, Path ID 22804",
+        "3,876 offset/length slots; 3,054 populated RS records; 822 zero-length slots"
+      ],
+      "open": [
+        "replay DLL packed-data parser and RSF parser",
+        "map index slots to source-backed move identities, banks, frames, offsets and timing",
+        "record source provenance including installed parent resource identity"
+      ]
+    },
+    {
+      "id": "additional_dlc_animation",
+      "name": "Additional wrestling animations and DLC",
+      "status": "sample_export_received_bulk_index_pending",
+      "evidence": [
+        "retail UABEA TextAsset fpw_6172, Path ID 21353; 1,696-byte RS payload",
+        "sample does not byte-match any populated fprwaza record"
+      ],
+      "open": [
+        "inventory installed fpw_* and DLC resources",
+        "decode and prove their relationship to stock records and bank/participant structure"
+      ]
+    },
+    {
+      "id": "wrestler_artwork",
+      "name": "Wrestler sprites and textures",
+      "status": "source_containers_located_not_decoded",
+      "evidence": [
+        "resources.assets and sharedassets*.assets / resS files visible in original Unity installation"
+      ],
+      "open": [
+        "identify all required Sprite/Texture2D assets and source rectangles",
+        "verify pivots, nine scale fields, palette, body-part assembly, draw ordering and blood composition from original source and retail oracle",
+        "test one complete stock animation end-to-end against original render evidence"
+      ]
+    },
+    {
+      "id": "costumes_presets",
+      "name": "Wrestler presets and appearance catalogues",
+      "status": "historical_raw_textassets_available_untrusted",
+      "evidence": [
+        "historical assembler contains PartsInfoList, PartsFilterList, PresetWrestlerList, SampleCostumeList, wcos_000..045, rcos_000..008"
+      ],
+      "open": [
+        "match each original installed TextAsset by identity/hash",
+        "decode costume-part and wrestler catalogue mapping including supported installed DLC"
+      ]
+    },
+    {
+      "id": "weapons_objects_effects",
+      "name": "Weapons, objects and visual effects",
+      "status": "not_reaudited_in_restart",
+      "evidence": [
+        "historical reference modules mention chairs, bktable and other weapons, but are not canonical asset proofs"
+      ],
+      "open": [
+        "identify retail sprite/texture and effects assets",
+        "verify object setup, breakage visual identities and links to authored moves"
+      ]
+    },
+    {
+      "id": "audio_voice",
+      "name": "Sound effects and voices",
+      "status": "historical_lookup_only",
+      "evidence": [
+        "historical assembler includes WrestlerVoiceList and ThemeMusicList text records; this does not prove audio payloads"
+      ],
+      "open": [
+        "identify original included SFX/voice AudioClip or bundle data",
+        "verify original audio IDs, triggers and retail formats; only required non-musical resources"
+      ]
+    },
+    {
+      "id": "arena_topology_visuals",
+      "name": "Ring, apron, cage and hazard artwork",
+      "status": "not_reaudited_in_restart",
+      "evidence": [
+        "game asset containers are installed; earlier scene/rope/cage research is historical"
+      ],
+      "open": [
+        "find source artwork/meshes/serialized resources where needed",
+        "independently verify rope, post, apron, stage and special-match visual dependencies",
+        "retain intended 2D environment adaptation as a separate project policy"
+      ]
+    },
+    {
+      "id": "create_ui_installed_content",
+      "name": "Create Wrestler, Create Ref, UI and installed parts",
+      "status": "historical_lookup_only",
+      "evidence": [
+        "legacy reference documents contain creation/UI and installed Craft/Parts_* lookup descriptions"
+      ],
+      "open": [
+        "identify relevant original interface atlases and data",
+        "prove installed additional parts routing and read-only consumption without assuming historical modules are exact"
+      ]
+    }
+  ],
+  "next_gates": [
+    "Independently source-prove relevant exact original DLL loader/RSF parser byte paths and record mapping; distinguish base packed and additional fpw_* records.",
+    "Anchor UABEA TextAsset exports to original retail container metadata and hashes without putting proprietary asset bytes on GitHub.",
+    "Identify one complete stock move linking record ID, animation banks/frames/offsets and all required retail sprite parts, pivots/partsScale and timing. Validate visual output only when source-consolidation milestone permits.",
+    "Expand verified locator/index coverage for installed DLC, costumes/presets, weapons/objects/effects, SFX/voices, environment resources and included creation UI.",
+    "Keep GitHub fact count frozen at 263 until an independently replayable source fact with witness/verifier/test passes guarded PR Actions; documentation-only recovery inventory is not an additional fact.",
+    "Do not construct or unlock runtime/viewer without explicit approved milestone transition; no bulk extraction of installed game or raw copyrighted assets committed to public repository."
+  ]
+}
