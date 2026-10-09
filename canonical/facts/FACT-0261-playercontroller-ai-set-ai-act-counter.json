@@ -1,0 +1,70 @@
+{
+  "fact_id": "FACT-0261",
+  "claim": "Matching original retail DLL MethodDef 0x06004FAC, PlayerController_AI.SetAIActCounter(Int32 cnt), at RVA 0x002F60EC has exact tiny header 22 and 8 code bytes 02037d4c6100042a (SHA-256 cff3981d35f0878efae84ea0b7f25c9c403437bc3e9413041ba509fbb361fa1a). The exact four IL instructions are ldarg.0, ldarg.1, stfld PlayerController_AI.aiActDuration (FieldDef 0x0400614C), ret. The method contains no branch or other method call; its Int32 argument cnt is stored directly. Complete matching-DLL source scan finds four references across three callers: MatchDebug.TestAI_Weapon IL+0x006A, FormAnimator.PlayAnimationSE IL+0x00FA, and PlayerController_AI.SetAIAct IL+0x000E and IL+0x001D. Original R6 event trace has zero directly instrumented event rows for SetAIActCounter and records PlayAnimationSE events without attributing a SetAIActCounter invocation. This is raw DLL ownership/dataflow closure only, with no asserted authored timing, state or animation.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MethodDef 0x06004FAC metadata, code, FieldDef/Param metadata, full reference scan in canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_counter_duration_write.summary.json and original-byte verifier tools/prove_playercontroller_ai_set_ai_act_counter_duration_write.py",
+      "observation": "Direct Int32-to-field store and all four source reference sites."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.SetAIActCounter IL+0x0002",
+      "to": "PlayerController_AI.aiActDuration",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "MethodDef 0x06004FAC IL bytes 02 03 7D 4C 61 00 04 2A, FieldDef 0x0400614C exact raw row/signature."
+        }
+      ]
+    },
+    {
+      "from": "MatchDebug.TestAI_Weapon IL+0x006A",
+      "to": "PlayerController_AI.SetAIActCounter",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Full matching-DLL MethodDef byte scan for 0x06004FAC; callvirt in 0x060048B6 IL+0x006A, caller body SHA b5d0a01c62f61a1301452680585b9b90c88b9a9ec1200ccbd51a8103823b7ba7."
+        }
+      ]
+    },
+    {
+      "from": "FormAnimator.PlayAnimationSE IL+0x00FA",
+      "to": "PlayerController_AI.SetAIActCounter",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Full matching-DLL MethodDef byte scan for 0x06004FAC; callvirt in 0x06004E7D IL+0x00FA, caller body SHA ba7c6da321b3f5632756459a8a788abd92609da056981078f5fc7bbe04824085."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.SetAIAct IL+0x000E",
+      "to": "PlayerController_AI.SetAIActCounter",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Full matching-DLL MethodDef byte scan for 0x06004FAC; call in 0x06004F9D IL+0x000E, caller body SHA 58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.SetAIAct IL+0x001D",
+      "to": "PlayerController_AI.SetAIActCounter",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Full matching-DLL MethodDef byte scan for 0x06004FAC; call in 0x06004F9D IL+0x001D, caller body SHA 58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only source-exact Int32 assignment to a stored field is established; method and field names are not definitions of timing or state meanings.",
+    "Four method-reference byte sites in three owners/callers are established, but the scan alone does not prove any specific runtime invocation or complete authored behavior.",
+    "R6 has zero SetAIActCounter rows. FormAnimator.PlayAnimationSE has 90916 event rows, but this does not identify which, if any, invoked SetAIActCounter.",
+    "Original packed retail decode vault is still unavailable. Runtime/viewer construction stays locked."
+  ]
+}
