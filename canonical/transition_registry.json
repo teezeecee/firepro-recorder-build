@@ -4664,6 +4664,26 @@
         "The original R6 event capture contains no directly instrumented target or Init event rows; no runtime semantics or animation can be concluded.",
         "Original packed retail decode vault still missing; runtime/viewer work remains locked."
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_V1",
+      "fact_id": "FACT-0261",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact 8-byte PlayerController_AI.SetAIActCounter(Int32) field-assignment leaf with one FieldDef site, four raw references in three callers; R6 invocation boundary remains unobserved.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_counter.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 4,
+      "direct_caller_method_count": 3,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Only source-exact Int32 assignment to a stored field is established; method and field names are not definitions of timing or state meanings.",
+        "Four method-reference byte sites in three owners/callers are established, but the scan alone does not prove any specific runtime invocation or complete authored behavior.",
+        "R6 has zero SetAIActCounter rows. FormAnimator.PlayAnimationSE has 90916 event rows, but this does not identify which, if any, invoked SetAIActCounter.",
+        "Original packed retail decode vault is still unavailable. Runtime/viewer construction stays locked."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

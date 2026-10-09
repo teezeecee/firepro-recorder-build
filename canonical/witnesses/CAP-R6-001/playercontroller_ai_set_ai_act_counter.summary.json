@@ -8,181 +8,123 @@
     "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
     "size_bytes": 8171008,
     "method": {
-      "type": "PlayerController_AI",
-      "method": "SetAIAct_Counter",
-      "token": "0x06004FAB",
-      "rva": "0x002F60DA",
-      "methoddef_row_hex": "da602f0000008100fd350a00ebcd0200c63a",
-      "signature_blob_hex": "20020111a7d808",
-      "parameters": [
-        {
-          "sequence": 1,
-          "name": "kind",
-          "metadata_type": "CounterAtkEnum",
-          "param_row_hex": "0000010063510100",
-          "flags_raw": "0x0000"
-        },
-        {
-          "sequence": 2,
-          "name": "tm",
-          "metadata_type": "Int32",
-          "param_row_hex": "00000200d7610700",
-          "flags_raw": "0x0000"
-        }
-      ],
-      "return_type_metadata": "Void",
+      "owner": "PlayerController_AI",
+      "namespace": "",
+      "name": "SetAIActCounter",
+      "token": "0x06004FAC",
+      "methoddef_row_hex": "ec602f00000086000e360a009f490000c83a",
+      "rva": "0x002F60EC",
       "impl_flags_raw": "0x0000",
-      "method_attributes_raw": "0x0081",
-      "header_format": "tiny",
-      "tiny_header_byte_raw": "0x46",
-      "max_stack": 8,
-      "local_signature_token": "0x00000000",
-      "locals": [],
-      "code_size": 17,
-      "code_sha256": "d693e192b2928d1a36497d9296bc697e14ada6ab9d936c6cbc1134813b9d07e5",
-      "body_hex": "021f1a04289d4f000602037d4e6100042a",
-      "exact_flow": [
-        "load this, raw Int32 constant 26, and Int32 parameter tm; call canonical PlayerController_AI.SetAIAct",
-        "load this and CounterAtkEnum parameter kind; store kind into PlayerController_AI.aiActPrm",
-        "return"
-      ]
+      "method_attributes_raw": "0x0086",
+      "signature_blob_hex": "20010108",
+      "tiny_header_hex": "22",
+      "parameter_count": 1,
+      "parameter_name": "cnt",
+      "parameter_row_hex": "00000100f31d0700",
+      "code_size": 8,
+      "code_sha256": "cff3981d35f0878efae84ea0b7f25c9c403437bc3e9413041ba509fbb361fa1a",
+      "body_hex": "02037d4c6100042a",
+      "decoded_instruction_count": 4
     },
-    "parameter_types": [
+    "instructions": [
       {
-        "sequence": 1,
-        "metadata_name": "CounterAtkEnum",
-        "typedef_rid": 2550,
-        "typedef_row_hex": "03010000a7790000000000004503b0612d50",
-        "namespace": ""
+        "il": "0x0000",
+        "opcode": "ldarg.0"
       },
       {
-        "sequence": 2,
-        "metadata_name": "Int32"
+        "il": "0x0001",
+        "opcode": "ldarg.1"
+      },
+      {
+        "il": "0x0002",
+        "opcode": "stfld",
+        "operand": "0x0400614C"
+      },
+      {
+        "il": "0x0007",
+        "opcode": "ret"
       }
     ],
     "fields": [
       {
-        "token": "0x0400614E",
-        "owner": "PlayerController_AI",
-        "name": "aiActPrm",
-        "field_row_hex": "0100dbf2030001000000",
-        "signature_blob_hex": "0608",
-        "metadata_type": "Int32"
-      }
-    ],
-    "field_accesses": [
-      {
-        "il": "0x000B",
+        "il": "0x0002",
         "opcode": "stfld",
-        "token": "0x0400614E",
-        "source": "argument_1"
-      }
-    ],
-    "normalized_field_access_map_sha256": "d5718d050bd7e511e13bf4a3689b08e71f09a2eb9147f8bf1ef35f45a30e95ca",
-    "canonical_internal_calls": [
-      {
-        "il": "0x0004",
-        "opcode": "call",
-        "token": "0x06004F9D",
+        "token": "0x0400614C",
         "owner": "PlayerController_AI",
-        "method": "SetAIAct",
-        "fact_id": "FACT-0043",
-        "code_size": 102,
-        "code_sha256": "58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065",
-        "raw_argument_1": 26,
-        "argument_2_source": "argument_2"
+        "name": "aiActDuration",
+        "raw_row_hex": "0600c3f2030001000000",
+        "signature_blob_hex": "0608"
       }
     ],
-    "normalized_internal_call_map_sha256": "50353803322a8a677c90ee71b786cfc1ce6d91e5b879abd11fb8eedc3e1f0c3b",
-    "external_memberrefs": [],
+    "direct_methoddef_call_count": 0,
+    "memberref_method_call_count": 0,
+    "branch_count": 0,
     "direct_in_assembly_references": [
       {
+        "caller_type": "MatchDebug",
+        "caller_namespace": "",
+        "caller_method": "TestAI_Weapon",
+        "caller_token": "0x060048B6",
+        "caller_rva": "0x002A4244",
+        "caller_code_size": 149,
+        "caller_code_sha256": "b5d0a01c62f61a1301452680585b9b90c88b9a9ec1200ccbd51a8103823b7ba7",
+        "call_il": "0x006A",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "FormAnimator",
+        "caller_namespace": "",
+        "caller_method": "PlayAnimationSE",
+        "caller_token": "0x06004E7D",
+        "caller_rva": "0x002DB718",
+        "caller_code_size": 364,
+        "caller_code_sha256": "ba7c6da321b3f5632756459a8a788abd92609da056981078f5fc7bbe04824085",
+        "call_il": "0x00FA",
+        "opcode": "callvirt"
+      },
+      {
         "caller_type": "PlayerController_AI",
         "caller_namespace": "",
-        "caller_method": "ChangeCounter",
-        "caller_token": "0x06004FDA",
-        "caller_rva": "0x002F92EC",
-        "caller_code_size": 339,
-        "caller_code_sha256": "ee3271363d38d319d290e669bdfc8d1c1f0e39de5ca6edc80bbec01e08f65a5d",
-        "call_il": "0x014D",
+        "caller_method": "SetAIAct",
+        "caller_token": "0x06004F9D",
+        "caller_rva": "0x002F5F54",
+        "caller_code_size": 102,
+        "caller_code_sha256": "58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065",
+        "call_il": "0x000E",
         "opcode": "call"
       },
       {
         "caller_type": "PlayerController_AI",
         "caller_namespace": "",
-        "caller_method": "Process_OpponentStands_AfterHammerThrow",
-        "caller_token": "0x06004FF2",
-        "caller_rva": "0x002FB3C0",
-        "caller_code_size": 248,
-        "caller_code_sha256": "f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3",
-        "call_il": "0x00C2",
-        "opcode": "call"
-      },
-      {
-        "caller_type": "PlayerController_AI",
-        "caller_namespace": "",
-        "caller_method": "Process_OpponentStands_AfterHammerThrow",
-        "caller_token": "0x06004FF2",
-        "caller_rva": "0x002FB3C0",
-        "caller_code_size": 248,
-        "caller_code_sha256": "f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3",
-        "call_il": "0x00EC",
+        "caller_method": "SetAIAct",
+        "caller_token": "0x06004F9D",
+        "caller_rva": "0x002F5F54",
+        "caller_code_size": 102,
+        "caller_code_sha256": "58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065",
+        "call_il": "0x001D",
         "opcode": "call"
       }
     ],
-    "direct_reference_count": 3,
-    "direct_caller_method_count": 2,
-    "normalized_reference_map_sha256": "86fa6e16dce76a7daf1b77e738cbdb944ac56ad2954786f05623e79b23ade63b",
-    "normalized_caller_token_set_sha256": "1c1be4e722be0dbceacee720cd826f221dd476a2e63c74fa28ad06be47e55435"
+    "direct_reference_count": 4,
+    "direct_caller_method_count": 3
   },
   "capture_boundary": {
     "source_id": "CAP-R6-001",
     "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
     "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
-    "playercontroller_ai_set_ai_act_counter_row_count": 0,
-    "playercontroller_ai_set_ai_act_row_count": 0,
-    "playercontroller_ai_change_counter_row_count": 0,
-    "playercontroller_ai_process_opponent_stands_after_hammer_throw_row_count": 0,
+    "checked_method_event_counts": {
+      "PlayerController_AI.SetAIActCounter": 0,
+      "PlayerController_AI.SetAIAct": 0,
+      "MatchDebug.TestAI_Weapon": 0,
+      "FormAnimator.PlayAnimationSE": 90916
+    },
     "promoted_as_evidence": false
   },
-  "selection_boundary": {
-    "parent": {
-      "method": "PlayerController_AI.Process_OpponentStands_AfterHammerThrow",
-      "token": "0x06004FF2",
-      "rva": "0x002FB3C0",
-      "code_size": 248,
-      "code_sha256": "f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3",
-      "call_ils": [
-        "0x00C2",
-        "0x00EC"
-      ]
-    },
-    "other_caller": {
-      "method": "PlayerController_AI.ChangeCounter",
-      "token": "0x06004FDA",
-      "rva": "0x002F92EC",
-      "code_size": 339,
-      "code_sha256": "ee3271363d38d319d290e669bdfc8d1c1f0e39de5ca6edc80bbec01e08f65a5d",
-      "call_il": "0x014D"
-    },
-    "canonical_child": {
-      "fact_id": "FACT-0043",
-      "method": "PlayerController_AI.SetAIAct",
-      "token": "0x06004F9D",
-      "call_il": "0x0004",
-      "opcode": "call"
-    },
-    "next_parent_dependency": {
-      "method": "MatchMisc.LotOption",
-      "code_size": 52
-    }
-  },
   "limits": [
-    "CounterAtkEnum, kind, tm and aiActPrm are metadata identifiers; no enum-member or authored gameplay meaning is added.",
-    "Raw SetAIAct first argument 26 is preserved without an authored gameplay label.",
-    "FACT-0043 governs SetAIAct; this dataset proves only the exact wrapper call and argument flow.",
-    "ChangeCounter and Process_OpponentStands_AfterHammerThrow remain separate caller bodies.",
-    "Fresh R6 is a negative capture boundary only and provides no runtime bridge."
+    "Only source-exact Int32 assignment to a stored field is established; method and field names are not definitions of timing or state meanings.",
+    "Four method-reference byte sites in three owners/callers are established, but the scan alone does not prove any specific runtime invocation or complete authored behavior.",
+    "R6 has zero SetAIActCounter rows. FormAnimator.PlayAnimationSE has 90916 event rows, but this does not identify which, if any, invoked SetAIActCounter.",
+    "Original packed retail decode vault is still unavailable. Runtime/viewer construction stays locked."
   ],
   "reproducibility_tool": "tools/prove_playercontroller_ai_set_ai_act_counter.py"
 }
