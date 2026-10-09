@@ -1,0 +1,765 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_AI_ACT_FUNC_GO_FRONT_GRAPPLE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "PlayerController_AI",
+      "namespace": "",
+      "name": "AIActFunc_GoFrontGrapple",
+      "token": "0x06004FB0",
+      "methoddef_row_hex": "34622f00000081004f360a00db490000c93a",
+      "rva": "0x002F6234",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "signature_blob_hex": "200002",
+      "fat_header_hex": "133004000a010000f2100011",
+      "max_stack": 4,
+      "local_signature_token": "0x110010F2",
+      "local_signature_row_hex": "f3cd0200",
+      "local_signature_blob_hex": "070211a7dc12a788",
+      "parameter_count": 0,
+      "code_size": 266,
+      "code_sha256": "fe0478463f631f1ff67e0445960fb13a4d4e7b436d2a261f50716bb116f6ba3f",
+      "body_hex": "027b4d6100043a1a000000020228d74f00067d4e61000402257b4d61000417587d4d610004027b4e6100040a7efa610004027b4a6100047bb15f00046f655000060b027b4a6100047bb05f0004077bb05f000428664900064025000000027b4a6100047be95f0004225455d53e440b0000000220010200007d176100043844000000063a100000000220080200007d17610004380b0000000220040200007d17610004027b4a6100047be95f0004228fc2f53e430e00000002257b1761000417607d17610004077bb75f00041f153b20000000077bc15f00042875490006228fc21540440b0000000228ad4f000638150000000228d94f0006390a0000000215181f20289e4f0006162a",
+      "decoded_instruction_count": 80
+    },
+    "instructions": [
+      {
+        "il": "0x0000",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0001",
+        "opcode": "ldfld",
+        "operand": "0x0400614D"
+      },
+      {
+        "il": "0x0006",
+        "opcode": "brtrue",
+        "operand": "0x0025"
+      },
+      {
+        "il": "0x000B",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x000C",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x000D",
+        "opcode": "call",
+        "operand": "0x06004FD7"
+      },
+      {
+        "il": "0x0012",
+        "opcode": "stfld",
+        "operand": "0x0400614E"
+      },
+      {
+        "il": "0x0017",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0018",
+        "opcode": "dup"
+      },
+      {
+        "il": "0x0019",
+        "opcode": "ldfld",
+        "operand": "0x0400614D"
+      },
+      {
+        "il": "0x001E",
+        "opcode": "ldc.i4.1"
+      },
+      {
+        "il": "0x001F",
+        "opcode": "add"
+      },
+      {
+        "il": "0x0020",
+        "opcode": "stfld",
+        "operand": "0x0400614D"
+      },
+      {
+        "il": "0x0025",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0026",
+        "opcode": "ldfld",
+        "operand": "0x0400614E"
+      },
+      {
+        "il": "0x002B",
+        "opcode": "stloc.0"
+      },
+      {
+        "il": "0x002C",
+        "opcode": "ldsfld",
+        "operand": "0x040061FA"
+      },
+      {
+        "il": "0x0031",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0032",
+        "opcode": "ldfld",
+        "operand": "0x0400614A"
+      },
+      {
+        "il": "0x0037",
+        "opcode": "ldfld",
+        "operand": "0x04005FB1"
+      },
+      {
+        "il": "0x003C",
+        "opcode": "callvirt",
+        "operand": "0x06005065"
+      },
+      {
+        "il": "0x0041",
+        "opcode": "stloc.1"
+      },
+      {
+        "il": "0x0042",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0043",
+        "opcode": "ldfld",
+        "operand": "0x0400614A"
+      },
+      {
+        "il": "0x0048",
+        "opcode": "ldfld",
+        "operand": "0x04005FB0"
+      },
+      {
+        "il": "0x004D",
+        "opcode": "ldloc.1"
+      },
+      {
+        "il": "0x004E",
+        "opcode": "ldfld",
+        "operand": "0x04005FB0"
+      },
+      {
+        "il": "0x0053",
+        "opcode": "call",
+        "operand": "0x06004966"
+      },
+      {
+        "il": "0x0058",
+        "opcode": "bne.un",
+        "operand": "0x0082"
+      },
+      {
+        "il": "0x005D",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x005E",
+        "opcode": "ldfld",
+        "operand": "0x0400614A"
+      },
+      {
+        "il": "0x0063",
+        "opcode": "ldfld",
+        "operand": "0x04005FE9"
+      },
+      {
+        "il": "0x0068",
+        "opcode": "ldc.r4",
+        "operand": "0x3ED55554"
+      },
+      {
+        "il": "0x006D",
+        "opcode": "blt.un",
+        "operand": "0x007D"
+      },
+      {
+        "il": "0x0072",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0073",
+        "opcode": "ldc.i4",
+        "operand": 513
+      },
+      {
+        "il": "0x0078",
+        "opcode": "stfld",
+        "operand": "0x04006117"
+      },
+      {
+        "il": "0x007D",
+        "opcode": "br",
+        "operand": "0x00C6"
+      },
+      {
+        "il": "0x0082",
+        "opcode": "ldloc.0"
+      },
+      {
+        "il": "0x0083",
+        "opcode": "brtrue",
+        "operand": "0x0098"
+      },
+      {
+        "il": "0x0088",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0089",
+        "opcode": "ldc.i4",
+        "operand": 520
+      },
+      {
+        "il": "0x008E",
+        "opcode": "stfld",
+        "operand": "0x04006117"
+      },
+      {
+        "il": "0x0093",
+        "opcode": "br",
+        "operand": "0x00A3"
+      },
+      {
+        "il": "0x0098",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0099",
+        "opcode": "ldc.i4",
+        "operand": 516
+      },
+      {
+        "il": "0x009E",
+        "opcode": "stfld",
+        "operand": "0x04006117"
+      },
+      {
+        "il": "0x00A3",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x00A4",
+        "opcode": "ldfld",
+        "operand": "0x0400614A"
+      },
+      {
+        "il": "0x00A9",
+        "opcode": "ldfld",
+        "operand": "0x04005FE9"
+      },
+      {
+        "il": "0x00AE",
+        "opcode": "ldc.r4",
+        "operand": "0x3EF5C28F"
+      },
+      {
+        "il": "0x00B3",
+        "opcode": "ble.un",
+        "operand": "0x00C6"
+      },
+      {
+        "il": "0x00B8",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x00B9",
+        "opcode": "dup"
+      },
+      {
+        "il": "0x00BA",
+        "opcode": "ldfld",
+        "operand": "0x04006117"
+      },
+      {
+        "il": "0x00BF",
+        "opcode": "ldc.i4.1"
+      },
+      {
+        "il": "0x00C0",
+        "opcode": "or"
+      },
+      {
+        "il": "0x00C1",
+        "opcode": "stfld",
+        "operand": "0x04006117"
+      },
+      {
+        "il": "0x00C6",
+        "opcode": "ldloc.1"
+      },
+      {
+        "il": "0x00C7",
+        "opcode": "ldfld",
+        "operand": "0x04005FB7"
+      },
+      {
+        "il": "0x00CC",
+        "opcode": "ldc.i4.s",
+        "operand": 21
+      },
+      {
+        "il": "0x00CE",
+        "opcode": "beq",
+        "operand": "0x00F3"
+      },
+      {
+        "il": "0x00D3",
+        "opcode": "ldloc.1"
+      },
+      {
+        "il": "0x00D4",
+        "opcode": "ldfld",
+        "operand": "0x04005FC1"
+      },
+      {
+        "il": "0x00D9",
+        "opcode": "call",
+        "operand": "0x06004975"
+      },
+      {
+        "il": "0x00DE",
+        "opcode": "ldc.r4",
+        "operand": "0x4015C28F"
+      },
+      {
+        "il": "0x00E3",
+        "opcode": "blt.un",
+        "operand": "0x00F3"
+      },
+      {
+        "il": "0x00E8",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x00E9",
+        "opcode": "call",
+        "operand": "0x06004FAD"
+      },
+      {
+        "il": "0x00EE",
+        "opcode": "br",
+        "operand": "0x0108"
+      },
+      {
+        "il": "0x00F3",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x00F4",
+        "opcode": "call",
+        "operand": "0x06004FD9"
+      },
+      {
+        "il": "0x00F9",
+        "opcode": "brfalse",
+        "operand": "0x0108"
+      },
+      {
+        "il": "0x00FE",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x00FF",
+        "opcode": "ldc.i4.m1"
+      },
+      {
+        "il": "0x0100",
+        "opcode": "ldc.i4.2"
+      },
+      {
+        "il": "0x0101",
+        "opcode": "ldc.i4.s",
+        "operand": 32
+      },
+      {
+        "il": "0x0103",
+        "opcode": "call",
+        "operand": "0x06004F9E"
+      },
+      {
+        "il": "0x0108",
+        "opcode": "ldc.i4.0"
+      },
+      {
+        "il": "0x0109",
+        "opcode": "ret"
+      }
+    ],
+    "branches": [
+      {
+        "il": "0x0006",
+        "opcode": "brtrue",
+        "operand": "0x0025"
+      },
+      {
+        "il": "0x0058",
+        "opcode": "bne.un",
+        "operand": "0x0082"
+      },
+      {
+        "il": "0x006D",
+        "opcode": "blt.un",
+        "operand": "0x007D"
+      },
+      {
+        "il": "0x007D",
+        "opcode": "br",
+        "operand": "0x00C6"
+      },
+      {
+        "il": "0x0083",
+        "opcode": "brtrue",
+        "operand": "0x0098"
+      },
+      {
+        "il": "0x0093",
+        "opcode": "br",
+        "operand": "0x00A3"
+      },
+      {
+        "il": "0x00B3",
+        "opcode": "ble.un",
+        "operand": "0x00C6"
+      },
+      {
+        "il": "0x00CE",
+        "opcode": "beq",
+        "operand": "0x00F3"
+      },
+      {
+        "il": "0x00E3",
+        "opcode": "blt.un",
+        "operand": "0x00F3"
+      },
+      {
+        "il": "0x00EE",
+        "opcode": "br",
+        "operand": "0x0108"
+      },
+      {
+        "il": "0x00F9",
+        "opcode": "brfalse",
+        "operand": "0x0108"
+      }
+    ],
+    "fields": [
+      {
+        "il": "0x0001",
+        "opcode": "ldfld",
+        "token": "0x0400614D",
+        "owner": "PlayerController_AI",
+        "name": "aiActStep",
+        "raw_row_hex": "0100d1f2030001000000",
+        "signature_blob_hex": "0608"
+      },
+      {
+        "il": "0x0012",
+        "opcode": "stfld",
+        "token": "0x0400614E",
+        "owner": "PlayerController_AI",
+        "name": "aiActPrm",
+        "raw_row_hex": "0100dbf2030001000000",
+        "signature_blob_hex": "0608"
+      },
+      {
+        "il": "0x0019",
+        "opcode": "ldfld",
+        "token": "0x0400614D",
+        "owner": "PlayerController_AI",
+        "name": "aiActStep",
+        "raw_row_hex": "0100d1f2030001000000",
+        "signature_blob_hex": "0608"
+      },
+      {
+        "il": "0x0020",
+        "opcode": "stfld",
+        "token": "0x0400614D",
+        "owner": "PlayerController_AI",
+        "name": "aiActStep",
+        "raw_row_hex": "0100d1f2030001000000",
+        "signature_blob_hex": "0608"
+      },
+      {
+        "il": "0x0026",
+        "opcode": "ldfld",
+        "token": "0x0400614E",
+        "owner": "PlayerController_AI",
+        "name": "aiActPrm",
+        "raw_row_hex": "0100dbf2030001000000",
+        "signature_blob_hex": "0608"
+      },
+      {
+        "il": "0x002C",
+        "opcode": "ldsfld",
+        "token": "0x040061FA",
+        "owner": "PlayerMan",
+        "name": "inst",
+        "raw_row_hex": "160006220100cf380000",
+        "signature_blob_hex": "0612a818"
+      },
+      {
+        "il": "0x0032",
+        "opcode": "ldfld",
+        "token": "0x0400614A",
+        "owner": "PlayerController_AI",
+        "name": "PlObj",
+        "raw_row_hex": "0100b7f203005e190000",
+        "signature_blob_hex": "0612a788"
+      },
+      {
+        "il": "0x0037",
+        "opcode": "ldfld",
+        "token": "0x04005FB1",
+        "owner": "Player",
+        "name": "TargetPlIdx",
+        "raw_row_hex": "060071e0030001000000",
+        "signature_blob_hex": "0608"
+      },
+      {
+        "il": "0x0043",
+        "opcode": "ldfld",
+        "token": "0x0400614A",
+        "owner": "PlayerController_AI",
+        "name": "PlObj",
+        "raw_row_hex": "0100b7f203005e190000",
+        "signature_blob_hex": "0612a788"
+      },
+      {
+        "il": "0x0048",
+        "opcode": "ldfld",
+        "token": "0x04005FB0",
+        "owner": "Player",
+        "name": "PlDir",
+        "raw_row_hex": "06006be00300ad370000",
+        "signature_blob_hex": "0611a768"
+      },
+      {
+        "il": "0x004E",
+        "opcode": "ldfld",
+        "token": "0x04005FB0",
+        "owner": "Player",
+        "name": "PlDir",
+        "raw_row_hex": "06006be00300ad370000",
+        "signature_blob_hex": "0611a768"
+      },
+      {
+        "il": "0x005E",
+        "opcode": "ldfld",
+        "token": "0x0400614A",
+        "owner": "PlayerController_AI",
+        "name": "PlObj",
+        "raw_row_hex": "0100b7f203005e190000",
+        "signature_blob_hex": "0612a788"
+      },
+      {
+        "il": "0x0063",
+        "opcode": "ldfld",
+        "token": "0x04005FE9",
+        "owner": "Player",
+        "name": "DistanceToTarget",
+        "raw_row_hex": "06009ae2030014000000",
+        "signature_blob_hex": "060c"
+      },
+      {
+        "il": "0x0078",
+        "opcode": "stfld",
+        "token": "0x04006117",
+        "owner": "PlayerController",
+        "name": "padOn",
+        "raw_row_hex": "0600f71f0200440c0000",
+        "signature_blob_hex": "0611904c"
+      },
+      {
+        "il": "0x008E",
+        "opcode": "stfld",
+        "token": "0x04006117",
+        "owner": "PlayerController",
+        "name": "padOn",
+        "raw_row_hex": "0600f71f0200440c0000",
+        "signature_blob_hex": "0611904c"
+      },
+      {
+        "il": "0x009E",
+        "opcode": "stfld",
+        "token": "0x04006117",
+        "owner": "PlayerController",
+        "name": "padOn",
+        "raw_row_hex": "0600f71f0200440c0000",
+        "signature_blob_hex": "0611904c"
+      },
+      {
+        "il": "0x00A4",
+        "opcode": "ldfld",
+        "token": "0x0400614A",
+        "owner": "PlayerController_AI",
+        "name": "PlObj",
+        "raw_row_hex": "0100b7f203005e190000",
+        "signature_blob_hex": "0612a788"
+      },
+      {
+        "il": "0x00A9",
+        "opcode": "ldfld",
+        "token": "0x04005FE9",
+        "owner": "Player",
+        "name": "DistanceToTarget",
+        "raw_row_hex": "06009ae2030014000000",
+        "signature_blob_hex": "060c"
+      },
+      {
+        "il": "0x00BA",
+        "opcode": "ldfld",
+        "token": "0x04006117",
+        "owner": "PlayerController",
+        "name": "padOn",
+        "raw_row_hex": "0600f71f0200440c0000",
+        "signature_blob_hex": "0611904c"
+      },
+      {
+        "il": "0x00C1",
+        "opcode": "stfld",
+        "token": "0x04006117",
+        "owner": "PlayerController",
+        "name": "padOn",
+        "raw_row_hex": "0600f71f0200440c0000",
+        "signature_blob_hex": "0611904c"
+      },
+      {
+        "il": "0x00C7",
+        "opcode": "ldfld",
+        "token": "0x04005FB7",
+        "owner": "Player",
+        "name": "State",
+        "raw_row_hex": "06006e000000da370000",
+        "signature_blob_hex": "0611a828"
+      },
+      {
+        "il": "0x00D4",
+        "opcode": "ldfld",
+        "token": "0x04005FC1",
+        "owner": "Player",
+        "name": "BP",
+        "raw_row_hex": "0600ece0030014000000",
+        "signature_blob_hex": "060c"
+      }
+    ],
+    "direct_methoddef_calls": [
+      {
+        "il": "0x000D",
+        "opcode": "call",
+        "token": "0x06004FD7",
+        "callee": "PlayerController_AI.GetGoAroundDir",
+        "canonical_fact_id": "FACT-0254",
+        "code_size": 126,
+        "code_sha256": "6b1b83ca72c103a69a8f1ee79dfef7e6d7024e829b9a338b9589b198d118ab10"
+      },
+      {
+        "il": "0x003C",
+        "opcode": "callvirt",
+        "token": "0x06005065",
+        "callee": "PlayerMan.GetPlObj",
+        "canonical_fact_id": "FACT-0109",
+        "code_size": 25,
+        "code_sha256": "32cbd360156f7bbbf97ed096e6afa8d4e7e4e500ff3d37179f32aecfafcf05d8"
+      },
+      {
+        "il": "0x0053",
+        "opcode": "call",
+        "token": "0x06004966",
+        "callee": "MatchMisc.ReversePlayerDirLR",
+        "canonical_fact_id": "FACT-0088",
+        "code_size": 8,
+        "code_sha256": "c361809e798508defe998c0c3891196cdb2d60d5f4e45adf6fc213666c309eb0"
+      },
+      {
+        "il": "0x00D9",
+        "opcode": "call",
+        "token": "0x06004975",
+        "callee": "MatchMisc.GetParamRate",
+        "canonical_fact_id": "FACT-0031",
+        "code_size": 16,
+        "code_sha256": "60de3a243171244b6e09508e9a73f00d82aa76207ad3e8dd046322bc7b849e6c"
+      },
+      {
+        "il": "0x00E9",
+        "opcode": "call",
+        "token": "0x06004FAD",
+        "callee": "PlayerController_AI.EndAIAct",
+        "canonical_fact_id": "FACT-0044",
+        "code_size": 33,
+        "code_sha256": "596a7249879f79a09b58884b3296525e4a2fd50a7549e53565f10b10b6d91d2f"
+      },
+      {
+        "il": "0x00F4",
+        "opcode": "call",
+        "token": "0x06004FD9",
+        "callee": "PlayerController_AI.HungUpCheck",
+        "canonical_fact_id": "FACT-0255",
+        "code_size": 250,
+        "code_sha256": "bd6e95d91e9c741be24e1cd719aa40f61488fd454e77e8003688abb237bb2106"
+      },
+      {
+        "il": "0x0103",
+        "opcode": "call",
+        "token": "0x06004F9E",
+        "callee": "PlayerController_AI.SetAIAct_GoGrapple",
+        "canonical_fact_id": "FACT-0256",
+        "code_size": 23,
+        "code_sha256": "978e82da32179445718786287df804ca334ac6f1889e726bec8774e5a13ccf12"
+      }
+    ],
+    "memberref_method_call_count": 0,
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Init",
+        "caller_token": "0x06004F99",
+        "caller_rva": "0x002F5ADC",
+        "caller_code_size": 775,
+        "caller_code_sha256": "7a738543d0ba6f0c0fbd5a6121ba72aceb6c2c2ec1477b08f3ede6390a557e30",
+        "call_il": "0x004B",
+        "opcode": "ldftn"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "checked_method_names": [
+      "PlayerController_AI.AIActFunc_GoFrontGrapple",
+      "PlayerController_AI.GetGoAroundDir",
+      "PlayerMan.GetPlObj",
+      "MatchMisc.ReversePlayerDirLR",
+      "MatchMisc.GetParamRate",
+      "PlayerController_AI.EndAIAct",
+      "PlayerController_AI.HungUpCheck",
+      "PlayerController_AI.SetAIAct_GoGrapple"
+    ],
+    "checked_names_event_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Exact stored enum and raw input bits are not assigned new gameplay or animation labels.",
+    "The only direct matching-DLL reference is an ldftn delegate pointer in PlayerController_AI.Init; it is not an observed call.",
+    "The original R6 trace has zero direct events for the target and all seven MethodDef children; no frame-level animation or retail outcome is established.",
+    "All seven MethodDef children are separately canonical, but runtime implementations of external scene resources are not proven by this body.",
+    "Original packed-retail decode vault archive remains missing; runtime/viewer construction stays locked."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_go_front_grapple.py"
+}

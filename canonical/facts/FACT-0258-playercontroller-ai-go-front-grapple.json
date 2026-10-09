@@ -1,0 +1,101 @@
+{
+  "fact_id": "FACT-0258",
+  "claim": "In matching original retail DLL-001, PlayerController_AI.AIActFunc_GoFrontGrapple() (MethodDef 0x06004FB0, RVA 0x002F6234, raw MethodDef row 34622f00000081004f360a00db490000c93a) has exact 266-byte code SHA-256 fe0478463f631f1ff67e0445960fb13a4d4e7b436d2a261f50716bb116f6ba3f, 80 decoded IL instructions, 11 branches, 22 field access sites and seven MethodDef child calls already canonical (FACT-0254, FACT-0109, FACT-0088, FACT-0031, FACT-0044, FACT-0255, FACT-0256). No MemberRef method calls are emitted. The raw body conditionally writes aiActPrm from GetGoAroundDir and increments aiActStep; loads target via GetPlObj; tests own PlDir against ReversePlayerDirLR(target.PlDir); compares DistanceToTarget using raw Float32 bits 0x3ED55554 and 0x3EF5C28F and writes padOn raw 513/520/516 with a conditional bit-1 OR; checks target State against raw 21 and the raw GetParamRate(BP) comparison against Float32 0x4015C28F, calling EndAIAct on the emitted branch; invokes HungUpCheck and conditionally calls SetAIAct_GoGrapple with raw -1,2,32, before returning zero. Complete matching-DLL MethodDef-token reference surface is one ldftn pointer in PlayerController_AI.Init at IL+0x004B, not a direct invocation. The original R6 trace has zero direct method/child rows, so this closes raw DLL control flow only and claims no authored movement or animation semantics.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact metadata/header/local signature/body, full instruction/field/branch/call/reference map in canonical/witnesses/CAP-R6-001/playercontroller_ai_go_front_grapple.summary.json; independently reproducible against original DLL and R6 via tools/prove_playercontroller_ai_go_front_grapple.py.",
+      "observation": "Raw IL and metadata, with zero-event R6 boundary; no authored animation assertions."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.AIActFunc_GoFrontGrapple 0x000D",
+      "to": "PlayerController_AI.GetGoAroundDir",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "call token 0x06004FD7; already canonical FACT-0254; callee body SHA-256 6b1b83ca72c103a69a8f1ee79dfef7e6d7024e829b9a338b9589b198d118ab10."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.AIActFunc_GoFrontGrapple 0x003C",
+      "to": "PlayerMan.GetPlObj",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "callvirt token 0x06005065; already canonical FACT-0109; callee body SHA-256 32cbd360156f7bbbf97ed096e6afa8d4e7e4e500ff3d37179f32aecfafcf05d8."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.AIActFunc_GoFrontGrapple 0x0053",
+      "to": "MatchMisc.ReversePlayerDirLR",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "call token 0x06004966; already canonical FACT-0088; callee body SHA-256 c361809e798508defe998c0c3891196cdb2d60d5f4e45adf6fc213666c309eb0."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.AIActFunc_GoFrontGrapple 0x00D9",
+      "to": "MatchMisc.GetParamRate",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "call token 0x06004975; already canonical FACT-0031; callee body SHA-256 60de3a243171244b6e09508e9a73f00d82aa76207ad3e8dd046322bc7b849e6c."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.AIActFunc_GoFrontGrapple 0x00E9",
+      "to": "PlayerController_AI.EndAIAct",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "call token 0x06004FAD; already canonical FACT-0044; callee body SHA-256 596a7249879f79a09b58884b3296525e4a2fd50a7549e53565f10b10b6d91d2f."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.AIActFunc_GoFrontGrapple 0x00F4",
+      "to": "PlayerController_AI.HungUpCheck",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "call token 0x06004FD9; already canonical FACT-0255; callee body SHA-256 bd6e95d91e9c741be24e1cd719aa40f61488fd454e77e8003688abb237bb2106."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.AIActFunc_GoFrontGrapple 0x0103",
+      "to": "PlayerController_AI.SetAIAct_GoGrapple",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "call token 0x06004F9E; already canonical FACT-0256; callee body SHA-256 978e82da32179445718786287df804ca334ac6f1889e726bec8774e5a13ccf12."
+        }
+      ]
+    },
+    {
+      "from": "PlayerController_AI.Init IL+0x004B ldftn",
+      "to": "PlayerController_AI.AIActFunc_GoFrontGrapple delegate pointer",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Only direct matching-DLL MethodDef reference, not a direct execution event."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Exact stored enum and raw input bits are not assigned new gameplay or animation labels.",
+    "The only direct matching-DLL reference is an ldftn delegate pointer in PlayerController_AI.Init; it is not an observed call.",
+    "The original R6 trace has zero direct events for the target and all seven MethodDef children; no frame-level animation or retail outcome is established.",
+    "All seven MethodDef children are separately canonical, but runtime implementations of external scene resources are not proven by this body.",
+    "Original packed-retail decode vault archive remains missing; runtime/viewer construction stays locked."
+  ]
+}
