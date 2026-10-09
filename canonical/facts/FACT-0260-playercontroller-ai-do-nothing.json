@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0260",
+  "claim": "Original SHA-matched retail DLL MethodDef 0x06004FAE is PlayerController_AI.AIActFunc_DoNothing() at RVA 0x002F6117, with exact tiny header 0a and two IL bytes 162a (SHA-256 84a0936ff1fba6d2811d094757231685673447aed2170738872305076026a316). Those two decoded instructions are ldc.i4.0 and ret: the method returns raw Boolean false (0) and has no fields, branches, or method calls. Matching original DLL method-reference scan finds exactly one ldftn reference in PlayerController_AI.Init at IL+0x0023. Original SHA-matched R6 event_trace.tsv contains no direct event rows for the method or the Init caller. This is DLL control-flow closure only, not observed execution, authored movement or animation.",
+  "status": "PROVEN_DLL",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "MethodDef 0x06004FAE, exact metadata, raw IL and full assembly reference scan in canonical/witnesses/CAP-R6-001/playercontroller_ai_do_nothing.summary.json, independently checked by tools/prove_playercontroller_ai_do_nothing.py.",
+      "observation": "Exact two-byte method and unique initialization delegate pointer verified from original retail DLL."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "PlayerController_AI.Init IL+0x0023 ldftn",
+      "to": "PlayerController_AI.AIActFunc_DoNothing delegate pointer",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Matching original DLL MethodDef reference scan: only ldftn 0x06004FAE at caller MethodDef 0x06004F99 IL+0x0023."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Two IL instructions prove a raw zero return, not that the delegate is invoked in a match.",
+    "The only source reference is an ldftn delegate pointer in PlayerController_AI.Init at IL+0x0023.",
+    "The original R6 event capture contains no directly instrumented target or Init event rows; no runtime semantics or animation can be concluded.",
+    "Original packed retail decode vault still missing; runtime/viewer work remains locked."
+  ]
+}
