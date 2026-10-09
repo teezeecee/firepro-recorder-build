@@ -19,8 +19,13 @@ def prove(dll,w):
  body=md[9];check(len(body)==m["code_bytes"] and hashlib.sha256(body).hexdigest()==m["code_sha256"],"complete IL method SHA")
  check(body[:0x1b].hex()==m["entry_hex"],"source parser entry")
  check(body[0x1b:0x45].hex()==m["cursor_skip_hex"],"ten unsigned-byte cursor increments")
- for field in m["byte_field_sites"]:
+ initial=body[0x1d:0x45]
+ step=bytes.fromhex(w["parser"]["cursor_derivation"]["advance_pattern_hex"])
+ check(len(initial)==10*len(step) and initial==step*10,"exact ten cursor increments")
+ check(m["byte_field_sites"][0]["relative_offset"]==10 and m["byte_field_sites"][1]["relative_offset"]==11,"source-relative offsets match cursor")
+ for n,field in enumerate(m["byte_field_sites"]):
   at=int(field["il"],16)
+  check(field["relative_offset"]==10+n and body[at+1:at+8].hex()==w["parser"]["cursor_derivation"]["read_pattern_hex"],"byte read uses old cursor then updates local")
   check(body[at:at+13].hex()==field["hex"],"source byte and field store "+field["field"])
   f=base.field(pe,s,b,z,o,sb,bb,fm,int(field["token"],16))
   check((f[0],f[2])==(field["row_hex"],field["field"]),"FieldDef name/bytes "+field["token"])

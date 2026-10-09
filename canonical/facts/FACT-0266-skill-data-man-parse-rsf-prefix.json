@@ -1,7 +1,7 @@
 {
   "fact_id": "FACT-0266",
   "status": "PROVEN_DLL",
-  "claim": "Original SHA-pinned DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F (RVA 0x0031F694) has 1,735 IL bytes with SHA-256 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae. The source preamble conditionally calls SkillInfoManager.GetSkillInfo for arg3 != -1, constructs a SkillData via original constructor, advances a cursor ten bytes from input argument2, then reads unsigned bytes at relative indices 11 and 12 and stores them in original named SkillData fields reversalSkillType and reversalRateType. The parent _loadPackedSkillData IL guard exits its first loop if a decoded signed entry offset is >= input array length, regardless of its 4,188 maximum. When conditionally applied to the separately supplied exact UABEA export, this guard would stop at index 3,875 because the stored offset equals payload byte length 1,511,028. The export is NOT source-proven to be the one loaded in retail, and no authored record/frame semantics are claimed.",
+  "claim": "Original SHA-pinned DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F (RVA 0x0031F694) has 1,735 IL bytes with SHA-256 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae. The source preamble conditionally calls SkillInfoManager.GetSkillInfo for arg3 != -1, constructs a SkillData via original constructor, advances a cursor ten bytes from input argument2, then reads unsigned bytes at relative indices 10 and 11 and stores them in original named SkillData fields reversalSkillType and reversalRateType. The parent _loadPackedSkillData IL guard exits its first loop if a decoded signed entry offset is >= input array length, regardless of its 4,188 maximum. When conditionally applied to the separately supplied exact UABEA export, this guard would stop at index 3,875 because the stored offset equals payload byte length 1,511,028. The export is NOT source-proven to be the one loaded in retail, and no authored record/frame semantics are claimed.",
   "evidence": [
     {
       "source_id": "DLL-001",
@@ -35,5 +35,13 @@
     "Prefix-only: the remaining 1640 IL bytes are not interpreted as authored choreography, animation, or gameplay behavior.",
     "Matching exact export bytes remains a conditional observation: parent Unity resources.assets SHA and actual retail binding have not been established.",
     "No original proprietary bytes committed. Runtime/viewer construction stays locked."
-  ]
+  ],
+  "correction_audit": {
+    "source": "original SHA-matched DLL-001 MethodDef 0x0600525F",
+    "type": "PREVIOUS_OFF_BY_ONE_RELATIVE_CURSOR_INTERPRETATION",
+    "original_assertion": "first two byte reads at original arg2+11 and +12",
+    "corrected_assertion": "first two byte reads at original arg2+10 and +11",
+    "raw_evidence": "Original IL+0x001B copies arg2 to loc2, IL+0x001D..0x0044 increments loc2 ten times; at 0x0047..0x004C and 0x0054..0x0059, dup and store of updated loc2 do not replace the older array index already on the evaluation stack. Both ldelem.u1 execute against the old cursor before its new value is stored. This correction changes semantic relative indices only: original method bytes, source hash and metadata field tokens are unchanged.",
+    "policy": "Source replay must derive relative indices from raw IL cursor arithmetic; fixture values alone are insufficient."
+  }
 }

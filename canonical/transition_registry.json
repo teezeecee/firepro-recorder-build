@@ -4777,7 +4777,7 @@
         "DLL-001"
       ],
       "scope": "PROVEN_DLL",
-      "definition": "Original 1735-byte ParseRSFData method SHA and entry prefix, original first two FieldDefs at byte offsets +11/+12, source 4188-loop guard; conditional exported source terminator stays unverified provenance.",
+      "definition": "Original 1735-byte ParseRSFData method SHA and entry prefix, original first two FieldDefs at byte offsets +10/+11, source 4188-loop guard; conditional exported source terminator stays unverified provenance.",
       "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_parse_rsf_prefix.summary.json",
       "dll_method_count": 1,
       "fielddef_count": 2,
@@ -4786,7 +4786,8 @@
         "Prefix-only: the remaining 1640 IL bytes are not interpreted as authored choreography, animation, or gameplay behavior.",
         "Matching exact export bytes remains a conditional observation: parent Unity resources.assets SHA and actual retail binding have not been established.",
         "No original proprietary bytes committed. Runtime/viewer construction stays locked."
-      ]
+      ],
+      "correction_audit": "FACT-0266 originally wrote +11/+12 due to misinterpreted postincrement. Original IL+0x001D..0x005A now independently checked: raw reads consume previous cursor at +10/+11. No new FACT issued for this correction."
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
