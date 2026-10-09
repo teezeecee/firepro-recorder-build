@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_AI_ACT_FUNC_GO_CORNER_GRAPPLE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "PlayerController_AI",
+      "namespace": "",
+      "name": "AIActFunc_GoCornerGrapple",
+      "token": "0x06004FB2",
+      "methoddef_row_hex": "44642f000000810080360a00db490000c93a",
+      "rva": "0x002F6444",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0081",
+      "signature_blob_hex": "200002",
+      "fat_header_hex": "13300200360000008e020011",
+      "max_stack": 2,
+      "local_signature_token": "0x1100028E",
+      "local_signature_row_hex": "6b940100",
+      "local_signature_blob_hex": "070112a788",
+      "parameter_count": 0,
+      "code_size": 54,
+      "code_sha256": "3d9416da2398348a2eb7fd294fb81c3c87c1b39f9599a76eda4305b1bd80513d",
+      "body_hex": "7efa610004027b4a6100047bb15f00046f655000060a0220010200007d17610004067bb75f00041f133b060000000228ad4f0006162a",
+      "decoded_instruction_count": 17
+    },
+    "instructions": [
+      {
+        "il": "0x0000",
+        "opcode": "ldsfld",
+        "operand": "0x040061FA"
+      },
+      {
+        "il": "0x0005",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0006",
+        "opcode": "ldfld",
+        "operand": "0x0400614A"
+      },
+      {
+        "il": "0x000B",
+        "opcode": "ldfld",
+        "operand": "0x04005FB1"
+      },
+      {
+        "il": "0x0010",
+        "opcode": "callvirt",
+        "operand": "0x06005065"
+      },
+      {
+        "il": "0x0015",
+        "opcode": "stloc.0"
+      },
+      {
+        "il": "0x0016",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0017",
+        "opcode": "ldc.i4",
+        "operand": 513
+      },
+      {
+        "il": "0x001C",
+        "opcode": "stfld",
+        "operand": "0x04006117"
+      },
+      {
+        "il": "0x0021",
+        "opcode": "ldloc.0"
+      },
+      {
+        "il": "0x0022",
+        "opcode": "ldfld",
+        "operand": "0x04005FB7"
+      },
+      {
+        "il": "0x0027",
+        "opcode": "ldc.i4.s",
+        "operand": 19
+      },
+      {
+        "il": "0x0029",
+        "opcode": "beq",
+        "operand": "0x0034"
+      },
+      {
+        "il": "0x002E",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x002F",
+        "opcode": "call",
+        "operand": "0x06004FAD"
+      },
+      {
+        "il": "0x0034",
+        "opcode": "ldc.i4.0"
+      },
+      {
+        "il": "0x0035",
+        "opcode": "ret"
+      }
+    ],
+    "branches": [
+      {
+        "il": "0x0029",
+        "opcode": "beq",
+        "operand": "0x0034"
+      }
+    ],
+    "fields": [
+      {
+        "il": "0x0000",
+        "opcode": "ldsfld",
+        "token": "0x040061FA",
+        "owner": "PlayerMan",
+        "name": "inst",
+        "raw_row_hex": "160006220100cf380000",
+        "signature_blob_hex": "0612a818"
+      },
+      {
+        "il": "0x0006",
+        "opcode": "ldfld",
+        "token": "0x0400614A",
+        "owner": "PlayerController_AI",
+        "name": "PlObj",
+        "raw_row_hex": "0100b7f203005e190000",
+        "signature_blob_hex": "0612a788"
+      },
+      {
+        "il": "0x000B",
+        "opcode": "ldfld",
+        "token": "0x04005FB1",
+        "owner": "Player",
+        "name": "TargetPlIdx",
+        "raw_row_hex": "060071e0030001000000",
+        "signature_blob_hex": "0608"
+      },
+      {
+        "il": "0x001C",
+        "opcode": "stfld",
+        "token": "0x04006117",
+        "owner": "PlayerController",
+        "name": "padOn",
+        "raw_row_hex": "0600f71f0200440c0000",
+        "signature_blob_hex": "0611904c"
+      },
+      {
+        "il": "0x0022",
+        "opcode": "ldfld",
+        "token": "0x04005FB7",
+        "owner": "Player",
+        "name": "State",
+        "raw_row_hex": "06006e000000da370000",
+        "signature_blob_hex": "0611a828"
+      }
+    ],
+    "direct_methoddef_calls": [
+      {
+        "il": "0x0010",
+        "opcode": "callvirt",
+        "token": "0x06005065",
+        "callee": "PlayerMan.GetPlObj",
+        "canonical_fact_id": "FACT-0109",
+        "code_size": 25,
+        "code_sha256": "32cbd360156f7bbbf97ed096e6afa8d4e7e4e500ff3d37179f32aecfafcf05d8"
+      },
+      {
+        "il": "0x002F",
+        "opcode": "call",
+        "token": "0x06004FAD",
+        "callee": "PlayerController_AI.EndAIAct",
+        "canonical_fact_id": "FACT-0044",
+        "code_size": 33,
+        "code_sha256": "596a7249879f79a09b58884b3296525e4a2fd50a7549e53565f10b10b6d91d2f"
+      }
+    ],
+    "memberref_method_call_count": 0,
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "Init",
+        "caller_token": "0x06004F99",
+        "caller_rva": "0x002F5ADC",
+        "caller_code_size": 775,
+        "caller_code_sha256": "7a738543d0ba6f0c0fbd5a6121ba72aceb6c2c2ec1477b08f3ede6390a557e30",
+        "call_il": "0x005F",
+        "opcode": "ldftn"
+      }
+    ],
+    "direct_reference_count": 1,
+    "direct_caller_method_count": 1
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "checked_method_names": [
+      "PlayerController_AI.AIActFunc_GoCornerGrapple",
+      "PlayerMan.GetPlObj",
+      "PlayerController_AI.EndAIAct"
+    ],
+    "checked_names_event_row_count": 0,
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Raw integer State 19 and padOn value 513 are preserved without assigning inferred authored movement/state meanings.",
+    "The sole matching-DLL reference is an ldftn delegate pointer in PlayerController_AI.Init, not direct observed execution.",
+    "CAP-R6-001 shows no direct event rows for the target method or either MethodDef child, and does not establish animation or choreography.",
+    "Both MethodDef child bodies are already canonical (FACT-0109 GetPlObj and FACT-0044 EndAIAct); no external MemberRef calls are emitted.",
+    "Packed retail asset decode vault remains unavailable; no runtime or viewer work is permitted."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_go_corner_grapple.py"
+}
