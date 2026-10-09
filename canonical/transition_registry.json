@@ -4666,13 +4666,13 @@
       ]
     },
     {
-      "family_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_V1",
+      "family_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_DURATION_WRITE_REFERENCES_V1",
       "fact_id": "FACT-0261",
       "source_ids": [
         "DLL-001"
       ],
       "scope": "PROVEN_DLL",
-      "definition": "Exact 8-byte PlayerController_AI.SetAIActCounter(Int32) field-assignment leaf with one FieldDef site, four raw references in three callers; R6 invocation boundary remains unobserved.",
+      "definition": "FACT-0043 already closes SetAIActCounter's 8-byte assignment body. FACT-0261 independently pins full matching-DLL metadata/FieldDef and all four MethodDef reference sites across three calling methods; the R6 invocation boundary stays unobserved.",
       "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_counter_duration_write.summary.json",
       "dll_method_count": 1,
       "direct_in_assembly_reference_count": 4,

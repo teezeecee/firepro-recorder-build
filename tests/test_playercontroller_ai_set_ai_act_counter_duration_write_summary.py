@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 w=json.loads((ROOT/"canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_counter_duration_write.summary.json").read_text(encoding="utf-8"))
 d=w["dll"];m=d["method"]
-assert w["dataset_id"]=="DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_V1" and w["source_ids"]==["DLL-001"]
+assert w["dataset_id"]=="DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_DURATION_WRITE_REFERENCES_V1" and w["source_ids"]==["DLL-001"]
 assert (m["token"],m["rva"],m["methoddef_row_hex"],m["signature_blob_hex"],m["tiny_header_hex"])==("0x06004FAC","0x002F60EC","ec602f00000086000e360a009f490000c83a","20010108","22")
 assert (m["parameter_count"],m["parameter_name"],m["parameter_row_hex"])==(1,"cnt","00000100f31d0700")
 assert (m["body_hex"],m["code_size"],m["decoded_instruction_count"])==("02037d4c6100042a",8,4)
