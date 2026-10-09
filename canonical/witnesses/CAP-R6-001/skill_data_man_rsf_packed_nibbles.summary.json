@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_PACKED_NIBBLES_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "name": "Assembly-CSharp.dll",
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "method": {
+      "name": "ParseRSFData",
+      "owner": "SkillDataMan",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae",
+      "header_hex": "13300600c7060000ec110011",
+      "methoddef_row_hex": "94f63100000086008f5d0a00c2e10200c43c"
+    },
+    "cursor": {
+      "initial_skip_count": 10,
+      "initial_increment_hex": "0817580c",
+      "prefix_first_field_hex_at_0x0045": "0703082517580c917d777c0004",
+      "prefix_second_field_hex_at_0x0052": "0703082517580c917d787c0004",
+      "byte12_read_hex_at_0x005F": "03082517580c91",
+      "extra_advance_hex_at_0x006E": "0817580c",
+      "byte14_read_hex_at_0x0072": "03082517580c911304",
+      "byte15_read_hex_at_0x0093": "03082517580c911304",
+      "derivation": "Ten increments from arg2; byte reads at arg2+10, +11, +12; additional explicit cursor increment skips +13; reads at arg2+14 and +15 consume old cursor while updating local2 for subsequent accesses."
+    },
+    "fields": [
+      {
+        "token": "0x04007C72",
+        "name": "winningTechDispType",
+        "row_hex": "06000a4b0100f80b0000",
+        "byte_offset": 14,
+        "formula": "byte14 & 0x0F",
+        "store_il": "0x0081",
+        "source_slice_il": "0x007B",
+        "source_hex": "0711041f0f5f7d727c0004"
+      },
+      {
+        "token": "0x04007C73",
+        "name": "artPoint",
+        "row_hex": "0600374c0100110c0000",
+        "byte_offset": 14,
+        "formula": "(byte14 >> 4) & 0x0F",
+        "store_il": "0x008E",
+        "source_slice_il": "0x0086",
+        "source_hex": "0711041a631f0f5f7d737c0004"
+      },
+      {
+        "token": "0x04007C74",
+        "name": "cheerLevel",
+        "row_hex": "0600404c0100160c0000",
+        "byte_offset": 15,
+        "formula": "byte15 & 0x0F",
+        "store_il": "0x00A2",
+        "source_slice_il": "0x009C",
+        "source_hex": "0711041f0f5f7d747c0004"
+      },
+      {
+        "token": "0x04007C75",
+        "name": "cheerType",
+        "row_hex": "0600f44d0500e03a0000",
+        "byte_offset": 15,
+        "formula": "(byte15 >> 4) & 0x07",
+        "store_il": "0x00AE",
+        "source_slice_il": "0x00A7",
+        "source_hex": "0711041a631d5f7d757c0004"
+      }
+    ],
+    "flag_path": {
+      "test_il": "0x00B3",
+      "test_hex": "110420800000005f3912000000",
+      "mask": 128,
+      "branch_opcode": "brfalse",
+      "branch_target_il": "0x00D2",
+      "flag_write_il": "0x00C0",
+      "flag_write_hex": "07257b557c00042000010000607d557c0004",
+      "flag_field_token": "0x04007C55",
+      "flag_field_name": "flags",
+      "flag_field_row_hex": "0600314c01000c0c0000",
+      "bit_set": 256,
+      "note": "If masked high bit is zero, brfalse to 0x00D2 skips the flags|=256 sequence; if it is nonzero the original IL sets SkillData.flags bit 0x100 and continues into optional reads. Optional field semantics not proven."
+    }
+  },
+  "limits": [
+    "PROVEN_DLL means only matching original IL and FieldDef metadata, not any claimed gameplay interpretation of these fields.",
+    "Field byte positions are relative to parser argument2. Parent export / resources.assets relationship is still unverified and no exported input records are promoted.",
+    "Original flag high bit selects an optional branch, but the later conditional layout, authored animation frames, timing, bank orientation, move names, and root offsets remain OPEN.",
+    "Milestone SOURCE_CONSOLIDATION_V1 remains runtime/viewer LOCKED; no proprietary binary resources committed."
+  ]
+}
