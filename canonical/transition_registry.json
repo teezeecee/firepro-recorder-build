@@ -4644,6 +4644,26 @@
         "Both MethodDef child bodies are already canonical (FACT-0109 GetPlObj and FACT-0044 EndAIAct); no external MemberRef calls are emitted.",
         "Packed retail asset decode vault remains unavailable; no runtime or viewer work is permitted."
       ]
+    },
+    {
+      "family_id": "DLL_PLAYERCONTROLLER_AI_AI_ACT_FUNC_DO_NOTHING_V1",
+      "fact_id": "FACT-0260",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact two-byte false-return AI delegate target; only raw matching-DLL reference is Init IL+0x0023 ldftn. No capture events or animation closure.",
+      "summary": "canonical/witnesses/CAP-R6-001/playercontroller_ai_do_nothing.summary.json",
+      "dll_method_count": 1,
+      "direct_in_assembly_reference_count": 1,
+      "direct_caller_method_count": 1,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Two IL instructions prove a raw zero return, not that the delegate is invoked in a match.",
+        "The only source reference is an ldftn delegate pointer in PlayerController_AI.Init at IL+0x0023.",
+        "The original R6 event capture contains no directly instrumented target or Init event rows; no runtime semantics or animation can be concluded.",
+        "Original packed retail decode vault still missing; runtime/viewer work remains locked."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
