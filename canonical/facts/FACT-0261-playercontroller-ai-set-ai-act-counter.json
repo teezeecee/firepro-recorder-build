@@ -5,7 +5,7 @@
   "evidence": [
     {
       "source_id": "DLL-001",
-      "locator": "MethodDef 0x06004FAC metadata, code, FieldDef/Param metadata, full reference scan in canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_counter.summary.json and original-byte verifier tools/prove_playercontroller_ai_set_ai_act_counter.py",
+      "locator": "MethodDef 0x06004FAC metadata, code, FieldDef/Param metadata, full reference scan in canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_counter_duration_write.summary.json and original-byte verifier tools/prove_playercontroller_ai_set_ai_act_counter_duration_write.py",
       "observation": "Direct Int32-to-field store and all four source reference sites."
     }
   ],

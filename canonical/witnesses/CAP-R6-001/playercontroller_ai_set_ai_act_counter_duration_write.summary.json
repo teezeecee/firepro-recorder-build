@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "PlayerController_AI",
+      "namespace": "",
+      "name": "SetAIActCounter",
+      "token": "0x06004FAC",
+      "methoddef_row_hex": "ec602f00000086000e360a009f490000c83a",
+      "rva": "0x002F60EC",
+      "impl_flags_raw": "0x0000",
+      "method_attributes_raw": "0x0086",
+      "signature_blob_hex": "20010108",
+      "tiny_header_hex": "22",
+      "parameter_count": 1,
+      "parameter_name": "cnt",
+      "parameter_row_hex": "00000100f31d0700",
+      "code_size": 8,
+      "code_sha256": "cff3981d35f0878efae84ea0b7f25c9c403437bc3e9413041ba509fbb361fa1a",
+      "body_hex": "02037d4c6100042a",
+      "decoded_instruction_count": 4
+    },
+    "instructions": [
+      {
+        "il": "0x0000",
+        "opcode": "ldarg.0"
+      },
+      {
+        "il": "0x0001",
+        "opcode": "ldarg.1"
+      },
+      {
+        "il": "0x0002",
+        "opcode": "stfld",
+        "operand": "0x0400614C"
+      },
+      {
+        "il": "0x0007",
+        "opcode": "ret"
+      }
+    ],
+    "fields": [
+      {
+        "il": "0x0002",
+        "opcode": "stfld",
+        "token": "0x0400614C",
+        "owner": "PlayerController_AI",
+        "name": "aiActDuration",
+        "raw_row_hex": "0600c3f2030001000000",
+        "signature_blob_hex": "0608"
+      }
+    ],
+    "direct_methoddef_call_count": 0,
+    "memberref_method_call_count": 0,
+    "branch_count": 0,
+    "direct_in_assembly_references": [
+      {
+        "caller_type": "MatchDebug",
+        "caller_namespace": "",
+        "caller_method": "TestAI_Weapon",
+        "caller_token": "0x060048B6",
+        "caller_rva": "0x002A4244",
+        "caller_code_size": 149,
+        "caller_code_sha256": "b5d0a01c62f61a1301452680585b9b90c88b9a9ec1200ccbd51a8103823b7ba7",
+        "call_il": "0x006A",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "FormAnimator",
+        "caller_namespace": "",
+        "caller_method": "PlayAnimationSE",
+        "caller_token": "0x06004E7D",
+        "caller_rva": "0x002DB718",
+        "caller_code_size": 364,
+        "caller_code_sha256": "ba7c6da321b3f5632756459a8a788abd92609da056981078f5fc7bbe04824085",
+        "call_il": "0x00FA",
+        "opcode": "callvirt"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "SetAIAct",
+        "caller_token": "0x06004F9D",
+        "caller_rva": "0x002F5F54",
+        "caller_code_size": 102,
+        "caller_code_sha256": "58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065",
+        "call_il": "0x000E",
+        "opcode": "call"
+      },
+      {
+        "caller_type": "PlayerController_AI",
+        "caller_namespace": "",
+        "caller_method": "SetAIAct",
+        "caller_token": "0x06004F9D",
+        "caller_rva": "0x002F5F54",
+        "caller_code_size": 102,
+        "caller_code_sha256": "58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065",
+        "call_il": "0x001D",
+        "opcode": "call"
+      }
+    ],
+    "direct_reference_count": 4,
+    "direct_caller_method_count": 3
+  },
+  "capture_boundary": {
+    "source_id": "CAP-R6-001",
+    "archive_sha256": "93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d",
+    "event_trace_sha256": "79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd",
+    "checked_method_event_counts": {
+      "PlayerController_AI.SetAIActCounter": 0,
+      "PlayerController_AI.SetAIAct": 0,
+      "MatchDebug.TestAI_Weapon": 0,
+      "FormAnimator.PlayAnimationSE": 90916
+    },
+    "promoted_as_evidence": false
+  },
+  "limits": [
+    "Only source-exact Int32 assignment to a stored field is established; method and field names are not definitions of timing or state meanings.",
+    "Four method-reference byte sites in three owners/callers are established, but the scan alone does not prove any specific runtime invocation or complete authored behavior.",
+    "R6 has zero SetAIActCounter rows. FormAnimator.PlayAnimationSE has 90916 event rows, but this does not identify which, if any, invoked SetAIActCounter.",
+    "Original packed retail decode vault is still unavailable. Runtime/viewer construction stays locked."
+  ],
+  "reproducibility_tool": "tools/prove_playercontroller_ai_set_ai_act_counter_duration_write.py"
+}

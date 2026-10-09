@@ -1,103 +1,205 @@
 #!/usr/bin/env python3
-"""FACT-0261: independently replay exact DLL method, callers and R6 boundary."""
 import argparse,csv,hashlib,io,json,struct,zipfile
 from pathlib import Path
-import prove_player_status_data_man_get_player_status_data as base
+import prove_playercontroller_ai_process_drop_weapon as drop
 
-ROOT=Path(__file__).resolve().parents[1]
-W=ROOT/"canonical/witnesses/CAP-R6-001/playercontroller_ai_set_ai_act_counter.summary.json"
-TOKEN=0x06004FAC
+base=drop.base
+DLL_SHA='9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6'
+DLL_SIZE=8171008
+R6_SHA='93179c3e9a770c62514f1df89390542389b8b2c399027e60ae15e8335dca5d9d'
+EVENT_SHA='79b6511800e04ce198209473366c9d486667629d144c82d897fb1168367b12bd'
 
-def need(ok,why):
-    if not ok: raise RuntimeError(why)
+T=0x06004FAB
+RVA=0x002F60DA
+ROW='da602f0000008100fd350a00ebcd0200c63a'
+SIG='20020111a7d808'
+FLAGS=0x0081
+HEADER=0x46
+BODY=bytes.fromhex('021f1a04289d4f000602037d4e6100042a')
+SHA='d693e192b2928d1a36497d9296bc697e14ada6ab9d936c6cbc1134813b9d07e5'
 
-def verify_dll(path,w):
-    pe=Path(path).read_bytes()
-    d=w["dll"];m=d["method"]
-    need(len(pe)==d["size_bytes"] and hashlib.sha256(pe).hexdigest()==d["sha256"],"retail DLL identity")
-    ss,q=base.secs(pe); st,hs,rows,p=base.mdstreams(pe,ss,q)
-    s,b,ix,z,o=base.tables(pe,st,hs,rows,p)
-    sb=st["#Strings"][0];bb=st["#Blob"][0]
-    fm,owners=base.owner_maps(pe,rows,s,ix,z,o,sb)
-    raw,rva,impl,flags,name,sig,plist,owner,start,body=base.method(pe,ss,s,b,ix,z,o,sb,bb,owners,TOKEN)
-    need((raw,rva,impl,flags,name,sig,owner)==
-         (m["methoddef_row_hex"],int(m["rva"],16),int(m["impl_flags_raw"],16),
-          int(m["method_attributes_raw"],16),m["name"],m["signature_blob_hex"],(m["owner"],m["namespace"])),"MethodDef metadata")
-    need(pe[base.off(ss,rva):start].hex()==m["tiny_header_hex"]=="22","tiny method header")
-    need(body.hex()==m["body_hex"]=="02037d4c6100042a" and len(body)==m["code_size"]==8,"exact body")
-    need(hashlib.sha256(body).hexdigest()==m["code_sha256"],"body SHA-256")
-    nxt=base.method(pe,ss,s,b,ix,z,o,sb,bb,owners,TOKEN+1)
-    need(nxt[6]==plist+m["parameter_count"]==plist+1,"one Param metadata row")
-    pp=o[8]+(plist-1)*z[8]
-    need(pe[pp:pp+z[8]].hex()==m["parameter_row_hex"],"parameter row bytes")
-    ni,_=base.rd(pe,pp+4,s)
-    need(base.s_at(pe,sb,ni)==m["parameter_name"]=="cnt","parameter name")
-    expected=[{"il":"0x0000","opcode":"ldarg.0"},
-              {"il":"0x0001","opcode":"ldarg.1"},
-              {"il":"0x0002","opcode":"stfld","operand":"0x0400614C"},
-              {"il":"0x0007","opcode":"ret"}]
-    need(d["instructions"]==expected and m["decoded_instruction_count"]==4,"IL instruction boundaries")
-    need(d["branch_count"]==d["direct_methoddef_call_count"]==d["memberref_method_call_count"]==0,"no branches or calls")
-    need(len(d["fields"])==1,"one field")
-    fld=d["fields"][0]
-    need((fld["il"],fld["opcode"],fld["token"])==("0x0002","stfld","0x0400614C"),"field location")
-    row,own,nm,sig=base.field(pe,s,b,z,o,sb,bb,fm,0x0400614C)
-    need((row,own,nm,sig)==(fld["raw_row_hex"],(fld["owner"],""),fld["name"],fld["signature_blob_hex"]),"field metadata")
-    needle=struct.pack("<I",TOKEN)
-    patterns=[(b"\x28"+needle,"call"),(b"\x6F"+needle,"callvirt"),
-              (b"\x73"+needle,"newobj"),(b"\x27"+needle,"jmp"),
-              (b"\xFE\x06"+needle,"ldftn"),(b"\xFE\x07"+needle,"ldvirtftn")]
-    found=[]
+PARAMS=[
+ (1,'kind','0000010063510100'),
+ (2,'tm','00000200d7610700')
+]
+COUNTERATK_RID=2550
+COUNTERATK_ROW='03010000a7790000000000004503b0612d50'
+
+FIELD=0x0400614E
+FIELD_ROW='0100dbf2030001000000'
+FIELD_SIG='0608'
+FIELD_DIGEST='d5718d050bd7e511e13bf4a3689b08e71f09a2eb9147f8bf1ef35f45a30e95ca'
+
+CHILD=0x06004F9D
+CHILD_SHA='58725b1757df7dd4bb511637f82b17f0ec95140b0a213f420cf88b318d04d065'
+CALL_DIGEST='50353803322a8a677c90ee71b786cfc1ce6d91e5b879abd11fb8eedc3e1f0c3b'
+
+EXPECTED_REFS=[
+ {
+  'caller_type':'PlayerController_AI','caller_namespace':'','caller_method':'ChangeCounter',
+  'caller_token':'0x06004FDA','caller_rva':'0x002F92EC','caller_code_size':339,
+  'caller_code_sha256':'ee3271363d38d319d290e669bdfc8d1c1f0e39de5ca6edc80bbec01e08f65a5d',
+  'call_il':'0x014D','opcode':'call'
+ },
+ {
+  'caller_type':'PlayerController_AI','caller_namespace':'','caller_method':'Process_OpponentStands_AfterHammerThrow',
+  'caller_token':'0x06004FF2','caller_rva':'0x002FB3C0','caller_code_size':248,
+  'caller_code_sha256':'f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3',
+  'call_il':'0x00C2','opcode':'call'
+ },
+ {
+  'caller_type':'PlayerController_AI','caller_namespace':'','caller_method':'Process_OpponentStands_AfterHammerThrow',
+  'caller_token':'0x06004FF2','caller_rva':'0x002FB3C0','caller_code_size':248,
+  'caller_code_sha256':'f417f4eab0e62c6e31057c8c5123b17c930240b8a0691685c70a1fc40ca4e7d3',
+  'call_il':'0x00EC','opcode':'call'
+ }
+]
+REF_DIGEST='86fa6e16dce76a7daf1b77e738cbdb944ac56ad2954786f05623e79b23ade63b'
+CALLER_DIGEST='1c1be4e722be0dbceacee720cd826f221dd476a2e63c74fa28ad06be47e55435'
+
+class E(RuntimeError): pass
+
+def sh(path):
+    h=hashlib.sha256()
+    with open(path,'rb') as f:
+        for c in iter(lambda:f.read(1048576),b''): h.update(c)
+    return h.hexdigest()
+
+def refs(pe,ss,s,b,ix,z,o,sb,bb,owners,rows):
+    needle=struct.pack('<I',T)
+    pats=[(bytes([0x28])+needle,'call'),(bytes([0x6f])+needle,'callvirt'),
+          (bytes([0x73])+needle,'newobj'),(bytes([0x27])+needle,'jmp'),
+          (bytes([0xfe,0x06])+needle,'ldftn'),(bytes([0xfe,0x07])+needle,'ldvirtftn')]
+    out=[]
     for rid in range(1,rows[6]+1):
         tok=0x06000000|rid
-        c=base.method(pe,ss,s,b,ix,z,o,sb,bb,owners,tok)
-        code=c[9]
-        if not code: continue
-        for pat,opname in patterns:
-            at=0
+        md=drop.method(pe,ss,s,b,ix,z,o,sb,bb,owners,tok)
+        body=md[9]
+        if not body: continue
+        for pat,opname in pats:
+            pos=0
             while True:
-                pos=code.find(pat,at)
-                if pos<0: break
-                found.append(dict(caller_type=c[7][0],caller_namespace=c[7][1],caller_method=c[4],
-                    caller_token=f"0x{tok:08X}",caller_rva=f"0x{c[1]:08X}",
-                    caller_code_size=len(code),caller_code_sha256=hashlib.sha256(code).hexdigest(),
-                    call_il=f"0x{pos:04X}",opcode=opname))
-                at=pos+1
-    found.sort(key=lambda x:(int(x["caller_token"],16),int(x["call_il"],16),x["opcode"]))
-    need(found==d["direct_in_assembly_references"],"complete reference/owner/caller source bytes")
-    need(len(found)==d["direct_reference_count"]==4 and len({r["caller_token"] for r in found})==d["direct_caller_method_count"]==3,"reference counts")
-    return {"method_code_bytes":8,"field_sites":1,"direct_references":4,"direct_caller_methods":3}
+                x=body.find(pat,pos)
+                if x<0: break
+                out.append({
+                    'caller_type':md[7][0] if md[7] else None,
+                    'caller_namespace':md[7][1] if md[7] else None,
+                    'caller_method':md[4],
+                    'caller_token':f'0x{tok:08X}',
+                    'caller_rva':f'0x{md[1]:08X}',
+                    'caller_code_size':len(body),
+                    'caller_code_sha256':hashlib.sha256(body).hexdigest(),
+                    'call_il':f'0x{x:04X}','opcode':opname
+                })
+                pos=x+1
+    out.sort(key=lambda x:(int(x['caller_token'],16),int(x['call_il'],16),x['opcode']))
+    return out
 
-def verify_r6(path,w):
-    cap=w["capture_boundary"]
-    need(base.sh(path)==cap["archive_sha256"],"R6 zip identity")
+def verify_dll(path):
+    pe=Path(path).read_bytes()
+    if len(pe)!=DLL_SIZE or hashlib.sha256(pe).hexdigest()!=DLL_SHA: raise E('DLL identity')
+    ss,q=base.secs(pe)
+    st,hs,rows,tp=base.mdstreams(pe,ss,q)
+    s,b,ix,z,o=base.tables(pe,st,hs,rows,tp)
+    sb=st['#Strings'][0]; bb=st['#Blob'][0]
+    fm,owners=base.owner_maps(pe,rows,s,ix,z,o,sb)
+
+    md=drop.method(pe,ss,s,b,ix,z,o,sb,bb,owners,T)
+    raw,rva,impl,flags,name,sig,plist,owner,start,body=md
+    if (raw,rva,impl,flags,name,sig,owner)!=(ROW,RVA,0,FLAGS,'SetAIAct_Counter',SIG,('PlayerController_AI','')):
+        raise E('method metadata')
+    next_plist=drop.method(pe,ss,s,b,ix,z,o,sb,bb,owners,T+1)[6]
+    if next_plist-plist!=2: raise E('parameter count')
+
+    for idx,(seq,nm,rowhex) in enumerate(PARAMS):
+        rid=plist+idx
+        p=o[8]+(rid-1)*z[8]
+        rawp=pe[p:p+z[8]]
+        fl=struct.unpack_from('<H',rawp,0)[0]
+        sq=struct.unpack_from('<H',rawp,2)[0]
+        q2=p+4
+        ni,_=base.rd(pe,q2,s)
+        if (rawp.hex(),fl,sq,base.s_at(pe,sb,ni))!=(rowhex,0,seq,nm):
+            raise E('parameter '+str(seq))
+
+    tp2=o[2]+(COUNTERATK_RID-1)*z[2]
+    tr=pe[tp2:tp2+z[2]]
+    q2=tp2+4
+    ni,q2=base.rd(pe,q2,s); nsi,q2=base.rd(pe,q2,s)
+    if tr.hex()!=COUNTERATK_ROW or base.s_at(pe,sb,ni)!='CounterAtkEnum' or base.s_at(pe,sb,nsi)!='':
+        raise E('CounterAtkEnum metadata')
+
+    ho=base.off(ss,RVA)
+    if pe[ho]!=HEADER: raise E('tiny header')
+    if body!=BODY or hashlib.sha256(body).hexdigest()!=SHA: raise E('body')
+
+    if drop.field(pe,s,b,z,o,sb,bb,fm,FIELD)!=(FIELD_ROW,('PlayerController_AI',''),'aiActPrm',FIELD_SIG):
+        raise E('aiActPrm field')
+    if body[0x000B]!=0x7d or struct.unpack_from('<I',body,0x000C)[0]!=FIELD:
+        raise E('aiActPrm write')
+    fa=[{'il':'0x000B','opcode':'stfld','token':'0x0400614E'}]
+    if hashlib.sha256(json.dumps(fa,sort_keys=True,separators=(',',':')).encode()).hexdigest()!=FIELD_DIGEST:
+        raise E('field digest')
+
+    if body[0:4]!=bytes.fromhex('021f1a04'): raise E('raw SetAIAct arguments')
+    got=drop.calls(body)
+    if got!=[(0x0004,0x28,CHILD)]: raise E('call surface '+repr(got))
+    cm=drop.method(pe,ss,s,b,ix,z,o,sb,bb,owners,CHILD)
+    if cm[4]!='SetAIAct' or cm[7]!=('PlayerController_AI','') or len(cm[9])!=102 or hashlib.sha256(cm[9]).hexdigest()!=CHILD_SHA:
+        raise E('FACT-0043 child identity')
+    core=[{'il':'0x0004','opcode':'call','token':'0x06004F9D'}]
+    if hashlib.sha256(json.dumps(core,sort_keys=True,separators=(',',':')).encode()).hexdigest()!=CALL_DIGEST:
+        raise E('call digest')
+    if body[0x0009:0x0011]!=bytes.fromhex('02037d4e6100042a'):
+        raise E('kind write/return')
+
+    rr=refs(pe,ss,s,b,ix,z,o,sb,bb,owners,rows)
+    if rr!=EXPECTED_REFS: raise E('reference surface '+repr(rr))
+    rd=hashlib.sha256(json.dumps(rr,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    if rd!=REF_DIGEST: raise E('reference digest '+rd)
+    callers=sorted({x['caller_token'] for x in rr})
+    cd=hashlib.sha256(''.join(x+'\n' for x in callers).encode()).hexdigest()
+    if cd!=CALLER_DIGEST: raise E('caller digest '+cd)
+
+    return {
+      'code_size':17,'code_sha256':SHA,
+      'canonical_internal_methoddef_reference_count':1,
+      'external_memberref_method_call_count':0,
+      'direct_reference_count':3,'direct_caller_method_count':2,
+      'reference_map_sha256':rd
+    }
+
+def verify_r6(path):
+    if sh(path)!=R6_SHA: raise E('R6 identity')
+    wanted={
+      'PlayerController_AI.SetAIAct_Counter':0,
+      'PlayerController_AI.SetAIAct':0,
+      'PlayerController_AI.ChangeCounter':0,
+      'PlayerController_AI.Process_OpponentStands_AfterHammerThrow':0
+    }
     with zipfile.ZipFile(path) as zf:
-        need(zf.testzip() is None,"R6 CRC")
-        names=[name for name in zf.namelist() if Path(name).name=="event_trace.tsv"]
-        need(len(names)==1,"one event trace")
-        data=zf.read(names[0])
-        need(hashlib.sha256(data).hexdigest()==cap["event_trace_sha256"],"event trace identity")
-        seen={k:0 for k in cap["checked_method_event_counts"]}
-        for row in csv.DictReader(io.StringIO(data.decode("utf-8-sig")),delimiter="\t"):
-            if row["method"] in seen:seen[row["method"]]+=1
-    need(seen==cap["checked_method_event_counts"],"exact R6 per-method counts")
-    need(seen["PlayerController_AI.SetAIActCounter"]==0 and cap["promoted_as_evidence"] is False,"unobserved target boundary")
-    return {"target_method_event_rows":0,"observed_animator_method_rows":seen["FormAnimator.PlayAnimationSE"]}
+        if zf.testzip(): raise E('CRC')
+        names=[n for n in zf.namelist() if Path(n).name=='event_trace.tsv']
+        if len(names)!=1: raise E('event trace count')
+        bts=zf.read(names[0])
+        if hashlib.sha256(bts).hexdigest()!=EVENT_SHA: raise E('event trace identity')
+        for row in csv.DictReader(io.StringIO(bts.decode('utf-8-sig')),delimiter='\t'):
+            if row['method'] in wanted: wanted[row['method']]+=1
+    if any(wanted.values()): raise E('R6 boundary '+repr(wanted))
+    return dict(wanted,promoted_as_evidence=False)
 
 def main():
-    ap=argparse.ArgumentParser()
-    ap.add_argument("--dll",required=True)
-    ap.add_argument("--r6",required=True)
-    a=ap.parse_args()
+    a=argparse.ArgumentParser()
+    a.add_argument('--dll',required=True)
+    a.add_argument('--r6',required=True)
+    x=a.parse_args()
     try:
-        w=json.loads(W.read_text(encoding="utf-8"))
-        need(w["dataset_id"]=="DLL_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER_V1" and w["source_ids"]==["DLL-001"],"witness identity")
-        print(json.dumps({"dll":verify_dll(a.dll,w),"r6":verify_r6(a.r6,w)},indent=2,sort_keys=True))
-        print("PROVE_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER: PASS")
+        print(json.dumps({'dll':verify_dll(x.dll),'r6':verify_r6(x.r6)},indent=2,sort_keys=True))
+        print('PROVE_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER: PASS')
         return 0
     except Exception as e:
-        print("PROVE_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER: FAIL",str(e))
+        print('PROVE_PLAYERCONTROLLER_AI_SET_AI_ACT_COUNTER: FAIL')
+        print(str(e))
         return 1
 
-if __name__=="__main__":
-    raise SystemExit(main())
+if __name__=='__main__': raise SystemExit(main())
