@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_ATTACK_DEFENCE_PARAM_FLAGS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_size": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "source_window": {
+      "begin_il": "0x017F",
+      "end_exclusive_il": "0x023C",
+      "byte_count": 189,
+      "sha256": "a5a334f393cc1a57fb99052c3dc9d5c980fad164a7cd51741c5f7b511f41a7fb",
+      "read_sequence_hex": "03082517580c911304",
+      "first_read_il": "0x017F",
+      "second_read_il": "0x01A3",
+      "third_read_il": "0x01C7",
+      "original_arg2_relative_positions": [
+        26,
+        27,
+        28
+      ],
+      "nibble_high_opcode_prefix_hex": "07110420f00000005f1a637d",
+      "nibble_low_opcode_prefix_hex": "0711041f0f5f7d"
+    },
+    "original_fields": [
+      {
+        "name": "atkPrmType_Main",
+        "token": "0x04007C61",
+        "row_hex": "06001e4b0100fd0b0000",
+        "relative_input_byte": 26,
+        "nibble": "high",
+        "formula": "(byte & 0xF0) >> 4"
+      },
+      {
+        "name": "atkPrmType_Sub",
+        "token": "0x04007C62",
+        "row_hex": "06002e4b0100fd0b0000",
+        "relative_input_byte": 26,
+        "nibble": "low",
+        "formula": "byte & 0x0F"
+      },
+      {
+        "name": "defPrmType_Main",
+        "token": "0x04007C63",
+        "row_hex": "06003d4b0100020c0000",
+        "relative_input_byte": 27,
+        "nibble": "high",
+        "formula": "(byte & 0xF0) >> 4"
+      },
+      {
+        "name": "defPrmType_Sub",
+        "token": "0x04007C64",
+        "row_hex": "06004d4b0100020c0000",
+        "relative_input_byte": 27,
+        "nibble": "low",
+        "formula": "byte & 0x0F"
+      }
+    ],
+    "flag_field": {
+      "token": "0x04007C55",
+      "name": "flags",
+      "row_hex": "0600314c01000c0c0000"
+    },
+    "bit_tests": [
+      {
+        "mask": 1,
+        "or_bit": 512,
+        "block_il": "0x01D0",
+        "branch_il": "0x01D4",
+        "skip_to_il": "0x01EB"
+      },
+      {
+        "mask": 2,
+        "or_bit": 1024,
+        "block_il": "0x01EB",
+        "branch_il": "0x01EF",
+        "skip_to_il": "0x0206"
+      },
+      {
+        "mask": 4,
+        "or_bit": 2048,
+        "block_il": "0x0206",
+        "branch_il": "0x020A",
+        "skip_to_il": "0x0221"
+      },
+      {
+        "mask": 8,
+        "or_bit": 4096,
+        "block_il": "0x0221",
+        "branch_il": "0x0225",
+        "skip_to_il": "0x023C"
+      }
+    ]
+  },
+  "limits": [
+    "Only original IL+0x017F..0x023B and original FieldDef names are proven here. Names are metadata, not empirical wrestler attack/defence gameplay meaning.",
+    "Signed/unsigned treatment is original IL bit operations and local branch outcomes; no authored move IDs, animation frames, root, timing, bank mapping or DLC claims.",
+    "All source positions derive from the corrected original cursor postincrement model in FACT-0266 and direct full-body matching SHA. Parent Unity resources.assets and exported fprwaza binding remain unverified.",
+    "No original proprietary bytes are committed. Milestone SOURCE_CONSOLIDATION_V1 and runtime_locked=true remain in force."
+  ]
+}

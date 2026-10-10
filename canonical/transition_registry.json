@@ -4842,6 +4842,30 @@
         "This fact closes exactly original parser IL+0x00D2..0x017E. Following parser bytes, frame banks, timing, root offsets, and transition semantics are still open.",
         "Source export TextAsset and Unity resources.assets parent or actual Resources.Load routing are not source-verified in this fact. SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_ATTACK_DEFENCE_PARAM_FLAGS_V1",
+      "fact_id": "FACT-0269",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData IL+0x017F..0x023B 189-byte SHA-pinned window; original arg2+26/+27 packed attack and defence high/low nibble fields, arg2+28 four independent low-bit checks and original flags |= 0x200/0x400/0x800/0x1000.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_attack_defence_flags.summary.json",
+      "dll_method_count": 1,
+      "original_fielddef_count": 5,
+      "source_relative_offsets": [
+        26,
+        27,
+        28
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Only original IL+0x017F..0x023B and original FieldDef names are proven here. Names are metadata, not empirical wrestler attack/defence gameplay meaning.",
+        "Signed/unsigned treatment is original IL bit operations and local branch outcomes; no authored move IDs, animation frames, root, timing, bank mapping or DLC claims.",
+        "All source positions derive from the corrected original cursor postincrement model in FACT-0266 and direct full-body matching SHA. Parent Unity resources.assets and exported fprwaza binding remain unverified.",
+        "No original proprietary bytes are committed. Milestone SOURCE_CONSOLIDATION_V1 and runtime_locked=true remain in force."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
