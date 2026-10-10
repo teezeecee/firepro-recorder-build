@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0270",
+  "status": "PROVEN_DLL",
+  "claim": "The original matching SHA-pinned retail DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F has exact full 1735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae. The next original 98-byte contiguous IL window 0x023C through 0x029D is SHA b3fc6e13734c07833e950e4566966ea0cb8db24263a036892e258399411bfe68. It performs six unconditional old-cursor unsigned-byte reads at original parser input arg2 offsets +29,+30,+31,+32,+33,+34, writing to original SkillData fields suicideDamage_HP/SP/Neck/Arm/Waist/Leg respectively (original FieldDefs 0x04007C65..6A). It then reads the seventh unsigned byte at arg2+35 and bitwise-ORs it into original SkillData.flags FieldDef 0x04007C55. The block begins where FACT-0269's four conditional flag paths rejoin at IL+0x023C and contains no branch instructions. This documents only exact original source and field names; it proves no authored move behavior, animation frames, retail-loaded resource identity or damage effects.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original MethodDef 0x0600525F exact RVA 0x0031F694, full SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae, contiguous IL window 0x023C..0x029D SHA b3fc6e13734c07833e950e4566966ea0cb8db24263a036892e258399411bfe68, six 13-byte ldloc/ldelem.u1/stfld patterns and final 20-byte flags |= byte operation. FieldDef metadata 0x04007C65..6A and 0x04007C55. Original-byte replay tools/prove_skill_data_man_rsf_six_suicide_damage_bytes.py and witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_six_suicide_damage_bytes.summary.json.",
+      "observation": "Six consecutive original SkillData suicideDamage fields and an unconditional flags OR with next byte."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0269 four original conditional flag paths",
+      "to": "Parser IL+0x023C common next block",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Previous conditional IL+0x0225 brfalse to 0x023C and true-path flags OR ends at 0x023B; both paths join at IL+0x023C."
+        }
+      ]
+    },
+    {
+      "from": "Parser arg2+29 through arg2+34",
+      "to": "Original six SkillData suicideDamage FieldDefs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original contiguous six 13-byte reads and FieldDef writes at IL+0x023C,0x0249,0x0256,0x0263,0x0270,0x027D; tokens 0x04007C65..6A."
+        }
+      ]
+    },
+    {
+      "from": "Parser arg2+35",
+      "to": "Original SkillData.flags FieldDef",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x028A..0x029D `ldloc.1; dup; ldfld flags; ldarg.1; ldloc.2; dup; ldc.i4.1; add; stloc.2; ldelem.u1; or; stfld flags`, FieldDef 0x04007C55."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only this exact 98-byte original-DLL IL window and original FieldDef metadata have been source-proven. The `suicideDamage` names must not be turned into assumptions about a move's effects.",
+    "All six `ldelem.u1` reads and the flags OR are unconditional in the bounded IL window reached after previous bit-test paths join; source proves operations, not gameplay intent.",
+    "Input byte indices +29 through +35 are relative to ParseRSFData original argument2 using the corrected old-cursor postincrement rule. No runtime entry, record IDs, animation meanings or scene transitions were verified.",
+    "Parent retail Unity resources.assets SHA and actual Resources.Load fprwaza binding remain open; no proprietary game bytes committed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
