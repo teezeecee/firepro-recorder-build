@@ -4894,6 +4894,31 @@
         "Input byte indices +29 through +35 are relative to ParseRSFData original argument2 using the corrected old-cursor postincrement rule. No runtime entry, record IDs, animation meanings or scene transitions were verified.",
         "Parent retail Unity resources.assets SHA and actual Resources.Load fprwaza binding remain open; no proprietary game bytes committed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_TWO_VECTOR2_SIGNED_UNSIGNED_PAIRS_V1",
+      "fact_id": "FACT-0271",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SkillDataMan.ParseRSFData IL+0x029E..0x02DD 64-byte SHA-pinned source: input bytes arg2+36/+37 each conv.i1 then conv.r4 and UnityEngine.Vector2 constructor, bytes +38/+39 unsigned then conv.r4 and same constructor; TypeRef and MemberRef metadata independently checked.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_two_vector2_pairs.summary.json",
+      "dll_method_count": 1,
+      "original_typeref_count": 1,
+      "original_memberref_count": 1,
+      "source_relative_offsets": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Only original byte decoding and constructor calls are proved, not movement, damage, root offsets, animation timing or direction",
+        "The Unity parent resources.assets source and actual Resources.Load fprwaza binding remain unverified",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer locked; no proprietary binaries committed"
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
