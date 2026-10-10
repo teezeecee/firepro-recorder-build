@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_TWO_VECTOR2_SIGNED_UNSIGNED_PAIRS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x029E",
+      "end_exclusive_il": "0x02DE",
+      "length_bytes": 64,
+      "source_sha256": "c5c8e2fff96546327060efe70884e00eba75821c32a9172df69d3551b4d0948c",
+      "first_pair": {
+        "start_il": "0x029E",
+        "end_exclusive_il": "0x02BF",
+        "source_hex": "03082517580c9167130503082517580c91671306120711056b11066b288800000a",
+        "relative_input_bytes": [
+          36,
+          37
+        ],
+        "per_byte_conversion": "ldelem.u1; conv.i1",
+        "signed_byte_locals": [
+          5,
+          6
+        ],
+        "result_local": 7,
+        "constructor_call_il": "0x02BA"
+      },
+      "second_pair": {
+        "start_il": "0x02BF",
+        "end_exclusive_il": "0x02DE",
+        "source_hex": "03082517580c91130803082517580c911309120a11086b11096b288800000a",
+        "relative_input_bytes": [
+          38,
+          39
+        ],
+        "per_byte_conversion": "ldelem.u1",
+        "unsigned_byte_locals": [
+          8,
+          9
+        ],
+        "result_local": 10,
+        "constructor_call_il": "0x02D9"
+      },
+      "constructor_memberref": {
+        "token": "0x0A000088",
+        "row_hex": "61000000eb4f06003a4b0000",
+        "name": ".ctor",
+        "type_ref_row_id": 12,
+        "type_ref_token": "0x0100000C",
+        "type_ref_row_hex": "0600b5ac000080a60000",
+        "type_namespace": "UnityEngine",
+        "type_name": "Vector2",
+        "signature_hex": "2002010c0c",
+        "signature_description": "instance void .ctor(float32,float32)"
+      }
+    }
+  },
+  "limits": [
+    "Original IL proves two typed constructions and their input conversions only; it does not identify a displacement vector, root offset, animation position, character facing, hit reaction or other gameplay meaning.",
+    "Original four byte slots +36..+39 derive from the previously proven postincrement cursor, first pair uses conv.i1 and second pair deliberately does not; do not normalize signedness.",
+    "The raw Unity resources.assets parent SHA and actual retail-loaded fprwaza payload binding remain open; no authored animation or DLC data promoted.",
+    "Runtime/viewer remain locked by SOURCE_CONSOLIDATION_V1; no proprietary binaries committed."
+  ]
+}

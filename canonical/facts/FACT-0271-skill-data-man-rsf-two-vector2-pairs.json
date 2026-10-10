@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0271",
+  "status": "PROVEN_DLL",
+  "claim": "Original retail SHA-pinned DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F has a contiguous 64-byte raw IL source window at offsets 0x029E..0x02DD, SHA c5c8e2fff96546327060efe70884e00eba75821c32a9172df69d3551b4d0948c, within original 1735-byte method SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae. Original argument2+36 and +37 are each read as ldelem.u1 then converted by conv.i1 to a signed 8-bit value; each is converted by conv.r4 to float32 and passed to UnityEngine.Vector2::.ctor(float32,float32) via original MemberRef 0x0A000088 with receiver local7. The following source bytes original argument2+38 and +39 are loaded with ldelem.u1 WITHOUT conv.i1, then converted with conv.r4 and passed to the same original constructor on receiver local10. The member and type identifiers and constructor signature are independently verified in matching original CLR metadata. This is a byte-packing and typed-construction fact only, NOT proof of any animation, position, movement, root transform or gameplay meaning.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original 1735-byte MethodDef 0x0600525F SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae, original IL+0x029E..0x02DD window SHA c5c8e2fff96546327060efe70884e00eba75821c32a9172df69d3551b4d0948c; exact original call tokens 0x0A000088; original MemberRef #136 row 61000000eb4f06003a4b0000 and TypeRef #12 row 0600b5ac000080a60000, constructor signature 2002010c0c. Source-byte replay tools/prove_skill_data_man_rsf_two_vector2_pairs.py; witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_two_vector2_pairs.summary.json",
+      "observation": "Four original bytes, two signed Int8 conversions only for first pair, two UnityEngine.Vector2(float,float) constructor calls."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0270 field flags OR final instruction",
+      "to": "ParseRSFData IL+0x029E next four raw byte reads",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original FACT-0270 window end exclusive 0x029E equals start of FACT-0271 64-byte window."
+        }
+      ]
+    },
+    {
+      "from": "Input bytes at arg2+36/+37",
+      "to": "UnityEngine.Vector2 constructor using local7",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x029E..0x02BE contains two ldelem.u1; conv.i1; stloc.s, two conv.r4 instructions and call 0x0A000088 at IL+0x02BA."
+        }
+      ]
+    },
+    {
+      "from": "Input bytes at arg2+38/+39",
+      "to": "UnityEngine.Vector2 constructor using local10",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x02BF..0x02DD contains two ldelem.u1; stloc.s without conv.i1, two conv.r4 and call 0x0A000088 at IL+0x02D9."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original IL proves two typed constructions and their input conversions only; it does not identify a displacement vector, root offset, animation position, character facing, hit reaction or other gameplay meaning.",
+    "Original four byte slots +36..+39 derive from the previously proven postincrement cursor, first pair uses conv.i1 and second pair deliberately does not; do not normalize signedness.",
+    "The raw Unity resources.assets parent SHA and actual retail-loaded fprwaza payload binding remain open; no authored animation or DLC data promoted.",
+    "Runtime/viewer remain locked by SOURCE_CONSOLIDATION_V1; no proprietary binaries committed."
+  ]
+}
