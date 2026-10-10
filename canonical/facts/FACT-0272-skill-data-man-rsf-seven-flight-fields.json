@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0272",
+  "status": "PROVEN_DLL",
+  "claim": "Original SHA-pinned DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F 1735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae contains 93 consecutive raw IL bytes at +0x02DE..+0x033A SHA a0a46c5f9c7c9dee803a1828f5dcb7d63b976ecaa5737d53b14333e7a0f3464a with exactly seven straight-line source reads from original parser input arg2+40,+41,+42,+43,+44,+45,+46. They write respectively the original SkillData FieldDefs atkStartDist, flyRangeDist, flyFrm, flyV0, flyStartY, flyEndY and skillType. Byte +44 and +45 each undergo original conv.r4 float conversion after ldelem.u1; the other five are written without conv.r4. The seven FieldDef original row bytes, source instruction spans and no-branch continuity are directly verified. No field label is interpreted as authored gameplay, flight physics, animation/root motion, move bank identity or timing.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original MethodDef 0x0600525F RVA 0x0031F694 full IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae, contiguous 93-byte region IL+0x02DE..0x033A SHA a0a46c5f9c7c9dee803a1828f5dcb7d63b976ecaa5737d53b14333e7a0f3464a; original FieldDef metadata rows 0x04007C57, 0x04007C6D, 0x04007C6E, 0x04007C6F, 0x04007C70, 0x04007C71 and 0x04007C51. Independent verifier tools/prove_skill_data_man_rsf_seven_flight_fields.py, witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_seven_flight_fields.summary.json.",
+      "observation": "Seven source-named byte field assignments, two explicit conv.r4 and five direct unsigned bytes."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0271 two Vector2 construction input pairs",
+      "to": "ParseRSFData first following seven source byte fields",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0271 ends exclusive IL 0x02DE after consuming arg2+39; seven-field block begins exactly IL+0x02DE and reads arg2+40..+46."
+        }
+      ]
+    },
+    {
+      "from": "Input bytes arg2+40..+46",
+      "to": "Seven original SkillData FieldDefs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Seven contiguous source fragments at IL+0x02DE,0x02EB,0x02F8,0x0305,0x0312,0x0320,0x032E with exact operand tokens and metadata names."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only exact original IL and FieldDef names are proven; no claim about gameplay range, flight timing, animation bank orientation, authored offsets, or move meaning.",
+    "The four first and final seventh field writes use ldelem.u1 directly; only flyStartY and flyEndY use conv.r4 after the unsigned byte read. Do not reinterpret field labels into runtime behavior.",
+    "Corrected old-cursor postincrement semantics place input offsets at original arg2+40..+46, directly after FACT-0271 arg2+36..+39. No record source identities are proven.",
+    "Original parent Unity resources.assets, actual loaded fprwaza and historical asset-vault contents remain unverified; no proprietary game bytes committed, runtime/viewer LOCKED by SOURCE_CONSOLIDATION_V1."
+  ]
+}

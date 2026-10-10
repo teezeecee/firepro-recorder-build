@@ -4919,6 +4919,34 @@
         "The Unity parent resources.assets source and actual Resources.Load fprwaza binding remain unverified",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer locked; no proprietary binaries committed"
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_SEVEN_FLIGHT_FIELD_WRITES_V1",
+      "fact_id": "FACT-0272",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData 93 consecutive IL bytes +0x02DE..+0x033A, seven original SkillData FieldDef assignments from input arg2+40..+46, with explicit conv.r4 for flyStartY/EndY only, full SHA-pinned method and window proof.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_seven_flight_fields.summary.json",
+      "dll_method_count": 1,
+      "fielddef_count": 7,
+      "relative_input_offsets": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Only exact original IL and FieldDef names are proven; no claim about gameplay range, flight timing, animation bank orientation, authored offsets, or move meaning.",
+        "The four first and final seventh field writes use ldelem.u1 directly; only flyStartY and flyEndY use conv.r4 after the unsigned byte read. Do not reinterpret field labels into runtime behavior.",
+        "Corrected old-cursor postincrement semantics place input offsets at original arg2+40..+46, directly after FACT-0271 arg2+36..+39. No record source identities are proven.",
+        "Original parent Unity resources.assets, actual loaded fprwaza and historical asset-vault contents remain unverified; no proprietary game bytes committed, runtime/viewer LOCKED by SOURCE_CONSOLIDATION_V1."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

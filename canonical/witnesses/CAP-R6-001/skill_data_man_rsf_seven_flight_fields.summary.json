@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_SEVEN_FLIGHT_FIELD_WRITES_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x02DE",
+      "end_exclusive_il": "0x033B",
+      "length_bytes": 93,
+      "source_sha256": "a0a46c5f9c7c9dee803a1828f5dcb7d63b976ecaa5737d53b14333e7a0f3464a",
+      "first_four_integer_read_sizes": [
+        13,
+        13,
+        13,
+        13
+      ],
+      "middle_two_float_read_sizes": [
+        14,
+        14
+      ],
+      "final_integer_read_size": 13,
+      "source_fields": [
+        {
+          "name": "atkStartDist",
+          "token": "0x04007C57",
+          "metadata_row_hex": "06006273010001000000",
+          "il_offset": "0x02DE",
+          "relative_input_byte": 40,
+          "conversion": "ldelem.u1",
+          "il_hex": "0703082517580c917d577c0004"
+        },
+        {
+          "name": "flyRangeDist",
+          "token": "0x04007C6D",
+          "metadata_row_hex": "06009273010001000000",
+          "il_offset": "0x02EB",
+          "relative_input_byte": 41,
+          "conversion": "ldelem.u1",
+          "il_hex": "0703082517580c917d6d7c0004"
+        },
+        {
+          "name": "flyFrm",
+          "token": "0x04007C6E",
+          "metadata_row_hex": "06009f73010001000000",
+          "il_offset": "0x02F8",
+          "relative_input_byte": 42,
+          "conversion": "ldelem.u1",
+          "il_hex": "0703082517580c917d6e7c0004"
+        },
+        {
+          "name": "flyV0",
+          "token": "0x04007C6F",
+          "metadata_row_hex": "0600a673010001000000",
+          "il_offset": "0x0305",
+          "relative_input_byte": 43,
+          "conversion": "ldelem.u1",
+          "il_hex": "0703082517580c917d6f7c0004"
+        },
+        {
+          "name": "flyStartY",
+          "token": "0x04007C70",
+          "metadata_row_hex": "0600ac73010014000000",
+          "il_offset": "0x0312",
+          "relative_input_byte": 44,
+          "conversion": "ldelem.u1; conv.r4",
+          "il_hex": "0703082517580c916b7d707c0004"
+        },
+        {
+          "name": "flyEndY",
+          "token": "0x04007C71",
+          "metadata_row_hex": "0600b673010014000000",
+          "il_offset": "0x0320",
+          "relative_input_byte": 45,
+          "conversion": "ldelem.u1; conv.r4",
+          "il_hex": "0703082517580c916b7d717c0004"
+        },
+        {
+          "name": "skillType",
+          "token": "0x04007C51",
+          "metadata_row_hex": "0600f24a0100ee0b0000",
+          "il_offset": "0x032E",
+          "relative_input_byte": 46,
+          "conversion": "ldelem.u1",
+          "il_hex": "0703082517580c917d517c0004"
+        }
+      ],
+      "no_branches_within_window": true
+    }
+  },
+  "limits": [
+    "Only exact original IL and FieldDef names are proven; no claim about gameplay range, flight timing, animation bank orientation, authored offsets, or move meaning.",
+    "The four first and final seventh field writes use ldelem.u1 directly; only flyStartY and flyEndY use conv.r4 after the unsigned byte read. Do not reinterpret field labels into runtime behavior.",
+    "Corrected old-cursor postincrement semantics place input offsets at original arg2+40..+46, directly after FACT-0271 arg2+36..+39. No record source identities are proven.",
+    "Original parent Unity resources.assets, actual loaded fprwaza and historical asset-vault contents remain unverified; no proprietary game bytes committed, runtime/viewer LOCKED by SOURCE_CONSOLIDATION_V1."
+  ]
+}
