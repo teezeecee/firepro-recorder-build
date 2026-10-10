@@ -4866,6 +4866,34 @@
         "All source positions derive from the corrected original cursor postincrement model in FACT-0266 and direct full-body matching SHA. Parent Unity resources.assets and exported fprwaza binding remain unverified.",
         "No original proprietary bytes are committed. Milestone SOURCE_CONSOLIDATION_V1 and runtime_locked=true remain in force."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_SIX_SUICIDE_DAMAGE_BYTES_AND_FLAGS_V1",
+      "fact_id": "FACT-0270",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original source ParseRSFData 98 IL bytes at +0x023C..+0x029D, six unconditional SkillData.suicideDamage_* FieldDef writes from arg2+29..+34 and unconditional flags |= byte at arg2+35; matches original MethodDef and window SHA.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_six_suicide_damage_bytes.summary.json",
+      "dll_method_count": 1,
+      "original_fielddef_count": 7,
+      "source_relative_offsets": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Only this exact 98-byte original-DLL IL window and original FieldDef metadata have been source-proven. The `suicideDamage` names must not be turned into assumptions about a move's effects.",
+        "All six `ldelem.u1` reads and the flags OR are unconditional in the bounded IL window reached after previous bit-test paths join; source proves operations, not gameplay intent.",
+        "Input byte indices +29 through +35 are relative to ParseRSFData original argument2 using the corrected old-cursor postincrement rule. No runtime entry, record IDs, animation meanings or scene transitions were verified.",
+        "Parent retail Unity resources.assets SHA and actual Resources.Load fprwaza binding remain open; no proprietary game bytes committed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

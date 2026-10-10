@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_SIX_SUICIDE_DAMAGE_BYTES_AND_FLAGS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "il_bytes": 1735,
+      "il_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x023C",
+      "end_exclusive_il": "0x029E",
+      "byte_count": 98,
+      "sha256": "b3fc6e13734c07833e950e4566966ea0cb8db24263a036892e258399411bfe68",
+      "prior_join_il": "0x023C",
+      "previous_flag_switch_target_il": "0x023C",
+      "six_13_byte_field_reads": [
+        {
+          "name": "suicideDamage_HP",
+          "token": "0x04007C65",
+          "row_hex": "0600a94b010001000000",
+          "relative_input_offset": 29,
+          "source_il": "0x023C",
+          "source_hex": "0703082517580c917d657c0004"
+        },
+        {
+          "name": "suicideDamage_SP",
+          "token": "0x04007C66",
+          "row_hex": "0600ba4b010001000000",
+          "relative_input_offset": 30,
+          "source_il": "0x0249",
+          "source_hex": "0703082517580c917d667c0004"
+        },
+        {
+          "name": "suicideDamage_Neck",
+          "token": "0x04007C67",
+          "row_hex": "0600cb4b010001000000",
+          "relative_input_offset": 31,
+          "source_il": "0x0256",
+          "source_hex": "0703082517580c917d677c0004"
+        },
+        {
+          "name": "suicideDamage_Arm",
+          "token": "0x04007C68",
+          "row_hex": "0600de4b010001000000",
+          "relative_input_offset": 32,
+          "source_il": "0x0263",
+          "source_hex": "0703082517580c917d687c0004"
+        },
+        {
+          "name": "suicideDamage_Waist",
+          "token": "0x04007C69",
+          "row_hex": "0600f04b010001000000",
+          "relative_input_offset": 33,
+          "source_il": "0x0270",
+          "source_hex": "0703082517580c917d697c0004"
+        },
+        {
+          "name": "suicideDamage_Leg",
+          "token": "0x04007C6A",
+          "row_hex": "0600044c010001000000",
+          "relative_input_offset": 34,
+          "source_il": "0x027D",
+          "source_hex": "0703082517580c917d6a7c0004"
+        }
+      ],
+      "postincrement_read_opcode_prefix_hex": "0703082517580c917d",
+      "flags_read": {
+        "il": "0x028A",
+        "relative_input_offset": 35,
+        "flags_field_name": "flags",
+        "flags_field_token": "0x04007C55",
+        "flags_field_row_hex": "0600314c01000c0c0000",
+        "source_hex": "07257b557c000403082517580c91607d557c0004",
+        "semantics": "SkillData.flags = previous SkillData.flags OR unsigned byte at original arg2+35"
+      }
+    }
+  },
+  "limits": [
+    "Only this exact 98-byte original-DLL IL window and original FieldDef metadata have been source-proven. The `suicideDamage` names must not be turned into assumptions about a move's effects.",
+    "All six `ldelem.u1` reads and the flags OR are unconditional in the bounded IL window reached after previous bit-test paths join; source proves operations, not gameplay intent.",
+    "Input byte indices +29 through +35 are relative to ParseRSFData original argument2 using the corrected old-cursor postincrement rule. No runtime entry, record IDs, animation meanings or scene transitions were verified.",
+    "Parent retail Unity resources.assets SHA and actual Resources.Load fprwaza binding remain open; no proprietary game bytes committed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
