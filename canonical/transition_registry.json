@@ -4969,6 +4969,30 @@
         "The literal 15 written to ropeEscapeDir is not sourced from an additional record byte, and is not interpreted as a runtime direction or valid enum.",
         "Unity resources.assets provenance, actual loaded fprwaza export binding, historical retail decode vault, authored frames, bank transformations and timing remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binary committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_SIXTEEN_INT32_ANMNUM_SOURCE_LOOP_V1",
+      "fact_id": "FACT-0274",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData IL+0x0361..+0x0399 exact 57-byte SHA-pinned source: newarr System.Int32 literal 16, old-cursor unsigned input arg2+48..+63 into stelem.i4, original loop branches, call SkillDataMan.GetAnmNum MethodDef 0x06005265, store SkillData.anmNum FieldDef 0x04007C54.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_sixteen_anmnum_source_loop.summary.json",
+      "dll_method_count": 2,
+      "original_typeref_count": 1,
+      "original_fielddef_count": 1,
+      "source_relative_offsets": [
+        48,
+        63
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Only exact original DLL instructions, loop branch targets, metadata identities and source byte-offset progression are established; no authored animation number meaning, bank mapping, frame order or playback timing.",
+        "The original newarr TypeRef resolves to System.Int32 and the original store opcode is stelem.i4; unsigned bytes from ldelem.u1 are stored in 32-bit array elements, not a byte array.",
+        "Source-relative offsets arg2+48..+63 follow the already corrected old-cursor postincrement evidence, and do not prove association with exported retail resource records.",
+        "The original Unity parent resources.assets SHA, retail-loaded fprwaza binding, historical asset vault and authored choreography remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binary is committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
