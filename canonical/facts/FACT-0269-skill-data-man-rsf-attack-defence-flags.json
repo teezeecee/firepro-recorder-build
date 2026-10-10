@@ -1,0 +1,50 @@
+{
+  "fact_id": "FACT-0269",
+  "status": "PROVEN_DLL",
+  "claim": "SHA-pinned original DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F (1735 IL bytes, SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae) has exact 189-byte IL window 0x017F..0x023B (SHA a5a334f393cc1a57fb99052c3dc9d5c980fad164a7cd51741c5f7b511f41a7fb). It loads three successive unsigned source bytes from parser arg2+26, +27 and +28 using the original postincrement cursor semantics. From byte+26, original IL stores (byte & 0xF0)>>4 in original SkillData.atkPrmType_Main and (byte&0x0F) in SkillData.atkPrmType_Sub. From byte+27 it stores the corresponding high and low nibbles in SkillData.defPrmType_Main and defPrmType_Sub. It then tests source byte+28 bits 0,1,2,3 independently; for each nonzero bit it ORs original SkillData.flags with respectively 0x0200, 0x0400, 0x0800, 0x1000. Every zero-bit branch skips only its corresponding OR and resumes at the next bit check or subsequent parser instructions. All field names, metadata row bytes, source opcodes and four targets are observed in the original DLL; field labels do not establish actual gameplay effects.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original MethodDef 0x0600525F RVA 0x0031F694, complete 1735 IL bytes SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae, exact source window IL+0x017F..0x023B SHA a5a334f393cc1a57fb99052c3dc9d5c980fad164a7cd51741c5f7b511f41a7fb, raw FieldDefs 0x04007C61/62/63/64 and flags 0x04007C55. Replay tools/prove_skill_data_man_rsf_attack_defence_flags.py and original-byte witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_attack_defence_flags.summary.json",
+      "observation": "Two nibble-packed inputs (+26,+27) assigned to four original FieldDefs, third input (+28) driving four conditional independent flag ORs."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0268 arg2+25",
+      "to": "ParseRSFData three following original byte reads at arg2+26..28",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x017F, 0x01A3, 0x01C7 repeated ldelem.u1 postincrement cursor pattern from original 1735-byte code body."
+        }
+      ]
+    },
+    {
+      "from": "Parser arg2+26/+27",
+      "to": "SkillData.attack/defence parameter FieldDefs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x0188..0x01C6 high/low nibble masks, shifts and source FieldDef store operands 0x04007C61..64."
+        }
+      ]
+    },
+    {
+      "from": "Parser arg2+28 low four bits",
+      "to": "SkillData.flags conditional ORs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x01D0..0x023B: four tests, brfalse at IL+0x01D4/0x01EF/0x020A/0x0225 with exact respective fallthrough target +0x01EB/0x0206/0x0221/0x023C, flags|=0x200/0x400/0x800/0x1000."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only original IL+0x017F..0x023B and original FieldDef names are proven here. Names are metadata, not empirical wrestler attack/defence gameplay meaning.",
+    "Signed/unsigned treatment is original IL bit operations and local branch outcomes; no authored move IDs, animation frames, root, timing, bank mapping or DLC claims.",
+    "All source positions derive from the corrected original cursor postincrement model in FACT-0266 and direct full-body matching SHA. Parent Unity resources.assets and exported fprwaza binding remain unverified.",
+    "No original proprietary bytes are committed. Milestone SOURCE_CONSOLIDATION_V1 and runtime_locked=true remain in force."
+  ]
+}
