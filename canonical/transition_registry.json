@@ -4638,7 +4638,7 @@
       "direct_caller_method_count": 1,
       "runtime_eligible": false,
       "semantic_promotion_blockers": [
-        "Raw integer State 19 and padOn value 513 are preserved without assigning inferred authored movement/state meanings.",
+        "Raw integer State 19 and padOn value 513 are preserved without assigning claimed authored movement/state meanings.",
         "The sole matching-DLL reference is an ldftn delegate pointer in PlayerController_AI.Init, not direct observed execution.",
         "CAP-R6-001 shows no direct event rows for the target method or either MethodDef child, and does not establish animation or choreography.",
         "Both MethodDef child bodies are already canonical (FACT-0109 GetPlObj and FACT-0044 EndAIAct); no external MemberRef calls are emitted.",
@@ -4946,6 +4946,28 @@
         "The four first and final seventh field writes use ldelem.u1 directly; only flyStartY and flyEndY use conv.r4 after the unsigned byte read. Do not reinterpret field labels into runtime behavior.",
         "Corrected old-cursor postincrement semantics place input offsets at original arg2+40..+46, directly after FACT-0271 arg2+36..+39. No record source identities are proven.",
         "Original parent Unity resources.assets, actual loaded fprwaza and historical asset-vault contents remain unverified; no proprietary game bytes committed, runtime/viewer LOCKED by SOURCE_CONSOLIDATION_V1."
+      ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_HIT_DAMAGE_NIBBLES_AND_ROPE_CONSTANT_V1",
+      "fact_id": "FACT-0273",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData IL+0x033B..+0x0360 exact 38 byte SHA-pinned source: one old-cursor byte arg2+47 gives hitDmgType_Single = local4 & 15 and hitDmgType_Combo = local4 shr.un 4; ropeEscapeDir gets original literal 15, not another input byte. Three raw FieldDefs verified.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_hit_damage_nibbles.summary.json",
+      "dll_method_count": 1,
+      "original_fielddef_count": 3,
+      "source_relative_offsets": [
+        47
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original matching DLL IL establishes only one unsigned parser byte, two source-named writes and a literal 15 assignment; no gameplay, hit-type, rope behavior or move meaning claimed.",
+        "arg2+47 is the old cursor consumed by ldelem.u1 before the incremented cursor is stored; low 4 bits use and 15, high 4 bits use shr.un 4 without an additional mask.",
+        "The literal 15 written to ropeEscapeDir is not sourced from an additional record byte, and is not interpreted as a runtime direction or valid enum.",
+        "Unity resources.assets provenance, actual loaded fprwaza export binding, historical retail decode vault, authored frames, bank transformations and timing remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binary committed."
       ]
     }
   ],
