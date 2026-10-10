@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_SIXTEEN_INT32_ANMNUM_SOURCE_LOOP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x0361",
+      "end_exclusive_il": "0x039A",
+      "length_bytes": 57,
+      "source_sha256": "9341a572133ddfaaab1be56708be076289f15ca2c03a3845073a1e78c396b690",
+      "array_length": 16,
+      "array_local": 11,
+      "index_local": 12,
+      "source_cursor_local": 2,
+      "postincrement_old_cursor": true,
+      "first_relative_input_byte": 48,
+      "last_relative_input_byte": 63,
+      "array_type": {
+        "typeref_token": "0x010000D7",
+        "metadata_row_hex": "0a003b5806000cae0000",
+        "name": "Int32",
+        "namespace": "System",
+        "element_store_opcode": "stelem.i4"
+      },
+      "read_opcode": "ldelem.u1",
+      "loop_body_target": "0x0372",
+      "loop_guard_target": "0x0384",
+      "target_method": {
+        "methoddef_token": "0x06005265",
+        "row_hex": "30ff310000009600ee5d0a0089af0100cc3c",
+        "name": "GetAnmNum",
+        "owner": "SkillDataMan",
+        "signature_hex": "0001081d08",
+        "signature_reading": "static int32 GetAnmNum(int32[])"
+      },
+      "destination_field": {
+        "fielddef_token": "0x04007C54",
+        "row_hex": "0600f472010001000000",
+        "owner": "SkillData",
+        "name": "anmNum",
+        "signature_hex": "0608"
+      },
+      "segments": [
+        {
+          "name": "init_int32_array_and_index",
+          "start_il": "0x0361",
+          "end_exclusive_il": "0x036D",
+          "il_hex": "1f108dd7000001130b16130c",
+          "meaning": "ldc.i4.s 16; newarr System.Int32; stloc.s 11; ldc.i4.0; stloc.s 12"
+        },
+        {
+          "name": "jump_to_loop_condition",
+          "start_il": "0x036D",
+          "end_exclusive_il": "0x0372",
+          "il_hex": "3812000000",
+          "branch_displacement": 18,
+          "branch_target_il": "0x0384"
+        },
+        {
+          "name": "old_cursor_unsigned_byte_to_int32_element",
+          "start_il": "0x0372",
+          "end_exclusive_il": "0x037E",
+          "il_hex": "110b110c03082517580c919e",
+          "meaning": "ldloc.s 11; ldloc.s 12; ldarg.2; ldloc.2; dup; ldc.i4.1; add; stloc.2; ldelem.u1; stelem.i4"
+        },
+        {
+          "name": "increment_iteration_index",
+          "start_il": "0x037E",
+          "end_exclusive_il": "0x0384",
+          "il_hex": "110c1758130c",
+          "meaning": "ldloc.s 12; ldc.i4.1; add; stloc.s 12"
+        },
+        {
+          "name": "loop_while_less_than_sixteen",
+          "start_il": "0x0384",
+          "end_exclusive_il": "0x038D",
+          "il_hex": "110c1f103fe5ffffff",
+          "branch_displacement": -27,
+          "branch_target_il": "0x0372"
+        },
+        {
+          "name": "call_original_GetAnmNum_and_store_field",
+          "start_il": "0x038D",
+          "end_exclusive_il": "0x039A",
+          "il_hex": "07110b28655200067d547c0004",
+          "meaning": "ldarg.1; ldloc.s 11; call MethodDef 0x06005265; stfld FieldDef 0x04007C54"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Only exact original DLL instructions, loop branch targets, metadata identities and source byte-offset progression are established; no authored animation number meaning, bank mapping, frame order or playback timing.",
+    "The original newarr TypeRef resolves to System.Int32 and the original store opcode is stelem.i4; unsigned bytes from ldelem.u1 are stored in 32-bit array elements, not a byte array.",
+    "Source-relative offsets arg2+48..+63 follow the already corrected old-cursor postincrement evidence, and do not prove association with exported retail resource records.",
+    "The original Unity parent resources.assets SHA, retail-loaded fprwaza binding, historical asset vault and authored choreography remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binary is committed."
+  ]
+}
