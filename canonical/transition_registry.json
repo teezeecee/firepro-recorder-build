@@ -5281,6 +5281,31 @@
         "The altitude assignment stores (local4 shr 4) AND 7, as encoded. No authored input values, resource binding, form bank/frames, transition timing or gameplay interpretation are established.",
         "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and decoded historical retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No proprietary raw DLL or asset content is committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_FORM_SOUND_EFFECT_FIELDS_V1",
+      "fact_id": "FACT-0285",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original contiguous SkillDataMan.ParseRSFData IL+0x0641..+0x069D reads two separate unsigned source bytes (cursor local2 +1 each), ORs flags 0x200 conditionally when first byte AND 32, assigns ringVibration from (first byte shr 3)&3, assigns seID (second byte &63), seLevel ((second byte shr6)&3) and initializes effectID=-1. Five original FieldDef raw identities checked; authored sound/effect meaning not proven.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_sound_effect_fields.summary.json",
+      "original_fielddef_count": 5,
+      "source_windows": [
+        [
+          "0x0641",
+          "0x069E"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Field names seID, seLevel, effectID and ringVibration are original source metadata labels only; the bounded IL does not prove authored sounds, visual effects, audio playback, shaking or rendered consequences.",
+        "First and second arg1 unsigned byte reads separately increment local2 once each; only the prior source cursor is treated as known at the boundary.",
+        "The conditional flags OR is a storage operation on the previously accumulated FormDispInfo.flags field. The bit meanings and later changes outside this window remain outside this source window.",
+        "The bounded region ends at original IL+0x069E before nested-loop counter and branch instructions; this does not establish complete parser/record semantics or frame timing.",
+        "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historic decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No complete proprietary game binaries or assets committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
