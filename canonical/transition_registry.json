@@ -5206,6 +5206,31 @@
         "Input reads and advancing cursor are inside the nested variable-length form parsing loop; absolute byte offsets for subsequent forms cannot be assigned from this IL alone.",
         "Original Unity resources.assets parent SHA, confirmed actual retail-loaded fprwaza resource and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED, no proprietary binaries or assets committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_FORM_PRIORITIES_AND_INITIAL_FLAGS_V1",
+      "fact_id": "FACT-0282",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Contiguous original ParseRSFData IL+0x0570..+0x05A0 reads one unsigned input byte to local4, assigns (local4 >> 6)&3 to FormDispInfo.formPri, (local4 >> 3)&7 to FormDispInfo.ringPri, and initially assigns the next unsigned input byte to FormDispInfo.flags. Original three FieldDef identities/signatures verified; later flags processing remains outside scope.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_priorities_and_initial_flags.summary.json",
+      "original_fielddef_count": 3,
+      "source_windows": [
+        [
+          "0x0570",
+          "0x05A1"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The original FormDispInfo field labels formPri, ringPri and flags are only verified metadata identities. Priority ordering, bit-flag interpretation, authored sprite/form values and gameplay consequences are not established.",
+        "Original ldelem.u1 produces a nonnegative byte value; the parser's source shr by 6 AND 3, and shr by 3 AND 7 are the only bit-packing rules proven here. Remaining bits are not assigned a meaning by this window.",
+        "The flags field write is the initial source-byte assignment at IL+0x059C. Further instructions starting at IL+0x05A1 manipulate source fields and remain outside this fact; the field's final stored value is not established by this window alone.",
+        "Variable-length parent form parsing means local2 is a cursor; absolute positions of input bytes for individual authored forms are not established.",
+        "Original Unity parent resources.assets hash, proven retail-loaded fprwaza resource binding and historic decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED and no proprietary raw DLL/assets are committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

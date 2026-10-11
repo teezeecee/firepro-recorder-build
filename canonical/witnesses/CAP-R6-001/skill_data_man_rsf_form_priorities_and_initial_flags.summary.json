@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_FORM_PRIORITIES_AND_INITIAL_FLAGS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x0570",
+      "end_exclusive_il": "0x05A1",
+      "length_bytes": 49,
+      "source_sha256": "78bf425b69801c4c958d960905d88d7fd243294def1891207fc7883b6ac2ab66",
+      "source_input_arg": "arg1",
+      "cursor_local": 2,
+      "form_entry_local": 16,
+      "priority_byte_local": 4,
+      "segments": [
+        {
+          "name": "read_unsigned_source_priority_byte_to_local4",
+          "start_il": "0x0570",
+          "end_exclusive_il": "0x0579",
+          "il_hex": "03082517580c911304",
+          "operation": "arg1[current local2] ldelem.u1; increment cursor local2 by one; stloc.s4"
+        },
+        {
+          "name": "extract_form_priority_high_two_bits",
+          "start_il": "0x0579",
+          "end_exclusive_il": "0x0586",
+          "il_hex": "111011041c63195f7ddd7c0004",
+          "operation": "ldloc.s16, ldloc.s4 >> 6, AND 3; stfld FormDispInfo.formPri FieldDef 0x04007CDD"
+        },
+        {
+          "name": "extract_ring_priority_middle_three_bits",
+          "start_il": "0x0586",
+          "end_exclusive_il": "0x0593",
+          "il_hex": "1110110419631d5f7dde7c0004",
+          "operation": "ldloc.s16, ldloc.s4 >> 3, AND 7; stfld FormDispInfo.ringPri FieldDef 0x04007CDE"
+        },
+        {
+          "name": "read_unsigned_source_byte_into_initial_flags",
+          "start_il": "0x0593",
+          "end_exclusive_il": "0x05A1",
+          "il_hex": "111003082517580c917de67c0004",
+          "operation": "ldloc.s16; arg1[current local2] ldelem.u1 with cursor increment one; stfld FormDispInfo.flags FieldDef 0x04007CE6; later flags logic remains next source frontier"
+        }
+      ],
+      "fields": {
+        "0x04007CDD": {
+          "owner": "FormDispInfo",
+          "name": "formPri",
+          "metadata_row_hex": "06000a77010001000000",
+          "signature_hex": "0608"
+        },
+        "0x04007CDE": {
+          "owner": "FormDispInfo",
+          "name": "ringPri",
+          "metadata_row_hex": "06001277010098190000",
+          "signature_hex": "0611a9c8"
+        },
+        "0x04007CE6": {
+          "owner": "FormDispInfo",
+          "name": "flags",
+          "metadata_row_hex": "0600314c010093370000",
+          "signature_hex": "0611a9d0"
+        }
+      },
+      "form_priority": {
+        "right_shift": 6,
+        "and_mask": 3,
+        "source_byte_local": 4,
+        "field_token": "0x04007CDD"
+      },
+      "ring_priority": {
+        "right_shift": 3,
+        "and_mask": 7,
+        "source_byte_local": 4,
+        "field_token": "0x04007CDE"
+      },
+      "flags": {
+        "source_read": "ldelem.u1",
+        "field_token": "0x04007CE6",
+        "scope": "initial assignment only; following original IL remains unexamined in this fact"
+      }
+    }
+  },
+  "limits": [
+    "The original FormDispInfo field labels formPri, ringPri and flags are only verified metadata identities. Priority ordering, bit-flag interpretation, authored sprite/form values and gameplay consequences are not established.",
+    "Original ldelem.u1 produces a nonnegative byte value; the parser's source shr by 6 AND 3, and shr by 3 AND 7 are the only bit-packing rules proven here. Remaining bits are not assigned a meaning by this window.",
+    "The flags field write is the initial source-byte assignment at IL+0x059C. Further instructions starting at IL+0x05A1 manipulate source fields and remain outside this fact; the field's final stored value is not established by this window alone.",
+    "Variable-length parent form parsing means local2 is a cursor; absolute positions of input bytes for individual authored forms are not established.",
+    "Original Unity parent resources.assets hash, proven retail-loaded fprwaza resource binding and historic decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED and no proprietary raw DLL/assets are committed."
+  ]
+}
