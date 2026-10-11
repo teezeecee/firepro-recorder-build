@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_FORM_CENTER_POS_SIGNED_VECTOR2_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x04A6",
+      "end_exclusive_il": "0x04CC",
+      "length_bytes": 38,
+      "source_sha256": "ef544099c322e46d4aee931555bad28a1b6beffb1f8a75be14f74efd7361997c",
+      "segments": [
+        {
+          "name": "read_x_unsigned_then_signed_to_local5",
+          "start_il": "0x04A6",
+          "end_exclusive_il": "0x04B0",
+          "il_hex": "03082517580c91671305",
+          "operation": "ldarg.1; ldloc.2; dup; ldc.i4.1; add; stloc.2; ldelem.u1; conv.i1; stloc.s 5"
+        },
+        {
+          "name": "read_y_unsigned_then_signed_to_local6",
+          "start_il": "0x04B0",
+          "end_exclusive_il": "0x04BA",
+          "il_hex": "03082517580c91671306",
+          "operation": "ldarg.1; ldloc.2; dup; ldc.i4.1; add; stloc.2; ldelem.u1; conv.i1; stloc.s 6"
+        },
+        {
+          "name": "construct_Vector2_and_store_centerPos",
+          "start_il": "0x04BA",
+          "end_exclusive_il": "0x04CC",
+          "il_hex": "111011056b11066b738800000a7dd87c0004",
+          "operation": "ldloc.s 16; ldloc.s 5; conv.r4; ldloc.s 6; conv.r4; newobj MemberRef 0x0A000088; stfld FieldDef 0x04007CD8"
+        }
+      ],
+      "source_input_arg": "arg1",
+      "cursor_local": 2,
+      "form_entry_local": 16,
+      "signed_x_local": 5,
+      "signed_y_local": 6,
+      "cursor_semantics": "two old-cursor unsigned byte reads followed by conv.i1; next cursor advanced after each read; global offsets are data dependent within nested form records",
+      "field": {
+        "token": "0x04007CD8",
+        "owner": "FormDispInfo",
+        "name": "centerPos",
+        "metadata_row_hex": "0600e4760100cb000000",
+        "signature_hex": "061131"
+      },
+      "vector2_typeref": {
+        "token": "0x0100000C",
+        "owner": "UnityEngine",
+        "name": "Vector2",
+        "metadata_row_hex": "0600b5ac000080a60000"
+      },
+      "constructor_memberref": {
+        "token": "0x0A000088",
+        "metadata_row_hex": "61000000eb4f06003a4b0000",
+        "coded_parent_hex": "0x61",
+        "parent_typeref_token": "0x0100000C",
+        "name": ".ctor",
+        "signature_hex": "2002010c0c",
+        "signature_reading": "instance void UnityEngine.Vector2::.ctor(float32,float32)"
+      }
+    }
+  },
+  "limits": [
+    "Original FormDispInfo.centerPos and UnityEngine.Vector2 constructor names come from the matching retail metadata. No authored screen coordinates, offsets, axis conventions, rendering, animation or gameplay interpretation is proven.",
+    "Input reads use the current local2 cursor inside the nested form loop; no constant absolute input offsets for subsequent form entries are claimed. Each read advances the cursor after retaining its old index.",
+    "The input opcodes read unsigned bytes, then conv.i1 sign-converts to 8-bit signed integers, then conv.r4 forms Single values; not a direct unsigned Vector2 decode.",
+    "Unity parent resources.assets hash, actually loaded fprwaza source binding, original asset vault and authored frames remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no retail binaries or assets committed."
+  ]
+}
