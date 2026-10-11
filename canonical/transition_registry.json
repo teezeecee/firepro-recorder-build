@@ -5023,6 +5023,58 @@
         "No invented authored record identities or retail source linkage: Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical decode vault remain OPEN.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED, no proprietary game binary or asset bytes committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_ANM_ENTRY_FIELDS_AND_CURSOR_GAP_V1",
+      "fact_id": "FACT-0276",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData IL+0x03CC..+0x046F contiguous 164-byte SHA-pinned WrestlerAnmData local14 write segment: three existing locals to atkColAng/atkColPos/atkColSize; seven old-cursor ldelem.u1 record-relative +64..+70 to named source fields; three cursor increments without reads +71..+73; then two more old-cursor bytes +74 and +75 to anmStartState/anmEndState. Original twelve FieldDef rows and signatures checked. Buffer offsets +64..+75 are valid only for the first executed WrestlerAnmData entry. Later entries use a cursor advanced by variable-length form-data parsing; their absolute buffer offsets are not fixed here. Per entry, the instruction pattern reads positions 0..6 and 10..11 and increments without a read over positions 7..9.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_anm_entry_fields_cursor_gap.summary.json",
+      "original_fielddef_count": 12,
+      "source_relative_offsets_read": [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        74,
+        75
+      ],
+      "source_relative_offsets_skipped": [
+        71,
+        72,
+        73
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Twelve original FieldDefs and their source instructions are identified; field names such as fallTiming, terrainColType, anmStartState and anmEndState are original metadata names, not validated animation behavior, states, mechanics or timings.",
+        "The three pointer advances at record-relative offsets +71, +72 and +73 have no ldelem.u1 or field assignment in this bounded region. Their binary contents, padding purpose and any authored interpretation are OPEN.",
+        "Previously established arg2+63 cursor boundary permits exact next source byte offsets +64..+70 and +74..+75. Values in local3, local7 and local10 have prior provenance not restated here and are not mapped to authored assets.",
+        "Unity parent resources.assets source SHA, actually retail-loaded fprwaza export and original asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary DLL or retail asset committed.",
+        "Buffer offsets +64..+75 are valid only for the first executed WrestlerAnmData entry. Later entries use a cursor advanced by variable-length form-data parsing; their absolute buffer offsets are not fixed here. Per entry, the instruction pattern reads positions 0..6 and 10..11 and increments without a read over positions 7..9."
+      ],
+      "offset_scope": "FIRST_EXECUTED_ENTRY_ONLY",
+      "per_entry_cursor_relative_read_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11
+      ],
+      "per_entry_cursor_relative_skip_indices": [
+        7,
+        8,
+        9
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
