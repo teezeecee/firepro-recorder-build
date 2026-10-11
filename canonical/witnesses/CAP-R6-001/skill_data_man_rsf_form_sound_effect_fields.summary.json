@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_FORM_SOUND_EFFECT_FIELDS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x0641",
+      "end_exclusive_il": "0x069E",
+      "length_bytes": 93,
+      "source_sha256": "9676632c4efd1721c279ace3496f80d84e077f0cf4b1e06a430ff3def3248765",
+      "form_entry_local": 16,
+      "source_byte_local": 4,
+      "cursor_local": 2,
+      "cursor_advances": 2,
+      "flags_branch_il": "0x064F",
+      "flags_branch_target_il": "0x0667",
+      "flags_branch_rel_s32": 19,
+      "segments": [
+        {
+          "name": "read_form_byte_for_flags",
+          "start_il": "0x0641",
+          "end_exclusive_il": "0x064A",
+          "il_hex": "03082517580c911304",
+          "operation": "Source arg1 byte at current local2; local2 advances 1; unsigned byte saved local4"
+        },
+        {
+          "name": "conditional_flags_or_0x200_from_mask32",
+          "start_il": "0x064A",
+          "end_exclusive_il": "0x0667",
+          "il_hex": "11041f205f39130000001110257be67c00042000020000607de67c0004",
+          "operation": "If local4 AND 32 nonzero, existing FormDispInfo.flags OR 0x200; otherwise branch to 0x0667"
+        },
+        {
+          "name": "assign_ring_vibration_two_bits",
+          "start_il": "0x0667",
+          "end_exclusive_il": "0x0674",
+          "il_hex": "111011041963195f7de57c0004",
+          "operation": "FormDispInfo.ringVibration receives (local4 shr 3) AND 3"
+        },
+        {
+          "name": "read_second_form_byte",
+          "start_il": "0x0674",
+          "end_exclusive_il": "0x067D",
+          "il_hex": "03082517580c911304",
+          "operation": "Source arg1 byte at current local2; local2 advances 1; unsigned byte saved local4"
+        },
+        {
+          "name": "assign_se_id_low_six",
+          "start_il": "0x067D",
+          "end_exclusive_il": "0x0689",
+          "il_hex": "111011041f3f5f7de27c0004",
+          "operation": "FormDispInfo.seID receives local4 AND 63"
+        },
+        {
+          "name": "assign_se_level_high_two",
+          "start_il": "0x0689",
+          "end_exclusive_il": "0x0696",
+          "il_hex": "111011041c63195f7de37c0004",
+          "operation": "FormDispInfo.seLevel receives (local4 shr 6) AND 3"
+        },
+        {
+          "name": "initialize_effect_id_minus_one",
+          "start_il": "0x0696",
+          "end_exclusive_il": "0x069E",
+          "il_hex": "1110157de47c0004",
+          "operation": "FormDispInfo.effectID receives integer -1"
+        }
+      ],
+      "fields": {
+        "0x04007CE2": {
+          "token": "0x04007CE2",
+          "owner": "FormDispInfo",
+          "name": "seID",
+          "metadata_row_hex": "060031770100073a0000",
+          "signature_hex": "0611aa0c"
+        },
+        "0x04007CE3": {
+          "token": "0x04007CE3",
+          "owner": "FormDispInfo",
+          "name": "seLevel",
+          "metadata_row_hex": "06009e4e050001000000",
+          "signature_hex": "0608"
+        },
+        "0x04007CE4": {
+          "token": "0x04007CE4",
+          "owner": "FormDispInfo",
+          "name": "effectID",
+          "metadata_row_hex": "0600a64e050001000000",
+          "signature_hex": "0608"
+        },
+        "0x04007CE5": {
+          "token": "0x04007CE5",
+          "owner": "FormDispInfo",
+          "name": "ringVibration",
+          "metadata_row_hex": "06003677010001000000",
+          "signature_hex": "0608"
+        },
+        "0x04007CE6": {
+          "token": "0x04007CE6",
+          "owner": "FormDispInfo",
+          "name": "flags",
+          "metadata_row_hex": "0600314c010093370000",
+          "signature_hex": "0611a9d0"
+        }
+      },
+      "next_contiguous_il": "0x069E"
+    }
+  },
+  "limits": [
+    "Field names seID, seLevel, effectID and ringVibration are original source metadata labels only; the bounded IL does not prove authored sounds, visual effects, audio playback, shaking or rendered consequences.",
+    "First and second arg1 unsigned byte reads separately increment local2 once each; only the prior source cursor is treated as known at the boundary.",
+    "The conditional flags OR is a storage operation on the previously accumulated FormDispInfo.flags field. The bit meanings and later changes outside this window remain outside this source window.",
+    "The bounded region ends at original IL+0x069E before nested-loop counter and branch instructions; this does not establish complete parser/record semantics or frame timing.",
+    "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historic decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No complete proprietary game binaries or assets committed."
+  ]
+}

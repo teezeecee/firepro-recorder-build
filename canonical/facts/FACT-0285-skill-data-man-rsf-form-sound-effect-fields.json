@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0285",
+  "status": "PROVEN_DLL",
+  "claim": "The matching original retail DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F full 1,735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae has contiguous 93-byte IL+0x0641..+0x069D SHA 9676632c4efd1721c279ace3496f80d84e077f0cf4b1e06a430ff3def3248765. Two independent arg1 unsigned-byte reads each use and increment cursor local2, saving byte to local4. The first byte conditionally ORs 0x200 into original FormDispInfo.flags when local4 AND 32 is nonzero (brfalse target 0x0667), and stores (local4 shr 3) AND 3 to original FormDispInfo.ringVibration. The second byte stores local4 AND 63 to FormDispInfo.seID and (local4 shr 6) AND 3 to FormDispInfo.seLevel, then stores -1 to FormDispInfo.effectID. Five original FieldDef metadata owner/name/signature identities were verified against the matching DLL. Only exact source storage and branch operations are established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original matching 8,171,008-byte Assembly-CSharp(3).dll SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; MethodDef 0x0600525F 1,735-byte body SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae. Original next contiguous 93-byte IL+0x0641..+0x069D SHA 9676632c4efd1721c279ace3496f80d84e077f0cf4b1e06a430ff3def3248765; flags, ringVibration, seID, seLevel, effectID original FieldDef tokens 0x04007CE6/0x04007CE5/0x04007CE2/0x04007CE3/0x04007CE4 and original metadata rows/signatures. Independent source witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_sound_effect_fields.summary.json and original-DLL verifier tools/prove_skill_data_man_rsf_form_sound_effect_fields.py.",
+      "observation": "Two unsigned source-byte cursor reads, conditional flags OR and four original named field assignments as encoded in exact bounded IL."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0284 ends exclusive at original ParseRSFData IL+0x0641",
+      "to": "FACT-0285 starts original IL+0x0641 with no intervening bytes and ends exclusive +0x069E",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact original ParseRSFData full 1735-byte source body SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; previous FACT-0284 window +0x05FE..+0x0640, this +0x0641..+0x069D."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Field names seID, seLevel, effectID and ringVibration are original source metadata labels only; the bounded IL does not prove authored sounds, visual effects, audio playback, shaking or rendered consequences.",
+    "First and second arg1 unsigned byte reads separately increment local2 once each; only the prior source cursor is treated as known at the boundary.",
+    "The conditional flags OR is a storage operation on the previously accumulated FormDispInfo.flags field. The bit meanings and later changes outside this window remain outside this source window.",
+    "The bounded region ends at original IL+0x069E before nested-loop counter and branch instructions; this does not establish complete parser/record semantics or frame timing.",
+    "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historic decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No complete proprietary game binaries or assets committed."
+  ]
+}
