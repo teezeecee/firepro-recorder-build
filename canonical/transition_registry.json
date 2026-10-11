@@ -5075,6 +5075,35 @@
         8,
         9
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_FORM_DISP_INFO_ARRAY_ENTRY_V1",
+      "fact_id": "FACT-0277",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData IL+0x0470..+0x04A5 and distant loop tail IL+0x069E..+0x06B1 source prove original formNum-sized FormDispInfo[] formDispList and per-entry constructor, original index15 loop and loaded local16.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_disp_info_array_entry.summary.json",
+      "original_typedef_count": 1,
+      "original_fielddef_count": 2,
+      "source_windows": [
+        [
+          "0x0470",
+          "0x04A6"
+        ],
+        [
+          "0x069E",
+          "0x06B2"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "This fact proves original array creation, local slots and control flow only; form entry values, authored frames, bank orientations, root offsets, transition logic and timing remain OPEN.",
+        "Original animation entry field formNum supplies length; no actual record count or data provenance is asserted.",
+        "Distant loop tail is pinned independently, without claiming intervening IL is decoded.",
+        "Retail Unity parent resources.assets, loaded fprwaza binding and historical asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
