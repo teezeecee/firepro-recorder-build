@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_FORM_FLAG_BIT_OR_UPDATES_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x05A1",
+      "end_exclusive_il": "0x05FE",
+      "length_bytes": 93,
+      "source_sha256": "c9c9f67cafdde8edf5443e35c6a54823ee42a7578715dfe019392ff90e8fd2b6",
+      "source_input_arg": "arg1",
+      "cursor_local": 2,
+      "form_entry_local": 16,
+      "source_byte_local": 4,
+      "segments": [
+        {
+          "name": "read_flag_bit_source_byte_to_local4",
+          "start_il": "0x05A1",
+          "end_exclusive_il": "0x05AA",
+          "il_hex": "03082517580c911304",
+          "operation": "ldarg.1 old local2; dup increment cursor by one; ldelem.u1; stloc.s 4"
+        },
+        {
+          "name": "if_bit_1_set_or_flags_0x400",
+          "start_il": "0x05AA",
+          "end_exclusive_il": "0x05C6",
+          "il_hex": "1104175f39130000001110257be67c00042000040000607de67c0004",
+          "bit_mask": 1,
+          "flags_or_mask": "0x00000400",
+          "branch_opcode_il": "0x05AE",
+          "branch_target_il": "0x05C6",
+          "operation": "if local4 AND 1 nonzero then FormDispInfo.flags = existing FormDispInfo.flags OR 0x400"
+        },
+        {
+          "name": "if_bit_2_set_or_flags_0x800",
+          "start_il": "0x05C6",
+          "end_exclusive_il": "0x05E2",
+          "il_hex": "1104185f39130000001110257be67c00042000080000607de67c0004",
+          "bit_mask": 2,
+          "flags_or_mask": "0x00000800",
+          "branch_opcode_il": "0x05CA",
+          "branch_target_il": "0x05E2",
+          "operation": "if local4 AND 2 nonzero then FormDispInfo.flags = existing FormDispInfo.flags OR 0x800"
+        },
+        {
+          "name": "if_bit_4_set_or_flags_0x100",
+          "start_il": "0x05E2",
+          "end_exclusive_il": "0x05FE",
+          "il_hex": "11041a5f39130000001110257be67c00042000010000607de67c0004",
+          "bit_mask": 4,
+          "flags_or_mask": "0x00000100",
+          "branch_opcode_il": "0x05E6",
+          "branch_target_il": "0x05FE",
+          "operation": "if local4 AND 4 nonzero then FormDispInfo.flags = existing FormDispInfo.flags OR 0x100"
+        }
+      ],
+      "field": {
+        "token": "0x04007CE6",
+        "owner": "FormDispInfo",
+        "name": "flags",
+        "metadata_row_hex": "0600314c010093370000",
+        "signature_hex": "0611a9d0"
+      },
+      "branch_opcode": "brfalse",
+      "branch_relative_s32": 19,
+      "source_field_predecessor": "FACT-0282 FormDispInfo.flags initial unsigned byte write ending exclusive IL+0x05A1",
+      "next_unparsed_il": "0x05FE"
+    }
+  },
+  "limits": [
+    "FormDispInfo.flags is a verified original metadata field name only; the actual meanings of masks 0x400, 0x800 and 0x100 and their consequences in gameplay/animation are not established.",
+    "Each check uses a new unsigned source byte loaded to local4 at IL+0x05A1..+0x05A9; the preceding FACT-0282 initial FormDispInfo.flags assignment used a separate earlier cursor byte. The bit masks here are 1, 2 and 4 on local4, not on that preceding flags byte.",
+    "The source operations read the current FormDispInfo.flags field via ldfld and write bitwise OR results via stfld only when each original brfalse test does not branch. It does not reset or replace other field bits in this window.",
+    "Later original parser instructions beginning at IL+0x05FE write other FormDispInfo fields and handle further bytes; this witness does not claim a complete parser, final flags value or authored data.",
+    "Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical original decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED and no proprietary raw game bytes committed."
+  ]
+}

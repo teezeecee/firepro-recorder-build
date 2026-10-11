@@ -5231,6 +5231,31 @@
         "Variable-length parent form parsing means local2 is a cursor; absolute positions of input bytes for individual authored forms are not established.",
         "Original Unity parent resources.assets hash, proven retail-loaded fprwaza resource binding and historic decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED and no proprietary raw DLL/assets are committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_FORM_FLAG_BIT_OR_UPDATES_V1",
+      "fact_id": "FACT-0283",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original contiguous SkillDataMan.ParseRSFData IL+0x05A1..+0x05FD loads one new unsigned byte in local4, then conditional checks its bit masks 1,2,4 before OR-ing 0x400,0x800,0x100 into original FormDispInfo.flags FieldDef 0x04007CE6. Three brfalse targets and original field metadata proven; authored flag meanings remain open.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_flag_bit_or_updates.summary.json",
+      "original_fielddef_count": 1,
+      "source_windows": [
+        [
+          "0x05A1",
+          "0x05FE"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "FormDispInfo.flags is a verified original metadata field name only; the actual meanings of masks 0x400, 0x800 and 0x100 and their consequences in gameplay/animation are not established.",
+        "Each check uses a new unsigned source byte loaded to local4 at IL+0x05A1..+0x05A9; the preceding FACT-0282 initial FormDispInfo.flags assignment used a separate earlier cursor byte. The bit masks here are 1, 2 and 4 on local4, not on that preceding flags byte.",
+        "The source operations read the current FormDispInfo.flags field via ldfld and write bitwise OR results via stfld only when each original brfalse test does not branch. It does not reset or replace other field bits in this window.",
+        "Later original parser instructions beginning at IL+0x05FE write other FormDispInfo fields and handle further bytes; this witness does not claim a complete parser, final flags value or authored data.",
+        "Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical original decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED and no proprietary raw game bytes committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
