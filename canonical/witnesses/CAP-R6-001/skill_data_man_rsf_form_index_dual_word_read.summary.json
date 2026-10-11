@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_FORM_INDEX_DUAL_WORD_READ_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x04CC",
+      "end_exclusive_il": "0x04F1",
+      "length_bytes": 37,
+      "source_sha256": "8588bd8b25ff5e6e65b25ec5c33cfecb3fbaf75bc36ffacc6583334b38a3573b",
+      "source_input_arg": "arg1",
+      "cursor_local": 2,
+      "form_entry_local": 16,
+      "word_local": 17,
+      "segments": [
+        {
+          "name": "source_word_assign_formIdx",
+          "start_il": "0x04CC",
+          "end_exclusive_il": "0x04DF",
+          "il_hex": "11100308911e62030817589160d17dd97c0004",
+          "operation": "ldloc.s 16; arg1[local2] ldelem.u1 << 8; OR arg1[local2+1] ldelem.u1; conv.u2; stfld FormDispInfo.formIdx"
+        },
+        {
+          "name": "same_source_word_assign_local17",
+          "start_il": "0x04DF",
+          "end_exclusive_il": "0x04ED",
+          "il_hex": "0308911e62030817589160d11311",
+          "operation": "arg1[local2] ldelem.u1 << 8; OR arg1[local2+1] ldelem.u1; conv.u2; stloc.s 17"
+        },
+        {
+          "name": "advance_cursor_two_after_both_reads",
+          "start_il": "0x04ED",
+          "end_exclusive_il": "0x04F1",
+          "il_hex": "0818580c",
+          "operation": "ldloc.2; ldc.i4.2; add; stloc.2"
+        }
+      ],
+      "field": {
+        "token": "0x04007CD9",
+        "owner": "FormDispInfo",
+        "name": "formIdx",
+        "metadata_row_hex": "06009670010001000000",
+        "signature_hex": "0608"
+      },
+      "owner_typedef": {
+        "token": "0x02000A73",
+        "name": "FormDispInfo",
+        "first_field_rid": "0x00007CD8",
+        "next_type_first_field_rid": "0x00007CE8"
+      }
+    }
+  },
+  "limits": [
+    "Source method field name FormDispInfo.formIdx is metadata evidence only; no relationship to visual form indexing, sprite positions, timing or animation semantics is inferred.",
+    "Both two-byte expressions read the same current local2 and local2+1 positions in the original IL. Only after the local17 assignment does local2 advance by 2. These are cursor-relative accesses; global input offsets are data dependent.",
+    "The expression explicitly uses ldelem.u1, shl 8, or, then conv.u2. The result is an unsigned 16-bit combination placed into fields/locals; it is not evidence for source resource byte order beyond these exact operations.",
+    "Original Unity parent resources.assets hash, retail-loaded fprwaza provenance, original decoded asset vault, authored frames, roots, banks and timings remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binaries are committed."
+  ]
+}
