@@ -4993,6 +4993,36 @@
         "Source-relative offsets arg2+48..+63 follow the already corrected old-cursor postincrement evidence, and do not prove association with exported retail resource records.",
         "The original Unity parent resources.assets SHA, retail-loaded fprwaza binding, historical asset vault and authored choreography remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binary is committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_WRESTLER_ANM_DATA_ARRAY_ENTRY_V1",
+      "fact_id": "FACT-0275",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData primary 50-byte IL+0x039A..+0x03CB and loop tail 18-byte IL+0x06B3..+0x06C4: anmNum-sized WrestlerAnmData[] allocation stored in SkillData.anmData, index local13 initialized, new WrestlerAnmData constructed and stored/loaded using stelem.ref/ldelem.ref with matched original forward/back loop targets.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_wrestler_anm_data_array_entry.summary.json",
+      "dll_method_count": 2,
+      "original_typedef_count": 1,
+      "original_fielddef_count": 2,
+      "source_windows": [
+        [
+          "0x039A",
+          "0x03CC"
+        ],
+        [
+          "0x06B3",
+          "0x06C5"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Only the original MethodDef IL bytes, metadata and loop branch targets are established. The word animation is a source identifier, not proof of frames, character posing, banks, root offsets or timing.",
+        "This scope does not decode the per-entry initialization body after IL+0x03CC or any resource bytes; the far loop increment/guard region is verified only for control flow.",
+        "No invented authored record identities or retail source linkage: Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical decode vault remain OPEN.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED, no proprietary game binary or asset bytes committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
