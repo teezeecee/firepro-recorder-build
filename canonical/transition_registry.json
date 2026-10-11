@@ -5180,6 +5180,32 @@
         "Method call output local19 and FormDispInfo assignments are storage/control-flow evidence only. No FormParts entries, sprite transforms, timings, root motion, or game runtime correctness is claimed.",
         "Original Unity parent resources.assets hash, actual retail-loaded fprwaza binding, and original decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 keeps runtime/viewer LOCKED; no raw proprietary DLL or asset bytes are committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_FORM_OFFSET_POS_AND_DISP_FRAME_V1",
+      "fact_id": "FACT-0281",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact original ParseRSFData IL+0x0530..+0x056F reads two unsigned bytes converted to signed 8-bit locals5/6, constructs Vector2 from floats multiplied individually by 2.0f and assigns FormDispInfo.formOfsPos, then reads an unsigned byte to FormDispInfo.dispFrm. Original two FieldDefs, Vector2 TypeRef and ctor MemberRef raw metadata verified.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_offset_pos_and_disp_frame.summary.json",
+      "original_fielddef_count": 2,
+      "original_typeref_count": 1,
+      "original_memberref_count": 1,
+      "source_windows": [
+        [
+          "0x0530",
+          "0x0570"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "FormDispInfo.formOfsPos and FormDispInfo.dispFrm are original metadata field names; the stored numbers' authored values, coordinate units, frame meaning, rendering behavior and timing remain unestablished.",
+        "The two old-cursor ldelem.u1 source bytes are each converted through conv.i1 before conv.r4; the two original ldc.r4 operands have exact IEEE-754 little-endian bytes 00000040 (2.0f), followed by mul. No other scaling or world-axis interpretation is supported.",
+        "Input reads and advancing cursor are inside the nested variable-length form parsing loop; absolute byte offsets for subsequent forms cannot be assigned from this IL alone.",
+        "Original Unity resources.assets parent SHA, confirmed actual retail-loaded fprwaza resource and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED, no proprietary binaries or assets committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

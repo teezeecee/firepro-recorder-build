@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0281",
+  "status": "PROVEN_DLL",
+  "claim": "Original matching retail DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F has exact contiguous next 64-byte source IL+0x0530..+0x056F SHA c104bc32de801488e4bec4a92f56d4f948f6a1c258d82114f4bd04a98cc79158. The parser reads two arg1 bytes at advancing current cursor local2 via ldelem.u1, converts each with conv.i1 into signed-byte locals5 and6, converts both via conv.r4 and multiplies each by source ldc.r4 2.0f; original UnityEngine.Vector2(float32,float32) constructor MemberRef 0x0A000088 is invoked and the result assigned to original FormDispInfo.formOfsPos FieldDef 0x04007CDB on local16. It then reads the next unsigned byte via ldelem.u1 and stores it in original FormDispInfo.dispFrm FieldDef 0x04007CDC, advancing cursor local2 once again. Original FieldDef metadata rows/signatures, Vector2 TypeRef and constructor MemberRef raw rows/signature, exact source opcodes and full method SHA are verified. Authored values and animation meaning remain open.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original DLL SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, size 8171008; original ParseRSFData MethodDef 0x0600525F full 1735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; exact next contiguous IL+0x0530..+0x056F SHA c104bc32de801488e4bec4a92f56d4f948f6a1c258d82114f4bd04a98cc79158; original raw metadata FieldDef tokens 0x04007CDB/0x04007CDC, TypeRef 0x0100000C and MemberRef 0x0A000088; witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_offset_pos_and_disp_frame.summary.json and original-DLL verifier tools/prove_skill_data_man_rsf_form_offset_pos_and_disp_frame.py.",
+      "observation": "Original signed-byte pair multiplied independently by 2.0f constructs vector assigned to formOfsPos; next unsigned cursor byte assigned to dispFrm."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0280 FormDispInfo field transfer source ends exclusive IL+0x0530",
+      "to": "FACT-0281 signed-byte/vector/unsigned display-frame source begins exactly IL+0x0530",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original MethodDef 0x0600525F contiguous source windows FACT-0280 IL+0x04F1..+0x052F and FACT-0281 IL+0x0530..+0x056F, with no intervening bytes."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "FormDispInfo.formOfsPos and FormDispInfo.dispFrm are original metadata field names; the stored numbers' authored values, coordinate units, frame meaning, rendering behavior and timing remain unestablished.",
+    "The two old-cursor ldelem.u1 source bytes are each converted through conv.i1 before conv.r4; the two original ldc.r4 operands have exact IEEE-754 little-endian bytes 00000040 (2.0f), followed by mul. No other scaling or world-axis interpretation is supported.",
+    "Input reads and advancing cursor are inside the nested variable-length form parsing loop; absolute byte offsets for subsequent forms cannot be assigned from this IL alone.",
+    "Original Unity resources.assets parent SHA, confirmed actual retail-loaded fprwaza resource and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED, no proprietary binaries or assets committed."
+  ]
+}
