@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0284",
+  "status": "PROVEN_DLL",
+  "claim": "The original matching retail DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F 1,735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae has the next contiguous 67-byte IL region +0x05FE..+0x0640 SHA 9fa1cfe167f8cf98d33726a5e246fc22c9501001df4bed430a1205d512501916. The original parser initializes FormDispInfo.dir_LR FieldDef 0x04007CDF on form local16 to integer zero, then reads existing local4 AND 8 and conditionally assigns one to dir_LR (brfalse target 0x0617). It initializes FormDispInfo.dir_UD FieldDef 0x04007CE0 to zero, then checks existing local4 AND 128 and conditionally assigns one to dir_UD (brfalse target 0x0634). The original source next assigns (local4 shr 4) AND 7 to FormDispInfo.altitude FieldDef 0x04007CE1. The three original FieldDef metadata rows, signatures and FormDispInfo ownership are verified in the matching DLL; this window makes no input-byte reads and leaves cursor local2 unchanged. These are source storage/control-flow facts, not the meaning of visual direction or altitude.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original 8,171,008-byte DLL SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; original ParseRSFData MethodDef 0x0600525F full IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; next exact 67-byte IL+0x05FE..+0x0640 SHA 9fa1cfe167f8cf98d33726a5e246fc22c9501001df4bed430a1205d512501916; FieldDef 0x04007CDF dir_LR, 0x04007CE0 dir_UD, 0x04007CE1 altitude original raw rows/signatures; brfalse targets 0x0617 and 0x0634. Witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_direction_bits_and_altitude.summary.json, original DLL verifier tools/prove_skill_data_man_rsf_form_direction_bits_and_altitude.py.",
+      "observation": "Original zero/conditional-one assignments to dir_LR and dir_UD controlled by local4 masks 8 and 128 respectively, and three-bit altitude field from (local4 shr 4) AND 7."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0283 source flag OR operations end exclusive IL+0x05FE; local4 contains previous source byte",
+      "to": "FACT-0284 begins at exactly IL+0x05FE, consumes original local4 in direction-bit and altitude expressions and ends exclusive +0x0641",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original matching ParseRSFData MethodDef 0x0600525F contiguous regions FACT-0283 IL+0x05A1..+0x05FD and FACT-0284 IL+0x05FE..+0x0640; no intervening bytes."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original FormDispInfo field labels dir_LR, dir_UD and altitude are source metadata names only; this source window does not establish visual direction semantics, elevation units or effects on sprites.",
+    "The tests use local4 from the preceding original input byte read in FACT-0283, without another source-byte read or cursor advancement inside this 67-byte region.",
+    "dir_LR and dir_UD are initialized to zero and conditionally assigned one when masks 8 and 128 respectively are nonzero. Their values within this bounded region are exact IL operations; downstream writes are outside the scope.",
+    "The altitude assignment stores (local4 shr 4) AND 7, as encoded. No authored input values, resource binding, form bank/frames, transition timing or gameplay interpretation are established.",
+    "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and decoded historical retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No proprietary raw DLL or asset content is committed."
+  ]
+}

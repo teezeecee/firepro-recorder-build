@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_FORM_DIRECTION_BITS_AND_ALTITUDE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x05FE",
+      "end_exclusive_il": "0x0641",
+      "length_bytes": 67,
+      "source_sha256": "9fa1cfe167f8cf98d33726a5e246fc22c9501001df4bed430a1205d512501916",
+      "input_from_previous_region": "local4 populated at FACT-0283 IL+0x05A1..+0x05A9",
+      "source_byte_local": 4,
+      "form_entry_local": 16,
+      "cursor_modified_in_window": false,
+      "segments": [
+        {
+          "name": "initialize_dir_LR_zero",
+          "start_il": "0x05FE",
+          "end_exclusive_il": "0x0606",
+          "il_hex": "1110167ddf7c0004",
+          "operation": "ldloc.s16; ldc.i4.0; stfld FormDispInfo.dir_LR"
+        },
+        {
+          "name": "conditionally_assign_dir_LR_one_if_bit8",
+          "start_il": "0x0606",
+          "end_exclusive_il": "0x0617",
+          "il_hex": "11041e5f39080000001110177ddf7c0004",
+          "operation": "ldloc.s4 AND 8; brfalse +8 to IL+0x0617; else local16.dir_LR=1",
+          "bit_mask": 8,
+          "branch_il": "0x060A",
+          "branch_target_il": "0x0617",
+          "branch_rel_s32": 8
+        },
+        {
+          "name": "initialize_dir_UD_zero",
+          "start_il": "0x0617",
+          "end_exclusive_il": "0x061F",
+          "il_hex": "1110167de07c0004",
+          "operation": "ldloc.s16; ldc.i4.0; stfld FormDispInfo.dir_UD"
+        },
+        {
+          "name": "conditionally_assign_dir_UD_one_if_bit128",
+          "start_il": "0x061F",
+          "end_exclusive_il": "0x0634",
+          "il_hex": "110420800000005f39080000001110177de07c0004",
+          "operation": "ldloc.s4 AND 128; brfalse +8 to IL+0x0634; else local16.dir_UD=1",
+          "bit_mask": 128,
+          "branch_il": "0x0627",
+          "branch_target_il": "0x0634",
+          "branch_rel_s32": 8
+        },
+        {
+          "name": "assign_altitude_three_bits",
+          "start_il": "0x0634",
+          "end_exclusive_il": "0x0641",
+          "il_hex": "111011041a631d5f7de17c0004",
+          "operation": "ldloc.s16; local4 shr 4; AND 7; stfld FormDispInfo.altitude",
+          "right_shift": 4,
+          "and_mask": 7
+        }
+      ],
+      "fields": {
+        "0x04007CDF": {
+          "token": "0x04007CDF",
+          "owner": "FormDispInfo",
+          "name": "dir_LR",
+          "metadata_row_hex": "06001a77010001000000",
+          "signature_hex": "0608"
+        },
+        "0x04007CE0": {
+          "token": "0x04007CE0",
+          "owner": "FormDispInfo",
+          "name": "dir_UD",
+          "metadata_row_hex": "06002177010001000000",
+          "signature_hex": "0608"
+        },
+        "0x04007CE1": {
+          "token": "0x04007CE1",
+          "owner": "FormDispInfo",
+          "name": "altitude",
+          "metadata_row_hex": "06002877010001000000",
+          "signature_hex": "0608"
+        }
+      },
+      "next_contiguous_il": "0x0641"
+    }
+  },
+  "limits": [
+    "Original FormDispInfo field labels dir_LR, dir_UD and altitude are source metadata names only; this source window does not establish visual direction semantics, elevation units or effects on sprites.",
+    "The tests use local4 from the preceding original input byte read in FACT-0283, without another source-byte read or cursor advancement inside this 67-byte region.",
+    "dir_LR and dir_UD are initialized to zero and conditionally assigned one when masks 8 and 128 respectively are nonzero. Their values within this bounded region are exact IL operations; downstream writes are outside the scope.",
+    "The altitude assignment stores (local4 shr 4) AND 7, as encoded. No authored input values, resource binding, form bank/frames, transition timing or gameplay interpretation are established.",
+    "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and decoded historical retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No proprietary raw DLL or asset content is committed."
+  ]
+}
