@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0283",
+  "status": "PROVEN_DLL",
+  "claim": "Original matching retail DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F full 1,735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae contains exact contiguous next 93-byte IL region +0x05A1..+0x05FD SHA c9c9f67cafdde8edf5443e35c6a54823ee42a7578715dfe019392ff90e8fd2b6. Original arg1[cursor local2] ldelem.u1 yields a new unsigned byte stored in local4 while advancing cursor by one. Three successive independent source checks test local4 AND 1, local4 AND 2 and local4 AND 4, each with original brfalse relative offset 19 to skip the corresponding update. On a true test, the original code reads existing FormDispInfo.flags FieldDef 0x04007CE6 on form local16 via ldfld and ORs 0x400, 0x800 and 0x100 respectively before stfld back to that same field. Original raw FieldDef metadata row/signature and FormDispInfo ownership are verified. Flags' retail meaning and downstream rendering/behavior remain open.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original matching 8,171,008-byte DLL SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; MethodDef 0x0600525F full 1,735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; exact contiguous 93-byte IL+0x05A1..+0x05FD SHA c9c9f67cafdde8edf5443e35c6a54823ee42a7578715dfe019392ff90e8fd2b6; three original 0x39 brfalse branch targets 0x05C6/0x05E2/0x05FE; original FormDispInfo.flags FieldDef 0x04007CE6 raw row 0600314c010093370000 and signature 0611a9d0. Witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_flag_bit_or_updates.summary.json and reproducible original-DLL verifier tools/prove_skill_data_man_rsf_form_flag_bit_or_updates.py.",
+      "observation": "New unsigned source byte stored to local4. Its 1/2/4 bits separately gate OR of 0x400/0x800/0x100 with the already stored original FormDispInfo.flags field, preserving other bits."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0282 initial FormDispInfo.flags unsigned-byte write ends exclusive IL+0x05A1",
+      "to": "FACT-0283 begins at IL+0x05A1 reading a new source byte then conditionally updating the same original flags field",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original MethodDef 0x0600525F matching consecutive IL+0x0570..+0x05A0 and IL+0x05A1..+0x05FD regions, no source-byte gaps."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "FormDispInfo.flags is a verified original metadata field name only; the actual meanings of masks 0x400, 0x800 and 0x100 and their consequences in gameplay/animation are not established.",
+    "Each check uses a new unsigned source byte loaded to local4 at IL+0x05A1..+0x05A9; the preceding FACT-0282 initial FormDispInfo.flags assignment used a separate earlier cursor byte. The bit masks here are 1, 2 and 4 on local4, not on that preceding flags byte.",
+    "The source operations read the current FormDispInfo.flags field via ldfld and write bitwise OR results via stfld only when each original brfalse test does not branch. It does not reset or replace other field bits in this window.",
+    "Later original parser instructions beginning at IL+0x05FE write other FormDispInfo fields and handle further bytes; this witness does not claim a complete parser, final flags value or authored data.",
+    "Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical original decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED and no proprietary raw game bytes committed."
+  ]
+}
