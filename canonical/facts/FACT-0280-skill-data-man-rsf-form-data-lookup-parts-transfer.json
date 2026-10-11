@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0280",
+  "status": "PROVEN_DLL",
+  "claim": "Matching original retail DLL-001 SkillDataMan.ParseRSFData (MethodDef 0x0600525F, 1735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae) contains exact next contiguous 63-byte region IL+0x04F1..+0x052F SHA 6c0df9c5ae63c2d3e3ac6b1f0a94a6a97ff9eb0550b403be79df3451ae8dca90. Original local18 starts at 0 and is conditionally overwritten with SkillInfo.blockFormIdx FieldDef 0x04000ED6 from local0 if local0 is non-null; original brfalse +8 targets IL+0x0502. Original FormDataMan.inst FieldDef 0x040026DC supplies receiver for callvirt FormDataMan.GetFormData MethodDef 0x06001F17 with original arguments local17, local18, arg4, and result is retained as local19. Its FormData.partsNum 0x040026CB and FormData.formPartsList 0x040026CC values are each copied to FormDispInfo.partsNum 0x04007CDA and FormDispInfo.formPartsList 0x04007CE7 on original local16. The six FieldDef and one MethodDef raw metadata rows, names, owners and signatures are source-checked. Only exact parser source and storage/control flow are proven.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original retail DLL 8,171,008 bytes SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; MethodDef 0x0600525F original full IL 1735 bytes SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; next contiguous IL+0x04F1..+0x052F SHA 6c0df9c5ae63c2d3e3ac6b1f0a94a6a97ff9eb0550b403be79df3451ae8dca90; source fields and method rows/signatures as canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_data_lookup_and_parts_transfer.summary.json; independent original-source verifier tools/prove_skill_data_man_rsf_form_data_lookup_and_parts_transfer.py.",
+      "observation": "Local18 optional block index, callvirt GetFormData with local17/local18/arg4, local19 result, partsNum and formPartsList assigned into FormDispInfo local16."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0279 cursor-local2 advance ends at exclusive IL+0x04F1, leaving form lookup word local17",
+      "to": "FACT-0280 immediately begins at IL+0x04F1 and uses original local17 in FormDataMan.GetFormData",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Two contiguous regions in matching MethodDef 0x0600525F, prior IL+0x04CC..+0x04F0 and current IL+0x04F1..+0x052F, original local17 source to direct callvirt operand."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "SkillInfo.blockFormIdx, FormDataMan.GetFormData, FormData.partsNum and formPartsList are names read from exact original DLL metadata. Their retail-authored values, frame/bank selection behavior, indexing semantics and rendering effects are not established by this source window.",
+    "The branch at IL+0x04F5 skips the optional SkillInfo.blockFormIdx load when local0 is false/null; otherwise local18 is overwritten. The direct IL proves this conditional and argument order but does not demonstrate a particular retail data record or executed path.",
+    "Method call output local19 and FormDispInfo assignments are storage/control-flow evidence only. No FormParts entries, sprite transforms, timings, root motion, or game runtime correctness is claimed.",
+    "Original Unity parent resources.assets hash, actual retail-loaded fprwaza binding, and original decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 keeps runtime/viewer LOCKED; no raw proprietary DLL or asset bytes are committed."
+  ]
+}

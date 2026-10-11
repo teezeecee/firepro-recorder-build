@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_FORM_DATA_LOOKUP_AND_PARTS_TRANSFER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x04F1",
+      "end_exclusive_il": "0x0530",
+      "length_bytes": 63,
+      "source_sha256": "6c0df9c5ae63c2d3e3ac6b1f0a94a6a97ff9eb0550b403be79df3451ae8dca90",
+      "source_form_index_local": 17,
+      "optional_skill_local": 0,
+      "block_form_index_local": 18,
+      "form_data_local": 19,
+      "form_display_local": 16,
+      "source_arg4": "arg4",
+      "branch": {
+        "branch_opcode_il": "0x04F5",
+        "branch_target_il": "0x0502",
+        "relative_s32": 8
+      },
+      "segments": [
+        {
+          "name": "optional_skill_block_form_index",
+          "start_il": "0x04F1",
+          "end_exclusive_il": "0x0502",
+          "il_hex": "161312063908000000067bd60e00041312",
+          "operation": "ldc.i4.0; stloc.s18; ldloc.0; brfalse +8 to IL+0x0502; ldloc.0; ldfld SkillInfo.blockFormIdx; stloc.s18"
+        },
+        {
+          "name": "get_form_data_by_source_arguments",
+          "start_il": "0x0502",
+          "end_exclusive_il": "0x0514",
+          "il_hex": "7edc260004111111120e046f171f00061313",
+          "operation": "ldsfld FormDataMan.inst; ldloc.s17; ldloc.s18; ldarg.s4; callvirt FormDataMan.GetFormData; stloc.s19"
+        },
+        {
+          "name": "copy_two_source_fields_to_form_display",
+          "start_il": "0x0514",
+          "end_exclusive_il": "0x0530",
+          "il_hex": "111011137bcb2600047dda7c0004111011137bcc2600047de77c0004",
+          "operation": "local16.partsNum=local19.partsNum; local16.formPartsList=local19.formPartsList"
+        }
+      ],
+      "fields": {
+        "0x04000ED6": {
+          "owner": "SkillInfo",
+          "name": "blockFormIdx",
+          "row_hex": "0600974c010001000000",
+          "signature_hex": "0608"
+        },
+        "0x040026DC": {
+          "owner": "FormDataMan",
+          "name": "inst",
+          "row_hex": "16000622010037190000",
+          "signature_hex": "0612900c"
+        },
+        "0x040026CB": {
+          "owner": "FormData",
+          "name": "partsNum",
+          "row_hex": "0600ee76010001000000",
+          "signature_hex": "0608"
+        },
+        "0x040026CC": {
+          "owner": "FormData",
+          "name": "formPartsList",
+          "row_hex": "0600f814020031190000",
+          "signature_hex": "061d129000"
+        },
+        "0x04007CDA": {
+          "owner": "FormDispInfo",
+          "name": "partsNum",
+          "row_hex": "0600ee76010001000000",
+          "signature_hex": "0608"
+        },
+        "0x04007CE7": {
+          "owner": "FormDispInfo",
+          "name": "formPartsList",
+          "row_hex": "0600f814020031190000",
+          "signature_hex": "061d129000"
+        }
+      },
+      "methoddef": {
+        "token": "0x06001F17",
+        "owner": "FormDataMan",
+        "name": "GetFormData",
+        "row_hex": "d0a41000000086000e0209005d0b02005516",
+        "signature_hex": "2003129008080808",
+        "rva": "0x0010A4D0"
+      }
+    }
+  },
+  "limits": [
+    "SkillInfo.blockFormIdx, FormDataMan.GetFormData, FormData.partsNum and formPartsList are names read from exact original DLL metadata. Their retail-authored values, frame/bank selection behavior, indexing semantics and rendering effects are not established by this source window.",
+    "The branch at IL+0x04F5 skips the optional SkillInfo.blockFormIdx load when local0 is false/null; otherwise local18 is overwritten. The direct IL proves this conditional and argument order but does not demonstrate a particular retail data record or executed path.",
+    "Method call output local19 and FormDispInfo assignments are storage/control-flow evidence only. No FormParts entries, sprite transforms, timings, root motion, or game runtime correctness is claimed.",
+    "Original Unity parent resources.assets hash, actual retail-loaded fprwaza binding, and original decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 keeps runtime/viewer LOCKED; no raw proprietary DLL or asset bytes are committed."
+  ]
+}

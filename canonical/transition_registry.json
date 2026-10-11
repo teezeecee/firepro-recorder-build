@@ -5155,6 +5155,31 @@
         "The expression explicitly uses ldelem.u1, shl 8, or, then conv.u2. The result is an unsigned 16-bit combination placed into fields/locals; it is not evidence for source resource byte order beyond these exact operations.",
         "Original Unity parent resources.assets hash, retail-loaded fprwaza provenance, original decoded asset vault, authored frames, roots, banks and timings remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binaries are committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_FORM_DATA_LOOKUP_AND_PARTS_TRANSFER_V1",
+      "fact_id": "FACT-0280",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData contiguous IL+0x04F1..+0x052F shows default/conditional SkillInfo.blockFormIdx local18; callvirt FormDataMan.GetFormData with local17/local18/arg4; resulting FormData.partsNum and formPartsList are assigned to FormDispInfo fields. All six FieldDef and one MethodDef original metadata verified.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_data_lookup_and_parts_transfer.summary.json",
+      "original_fielddef_count": 6,
+      "original_methoddef_count": 1,
+      "source_windows": [
+        [
+          "0x04F1",
+          "0x0530"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "SkillInfo.blockFormIdx, FormDataMan.GetFormData, FormData.partsNum and formPartsList are names read from exact original DLL metadata. Their retail-authored values, frame/bank selection behavior, indexing semantics and rendering effects are not established by this source window.",
+        "The branch at IL+0x04F5 skips the optional SkillInfo.blockFormIdx load when local0 is false/null; otherwise local18 is overwritten. The direct IL proves this conditional and argument order but does not demonstrate a particular retail data record or executed path.",
+        "Method call output local19 and FormDispInfo assignments are storage/control-flow evidence only. No FormParts entries, sprite transforms, timings, root motion, or game runtime correctness is claimed.",
+        "Original Unity parent resources.assets hash, actual retail-loaded fprwaza binding, and original decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 keeps runtime/viewer LOCKED; no raw proprietary DLL or asset bytes are committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
