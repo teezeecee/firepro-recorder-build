@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_ANM_ENTRY_FIELDS_AND_CURSOR_GAP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x03CC",
+      "end_exclusive_il": "0x0470",
+      "length_bytes": 164,
+      "source_sha256": "7e28036b4af6f3232e543e9c4fb681e389a9cab6b52aede3a95f9d85731620a9",
+      "source_record_object_local": 14,
+      "source_cursor_local": 2,
+      "source_array_argument": "arg1",
+      "postincrement_old_cursor": true,
+      "fields": [
+        {
+          "token": "0x04007C9A",
+          "owner": "WrestlerAnmData",
+          "name": "atkColAng",
+          "metadata_row_hex": "06005873010014000000",
+          "signature_hex": "060c",
+          "source": "local3"
+        },
+        {
+          "token": "0x04007C98",
+          "owner": "WrestlerAnmData",
+          "name": "atkColPos",
+          "metadata_row_hex": "06000a730100cb000000",
+          "signature_hex": "061131",
+          "source": "local7"
+        },
+        {
+          "token": "0x04007C99",
+          "owner": "WrestlerAnmData",
+          "name": "atkColSize",
+          "metadata_row_hex": "060014730100cb000000",
+          "signature_hex": "061131",
+          "source": "local10"
+        },
+        {
+          "token": "0x04007C93",
+          "owner": "WrestlerAnmData",
+          "name": "formNum",
+          "metadata_row_hex": "06000c75010001000000",
+          "signature_hex": "0608",
+          "source": 64
+        },
+        {
+          "token": "0x04007C94",
+          "owner": "WrestlerAnmData",
+          "name": "loopReturnPoint",
+          "metadata_row_hex": "06001475010001000000",
+          "signature_hex": "0608",
+          "source": 65
+        },
+        {
+          "token": "0x04007C95",
+          "owner": "WrestlerAnmData",
+          "name": "loopReturnTo",
+          "metadata_row_hex": "06002475010001000000",
+          "signature_hex": "0608",
+          "source": 66
+        },
+        {
+          "token": "0x04007C96",
+          "owner": "WrestlerAnmData",
+          "name": "fallTiming",
+          "metadata_row_hex": "06003175010001000000",
+          "signature_hex": "0608",
+          "source": 67
+        },
+        {
+          "token": "0x04007C97",
+          "owner": "WrestlerAnmData",
+          "name": "terrainColType",
+          "metadata_row_hex": "06003c750100fd370000",
+          "signature_hex": "0611a9bc",
+          "source": 68
+        },
+        {
+          "token": "0x04007C9B",
+          "owner": "WrestlerAnmData",
+          "name": "hitSE",
+          "metadata_row_hex": "06004b75010001000000",
+          "signature_hex": "0608",
+          "source": 69
+        },
+        {
+          "token": "0x04007C9C",
+          "owner": "WrestlerAnmData",
+          "name": "cheerLevel",
+          "metadata_row_hex": "0600404c010001000000",
+          "signature_hex": "0608",
+          "source": 70
+        },
+        {
+          "token": "0x04007C9D",
+          "owner": "WrestlerAnmData",
+          "name": "anmStartState",
+          "metadata_row_hex": "060061750100f53a0000",
+          "signature_hex": "0611a9c0",
+          "source": 74
+        },
+        {
+          "token": "0x04007C9E",
+          "owner": "WrestlerAnmData",
+          "name": "anmEndState",
+          "metadata_row_hex": "06006f75010098370000",
+          "signature_hex": "0611a9c4",
+          "source": 75
+        }
+      ],
+      "segments": [
+        {
+          "name": "atkColAng_from_local3",
+          "start_il": "0x03CC",
+          "end_exclusive_il": "0x03D4",
+          "il_hex": "110e097d9a7c0004",
+          "input": "local3"
+        },
+        {
+          "name": "atkColPos_from_local7",
+          "start_il": "0x03D4",
+          "end_exclusive_il": "0x03DD",
+          "il_hex": "110e11077d987c0004",
+          "input": "local7"
+        },
+        {
+          "name": "atkColSize_from_local10",
+          "start_il": "0x03DD",
+          "end_exclusive_il": "0x03E6",
+          "il_hex": "110e110a7d997c0004",
+          "input": "local10"
+        },
+        {
+          "name": "seven_unsigned_source_bytes",
+          "start_il": "0x03E6",
+          "end_exclusive_il": "0x0448",
+          "il_hex": "110e03082517580c917d937c0004110e03082517580c917d947c0004110e03082517580c917d957c0004110e03082517580c917d967c0004110e03082517580c917d977c0004110e03082517580c917d9b7c0004110e03082517580c917d9c7c0004",
+          "relative_offsets": [
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70
+          ]
+        },
+        {
+          "name": "three_cursor_increments_without_reads",
+          "start_il": "0x0448",
+          "end_exclusive_il": "0x0454",
+          "il_hex": "0817580c0817580c0817580c",
+          "relative_offsets": [
+            71,
+            72,
+            73
+          ]
+        },
+        {
+          "name": "two_more_unsigned_source_bytes",
+          "start_il": "0x0454",
+          "end_exclusive_il": "0x0470",
+          "il_hex": "110e03082517580c917d9d7c0004110e03082517580c917d9e7c0004",
+          "relative_offsets": [
+            74,
+            75
+          ]
+        }
+      ],
+      "source_byte_offsets_read": [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        74,
+        75
+      ],
+      "cursor_positions_skipped_without_read": [
+        71,
+        72,
+        73
+      ],
+      "next_il_boundary": "0x0470"
+    }
+  },
+  "limits": [
+    "Twelve original FieldDefs and their source instructions are identified; field names such as fallTiming, terrainColType, anmStartState and anmEndState are original metadata names, not validated animation behavior, states, mechanics or timings.",
+    "The three pointer advances at record-relative offsets +71, +72 and +73 have no ldelem.u1 or field assignment in this bounded region. Their binary contents, padding purpose and any authored interpretation are OPEN.",
+    "Previously established arg2+63 cursor boundary permits exact next source byte offsets +64..+70 and +74..+75. Values in local3, local7 and local10 have prior provenance not restated here and are not mapped to authored assets.",
+    "Unity parent resources.assets source SHA, actually retail-loaded fprwaza export and original asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary DLL or retail asset committed."
+  ]
+}
