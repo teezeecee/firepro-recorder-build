@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0278",
+  "status": "PROVEN_DLL",
+  "claim": "Original matching retail DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F complete 1735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae contains contiguous exact 38-byte original IL+0x04A6..+0x04CB SHA ef544099c322e46d4aee931555bad28a1b6beffb1f8a75be14f74efd7361997c. Inside the original nested form-entry loop, the parser performs two sequential old-cursor `ldelem.u1` reads from arg1, increments cursor local2 after retaining the old index, applies `conv.i1` to each byte and saves signed byte values into locals5 and6. It converts each to floating point via `conv.r4`, invokes original UnityEngine.Vector2 two-float constructor MemberRef 0x0A000088, and stores the vector in the source-named FormDispInfo.centerPos FieldDef 0x04007CD8 on form reference local16. Original raw TypeRef 0x0100000C, MemberRef, FieldDef identities, signatures and every source opcode in the bounded IL are verified. No actual per-form byte offsets beyond the current cursor, authored form pixels or animation behavior are claimed.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; original full MethodDef 0x0600525F IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; contiguous IL+0x04A6..+0x04CB 38-byte SHA ef544099c322e46d4aee931555bad28a1b6beffb1f8a75be14f74efd7361997c; raw original TypeRef 0x0100000C UnityEngine.Vector2, MemberRef 0x0A000088 .ctor(float32,float32), FieldDef 0x04007CD8 FormDispInfo.centerPos. Witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_center_pos_signed_vector2.summary.json; source-verifier tools/prove_skill_data_man_rsf_form_center_pos_signed_vector2.py.",
+      "observation": "Exactly two unsigned bytes sign-converted to two floats, passed to UnityEngine.Vector2 constructor, then assigned to original centerPos field."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0277 FormDispInfo reference in local16 at end IL+0x04A6",
+      "to": "FACT-0278 local16.centerPos original source assignment",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Previous contiguous source ends exclusive IL+0x04A6 at stloc.s16; this source starts exactly IL+0x04A6 and writes original FormDispInfo.centerPos."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original FormDispInfo.centerPos and UnityEngine.Vector2 constructor names come from the matching retail metadata. No authored screen coordinates, offsets, axis conventions, rendering, animation or gameplay interpretation is proven.",
+    "Input reads use the current local2 cursor inside the nested form loop; no constant absolute input offsets for subsequent form entries are claimed. Each read advances the cursor after retaining its old index.",
+    "The input opcodes read unsigned bytes, then conv.i1 sign-converts to 8-bit signed integers, then conv.r4 forms Single values; not a direct unsigned Vector2 decode.",
+    "Unity parent resources.assets hash, actually loaded fprwaza source binding, original asset vault and authored frames remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no retail binaries or assets committed."
+  ]
+}

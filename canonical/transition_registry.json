@@ -5104,6 +5104,32 @@
         "Distant loop tail is pinned independently, without claiming intervening IL is decoded.",
         "Retail Unity parent resources.assets, loaded fprwaza binding and historical asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_FORM_CENTER_POS_SIGNED_VECTOR2_V1",
+      "fact_id": "FACT-0278",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData 38-byte contiguous IL+0x04A6..+0x04CB: two old-cursor ldelem.u1 bytes, conv.i1 signed byte to locals5 and6, conv.r4 to float32, original UnityEngine.Vector2..ctor MemberRef 0x0A000088, stfld FormDispInfo.centerPos FieldDef 0x04007CD8; original TypeRef/MemberRef/FieldDef metadata independently pinned.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_center_pos_signed_vector2.summary.json",
+      "original_typeref_count": 1,
+      "original_memberref_count": 1,
+      "original_fielddef_count": 1,
+      "source_windows": [
+        [
+          "0x04A6",
+          "0x04CC"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original FormDispInfo.centerPos and UnityEngine.Vector2 constructor names come from the matching retail metadata. No authored screen coordinates, offsets, axis conventions, rendering, animation or gameplay interpretation is proven.",
+        "Input reads use the current local2 cursor inside the nested form loop; no constant absolute input offsets for subsequent form entries are claimed. Each read advances the cursor after retaining its old index.",
+        "The input opcodes read unsigned bytes, then conv.i1 sign-converts to 8-bit signed integers, then conv.r4 forms Single values; not a direct unsigned Vector2 decode.",
+        "Unity parent resources.assets hash, actually loaded fprwaza source binding, original asset vault and authored frames remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no retail binaries or assets committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
