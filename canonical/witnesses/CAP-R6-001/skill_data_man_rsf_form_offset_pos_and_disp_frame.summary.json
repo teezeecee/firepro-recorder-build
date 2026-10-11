@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_FORM_OFFSET_POS_AND_DISP_FRAME_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x0530",
+      "end_exclusive_il": "0x0570",
+      "length_bytes": 64,
+      "source_sha256": "c104bc32de801488e4bec4a92f56d4f948f6a1c258d82114f4bd04a98cc79158",
+      "source_input_arg": "arg1",
+      "cursor_local": 2,
+      "form_entry_local": 16,
+      "signed_component_locals": [
+        5,
+        6
+      ],
+      "float_multiplier_ieee754_le_hex": "00000040",
+      "segments": [
+        {
+          "name": "read_first_signed_form_offset_component",
+          "start_il": "0x0530",
+          "end_exclusive_il": "0x053A",
+          "il_hex": "03082517580c91671305",
+          "operation": "ldarg.1 ldloc.2 dup ldc.i4.1 add stloc.2 ldelem.u1 conv.i1 stloc.s5"
+        },
+        {
+          "name": "read_second_signed_form_offset_component",
+          "start_il": "0x053A",
+          "end_exclusive_il": "0x0544",
+          "il_hex": "03082517580c91671306",
+          "operation": "ldarg.1 ldloc.2 dup ldc.i4.1 add stloc.2 ldelem.u1 conv.i1 stloc.s6"
+        },
+        {
+          "name": "construct_scaled_vector2_assign_form_offset_position",
+          "start_il": "0x0544",
+          "end_exclusive_il": "0x0562",
+          "il_hex": "111011056b22000000405a11066b22000000405a738800000a7ddb7c0004",
+          "operation": "ldloc.s16; local5 conv.r4 ldc.r4 2.0 mul; local6 conv.r4 ldc.r4 2.0 mul; newobj Vector2(float32,float32) MemberRef 0x0A000088; stfld FormDispInfo.formOfsPos FieldDef 0x04007CDB"
+        },
+        {
+          "name": "read_unsigned_byte_assign_disp_frame",
+          "start_il": "0x0562",
+          "end_exclusive_il": "0x0570",
+          "il_hex": "111003082517580c917ddc7c0004",
+          "operation": "ldloc.s16; ldarg.1 current local2 old cursor read unsigned byte with cursor increment one; stfld FormDispInfo.dispFrm FieldDef 0x04007CDC"
+        }
+      ],
+      "fields": {
+        "0x04007CDB": {
+          "owner": "FormDispInfo",
+          "name": "formOfsPos",
+          "metadata_row_hex": "0600f7760100cb000000",
+          "signature_hex": "061131"
+        },
+        "0x04007CDC": {
+          "owner": "FormDispInfo",
+          "name": "dispFrm",
+          "metadata_row_hex": "06000277010001000000",
+          "signature_hex": "0608"
+        }
+      },
+      "vector2_typeref": {
+        "token": "0x0100000C",
+        "name": "Vector2",
+        "owner": "UnityEngine",
+        "metadata_row_hex": "0600b5ac000080a60000"
+      },
+      "constructor_memberref": {
+        "token": "0x0A000088",
+        "metadata_row_hex": "61000000eb4f06003a4b0000",
+        "coded_parent_hex": "0x61",
+        "parent_typeref_token": "0x0100000C",
+        "name": ".ctor",
+        "signature_hex": "2002010c0c"
+      }
+    }
+  },
+  "limits": [
+    "FormDispInfo.formOfsPos and FormDispInfo.dispFrm are original metadata field names; the stored numbers' authored values, coordinate units, frame meaning, rendering behavior and timing remain unestablished.",
+    "The two old-cursor ldelem.u1 source bytes are each converted through conv.i1 before conv.r4; the two original ldc.r4 operands have exact IEEE-754 little-endian bytes 00000040 (2.0f), followed by mul. No other scaling or world-axis interpretation is supported.",
+    "Input reads and advancing cursor are inside the nested variable-length form parsing loop; absolute byte offsets for subsequent forms cannot be assigned from this IL alone.",
+    "Original Unity resources.assets parent SHA, confirmed actual retail-loaded fprwaza resource and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED, no proprietary binaries or assets committed."
+  ]
+}
