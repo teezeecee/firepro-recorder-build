@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0282",
+  "status": "PROVEN_DLL",
+  "claim": "The original matching retail DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F 1735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae contains exact next contiguous 49-byte source window IL+0x0570..+0x05A0 SHA 78bf425b69801c4c958d960905d88d7fd243294def1891207fc7883b6ac2ab66. Original arg1[cursor local2] unsigned byte ldelem.u1 is saved in local4 and advances cursor by 1. On FormDispInfo local16 the source assigns (local4 shr 6) AND 3 to FormDispInfo.formPri FieldDef 0x04007CDD and (local4 shr 3) AND 7 to FormDispInfo.ringPri FieldDef 0x04007CDE. The original parser then reads a second unsigned byte from advancing arg1 cursor and assigns it to FormDispInfo.flags FieldDef 0x04007CE6. The three original FieldDef raw metadata rows, signatures, ownership and names are verified. This fact ends before subsequent original flags manipulation and does not establish authored priority or flag gameplay semantics.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact original 8,171,008-byte DLL SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, original MethodDef 0x0600525F 1,735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; exact IL+0x0570..+0x05A0 49-byte SHA 78bf425b69801c4c958d960905d88d7fd243294def1891207fc7883b6ac2ab66; raw FieldDef 0x04007CDD FormDispInfo.formPri; FieldDef 0x04007CDE FormDispInfo.ringPri; FieldDef 0x04007CE6 FormDispInfo.flags. Witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_priorities_and_initial_flags.summary.json; original-DLL verifier tools/prove_skill_data_man_rsf_form_priorities_and_initial_flags.py.",
+      "observation": "One packed priority byte is used in original shift/mask writes for formPri and ringPri; following unsigned byte initially populates flags; original metadata checks all three fields."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0281 reads dispFrm then ends exclusive IL+0x0570",
+      "to": "FACT-0282 starts at IL+0x0570 reading the next packed priority byte and ends before following flags manipulation at IL+0x05A1",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original matching ParseRSFData MethodDef 0x0600525F consecutive IL+0x0530..+0x056F and IL+0x0570..+0x05A0 source windows with no intervening byte; next boundary IL+0x05A1."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The original FormDispInfo field labels formPri, ringPri and flags are only verified metadata identities. Priority ordering, bit-flag interpretation, authored sprite/form values and gameplay consequences are not established.",
+    "Original ldelem.u1 produces a nonnegative byte value; the parser's source shr by 6 AND 3, and shr by 3 AND 7 are the only bit-packing rules proven here. Remaining bits are not assigned a meaning by this window.",
+    "The flags field write is the initial source-byte assignment at IL+0x059C. Further instructions starting at IL+0x05A1 manipulate source fields and remain outside this fact; the field's final stored value is not established by this window alone.",
+    "Variable-length parent form parsing means local2 is a cursor; absolute positions of input bytes for individual authored forms are not established.",
+    "Original Unity parent resources.assets hash, proven retail-loaded fprwaza resource binding and historic decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED and no proprietary raw DLL/assets are committed."
+  ]
+}
