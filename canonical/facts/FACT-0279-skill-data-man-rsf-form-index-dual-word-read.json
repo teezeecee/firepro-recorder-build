@@ -22,7 +22,7 @@
     }
   ],
   "limits": [
-    "Source method field name FormDispInfo.formIdx is metadata evidence only; no relationship to visual form indexing, sprite positions, timing or animation semantics is inferred.",
+    "Source method field name FormDispInfo.formIdx is metadata evidence only; no relationship to visual form indexing, sprite positions, timing or animation semantics is established by this evidence.",
     "Both two-byte expressions read the same current local2 and local2+1 positions in the original IL. Only after the local17 assignment does local2 advance by 2. These are cursor-relative accesses; global input offsets are data dependent.",
     "The expression explicitly uses ldelem.u1, shl 8, or, then conv.u2. The result is an unsigned 16-bit combination placed into fields/locals; it is not evidence for source resource byte order beyond these exact operations.",
     "Original Unity parent resources.assets hash, retail-loaded fprwaza provenance, original decoded asset vault, authored frames, roots, banks and timings remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binaries are committed."
