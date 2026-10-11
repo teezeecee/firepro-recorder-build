@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0277",
+  "status": "PROVEN_DLL",
+  "claim": "Original matching DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F full IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae has exact 54-byte IL+0x0470..+0x04A5 SHA bc0ed2c241c89d1d81ff237dbcbf6177383aef1940cd361823a24e046dd65692: original WrestlerAnmData.formNum determines new FormDispInfo[] TypeDef 0x02000A73, stored to WrestlerAnmData.formDispList; original index local15 begins at zero and jumps forward +537 to original IL+0x06A4; original FormDispInfo..ctor MethodDef 0x06005251 creates each element via stelem.ref and it is reloaded to local16. Distant original loop tail IL+0x069E..+0x06B1 SHA e153d66b676c0e812c5ef739a71aa380c4bf3284de2e7ec5e1b8a1ab3889ef2c increments index15 and branches back -551 to IL+0x048B while index15 < formNum. Original raw method, type and field metadata verified. No animation/frame/timing or game semantics claimed.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original 8,171,008-byte DLL SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; MethodDef 0x0600525F full method SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; 54-byte source SHA bc0ed2c241c89d1d81ff237dbcbf6177383aef1940cd361823a24e046dd65692 and loop tail SHA e153d66b676c0e812c5ef739a71aa380c4bf3284de2e7ec5e1b8a1ab3889ef2c; original TypeDef 0x02000A73, original FieldDefs 0x04007C93/0x04007C9F and constructor MethodDef 0x06005251; witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_disp_info_array_entry.summary.json and source verifier tools/prove_skill_data_man_rsf_form_disp_info_array_entry.py.",
+      "observation": "Original source array and constructor flow with exact branch targets."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0276 IL+0x0470 boundary",
+      "to": "FACT-0277 FormDispInfo[] allocation",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Contiguous original ParseRSFData IL starts at +0x0470."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This fact proves original array creation, local slots and control flow only; form entry values, authored frames, bank orientations, root offsets, transition logic and timing remain OPEN.",
+    "Original animation entry field formNum supplies length; no actual record count or data provenance is asserted.",
+    "Distant loop tail is pinned independently, without claiming intervening IL is decoded.",
+    "Retail Unity parent resources.assets, loaded fprwaza binding and historical asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_FORM_DISP_INFO_ARRAY_ENTRY_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll_sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+  "dll_size": 8171008,
+  "method_token": "0x0600525F",
+  "method_row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+  "method_header_hex": "13300600c7060000ec110011",
+  "method_name": "ParseRSFData",
+  "method_owner": "SkillDataMan",
+  "method_rva": "0x0031F694",
+  "method_bytes": 1735,
+  "method_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae",
+  "il_window": {
+    "start": "0x0470",
+    "end_exclusive": "0x04A6",
+    "sha256": "bc0ed2c241c89d1d81ff237dbcbf6177383aef1940cd361823a24e046dd65692",
+    "bytes": 54
+  },
+  "segments": [
+    {
+      "name": "array",
+      "start": "0x470",
+      "end_exclusive": "0x483",
+      "hex": "110e110e7b937c00048d730a00027d9f7c0004"
+    },
+    {
+      "name": "start_and_branch",
+      "start": "0x483",
+      "end_exclusive": "0x48B",
+      "hex": "16130f3819020000"
+    },
+    {
+      "name": "construct",
+      "start": "0x48B",
+      "end_exclusive": "0x49A",
+      "hex": "110e7b9f7c0004110f7351520006a2"
+    },
+    {
+      "name": "reload",
+      "start": "0x49A",
+      "end_exclusive": "0x4A6",
+      "hex": "110e7b9f7c0004110f9a1310"
+    }
+  ],
+  "loop_tail": {
+    "start": "0x069E",
+    "end_exclusive": "0x06B2",
+    "bytes": 20,
+    "hex": "110f1758130f110f110e7b937c00043fd9fdffff",
+    "sha256": "e153d66b676c0e812c5ef739a71aa380c4bf3284de2e7ec5e1b8a1ab3889ef2c"
+  },
+  "forward_branch": {
+    "instruction": "0x0486",
+    "next": "0x048B",
+    "displacement": 537,
+    "target": "0x06A4"
+  },
+  "back_branch": {
+    "instruction": "0x06AD",
+    "next": "0x06B2",
+    "displacement": -551,
+    "target": "0x048B"
+  },
+  "locals": {
+    "anm": 14,
+    "index": 15,
+    "form": 16
+  },
+  "metadata": {
+    "fields": [
+      {
+        "token": "0x04007C93",
+        "name": "formNum",
+        "owner": "WrestlerAnmData",
+        "raw": "06000c75010001000000",
+        "sig": "0608"
+      },
+      {
+        "token": "0x04007C9F",
+        "name": "formDispList",
+        "owner": "WrestlerAnmData",
+        "raw": "06007b750100fa3a0000",
+        "sig": "061d12a9cc"
+      }
+    ],
+    "type": {
+      "token": "0x02000A73",
+      "name": "FormDispInfo",
+      "raw": "012010005f810000000000000903d87c5152"
+    },
+    "ctor": {
+      "token": "0x06005251",
+      "name": ".ctor",
+      "owner": "FormDispInfo",
+      "raw": "def0310000008618eb4f06005c480000b83c",
+      "sig": "200001"
+    }
+  },
+  "limits": [
+    "This fact proves original array creation, local slots and control flow only; form entry values, authored frames, bank orientations, root offsets, transition logic and timing remain OPEN.",
+    "Original animation entry field formNum supplies length; no actual record count or data provenance is asserted.",
+    "Distant loop tail is pinned independently, without claiming intervening IL is decoded.",
+    "Retail Unity parent resources.assets, loaded fprwaza binding and historical asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
