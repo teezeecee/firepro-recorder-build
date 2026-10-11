@@ -5130,6 +5130,31 @@
         "The input opcodes read unsigned bytes, then conv.i1 sign-converts to 8-bit signed integers, then conv.r4 forms Single values; not a direct unsigned Vector2 decode.",
         "Unity parent resources.assets hash, actually loaded fprwaza source binding, original asset vault and authored frames remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no retail binaries or assets committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_FORM_INDEX_DUAL_WORD_READ_V1",
+      "fact_id": "FACT-0279",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original ParseRSFData contiguous IL+0x04CC..+0x04F0 source proves duplicate same two-byte unsigned high-shift/low-OR/conv.u2 construction into FormDispInfo.formIdx FieldDef 0x04007CD9 and local17, then local2 cursor += 2; raw original FieldDef/TypeDef metadata verified.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_index_dual_word_read.summary.json",
+      "original_fielddef_count": 1,
+      "original_typedef_count": 1,
+      "source_windows": [
+        [
+          "0x04CC",
+          "0x04F1"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Source method field name FormDispInfo.formIdx is metadata evidence only; no relationship to visual form indexing, sprite positions, timing or animation semantics is inferred.",
+        "Both two-byte expressions read the same current local2 and local2+1 positions in the original IL. Only after the local17 assignment does local2 advance by 2. These are cursor-relative accesses; global input offsets are data dependent.",
+        "The expression explicitly uses ldelem.u1, shl 8, or, then conv.u2. The result is an unsigned 16-bit combination placed into fields/locals; it is not evidence for source resource byte order beyond these exact operations.",
+        "Original Unity parent resources.assets hash, retail-loaded fprwaza provenance, original decoded asset vault, authored frames, roots, banks and timings remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binaries are committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

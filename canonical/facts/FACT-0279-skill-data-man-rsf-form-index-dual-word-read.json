@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0279",
+  "status": "PROVEN_DLL",
+  "claim": "Original matching retail DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F full 1735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae contains exact next contiguous 37-byte source region IL+0x04CC..+0x04F0 SHA 8588bd8b25ff5e6e65b25ec5c33cfecb3fbaf75bc36ffacc6583334b38a3573b. The original parser reads arg1[cursor local2] and arg1[cursor+1] as unsigned bytes, shifts the first left 8, ORs the second, converts to unsigned 16-bit using conv.u2, and assigns that value to original FormDispInfo.formIdx FieldDef 0x04007CD9 on local16. It repeats the same two source-byte expressions without first moving cursor and stores the unsigned 16-bit result in local17. It then increments cursor local2 by exactly 2. Original formIdx FieldDef metadata row/signature and declaring FormDispInfo TypeDef ownership are verified. These are only exact IL storage/control flow facts, not animation-index semantics or decoded authored data.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original matching DLL SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; original MethodDef 0x0600525F 1735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; next contiguous IL+0x04CC..+0x04F0 SHA 8588bd8b25ff5e6e65b25ec5c33cfecb3fbaf75bc36ffacc6583334b38a3573b; original FieldDef 0x04007CD9 FormDispInfo.formIdx, raw row 06009670010001000000, signature 0608. Witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_index_dual_word_read.summary.json; verifier tools/prove_skill_data_man_rsf_form_index_dual_word_read.py.",
+      "observation": "Two original identical cursor-relative unsigned-byte-shift/OR/conv.u2 expressions assign the formIdx field and local17 respectively; then local2 advances 2."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0278 centerPos source ends exclusive IL+0x04CC",
+      "to": "FACT-0279 FormDispInfo.formIdx and local17/cursor source window begins IL+0x04CC",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact contiguous original source; prior IL+0x04A6..+0x04CB and current IL+0x04CC..+0x04F0, with no intervening bytes."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Source method field name FormDispInfo.formIdx is metadata evidence only; no relationship to visual form indexing, sprite positions, timing or animation semantics is inferred.",
+    "Both two-byte expressions read the same current local2 and local2+1 positions in the original IL. Only after the local17 assignment does local2 advance by 2. These are cursor-relative accesses; global input offsets are data dependent.",
+    "The expression explicitly uses ldelem.u1, shl 8, or, then conv.u2. The result is an unsigned 16-bit combination placed into fields/locals; it is not evidence for source resource byte order beyond these exact operations.",
+    "Original Unity parent resources.assets hash, retail-loaded fprwaza provenance, original decoded asset vault, authored frames, roots, banks and timings remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binaries are committed."
+  ]
+}
