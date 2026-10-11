@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0275",
+  "status": "PROVEN_DLL",
+  "claim": "Original matching SHA-pinned DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F (1735 IL bytes SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae) at original IL+0x039A..+0x03CB has exact 50-byte SHA bbf5b08e249f77f464d089386cab4f2ba9a56d0d19f053ace926eaa39a4b61a7. It reads original SkillData.anmNum (FieldDef 0x04007C54), allocates an original WrestlerAnmData[] array (TypeDef 0x02000A6E), stores it to SkillData.anmData (FieldDef 0x04007C7A), sets index local13 to zero, and performs a br +773 to original IL+0x06B8. On the reachable body path at IL+0x03B3, it invokes original WrestlerAnmData..ctor MethodDef 0x0600524E, stores the new instance into anmData[local13] using stelem.ref, reloads that reference using ldelem.ref and stores local14. Separately verified original IL+0x06B3..+0x06C4 18-byte SHA e59b7d577386dbb7056693ec9bed8e73836d43a92b9b8a126a02ffdd491cf04e increments index13 and guards blt -786 to IL+0x03B3 while comparing index against anmNum. Raw TypeDef, MethodDef and FieldDef metadata/IL tokens and both branch targets source checked; no gameplay, authored animation or retail asset identity interpretation.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original ParseRSFData MethodDef 0x0600525F full SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; consecutive source IL+0x039A..+0x03CB exact 50 bytes SHA bbf5b08e249f77f464d089386cab4f2ba9a56d0d19f053ace926eaa39a4b61a7; far source loop-tail IL+0x06B3..+0x06C4 18 bytes SHA e59b7d577386dbb7056693ec9bed8e73836d43a92b9b8a126a02ffdd491cf04e; original TypeDef 0x02000A6E, MethodDef 0x0600524E, SkillData FieldDefs 0x04007C54/0x04007C7A with original rows and signatures. Verified by tools/prove_skill_data_man_rsf_wrestler_anm_data_array_entry.py and witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_wrestler_anm_data_array_entry.summary.json.",
+      "observation": "Original parser allocates anmNum-sized WrestlerAnmData array and instantiates/loads each entry under original loop guard."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0274 GetAnmNum result stored to SkillData.anmNum",
+      "to": "FACT-0275 newarr WrestlerAnmData and SkillData.anmData",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0274 ends exclusive original IL+0x039A; new region begins exactly +0x039A with ldfld 0x04007C54 followed by newarr TypeDef 0x02000A6E and stfld 0x04007C7A."
+        }
+      ]
+    },
+    {
+      "from": "Original parser loop index local13",
+      "to": "WrestlerAnmData instance stored and loaded from array slot",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IL+0x03B3..+0x03CB contains newobj 0x0600524E, stelem.ref, ldelem.ref, stloc.s 14; IL+0x06B3..+0x06C4 is original increment/guard with targets."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only the original MethodDef IL bytes, metadata and loop branch targets are established. The word animation is a source identifier, not proof of frames, character posing, banks, root offsets or timing.",
+    "This scope does not decode the per-entry initialization body after IL+0x03CC or any resource bytes; the far loop increment/guard region is verified only for control flow.",
+    "No invented authored record identities or retail source linkage: Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical decode vault remain OPEN.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED, no proprietary game binary or asset bytes committed."
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_WRESTLER_ANM_DATA_ARRAY_ENTRY_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x039A",
+      "end_exclusive_il": "0x03CC",
+      "length_bytes": 50,
+      "source_sha256": "bbf5b08e249f77f464d089386cab4f2ba9a56d0d19f053ace926eaa39a4b61a7",
+      "segments": [
+        {
+          "name": "allocate_anmData_array_from_anmNum",
+          "start_il": "0x039A",
+          "end_exclusive_il": "0x03AB",
+          "source_hex": "07077b547c00048d6e0a00027d7a7c0004",
+          "operation": "ldarg.1; ldarg.1; ldfld SkillData.anmNum; newarr WrestlerAnmData; stfld SkillData.anmData"
+        },
+        {
+          "name": "initialize_index_and_jump_to_guard",
+          "start_il": "0x03AB",
+          "end_exclusive_il": "0x03B3",
+          "source_hex": "16130d3805030000",
+          "operation": "ldc.i4.0; stloc.s 13; br +773 to IL+0x06B8"
+        },
+        {
+          "name": "new_constructor_and_stelem_ref",
+          "start_il": "0x03B3",
+          "end_exclusive_il": "0x03C1",
+          "source_hex": "077b7a7c0004110d734e520006a2",
+          "operation": "ldarg.1; ldfld SkillData.anmData; ldloc.s 13; newobj WrestlerAnmData..ctor; stelem.ref"
+        },
+        {
+          "name": "reload_array_entry_to_local14",
+          "start_il": "0x03C1",
+          "end_exclusive_il": "0x03CC",
+          "source_hex": "077b7a7c0004110d9a130e",
+          "operation": "ldarg.1; ldfld SkillData.anmData; ldloc.s 13; ldelem.ref; stloc.s 14"
+        }
+      ],
+      "element_type": {
+        "typedef_token": "0x02000A6E",
+        "metadata_row_hex": "0120100039810000000000000903937c4e52",
+        "name": "WrestlerAnmData",
+        "namespace": ""
+      },
+      "source_fields": [
+        {
+          "token": "0x04007C54",
+          "owner": "SkillData",
+          "name": "anmNum",
+          "metadata_row_hex": "0600f472010001000000",
+          "signature_hex": "0608"
+        },
+        {
+          "token": "0x04007C7A",
+          "owner": "SkillData",
+          "name": "anmData",
+          "metadata_row_hex": "0600d2730100ef3a0000",
+          "signature_hex": "061d12a9b8"
+        }
+      ],
+      "constructor": {
+        "token": "0x0600524E",
+        "owner": "WrestlerAnmData",
+        "name": ".ctor",
+        "metadata_row_hex": "b6ef310000008618eb4f06005c480000b63c",
+        "signature_hex": "200001"
+      },
+      "array_length_source": "SkillData.anmNum (not a literal count)",
+      "array_entry_index_local": 13,
+      "array_entry_reference_local": 14,
+      "forward_branch": {
+        "opcode": "br",
+        "instruction_il": "0x03AE",
+        "displacement": 773,
+        "next_il": "0x03B3",
+        "target_il": "0x06B8"
+      },
+      "loop_tail": {
+        "start_il": "0x06B3",
+        "end_exclusive_il": "0x06C5",
+        "length_bytes": 18,
+        "source_hex": "0d1758130d110d077b547c00043feefcffff",
+        "source_sha256": "e59b7d577386dbb7056693ec9bed8e73836d43a92b9b8a126a02ffdd491cf04e",
+        "index_increment": "ldloc.s 13; ldc.i4.1; add; stloc.s 13",
+        "comparison": "ldloc.s 13; ldarg.1; ldfld SkillData.anmNum; blt",
+        "back_edge_displacement": -786,
+        "back_edge_next_il": "0x06C5",
+        "back_edge_target_il": "0x03B3"
+      }
+    }
+  },
+  "limits": [
+    "Only the original MethodDef IL bytes, metadata and loop branch targets are established. The word animation is a source identifier, not proof of frames, character posing, banks, root offsets or timing.",
+    "This scope does not decode the per-entry initialization body after IL+0x03CC or any resource bytes; the far loop increment/guard region is verified only for control flow.",
+    "No invented authored record identities or retail source linkage: Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical decode vault remain OPEN.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED, no proprietary game binary or asset bytes committed."
+  ]
+}
