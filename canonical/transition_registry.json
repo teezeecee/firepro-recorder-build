@@ -5256,6 +5256,31 @@
         "Later original parser instructions beginning at IL+0x05FE write other FormDispInfo fields and handle further bytes; this witness does not claim a complete parser, final flags value or authored data.",
         "Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical original decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED and no proprietary raw game bytes committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_FORM_DIRECTION_BITS_AND_ALTITUDE_V1",
+      "fact_id": "FACT-0284",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original contiguous SkillDataMan.ParseRSFData IL+0x05FE..+0x0640 sets FormDispInfo.dir_LR and dir_UD to zero and conditionally one from local4 masks 8 and 128, then sets FormDispInfo.altitude to (local4 shr 4)&7. Original three FieldDef identities, raw rows and signatures checked; visual interpretation remains open.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_form_direction_bits_and_altitude.summary.json",
+      "original_fielddef_count": 3,
+      "source_windows": [
+        [
+          "0x05FE",
+          "0x0641"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original FormDispInfo field labels dir_LR, dir_UD and altitude are source metadata names only; this source window does not establish visual direction semantics, elevation units or effects on sprites.",
+        "The tests use local4 from the preceding original input byte read in FACT-0283, without another source-byte read or cursor advancement inside this 67-byte region.",
+        "dir_LR and dir_UD are initialized to zero and conditionally assigned one when masks 8 and 128 respectively are nonzero. Their values within this bounded region are exact IL operations; downstream writes are outside the scope.",
+        "The altitude assignment stores (local4 shr 4) AND 7, as encoded. No authored input values, resource binding, form bank/frames, transition timing or gameplay interpretation are established.",
+        "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and decoded historical retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No proprietary raw DLL or asset content is committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
