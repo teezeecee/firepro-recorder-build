@@ -1,0 +1,582 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_ANM_BANK_DATA_FILE_NUM_TBL_SOURCE_120_PAIRS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "static_constructor": {
+      "owner": "AnmBankData",
+      "name": ".cctor",
+      "token": "0x06005246",
+      "rva": "0x0031E967",
+      "row_hex": "67e931000000911891bc0700e3a50000b43c",
+      "signature_hex": "000001",
+      "header_hex": "66",
+      "code_bytes": 25,
+      "code_sha256": "fbb695a6ddc0ccb80cf02a59b0d1761abec6590b352227e72fef7665be148393",
+      "il_hex": "1f7818731307000a25d0f6b8000428e501000a806d6500042a",
+      "array_dimensions": [
+        120,
+        2
+      ]
+    },
+    "source_array_field": {
+      "token": "0x0400B8F6",
+      "owner": "<PrivateImplementationDetails>",
+      "name": "$field-53732FD69C517D2395FD5322D9922D525ED66E9B",
+      "row_hex": "33015b8307007dbe0000",
+      "signature_hex": "0611b7c8",
+      "ldtoken_il": "0x0009"
+    },
+    "destination_field": {
+      "token": "0x0400656D",
+      "owner": "AnmBankData",
+      "name": "FileNumTbl",
+      "row_hex": "1100db140400620c0000",
+      "signature_hex": "0614080200020000",
+      "stsfld_il": "0x0013"
+    },
+    "calls": [
+      {
+        "token": "0x0A000713",
+        "name": ".ctor",
+        "row_hex": "74070000eb4f06000d540000",
+        "class_coded": "0x0774",
+        "signature_hex": "2002010808",
+        "newobj_il": "0x0003"
+      },
+      {
+        "token": "0x0A0001E5",
+        "name": "InitializeArray",
+        "row_hex": "c90700003d6206009b580000",
+        "class_coded": "0x07C9",
+        "signature_hex": "0002011283851183e9",
+        "call_il": "0x000E"
+      }
+    ],
+    "array_type_spec": {
+      "token": "0x1B0000EE",
+      "rid": 238,
+      "row_hex": "5aaa0000",
+      "signature_hex": "14080200020000"
+    },
+    "field_rva": {
+      "table_id": 29,
+      "total_table_rows": 570,
+      "row_index_1_based": 507,
+      "table_file_offset": "0x005F55A0",
+      "row_file_offset": "0x005F617C",
+      "row_hex": "c0327b00f6b8",
+      "rva": "0x007B32C0",
+      "file_offset": "0x007AFEC0",
+      "source_bytes": 960,
+      "source_sha256": "107e6a82ea8141420999dbb5c61ed597cdcb4d9cc74c941b1153ec5bd5ed215b",
+      "encoding": "120 pairs of little-endian signed 32-bit integers, row-major, corresponding to the original 120x2 source array"
+    },
+    "bank_file_pairs": [
+      [
+        10,
+        3
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        22,
+        2
+      ],
+      [
+        30,
+        2
+      ],
+      [
+        31,
+        2
+      ],
+      [
+        32,
+        2
+      ],
+      [
+        40,
+        2
+      ],
+      [
+        50,
+        1
+      ],
+      [
+        51,
+        1
+      ],
+      [
+        52,
+        1
+      ],
+      [
+        60,
+        2
+      ],
+      [
+        61,
+        2
+      ],
+      [
+        62,
+        2
+      ],
+      [
+        70,
+        2
+      ],
+      [
+        71,
+        2
+      ],
+      [
+        72,
+        2
+      ],
+      [
+        80,
+        2
+      ],
+      [
+        81,
+        2
+      ],
+      [
+        82,
+        2
+      ],
+      [
+        90,
+        2
+      ],
+      [
+        91,
+        2
+      ],
+      [
+        92,
+        2
+      ],
+      [
+        93,
+        2
+      ],
+      [
+        100,
+        1
+      ],
+      [
+        101,
+        1
+      ],
+      [
+        102,
+        1
+      ],
+      [
+        103,
+        1
+      ],
+      [
+        110,
+        1
+      ],
+      [
+        111,
+        1
+      ],
+      [
+        112,
+        1
+      ],
+      [
+        120,
+        1
+      ],
+      [
+        130,
+        1
+      ],
+      [
+        131,
+        1
+      ],
+      [
+        132,
+        1
+      ],
+      [
+        133,
+        1
+      ],
+      [
+        134,
+        1
+      ],
+      [
+        135,
+        1
+      ],
+      [
+        140,
+        1
+      ],
+      [
+        141,
+        1
+      ],
+      [
+        142,
+        1
+      ],
+      [
+        143,
+        1
+      ],
+      [
+        144,
+        1
+      ],
+      [
+        145,
+        1
+      ],
+      [
+        150,
+        1
+      ],
+      [
+        151,
+        1
+      ],
+      [
+        152,
+        1
+      ],
+      [
+        153,
+        1
+      ],
+      [
+        154,
+        1
+      ],
+      [
+        155,
+        1
+      ],
+      [
+        160,
+        1
+      ],
+      [
+        161,
+        1
+      ],
+      [
+        162,
+        1
+      ],
+      [
+        163,
+        1
+      ],
+      [
+        164,
+        1
+      ],
+      [
+        165,
+        1
+      ],
+      [
+        170,
+        1
+      ],
+      [
+        171,
+        1
+      ],
+      [
+        172,
+        1
+      ],
+      [
+        173,
+        1
+      ],
+      [
+        174,
+        1
+      ],
+      [
+        175,
+        1
+      ],
+      [
+        176,
+        1
+      ],
+      [
+        177,
+        1
+      ],
+      [
+        180,
+        1
+      ],
+      [
+        190,
+        1
+      ],
+      [
+        200,
+        1
+      ],
+      [
+        210,
+        1
+      ],
+      [
+        220,
+        1
+      ],
+      [
+        230,
+        1
+      ],
+      [
+        240,
+        2
+      ],
+      [
+        250,
+        2
+      ],
+      [
+        260,
+        1
+      ],
+      [
+        270,
+        1
+      ],
+      [
+        280,
+        2
+      ],
+      [
+        281,
+        2
+      ],
+      [
+        282,
+        2
+      ],
+      [
+        290,
+        2
+      ],
+      [
+        291,
+        2
+      ],
+      [
+        292,
+        2
+      ],
+      [
+        300,
+        1
+      ],
+      [
+        301,
+        1
+      ],
+      [
+        310,
+        1
+      ],
+      [
+        320,
+        1
+      ],
+      [
+        330,
+        1
+      ],
+      [
+        340,
+        1
+      ],
+      [
+        350,
+        1
+      ],
+      [
+        360,
+        1
+      ],
+      [
+        370,
+        1
+      ],
+      [
+        380,
+        1
+      ],
+      [
+        390,
+        1
+      ],
+      [
+        400,
+        1
+      ],
+      [
+        410,
+        3
+      ],
+      [
+        411,
+        3
+      ],
+      [
+        412,
+        3
+      ],
+      [
+        413,
+        3
+      ],
+      [
+        414,
+        3
+      ],
+      [
+        420,
+        3
+      ],
+      [
+        421,
+        3
+      ],
+      [
+        422,
+        3
+      ],
+      [
+        423,
+        3
+      ],
+      [
+        424,
+        3
+      ],
+      [
+        430,
+        1
+      ],
+      [
+        431,
+        1
+      ],
+      [
+        432,
+        1
+      ],
+      [
+        433,
+        1
+      ],
+      [
+        440,
+        1
+      ],
+      [
+        441,
+        1
+      ],
+      [
+        442,
+        1
+      ],
+      [
+        443,
+        1
+      ],
+      [
+        450,
+        1
+      ],
+      [
+        451,
+        1
+      ],
+      [
+        452,
+        1
+      ],
+      [
+        460,
+        1
+      ],
+      [
+        461,
+        1
+      ],
+      [
+        462,
+        1
+      ],
+      [
+        470,
+        1
+      ]
+    ],
+    "pair_count": 120,
+    "distinct_bank_ids": 120,
+    "file_count_histogram": {
+      "1": 78,
+      "2": 28,
+      "3": 14
+    },
+    "caller": {
+      "methoddef": "0x06005244",
+      "name": "GetAnmFileNum",
+      "code_sha256": "e14414c9db821065dd7627fb267798d6659affcb7acce76019717bd19664ca9c",
+      "reads_field": "0x0400656D",
+      "source_fact": "FACT-0290"
+    }
+  },
+  "limits": [
+    "These 120 original signed 32-bit source pairs prove the static array initialization and bank lookup inputs of the matching retail DLL; they do not prove that a particular Unity TextAsset is present or successfully loaded in a retail session.",
+    "GetAnmFileNum's original unmatched-bank fallback remains 1; an absent bank key is not evidence that authored animation resources exist for it.",
+    "Original FieldRVA storage and System.Runtime.CompilerServices.RuntimeHelpers.InitializeArray call prove source data and wiring; actual runtime initialization, resource availability, authored motion data, bank transformations and playback timing remain separate verification gates.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza resource binding, and historical decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no full proprietary DLL or retail asset bundles committed."
+  ]
+}

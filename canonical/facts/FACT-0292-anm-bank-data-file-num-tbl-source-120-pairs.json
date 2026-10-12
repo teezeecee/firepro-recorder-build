@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0292",
+  "status": "PROVEN_DLL",
+  "claim": "The exact matching original 8,171,008-byte DLL-001 AnmBankData static constructor .cctor MethodDef 0x06005246 has 25-byte IL SHA fbb695a6ddc0ccb80cf02a59b0d1761abec6590b352227e72fef7665be148393. It creates an original 120x2 int32 array, duplicates the object, loads the original <PrivateImplementationDetails> FieldDef 0x0400B8F6 token, invokes original RuntimeHelpers.InitializeArray MemberRef 0x0A0001E5, and stores the initialized array into original AnmBankData.FileNumTbl FieldDef 0x0400656D. The exact FieldRVA metadata table 29 row 507 binds FieldDef 0x0400B8F6 to RVA 0x007B32C0 (file offset 0x007AFEC0), where the matching original DLL has 960 source bytes SHA 107e6a82ea8141420999dbb5c61ed597cdcb4d9cc74c941b1153ec5bd5ed215b. The source bytes decode into exactly 120 distinct (bank ID,file count) int32 pairs in original source order: 78 bank IDs map to 1, 28 map to 2 and 14 map to 3. Every pair is preserved in the witness, and the source verifier reconstructs and checks all 960 bytes. This completes original DLL static input values for the previously proven GetAnmFileNum lookup FACT-0290; it does not prove any external Unity resource, animation pixels, transition timing or actual runtime loading.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original Assembly-CSharp(3).dll SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, AnmBankData..cctor 0x06005246 RVA 0x0031E967 exact 25 IL bytes SHA fbb695a6ddc0ccb80cf02a59b0d1761abec6590b352227e72fef7665be148393, original FileNumTbl FieldDef 0x0400656D, PrivateImplementationDetails field 0x0400B8F6, MemberRef .ctor 0x0A000713 and InitializeArray 0x0A0001E5, multidimensional TypeSpec signature 14080200020000, FieldRVA ECMA-335 metadata table 29 row 507 hex c0327b00f6b8, RVA 0x007B32C0 and corresponding exact 960-byte body SHA 107e6a82ea8141420999dbb5c61ed597cdcb4d9cc74c941b1153ec5bd5ed215b. Exact 120 ordered pairs stored in canonical/witnesses/CAP-R6-001/anm_bank_data_file_num_tbl_source_120_pairs.summary.json and original-source verifier tools/prove_anm_bank_data_file_num_tbl_source_120_pairs.py.",
+      "observation": "Original 120×2 int32 static initializer and every bank/file-count pair validated from matching DLL source and FieldRVA metadata, not from earlier reconstructed game data."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0290 proves original AnmBankData.GetAnmFileNum MethodDef 0x06005244 uses static AnmBankData.FileNumTbl FieldDef 0x0400656D",
+      "to": "FACT-0292 proves original .cctor MethodDef 0x06005246 initializes that same FieldDef from original 960-byte FieldRVA source table of 120 authored bank/file-count pairs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original FileNumTbl FieldDef token 0x0400656D in source methods 0x06005244 and 0x06005246; original .cctor IL SHA fbb695a6ddc0ccb80cf02a59b0d1761abec6590b352227e72fef7665be148393, FieldRVA row 507 source SHA 107e6a82ea8141420999dbb5c61ed597cdcb4d9cc74c941b1153ec5bd5ed215b."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "These 120 original signed 32-bit source pairs prove the static array initialization and bank lookup inputs of the matching retail DLL; they do not prove that a particular Unity TextAsset is present or successfully loaded in a retail session.",
+    "GetAnmFileNum's original unmatched-bank fallback remains 1; an absent bank key is not evidence that authored animation resources exist for it.",
+    "Original FieldRVA storage and System.Runtime.CompilerServices.RuntimeHelpers.InitializeArray call prove source data and wiring; actual runtime initialization, resource availability, authored motion data, bank transformations and playback timing remain separate verification gates.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza resource binding, and historical decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no full proprietary DLL or retail asset bundles committed."
+  ]
+}

@@ -5457,6 +5457,31 @@
         "Original damage/parameter, flags, reversal and name fields are source labels and copy operations, not evidence of authored animation frames, rendered geometry, timing or combat interpretation.",
         "Retail Unity parent resources.assets hash, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; do not commit original full game binaries or assets."
       ]
+    },
+    {
+      "family_id": "DLL_ANM_BANK_DATA_FILE_NUM_TBL_SOURCE_120_PAIRS_V1",
+      "fact_id": "FACT-0292",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original AnmBankData static .cctor MethodDef 0x06005246 exact 25-byte IL constructs 120x2 int32 array and uses original InitializeArray MemberRef and original <PrivateImplementationDetails> FieldDef 0x0400B8F6 to populate FileNumTbl FieldDef 0x0400656D. Original FieldRVA table 29 row 507 connects source data RVA 0x007B32C0 to 960 exact bytes SHA 107e6a82ea8141420999dbb5c61ed597cdcb4d9cc74c941b1153ec5bd5ed215b; original ordered 120 bank-ID/file-count pairs source preserved with all 120 IDs unique (78 one-file, 28 two-file, 14 three-file). This closes authored static source data of FACT-0290 lookup, NOT retail Unity resource binding or animation rendering.",
+      "summary": "canonical/witnesses/CAP-R6-001/anm_bank_data_file_num_tbl_source_120_pairs.summary.json",
+      "source_windows": [
+        [
+          "0x0000",
+          "0x0019"
+        ]
+      ],
+      "source_data_sha256": "107e6a82ea8141420999dbb5c61ed597cdcb4d9cc74c941b1153ec5bd5ed215b",
+      "source_pair_count": 120,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "These 120 original signed 32-bit source pairs prove the static array initialization and bank lookup inputs of the matching retail DLL; they do not prove that a particular Unity TextAsset is present or successfully loaded in a retail session.",
+        "GetAnmFileNum's original unmatched-bank fallback remains 1; an absent bank key is not evidence that authored animation resources exist for it.",
+        "Original FieldRVA storage and System.Runtime.CompilerServices.RuntimeHelpers.InitializeArray call prove source data and wiring; actual runtime initialization, resource availability, authored motion data, bank transformations and playback timing remain separate verification gates.",
+        "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza resource binding, and historical decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no full proprietary DLL or retail asset bundles committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
