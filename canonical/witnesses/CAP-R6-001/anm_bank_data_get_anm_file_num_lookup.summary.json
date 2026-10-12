@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_ANM_BANK_DATA_GET_ANM_FILE_NUM_LOOKUP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "method": {
+      "owner": "AnmBankData",
+      "name": "GetAnmFileNum",
+      "token": "0x06005244",
+      "rva": "0x0031E8DC",
+      "row_hex": "dce8310000009600955c0a00f9e00200b23c",
+      "signature_hex": "00010811a958",
+      "header_hex": "133003003e0000003a000011",
+      "code_bytes": 62,
+      "code_sha256": "e14414c9db821065dd7627fb267798d6659affcb7acce76019717bd19664ca9c",
+      "il_hex": "160a38230000007e6d6500040616281607000a02400d0000007e6d6500040617281607000a2a0617580a067e6d6500046f7c08000a185b3fcbffffff172a",
+      "segments": [
+        {
+          "name": "initialize_index_and_jump",
+          "start_il": "0x0000",
+          "end_exclusive_il": "0x0007",
+          "il_hex": "160a3823000000"
+        },
+        {
+          "name": "read_first_pair_value_and_compare",
+          "start_il": "0x0007",
+          "end_exclusive_il": "0x0019",
+          "il_hex": "7e6d6500040616281607000a02400d000000"
+        },
+        {
+          "name": "read_second_pair_value_and_return",
+          "start_il": "0x0019",
+          "end_exclusive_il": "0x0026",
+          "il_hex": "7e6d6500040617281607000a2a"
+        },
+        {
+          "name": "increment_and_loop_bound",
+          "start_il": "0x0026",
+          "end_exclusive_il": "0x003C",
+          "il_hex": "0617580a067e6d6500046f7c08000a185b3fcbffffff"
+        },
+        {
+          "name": "default_one_and_return",
+          "start_il": "0x003C",
+          "end_exclusive_il": "0x003E",
+          "il_hex": "172a"
+        }
+      ]
+    },
+    "field": {
+      "token": "0x0400656D",
+      "owner": "AnmBankData",
+      "name": "FileNumTbl",
+      "metadata_row_hex": "1100db140400620c0000",
+      "signature_hex": "0614080200020000",
+      "read_ils": [
+        "0x0007",
+        "0x0019",
+        "0x002B"
+      ]
+    },
+    "memberrefs": {
+      "0x0A000716": {
+        "token": "0x0A000716",
+        "name": "Get",
+        "metadata_row_hex": "74070000d859060078aa0000",
+        "class_coded": "0x0774",
+        "signature_hex": "2002080808",
+        "call_ils": [
+          "0x000E",
+          "0x0020"
+        ]
+      },
+      "0x0A00087C": {
+        "token": "0x0A00087C",
+        "name": "get_Length",
+        "metadata_row_hex": "09070000e85006005e490000",
+        "class_coded": "0x0709",
+        "signature_hex": "200008",
+        "call_ils": [
+          "0x0030"
+        ]
+      }
+    },
+    "branches": [
+      {
+        "name": "initial_skip_to_loop_bound",
+        "il": "0x0002",
+        "opcode": "0x38",
+        "relative_s32": 35,
+        "target_il": "0x002A"
+      },
+      {
+        "name": "not_equal_advance_loop",
+        "il": "0x0014",
+        "opcode": "0x40",
+        "relative_s32": 13,
+        "target_il": "0x0026"
+      },
+      {
+        "name": "index_less_than_half_length",
+        "il": "0x0037",
+        "opcode": "0x3F",
+        "relative_s32": -53,
+        "target_il": "0x0007"
+      }
+    ],
+    "read_sites": [
+      {
+        "source_index": 0,
+        "il": "0x000E",
+        "call_hex": "281607000a"
+      },
+      {
+        "source_index": 1,
+        "il": "0x0020",
+        "call_hex": "281607000a"
+      }
+    ],
+    "fallback": {
+      "start_il": "0x003C",
+      "bytes": "172a",
+      "returns_literal": 1
+    },
+    "parent_call": {
+      "owner": "SkillDataMan",
+      "name": "LoadAdditionalAnimationData",
+      "token": "0x0600525B",
+      "full_il_sha256": "f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e",
+      "call_il": "0x004D",
+      "call_hex": "2844520006",
+      "target_token": "0x06005244"
+    }
+  },
+  "limits": [
+    "The source comparison, two-dimensional array access and literal default 1 do not establish which bank identifiers or file counts occur in the populated retail FileNumTbl.",
+    "The Get and get_Length calls are MemberRef method names and argument instructions from original IL; no external runtime implementation or asset instance is proven.",
+    "The parent LoadAdditionalAnimationData source call is proven, but this bounded helper alone does not establish how a generated fpw_ name maps to a live Unity resource or any rendered animation frames.",
+    "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding, and historic decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer remain LOCKED; no raw game assets or proprietary binary committed."
+  ]
+}
