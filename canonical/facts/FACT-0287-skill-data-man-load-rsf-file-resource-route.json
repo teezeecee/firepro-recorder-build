@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0287",
+  "status": "PROVEN_DLL",
+  "claim": "The matching original retail DLL-001 SkillDataMan.LoadRSFFile MethodDef 0x0600525C has an exact 55-byte IL SHA 7996e6e4e0d6b04bcacac4fbd8f2431bc470526c80c09533d98e626b9a86642d; its original ldstr token 0x700424FA resolves to literal WrestlerAnimation/, which is passed with a method string parameter to MemberRef String.Concat (0x0A000012), then to MemberRef Resources.Load (0x0A0006DA). The result is tested against UnityEngine.TextAsset TypeRef 0x010000E4; callvirt get_bytes MemberRef 0x0A00014F passes bytes with explicit source arguments to completed ParseRSFData MethodDef 0x0600525F at IL+0x0022. Original EH section catches System.Object TypeRef 0x010000C2 and an IL handler stores null; both normal and fallback branches return local2. The matching DLL also has exact direct call edges SkillDataMan.Awake (MethodDef 0x06005255 IL+0x001D) -> LoadAdditionalAnimationData (MethodDef 0x0600525B), which calls LoadRSFFile at +0x00AD, which calls ParseRSFData at +0x0022. This is source control-flow/metadata only, not a proved actual retail-loaded resource instance.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original 8,171,008-byte Assembly-CSharp(3).dll SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, SkillDataMan.LoadRSFFile MethodDef 0x0600525C raw MethodDef row d8f5310000008100645d0a008fe10200be3c, full 55-byte IL SHA 7996e6e4e0d6b04bcacac4fbd8f2431bc470526c80c09533d98e626b9a86642d, exact #US 0x700424FA WrestlerAnimation/ bytes, original MemberRef 0x0A000012/0x0A0006DA/0x0A00014F, TextAsset TypeRef 0x010000E4, EH section hex 01100000000000002d2d0008c2000001 and System.Object TypeRef 0x010000C2. Exact source call edge MethodDefs 0x06005255/0x0600525B/0x0600525C SHA and offsets in canonical/witnesses/CAP-R6-001/skill_data_man_load_rsf_file_resource_route.summary.json and original-DLL verifier tools/prove_skill_data_man_load_rsf_file_resource_route.py.",
+      "observation": "Source-only chain Awake -> LoadAdditionalAnimationData -> LoadRSFFile -> ParseRSFData, with literal resource path prefix, bytes retrieval, guarded fallback and direct method tokens."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0286 completes original SkillDataMan.ParseRSFData 0x0600525F IL",
+      "to": "LoadRSFFile 0x0600525C calls ParseRSFData at original IL+0x0022",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original LoadRSFFile 55-byte body SHA 7996e6e4e0d6b04bcacac4fbd8f2431bc470526c80c09533d98e626b9a86642d byte sequence 28 5f 52 00 06 at IL+0x0022 and original ParseRSFData MethodDef 0x0600525F."
+        }
+      ]
+    },
+    {
+      "from": "SkillDataMan.Awake MethodDef 0x06005255 IL+0x001D",
+      "to": "LoadAdditionalAnimationData 0x0600525B then LoadRSFFile 0x0600525C at IL+0x00AD",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original Awake 63-byte IL SHA 261a738fadd1a3a6a094dc3ae6c94c9e9b4a80ece0aff8799a2195d053237a4f, bytes 28 5b 52 00 06 at IL+0x001D; original LoadAdditionalAnimationData 267-byte IL SHA f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e, bytes 28 5c 52 00 06 at IL+0x00AD."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The literal WrestlerAnimation/ and source calls prove code paths, not the identity, existence or actual retail loading of an asset at any concatenated path.",
+    "Resources.Load, String.Concat and TextAsset.get_bytes are external MemberRef calls; the original matching DLL alone does not prove Unity resource implementation or source asset contents.",
+    "The System.Object exception-handler clause and null return alternative are method storage/control-flow facts, not proof that a particular asset load failed or succeeded.",
+    "The ancestor direct calls prove a reachable source call graph but not that a particular game session executes the route or its timing.",
+    "The original parent Unity resources.assets SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. Do not commit proprietary full binary or authored animation data."
+  ]
+}
