@@ -5306,6 +5306,30 @@
         "The bounded region ends at original IL+0x069E before nested-loop counter and branch instructions; this does not establish complete parser/record semantics or frame timing.",
         "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historic decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No complete proprietary game binaries or assets committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_RSF_PARSER_LOOP_EXITS_RETURN_V1",
+      "fact_id": "FACT-0286",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original source ParseRSFData MethodDef 0x0600525F last 41 IL bytes +0x069E..+0x06C6: increment inner form index local15 and blt to +0x048B against WrestlerAnmData.formNum; increment outer animation index local13 and blt to +0x03B3 against SkillData.anmNum; ldloc.1; ret. Original exact source FieldDef identities and branch targets proven. Last exclusive IL offset +0x06C7 equals 1735-byte full method code size. The closed byte boundary does not grant runtime semantics.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_rsf_parser_loop_exits_return.summary.json",
+      "original_fielddef_count": 2,
+      "source_windows": [
+        [
+          "0x069E",
+          "0x06C7"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "This suffix establishes the original loop index increments and branch targets; it does not establish authored animation counts or values, which depend on loaded resources.",
+        "The FieldDef names formNum and anmNum and the return local are original DLL metadata and IL facts, not a reconstruction of the populated motion or sprite data.",
+        "Closing this MethodDef instruction stream at IL+0x06C7 does not close its transitive dependencies, resource binding, authored form data, rendering, timing or gameplay meaning.",
+        "The original Unity parent resources.assets SHA, loaded fprwaza resource binding and historical decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No retail binary or asset bytes committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
