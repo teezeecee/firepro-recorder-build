@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_REVERSAL_PARAM_PARSER_LOOP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "method": {
+      "token": "0x06001152",
+      "owner": "SkillInfoManager",
+      "name": "_parseSkillParamList_Reversal",
+      "row": "b48e06000000810085860800f49d0000ed0c",
+      "rva": "0x00068EB4",
+      "sig": "2001011c",
+      "header": "133005007100000016030011",
+      "bytes": 113,
+      "sha256": "cb0c54a49abf1719502656e10e4291b06d11867bcb0ade861cf8add160a07ae9",
+      "il_hex": "0375980100010a066fdd06000a26066fdd06000a26384a000000066fdd06000a0b07178dcf00000125161f2c9d6fa400000a0c08169a72247d00706f0c03000a3905000000382600000073441100060d0209082853110006027bdc0e0004096f5507000a066fec06000a153daaffffff2a",
+      "segments": [
+        {
+          "start_il": "0x0000",
+          "end_exclusive_il": "0x001a",
+          "hex": "0375980100010a066fdd06000a26066fdd06000a26384a000000"
+        },
+        {
+          "start_il": "0x001a",
+          "end_exclusive_il": "0x004a",
+          "hex": "066fdd06000a0b07178dcf00000125161f2c9d6fa400000a0c08169a72247d00706f0c03000a39050000003826000000"
+        },
+        {
+          "start_il": "0x004a",
+          "end_exclusive_il": "0x0064",
+          "hex": "73441100060d0209082853110006027bdc0e0004096f5507000a"
+        },
+        {
+          "start_il": "0x0064",
+          "end_exclusive_il": "0x0071",
+          "hex": "066fec06000a153daaffffff2a"
+        }
+      ]
+    },
+    "members": {
+      "0x0A0006DD": {
+        "name": "ReadLine",
+        "row": "c90c0000cfa40600b2490000",
+        "coded": 3273,
+        "sig": "20000e",
+        "sites": [
+          8,
+          15,
+          27
+        ]
+      },
+      "0x0A0000A4": {
+        "name": "Split",
+        "row": "f905000021560600e94f0000",
+        "coded": 1529,
+        "sig": "20011d0e1d03",
+        "sites": [
+          45
+        ]
+      },
+      "0x0A00030C": {
+        "name": "Equals",
+        "row": "f9050000875b0600e44f0000",
+        "coded": 1529,
+        "sig": "2001020e",
+        "sites": [
+          59
+        ]
+      },
+      "0x0A000755": {
+        "name": "Add",
+        "row": "e4070000e00c06001d490000",
+        "coded": 2020,
+        "sig": "2001011300",
+        "sites": [
+          95
+        ]
+      },
+      "0x0A0006EC": {
+        "name": "Peek",
+        "row": "c90c00001ba506005e490000",
+        "coded": 3273,
+        "sig": "200008",
+        "sites": [
+          101
+        ]
+      }
+    },
+    "types": {
+      "0x01000198": {
+        "name": "StringReader",
+        "namespace": "System.IO",
+        "row": "0a00b7a40600da1c0200",
+        "scope": 10,
+        "opcode": 117,
+        "site": 1
+      },
+      "0x010000CF": {
+        "name": "Char",
+        "namespace": "System",
+        "row": "0a001c5606000cae0000",
+        "scope": 10,
+        "opcode": 141,
+        "site": 35
+      }
+    },
+    "jumps": [
+      {
+        "at": 21,
+        "opcode": 56,
+        "rel": 74,
+        "target": 100
+      },
+      {
+        "at": 64,
+        "opcode": 57,
+        "rel": 5,
+        "target": 74
+      },
+      {
+        "at": 69,
+        "opcode": 56,
+        "rel": 38,
+        "target": 112
+      },
+      {
+        "at": 107,
+        "opcode": 61,
+        "rel": -86,
+        "target": 26
+      }
+    ],
+    "deps": {
+      "0x06001144": {
+        "owner": "SkillInfo",
+        "name": ".ctor",
+        "row": "df88060000008618eb4f06005c480000ea0c",
+        "sha": "7329b72a2895fbaf33f03e27757c47f474d9bd9ac275773e940ffcb5ccf7725d",
+        "bytes": 13,
+        "opcode": 115,
+        "site": 74
+      },
+      "0x06001153": {
+        "owner": "SkillInfoManager",
+        "name": "ParseSkillParam",
+        "row": "348f060000008100a3860800f8a00100ee0c",
+        "sha": "96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b",
+        "bytes": 1396,
+        "opcode": 40,
+        "site": 83
+      },
+      "0x06001151": {
+        "owner": "SkillInfoManager",
+        "name": "ParseSkillParamList_Reversal",
+        "row": "6c8e060000008100688608005c480000ed0c",
+        "sha": "c90fa7f9dd10ef7ccc2f166e292ce580e98ae263b65cb3c83d30625fedea74fc",
+        "bytes": 59,
+        "opcode": 40,
+        "site": 38,
+        "callsite_parent": true
+      }
+    },
+    "reversal_field": {
+      "token": "0x04000EDC",
+      "owner": "SkillInfoManager",
+      "name": "skillInfoList_Reversal",
+      "row": "0100e14c0100310c0000",
+      "sig": "06151209011286f8",
+      "site": 89
+    },
+    "user_string": {
+      "token": "0x70007D24",
+      "text": "end",
+      "utf16le_marker_hex": "65006e00640000",
+      "site": 54
+    },
+    "delimiter": {
+      "value": 44,
+      "site": 42,
+      "hex": "1f2c",
+      "char_array_length": 1
+    },
+    "source_parent_callsite": 38
+  },
+  "limits": [
+    "Original source shows two discarded header lines, comma-delimited records, an end sentinel, a reversal record insertion, and Peek-controlled traversal, but no particular retail TextAsset content or populated record is established.",
+    "ParseSkillParam MethodDef 0x06001153 is identified by original method row and full 1,396-byte SHA; its individual record-field parsing behavior remains a separate source dependency.",
+    "The source SkillInfo construction and skillInfoList_Reversal Add call are instructions, not proof that any authored reversal record loads successfully or affects retail gameplay.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding, and historic decoded asset vault remain OPEN. Milestone SOURCE_CONSOLIDATION_V1 has runtime/viewer LOCKED."
+  ]
+}

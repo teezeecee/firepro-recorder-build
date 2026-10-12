@@ -5527,6 +5527,29 @@
         "The original Awake creates/stores source collections before calling four loader wrappers; the original code does not prove that those collections contain particular skills in a session.",
         "Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historic decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary retail binaries or extracted TextAsset contents committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_REVERSAL_PARAM_PARSER_LOOP_V1",
+      "fact_id": "FACT-0294",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original matching SkillInfoManager._parseSkillParamList_Reversal MethodDef 0x06001152 complete 113-byte IL, two discarded initial ReadLine results, subsequent comma delimiter Split, original end sentinel termination, original SkillInfo constructor and ParseSkillParam 0x06001153 call, reversal list Add, and Peek > -1 loop. All MethodDef hashes, exact 113 IL bytes, five MemberRefs, two TypeRefs, one FieldDef and four branches checked against original DLL; actual resource data and transitive 1,396-byte record parser remain unresolved.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_reversal_param_parser_loop.summary.json",
+      "source_windows": [
+        [
+          "0x0000",
+          "0x0071"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original source shows two discarded header lines, comma-delimited records, an end sentinel, a reversal record insertion, and Peek-controlled traversal, but no particular retail TextAsset content or populated record is established.",
+        "ParseSkillParam MethodDef 0x06001153 is identified by original method row and full 1,396-byte SHA; its individual record-field parsing behavior remains a separate source dependency.",
+        "The source SkillInfo construction and skillInfoList_Reversal Add call are instructions, not proof that any authored reversal record loads successfully or affects retail gameplay.",
+        "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding, and historic decoded asset vault remain OPEN. Milestone SOURCE_CONSOLIDATION_V1 has runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
