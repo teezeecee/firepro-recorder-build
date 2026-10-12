@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_ADDITIONAL_ANIMATION_IMPORT_ROUTE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "LoadAdditionalAnimationData",
+      "token": "0x0600525B",
+      "rva": "0x0031F4B0",
+      "row_hex": "b0f4310000008100485d0a005c480000be3c",
+      "signature_hex": "200001",
+      "header_hex": "1b3004000b010000e8110011",
+      "code_bytes": 267,
+      "code_sha256": "f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e"
+    },
+    "segments": [
+      {
+        "name": "enumerator_and_2000_key_gate",
+        "start_il": "0x0000",
+        "end_exclusive_il": "0x0033",
+        "il_hex": "7ed90e00047bda0e00046f9c0f000a0b38d60000001201289d0f000a0a1200289e0f000a20d00700003c05000000ddb8000000"
+      },
+      {
+        "name": "bank_count_array_setup",
+        "start_il": "0x0033",
+        "end_exclusive_il": "0x0065",
+        "il_hex": "1200289e0f000a0c7ed90e0004086f641100060d097bb60e00042844520006130411048d6a0a000213051613063869000000"
+      },
+      {
+        "name": "resource_name_construction",
+        "start_il": "0x0065",
+        "end_exclusive_il": "0x00A9",
+        "il_hex": "7206d508701200289e0f000a13081208fe16d70000016f2300000a281200000a13071104183f1a000000110772e906007012067210d5087028a401000a281b00000a1307"
+      },
+      {
+        "name": "load_apply_and_inner_loop",
+        "start_il": "0x00A9",
+        "end_exclusive_il": "0x00D7",
+        "il_hex": "02110708285c52000613097ed90e00041109086f66110006110511061109a2110617581306110611043f8effffff"
+      },
+      {
+        "name": "dictionary_add_and_move_next",
+        "start_il": "0x00D7",
+        "end_exclusive_il": "0x00FC",
+        "il_hex": "027bf87c00041200289e0f000a11056f990f000a1201289f0f000a3a1effffffdd0e000000"
+      },
+      {
+        "name": "finally_dispose_and_ret",
+        "start_il": "0x00FC",
+        "end_exclusive_il": "0x010B",
+        "il_hex": "1201fe16d102001b6f1f01000adc2a"
+      }
+    ],
+    "fields": {
+      "0x04000ED9": {
+        "token": "0x04000ED9",
+        "owner": "SkillInfoManager",
+        "name": "inst",
+        "metadata_row_hex": "160006220100200c0000",
+        "signature_hex": "061286fc"
+      },
+      "0x04000EDA": {
+        "token": "0x04000EDA",
+        "owner": "SkillInfoManager",
+        "name": "skillInfoList",
+        "metadata_row_hex": "0600c74c0100250c0000",
+        "signature_hex": "061512590211a9dc1286f8"
+      },
+      "0x04000EB6": {
+        "token": "0x04000EB6",
+        "owner": "SkillInfo",
+        "name": "anmBankType",
+        "metadata_row_hex": "0600e64a0100e90b0000",
+        "signature_hex": "0611a958"
+      },
+      "0x04007CF8": {
+        "token": "0x04007CF8",
+        "owner": "SkillDataMan",
+        "name": "skillAnmDataTbl",
+        "metadata_row_hex": "0100de4e05000b3b0000",
+        "signature_hex": "0615125902081d12a9a8"
+      }
+    },
+    "memberrefs": {
+      "0x0A000F9C": {
+        "token": "0x0A000F9C",
+        "name": "GetEnumerator",
+        "metadata_row_hex": "dc070000535a0600fc560000",
+        "class_coded": "0x07DC",
+        "signature_hex": "2000151183cd0213001301"
+      },
+      "0x0A000F9D": {
+        "token": "0x0A000F9D",
+        "name": "get_Current",
+        "metadata_row_hex": "8c1600009358060011570000",
+        "class_coded": "0x168C",
+        "signature_hex": "2000151183c90213001301"
+      },
+      "0x0A000F9E": {
+        "token": "0x0A000F9E",
+        "name": "get_Key",
+        "metadata_row_hex": "941600000a5e0600fc510000",
+        "class_coded": "0x1694",
+        "signature_hex": "20001300"
+      },
+      "0x0A000012": {
+        "token": "0x0A000012",
+        "name": "Concat",
+        "metadata_row_hex": "f9050000e150060058490000",
+        "class_coded": "0x05F9",
+        "signature_hex": "00020e0e0e"
+      },
+      "0x0A0001A4": {
+        "token": "0x0A0001A4",
+        "name": "ToString",
+        "metadata_row_hex": "b906000057510600e1570000",
+        "class_coded": "0x06B9",
+        "signature_hex": "20010e0e"
+      },
+      "0x0A00001B": {
+        "token": "0x0A00001B",
+        "name": "Concat",
+        "metadata_row_hex": "f9050000e15006008b490000",
+        "class_coded": "0x05F9",
+        "signature_hex": "00030e0e0e0e"
+      },
+      "0x0A000F99": {
+        "token": "0x0A000F99",
+        "name": "Add",
+        "metadata_row_hex": "84160000e00c0600b6550000",
+        "class_coded": "0x1684",
+        "signature_hex": "20020113001301"
+      },
+      "0x0A000F9F": {
+        "token": "0x0A000F9F",
+        "name": "MoveNext",
+        "metadata_row_hex": "8c1600007f5a0600db490000",
+        "class_coded": "0x168C",
+        "signature_hex": "200002"
+      },
+      "0x0A000023": {
+        "token": "0x0A000023",
+        "name": "ToString",
+        "metadata_row_hex": "1106000057510600b2490000",
+        "class_coded": "0x0611",
+        "signature_hex": "20000e"
+      },
+      "0x0A00011F": {
+        "token": "0x0A00011F",
+        "name": "Dispose",
+        "metadata_row_hex": "f9060000945a06005c480000",
+        "class_coded": "0x06F9",
+        "signature_hex": "200001"
+      }
+    },
+    "methoddef_callees": {
+      "0x06001164": {
+        "token": "0x06001164",
+        "owner": "SkillInfoManager",
+        "name": "GetSkillInfo",
+        "metadata_row_hex": "ea99060000008600c28708007aa10100010d",
+        "rva": "0x000699EA"
+      },
+      "0x06001166": {
+        "token": "0x06001166",
+        "owner": "SkillInfoManager",
+        "name": "ApplySkillParam",
+        "metadata_row_hex": "2c9a060000008600e48708008ca10100030d",
+        "rva": "0x00069A2C"
+      },
+      "0x06005244": {
+        "token": "0x06005244",
+        "owner": "AnmBankData",
+        "name": "GetAnmFileNum",
+        "metadata_row_hex": "dce8310000009600955c0a00f9e00200b23c",
+        "rva": "0x0031E8DC"
+      },
+      "0x0600525C": {
+        "token": "0x0600525C",
+        "owner": "SkillDataMan",
+        "name": "LoadRSFFile",
+        "metadata_row_hex": "d8f5310000008100645d0a008fe10200be3c",
+        "rva": "0x0031F5D8"
+      }
+    },
+    "user_strings": {
+      "0x7008D506": {
+        "token": "0x7008D506",
+        "text": "fpw_",
+        "raw_utf16le_and_marker_hex": "6600700077005f0000"
+      },
+      "0x700006E9": {
+        "token": "0x700006E9",
+        "text": "_",
+        "raw_utf16le_and_marker_hex": "5f0000"
+      },
+      "0x7008D510": {
+        "token": "0x7008D510",
+        "text": "D1",
+        "raw_utf16le_and_marker_hex": "4400310000"
+      }
+    },
+    "branches": [
+      {
+        "name": "initial_enumerator_jump",
+        "il": "0x0010",
+        "opcode": "0x38",
+        "rel_s32": 214,
+        "target_il": "0x00EB"
+      },
+      {
+        "name": "key_threshold_gate",
+        "il": "0x0029",
+        "opcode": "0x3C",
+        "rel_s32": 5,
+        "target_il": "0x0033"
+      },
+      {
+        "name": "skip_low_key",
+        "il": "0x002E",
+        "opcode": "0xDD",
+        "rel_s32": 184,
+        "target_il": "0x00EB"
+      },
+      {
+        "name": "begin_inner_counter",
+        "il": "0x0060",
+        "opcode": "0x38",
+        "rel_s32": 105,
+        "target_il": "0x00CE"
+      },
+      {
+        "name": "optional_suffix_gate",
+        "il": "0x008A",
+        "opcode": "0x3F",
+        "rel_s32": 26,
+        "target_il": "0x00A9"
+      },
+      {
+        "name": "inner_file_loop",
+        "il": "0x00D2",
+        "opcode": "0x3F",
+        "rel_s32": -114,
+        "target_il": "0x0065"
+      },
+      {
+        "name": "enumerator_iteration",
+        "il": "0x00F2",
+        "opcode": "0x3A",
+        "rel_s32": -226,
+        "target_il": "0x0015"
+      },
+      {
+        "name": "iterator_exit",
+        "il": "0x00F7",
+        "opcode": "0xDD",
+        "rel_s32": 14,
+        "target_il": "0x010A"
+      }
+    ],
+    "source_call_sites": [
+      {
+        "name": "GetSkillInfo",
+        "il": "0x0041",
+        "opcode": "0x6F",
+        "target_token": "0x06001164"
+      },
+      {
+        "name": "GetAnmFileNum",
+        "il": "0x004D",
+        "opcode": "0x28",
+        "target_token": "0x06005244"
+      },
+      {
+        "name": "LoadRSFFile",
+        "il": "0x00AD",
+        "opcode": "0x28",
+        "target_token": "0x0600525C"
+      },
+      {
+        "name": "ApplySkillParam",
+        "il": "0x00BC",
+        "opcode": "0x6F",
+        "target_token": "0x06001166"
+      }
+    ],
+    "exception_handler": {
+      "section_hex": "0110000002001000ecfc000e00000000",
+      "kind": 1,
+      "data_size": 16,
+      "flags": 2,
+      "try_start_il": "0x0010",
+      "try_length": 236,
+      "handler_start_il": "0x00FC",
+      "handler_length": 14,
+      "catch_token": null
+    },
+    "parent_boundary": {
+      "methoddef": "0x06005255",
+      "name": "Awake",
+      "call_site_il": "0x001D",
+      "target": "0x0600525B"
+    },
+    "direct_child": {
+      "methoddef": "0x0600525C",
+      "name": "LoadRSFFile",
+      "call_site_il": "0x00AD"
+    }
+  },
+  "limits": [
+    "Source enumeration and conditional key gate do not establish runtime dictionary contents or count of imported animation variants.",
+    "Original string literals fpw_, _, D1 and exact IL concatenation instructions establish name construction, not the existence, identity, content or success of a loaded TextAsset.",
+    "GetAnmFileNum and ApplySkillParam calls are proven at original MethodDef operands; their behavior and resulting data are separate dependencies.",
+    "The original finally clause verifies enumerator cleanup and does not prove loaded animation data, art alignment, bank orientation or gameplay timing.",
+    "Parent Unity resources.assets SHA, actual loaded fprwaza binding and historical original retail decode vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no original asset payload or complete retail DLL committed."
+  ]
+}
