@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_LOAD_RSF_FILE_RESOURCE_ROUTE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "LoadRSFFile",
+      "token": "0x0600525C",
+      "rva": "0x0031F5D8",
+      "row_hex": "d8f5310000008100645d0a008fe10200be3c",
+      "signature_hex": "200212a9a80e11a9dc",
+      "header_hex": "1b30050037000000e9110011",
+      "code_bytes": 55,
+      "code_sha256": "7996e6e4e0d6b04bcacac4fbd8f2431bc470526c80c09533d98e626b9a86642d",
+      "segments": [
+        {
+          "name": "literal_concat_resource_load_textasset",
+          "start_il": "0x0000",
+          "end_exclusive_il": "0x0016",
+          "il_hex": "72fa24047003281200000a28da06000a75e40000010a"
+        },
+        {
+          "name": "textasset_bytes_parse_rsf_and_leave",
+          "start_il": "0x0016",
+          "end_exclusive_il": "0x002D",
+          "il_hex": "066f4f01000a0b0207160416285f5200060cdd08000000"
+        },
+        {
+          "name": "exception_handler_null_fallback",
+          "start_il": "0x002D",
+          "end_exclusive_il": "0x0035",
+          "il_hex": "26140cdd00000000"
+        },
+        {
+          "name": "return_local_two",
+          "start_il": "0x0035",
+          "end_exclusive_il": "0x0037",
+          "il_hex": "082a"
+        }
+      ]
+    },
+    "resource_literal": {
+      "token": "0x700424FA",
+      "text": "WrestlerAnimation/",
+      "raw_utf16le_and_marker_hex": "570072006500730074006c006500720041006e0069006d006100740069006f006e002f0000"
+    },
+    "memberrefs": {
+      "0x0A000012": {
+        "token": "0x0A000012",
+        "name": "Concat",
+        "metadata_row_hex": "f9050000e150060058490000",
+        "class_coded": "0x05F9",
+        "signature_hex": "00020e0e0e"
+      },
+      "0x0A0006DA": {
+        "token": "0x0A0006DA",
+        "name": "Load",
+        "metadata_row_hex": "890700009f0c020095a90000",
+        "class_coded": "0x0789",
+        "signature_hex": "000112690e"
+      },
+      "0x0A00014F": {
+        "token": "0x0A00014F",
+        "name": "get_bytes",
+        "metadata_row_hex": "21070000f35b060032560000",
+        "class_coded": "0x0721",
+        "signature_hex": "20001d05"
+      }
+    },
+    "typerefs": {
+      "0x010000E4": {
+        "token": "0x010000E4",
+        "name": "TextAsset",
+        "namespace": "UnityEngine",
+        "metadata_row_hex": "0600e95b060080a60000",
+        "resolution_scope_coded": "0x0006"
+      },
+      "0x010000C2": {
+        "token": "0x010000C2",
+        "name": "Object",
+        "namespace": "System",
+        "metadata_row_hex": "0a001cb800000cae0000",
+        "resolution_scope_coded": "0x000A"
+      }
+    },
+    "exception_handler": {
+      "section_hex": "01100000000000002d2d0008c2000001",
+      "kind": 1,
+      "data_size": 16,
+      "flags": 0,
+      "try_start_il": "0x0000",
+      "try_length": 45,
+      "handler_start_il": "0x002D",
+      "handler_length": 8,
+      "catch_type_token": "0x010000C2",
+      "normal_leave_il": "0x0028",
+      "fallback_leave_il": "0x0030",
+      "common_return_il": "0x0035"
+    },
+    "call_chain": [
+      {
+        "token": "0x06005255",
+        "owner": "SkillDataMan",
+        "name": "Awake",
+        "method_row_hex": "0df2310000008100d99106005c480000ba3c",
+        "rva": "0x0031F20D",
+        "code_size": 63,
+        "code_sha256": "261a738fadd1a3a6a094dc3ae6c94c9e9b4a80ece0aff8799a2195d053237a4f",
+        "call_il": "0x001D",
+        "call_hex": "285b520006",
+        "target_token": "0x0600525B"
+      },
+      {
+        "token": "0x0600525B",
+        "owner": "SkillDataMan",
+        "name": "LoadAdditionalAnimationData",
+        "method_row_hex": "b0f4310000008100485d0a005c480000be3c",
+        "rva": "0x0031F4B0",
+        "code_size": 267,
+        "code_sha256": "f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e",
+        "call_il": "0x00AD",
+        "call_hex": "285c520006",
+        "target_token": "0x0600525C"
+      },
+      {
+        "token": "0x0600525C",
+        "owner": "SkillDataMan",
+        "name": "LoadRSFFile",
+        "method_row_hex": "d8f5310000008100645d0a008fe10200be3c",
+        "rva": "0x0031F5D8",
+        "code_size": 55,
+        "code_sha256": "7996e6e4e0d6b04bcacac4fbd8f2431bc470526c80c09533d98e626b9a86642d",
+        "call_il": "0x0022",
+        "call_hex": "285f520006",
+        "target_token": "0x0600525F"
+      }
+    ],
+    "previous_closed_parser": {
+      "token": "0x0600525F",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    }
+  },
+  "limits": [
+    "The literal WrestlerAnimation/ and source calls prove code paths, not the identity, existence or actual retail loading of an asset at any concatenated path.",
+    "Resources.Load, String.Concat and TextAsset.get_bytes are external MemberRef calls; the original matching DLL alone does not prove Unity resource implementation or source asset contents.",
+    "The System.Object exception-handler clause and null return alternative are method storage/control-flow facts, not proof that a particular asset load failed or succeeded.",
+    "The ancestor direct calls prove a reachable source call graph but not that a particular game session executes the route or its timing.",
+    "The original parent Unity resources.assets SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. Do not commit proprietary full binary or authored animation data."
+  ]
+}

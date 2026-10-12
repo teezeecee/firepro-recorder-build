@@ -5330,6 +5330,32 @@
         "Closing this MethodDef instruction stream at IL+0x06C7 does not close its transitive dependencies, resource binding, authored form data, rendering, timing or gameplay meaning.",
         "The original Unity parent resources.assets SHA, loaded fprwaza resource binding and historical decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No retail binary or asset bytes committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_LOAD_RSF_FILE_RESOURCE_ROUTE_V1",
+      "fact_id": "FACT-0287",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Matching original SkillDataMan.LoadRSFFile MethodDef 0x0600525C 55-byte IL loads TextAsset from source literal WrestlerAnimation/ concatenated with string parameter, calls TextAsset.get_bytes then ParseRSFData 0x0600525F, with original catch System.Object EH null fallback. Original exact direct caller chain Awake 0x06005255 -> LoadAdditionalAnimationData 0x0600525B -> LoadRSFFile 0x0600525C -> ParseRSFData 0x0600525F. Original method bytes, #US, MemberRefs, TypeRefs, EH section, MethodDef call sites source-verified. Runtime-loaded asset identity remains unresolved.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_load_rsf_file_resource_route.summary.json",
+      "source_windows": [
+        [
+          "0x0000",
+          "0x0037"
+        ]
+      ],
+      "original_memberref_count": 3,
+      "original_typeref_count": 2,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The literal WrestlerAnimation/ and source calls prove code paths, not the identity, existence or actual retail loading of an asset at any concatenated path.",
+        "Resources.Load, String.Concat and TextAsset.get_bytes are external MemberRef calls; the original matching DLL alone does not prove Unity resource implementation or source asset contents.",
+        "The System.Object exception-handler clause and null return alternative are method storage/control-flow facts, not proof that a particular asset load failed or succeeded.",
+        "The ancestor direct calls prove a reachable source call graph but not that a particular game session executes the route or its timing.",
+        "The original parent Unity resources.assets SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. Do not commit proprietary full binary or authored animation data."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
