@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_GET_SKILL_INFO_KEY_LOOKUP_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "method": {
+      "owner": "SkillInfoManager",
+      "name": "GetSkillInfo",
+      "token": "0x06001164",
+      "rva": "0x000699EA",
+      "row_hex": "ea99060000008600c28708007aa10100010d",
+      "signature_hex": "20011286f811a9dc",
+      "header_hex": "82",
+      "code_bytes": 32,
+      "code_sha256": "20b9e57db76492a26682a8438d6b177137717b54048168d56fa33ab8505032bd",
+      "il_hex": "027bda0e0004036f5207000a3a02000000142a027bda0e0004036f5307000a2a",
+      "segments": [
+        {
+          "name": "check_key_exists",
+          "start_il": "0x0000",
+          "end_exclusive_il": "0x000C",
+          "il_hex": "027bda0e0004036f5207000a"
+        },
+        {
+          "name": "branch_and_null_exit",
+          "start_il": "0x000C",
+          "end_exclusive_il": "0x0013",
+          "il_hex": "3a02000000142a"
+        },
+        {
+          "name": "lookup_and_return",
+          "start_il": "0x0013",
+          "end_exclusive_il": "0x0020",
+          "il_hex": "027bda0e0004036f5307000a2a"
+        }
+      ]
+    },
+    "field": {
+      "token": "0x04000EDA",
+      "owner": "SkillInfoManager",
+      "name": "skillInfoList",
+      "metadata_row_hex": "0600c74c0100250c0000",
+      "signature_hex": "061512590211a9dc1286f8"
+    },
+    "memberrefs": {
+      "0x0A000752": {
+        "token": "0x0A000752",
+        "name": "ContainsKey",
+        "metadata_row_hex": "dc070000395e0600274d0000",
+        "class_coded": "0x07DC",
+        "signature_hex": "2001021300",
+        "callvirt_il": "0x0007"
+      },
+      "0x0A000753": {
+        "token": "0x0A000753",
+        "name": "get_Item",
+        "metadata_row_hex": "dc0700001b51060032570000",
+        "class_coded": "0x07DC",
+        "signature_hex": "200113011300",
+        "callvirt_il": "0x001A"
+      }
+    },
+    "branch": {
+      "opcode": "0x3A",
+      "il": "0x000C",
+      "rel_s32": 2,
+      "target_il": "0x0013",
+      "not_found_source_bytes": "142a",
+      "not_found_il": "0x0011"
+    },
+    "parent_call": {
+      "owner": "SkillDataMan",
+      "name": "LoadAdditionalAnimationData",
+      "token": "0x0600525B",
+      "body_sha256": "f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e",
+      "call_il": "0x0041",
+      "call_hex": "6f64110006",
+      "target_token": "0x06001164"
+    }
+  },
+  "limits": [
+    "The exact original ContainsKey and get_Item MemberRef names prove source call and branching structure, not runtime dictionary contents or whether any particular key exists.",
+    "The return-null path is a source branch for a false ContainsKey result; no particular game session, valid key domain or resource lookup outcome is established.",
+    "This bounded MethodDef does not prove initialization, completeness or authored content of SkillInfoManager.skillInfoList, nor how downstream animation resources map to sprite frames.",
+    "The original parent Unity resources.assets SHA, actual retail-loaded fprwaza binding and historical retail decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binaries or assets are committed."
+  ]
+}
