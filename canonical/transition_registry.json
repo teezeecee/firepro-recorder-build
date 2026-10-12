@@ -5356,6 +5356,32 @@
         "The ancestor direct calls prove a reachable source call graph but not that a particular game session executes the route or its timing.",
         "The original parent Unity resources.assets SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. Do not commit proprietary full binary or authored animation data."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_DATA_MAN_ADDITIONAL_ANIMATION_IMPORT_ROUTE_V1",
+      "fact_id": "FACT-0288",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Matching original SkillDataMan.LoadAdditionalAnimationData MethodDef 0x0600525B full 267-byte IL: enumerate SkillInfoManager.skillInfoList, process original key gate >=2000, obtain bank-file count via GetAnmFileNum, build fpw_ plus key with conditional _/D1 suffix, call LoadRSFFile and ApplySkillParam, save items in array, add to skillAnmDataTbl, and dispose enumerator in original finally. Original full IL SHA, six contiguous windows, four raw FieldDefs, ten MemberRefs, four MethodDef call targets, three #US strings, eight branch operands, EH bytes validated against DLL-001. Asset binding and runtime behaviour not promoted.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_data_man_additional_animation_import_route.summary.json",
+      "original_fielddef_count": 4,
+      "original_memberref_count": 10,
+      "source_windows": [
+        [
+          "0x0000",
+          "0x010B"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Source enumeration and conditional key gate do not establish runtime dictionary contents or count of imported animation variants.",
+        "Original string literals fpw_, _, D1 and exact IL concatenation instructions establish name construction, not the existence, identity, content or success of a loaded TextAsset.",
+        "GetAnmFileNum and ApplySkillParam calls are proven at original MethodDef operands; their behavior and resulting data are separate dependencies.",
+        "The original finally clause verifies enumerator cleanup and does not prove loaded animation data, art alignment, bank orientation or gameplay timing.",
+        "Parent Unity resources.assets SHA, actual loaded fprwaza binding and historical original retail decode vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no original asset payload or complete retail DLL committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

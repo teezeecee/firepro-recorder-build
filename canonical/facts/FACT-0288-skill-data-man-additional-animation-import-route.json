@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0288",
+  "status": "PROVEN_DLL",
+  "claim": "Original matching retail DLL-001 SkillDataMan.LoadAdditionalAnimationData MethodDef 0x0600525B has exactly 267 IL bytes SHA f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e. It enumerates SkillInfoManager.skillInfoList through original GetEnumerator, get_Current, get_Key, MoveNext and finally Dispose calls, gates processing on enumerator key >= literal 2000 (bge at +0x0029, leave at +0x002E), then calls GetSkillInfo, reads SkillInfo.anmBankType, and calls AnmBankData.GetAnmFileNum. The method constructs strings using original #US literals fpw_ plus key.ToString(), and only when the file count is >=2 appends _ and a counter formatted with D1. Within the original inner loop it calls LoadRSFFile MethodDef 0x0600525C at +0x00AD and ApplySkillParam at +0x00BC, stores the returned item in the array and calls Add on SkillDataMan.skillAnmDataTbl. All eight branch/leave operands, four original FieldDef identities, four direct MethodDef call sites, source strings and original finally clause are matched against the 267-byte original source body. Runtime-loaded asset and animation semantics are outside this claim.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original 8,171,008-byte retail DLL SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; original MethodDef 0x0600525B RVA 0x0031F4B0 full 267-byte SHA f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e; exact source segments, original #US tokens 0x7008D506/0x700006E9/0x7008D510, FieldDef tokens 0x04000ED9/0x04000EDA/0x04000EB6/0x04007CF8, direct call tokens 0x06001164/0x06005244/0x0600525C/0x06001166, original EH section 0110000002001000ecfc000e00000000. Independently verified from the original matching DLL. Witness canonical/witnesses/CAP-R6-001/skill_data_man_additional_animation_import_route.summary.json and original-DLL source verifier tools/prove_skill_data_man_additional_animation_import_route.py.",
+      "observation": "Source enumerator key gate, input-derived bank-file count loop, fpw_ literal naming route, direct LoadRSFFile and ApplySkillParam calls, registry Add and finally Dispose are original control-flow operations."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0287 proves original SkillDataMan.Awake direct call to LoadAdditionalAnimationData MethodDef 0x0600525B at IL+0x001D",
+      "to": "FACT-0288 proves complete LoadAdditionalAnimationData IL and its direct LoadRSFFile MethodDef 0x0600525C call at +0x00AD",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Matching original MethodDef 0x0600525B full IL SHA f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e, direct call byte sequence 28 5c 52 00 06 at +0x00AD; original parent call instruction at SkillDataMan.Awake IL+0x001D."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Source enumeration and conditional key gate do not establish runtime dictionary contents or count of imported animation variants.",
+    "Original string literals fpw_, _, D1 and exact IL concatenation instructions establish name construction, not the existence, identity, content or success of a loaded TextAsset.",
+    "GetAnmFileNum and ApplySkillParam calls are proven at original MethodDef operands; their behavior and resulting data are separate dependencies.",
+    "The original finally clause verifies enumerator cleanup and does not prove loaded animation data, art alignment, bank orientation or gameplay timing.",
+    "Parent Unity resources.assets SHA, actual loaded fprwaza binding and historical original retail decode vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no original asset payload or complete retail DLL committed."
+  ]
+}
