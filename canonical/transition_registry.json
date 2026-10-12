@@ -5407,6 +5407,31 @@
         "This bounded MethodDef does not prove initialization, completeness or authored content of SkillInfoManager.skillInfoList, nor how downstream animation resources map to sprite frames.",
         "The original parent Unity resources.assets SHA, actual retail-loaded fprwaza binding and historical retail decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary binaries or assets are committed."
       ]
+    },
+    {
+      "family_id": "DLL_ANM_BANK_DATA_GET_ANM_FILE_NUM_LOOKUP_V1",
+      "fact_id": "FACT-0290",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original AnmBankData.GetAnmFileNum MethodDef 0x06005244 exact 62-byte IL: local0 index scans FileNumTbl FieldDef 0x0400656D via MemberRef Get(i,0), compares to input bank; matching key returns Get(i,1), nonmatching increments index and repeats while index < FileNumTbl.get_Length()/2, with literal return 1 on loop exhaustion. Original all source IL, metadata, branch destinations and LoadAdditionalAnimationData direct caller proven from matching retail DLL. Loaded bank table contents and authored animation assets not established.",
+      "summary": "canonical/witnesses/CAP-R6-001/anm_bank_data_get_anm_file_num_lookup.summary.json",
+      "original_fielddef_count": 1,
+      "original_memberref_count": 2,
+      "source_windows": [
+        [
+          "0x0000",
+          "0x003E"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The source comparison, two-dimensional array access and literal default 1 do not establish which bank identifiers or file counts occur in the populated retail FileNumTbl.",
+        "The Get and get_Length calls are MemberRef method names and argument instructions from original IL; no external runtime implementation or asset instance is proven.",
+        "The parent LoadAdditionalAnimationData source call is proven, but this bounded helper alone does not establish how a generated fpw_ name maps to a live Unity resource or any rendered animation frames.",
+        "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding, and historic decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer remain LOCKED; no raw game assets or proprietary binary committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

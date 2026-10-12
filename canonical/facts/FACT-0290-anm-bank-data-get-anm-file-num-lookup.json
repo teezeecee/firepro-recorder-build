@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0290",
+  "status": "PROVEN_DLL",
+  "claim": "The matching original 8,171,008-byte DLL-001 AnmBankData.GetAnmFileNum MethodDef 0x06005244 has exact original 62-byte IL SHA e14414c9db821065dd7627fb267798d6659affcb7acce76019717bd19664ca9c. Its original code initializes local0 to zero, branches to a bound check, reads original static FileNumTbl FieldDef 0x0400656D with MemberRef Get 0x0A000716 using index local0 and literal column 0, and compares that value against the input bank argument using bne.un at IL+0x0014. When equal, the code reads column 1 with the same MemberRef Get and immediately returns it. When unequal, local0 increments and loops while local0 < MemberRef get_Length 0x0A00087C divided by literal 2; otherwise original ldc.i4.1; ret returns 1. All three original long-branch offsets, exact FieldDef and two MemberRef raw identities, three field accesses, three MemberRef call operands and the original caller at SkillDataMan.LoadAdditionalAnimationData MethodDef 0x0600525B IL+0x004D match the retail DLL. No authored array values, resource files or runtime animation consequences are asserted.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original Assembly-CSharp(3).dll 8,171,008 bytes SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; AnmBankData.GetAnmFileNum MethodDef 0x06005244 RVA 0x0031E8DC raw MethodDef row dce8310000009600955c0a00f9e00200b23c, header 133003003e0000003a000011, exact full 62-byte IL SHA e14414c9db821065dd7627fb267798d6659affcb7acce76019717bd19664ca9c. Original FileNumTbl FieldDef 0x0400656D raw row/signature and MemberRef Get 0x0A000716/get_Length 0x0A00087C original metadata; branch offsets +0x0002 to +0x002A, +0x0014 to +0x0026, +0x0037 to +0x0007; source caller at LoadAdditionalAnimationData +0x004D. Witness canonical/witnesses/CAP-R6-001/anm_bank_data_get_anm_file_num_lookup.summary.json and exact original DLL verifier tools/prove_anm_bank_data_get_anm_file_num_lookup.py.",
+      "observation": "Original source code performs a two-column bank table lookup and returns a literal 1 if no matching entry is encountered; no populated table or rendered data is in scope."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0288 original SkillDataMan.LoadAdditionalAnimationData at IL+0x004D calls AnmBankData.GetAnmFileNum MethodDef 0x06005244",
+      "to": "FACT-0290 original GetAnmFileNum complete 62-byte table-index and fallback lookup is source-proven",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original parent full 267-byte SHA f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e; original call bytes 2844520006 at IL+0x004D; target full IL SHA e14414c9db821065dd7627fb267798d6659affcb7acce76019717bd19664ca9c."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The source comparison, two-dimensional array access and literal default 1 do not establish which bank identifiers or file counts occur in the populated retail FileNumTbl.",
+    "The Get and get_Length calls are MemberRef method names and argument instructions from original IL; no external runtime implementation or asset instance is proven.",
+    "The parent LoadAdditionalAnimationData source call is proven, but this bounded helper alone does not establish how a generated fpw_ name maps to a live Unity resource or any rendered animation frames.",
+    "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding, and historic decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer remain LOCKED; no raw game assets or proprietary binary committed."
+  ]
+}
