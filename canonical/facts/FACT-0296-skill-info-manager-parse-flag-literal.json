@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0296",
+  "status": "PROVEN_DLL",
+  "claim": "The original SHA-matched SkillInfoManager.Parse_Flag MethodDef 0x06001159 is exact 33-byte tiny-header IL SHA a7ed9dbc70969fa00e38afb0dbfacfe66162c0558004fb98c0454671699eb6dc with signature Boolean(String,String). The source calls IsNullOrEmpty on its first parameter and returns false for null/empty; otherwise invokes String.Equals on the original #US token 0x700006A1, whose source literal is '0', returning true if equal and false otherwise. Both original long conditional branch destinations at IL+0x0006 and +0x0018, original MemberRef metadata, all return opcode segments, and 17 direct MethodDef call operands from ParseSkillParam 0x06001153 are source checked. Its second string parameter is not loaded in the 33-byte source body. No authored flag data or runtime effects are claimed.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original matching retail 8,171,008-byte DLL SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; Parse_Flag MethodDef 0x06001159 source row 4896060000009100f7860800054a0000f60c, RVA 0x00069648, tiny method header 86, full 33 IL bytes hash a7ed9dbc70969fa00e38afb0dbfacfe66162c0558004fb98c0454671699eb6dc, original US heap record 03300000 and both call sites +0x0001/0x0013; original parent ParseSkillParam full SHA 96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b and 17 verified call operands. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_parse_flag_literal.summary.json.",
+      "observation": "Source-only Boolean parsing rule and 17 original parent calls, not asset/session semantics."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0295 original ParseSkillParam 0x06001153 (17 direct Parse_Flag calls)",
+      "to": "FACT-0296 original complete 33-byte Parse_Flag 0x06001159 and literal '0' comparison",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "17 original call operands at IL offsets 0x028f,0x02b7,0x02df,0x0307,0x032f,0x0353,0x0377,0x039b,0x03bf,0x03e4,0x0424,0x0449,0x04c3,0x04eb,0x050f,0x0533,0x0557; original caller SHA 96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original IL returns Boolean true only when the first string parameter equals the original literal '0'; null/empty and other inputs return false. The original second string parameter is not loaded by this method's 33-byte source body.",
+    "Proves original DLL source decision and direct parent callsites, not actual DataBase/ text resource records, meaning of authored flag columns, populated SkillInfo records, or actual retail gameplay outcome.",
+    "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical retail decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
