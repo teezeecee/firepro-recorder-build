@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0291",
+  "status": "PROVEN_DLL",
+  "claim": "Matching original retail DLL-001 SkillInfoManager.ApplySkillParam MethodDef 0x06001166 has exactly 386 IL bytes SHA 49f3fdacd9378d68c7c474766af4ba146ebccc86a8acbb27e240f63353640291. It first calls original GetSkillInfo MethodDef 0x06001164 with input arg2 and returns immediately when the returned SkillInfo is null. It loops for local1 values 0 and 1, copying each original SkillInfo.skillName source array entry into SkillData.skillName destination array, then carries out exactly 28 consecutive original ldfld SkillInfo / stfld SkillData same-named field writes (direct assignments) at IL+0x0031..+0x0180 before ret. Those fields include type/filtering/priorities, attack parameter types, HP/SP/BP and limb attacks, suicide damage, bleeding, rope escape direction, flags, art/cheer, reversals, and primary strength. Every one of the 58 distinct original FieldDef metadata rows, names, signatures and owners is validated against raw retail DLL; full method source IL, original three branch destinations, GetSkillInfo call and original parent importer LoadAdditionalAnimationData callvirt at +0x00BC are independently verified. This proves bytecode transfers, NOT loaded skill data or runtime animation semantics.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original retail Assembly-CSharp(3).dll 8,171,008 bytes SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; SkillInfoManager.ApplySkillParam MethodDef 0x06001166 row 2c9a060000008600e48708008ca10100030d, header 13300400820100001e030011, complete 386-byte IL SHA 49f3fdacd9378d68c7c474766af4ba146ebccc86a8acbb27e240f63353640291. Source original IL +0x0000..+0x0181; 28 explicit 12-byte field write blocks, 58 original FieldDef raw tokens/owners/signatures; brtrue +0x0009, br +0x0011, blt +0x002C; call GetSkillInfo 0x06001164 at +0x0002 and caller LoadAdditionalAnimationData 0x0600525B callvirt at +0x00BC. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_apply_skill_param_transfers.summary.json and original-byte verifier tools/prove_skill_info_manager_apply_skill_param_transfers.py.",
+      "observation": "Null guard, two source name-array assignments, 28 source field-copy operations and method return; original source table contents and animation consequences not claimed."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0288 original LoadAdditionalAnimationData MethodDef 0x0600525B callvirt at +0x00BC to ApplySkillParam 0x06001166",
+      "to": "FACT-0291 exact original ApplySkillParam complete method including GetSkillInfo 0x06001164 (FACT-0289) and 28 same-named FieldDef copies",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original 267-byte caller SHA f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e, callvirt +0x00BC 6f66110006; exact callee SHA 49f3fdacd9378d68c7c474766af4ba146ebccc86a8acbb27e240f63353640291."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original 28 field transfers and two-element name copying are verified as storage assignments; this method alone does not establish the values stored in the retail SkillInfo dictionary.",
+    "The source first calls GetSkillInfo and returns immediately on null; no successful lookup or populated skill record is established by the original code alone.",
+    "Original damage/parameter, flags, reversal and name fields are source labels and copy operations, not evidence of authored animation frames, rendered geometry, timing or combat interpretation.",
+    "Retail Unity parent resources.assets hash, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; do not commit original full game binaries or assets."
+  ]
+}
