@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_PARSE_NUM_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001158",
+    "owner": "SkillInfoManager",
+    "name": "Parse_Num",
+    "rva": "0x00069604",
+    "row": "0496060000009100ed8608007b4f0000f40c",
+    "signature": "0002080e0e",
+    "header": "1b3001002500000002000011",
+    "code_bytes": 37,
+    "code_sha256": "1697442c1b0ec6d4aeb984f5d27a9f039ff43a3560a97d344627f1ff0bc3f1d7",
+    "il_hex": "02281500000a3902000000162a0228de06000a0a060bdd0800000026160bdd00000000072a"
+  },
+  "members": [
+    {
+      "token": "0x0A000015",
+      "name": "IsNullOrEmpty",
+      "row": "f9050000f350060070490000",
+      "signature": "0001020e",
+      "site": 1
+    },
+    {
+      "token": "0x0A0006DE",
+      "name": "Parse",
+      "row": "b90600005056060052590000",
+      "signature": "0001080e",
+      "site": 14
+    }
+  ],
+  "branch_flow": [
+    {
+      "site": 6,
+      "opcode": "0x39",
+      "rel": 2,
+      "target": 13
+    },
+    {
+      "site": 22,
+      "opcode": "0xDD",
+      "rel": 8,
+      "target": 35
+    },
+    {
+      "site": 30,
+      "opcode": "0xDD",
+      "rel": 0,
+      "target": 35
+    }
+  ],
+  "source_semantics": {
+    "is_null_or_empty_returns_zero": [
+      11,
+      12
+    ],
+    "parse_first_string_memberref": "0x0A0006DE",
+    "exception_handler_return_zero": [
+      27,
+      28,
+      29,
+      30
+    ],
+    "final_return": [
+      35,
+      36
+    ],
+    "only_ldarg_0": true
+  },
+  "exception_section": {
+    "clause_format": "small",
+    "source_hex": "0110000000000d000e1b0008c2000001",
+    "clause_flags": 0,
+    "try_offset": 13,
+    "try_length": 14,
+    "handler_offset": 27,
+    "handler_length": 8,
+    "catch_type_token": "0x010000C2",
+    "catch_name": "Object",
+    "catch_namespace": "System",
+    "catch_typeref_row": "0a001cb800000cae0000"
+  },
+  "parent": {
+    "token": "0x06001153",
+    "name": "ParseSkillParam",
+    "size": 1396,
+    "sha256": "96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b",
+    "call_sites": [
+      129,
+      152,
+      357,
+      380,
+      403,
+      426,
+      449,
+      472,
+      495,
+      518,
+      541,
+      564,
+      587,
+      610,
+      633,
+      1038,
+      1138,
+      1161
+    ]
+  },
+  "limits": [
+    "Complete source proves null/empty return 0, original System.Int32.Parse try path and System.Object catch returning 0. It does not identify particular authored database values or game-session effects.",
+    "Method signature accepts two strings, but the exact 37-byte IL body only accesses its first string parameter; original second argument meaning is not established by this method.",
+    "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0297",
+  "status": "PROVEN_DLL",
+  "claim": "Matching original SkillInfoManager.Parse_Num MethodDef 0x06001158 has exact full 37-byte IL SHA 1697442c1b0ec6d4aeb984f5d27a9f039ff43a3560a97d344627f1ff0bc3f1d7. It calls original String.IsNullOrEmpty on its first string argument, returns int 0 for null/empty, otherwise calls original System.Int32.Parse and returns that result. The original small exception section catches System.Object for the parse path and returns 0 on exception. Both original MemberRefs, branch/leave destinations, MethodDef/TypeRef metadata, and all 18 direct original ParseSkillParam 0x06001153 call sites are source verified. Original second declared string argument is unused in the 37-byte body. No particular authored resource value or gameplay outcome is established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original 8,171,008-byte Assembly-CSharp(3).dll SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, SkillInfoManager.Parse_Num MethodDef 0x06001158 RVA 0x00069604, raw method row 0496060000009100ed8608007b4f0000f40c, source 37 IL bytes SHA 1697442c1b0ec6d4aeb984f5d27a9f039ff43a3560a97d344627f1ff0bc3f1d7, original EH bytes 0110000000000d000e1b0008c2000001 and witness canonical/witnesses/CAP-R6-001/skill_info_manager_parse_num_source.summary.json.",
+      "observation": "Source-only integer parsing rule and original fallback/exception flow, with 18 direct parent caller sites; no authored skill records."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0295 original SkillInfoManager.ParseSkillParam 0x06001153",
+      "to": "FACT-0297 complete original Parse_Num helper 0x06001158",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original parent 1396-byte IL SHA 96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b has 18 exact direct call operands to Parse_Num at IL offsets 0x0081, 0x0098, 0x0165, 0x017c, 0x0193, 0x01aa, 0x01c1, 0x01d8, 0x01ef, 0x0206, 0x021d, 0x0234, 0x024b, 0x0262, 0x0279, 0x040e, 0x0472, 0x0489. Direct raw-DLL verification performed."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Complete source proves null/empty return 0, original System.Int32.Parse try path and System.Object catch returning 0. It does not identify particular authored database values or game-session effects.",
+    "Method signature accepts two strings, but the exact 37-byte IL body only accesses its first string parameter; original second argument meaning is not established by this method.",
+    "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
