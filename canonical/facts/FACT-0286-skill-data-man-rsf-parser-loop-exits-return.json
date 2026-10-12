@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0286",
+  "status": "PROVEN_DLL",
+  "claim": "The matching original 8,171,008-byte retail DLL-001 SkillDataMan.ParseRSFData MethodDef 0x0600525F has 1,735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae. Its final contiguous 41-byte source window IL+0x069E..+0x06C6 SHA e05dd251bd3d06c3922c980ef2657ceb3265ebfcc76fb141a808533b9c2c837a increments inner index local15 and branches with original blt IL+0x06AD relative -551 to IL+0x048B while local15 < local14.WrestlerAnmData.formNum; increments outer index local13 and branches with original blt IL+0x06C0 relative -786 to IL+0x03B3 while local13 < local1.SkillData.anmNum; then returns local1 using original ldloc.1; ret at IL+0x06C5..+0x06C6. Original two FieldDef rows/signatures/owners and both exact branch targets independently match the retail DLL. This suffix ends at the exact MethodDef IL code end +0x06C7, closing byte coverage of this parser only, not loaded animation resources or runtime semantics.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original Assembly-CSharp(3).dll size 8,171,008 SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; original MethodDef 0x0600525F full 1,735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; IL+0x069E..+0x06C6 41 bytes SHA e05dd251bd3d06c3922c980ef2657ceb3265ebfcc76fb141a808533b9c2c837a; original FieldDef 0x04007C93 WrestlerAnmData.formNum metadata row 06000c75010001000000 signature 0608; 0x04007C54 SkillData.anmNum row 0600f472010001000000 signature 0608; blt IL+0x06AD to +0x048B and IL+0x06C0 to +0x03B3. Source witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_parser_loop_exits_return.summary.json and original DLL verifier tools/prove_skill_data_man_rsf_parser_loop_exits_return.py.",
+      "observation": "Bounded original suffix has two loop-index increment/branch sequences and final ldloc.1; ret. Full original IL length matches exclusive end +0x06C7."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0285 ends exclusive at matching original ParseRSFData IL+0x069E",
+      "to": "FACT-0286 begins exactly +0x069E and ends exclusive at MethodDef full original code size +0x06C7 (1735 bytes), with no intervening bytes",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Matching original MethodDef 0x0600525F full IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae, FACT-0285 window +0x0641..+0x069D, FACT-0286 window +0x069E..+0x06C6; original method code size 0x06C7."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This suffix establishes the original loop index increments and branch targets; it does not establish authored animation counts or values, which depend on loaded resources.",
+    "The FieldDef names formNum and anmNum and the return local are original DLL metadata and IL facts, not a reconstruction of the populated motion or sprite data.",
+    "Closing this MethodDef instruction stream at IL+0x06C7 does not close its transitive dependencies, resource binding, authored form data, rendering, timing or gameplay meaning.",
+    "The original Unity parent resources.assets SHA, loaded fprwaza resource binding and historical decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No retail binary or asset bytes committed."
+  ]
+}

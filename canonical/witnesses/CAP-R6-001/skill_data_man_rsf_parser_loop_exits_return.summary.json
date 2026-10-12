@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_DATA_MAN_RSF_PARSER_LOOP_EXITS_RETURN_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "owner": "SkillDataMan",
+      "name": "ParseRSFData",
+      "token": "0x0600525F",
+      "rva": "0x0031F694",
+      "row_hex": "94f63100000086008f5d0a00c2e10200c43c",
+      "header_hex": "13300600c7060000ec110011",
+      "code_bytes": 1735,
+      "code_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+    },
+    "window": {
+      "start_il": "0x069E",
+      "end_exclusive_il": "0x06C7",
+      "length_bytes": 41,
+      "source_sha256": "e05dd251bd3d06c3922c980ef2657ceb3265ebfcc76fb141a808533b9c2c837a",
+      "segments": [
+        {
+          "name": "increment_inner_form_index_and_loop",
+          "start_il": "0x069E",
+          "end_exclusive_il": "0x06B2",
+          "il_hex": "110f1758130f110f110e7b937c00043fd9fdffff",
+          "operation": "local15 = local15 + 1; if local15 < local14.WrestlerAnmData.formNum, blt IL+0x048B",
+          "branch_il": "0x06AD",
+          "branch_rel_s32": -551,
+          "branch_target_il": "0x048B",
+          "field_token": "0x04007C93"
+        },
+        {
+          "name": "increment_outer_animation_index_and_loop",
+          "start_il": "0x06B2",
+          "end_exclusive_il": "0x06C5",
+          "il_hex": "110d1758130d110d077b547c00043feefcffff",
+          "operation": "local13 = local13 + 1; if local13 < local1.SkillData.anmNum, blt IL+0x03B3",
+          "branch_il": "0x06C0",
+          "branch_rel_s32": -786,
+          "branch_target_il": "0x03B3",
+          "field_token": "0x04007C54"
+        },
+        {
+          "name": "return_local1",
+          "start_il": "0x06C5",
+          "end_exclusive_il": "0x06C7",
+          "il_hex": "072a",
+          "operation": "ldloc.1; ret"
+        }
+      ],
+      "fields": {
+        "0x04007C93": {
+          "token": "0x04007C93",
+          "owner": "WrestlerAnmData",
+          "name": "formNum",
+          "metadata_row_hex": "06000c75010001000000",
+          "signature_hex": "0608"
+        },
+        "0x04007C54": {
+          "token": "0x04007C54",
+          "owner": "SkillData",
+          "name": "anmNum",
+          "metadata_row_hex": "0600f472010001000000",
+          "signature_hex": "0608"
+        }
+      },
+      "method_code_end_il": "0x06C7",
+      "complete_method_byte_coverage": {
+        "start_il": "0x0000",
+        "end_exclusive_il": "0x06C7",
+        "full_il_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+      },
+      "return_local": 1,
+      "inner_index_local": 15,
+      "inner_parent_local": 14,
+      "outer_index_local": 13,
+      "outer_parent_local": 1,
+      "next_contiguous_il": null
+    }
+  },
+  "limits": [
+    "This suffix establishes the original loop index increments and branch targets; it does not establish authored animation counts or values, which depend on loaded resources.",
+    "The FieldDef names formNum and anmNum and the return local are original DLL metadata and IL facts, not a reconstruction of the populated motion or sprite data.",
+    "Closing this MethodDef instruction stream at IL+0x06C7 does not close its transitive dependencies, resource binding, authored form data, rendering, timing or gameplay meaning.",
+    "The original Unity parent resources.assets SHA, loaded fprwaza resource binding and historical decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED. No retail binary or asset bytes committed."
+  ]
+}
