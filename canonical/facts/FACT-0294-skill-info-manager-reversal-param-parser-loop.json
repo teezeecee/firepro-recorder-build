@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0294",
+  "status": "PROVEN_DLL",
+  "claim": "The matching original retail SkillInfoManager._parseSkillParamList_Reversal MethodDef 0x06001152 has exactly 113 IL bytes SHA cb0c54a49abf1719502656e10e4291b06d11867bcb0ade861cf8add160a07ae9. Original StringReader TypeRef 0x01000198 casts the provided reader; two ReadLine MemberRef 0x0A0006DD results are discarded before an original loop reads and splits comma-delimited lines through MemberRef Split 0x0A0000A4. It compares the first token to the original #US literal end at 0x70007D24 via MemberRef Equals 0x0A00030C, exiting on equality. Otherwise it constructs a SkillInfo MethodDef 0x06001144, calls original SkillInfoManager.ParseSkillParam MethodDef 0x06001153 with that record and the token array, and invokes Add MemberRef 0x0A000755 on skillInfoList_Reversal FieldDef 0x04000EDC. The source loops while StringReader.Peek MemberRef 0x0A0006EC is greater than -1. The four original control-flow branch destinations, five MemberRefs, two TypeRefs, FieldDef, literal and caller ParseSkillParamList_Reversal 0x06001151 IL+0x0026 are verified against original DLL source. The 1396-byte record parser is identified by exact original full code SHA, but its internal semantics and authored TextAsset contents remain open.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching 8,171,008-byte Assembly-CSharp(3).dll SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, MethodDef 0x06001152 RVA 0x00068EB4 raw row b48e06000000810085860800f49d0000ed0c, header 133005007100000016030011, original 113-byte SHA cb0c54a49abf1719502656e10e4291b06d11867bcb0ade861cf8add160a07ae9; exact raw five MemberRefs/two TypeRefs/FieldDef, original end user string, original IL branches to 0x0064/0x004A/0x0070/0x001A, direct ParseSkillParam source call and parent wrapper original direct call at +0x0026. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_reversal_param_parser_loop.summary.json and original DLL verifier tools/prove_skill_info_manager_reversal_param_parser_loop.py.",
+      "observation": "Exact source-controlled comma-delimited reversal record traversal and source parser invocation; actual loaded resource text and reversal data effects not claimed."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0293 original source wrapper ParseSkillParamList_Reversal MethodDef 0x06001151 requests DataBase/SkillParam_Reversal TextAsset and invokes internal MethodDef 0x06001152",
+      "to": "FACT-0294 original exact 113-byte internal loop, with record-field ParseSkillParam MethodDef 0x06001153 still an independent original-source dependency",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Parent wrapper MethodDef 0x06001151 code SHA c90fa7f9dd10ef7ccc2f166e292ce580e98ae263b65cb3c83d30625fedea74fc, call operand 2852110006 at IL+0x0026; exact source parser code SHA cb0c54a49abf1719502656e10e4291b06d11867bcb0ade861cf8add160a07ae9."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original source shows two discarded header lines, comma-delimited records, an end sentinel, a reversal record insertion, and Peek-controlled traversal, but no particular retail TextAsset content or populated record is established.",
+    "ParseSkillParam MethodDef 0x06001153 is identified by original method row and full 1,396-byte SHA; its individual record-field parsing behavior remains a separate source dependency.",
+    "The source SkillInfo construction and skillInfoList_Reversal Add call are instructions, not proof that any authored reversal record loads successfully or affects retail gameplay.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding, and historic decoded asset vault remain OPEN. Milestone SOURCE_CONSOLIDATION_V1 has runtime/viewer LOCKED."
+  ]
+}
