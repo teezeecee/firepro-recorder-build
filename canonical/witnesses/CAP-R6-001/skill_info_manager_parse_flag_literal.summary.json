@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_PARSE_FLAG_LITERAL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001159",
+    "owner": "SkillInfoManager",
+    "name": "Parse_Flag",
+    "rva": "0x00069648",
+    "row": "4896060000009100f7860800054a0000f60c",
+    "signature": "0002020e0e",
+    "tiny_header": "86",
+    "code_bytes": 33,
+    "code_sha256": "a7ed9dbc70969fa00e38afb0dbfacfe66162c0558004fb98c0454671699eb6dc",
+    "il_hex": "02281500000a3902000000162a0272a10600706f0c03000a3902000000172a162a"
+  },
+  "members": [
+    {
+      "token": "0x0A000015",
+      "name": "IsNullOrEmpty",
+      "row": "f9050000f350060070490000",
+      "signature": "0001020e",
+      "opcode": "call",
+      "il_offset": 1
+    },
+    {
+      "token": "0x0A00030C",
+      "name": "Equals",
+      "row": "f9050000875b0600e44f0000",
+      "signature": "2001020e",
+      "opcode": "callvirt",
+      "il_offset": 19
+    }
+  ],
+  "branches": [
+    {
+      "offset": 6,
+      "opcode": "0x39",
+      "rel": 2,
+      "target": 13
+    },
+    {
+      "offset": 24,
+      "opcode": "0x39",
+      "rel": 2,
+      "target": 31
+    }
+  ],
+  "literal": {
+    "token": "0x700006A1",
+    "il_offset": 14,
+    "source_text": "0",
+    "user_string_heap_record_hex": "03300000",
+    "unpacked_payload_hex": "300000"
+  },
+  "source_flow": {
+    "empty_or_null_return_false_il": [
+      11,
+      12
+    ],
+    "equal_to_literal_return_true_il": [
+      29,
+      30
+    ],
+    "nonmatch_return_false_il": [
+      31,
+      32
+    ],
+    "literal_compare_uses_first_argument": true,
+    "method_signature_has_two_string_parameters": true
+  },
+  "parent": {
+    "token": "0x06001153",
+    "name": "ParseSkillParam",
+    "code_bytes": 1396,
+    "code_sha256": "96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b",
+    "call_sites": [
+      655,
+      695,
+      735,
+      775,
+      815,
+      851,
+      887,
+      923,
+      959,
+      996,
+      1060,
+      1097,
+      1219,
+      1259,
+      1295,
+      1331,
+      1367
+    ],
+    "opcode": "call"
+  },
+  "limits": [
+    "Original IL returns Boolean true only when the first string parameter equals the original literal '0'; null/empty and other inputs return false. The original second string parameter is not loaded by this method's 33-byte source body.",
+    "Proves original DLL source decision and direct parent callsites, not actual DataBase/ text resource records, meaning of authored flag columns, populated SkillInfo records, or actual retail gameplay outcome.",
+    "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical retail decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

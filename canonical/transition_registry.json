@@ -5573,6 +5573,29 @@
         "Helper MethodDef identities and direct calls are proven, but their internal parsing semantics remain independent gates.",
         "Retail Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical retail asset decode vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_PARSE_FLAG_LITERAL_V1",
+      "fact_id": "FACT-0296",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original full 33-byte SkillInfoManager.Parse_Flag MethodDef 0x06001159 directly called 17 times by FACT-0295, using source string IsNullOrEmpty and exact original literal '0' String.Equals; returns Boolean true only for original literal '0', false otherwise. Exact two branches, MemberRefs, #US literal and caller callsites original DLL verified; authored flags/resources unresolved.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_parse_flag_literal.summary.json",
+      "source_windows": [
+        [
+          "0x06001159",
+          "0x0000",
+          "0x0021"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original IL returns Boolean true only when the first string parameter equals the original literal '0'; null/empty and other inputs return false. The original second string parameter is not loaded by this method's 33-byte source body.",
+        "Proves original DLL source decision and direct parent callsites, not actual DataBase/ text resource records, meaning of authored flag columns, populated SkillInfo records, or actual retail gameplay outcome.",
+        "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical retail decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
