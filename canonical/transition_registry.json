@@ -5619,6 +5619,29 @@
         "Method signature accepts two strings, but the exact 37-byte IL body only accesses its first string parameter; original second argument meaning is not established by this method.",
         "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_PARSE_SKILL_TYPE_SOURCE_V1",
+      "fact_id": "FACT-0298",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SkillInfoManager.Parse_SkillType 0x0600115A exact 71-byte source, literal space format check on Substring(2,1) OUTSIDE exception catch, then Int32.Parse(Substring(0,2)) within small System.Object catch; null/empty, mismatch or caught parse exception returns 0; short nonempty input not protected by that catch. One direct source caller in FACT-0295. No authored TextAsset data proven.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_parse_skill_type_source.summary.json",
+      "source_windows": [
+        [
+          "0x0600115A",
+          "0x0000",
+          "0x0047"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The original Substring(2,1) call and its literal-space comparison execute outside the method's small catch clause; for a nonempty string too short for that substring, this source body does not establish a zero fallback.",
+        "The original try/catch encloses Substring(0,2), Int32.Parse and result assignment; exception catch returns zero. No authored skill database rows or actual gameplay results are established.",
+        "Retail Unity parent resources.assets original SHA, actually loaded fprwaza asset binding and historic decoded vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

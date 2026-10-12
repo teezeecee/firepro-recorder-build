@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0298",
+  "status": "PROVEN_DLL",
+  "claim": "Matching original SkillInfoManager.Parse_SkillType MethodDef 0x0600115A has complete 71-byte IL SHA b880353ace277a63dc022fd274fd82f039b4e543d30d102c4ecbca57acf9970f. It returns int 0 for a null or empty input string. Otherwise it calls original String.Substring(2,1), compares against source #US literal one space, and returns 0 if comparison is false. On a true comparison it calls String.Substring(0,2) and Int32.Parse in its exact original System.Object catch range, returns parsed integer if successful, or 0 on caught exception. The first Substring(2,1) is OUTSIDE that catch; nonempty too-short strings are not proven to fall back to 0. Exact source MethodDef, original literal, four MemberRef identities, five call instructions, four branch/leave targets, small EH bytes, TypeRef identity and one direct parent ParseSkillParam 0x06001153 call site are source checked. No authored skill rows, resource binding or gameplay outputs established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact matching 8,171,008-byte original DLL SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6. Parse_SkillType 0x0600115A RVA 0x0006966C original MethodDef row 6c960600000091000287080018a10100f80c, original 71-byte IL SHA b880353ace277a63dc022fd274fd82f039b4e543d30d102c4ecbca57acf9970f, original #US literal token 0x7000046F bytes 03200000, and original small catch clause bytes 0110000000002800153d0008c2000001, direct parent call IL offset +0x00AA. Evidence window canonical/witnesses/CAP-R6-001/skill_info_manager_parse_skill_type_source.summary.json.",
+      "observation": "Direct original-DLL proof of two distinct Substring argument windows, pre-catch format check, catch range, original space literal and one original call site."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0295 original SkillInfoManager.ParseSkillParam 0x06001153",
+      "to": "FACT-0298 exact SkillInfoManager.Parse_SkillType 0x0600115A source",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original 1396-byte ParseSkillParam IL SHA 96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b calls original Parse_SkillType MethodDef at exact IL+0x00AA."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The original Substring(2,1) call and its literal-space comparison execute outside the method's small catch clause; for a nonempty string too short for that substring, this source body does not establish a zero fallback.",
+    "The original try/catch encloses Substring(0,2), Int32.Parse and result assignment; exception catch returns zero. No authored skill database rows or actual gameplay results are established.",
+    "Retail Unity parent resources.assets original SHA, actually loaded fprwaza asset binding and historic decoded vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
