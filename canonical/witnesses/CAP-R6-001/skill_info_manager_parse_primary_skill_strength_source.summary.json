@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_PARSE_PRIMARY_SKILL_STRENGTH_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x0600115C",
+    "owner": "SkillInfoManager",
+    "name": "Parse_PrimarySkillStrength",
+    "rva": "0x00069738",
+    "row": "38970600000091002687080034a10100fa0c",
+    "signature": "000111a9940e",
+    "header": "133002004500000000000000",
+    "code_bytes": 69,
+    "code_sha256": "9e1451990213bf87416c0a6c67e0004870bebb4ec5135848e8384219de4bb2b2",
+    "il_hex": "02281500000a3902000000162a0272370700706f0c03000a3902000000162a02721d0700706f0c03000a3902000000172a0272190700706f0c03000a3902000000182a162a",
+    "has_exception_section": false
+  },
+  "memberrefs": [
+    {
+      "token": "0x0A000015",
+      "name": "IsNullOrEmpty",
+      "row": "f9050000f350060070490000",
+      "signature": "0001020e",
+      "opcode": "call",
+      "call_sites": [
+        1
+      ]
+    },
+    {
+      "token": "0x0A00030C",
+      "name": "Equals",
+      "row": "f9050000875b0600e44f0000",
+      "signature": "2001020e",
+      "opcode": "callvirt",
+      "call_sites": [
+        19,
+        37,
+        55
+      ]
+    }
+  ],
+  "literal_cases": [
+    {
+      "literal": "S",
+      "token": "0x70000737",
+      "heap_record": "03530000",
+      "ldstr_site": 14,
+      "comparison_call_site": 19,
+      "branch_site": 24,
+      "false_target": 31,
+      "return_site": 29,
+      "return_ordinal": 0
+    },
+    {
+      "literal": "M",
+      "token": "0x7000071D",
+      "heap_record": "034d0000",
+      "ldstr_site": 32,
+      "comparison_call_site": 37,
+      "branch_site": 42,
+      "false_target": 49,
+      "return_site": 47,
+      "return_ordinal": 1
+    },
+    {
+      "literal": "L",
+      "token": "0x70000719",
+      "heap_record": "034c0000",
+      "ldstr_site": 50,
+      "comparison_call_site": 55,
+      "branch_site": 60,
+      "false_target": 67,
+      "return_site": 65,
+      "return_ordinal": 2
+    }
+  ],
+  "empty_check": {
+    "call_site": 1,
+    "branch_site": 6,
+    "branch_opcode": "0x39",
+    "false_target": 13,
+    "return_site": 11,
+    "return_ordinal": 0
+  },
+  "default_return": {
+    "site": 67,
+    "return_ordinal": 0
+  },
+  "parent": {
+    "token": "0x06001153",
+    "name": "ParseSkillParam",
+    "code_bytes": 1396,
+    "code_sha256": "96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b",
+    "direct_call_sites": [
+      210
+    ]
+  },
+  "limits": [
+    "Original IL gives ordinal return values 0, 1, 2 for exact first-argument string literals S, M, L and returns 0 for null/empty/other strings. Those ordinal outputs do not establish the authored enum labels or effect in combat.",
+    "Original ParseSkillParam 0x06001153 has one exact direct call to Parse_PrimarySkillStrength. This proves no authored skill list values or successful Unity TextAsset loads.",
+    "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

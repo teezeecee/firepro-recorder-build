@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0299",
+  "status": "PROVEN_DLL",
+  "claim": "Exact original SkillInfoManager.Parse_PrimarySkillStrength MethodDef 0x0600115C has complete 69-byte IL SHA 9e1451990213bf87416c0a6c67e0004870bebb4ec5135848e8384219de4bb2b2. The original source String.IsNullOrEmpty(first string) path returns numeric enum ordinal 0 for null/empty; then the source calls String.Equals against original #US literal 'S' returning 0 if equal, 'M' returning 1 if equal, and 'L' returning 2 if equal, with a final fallback ordinal 0 for all other strings. Original full header, MethodDef, two MemberRef identities, three literal tokens and exact #US heap bytes, four conditional branch destinations, each return sequence, and one direct original parent ParseSkillParam MethodDef 0x06001153 caller at IL+0x00D2 are byte-checked. No authored skill records, retail asset bindings or gameplay effects are established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching 8,171,008-byte original Assembly-CSharp DLL SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, SkillInfoManager.Parse_PrimarySkillStrength 0x0600115C original MethodDef row 38970600000091002687080034a10100fa0c, RVA 0x00069738; complete 69-byte IL SHA 9e1451990213bf87416c0a6c67e0004870bebb4ec5135848e8384219de4bb2b2. Source three #US literal heap records 03530000, 034d0000, 034c0000. Original parent 0x06001153 has direct call IL+0x00D2. Full witness canonical/witnesses/CAP-R6-001/skill_info_manager_parse_primary_skill_strength_source.summary.json.",
+      "observation": "Original source-only exact literal decision chain, enum numeric returns and one caller relationship."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0295 original ParseSkillParam MethodDef 0x06001153",
+      "to": "FACT-0299 original Parse_PrimarySkillStrength MethodDef 0x0600115C",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original parent 1,396-byte IL SHA 96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b calls MethodDef 0x0600115C once at IL+0x00D2."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original IL gives ordinal return values 0, 1, 2 for exact first-argument string literals S, M, L and returns 0 for null/empty/other strings. Those ordinal outputs do not establish the authored enum labels or effect in combat.",
+    "Original ParseSkillParam 0x06001153 has one exact direct call to Parse_PrimarySkillStrength. This proves no authored skill list values or successful Unity TextAsset loads.",
+    "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

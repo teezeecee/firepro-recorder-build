@@ -5642,6 +5642,29 @@
         "The original try/catch encloses Substring(0,2), Int32.Parse and result assignment; exception catch returns zero. No authored skill database rows or actual gameplay results are established.",
         "Retail Unity parent resources.assets original SHA, actually loaded fprwaza asset binding and historic decoded vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_PARSE_PRIMARY_SKILL_STRENGTH_SOURCE_V1",
+      "fact_id": "FACT-0299",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original full 69-byte SkillInfoManager.Parse_PrimarySkillStrength 0x0600115C: source literals 'S' -> numeric enum ordinal 0, 'M' -> 1, 'L' -> 2, default and empty -> 0; exact four conditional branches, three original #US bytes, two MemberRefs and one direct 0x06001153 parent call source-proven. No authored asset rows or gameplay outcome established.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_parse_primary_skill_strength_source.summary.json",
+      "source_windows": [
+        [
+          "0x0600115C",
+          "0x0000",
+          "0x0045"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original IL gives ordinal return values 0, 1, 2 for exact first-argument string literals S, M, L and returns 0 for null/empty/other strings. Those ordinal outputs do not establish the authored enum labels or effect in combat.",
+        "Original ParseSkillParam 0x06001153 has one exact direct call to Parse_PrimarySkillStrength. This proves no authored skill list values or successful Unity TextAsset loads.",
+        "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
