@@ -5432,6 +5432,31 @@
         "The parent LoadAdditionalAnimationData source call is proven, but this bounded helper alone does not establish how a generated fpw_ name maps to a live Unity resource or any rendered animation frames.",
         "Original Unity parent resources.assets SHA, actual retail-loaded fprwaza binding, and historic decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer remain LOCKED; no raw game assets or proprietary binary committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_APPLY_SKILL_PARAM_TRANSFERS_V1",
+      "fact_id": "FACT-0291",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original retail SkillInfoManager.ApplySkillParam MethodDef 0x06001166 full 386-byte IL checks GetSkillInfo, exits if null, copies two skillName array entries, then makes 28 exact same-named SkillInfo ldfld to SkillData stfld transfers. Exact original MethodDef body SHA, three branches, 58 original FieldDef tokens/rows/owners/signatures, GetSkillInfo call, and parent LoadAdditionalAnimationData callvirt checked against matching original DLL. Loaded table contents and animation semantics remain unresolved.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_apply_skill_param_transfers.summary.json",
+      "source_windows": [
+        [
+          "0x0000",
+          "0x0182"
+        ]
+      ],
+      "original_fielddef_count": 58,
+      "direct_transfer_count": 28,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original 28 field transfers and two-element name copying are verified as storage assignments; this method alone does not establish the values stored in the retail SkillInfo dictionary.",
+        "The source first calls GetSkillInfo and returns immediately on null; no successful lookup or populated skill record is established by the original code alone.",
+        "Original damage/parameter, flags, reversal and name fields are source labels and copy operations, not evidence of authored animation frames, rendered geometry, timing or combat interpretation.",
+        "Retail Unity parent resources.assets hash, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; do not commit original full game binaries or assets."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

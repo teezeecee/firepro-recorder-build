@@ -1,0 +1,738 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_APPLY_SKILL_PARAM_TRANSFERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "size_bytes": 8171008,
+    "method": {
+      "token": "0x06001166",
+      "owner": "SkillInfoManager",
+      "name": "ApplySkillParam",
+      "rva": "0x00069A2C",
+      "row_hex": "2c9a060000008600e48708008ca10100030d",
+      "signature_hex": "20020112a9a811a9dc",
+      "header_hex": "13300400820100001e030011",
+      "code_bytes": 386,
+      "code_sha256": "49f3fdacd9378d68c7c474766af4ba146ebccc86a8acbb27e240f63353640291"
+    },
+    "segments": [
+      {
+        "name": "get_skill_info_and_null_return",
+        "start_il": "0x0000",
+        "end_exclusive_il": "0x000F",
+        "sha256": "888c9e37ea1b84728dc51bae69d9c9274db39614db81c5bbaee1859f25ebd55e",
+        "il_hex": "020428641100060a063a010000002a"
+      },
+      {
+        "name": "name_copy_two_item_loop",
+        "start_il": "0x000F",
+        "end_exclusive_il": "0x0031",
+        "sha256": "d82f7bb0a0e87fb3ef90d63fa9d18c3891565137b03f973480777c2a9eec6ece",
+        "il_hex": "160b3814000000037b507c000407067bb50e0004079aa20717580b07183fe5ffffff"
+      },
+      {
+        "name": "twenty_eight_skill_info_transfers",
+        "start_il": "0x0031",
+        "end_exclusive_il": "0x0181",
+        "sha256": "953331221f0d6dd6e5580a0a5dc88a873145fdd4ca3ed98f0d598a913c49e32c",
+        "il_hex": "03067bb80e00047d517c000403067bb90e00047d527c000403067bba0e00047d727c000403067bbb0e00047d617c000403067bbc0e00047d627c000403067bbd0e00047d637c000403067bbe0e00047d647c000403067bbf0e00047d5a7c000403067bc00e00047d5b7c000403067bc10e00047d5c7c000403067bc20e00047d5d7c000403067bc30e00047d5e7c000403067bc40e00047d5f7c000403067bc50e00047d607c000403067bc60e00047d657c000403067bc70e00047d667c000403067bc80e00047d677c000403067bc90e00047d687c000403067bca0e00047d697c000403067bcb0e00047d6a7c000403067bcc0e00047d6b7c000403067bcd0e00047d767c000403067bce0e00047d557c000403067bcf0e00047d737c000403067bd00e00047d747c000403067bd10e00047d777c000403067bd20e00047d787c000403067bd30e00047d797c0004"
+      },
+      {
+        "name": "method_return",
+        "start_il": "0x0181",
+        "end_exclusive_il": "0x0182",
+        "sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "il_hex": "2a"
+      }
+    ],
+    "fielddefs": {
+      "0x04000EB5": {
+        "token": "0x04000EB5",
+        "metadata_row_hex": "0600dc4a01006e020000",
+        "owner": "SkillInfo",
+        "name": "skillName",
+        "signature_hex": "061d0e"
+      },
+      "0x04007C50": {
+        "token": "0x04007C50",
+        "metadata_row_hex": "0600dc4a01006e020000",
+        "owner": "SkillData",
+        "name": "skillName",
+        "signature_hex": "061d0e"
+      },
+      "0x04000EB8": {
+        "token": "0x04000EB8",
+        "metadata_row_hex": "0600f24a0100ee0b0000",
+        "owner": "SkillInfo",
+        "name": "skillType",
+        "signature_hex": "0611a988"
+      },
+      "0x04007C51": {
+        "token": "0x04007C51",
+        "metadata_row_hex": "0600f24a0100ee0b0000",
+        "owner": "SkillData",
+        "name": "skillType",
+        "signature_hex": "0611a988"
+      },
+      "0x04000EB9": {
+        "token": "0x04000EB9",
+        "metadata_row_hex": "0600fc4a0100f30b0000",
+        "owner": "SkillInfo",
+        "name": "filteringType",
+        "signature_hex": "0611a98c"
+      },
+      "0x04007C52": {
+        "token": "0x04007C52",
+        "metadata_row_hex": "0600fc4a0100f30b0000",
+        "owner": "SkillData",
+        "name": "filteringType",
+        "signature_hex": "0611a98c"
+      },
+      "0x04000EBA": {
+        "token": "0x04000EBA",
+        "metadata_row_hex": "06000a4b0100f80b0000",
+        "owner": "SkillInfo",
+        "name": "winningTechDispType",
+        "signature_hex": "0611a3a8"
+      },
+      "0x04007C72": {
+        "token": "0x04007C72",
+        "metadata_row_hex": "06000a4b0100f80b0000",
+        "owner": "SkillData",
+        "name": "winningTechDispType",
+        "signature_hex": "0611a3a8"
+      },
+      "0x04000EBB": {
+        "token": "0x04000EBB",
+        "metadata_row_hex": "06001e4b0100fd0b0000",
+        "owner": "SkillInfo",
+        "name": "atkPrmType_Main",
+        "signature_hex": "061187a0"
+      },
+      "0x04007C61": {
+        "token": "0x04007C61",
+        "metadata_row_hex": "06001e4b0100fd0b0000",
+        "owner": "SkillData",
+        "name": "atkPrmType_Main",
+        "signature_hex": "061187a0"
+      },
+      "0x04000EBC": {
+        "token": "0x04000EBC",
+        "metadata_row_hex": "06002e4b0100fd0b0000",
+        "owner": "SkillInfo",
+        "name": "atkPrmType_Sub",
+        "signature_hex": "061187a0"
+      },
+      "0x04007C62": {
+        "token": "0x04007C62",
+        "metadata_row_hex": "06002e4b0100fd0b0000",
+        "owner": "SkillData",
+        "name": "atkPrmType_Sub",
+        "signature_hex": "061187a0"
+      },
+      "0x04000EBD": {
+        "token": "0x04000EBD",
+        "metadata_row_hex": "06003d4b0100020c0000",
+        "owner": "SkillInfo",
+        "name": "defPrmType_Main",
+        "signature_hex": "061187a4"
+      },
+      "0x04007C63": {
+        "token": "0x04007C63",
+        "metadata_row_hex": "06003d4b0100020c0000",
+        "owner": "SkillData",
+        "name": "defPrmType_Main",
+        "signature_hex": "061187a4"
+      },
+      "0x04000EBE": {
+        "token": "0x04000EBE",
+        "metadata_row_hex": "06004d4b0100020c0000",
+        "owner": "SkillInfo",
+        "name": "defPrmType_Sub",
+        "signature_hex": "061187a4"
+      },
+      "0x04007C64": {
+        "token": "0x04007C64",
+        "metadata_row_hex": "06004d4b0100020c0000",
+        "owner": "SkillData",
+        "name": "defPrmType_Sub",
+        "signature_hex": "061187a4"
+      },
+      "0x04000EBF": {
+        "token": "0x04000EBF",
+        "metadata_row_hex": "06005c4b010001000000",
+        "owner": "SkillInfo",
+        "name": "atkPow_HP",
+        "signature_hex": "0608"
+      },
+      "0x04007C5A": {
+        "token": "0x04007C5A",
+        "metadata_row_hex": "06005c4b010001000000",
+        "owner": "SkillData",
+        "name": "atkPow_HP",
+        "signature_hex": "0608"
+      },
+      "0x04000EC0": {
+        "token": "0x04000EC0",
+        "metadata_row_hex": "0600664b010001000000",
+        "owner": "SkillInfo",
+        "name": "atkPow_SP",
+        "signature_hex": "0608"
+      },
+      "0x04007C5B": {
+        "token": "0x04007C5B",
+        "metadata_row_hex": "0600664b010001000000",
+        "owner": "SkillData",
+        "name": "atkPow_SP",
+        "signature_hex": "0608"
+      },
+      "0x04000EC1": {
+        "token": "0x04000EC1",
+        "metadata_row_hex": "0600704b010001000000",
+        "owner": "SkillInfo",
+        "name": "atkPow_BP",
+        "signature_hex": "0608"
+      },
+      "0x04007C5C": {
+        "token": "0x04007C5C",
+        "metadata_row_hex": "0600704b010001000000",
+        "owner": "SkillData",
+        "name": "atkPow_BP",
+        "signature_hex": "0608"
+      },
+      "0x04000EC2": {
+        "token": "0x04000EC2",
+        "metadata_row_hex": "06007a4b010001000000",
+        "owner": "SkillInfo",
+        "name": "atkPow_Neck",
+        "signature_hex": "0608"
+      },
+      "0x04007C5D": {
+        "token": "0x04007C5D",
+        "metadata_row_hex": "06007a4b010001000000",
+        "owner": "SkillData",
+        "name": "atkPow_Neck",
+        "signature_hex": "0608"
+      },
+      "0x04000EC3": {
+        "token": "0x04000EC3",
+        "metadata_row_hex": "0600864b010001000000",
+        "owner": "SkillInfo",
+        "name": "atkPow_Arm",
+        "signature_hex": "0608"
+      },
+      "0x04007C5E": {
+        "token": "0x04007C5E",
+        "metadata_row_hex": "0600864b010001000000",
+        "owner": "SkillData",
+        "name": "atkPow_Arm",
+        "signature_hex": "0608"
+      },
+      "0x04000EC4": {
+        "token": "0x04000EC4",
+        "metadata_row_hex": "0600914b010001000000",
+        "owner": "SkillInfo",
+        "name": "atkPow_Waist",
+        "signature_hex": "0608"
+      },
+      "0x04007C5F": {
+        "token": "0x04007C5F",
+        "metadata_row_hex": "0600914b010001000000",
+        "owner": "SkillData",
+        "name": "atkPow_Waist",
+        "signature_hex": "0608"
+      },
+      "0x04000EC5": {
+        "token": "0x04000EC5",
+        "metadata_row_hex": "06009e4b010001000000",
+        "owner": "SkillInfo",
+        "name": "atkPow_Leg",
+        "signature_hex": "0608"
+      },
+      "0x04007C60": {
+        "token": "0x04007C60",
+        "metadata_row_hex": "06009e4b010001000000",
+        "owner": "SkillData",
+        "name": "atkPow_Leg",
+        "signature_hex": "0608"
+      },
+      "0x04000EC6": {
+        "token": "0x04000EC6",
+        "metadata_row_hex": "0600a94b010001000000",
+        "owner": "SkillInfo",
+        "name": "suicideDamage_HP",
+        "signature_hex": "0608"
+      },
+      "0x04007C65": {
+        "token": "0x04007C65",
+        "metadata_row_hex": "0600a94b010001000000",
+        "owner": "SkillData",
+        "name": "suicideDamage_HP",
+        "signature_hex": "0608"
+      },
+      "0x04000EC7": {
+        "token": "0x04000EC7",
+        "metadata_row_hex": "0600ba4b010001000000",
+        "owner": "SkillInfo",
+        "name": "suicideDamage_SP",
+        "signature_hex": "0608"
+      },
+      "0x04007C66": {
+        "token": "0x04007C66",
+        "metadata_row_hex": "0600ba4b010001000000",
+        "owner": "SkillData",
+        "name": "suicideDamage_SP",
+        "signature_hex": "0608"
+      },
+      "0x04000EC8": {
+        "token": "0x04000EC8",
+        "metadata_row_hex": "0600cb4b010001000000",
+        "owner": "SkillInfo",
+        "name": "suicideDamage_Neck",
+        "signature_hex": "0608"
+      },
+      "0x04007C67": {
+        "token": "0x04007C67",
+        "metadata_row_hex": "0600cb4b010001000000",
+        "owner": "SkillData",
+        "name": "suicideDamage_Neck",
+        "signature_hex": "0608"
+      },
+      "0x04000EC9": {
+        "token": "0x04000EC9",
+        "metadata_row_hex": "0600de4b010001000000",
+        "owner": "SkillInfo",
+        "name": "suicideDamage_Arm",
+        "signature_hex": "0608"
+      },
+      "0x04007C68": {
+        "token": "0x04007C68",
+        "metadata_row_hex": "0600de4b010001000000",
+        "owner": "SkillData",
+        "name": "suicideDamage_Arm",
+        "signature_hex": "0608"
+      },
+      "0x04000ECA": {
+        "token": "0x04000ECA",
+        "metadata_row_hex": "0600f04b010001000000",
+        "owner": "SkillInfo",
+        "name": "suicideDamage_Waist",
+        "signature_hex": "0608"
+      },
+      "0x04007C69": {
+        "token": "0x04007C69",
+        "metadata_row_hex": "0600f04b010001000000",
+        "owner": "SkillData",
+        "name": "suicideDamage_Waist",
+        "signature_hex": "0608"
+      },
+      "0x04000ECB": {
+        "token": "0x04000ECB",
+        "metadata_row_hex": "0600044c010001000000",
+        "owner": "SkillInfo",
+        "name": "suicideDamage_Leg",
+        "signature_hex": "0608"
+      },
+      "0x04007C6A": {
+        "token": "0x04007C6A",
+        "metadata_row_hex": "0600044c010001000000",
+        "owner": "SkillData",
+        "name": "suicideDamage_Leg",
+        "signature_hex": "0608"
+      },
+      "0x04000ECC": {
+        "token": "0x04000ECC",
+        "metadata_row_hex": "0600164c010001000000",
+        "owner": "SkillInfo",
+        "name": "bleedingRate",
+        "signature_hex": "0608"
+      },
+      "0x04007C6B": {
+        "token": "0x04007C6B",
+        "metadata_row_hex": "0600164c010001000000",
+        "owner": "SkillData",
+        "name": "bleedingRate",
+        "signature_hex": "0608"
+      },
+      "0x04000ECD": {
+        "token": "0x04000ECD",
+        "metadata_row_hex": "0600234c0100070c0000",
+        "owner": "SkillInfo",
+        "name": "ropeEscapeDir",
+        "signature_hex": "0611a9b0"
+      },
+      "0x04007C76": {
+        "token": "0x04007C76",
+        "metadata_row_hex": "0600234c0100070c0000",
+        "owner": "SkillData",
+        "name": "ropeEscapeDir",
+        "signature_hex": "0611a9b0"
+      },
+      "0x04000ECE": {
+        "token": "0x04000ECE",
+        "metadata_row_hex": "0600314c01000c0c0000",
+        "owner": "SkillInfo",
+        "name": "flags",
+        "signature_hex": "0611a9ac"
+      },
+      "0x04007C55": {
+        "token": "0x04007C55",
+        "metadata_row_hex": "0600314c01000c0c0000",
+        "owner": "SkillData",
+        "name": "flags",
+        "signature_hex": "0611a9ac"
+      },
+      "0x04000ECF": {
+        "token": "0x04000ECF",
+        "metadata_row_hex": "0600374c0100110c0000",
+        "owner": "SkillInfo",
+        "name": "artPoint",
+        "signature_hex": "0611a998"
+      },
+      "0x04007C73": {
+        "token": "0x04007C73",
+        "metadata_row_hex": "0600374c0100110c0000",
+        "owner": "SkillData",
+        "name": "artPoint",
+        "signature_hex": "0611a998"
+      },
+      "0x04000ED0": {
+        "token": "0x04000ED0",
+        "metadata_row_hex": "0600404c0100160c0000",
+        "owner": "SkillInfo",
+        "name": "cheerLevel",
+        "signature_hex": "0611a99c"
+      },
+      "0x04007C74": {
+        "token": "0x04007C74",
+        "metadata_row_hex": "0600404c0100160c0000",
+        "owner": "SkillData",
+        "name": "cheerLevel",
+        "signature_hex": "0611a99c"
+      },
+      "0x04000ED1": {
+        "token": "0x04000ED1",
+        "metadata_row_hex": "06004b4c010001000000",
+        "owner": "SkillInfo",
+        "name": "reversalSkillType",
+        "signature_hex": "0608"
+      },
+      "0x04007C77": {
+        "token": "0x04007C77",
+        "metadata_row_hex": "06004b4c010001000000",
+        "owner": "SkillData",
+        "name": "reversalSkillType",
+        "signature_hex": "0608"
+      },
+      "0x04000ED2": {
+        "token": "0x04000ED2",
+        "metadata_row_hex": "06005d4c010001000000",
+        "owner": "SkillInfo",
+        "name": "reversalRateType",
+        "signature_hex": "0608"
+      },
+      "0x04007C78": {
+        "token": "0x04007C78",
+        "metadata_row_hex": "06005d4c010001000000",
+        "owner": "SkillData",
+        "name": "reversalRateType",
+        "signature_hex": "0608"
+      },
+      "0x04000ED3": {
+        "token": "0x04000ED3",
+        "metadata_row_hex": "06006e4c01001b0c0000",
+        "owner": "SkillInfo",
+        "name": "primarySkillStrength",
+        "signature_hex": "0611a994"
+      },
+      "0x04007C79": {
+        "token": "0x04007C79",
+        "metadata_row_hex": "06006e4c01001b0c0000",
+        "owner": "SkillData",
+        "name": "primarySkillStrength",
+        "signature_hex": "0611a994"
+      }
+    },
+    "transfer_pairs": [
+      {
+        "start_il": "0x0031",
+        "end_exclusive_il": "0x003D",
+        "input_field": "0x04000EB8",
+        "output_field": "0x04007C51",
+        "field_name": "skillType",
+        "il_hex": "03067bb80e00047d517c0004"
+      },
+      {
+        "start_il": "0x003D",
+        "end_exclusive_il": "0x0049",
+        "input_field": "0x04000EB9",
+        "output_field": "0x04007C52",
+        "field_name": "filteringType",
+        "il_hex": "03067bb90e00047d527c0004"
+      },
+      {
+        "start_il": "0x0049",
+        "end_exclusive_il": "0x0055",
+        "input_field": "0x04000EBA",
+        "output_field": "0x04007C72",
+        "field_name": "winningTechDispType",
+        "il_hex": "03067bba0e00047d727c0004"
+      },
+      {
+        "start_il": "0x0055",
+        "end_exclusive_il": "0x0061",
+        "input_field": "0x04000EBB",
+        "output_field": "0x04007C61",
+        "field_name": "atkPrmType_Main",
+        "il_hex": "03067bbb0e00047d617c0004"
+      },
+      {
+        "start_il": "0x0061",
+        "end_exclusive_il": "0x006D",
+        "input_field": "0x04000EBC",
+        "output_field": "0x04007C62",
+        "field_name": "atkPrmType_Sub",
+        "il_hex": "03067bbc0e00047d627c0004"
+      },
+      {
+        "start_il": "0x006D",
+        "end_exclusive_il": "0x0079",
+        "input_field": "0x04000EBD",
+        "output_field": "0x04007C63",
+        "field_name": "defPrmType_Main",
+        "il_hex": "03067bbd0e00047d637c0004"
+      },
+      {
+        "start_il": "0x0079",
+        "end_exclusive_il": "0x0085",
+        "input_field": "0x04000EBE",
+        "output_field": "0x04007C64",
+        "field_name": "defPrmType_Sub",
+        "il_hex": "03067bbe0e00047d647c0004"
+      },
+      {
+        "start_il": "0x0085",
+        "end_exclusive_il": "0x0091",
+        "input_field": "0x04000EBF",
+        "output_field": "0x04007C5A",
+        "field_name": "atkPow_HP",
+        "il_hex": "03067bbf0e00047d5a7c0004"
+      },
+      {
+        "start_il": "0x0091",
+        "end_exclusive_il": "0x009D",
+        "input_field": "0x04000EC0",
+        "output_field": "0x04007C5B",
+        "field_name": "atkPow_SP",
+        "il_hex": "03067bc00e00047d5b7c0004"
+      },
+      {
+        "start_il": "0x009D",
+        "end_exclusive_il": "0x00A9",
+        "input_field": "0x04000EC1",
+        "output_field": "0x04007C5C",
+        "field_name": "atkPow_BP",
+        "il_hex": "03067bc10e00047d5c7c0004"
+      },
+      {
+        "start_il": "0x00A9",
+        "end_exclusive_il": "0x00B5",
+        "input_field": "0x04000EC2",
+        "output_field": "0x04007C5D",
+        "field_name": "atkPow_Neck",
+        "il_hex": "03067bc20e00047d5d7c0004"
+      },
+      {
+        "start_il": "0x00B5",
+        "end_exclusive_il": "0x00C1",
+        "input_field": "0x04000EC3",
+        "output_field": "0x04007C5E",
+        "field_name": "atkPow_Arm",
+        "il_hex": "03067bc30e00047d5e7c0004"
+      },
+      {
+        "start_il": "0x00C1",
+        "end_exclusive_il": "0x00CD",
+        "input_field": "0x04000EC4",
+        "output_field": "0x04007C5F",
+        "field_name": "atkPow_Waist",
+        "il_hex": "03067bc40e00047d5f7c0004"
+      },
+      {
+        "start_il": "0x00CD",
+        "end_exclusive_il": "0x00D9",
+        "input_field": "0x04000EC5",
+        "output_field": "0x04007C60",
+        "field_name": "atkPow_Leg",
+        "il_hex": "03067bc50e00047d607c0004"
+      },
+      {
+        "start_il": "0x00D9",
+        "end_exclusive_il": "0x00E5",
+        "input_field": "0x04000EC6",
+        "output_field": "0x04007C65",
+        "field_name": "suicideDamage_HP",
+        "il_hex": "03067bc60e00047d657c0004"
+      },
+      {
+        "start_il": "0x00E5",
+        "end_exclusive_il": "0x00F1",
+        "input_field": "0x04000EC7",
+        "output_field": "0x04007C66",
+        "field_name": "suicideDamage_SP",
+        "il_hex": "03067bc70e00047d667c0004"
+      },
+      {
+        "start_il": "0x00F1",
+        "end_exclusive_il": "0x00FD",
+        "input_field": "0x04000EC8",
+        "output_field": "0x04007C67",
+        "field_name": "suicideDamage_Neck",
+        "il_hex": "03067bc80e00047d677c0004"
+      },
+      {
+        "start_il": "0x00FD",
+        "end_exclusive_il": "0x0109",
+        "input_field": "0x04000EC9",
+        "output_field": "0x04007C68",
+        "field_name": "suicideDamage_Arm",
+        "il_hex": "03067bc90e00047d687c0004"
+      },
+      {
+        "start_il": "0x0109",
+        "end_exclusive_il": "0x0115",
+        "input_field": "0x04000ECA",
+        "output_field": "0x04007C69",
+        "field_name": "suicideDamage_Waist",
+        "il_hex": "03067bca0e00047d697c0004"
+      },
+      {
+        "start_il": "0x0115",
+        "end_exclusive_il": "0x0121",
+        "input_field": "0x04000ECB",
+        "output_field": "0x04007C6A",
+        "field_name": "suicideDamage_Leg",
+        "il_hex": "03067bcb0e00047d6a7c0004"
+      },
+      {
+        "start_il": "0x0121",
+        "end_exclusive_il": "0x012D",
+        "input_field": "0x04000ECC",
+        "output_field": "0x04007C6B",
+        "field_name": "bleedingRate",
+        "il_hex": "03067bcc0e00047d6b7c0004"
+      },
+      {
+        "start_il": "0x012D",
+        "end_exclusive_il": "0x0139",
+        "input_field": "0x04000ECD",
+        "output_field": "0x04007C76",
+        "field_name": "ropeEscapeDir",
+        "il_hex": "03067bcd0e00047d767c0004"
+      },
+      {
+        "start_il": "0x0139",
+        "end_exclusive_il": "0x0145",
+        "input_field": "0x04000ECE",
+        "output_field": "0x04007C55",
+        "field_name": "flags",
+        "il_hex": "03067bce0e00047d557c0004"
+      },
+      {
+        "start_il": "0x0145",
+        "end_exclusive_il": "0x0151",
+        "input_field": "0x04000ECF",
+        "output_field": "0x04007C73",
+        "field_name": "artPoint",
+        "il_hex": "03067bcf0e00047d737c0004"
+      },
+      {
+        "start_il": "0x0151",
+        "end_exclusive_il": "0x015D",
+        "input_field": "0x04000ED0",
+        "output_field": "0x04007C74",
+        "field_name": "cheerLevel",
+        "il_hex": "03067bd00e00047d747c0004"
+      },
+      {
+        "start_il": "0x015D",
+        "end_exclusive_il": "0x0169",
+        "input_field": "0x04000ED1",
+        "output_field": "0x04007C77",
+        "field_name": "reversalSkillType",
+        "il_hex": "03067bd10e00047d777c0004"
+      },
+      {
+        "start_il": "0x0169",
+        "end_exclusive_il": "0x0175",
+        "input_field": "0x04000ED2",
+        "output_field": "0x04007C78",
+        "field_name": "reversalRateType",
+        "il_hex": "03067bd20e00047d787c0004"
+      },
+      {
+        "start_il": "0x0175",
+        "end_exclusive_il": "0x0181",
+        "input_field": "0x04000ED3",
+        "output_field": "0x04007C79",
+        "field_name": "primarySkillStrength",
+        "il_hex": "03067bd30e00047d797c0004"
+      }
+    ],
+    "branches": [
+      {
+        "name": "nonnull_gate",
+        "il": "0x0009",
+        "opcode": "0x3A",
+        "rel_s32": 1,
+        "target_il": "0x000F"
+      },
+      {
+        "name": "name_copy_initial_skip",
+        "il": "0x0011",
+        "opcode": "0x38",
+        "rel_s32": 20,
+        "target_il": "0x002A"
+      },
+      {
+        "name": "two_name_entries_loop",
+        "il": "0x002C",
+        "opcode": "0x3F",
+        "rel_s32": -27,
+        "target_il": "0x0016"
+      }
+    ],
+    "name_copy": {
+      "source_name_field": "0x04000EB5",
+      "destination_name_field": "0x04007C50",
+      "loop_start_il": "0x0016",
+      "loop_end_exclusive_il": "0x0031",
+      "name_copy_body_hex": "037b507c000407067bb50e0004079aa2",
+      "index_start": 0,
+      "index_bound": 2
+    },
+    "lookup_call": {
+      "methoddef": "0x06001164",
+      "name": "GetSkillInfo",
+      "call_il": "0x0002",
+      "call_hex": "2864110006",
+      "method_sha256": "20b9e57db76492a26682a8438d6b177137717b54048168d56fa33ab8505032bd"
+    },
+    "parent_call": {
+      "methoddef": "0x0600525B",
+      "name": "LoadAdditionalAnimationData",
+      "call_il": "0x00BC",
+      "call_hex": "6f66110006",
+      "parent_sha256": "f5966ee12b5c4065dcef8f0f00c3832f13a0a600a5914a2452c1f4e116f3506e"
+    }
+  },
+  "limits": [
+    "Original 28 field transfers and two-element name copying are verified as storage assignments; this method alone does not establish the values stored in the retail SkillInfo dictionary.",
+    "The source first calls GetSkillInfo and returns immediately on null; no successful lookup or populated skill record is established by the original code alone.",
+    "Original damage/parameter, flags, reversal and name fields are source labels and copy operations, not evidence of authored animation frames, rendered geometry, timing or combat interpretation.",
+    "Retail Unity parent resources.assets hash, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; do not commit original full game binaries or assets."
+  ]
+}
