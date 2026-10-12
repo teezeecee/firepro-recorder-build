@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_PARSE_SKILL_PARAM_FULL_IL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001153",
+    "owner": "SkillInfoManager",
+    "name": "ParseSkillParam",
+    "row": "348f060000008100a3860800f8a00100ee0c",
+    "rva": "0x00068F34",
+    "signature": "2002011286f81d0e",
+    "header": "1b3004007405000017030011",
+    "bytes": 1396,
+    "sha256": "96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b",
+    "source_instruction_count": 672
+  },
+  "counts": {
+    "direct_calls": 47,
+    "methoddef_calls": 45,
+    "memberref_calls": 2,
+    "field_writes": 46,
+    "field_reads": 20,
+    "unique_field_tokens": 33,
+    "warning_ldstr": 35,
+    "branches": 26
+  },
+  "calls": {
+    "0x06001158": 18,
+    "0x06001159": 17,
+    "0x0600115A": 1,
+    "0x0600115B": 1,
+    "0x0600115C": 1,
+    "0x0600115D": 1,
+    "0x0600115E": 2,
+    "0x0600115F": 2,
+    "0x06001160": 1,
+    "0x06001161": 1,
+    "0x0A000015": 1,
+    "0x0A0006DE": 1
+  },
+  "guards": [
+    {
+      "token": "0x04000EB3",
+      "name": "idxStr",
+      "site": 6
+    },
+    {
+      "token": "0x04000EB4",
+      "name": "basicSkillID",
+      "site": 134
+    },
+    {
+      "token": "0x04000ED6",
+      "name": "blockFormIdx",
+      "site": 157
+    },
+    {
+      "token": "0x04000EB8",
+      "name": "skillType",
+      "site": 175
+    },
+    {
+      "token": "0x04000EB9",
+      "name": "filteringType",
+      "site": 193
+    },
+    {
+      "token": "0x04000EBF",
+      "name": "atkPow_HP",
+      "site": 362
+    },
+    {
+      "token": "0x04000EC6",
+      "name": "suicideDamage_HP",
+      "site": 523
+    },
+    {
+      "token": "0x04000ECE",
+      "name": "flags",
+      "site": 678
+    },
+    {
+      "token": "0x04000ECC",
+      "name": "bleedingRate",
+      "site": 1043
+    },
+    {
+      "token": "0x04000ED1",
+      "name": "reversalSkillType",
+      "site": 1143
+    },
+    {
+      "token": "0x04000ED2",
+      "name": "reversalRateType",
+      "site": 1166
+    },
+    {
+      "token": "0x04000ECD",
+      "name": "ropeEscapeDir",
+      "site": 1278
+    }
+  ],
+  "memberrefs": {
+    "0x0A000015": {
+      "name": "IsNullOrEmpty",
+      "row": "f9050000f350060070490000",
+      "site": 33
+    },
+    "0x0A0006DE": {
+      "name": "Parse",
+      "row": "b90600005056060052590000",
+      "site": 50
+    }
+  },
+  "child_hashes": {
+    "0x06001158": "1697442c1b0ec6d4aeb984f5d27a9f039ff43a3560a97d344627f1ff0bc3f1d7",
+    "0x06001159": "a7ed9dbc70969fa00e38afb0dbfacfe66162c0558004fb98c0454671699eb6dc"
+  },
+  "eh": {
+    "raw": "0110000000002f000e3d0008c2000001",
+    "catch_typeref": "0x010000C2",
+    "catch_name": "System.Object",
+    "try_start": 47,
+    "try_end": 61,
+    "handler_start": 61,
+    "handler_end": 69
+  },
+  "source_parent": {
+    "token": "0x06001152",
+    "direct_call_il": 83
+  },
+  "limits": [
+    "Original IL proves source parser's record-index progression, typed helper callsites, source FieldDef writes, flag accumulation sites and exception-handler bytes, not authorship or values of any TextAsset rows.",
+    "Helper MethodDef identities and direct calls are proven, but their internal parsing semantics remain independent gates.",
+    "Retail Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical retail asset decode vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

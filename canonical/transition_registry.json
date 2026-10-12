@@ -5550,6 +5550,29 @@
         "The source SkillInfo construction and skillInfoList_Reversal Add call are instructions, not proof that any authored reversal record loads successfully or affects retail gameplay.",
         "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding, and historic decoded asset vault remain OPEN. Milestone SOURCE_CONSOLIDATION_V1 has runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_PARSE_SKILL_PARAM_FULL_IL_V1",
+      "fact_id": "FACT-0295",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SkillInfoManager.ParseSkillParam MethodDef 0x06001153 complete matching 1,396-byte source IL, SHA-bound, with 47 direct calls, 46 SkillInfo field-write instructions, 20 field loads, 35 warning literal loads and original small System.Object catch clause. Direct source chain from FACT-0294 verified. Individual parsing helper internals and actual authored Unity data remain independent gates.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_parse_skill_param_full_il.summary.json",
+      "source_windows": [
+        [
+          "0x06001153",
+          "0x0000",
+          "0x0574"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original IL proves source parser's record-index progression, typed helper callsites, source FieldDef writes, flag accumulation sites and exception-handler bytes, not authorship or values of any TextAsset rows.",
+        "Helper MethodDef identities and direct calls are proven, but their internal parsing semantics remain independent gates.",
+        "Retail Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical retail asset decode vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0295",
+  "status": "PROVEN_DLL",
+  "claim": "The original SHA-matched SkillInfoManager.ParseSkillParam MethodDef 0x06001153 has complete 1,396-byte IL SHA 96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b. Complete source-controlled method includes 47 call instructions (45 MethodDef and 2 MemberRef), 46 original SkillInfo FieldDef writes, 20 field reads, 35 #US warning-string loads, 26 control-flow branches, and the original source small exception section catching System.Object; it assigns source skill ID, type, attack/defense categories, damage and suicide-damage categories, flag fields, bleeding, reversal, cheer and art values through named original helper calls. All numbers are source instruction counts, not claims about successful actual retail asset loads or authored values.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original 8,171,008-byte DLL-001 SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; MethodDef 0x06001153 row 348f060000008100a3860800f8a00100ee0c, RVA 0x00068F34, full original IL SHA 96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b; source-located helper call counts, original SkillInfo field targets and exception clause witness at canonical/witnesses/CAP-R6-001/skill_info_manager_parse_skill_param_full_il.summary.json. Direct call from original _parseSkillParamList_Reversal 0x06001152 IL+0x0053.",
+      "observation": "Source-only parsing instructions, field destinations and call boundaries; no authored data rows or gameplay outputs."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0294 SkillInfoManager._parseSkillParamList_Reversal direct call at IL+0x0053",
+      "to": "FACT-0295 original complete ParseSkillParam MethodDef 0x06001153 source with helper calls still independently bounded",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original caller MethodDef 0x06001152 full 113-byte SHA cb0c54a49abf1719502656e10e4291b06d11867bcb0ade861cf8add160a07ae9; call original 0x06001153 at IL+0x0053. Callee full 1,396-byte SHA identified from raw matching DLL."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original IL proves source parser's record-index progression, typed helper callsites, source FieldDef writes, flag accumulation sites and exception-handler bytes, not authorship or values of any TextAsset rows.",
+    "Helper MethodDef identities and direct calls are proven, but their internal parsing semantics remain independent gates.",
+    "Retail Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical retail asset decode vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
