@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0293",
+  "status": "PROVEN_DLL",
+  "claim": "Matching original 8,171,008-byte retail DLL-001 SkillInfoManager.Awake MethodDef 0x0600114A exact 64-byte IL SHA 6a28505974af6c6b789f2555d1a3b7f47f18e6e054c529bca952e1cdf2f8eedd stores singleton inst, initializes skillInfoList, skillInfoList_Reversal and skillIDList through original constructor MemberRefs, then calls four original 59-byte loader MethodDefs in order: ParseSkillParamList 0x0600114D, ParseSkillInfoList 0x0600114B, ParseSkillUnlockInfo 0x0600114F and ParseSkillParamList_Reversal 0x06001151. Their exact #US string resources are respectively DataBase/SkillParam, DataBase/SkillInfo, DataBase/StorySkillUnlock, DataBase/SkillParam_Reversal. Each wrapper calls original Resources.Load MemberRef 0x0A0006DA, casts to UnityEngine.TextAsset TypeRef 0x010000E4, calls get_text MemberRef 0x0A0006DB, constructs a StringReader through MemberRef 0x0A0006DC, calls its distinct original private parser MethodDef 0x0600114E/0x0600114C/0x06001150/0x06001152 and invokes UnloadAsset MemberRef 0x0A0006DF. Complete bytecode of these five source methods (300 bytes), original field and MemberRef identities and private parser MethodDef rows/hashes are checked against matching original DLL. These are source resource requests and parser call edges only; successful resource loading, source text and parse results are not proven.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original retail Assembly-CSharp(3).dll 8,171,008 bytes SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; Awake 0x0600114A original full 64-byte method and four original 59-byte resource wrappers 0x0600114D/0x0600114B/0x0600114F/0x06001151, exact IL bytes and hashes, original #US tokens 0x7000882F/0x70008809/0x70008857/0x7000888B, raw FieldDef singleton/list rows, raw MemberRefs of Resources.Load/TextAsset.get_text/StringReader..ctor/UnloadAsset and original parser callee MethodDef raw rows + full body SHA. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_awake_four_resource_wrappers.summary.json, original-DLL prover tools/prove_skill_info_manager_awake_four_resource_wrappers.py.",
+      "observation": "Original SkillInfoManager Awake initializes source collections and calls four TextAsset text resources in a fixed source order, dispatching to four independent private parsers and releasing each requested TextAsset."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0291 SkillInfoManager.ApplySkillParam and FACT-0289 GetSkillInfo consume original SkillInfoManager skill data",
+      "to": "FACT-0293 source initialization and four DataBase/ resource-text parse wrapper calls, exact private parser call targets, with actual authored TextAsset bytes unresolved",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original SkillInfoManager.Awake 0x0600114A SHA 6a28505974af6c6b789f2555d1a3b7f47f18e6e054c529bca952e1cdf2f8eedd and four wrapper original IL SHA listed in matching DLL witness."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The original four DataBase/ resource-name literals establish code-level Unity Resources.Load requests and their direct internal parser edges, not successful runtime loads or the original TextAsset bytes.",
+    "The four private parser MethodDefs are bound to exact original metadata identity and method SHA only; their full field-by-field parsing rules and actual authored database content remain independent evidence targets.",
+    "The original Awake creates/stores source collections before calling four loader wrappers; the original code does not prove that those collections contain particular skills in a session.",
+    "Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historic decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary retail binaries or extracted TextAsset contents committed."
+  ]
+}

@@ -5482,6 +5482,51 @@
         "Original FieldRVA storage and System.Runtime.CompilerServices.RuntimeHelpers.InitializeArray call prove source data and wiring; actual runtime initialization, resource availability, authored motion data, bank transformations and playback timing remain separate verification gates.",
         "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza resource binding, and historical decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no full proprietary DLL or retail asset bundles committed."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_AWAKE_AND_FOUR_RESOURCE_WRAPPERS_V1",
+      "fact_id": "FACT-0293",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SkillInfoManager.Awake MethodDef 0x0600114A 64-byte IL initializes four source manager fields and calls four original 59-byte TextAsset resource wrappers in order: DataBase/SkillParam, DataBase/SkillInfo, DataBase/StorySkillUnlock, DataBase/SkillParam_Reversal. Each wrapper source proves Resources.Load, TextAsset.get_text, StringReader creation, distinct private parser call, UnloadAsset and Time.realtimeSinceStartup reads. Exact 300-byte source bodies, four source #US resources, raw four FieldDefs/eight MemberRefs/UnityEngine.TextAsset TypeRef, four private parser MethodDef identities/hashes verified against matching original retail DLL. Resource bytes and parser outputs OPEN; runtime/viewer LOCKED.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_awake_four_resource_wrappers.summary.json",
+      "source_windows": [
+        [
+          "0x0600114A",
+          "0x0000",
+          "0x0040"
+        ],
+        [
+          "0x0600114D",
+          "0x0000",
+          "0x003B"
+        ],
+        [
+          "0x0600114B",
+          "0x0000",
+          "0x003B"
+        ],
+        [
+          "0x0600114F",
+          "0x0000",
+          "0x003B"
+        ],
+        [
+          "0x06001151",
+          "0x0000",
+          "0x003B"
+        ]
+      ],
+      "original_resource_count": 4,
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The original four DataBase/ resource-name literals establish code-level Unity Resources.Load requests and their direct internal parser edges, not successful runtime loads or the original TextAsset bytes.",
+        "The four private parser MethodDefs are bound to exact original metadata identity and method SHA only; their full field-by-field parsing rules and actual authored database content remain independent evidence targets.",
+        "The original Awake creates/stores source collections before calling four loader wrappers; the original code does not prove that those collections contain particular skills in a session.",
+        "Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historic decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary retail binaries or extracted TextAsset contents committed."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
