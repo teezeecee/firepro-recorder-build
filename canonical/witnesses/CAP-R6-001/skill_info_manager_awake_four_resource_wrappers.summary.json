@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_AWAKE_AND_FOUR_RESOURCE_WRAPPERS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "owner": "SkillInfoManager",
+    "methods": [
+      {
+        "token": "0x0600114A",
+        "name": "Awake",
+        "row_hex": "108a060000008100d99106005c480000ea0c",
+        "rva": "0x00068A10",
+        "signature_hex": "200001",
+        "header_hex": "133002004000000000000000",
+        "code_bytes": 64,
+        "code_sha256": "6a28505974af6c6b789f2555d1a3b7f47f18e6e054c529bca952e1cdf2f8eedd",
+        "il_hex": "0280d90e000402735007000a7dda0e000402735107000a7ddc0e000402739c06000a7ddb0e000402284d11000602284b11000602284f1100060228511100062a"
+      },
+      {
+        "token": "0x0600114D",
+        "name": "ParseSkillParamList",
+        "row_hex": "048c060000008100148608005c480000eb0c",
+        "rva": "0x00068C04",
+        "signature_hex": "200001",
+        "header_hex": "133002003b00000012030011",
+        "code_bytes": 59,
+        "code_sha256": "1b2f16f888bf1880a544b44005a1f8826f422d7b3aa437344f798f93ef6698d5",
+        "il_hex": "722f8800700a285a05000a0b0628da06000a75e40000010c086fdb06000a73dc06000a0d0209284e1100060828df06000a285a05000a075913042a",
+        "resource_name": "DataBase/SkillParam",
+        "user_string_token": "0x7000882F",
+        "internal_parser_token": "0x0600114E"
+      },
+      {
+        "token": "0x0600114B",
+        "name": "ParseSkillInfoList",
+        "row_hex": "5c8a060000008100ed8508005c480000ea0c",
+        "rva": "0x00068A5C",
+        "signature_hex": "200001",
+        "header_hex": "133002003b00000012030011",
+        "code_bytes": 59,
+        "code_sha256": "40283c57f840ea85ce3e42b0fc5177ef7ab5ad5d749894c0db6397879417cb8e",
+        "il_hex": "72098800700a285a05000a0b0628da06000a75e40000010c086fdb06000a73dc06000a0d0209284c1100060828df06000a285a05000a075913042a",
+        "resource_name": "DataBase/SkillInfo",
+        "user_string_token": "0x70008809",
+        "internal_parser_token": "0x0600114C"
+      },
+      {
+        "token": "0x0600114F",
+        "name": "ParseSkillUnlockInfo",
+        "row_hex": "fc8c0600000081003d8608005c480000ec0c",
+        "rva": "0x00068CFC",
+        "signature_hex": "200001",
+        "header_hex": "133002003b00000012030011",
+        "code_bytes": 59,
+        "code_sha256": "e264c096db1d085558416ad70473932ccbe4db5416264e55de4c11029971befb",
+        "il_hex": "72578800700a285a05000a0b0628da06000a75e40000010c086fdb06000a73dc06000a0d020928501100060828df06000a285a05000a075913042a",
+        "resource_name": "DataBase/StorySkillUnlock",
+        "user_string_token": "0x70008857",
+        "internal_parser_token": "0x06001150"
+      },
+      {
+        "token": "0x06001151",
+        "name": "ParseSkillParamList_Reversal",
+        "row_hex": "6c8e060000008100688608005c480000ed0c",
+        "rva": "0x00068E6C",
+        "signature_hex": "200001",
+        "header_hex": "133002003b00000012030011",
+        "code_bytes": 59,
+        "code_sha256": "c90fa7f9dd10ef7ccc2f166e292ce580e98ae263b65cb3c83d30625fedea74fc",
+        "il_hex": "728b8800700a285a05000a0b0628da06000a75e40000010c086fdb06000a73dc06000a0d020928521100060828df06000a285a05000a075913042a",
+        "resource_name": "DataBase/SkillParam_Reversal",
+        "user_string_token": "0x7000888B",
+        "internal_parser_token": "0x06001152"
+      }
+    ],
+    "raw_fielddefs": {
+      "0x04000ED9": {
+        "name": "inst",
+        "row": "160006220100200c0000",
+        "sig": "061286fc",
+        "ins": "0x0001"
+      },
+      "0x04000EDA": {
+        "name": "skillInfoList",
+        "row": "0600c74c0100250c0000",
+        "sig": "061512590211a9dc1286f8",
+        "ins": "0x000C"
+      },
+      "0x04000EDC": {
+        "name": "skillInfoList_Reversal",
+        "row": "0100e14c0100310c0000",
+        "sig": "06151209011286f8",
+        "ins": "0x0017"
+      },
+      "0x04000EDB": {
+        "name": "skillIDList",
+        "row": "0600d54c0100cc090000",
+        "sig": "061512090111a9dc",
+        "ins": "0x0022"
+      }
+    },
+    "raw_memberrefs": {
+      "0x0A000750": {
+        "name": ".ctor",
+        "row": "dc070000eb4f06005c480000",
+        "class_coded": "0x07DC",
+        "sig": "200001"
+      },
+      "0x0A000751": {
+        "name": ".ctor",
+        "row": "e4070000eb4f06005c480000",
+        "class_coded": "0x07E4",
+        "sig": "200001"
+      },
+      "0x0A00069C": {
+        "name": ".ctor",
+        "row": "6c060000eb4f06005c480000",
+        "class_coded": "0x066C",
+        "sig": "200001"
+      },
+      "0x0A00055A": {
+        "name": "get_realtimeSinceStartup",
+        "row": "51060000e48c0600a94d0000",
+        "class_coded": "0x0651",
+        "sig": "00000c"
+      },
+      "0x0A0006DA": {
+        "name": "Load",
+        "row": "890700009f0c020095a90000",
+        "class_coded": "0x0789",
+        "sig": "000112690e"
+      },
+      "0x0A0006DB": {
+        "name": "get_text",
+        "row": "21070000ee640600b2490000",
+        "class_coded": "0x0721",
+        "sig": "20000e"
+      },
+      "0x0A0006DC": {
+        "name": ".ctor",
+        "row": "c10c0000eb4f060079480000",
+        "class_coded": "0x0CC1",
+        "sig": "2001010e"
+      },
+      "0x0A0006DF": {
+        "name": "UnloadAsset",
+        "row": "89070000d8a40600cc510000",
+        "class_coded": "0x0789",
+        "sig": "0001011269"
+      }
+    },
+    "type_ref": {
+      "token": "0x010000E4",
+      "name": "TextAsset",
+      "namespace": "UnityEngine",
+      "row_hex": "0600e95b060080a60000",
+      "resolution_scope_coded": "0x0006"
+    },
+    "internal_parsers": [
+      {
+        "token": "0x0600114E",
+        "name": "_parseSkillParamList",
+        "method_row_hex": "4c8c06000000810028860800f49d0000eb0c",
+        "code_sha256": "ba10dff53a715680d924bcf874ad9da952ac6c9c9b50dc24d89db808816bdbcf",
+        "code_bytes": 161,
+        "signature_hex": "2001011c"
+      },
+      {
+        "token": "0x0600114C",
+        "name": "_parseSkillInfoList",
+        "method_row_hex": "a48a06000000810000860800f49d0000ea0c",
+        "code_sha256": "2f78bbd6d050643687d7e543342cfb305148877f9635555d54879dfa1825f6f4",
+        "code_bytes": 340,
+        "signature_hex": "2001011c"
+      },
+      {
+        "token": "0x06001150",
+        "name": "_parseSkillUnlockInfo",
+        "method_row_hex": "448d06000000810052860800f49d0000ec0c",
+        "code_sha256": "d9377cf43d5cdb8970276cf9cb1af4c182d4769545bf1a5dea0c1e95844fdae3",
+        "code_bytes": 281,
+        "signature_hex": "2001011c"
+      },
+      {
+        "token": "0x06001152",
+        "name": "_parseSkillParamList_Reversal",
+        "method_row_hex": "b48e06000000810085860800f49d0000ed0c",
+        "code_sha256": "cb0c54a49abf1719502656e10e4291b06d11867bcb0ade861cf8add160a07ae9",
+        "code_bytes": 113,
+        "signature_hex": "2001011c"
+      }
+    ],
+    "awake_method_calls": [
+      {
+        "caller_token": "0x0600114A",
+        "call_il": "0x0028",
+        "target": "0x0600114D"
+      },
+      {
+        "caller_token": "0x0600114A",
+        "call_il": "0x002E",
+        "target": "0x0600114B"
+      },
+      {
+        "caller_token": "0x0600114A",
+        "call_il": "0x0034",
+        "target": "0x0600114F"
+      },
+      {
+        "caller_token": "0x0600114A",
+        "call_il": "0x003A",
+        "target": "0x06001151"
+      }
+    ],
+    "awake_ctor_sites": [
+      {
+        "il": "0x0007",
+        "target": "0x0A000750"
+      },
+      {
+        "il": "0x0012",
+        "target": "0x0A000751"
+      },
+      {
+        "il": "0x001D",
+        "target": "0x0A00069C"
+      }
+    ],
+    "wrapper_sites": {
+      "resource_string_il": "0x0000",
+      "time_start_il": "0x0006",
+      "load_il": "0x000D",
+      "text_asset_cast_il": "0x0012",
+      "get_text_il": "0x0019",
+      "string_reader_ctor_il": "0x001E",
+      "internal_parser_il": "0x0026",
+      "unload_il": "0x002C",
+      "time_end_il": "0x0031"
+    },
+    "original_resource_count": 4
+  },
+  "limits": [
+    "The original four DataBase/ resource-name literals establish code-level Unity Resources.Load requests and their direct internal parser edges, not successful runtime loads or the original TextAsset bytes.",
+    "The four private parser MethodDefs are bound to exact original metadata identity and method SHA only; their full field-by-field parsing rules and actual authored database content remain independent evidence targets.",
+    "The original Awake creates/stores source collections before calling four loader wrappers; the original code does not prove that those collections contain particular skills in a session.",
+    "Unity parent resources.assets SHA, actual retail-loaded fprwaza binding and historic decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; no proprietary retail binaries or extracted TextAsset contents committed."
+  ]
+}
