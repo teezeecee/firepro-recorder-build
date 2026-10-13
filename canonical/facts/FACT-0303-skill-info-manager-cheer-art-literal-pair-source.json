@@ -1,0 +1,39 @@
+{
+  "fact_id": "FACT-0303",
+  "status": "PROVEN_DLL",
+  "claim": "Original SkillInfoManager.Parse_SkillCheerLevel MethodDef 0x06001160 and Parse_SkillArtPoint MethodDef 0x06001161 have distinct original MethodDef metadata and signatures but identical complete original 123-byte IL SHA256 2ceb6ca20ae3e553f5960bbb619932d34a387cb50ade4b3113b3b19674d73397. Both call String.IsNullOrEmpty for first string argument, then compare exact source #US literals 'E', 'D', 'C', 'B', 'A', 'S' using String.Equals and return numeric ordinals 1,2,3,4,5,6 in that order; null/empty/unmatched returns numeric 0. Exact six long conditional branches, seven MemberRef call operands, no original exception section; original ParseSkillParam 0x06001153 directly calls 0x06001160 at IL+1179 and 0x06001161 at IL+1197. No authored rows, enum meanings or gameplay outcomes proven.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Retail 8,171,008-byte SHA-matched Assembly-CSharp(3).dll SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; original MethodDef 0x06001160 row b8980600000091007d87080065a10100fe0c RVA 0x000698B8, original MethodDef 0x06001161 row 4099060000009100938708006ca10100ff0c RVA 0x00069940; both entire 123-byte IL SHA 2ceb6ca20ae3e553f5960bbb619932d34a387cb50ade4b3113b3b19674d73397. Original 6 literal heap entries and 7 MemberRef operand sites and direct parent caller offsets source-checked, witness canonical/witnesses/CAP-R6-001/skill_info_manager_cheer_art_literal_pair_source.summary.json.",
+      "observation": "Original source-only literal-to-ordinal mapping for two distinct methods with exact matching IL; no Unity authored data rows established."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0295 original ParseSkillParam 0x06001153 full IL",
+      "to": "FACT-0303 original Parse_SkillCheerLevel 0x06001160",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact parent full 1,396-byte IL SHA 96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b, direct 0x06001160 call at IL+1179."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0295 original ParseSkillParam 0x06001153 full IL",
+      "to": "FACT-0303 original Parse_SkillArtPoint 0x06001161",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact parent full 1,396-byte IL SHA 96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b, direct 0x06001161 call at IL+1197."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The original method names and IL only establish return ordinals for literal string matches, not meanings of enum labels or actual skill data rows.",
+    "No loaded Unity TextAsset values or observed gameplay consequences are established by this proof.",
+    "Retail Unity resources.assets parent SHA, actually loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

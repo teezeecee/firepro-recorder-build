@@ -5739,6 +5739,34 @@
         "Numeric 38 is an original source ordinal fallback, not a proved enum meaning, authored skill row, or actual gameplay outcome.",
         "Original Unity resources.assets parent identity, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_CHEER_ART_LITERAL_PAIR_SOURCE_V1",
+      "fact_id": "FACT-0303",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original two SkillInfoManager helper MethodDefs 0x06001160 Parse_SkillCheerLevel and 0x06001161 Parse_SkillArtPoint share exact 123-byte original IL but distinct original metadata. Source literal strings E/D/C/B/A/S map respectively to numeric ordinals 1..6, null/empty/other to 0, with original MemberRefs, branch sites, and two original ParseSkillParam calls; original enum semantics and authored rows not proven.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_cheer_art_literal_pair_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001160",
+          "0x0000",
+          "0x007B"
+        ],
+        [
+          "0x06001161",
+          "0x0000",
+          "0x007B"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The original method names and IL only establish return ordinals for literal string matches, not meanings of enum labels or actual skill data rows.",
+        "No loaded Unity TextAsset values or observed gameplay consequences are established by this proof.",
+        "Retail Unity resources.assets parent SHA, actually loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

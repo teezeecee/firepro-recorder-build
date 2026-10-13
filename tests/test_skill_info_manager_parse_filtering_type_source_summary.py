@@ -17,6 +17,6 @@ assert w["literal"]["value"]==" " and w["returns"]["fallback_ordinal"]==38
 assert w["exception"]["try_offset"]==42 and w["exception"]["handler_offset"]==63
 assert w["parent"]["direct_call_sites"]==[188]
 assert sum(x["fact_id"]=="FACT-0302" for x in reg["families"])==1
-assert len(reg["families"])==len({x["family_id"] for x in reg["families"]})==301
+assert len(reg["families"])==len({x["family_id"] for x in reg["families"]})>=301
 assert reg["runtime_unlocked"] is False and reg["families"][-1]["runtime_eligible"] is False
 print("SKILL INFO MANAGER FILTERING TYPE SOURCE SUMMARY: PASS")

@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_CHEER_ART_LITERAL_PAIR_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "methods": [
+    {
+      "token": "0x06001160",
+      "name": "Parse_SkillCheerLevel",
+      "owner": "SkillInfoManager",
+      "rva": "0x000698B8",
+      "row": "b8980600000091007d87080065a10100fe0c",
+      "signature": "000111a99c0e",
+      "parent_call_sites": [
+        1179
+      ]
+    },
+    {
+      "token": "0x06001161",
+      "name": "Parse_SkillArtPoint",
+      "owner": "SkillInfoManager",
+      "rva": "0x00069940",
+      "row": "4099060000009100938708006ca10100ff0c",
+      "signature": "000111a9980e",
+      "parent_call_sites": [
+        1197
+      ]
+    }
+  ],
+  "shared_body": {
+    "header": "133002007b00000000000000",
+    "body_length": 123,
+    "body_sha256": "2ceb6ca20ae3e553f5960bbb619932d34a387cb50ade4b3113b3b19674d73397",
+    "body_hex": "02281500000a3902000000162a0272fd0600706f0c03000a3902000000172a0272f90600706f0c03000a3902000000182a0272f50600706f0c03000a3902000000192a0272f10600706f0c03000a39020000001a2a02727b0400706f0c03000a39020000001b2a0272370700706f0c03000a39020000001c2a162a",
+    "has_exception_section": false
+  },
+  "memberrefs": [
+    {
+      "token": "0x0A000015",
+      "name": "IsNullOrEmpty",
+      "opcode": "call",
+      "row": "f9050000f350060070490000",
+      "signature": "0001020e",
+      "sites": [
+        1
+      ]
+    },
+    {
+      "token": "0x0A00030C",
+      "name": "Equals",
+      "opcode": "callvirt",
+      "row": "f9050000875b0600e44f0000",
+      "signature": "2001020e",
+      "sites": [
+        19,
+        37,
+        55,
+        73,
+        91,
+        109
+      ]
+    }
+  ],
+  "empty_check": {
+    "call_site": 1,
+    "branch_site": 6,
+    "branch_opcode": "0x39",
+    "false_target": 13,
+    "return_site": 11,
+    "return_hex": "162a",
+    "return_ordinal": 0
+  },
+  "literal_cases": [
+    {
+      "literal": "E",
+      "token": "0x700006FD",
+      "heap_record": "03450000",
+      "ldstr_site": 14,
+      "equals_site": 19,
+      "branch_site": 24,
+      "false_target": 31,
+      "return_site": 29,
+      "return_ordinal": 1
+    },
+    {
+      "literal": "D",
+      "token": "0x700006F9",
+      "heap_record": "03440000",
+      "ldstr_site": 32,
+      "equals_site": 37,
+      "branch_site": 42,
+      "false_target": 49,
+      "return_site": 47,
+      "return_ordinal": 2
+    },
+    {
+      "literal": "C",
+      "token": "0x700006F5",
+      "heap_record": "03430000",
+      "ldstr_site": 50,
+      "equals_site": 55,
+      "branch_site": 60,
+      "false_target": 67,
+      "return_site": 65,
+      "return_ordinal": 3
+    },
+    {
+      "literal": "B",
+      "token": "0x700006F1",
+      "heap_record": "03420000",
+      "ldstr_site": 68,
+      "equals_site": 73,
+      "branch_site": 78,
+      "false_target": 85,
+      "return_site": 83,
+      "return_ordinal": 4
+    },
+    {
+      "literal": "A",
+      "token": "0x7000047B",
+      "heap_record": "03410000",
+      "ldstr_site": 86,
+      "equals_site": 91,
+      "branch_site": 96,
+      "false_target": 103,
+      "return_site": 101,
+      "return_ordinal": 5
+    },
+    {
+      "literal": "S",
+      "token": "0x70000737",
+      "heap_record": "03530000",
+      "ldstr_site": 104,
+      "equals_site": 109,
+      "branch_site": 114,
+      "false_target": 121,
+      "return_site": 119,
+      "return_ordinal": 6
+    }
+  ],
+  "default_return": {
+    "site": 121,
+    "hex": "162a",
+    "ordinal": 0
+  },
+  "parent": {
+    "token": "0x06001153",
+    "name": "ParseSkillParam",
+    "body_length": 1396,
+    "body_sha256": "96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b"
+  },
+  "limits": [
+    "The original method names and IL only establish return ordinals for literal string matches, not meanings of enum labels or actual skill data rows.",
+    "No loaded Unity TextAsset values or observed gameplay consequences are established by this proof.",
+    "Retail Unity resources.assets parent SHA, actually loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
