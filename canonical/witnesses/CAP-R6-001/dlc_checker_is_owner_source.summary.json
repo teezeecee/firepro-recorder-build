@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DLC_CHECKER_IS_OWNER_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "methods": [
+    {
+      "token": "0x06001032",
+      "owner": "DLCChecker",
+      "namespace": "DLC",
+      "name": "IsValidDLCID",
+      "rva": "0x0005F7CE",
+      "row": "cef70500000096005277080077960100100c",
+      "signature": "0001021185c8",
+      "header": "36",
+      "body_length": 13,
+      "body_hex": "02283610000615fe0116fe012a",
+      "body_sha256": "79789aad408697c28d26725cb2c4a5a73f938d2b79d96b621057305718a61339"
+    },
+    {
+      "token": "0x06001033",
+      "owner": "DLCChecker",
+      "namespace": "DLC",
+      "name": "IsOwner",
+      "rva": "0x0005F7DC",
+      "row": "dcf70500000096005f77080077960100110c",
+      "signature": "0001021185c8",
+      "header": "1b30020027000000a5020011",
+      "body_length": 39,
+      "body_hex": "0228361000060a12010628c406000a0728c506000a0c080ddd0800000026160ddd00000000092a",
+      "body_sha256": "1aef92c709ae4ad954e979dec831bd361ef6546059f6ddf914fe9fa352bae5cc"
+    }
+  ],
+  "methoddef_callee": {
+    "token": "0x06001036",
+    "owner": "DLCID",
+    "namespace": "DLC",
+    "name": "GetDLCID",
+    "rva": "0x0005F840",
+    "row": "40f80500000096008077080089960100140c",
+    "signature": "00011185d01185c8",
+    "body_length": 143,
+    "body_sha256": "e71bcaa68daa57d26a04e13b1d43b7761db94df3724f312e48ce26b7d81e5442"
+  },
+  "typerefs": [
+    {
+      "token": "0x010000C2",
+      "name": "Object",
+      "namespace": "System",
+      "row": "0a001cb800000cae0000",
+      "resolution_scope_coded": 10
+    },
+    {
+      "token": "0x01000196",
+      "name": "AppId_t",
+      "namespace": "Steamworks",
+      "row": "22003aa40600c19d0200",
+      "resolution_scope_coded": 34
+    },
+    {
+      "token": "0x01000197",
+      "name": "SteamApps",
+      "namespace": "Steamworks",
+      "row": "220042a40600c19d0200",
+      "resolution_scope_coded": 34
+    }
+  ],
+  "memberrefs": [
+    {
+      "token": "0x0A0006C4",
+      "name": ".ctor",
+      "owner_type_token": "0x01000196",
+      "row": "b10c0000eb4f0600d4a80000",
+      "signature": "20010109",
+      "class_coded": 3249,
+      "sites": [
+        {
+          "method": "0x06001033",
+          "opcode": "0x28",
+          "offset": 10
+        }
+      ]
+    },
+    {
+      "token": "0x0A0006C5",
+      "name": "BIsSubscribedApp",
+      "owner_type_token": "0x01000197",
+      "row": "b90c00004ca40600d9a80000",
+      "signature": "000102118659",
+      "class_coded": 3257,
+      "sites": [
+        {
+          "method": "0x06001033",
+          "opcode": "0x28",
+          "offset": 16
+        }
+      ]
+    }
+  ],
+  "methoddef_call_sites": [
+    {
+      "method": "0x06001032",
+      "opcode": "0x28",
+      "offset": 1,
+      "target": "0x06001036"
+    },
+    {
+      "method": "0x06001033",
+      "opcode": "0x28",
+      "offset": 1,
+      "target": "0x06001032"
+    }
+  ],
+  "exception_section": {
+    "method": "0x06001033",
+    "raw_hex": "0110000000000f000e1d0008c2000001",
+    "small_header_kind": 1,
+    "size": 16,
+    "clause": {
+      "flags": 0,
+      "try_offset": 15,
+      "try_length": 14,
+      "handler_offset": 29,
+      "handler_length": 8,
+      "class_token": "0x010000C2"
+    }
+  },
+  "leave_instructions": [
+    {
+      "method": "0x06001033",
+      "offset": 24,
+      "opcode": "0xDD",
+      "delta": 8,
+      "target": 37
+    },
+    {
+      "method": "0x06001033",
+      "offset": 32,
+      "opcode": "0xDD",
+      "delta": 0,
+      "target": 37
+    }
+  ],
+  "direct_callers": [
+    {
+      "caller": "0x0600103D",
+      "owner": "DLCManager",
+      "namespace": "DLC",
+      "name": "Update",
+      "size": 114,
+      "sha": "00cb1496157909a7738811e316c18539946158ff9b80dceace7ed02a57539b28",
+      "callees": [
+        {
+          "target": "0x06001032",
+          "opcode": "0x28",
+          "sites": [
+            18
+          ]
+        },
+        {
+          "target": "0x06001033",
+          "opcode": "0x28",
+          "sites": [
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "caller": "0x060051C9",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "IsDLCInstalled",
+      "size": 45,
+      "sha": "d353bf6e7046434074ecca1c5a62cb8cd9ec636500659fc5b9083f2943c7d841",
+      "callees": [
+        {
+          "target": "0x06001033",
+          "opcode": "0x28",
+          "sites": [
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "source_description": "IsValidDLCID calls DLCID.GetDLCID and uses two ceq instructions to return a value indicating whether the mapped integer is not -1. IsOwner calls IsValidDLCID, passes that return value to the Steamworks.AppId_t constructor MemberRef, then invokes Steamworks.SteamApps.BIsSubscribedApp. Its original catch clause is System.Object covering IL+15..+29 only; when a catch occurs, the method sets its return local to zero. The AppId_t constructor is before the guarded region. These are exact code paths; no Steam ownership or valid app ID is established.",
+  "limits": [
+    "Method and IL/source metadata prove original call and catch control flow but do not establish whether Steamworks initializes, which account is logged in, or whether BIsSubscribedApp succeeds.",
+    "The original source passes the result of IsValidDLCID into AppId_t. Do not infer that this is the mapped integer app-ID or correct an apparent surprising conversion.",
+    "The original catch System.Object covers the IL interval [15,29); it does not cover the AppId_t constructor or the validity-helper call before that interval.",
+    "DLCID.GetDLCID is pinned to an exact original 143-byte method and SHA for direct callee identity; its switch table and actual integer mapping have not been promoted as authored runtime facts here.",
+    "Direct callers are limited to two explicitly audited original functions; actual DLC ownership, installed game data, and complete calling context remain unverified.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical retail asset decode vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

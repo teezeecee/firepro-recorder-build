@@ -6000,6 +6000,37 @@
         "The two pinned caller witnesses are not represented as an exhaustive callgraph of every retail user of IsDLCInstalled.",
         "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_DLC_CHECKER_IS_OWNER_SOURCE_V1",
+      "fact_id": "FACT-0313",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original DLC.DLCChecker.IsOwner (39-byte IL) delegates to IsValidDLCID (13-byte IL), calls original Steamworks.AppId_t constructor and SteamApps.BIsSubscribedApp with System.Object handler limited to subscription query; exact original MemberRefs/TypeRefs/IL/exception and two source callers proven. Actual entitlement and DLC values unknown.",
+      "summary": "canonical/witnesses/CAP-R6-001/dlc_checker_is_owner_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001032",
+          "0x0000",
+          "0x000D"
+        ],
+        [
+          "0x06001033",
+          "0x0000",
+          "0x0027"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Method and IL/source metadata prove original call and catch control flow but do not establish whether Steamworks initializes, which account is logged in, or whether BIsSubscribedApp succeeds.",
+        "The original source passes the result of IsValidDLCID into AppId_t. Do not infer that this is the mapped integer app-ID or correct an apparent surprising conversion.",
+        "The original catch System.Object covers the IL interval [15,29); it does not cover the AppId_t constructor or the validity-helper call before that interval.",
+        "DLCID.GetDLCID is pinned to an exact original 143-byte method and SHA for direct callee identity; its switch table and actual integer mapping have not been promoted as authored runtime facts here.",
+        "Direct callers are limited to two explicitly audited original functions; actual DLC ownership, installed game data, and complete calling context remain unverified.",
+        "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical retail asset decode vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
