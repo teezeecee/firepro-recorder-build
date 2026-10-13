@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0314",
+  "status": "PROVEN_DLL",
+  "claim": "Matching original 8,171,008-byte retail DLL has DLC.DLCChecker.IsInstalled static MethodDef 0x06001035 at RVA 0x0005F832 with an exact 12-byte tiny-header body. The full original IL executes ldsfld SaveData.inst (FieldDef 0x040064EC), ldarg.0 to forward the numeric DLCEnum input, callvirt SaveData.IsDLCInstalled (MethodDef 0x060051C9), and ret. Original MethodDef/FieldDef names, owner, signatures, rows, full IL bytes and exact callee identity are pinned. This is only source behavior: no initialized singleton, actual DLC ownership, game execution or installed DLC state is established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original Assembly-CSharp(3).dll size 8,171,008 bytes, SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; IsInstalled token 0x06001035 full 12-byte IL SHA256 751c2af209156c99f29d82417a6389b8a4309208ecc1e2329baeaa5b53428adf, original MethodDef/FieldDef rows, SaveData.inst static field and original SaveData.IsDLCInstalled 45-byte callee pinned in canonical/witnesses/CAP-R6-001/dlc_checker_is_installed_source.summary.json by tools/prove_dlc_checker_is_installed_source.py.",
+      "observation": "Exact source singleton-load, DLC argument-forward and SaveData.IsDLCInstalled callvirt/return wrapper only."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0314 DLC.DLCChecker.IsInstalled 0x06001035",
+      "to": "FACT-0312 SaveData.IsDLCInstalled 0x060051C9",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original IsInstalled IL 7eec640004026fc95100062a: ldsfld SaveData.inst at +0, ldarg.0 at +5, callvirt 0x060051C9 at +6, ret at +11. FACT-0312 already pinned callee body; this fact closes the 12-byte wrapper and singleton field source."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Static SaveData.inst is read as a source field; this proves neither the singleton is initialized nor that it is non-null at runtime.",
+    "Callvirt to SaveData.IsDLCInstalled forwards the input DLCEnum; it does not independently establish ownership, installed DLC, successful return or a nonthrowing execution.",
+    "The original SaveData.IsDLCInstalled body is source-pinned by FACT-0312; no new runtime outcomes, authored DLC values, Steam account state or source asset contents are demonstrated.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original retail decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer remain locked."
+  ]
+}

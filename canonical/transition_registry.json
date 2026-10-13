@@ -6031,6 +6031,30 @@
         "Direct callers are limited to two explicitly audited original functions; actual DLC ownership, installed game data, and complete calling context remain unverified.",
         "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical retail asset decode vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_DLC_CHECKER_IS_INSTALLED_SOURCE_V1",
+      "fact_id": "FACT-0314",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original 12-byte DLC.DLCChecker.IsInstalled static wrapper source-pinned: load SaveData.inst static field, forward input DLCEnum, callvirt SaveData.IsDLCInstalled, return. No installed state or initialized singleton asserted.",
+      "summary": "canonical/witnesses/CAP-R6-001/dlc_checker_is_installed_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001035",
+          "0x0000",
+          "0x000C"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Static SaveData.inst is read as a source field; this proves neither the singleton is initialized nor that it is non-null at runtime.",
+        "Callvirt to SaveData.IsDLCInstalled forwards the input DLCEnum; it does not independently establish ownership, installed DLC, successful return or a nonthrowing execution.",
+        "The original SaveData.IsDLCInstalled body is source-pinned by FACT-0312; no new runtime outcomes, authored DLC values, Steam account state or source asset contents are demonstrated.",
+        "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original retail decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer remain locked."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
