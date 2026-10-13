@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0311",
+  "status": "PROVEN_DLL",
+  "claim": "The original matching retail SkillInfo DLC flag methods are pinned by complete original IL, metadata and direct callers: CheckValidationDLCMove 0x06001145 (65 bytes), GetDLC 0x06001146 (36), GetDLCList 0x06001147 (59), IsDLCMove 0x06001148 (36). All read original SkillInfo.dlc field 0x04000ED4; IsDLCMove loops over 16 slots but GetDLC/GetDLCList/CheckValidationDLCMove loop over 13. Source CheckValidationDLCMove returns true when no flag is enabled or when at least one enabled DLC index among 0..12 passes SaveData.IsDLCInstalled. Source GetDLC returns first enabled 0..12 index or -1; GetDLCList checks Contains then Add for enabled 0..12 indices. The source does not establish asset-backed flag bytes, actual installation, array shape or runtime success.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact original 8,171,008-byte retail Assembly-CSharp(3).dll SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; MethodDefs 0x06001145..0x06001148 full 65/36/59/36 byte IL, original FieldDefs/MemberRefs, exact branch sites/targets, five original direct caller-site groups. Witness canonical/witnesses/CAP-R6-001/skill_info_dlc_flag_source.summary.json.",
+      "observation": "Original SkillInfo DLC boolean-array loops and SaveData DLC-installed call boundary; authored DLC values and runtime result unknown."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Original SkillInfo.CheckValidationDLCMove 0x06001145",
+      "to": "Original SkillInfo.IsDLCMove 0x06001148 and SaveData.IsDLCInstalled 0x060051C9",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Full original 65-byte IL, call 0x06001148 at IL+1, callvirt 0x060051C9 at IL+39."
+        }
+      ]
+    },
+    {
+      "from": "Original DataBase/Menus direct callers of DLC checks",
+      "to": "FACT-0311 original SkillInfo DLC flag methods",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "DataBase.CheckValidation_DLCMove +21, Menu_Workshop_TechnicCraft_PublishMain.GetEditItemIdList +62, DataBase.GetUnavailableWrestlerDLC_Move +119, DataBase.CheckEquipDLCAssets_EditWrestler +86 and internal SkillInfo.CheckValidationDLCMove +1; complete original caller IL SHA in witness."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The four exact loops use fixed index bounds in source; no claim of actual backing-array length, installed DLC configuration, or successful index access is established.",
+    "CheckValidationDLCMove source permits success when no DLC position is flagged or when one of first 13 enabled slots passes IsDLCInstalled. This is not proof that all required DLC are installed.",
+    "GetDLCList has no proven direct MethodDef call sites in the audited source search; no claim about runtime reachability or returned values is made.",
+    "Neither authored DLC flag bytes nor downloaded parts/animation data are available from this original DLL code alone.",
+    "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical original decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_DLC_FLAG_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "methods": [
+    {
+      "token": "0x06001145",
+      "owner": "SkillInfo",
+      "name": "CheckValidationDLCMove",
+      "row": "1089060000008600cc850800db490000ea0c",
+      "rva": "0x00068910",
+      "signature": "200002",
+      "header": "1330020041000000de020011",
+      "body_hex": "0228481100063a02000000172a160a3823000000027bd40e0004069139120000007eec640004066fc95100063902000000172a0617580a061f0d3fd5ffffff162a",
+      "body_sha256": "c956c68dd2c8c5ee156bf69ee702993d2cb95118f32a6afc74699bf83aadfdf4",
+      "branches": [
+        [
+          6,
+          58,
+          13
+        ],
+        [
+          15,
+          56,
+          55
+        ],
+        [
+          28,
+          57,
+          51
+        ],
+        [
+          44,
+          57,
+          51
+        ],
+        [
+          58,
+          63,
+          20
+        ]
+      ],
+      "flags_sites": [
+        21
+      ],
+      "static_sites": [
+        33
+      ],
+      "methoddef_sites": [
+        {
+          "site": 1,
+          "token": "0x06001148"
+        },
+        {
+          "site": 39,
+          "token": "0x060051C9"
+        }
+      ],
+      "body_length": 65
+    },
+    {
+      "token": "0x06001146",
+      "owner": "SkillInfo",
+      "name": "GetDLC",
+      "row": "60890600000086001e7f0800c09b0100ea0c",
+      "rva": "0x00068960",
+      "signature": "20001185c8",
+      "header": "1330020024000000de020011",
+      "body_hex": "160a3813000000027bd40e000406913902000000062a0617580a061f0d3fe5ffffff152a",
+      "body_sha256": "8fb646cdd539b0bcb33323c0ebb097013bedb7fe3fbf32e067cf7e4f1ca4ab40",
+      "branches": [
+        [
+          2,
+          56,
+          26
+        ],
+        [
+          15,
+          57,
+          22
+        ],
+        [
+          29,
+          63,
+          7
+        ]
+      ],
+      "flags_sites": [
+        8
+      ],
+      "static_sites": [],
+      "methoddef_sites": [],
+      "body_length": 36
+    },
+    {
+      "token": "0x06001147",
+      "owner": "SkillInfo",
+      "name": "GetDLCList",
+      "row": "9089060000008600257f0800ba970100ea0c",
+      "rva": "0x00068990",
+      "signature": "2000151209011185c8",
+      "header": "133002003b000000e2020011",
+      "body_hex": "73e806000a0a160b3824000000027bd40e00040791391300000006076fe906000a3a0700000006076fea06000a0717580b071f0d3fd4ffffff062a",
+      "body_sha256": "cf74937a8c3718ea0b3e87f449924cdada31ad82a1e89ef397b5ef9985560262",
+      "branches": [
+        [
+          8,
+          56,
+          49
+        ],
+        [
+          21,
+          57,
+          45
+        ],
+        [
+          33,
+          58,
+          45
+        ],
+        [
+          52,
+          63,
+          13
+        ]
+      ],
+      "flags_sites": [
+        14
+      ],
+      "static_sites": [],
+      "methoddef_sites": [],
+      "memberref_sites": [
+        {
+          "site": 0,
+          "opcode": "0x73",
+          "token": "0x0A0006E8"
+        },
+        {
+          "site": 28,
+          "opcode": "0x6F",
+          "token": "0x0A0006E9"
+        },
+        {
+          "site": 40,
+          "opcode": "0x6F",
+          "token": "0x0A0006EA"
+        }
+      ],
+      "body_length": 59
+    },
+    {
+      "token": "0x06001148",
+      "owner": "SkillInfo",
+      "name": "IsDLCMove",
+      "row": "d889060000008600e3850800db490000ea0c",
+      "rva": "0x000689D8",
+      "signature": "200002",
+      "header": "13300200240000003a000011",
+      "body_hex": "160a3813000000027bd40e000406913902000000172a0617580a061f103fe5ffffff162a",
+      "body_sha256": "bb4f52db5c4c784b6e577c2e39aea3c38f2aa435d67136d2ab22b6bcf6e07234",
+      "branches": [
+        [
+          2,
+          56,
+          26
+        ],
+        [
+          15,
+          57,
+          22
+        ],
+        [
+          29,
+          63,
+          7
+        ]
+      ],
+      "flags_sites": [
+        8
+      ],
+      "static_sites": [],
+      "methoddef_sites": [],
+      "body_length": 36
+    }
+  ],
+  "fields": [
+    {
+      "token": "0x04000ED4",
+      "owner": "SkillInfo",
+      "name": "dlc",
+      "row": "06009643010084090000",
+      "signature": "061d02",
+      "opcode": "0x7B"
+    },
+    {
+      "token": "0x040064EC",
+      "owner": "SaveData",
+      "name": "inst",
+      "row": "160006220100413a0000",
+      "signature": "0612a938",
+      "opcode": "0x7E"
+    }
+  ],
+  "methoddef_callee": {
+    "token": "0x060051C9",
+    "name": "IsDLCInstalled",
+    "owner": "SaveData",
+    "row": "6c6c310000008600f3540a00129b01002e3c",
+    "signature": "2001021185c8"
+  },
+  "memberrefs": [
+    {
+      "token": "0x0A0006E8",
+      "name": ".ctor",
+      "row": "04070000eb4f06005c480000",
+      "signature": "200001",
+      "class_coded": 1796
+    },
+    {
+      "token": "0x0A0006E9",
+      "name": "Contains",
+      "row": "04070000dc530600274d0000",
+      "signature": "2001021300",
+      "class_coded": 1796
+    },
+    {
+      "token": "0x0A0006EA",
+      "name": "Add",
+      "row": "04070000e00c06001d490000",
+      "signature": "2001011300",
+      "class_coded": 1796
+    }
+  ],
+  "direct_callers": [
+    {
+      "callee": "0x06001145",
+      "caller": "0x06001077",
+      "owner": "DataBase",
+      "name": "CheckValidation_DLCMove",
+      "size": 27,
+      "sha": "a3ec8e40f3e57a9aae557f4848cdeb42540210d726ff441c108c47e089aef7ba",
+      "sites": [
+        21
+      ],
+      "opcode": "0x6F"
+    },
+    {
+      "callee": "0x06001145",
+      "caller": "0x06004413",
+      "owner": "Menu_Workshop_TechnicCraft_PublishMain",
+      "name": "GetEditItemIdList",
+      "size": 92,
+      "sha": "b61a0da9715110c8b65f9b964b2bdb57961eeb9822e9fb1ef699c3567124715b",
+      "sites": [
+        62
+      ],
+      "opcode": "0x6F"
+    },
+    {
+      "callee": "0x06001146",
+      "caller": "0x06001076",
+      "owner": "DataBase",
+      "name": "GetUnavailableWrestlerDLC_Move",
+      "size": 169,
+      "sha": "ab562e981e5113beda9f2e0cfe8c6232b6c0c5806859352c00d84a0c4a6a0728",
+      "sites": [
+        119
+      ],
+      "opcode": "0x6F"
+    },
+    {
+      "callee": "0x06001148",
+      "caller": "0x06001071",
+      "owner": "DataBase",
+      "name": "CheckEquipDLCAssets_EditWrestler",
+      "size": 233,
+      "sha": "6512595f1c97d8f3213e68fbafbcc8f7735d2cdabeab36e4a285c695a90774b1",
+      "sites": [
+        86
+      ],
+      "opcode": "0x6F"
+    },
+    {
+      "callee": "0x06001148",
+      "caller": "0x06001145",
+      "owner": "SkillInfo",
+      "name": "CheckValidationDLCMove",
+      "size": 65,
+      "sha": "c956c68dd2c8c5ee156bf69ee702993d2cb95118f32a6afc74699bf83aadfdf4",
+      "sites": [
+        1
+      ],
+      "opcode": "0x28"
+    }
+  ],
+  "source_flow": {
+    "check_validation": "CheckValidationDLCMove first invokes IsDLCMove. It returns numeric true if IsDLCMove is false; otherwise loops indices 0 through 12 and returns true upon an enabled dlc byte whose SaveData.inst.IsDLCInstalled(index) call returns true, or returns false after the loop. It does not test that every flagged DLC is installed.",
+    "first_dlc": "GetDLC loops 0 through 12 and returns first index whose dlc byte is nonzero, or -1 after the scan.",
+    "list_dlc": "GetDLCList creates a list, loops 0 through 12, and on an enabled dlc byte calls Contains then Add only when Contains is false. Actual returned list entries depend on unknown original authored flag bytes.",
+    "is_dlc": "IsDLCMove loops 0 through 15 and returns true if any dlc byte is nonzero; otherwise false. The 16-position scan differs from 13-position scans in three sibling methods."
+  },
+  "limits": [
+    "The four exact loops use fixed index bounds in source; no claim of actual backing-array length, installed DLC configuration, or successful index access is established.",
+    "CheckValidationDLCMove source permits success when no DLC position is flagged or when one of first 13 enabled slots passes IsDLCInstalled. This is not proof that all required DLC are installed.",
+    "GetDLCList has no proven direct MethodDef call sites in the audited source search; no claim about runtime reachability or returned values is made.",
+    "Neither authored DLC flag bytes nor downloaded parts/animation data are available from this original DLL code alone.",
+    "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical original decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
