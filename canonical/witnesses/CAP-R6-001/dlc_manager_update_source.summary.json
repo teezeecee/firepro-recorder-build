@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DLC_MANAGER_UPDATE_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x0600103D",
+    "name": "Update",
+    "owner": "DLCManager",
+    "namespace": "DLC",
+    "row": "70fd050000009600edc80000e3a50000180c",
+    "rva": "0x0005FD70",
+    "signature": "000001",
+    "header": "1330020072000000aa020011",
+    "body_length": 114,
+    "body_hex": "7e470c00040b160c385b0000000708940a0628321000063a050000003843000000062833100006392100000006283410000639160000000628351000063a0600000006283c10000638170000007eec6400047b0c6500040694390600000006283f1000060817580c08078e693f9cffffff2a",
+    "body_sha256": "00cb1496157909a7738811e316c18539946158ff9b80dceace7ed02a57539b28"
+  },
+  "fields": [
+    {
+      "token": "0x04000C47",
+      "owner": "DLCManager",
+      "namespace": "DLC",
+      "name": "DLCNums",
+      "row": "3100a5360100120a0000",
+      "signature": "061d1185c8",
+      "site": 0,
+      "opcode": "0x7E"
+    },
+    {
+      "token": "0x040064EC",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "inst",
+      "row": "160006220100413a0000",
+      "signature": "0612a938",
+      "site": 77,
+      "opcode": "0x7E"
+    },
+    {
+      "token": "0x0400650C",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "dlcVersion",
+      "row": "0600de1304008d030000",
+      "signature": "061d08",
+      "site": 82,
+      "opcode": "0x7B"
+    }
+  ],
+  "callees": [
+    {
+      "token": "0x06001032",
+      "owner": "DLCChecker",
+      "namespace": "DLC",
+      "name": "IsValidDLCID",
+      "row": "cef70500000096005277080077960100100c",
+      "rva": "0x0005F7CE",
+      "signature": "0001021185c8",
+      "body_length": 13,
+      "body_sha256": "79789aad408697c28d26725cb2c4a5a73f938d2b79d96b621057305718a61339",
+      "site": 18,
+      "opcode": "0x28"
+    },
+    {
+      "token": "0x06001033",
+      "owner": "DLCChecker",
+      "namespace": "DLC",
+      "name": "IsOwner",
+      "row": "dcf70500000096005f77080077960100110c",
+      "rva": "0x0005F7DC",
+      "signature": "0001021185c8",
+      "body_length": 39,
+      "body_sha256": "1aef92c709ae4ad954e979dec831bd361ef6546059f6ddf914fe9fa352bae5cc",
+      "site": 34,
+      "opcode": "0x28"
+    },
+    {
+      "token": "0x06001034",
+      "owner": "DLCChecker",
+      "namespace": "DLC",
+      "name": "IsDownloaded",
+      "row": "20f80500000096006777080077960100120c",
+      "rva": "0x0005F820",
+      "signature": "0001021185c8",
+      "body_length": 17,
+      "body_sha256": "af5ff606887b4d4b2c4ec923536ee0e43f43574347979bc1ba6518197963836e",
+      "site": 45,
+      "opcode": "0x28"
+    },
+    {
+      "token": "0x06001035",
+      "owner": "DLCChecker",
+      "namespace": "DLC",
+      "name": "IsInstalled",
+      "row": "32f80500000096007477080077960100130c",
+      "rva": "0x0005F832",
+      "signature": "0001021185c8",
+      "body_length": 12,
+      "body_sha256": "751c2af209156c99f29d82417a6389b8a4309208ecc1e2329baeaa5b53428adf",
+      "site": 56,
+      "opcode": "0x28"
+    },
+    {
+      "token": "0x0600103C",
+      "owner": "DLCInstall",
+      "namespace": "DLC",
+      "name": "Install",
+      "row": "70fc0500000096000278080092960100170c",
+      "rva": "0x0005FC70",
+      "signature": "0001011185c8",
+      "body_length": 242,
+      "body_sha256": "87a63cf5e6c3c3bcf200ad2a8fdac1ee49bc3c25ec68121c8fcc7332d21f3305",
+      "site": 67,
+      "opcode": "0x28"
+    },
+    {
+      "token": "0x0600103F",
+      "owner": "DLCUninstall",
+      "namespace": "DLC",
+      "name": "UnInstall",
+      "row": "08fe0500000096000a78080092960100180c",
+      "rva": "0x0005FE08",
+      "signature": "0001011185c8",
+      "body_length": 266,
+      "body_sha256": "a87eff2157f87edf42c77dfcada6729792ec2805451fc4ee525f727e21f32917",
+      "site": 95,
+      "opcode": "0x28"
+    }
+  ],
+  "branches": [
+    {
+      "site": 8,
+      "opcode": "0x38",
+      "delta": 91,
+      "target": 104
+    },
+    {
+      "site": 23,
+      "opcode": "0x3A",
+      "delta": 5,
+      "target": 33
+    },
+    {
+      "site": 28,
+      "opcode": "0x38",
+      "delta": 67,
+      "target": 100
+    },
+    {
+      "site": 39,
+      "opcode": "0x39",
+      "delta": 33,
+      "target": 77
+    },
+    {
+      "site": 50,
+      "opcode": "0x39",
+      "delta": 22,
+      "target": 77
+    },
+    {
+      "site": 61,
+      "opcode": "0x3A",
+      "delta": 6,
+      "target": 72
+    },
+    {
+      "site": 72,
+      "opcode": "0x38",
+      "delta": 23,
+      "target": 100
+    },
+    {
+      "site": 89,
+      "opcode": "0x39",
+      "delta": 6,
+      "target": 100
+    },
+    {
+      "site": 108,
+      "opcode": "0x3F",
+      "delta": -100,
+      "target": 13
+    }
+  ],
+  "flow_pins": {
+    "dlcnums_array_read": [
+      13,
+      17
+    ],
+    "array_version_index_and_check": [
+      87,
+      94
+    ],
+    "counter_increment": [
+      100,
+      104
+    ],
+    "loop_length_check": [
+      104,
+      113
+    ],
+    "ret": 113
+  },
+  "limits": [
+    "Exact source metadata, full 114-byte IL, direct method call sites, field sites and branch targets only; this is not observed execution or proof of successful installation/uninstallation.",
+    "Original DLCManager.Update calls DLCInstall.Install and DLCUninstall.UnInstall, their owner TypeDefs are distinct from DLCManager. Both callee bodies are hash-pinned but their internal semantics are NOT promoted by this fact.",
+    "Original DLCNums array values, contents/length, SaveData.inst initialization and dlcVersion values are NOT proven.",
+    "External Steamworks owner/installed/downloaded results are NOT known or asserted; bytecode proves only branch topology and call chain.",
+    "Original resources.assets parent SHA, actual loaded fprwaza binding and historical original retail decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "fact_id": "FACT-0316",
+  "status": "PROVEN_DLL",
+  "claim": "Matching original retail DLL DLC.DLCManager.Update MethodDef 0x0600103D is exactly 114 bytes. It loads DLCManager.DLCNums, iterates indexes, calls DLCChecker.IsValidDLCID, IsOwner, IsDownloaded, IsInstalled at exact six bounded direct call sites along with DLCInstall.Install (owner DLC.DLCInstall, NOT DLCManager) and DLCUninstall.UnInstall (owner DLC.DLCUninstall, NOT DLCManager), and reads SaveData.inst.dlcVersion. All MethodDef/FieldDef metadata owner identities, full IL, branch targets, bounded callee whole-body hashes and index/array operands are pinned from the original DLL. No Steam outcome, DLCNums contents, successful installation/uninstallation or runtime simulation is established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original 8,171,008-byte Assembly-CSharp(3).dll SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; DLCManager.Update MethodDef 0x0600103D RVA 0x0005FD70 full 114-byte IL SHA256 00cb1496157909a7738811e316c18539946158ff9b80dceace7ed02a57539b28, exact 3 fields, 6 called MethodDefs, 9 branch targets, original TypeDef owner mappings and complete bounded callee hashes. Witness canonical/witnesses/CAP-R6-001/dlc_manager_update_source.summary.json, prover tools/prove_dlc_manager_update_source.py.",
+      "observation": "Exact DLC-manager source loop, condition and calls, without authored values or observed outcomes"
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0316 DLCManager.Update 0x0600103D",
+      "to": "DLC.DLCChecker.IsValidDLCID 0x06001032",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete caller IL direct call 0x06001032 at offset +18, matching callee original metadata and whole IL SHA256 79789aad408697c28d26725cb2c4a5a73f938d2b79d96b621057305718a61339."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0316 DLCManager.Update 0x0600103D",
+      "to": "DLC.DLCChecker.IsOwner 0x06001033",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete caller IL direct call 0x06001033 at offset +34, matching callee original metadata and whole IL SHA256 1aef92c709ae4ad954e979dec831bd361ef6546059f6ddf914fe9fa352bae5cc."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0316 DLCManager.Update 0x0600103D",
+      "to": "DLC.DLCChecker.IsDownloaded 0x06001034",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete caller IL direct call 0x06001034 at offset +45, matching callee original metadata and whole IL SHA256 af5ff606887b4d4b2c4ec923536ee0e43f43574347979bc1ba6518197963836e."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0316 DLCManager.Update 0x0600103D",
+      "to": "DLC.DLCChecker.IsInstalled 0x06001035",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete caller IL direct call 0x06001035 at offset +56, matching callee original metadata and whole IL SHA256 751c2af209156c99f29d82417a6389b8a4309208ecc1e2329baeaa5b53428adf."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0316 DLCManager.Update 0x0600103D",
+      "to": "DLC.DLCInstall.Install 0x0600103C",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete caller IL direct call 0x0600103C at offset +67, matching callee original metadata and whole IL SHA256 87a63cf5e6c3c3bcf200ad2a8fdac1ee49bc3c25ec68121c8fcc7332d21f3305."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0316 DLCManager.Update 0x0600103D",
+      "to": "DLC.DLCUninstall.UnInstall 0x0600103F",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete caller IL direct call 0x0600103F at offset +95, matching callee original metadata and whole IL SHA256 a87eff2157f87edf42c77dfcada6729792ec2805451fc4ee525f727e21f32917."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Exact source metadata, full 114-byte IL, direct method call sites, field sites and branch targets only; this is not observed execution or proof of successful installation/uninstallation.",
+    "Original DLCManager.Update calls DLCInstall.Install and DLCUninstall.UnInstall, their owner TypeDefs are distinct from DLCManager. Both callee bodies are hash-pinned but their internal semantics are NOT promoted by this fact.",
+    "Original DLCNums array values, contents/length, SaveData.inst initialization and dlcVersion values are NOT proven.",
+    "External Steamworks owner/installed/downloaded results are NOT known or asserted; bytecode proves only branch topology and call chain.",
+    "Original resources.assets parent SHA, actual loaded fprwaza binding and historical original retail decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}
