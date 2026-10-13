@@ -1,0 +1,42 @@
+{
+  "fact_id": "FACT-0313",
+  "status": "PROVEN_DLL",
+  "claim": "Exact original DLC.DLCChecker.IsValidDLCID MethodDef 0x06001032 13-byte IL and DLC.DLCChecker.IsOwner MethodDef 0x06001033 39-byte IL are source-pinned against the matching 8,171,008-byte retail DLL. IsValidDLCID calls DLC.DLCID.GetDLCID then twice applies ceq to determine whether the returned integer is not -1. IsOwner passes this validity result into Steamworks.AppId_t constructor MemberRef then calls Steamworks.SteamApps.BIsSubscribedApp; source has a System.Object catch covering IL+15..+29 that sets return local to zero, with constructor before catch interval. Original callee MethodDef and MemberRef/type metadata, exception bytes, two leave destinations, and exact direct callers DLC.DLCManager.Update and SaveData.IsDLCInstalled are pinned. No actual installed DLC or Steam ownership outcome is established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching exact original Assembly-CSharp.dll 8,171,008 bytes SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; complete 13/39-byte IL hashes 79789aad408697c28d26725cb2c4a5a73f938d2b79d96b621057305718a61339 / 1aef92c709ae4ad954e979dec831bd361ef6546059f6ddf914fe9fa352bae5cc; tiny/fat headers; original System.Object EH small clause, two direct caller SHA and original Steamworks MemberRef/type rows; witness canonical/witnesses/CAP-R6-001/dlc_checker_is_owner_source.summary.json; raw-DLL prover tools/prove_dlc_checker_is_owner_source.py.",
+      "observation": "Exact source caller/ownership-query and limited exception behavior, not retail DLC entitlement."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0312 SaveData.IsDLCInstalled 0x060051C9",
+      "to": "FACT-0313 DLC.DLCChecker.IsOwner 0x06001033",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete 45-byte SaveData.IsDLCInstalled SHA d353bf6e7046434074ecca1c5a62cb8cd9ec636500659fc5b9083f2943c7d841, call 0x06001033 at IL+1."
+        }
+      ]
+    },
+    {
+      "from": "DLC.DLCChecker.IsOwner 0x06001033",
+      "to": "DLC.DLCChecker.IsValidDLCID 0x06001032, DLCID.GetDLCID 0x06001036, Steamworks.AppId_t::.ctor and SteamApps.BIsSubscribedApp original MemberRefs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Complete original IsOwner 39-byte IL call helper +1, AppId_t::.ctor +10, BIsSubscribedApp +16; IsValidDLCID 13-byte IL calls GetDLCID at +1; catch only the original [15,29) region."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method and IL/source metadata prove original call and catch control flow but do not establish whether Steamworks initializes, which account is logged in, or whether BIsSubscribedApp succeeds.",
+    "The original source passes the result of IsValidDLCID into AppId_t. Do not infer that this is the mapped integer app-ID or correct an apparent surprising conversion.",
+    "The original catch System.Object covers the IL interval [15,29); it does not cover the AppId_t constructor or the validity-helper call before that interval.",
+    "DLCID.GetDLCID is pinned to an exact original 143-byte method and SHA for direct callee identity; its switch table and actual integer mapping have not been promoted as authored runtime facts here.",
+    "Direct callers are limited to two explicitly audited original functions; actual DLC ownership, installed game data, and complete calling context remain unverified.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical retail asset decode vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
