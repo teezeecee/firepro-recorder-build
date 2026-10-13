@@ -5818,6 +5818,29 @@
         "Original code-level field labels and caller operands do not prove authored reversal table contents, move results, animation transitions, or a match outcome.",
         "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_GET_SKILL_FILTER_NAME_SOURCE_V1",
+      "fact_id": "FACT-0306",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SkillInfoManager.GetSkillFilterName 0x06001168 complete 54-byte method tests SaveData.inst null; source branches to Get(SkillFilterName, numeric zero, input) or Get(SkillFilterName, SaveData.inst.optionSettings.language, input). Source original metadata, field and MemberRef operands, branch and one Dialog_ArtsSet.InitButton call proven. Authored localization strings and gameplay/UI output not established.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_get_skill_filter_name_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001168",
+          "0x0000",
+          "0x0036"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original method proves the selection of numeric zero or an original OptionSettings.language field for the Get call, not the meaning of any actual language identifier.",
+        "Original SkillFilterName field identity and Get call operands do not establish the source array's contents, displayed text, localized labels or in-game UI outcome.",
+        "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

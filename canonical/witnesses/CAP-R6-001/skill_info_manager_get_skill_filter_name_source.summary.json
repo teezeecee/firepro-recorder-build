@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_GET_SKILL_FILTER_NAME_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001168",
+    "owner": "SkillInfoManager",
+    "name": "GetSkillFilterName",
+    "rva": "0x00069D08",
+    "row": "089d06000000960008880800cca10100060d",
+    "signature": "00010e11a98c",
+    "header": "1330030036000000ab020011",
+    "body_length": 54,
+    "body_sha256": "73c2d64bdb741126de2ac89bb3bada4413c5d7bb02c6f93c89d1c9f8d7edaafd",
+    "body_hex": "7eec6400040a0614280600000a390d0000007ed80e00041602286906000a2a7ed80e0004067bf26400047bcf64000402286906000a2a"
+  },
+  "fields": [
+    {
+      "token": "0x040064EC",
+      "owner": "SaveData",
+      "name": "inst",
+      "row": "160006220100413a0000",
+      "signature": "0612a938",
+      "load_site": 0,
+      "opcode": "ldsfld"
+    },
+    {
+      "token": "0x04000ED8",
+      "owner": "SkillInfoManager",
+      "name": "SkillFilterName",
+      "row": "1100b74c0100a1080000",
+      "signature": "06140e0200020000",
+      "load_sites": [
+        18,
+        31
+      ],
+      "opcode": "ldsfld"
+    },
+    {
+      "token": "0x040064F2",
+      "owner": "SaveData",
+      "name": "optionSettings",
+      "row": "0600fe110400543a0000",
+      "signature": "0612a924",
+      "load_site": 37,
+      "opcode": "ldfld"
+    },
+    {
+      "token": "0x040064CF",
+      "owner": "OptionSettings",
+      "name": "language",
+      "row": "06006bae010079080000",
+      "signature": "0611850c",
+      "load_site": 42,
+      "opcode": "ldfld"
+    }
+  ],
+  "memberrefs": [
+    {
+      "token": "0x0A000006",
+      "name": "op_Equality",
+      "row": "d100000021500600b6480000",
+      "signature": "00020212691269",
+      "class_coded": 209,
+      "sites": [
+        8
+      ],
+      "opcode": "call"
+    },
+    {
+      "token": "0x0A000669",
+      "name": "Get",
+      "row": "ec050000d859060080490000",
+      "signature": "20020e0808",
+      "class_coded": 1516,
+      "sites": [
+        25,
+        48
+      ],
+      "opcode": "call"
+    }
+  ],
+  "branch": {
+    "site": 13,
+    "opcode": "0x39",
+    "relative": 13,
+    "target": 31
+  },
+  "branches": {
+    "null_save_data": {
+      "site_start": 18,
+      "site_end": 31,
+      "source_hex": "7ed80e00041602286906000a2a",
+      "get_call": 25,
+      "return_site": 30
+    },
+    "save_data_present": {
+      "site_start": 31,
+      "site_end": 54,
+      "source_hex": "7ed80e0004067bf26400047bcf64000402286906000a2a",
+      "get_call": 48,
+      "return_site": 53
+    }
+  },
+  "caller": {
+    "token": "0x060029E7",
+    "owner": "Dialog_ArtsSet",
+    "name": "InitButton",
+    "body_length": 1107,
+    "body_sha256": "474a5a1bcf5cbb7b9078183dc7b0086879c5e6a2bb8cdc2e725c2e0462c7df14",
+    "call_site": 427,
+    "opcode": "call"
+  },
+  "limits": [
+    "Original method proves the selection of numeric zero or an original OptionSettings.language field for the Get call, not the meaning of any actual language identifier.",
+    "Original SkillFilterName field identity and Get call operands do not establish the source array's contents, displayed text, localized labels or in-game UI outcome.",
+    "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

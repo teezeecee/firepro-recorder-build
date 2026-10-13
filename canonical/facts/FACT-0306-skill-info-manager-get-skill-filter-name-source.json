@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0306",
+  "status": "PROVEN_DLL",
+  "claim": "Original retail SkillInfoManager.GetSkillFilterName MethodDef 0x06001168 has exact 54-byte IL SHA256 73c2d64bdb741126de2ac89bb3bada4413c5d7bb02c6f93c89d1c9f8d7edaafd. It reads original SaveData.inst FieldDef 0x040064EC, invokes original MemberRef op_Equality 0x0A000006 to test against null, and at IL+13 brfalse branches to IL+31 when SaveData.inst is nonnull. The null branch passes original SkillFilterName field 0x04000ED8, numeric zero and method argument to original Get MemberRef 0x0A000669 at IL+25. The nonnull branch passes the same SkillFilterName field, SaveData.inst.optionSettings.language FieldDefs 0x040064F2 and 0x040064CF, and the method argument to the same original Get MemberRef at IL+48. Both branches return the call result. One exact original direct call is in Dialog_ArtsSet.InitButton MethodDef 0x060029E7 at IL+427. No authored label strings, actual language selection or UI result established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "SHA-matched original 8,171,008-byte Assembly-CSharp(3).dll SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; MethodDef 0x06001168 metadata row 089d06000000960008880800cca10100060d, RVA 0x00069D08, full 54-byte IL SHA 73c2d64bdb741126de2ac89bb3bada4413c5d7bb02c6f93c89d1c9f8d7edaafd. FieldDef metadata and owner rows for four source fields, original MemberRefs op_Equality and Get, original brfalse destination IL+31, and original Dialog_ArtsSet.InitButton 0x060029E7 full 1107-byte SHA 474a5a1bcf5cbb7b9078183dc7b0086879c5e6a2bb8cdc2e725c2e0462c7df14 call IL+427. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_get_skill_filter_name_source.summary.json.",
+      "observation": "Source branch and operands for localized label lookup, not the contents or runtime output of text resources."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Original Dialog_ArtsSet.InitButton 0x060029E7",
+      "to": "FACT-0306 SkillInfoManager.GetSkillFilterName 0x06001168",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original 1107-byte parent IL SHA 474a5a1bcf5cbb7b9078183dc7b0086879c5e6a2bb8cdc2e725c2e0462c7df14; one exact direct call operand at IL+427."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original method proves the selection of numeric zero or an original OptionSettings.language field for the Get call, not the meaning of any actual language identifier.",
+    "Original SkillFilterName field identity and Get call operands do not establish the source array's contents, displayed text, localized labels or in-game UI outcome.",
+    "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
