@@ -1,0 +1,71 @@
+{
+  "fact_id": "FACT-0320",
+  "status": "PROVEN_DLL",
+  "claim": "Matching 8,171,008-byte retail Assembly-CSharp(3).dll contains two original DLCInitializer uninstall helper methods, UninstallDLC_StoryMode_NJPW1 MethodDef 0x06001039 and UninstallDLC_Stardom MethodDef 0x0600103B. Both have byte-exact 119-byte IL and identical 118-byte suffix; they differ only in their original first single-byte raw numeric constant 2 versus 5. Original instructions access SaveData.inst and titleMatch_Data, TitleMatch_Data.presetBeltID and PresetBeltDataManager.inst, and have source calls to PresetBeltDataManager.GetPresetBeltData, PresetBeltData.IsDLCBelonging and TitleMatch_Data.ReturnBelt. Six branch sites, four numeric unresolved MemberRef operand sites, one TypeSpec operand, and original 16-byte finally exception sections are source-pinned for both methods. This closes the two directly invoked helper body source dependencies from FACT-0319 but DOES NOT claim observed belt removal, collection contents, external MemberRef semantics, or installed DLC results.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original Assembly-CSharp(3).dll SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; complete MethodDef IL, metadata, original 16-byte finally sections and exact operand-site witnesses in canonical/witnesses/CAP-R6-001/dlc_initializer_uninstall_belt_helpers_source.summary.json; direct original DLL validator tools/prove_dlc_initializer_uninstall_belt_helpers_source.py.",
+      "observation": "Original 2 helper method source IL and EH sections, not runtime execution"
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0319 DLCUninstall.UnInstall 0x0600103F",
+      "to": "DLCInitializer.UninstallDLC_StoryMode_NJPW1 0x06001039",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0319 original call IL+97; FACT-0320 original complete 119-byte callee IL, MethodDef row, exception section and operand sites."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0319 DLCUninstall.UnInstall 0x0600103F",
+      "to": "DLCInitializer.UninstallDLC_Stardom 0x0600103B",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0319 original call IL+144; FACT-0320 original complete 119-byte callee IL, MethodDef row, exception section and operand sites."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0320 both DLCInitializer uninstall helper bodies",
+      "to": "PresetBeltDataManager.GetPresetBeltData 0x060010E7",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Both original bodies at IL+61, verified original MethodDef row/signature/body SHA256 36afd73c64f43e4c3e5ddc5a29a34a82507b98343923974f99e629435bf9e139; actual gameplay state/side effects not claimed."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0320 both DLCInitializer uninstall helper bodies",
+      "to": "PresetBeltData.IsDLCBelonging 0x060010E4",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Both original bodies at IL+71, verified original MethodDef row/signature/body SHA256 fbdf3b58ba656831558a1d3e603da793653aaab40fc338a57c4314965f3f7269; actual gameplay state/side effects not claimed."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0320 both DLCInitializer uninstall helper bodies",
+      "to": "TitleMatch_Data.ReturnBelt 0x060011B1",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Both original bodies at IL+82, verified original MethodDef row/signature/body SHA256 8efc2d62ef42959ac398d67836859bbcdb22215940c4a4e401253166c540c535; actual gameplay state/side effects not claimed."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original MethodDef rows, entire IL, all direct source operand sites, direct callee body hashes and original 16-byte exception sections are proven from matching DLL bytes, not gameplay execution.",
+    "The numeric 2 and 5 are original IL constants passed along the IsDLCBelonging call chain, not proof of corresponding Steam product names, owned entitlements or runtime contents.",
+    "MemberRef 0x0A0006D7, 0x0A0006D8, 0x0A0006D9, 0x0A00011F and TypeSpec 0x1B0000DD are only bounded numeric operand identities here; independently resolving their targets remains open.",
+    "The ReturnBelt call is confirmed in original source, but its runtime effects, iterated data, or observed installed DLC/belt changes are not established.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
