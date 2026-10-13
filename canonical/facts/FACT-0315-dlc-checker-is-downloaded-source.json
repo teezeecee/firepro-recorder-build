@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0315",
+  "status": "PROVEN_DLL",
+  "claim": "Original 17-byte DLC.DLCChecker.IsDownloaded MethodDef 0x06001034 forwards input DLCEnum through existing DLCID.GetDLCID 0x06001036, constructs Steamworks.AppId_t via newobj MemberRef 0x0A0006C4, calls SteamApps.BIsDlcInstalled MemberRef 0x0A0006C6, and returns. Full original method IL, metadata rows and signatures, TypeRefs, MemberRefs, 143-byte GetDLCID callee and 114-byte DLCManager.Update caller with direct call at IL+45 are pinned. Source only, no DLC installation/Steam runtime claim.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original DLL 8171008 bytes SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; method IL SHA256 af5ff606887b4d4b2c4ec923536ee0e43f43574347979bc1ba6518197963836e; original metadata, GetDLCID callee and DLCManager.Update caller pinned in canonical/witnesses/CAP-R6-001/dlc_checker_is_downloaded_source.summary.json",
+      "observation": "Exact source IL and bounded callee/caller chain, not external Steam state"
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0315 DLCChecker.IsDownloaded",
+      "to": "FACT-0121 DLCID.GetDLCID",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Call MethodDef 0x06001036 at source IL+1; original 143-byte callee pinned"
+        }
+      ]
+    },
+    {
+      "from": "DLCManager.Update MethodDef 0x0600103D",
+      "to": "FACT-0315 DLCChecker.IsDownloaded",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact 114-byte caller SHA256 00cb1496157909a7738811e316c18539946158ff9b80dceace7ed02a57539b28, IL+45 direct call to 0x06001034"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only original source call flow was verified. Steamworks library implementation, initialized Steam state, DLC ownership, downloaded content and outcomes are not verified.",
+    "FACT-0121 already proves DLCID.GetDLCID mapping. Do not duplicate or infer product-name labels.",
+    "One DLCManager.Update direct caller was examined; no exhaustive runtime execution assertion.",
+    "Original resources.assets parent SHA, retail loaded fprwaza binding, original asset vault unresolved. SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DLC_CHECKER_IS_DOWNLOADED_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001034",
+    "owner": "DLCChecker",
+    "namespace": "DLC",
+    "name": "IsDownloaded",
+    "rva": "0x0005F820",
+    "row": "20f80500000096006777080077960100120c",
+    "signature": "0001021185c8",
+    "header": "46",
+    "body_length": 17,
+    "body_hex": "02283610000673c406000a28c606000a2a",
+    "body_sha256": "af5ff606887b4d4b2c4ec923536ee0e43f43574347979bc1ba6518197963836e"
+  },
+  "methoddef_callee": {
+    "token": "0x06001036",
+    "owner": "DLCID",
+    "namespace": "DLC",
+    "name": "GetDLCID",
+    "rva": "0x0005F840",
+    "row": "40f80500000096008077080089960100140c",
+    "signature": "00011185d01185c8",
+    "body_length": 143,
+    "body_sha256": "e71bcaa68daa57d26a04e13b1d43b7761db94df3724f312e48ce26b7d81e5442",
+    "site": 1,
+    "opcode": "0x28"
+  },
+  "typerefs": [
+    {
+      "token": "0x01000196",
+      "name": "AppId_t",
+      "namespace": "Steamworks",
+      "row": "22003aa40600c19d0200",
+      "resolution_scope_coded": 34
+    },
+    {
+      "token": "0x01000197",
+      "name": "SteamApps",
+      "namespace": "Steamworks",
+      "row": "220042a40600c19d0200",
+      "resolution_scope_coded": 34
+    }
+  ],
+  "memberrefs": [
+    {
+      "token": "0x0A0006C4",
+      "owner_type_token": "0x01000196",
+      "name": ".ctor",
+      "row": "b10c0000eb4f0600d4a80000",
+      "class_coded": 3249,
+      "signature": "20010109",
+      "site": 6,
+      "opcode": "0x73"
+    },
+    {
+      "token": "0x0A0006C6",
+      "owner_type_token": "0x01000197",
+      "name": "BIsDlcInstalled",
+      "row": "b90c00005da40600d9a80000",
+      "class_coded": 3257,
+      "signature": "000102118659",
+      "site": 11,
+      "opcode": "0x28"
+    }
+  ],
+  "direct_caller": {
+    "token": "0x0600103D",
+    "owner": "DLCManager",
+    "namespace": "DLC",
+    "name": "Update",
+    "body_length": 114,
+    "body_sha256": "00cb1496157909a7738811e316c18539946158ff9b80dceace7ed02a57539b28",
+    "site": 45,
+    "opcode": "0x28"
+  },
+  "limits": [
+    "Only original source call flow was verified. Steamworks library implementation, initialized Steam state, DLC ownership, downloaded content and outcomes are not verified.",
+    "FACT-0121 already proves DLCID.GetDLCID mapping. Do not duplicate or infer product-name labels.",
+    "One DLCManager.Update direct caller was examined; no exhaustive runtime execution assertion.",
+    "Original resources.assets parent SHA, retail loaded fprwaza binding, original asset vault unresolved. SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}

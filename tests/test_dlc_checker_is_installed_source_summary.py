@@ -19,8 +19,8 @@ assert w["callee"]["name"]=="IsDLCInstalled"
 ids=[x["family_id"] for x in reg["families"]]
 factids=[x["fact_id"] for x in reg["families"]]
 assert len(ids)>=313 and len(ids)==len(set(ids)) and len(factids)==len(set(factids))
-assert factids[-1]=="FACT-0314"
+assert "FACT-0314" in factids
 assert sum(x["fact_id"]=="FACT-0314" for x in reg["families"])==1
-assert reg["families"][-1]["runtime_eligible"] is False
+assert next(x for x in reg["families"] if x["fact_id"]=="FACT-0314")["runtime_eligible"] is False
 assert reg["runtime_unlocked"] is False
 print("DLC CHECKER IS INSTALLED SOURCE SUMMARY: PASS")

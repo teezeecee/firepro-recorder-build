@@ -6055,6 +6055,30 @@
         "The original SaveData.IsDLCInstalled body is source-pinned by FACT-0312; no new runtime outcomes, authored DLC values, Steam account state or source asset contents are demonstrated.",
         "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original retail decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer remain locked."
       ]
+    },
+    {
+      "family_id": "DLL_DLC_CHECKER_IS_DOWNLOADED_SOURCE_V1",
+      "fact_id": "FACT-0315",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original DLCChecker.IsDownloaded full 17-byte DLL source with GetDLCID bridge, AppId_t construction, SteamApps.BIsDlcInstalled and bounded DLCManager.Update caller; actual Steam state and installed DLC unknown.",
+      "summary": "canonical/witnesses/CAP-R6-001/dlc_checker_is_downloaded_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001034",
+          "0x0000",
+          "0x0011"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Only original source call flow was verified. Steamworks library implementation, initialized Steam state, DLC ownership, downloaded content and outcomes are not verified.",
+        "FACT-0121 already proves DLCID.GetDLCID mapping. Do not duplicate or infer product-name labels.",
+        "One DLCManager.Update direct caller was examined; no exhaustive runtime execution assertion.",
+        "Original resources.assets parent SHA, retail loaded fprwaza binding, original asset vault unresolved. SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
