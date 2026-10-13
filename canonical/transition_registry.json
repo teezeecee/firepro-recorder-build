@@ -5693,6 +5693,29 @@
         "For both helpers the first Substring(2,1) is outside the catch and there is no source-backed zero fallback for a nonempty too-short input.",
         "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical asset decode vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_PARSE_WINNING_TECH_DISP_TYPE_SOURCE_V1",
+      "fact_id": "FACT-0301",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SkillInfoManager.Parse_WinningTechDispType 0x0600115D complete 71-byte IL. It returns 0 for empty string or mismatched literal space at Substring(1,1) outside catch, and parses Int32.Parse(Substring(0,1)) inside System.Object catch. Short nonempty string is not protected by catch. One source direct call from ParseSkillParam at IL+262, no authored row semantics.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_parse_winning_tech_disp_type_source.summary.json",
+      "source_windows": [
+        [
+          "0x0600115D",
+          "0x0000",
+          "0x0047"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original Substring(1,1) outside catch; no proven short-string fallback.",
+        "No authored Unity row, enum label or gameplay output.",
+        "Original Unity parent assets identity, loaded fprwaza binding and decoded vault OPEN; runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
