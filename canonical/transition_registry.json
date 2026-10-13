@@ -5767,6 +5767,34 @@
         "No loaded Unity TextAsset values or observed gameplay consequences are established by this proof.",
         "Retail Unity resources.assets parent SHA, actually loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_SKILL_COUNT_VALIDITY_LOOKUPS_V1",
+      "fact_id": "FACT-0304",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SkillInfoManager.GetSkillNum 0x06001162 returns skillInfoList.get_Count via complete 12-byte IL; original IsValidSkillID 0x06001163 returns ContainsKey Boolean via complete 21-byte IL. Raw FieldDef and MemberRef records, the source brfalse, and four IsValidSkillID callvirt sites in original packed-skill and craft loaders are source-proven. No authored dictionary contents or gameplay result established.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_skill_count_validity_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001162",
+          "0x0000",
+          "0x000C"
+        ],
+        [
+          "0x06001163",
+          "0x0000",
+          "0x0015"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Both methods read original skillInfoList field, but neither establishes any populated dictionary, count value, key validity in a retail match, or runtime asset load.",
+        "Names, method signatures and ContainsKey/get_Count operands prove only source control flow; unknown authored skill IDs and actual game lookup outcomes must not be inferred.",
+        "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historic decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
