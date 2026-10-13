@@ -6079,6 +6079,31 @@
         "One DLCManager.Update direct caller was examined; no exhaustive runtime execution assertion.",
         "Original resources.assets parent SHA, retail loaded fprwaza binding, original asset vault unresolved. SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_DLC_MANAGER_UPDATE_SOURCE_V1",
+      "fact_id": "FACT-0316",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original retail DLCManager.Update full 114-byte IL loop exact proof, 3 FieldDefs, 6 called MethodDefs, nine branch targets, DLCNums array/SaveData flags and distinct DLCInstall/Uninstall owner methods; no runtime DLC state established.",
+      "summary": "canonical/witnesses/CAP-R6-001/dlc_manager_update_source.summary.json",
+      "source_windows": [
+        [
+          "0x0600103D",
+          "0x0000",
+          "0x0072"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Exact source metadata, full 114-byte IL, direct method call sites, field sites and branch targets only; this is not observed execution or proof of successful installation/uninstallation.",
+        "Original DLCManager.Update calls DLCInstall.Install and DLCUninstall.UnInstall, their owner TypeDefs are distinct from DLCManager. Both callee bodies are hash-pinned but their internal semantics are NOT promoted by this fact.",
+        "Original DLCNums array values, contents/length, SaveData.inst initialization and dlcVersion values are NOT proven.",
+        "External Steamworks owner/installed/downloaded results are NOT known or asserted; bytecode proves only branch topology and call chain.",
+        "Original resources.assets parent SHA, actual loaded fprwaza binding and historical original retail decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
