@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_PARSE_FILTERING_TYPE_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x0600115B",
+    "owner": "SkillInfoManager",
+    "name": "Parse_FilteringType",
+    "rva": "0x000696D0",
+    "row": "d0960600000091001287080026a10100f90c",
+    "signature": "000111a98c0e",
+    "header": "1b3003004a0000001a030011",
+    "body_length": 74,
+    "body_sha256": "503843b6931030795cec86e54d623466d12bb466ce51c5d8fd9d02124b085303",
+    "body_hex": "02281500000a39030000001f262a0218176f1800000a726f0400706f0c03000a3a030000001f262a160a0216186f1800000a28de06000a0a060bdd09000000261f260bdd00000000072a"
+  },
+  "memberrefs": [
+    {
+      "site": 1,
+      "opcode": "call",
+      "token": "0x0A000015",
+      "name": "IsNullOrEmpty",
+      "row": "f9050000f350060070490000",
+      "signature": "0001020e"
+    },
+    {
+      "site": 17,
+      "opcode": "callvirt",
+      "token": "0x0A000018",
+      "name": "Substring",
+      "row": "f90500001151060080490000",
+      "signature": "20020e0808"
+    },
+    {
+      "site": 27,
+      "opcode": "callvirt",
+      "token": "0x0A00030C",
+      "name": "Equals",
+      "row": "f9050000875b0600e44f0000",
+      "signature": "2001020e"
+    },
+    {
+      "site": 45,
+      "opcode": "callvirt",
+      "token": "0x0A000018",
+      "name": "Substring",
+      "row": "f90500001151060080490000",
+      "signature": "20020e0808"
+    },
+    {
+      "site": 50,
+      "opcode": "call",
+      "token": "0x0A0006DE",
+      "name": "Parse",
+      "row": "b90600005056060052590000",
+      "signature": "0001080e"
+    }
+  ],
+  "substring_windows": [
+    {
+      "call_site": 17,
+      "start": 2,
+      "length": 1,
+      "hex": "0218176f1800000a"
+    },
+    {
+      "call_site": 45,
+      "start": 0,
+      "length": 2,
+      "hex": "0216186f1800000a"
+    }
+  ],
+  "literal": {
+    "site": 22,
+    "token": "0x7000046F",
+    "value": " ",
+    "heap_bytes": "03200000"
+  },
+  "branches": [
+    {
+      "site": 6,
+      "opcode": "0x39",
+      "relative": 3,
+      "target": 14
+    },
+    {
+      "site": 32,
+      "opcode": "0x3A",
+      "relative": 3,
+      "target": 40
+    },
+    {
+      "site": 58,
+      "opcode": "0xDD",
+      "relative": 9,
+      "target": 72
+    },
+    {
+      "site": 67,
+      "opcode": "0xDD",
+      "relative": 0,
+      "target": 72
+    }
+  ],
+  "returns": {
+    "empty_site": 11,
+    "empty_il": "1f262a",
+    "format_mismatch_site": 37,
+    "format_mismatch_il": "1f262a",
+    "catch_site": 63,
+    "catch_il": "261f260b",
+    "normal_site": 72,
+    "normal_il": "072a",
+    "fallback_ordinal": 38
+  },
+  "exception": {
+    "hex": "0110000000002a00153f0009c2000001",
+    "format": "small",
+    "try_offset": 42,
+    "try_length": 21,
+    "handler_offset": 63,
+    "handler_length": 9,
+    "catch_type": "0x010000C2",
+    "catch_name": "Object",
+    "catch_namespace": "System"
+  },
+  "parent": {
+    "token": "0x06001153",
+    "name": "ParseSkillParam",
+    "body_length": 1396,
+    "body_sha256": "96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b",
+    "direct_call_sites": [
+      188
+    ]
+  },
+  "limits": [
+    "Initial original String.Substring(2,1) executes outside System.Object catch; the source does not prove any safe fallback for nonempty strings shorter than three characters.",
+    "Numeric 38 is an original source ordinal fallback, not a proved enum meaning, authored skill row, or actual gameplay outcome.",
+    "Original Unity resources.assets parent identity, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

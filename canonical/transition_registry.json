@@ -5716,6 +5716,29 @@
         "No authored Unity row, enum label or gameplay output.",
         "Original Unity parent assets identity, loaded fprwaza binding and decoded vault OPEN; runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_PARSE_FILTERING_TYPE_SOURCE_V1",
+      "fact_id": "FACT-0302",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original 74-byte SkillInfoManager.Parse_FilteringType MethodDef 0x0600115B: null/empty and mismatched third-character space return numeric 38; on matching space parse first two characters with Int32.Parse in small System.Object catch whose failure returns 38. Original first Substring(2,1) is outside catch. One direct call at ParseSkillParam IL+188. Numeric 38's authored enum meaning and gameplay consequence remain unproven.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_parse_filtering_type_source.summary.json",
+      "source_windows": [
+        [
+          "0x0600115B",
+          "0x0000",
+          "0x004A"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Initial original String.Substring(2,1) executes outside System.Object catch; the source does not prove any safe fallback for nonempty strings shorter than three characters.",
+        "Numeric 38 is an original source ordinal fallback, not a proved enum meaning, authored skill row, or actual gameplay outcome.",
+        "Original Unity resources.assets parent identity, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
