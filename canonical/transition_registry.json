@@ -6184,6 +6184,36 @@
         "The default switch target jumps to the final ret without an array store. Each of the 13 case arms stores raw numeric zero into SaveData.dlcVersion at its corresponding original numeric index.",
         "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_DLC_INITIALIZER_UNINSTALL_BELT_HELPERS_SOURCE_V1",
+      "fact_id": "FACT-0320",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original pair of 119-byte DLCInitializer uninstall belt helper bodies, original MethodDef/header/whole IL/EH byte sections, numeric 2/5 literal distinction, four FieldDefs, three MethodDef callees, bounded five numeric-only external operand identities, six branch targets and shared finally layout; no observed DLC or belt outcomes.",
+      "summary": "canonical/witnesses/CAP-R6-001/dlc_initializer_uninstall_belt_helpers_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001039",
+          "0x0000",
+          "0x0077"
+        ],
+        [
+          "0x0600103B",
+          "0x0000",
+          "0x0077"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original MethodDef rows, entire IL, all direct source operand sites, direct callee body hashes and original 16-byte exception sections are proven from matching DLL bytes, not gameplay execution.",
+        "The numeric 2 and 5 are original IL constants passed along the IsDLCBelonging call chain, not proof of corresponding Steam product names, owned entitlements or runtime contents.",
+        "MemberRef 0x0A0006D7, 0x0A0006D8, 0x0A0006D9, 0x0A00011F and TypeSpec 0x1B0000DD are only bounded numeric operand identities here; independently resolving their targets remains open.",
+        "The ReturnBelt call is confirmed in original source, but its runtime effects, iterated data, or observed installed DLC/belt changes are not established.",
+        "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

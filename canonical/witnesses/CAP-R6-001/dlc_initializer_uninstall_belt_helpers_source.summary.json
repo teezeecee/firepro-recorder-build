@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DLC_INITIALIZER_UNINSTALL_BELT_HELPERS_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "methods": [
+    {
+      "token": "0x06001039",
+      "owner": "DLCInitializer",
+      "namespace": "",
+      "name": "UninstallDLC_StoryMode_NJPW1",
+      "rva": "0x0005FB44",
+      "row": "44fb050000009600b3770800e3a50000170c",
+      "signature": "000001",
+      "header": "1b30020077000000a8020011",
+      "body_length": 119,
+      "body_hex": "180a7eec6400040b077bff6400046fd706000a0d383e000000120328d806000a0c087be20f0004154005000000dd250000007e3e0e0004087be20f00046fe710000613041104066fe41000063906000000086fb1110006120328d906000a3ab6ffffffdd0e0000001203fe16dd00001b6f1f01000adc2a",
+      "body_sha256": "342e7808a8cc0d8040ec2c42735322a55598691aea004c43787a1fc2170959e3",
+      "first_opcode": "0x18",
+      "raw_dlc_value": 2,
+      "eh_section_hex": "01100000020014005468000e00000000"
+    },
+    {
+      "token": "0x0600103B",
+      "owner": "DLCInitializer",
+      "namespace": "",
+      "name": "UninstallDLC_Stardom",
+      "rva": "0x0005FBDC",
+      "row": "dcfb050000009600ed770800e3a50000170c",
+      "signature": "000001",
+      "header": "1b30020077000000a8020011",
+      "body_length": 119,
+      "body_hex": "1b0a7eec6400040b077bff6400046fd706000a0d383e000000120328d806000a0c087be20f0004154005000000dd250000007e3e0e0004087be20f00046fe710000613041104066fe41000063906000000086fb1110006120328d906000a3ab6ffffffdd0e0000001203fe16dd00001b6f1f01000adc2a",
+      "body_sha256": "b3ba85c039bbb47900fcaa9332a3f24fed7a9fa75bf017d1da7e496cdafedc82",
+      "first_opcode": "0x1B",
+      "raw_dlc_value": 5,
+      "eh_section_hex": "01100000020014005468000e00000000"
+    }
+  ],
+  "fields": [
+    {
+      "token": "0x040064EC",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "inst",
+      "row": "160006220100413a0000",
+      "signature": "0612a938",
+      "opcode": "0x7E",
+      "sites": [
+        2
+      ]
+    },
+    {
+      "token": "0x040064FF",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "titleMatch_Data",
+      "row": "0600dd120400101b0000",
+      "signature": "0615120901128760",
+      "opcode": "0x7B",
+      "sites": [
+        9
+      ]
+    },
+    {
+      "token": "0x04000FE2",
+      "owner": "TitleMatch_Data",
+      "namespace": "",
+      "name": "presetBeltID",
+      "row": "0600e1560100430b0000",
+      "signature": "061186a4",
+      "opcode": "0x7B",
+      "sites": [
+        34,
+        56
+      ]
+    },
+    {
+      "token": "0x04000E3E",
+      "owner": "PresetBeltDataManager",
+      "namespace": "",
+      "name": "inst",
+      "row": "160006220100570b0000",
+      "signature": "061286ac",
+      "opcode": "0x7E",
+      "sites": [
+        50
+      ]
+    }
+  ],
+  "direct_callees": [
+    {
+      "token": "0x060010E7",
+      "owner": "PresetBeltDataManager",
+      "namespace": "",
+      "name": "GetPresetBeltData",
+      "rva": "0x00065548",
+      "row": "485506000000860060810800969d0100a00c",
+      "signature": "20011286a81186a4",
+      "body_length": 79,
+      "body_sha256": "36afd73c64f43e4c3e5ddc5a29a34a82507b98343923974f99e629435bf9e139",
+      "opcode": "0x6F",
+      "sites": [
+        61
+      ]
+    },
+    {
+      "token": "0x060010E4",
+      "owner": "PresetBeltData",
+      "namespace": "",
+      "name": "IsDLCBelonging",
+      "rva": "0x0006550C",
+      "row": "0c55060000008600757d0800129b01009f0c",
+      "signature": "2001021185c8",
+      "body_length": 26,
+      "body_sha256": "fbdf3b58ba656831558a1d3e603da793653aaab40fc338a57c4314965f3f7269",
+      "opcode": "0x6F",
+      "sites": [
+        71
+      ]
+    },
+    {
+      "token": "0x060011B1",
+      "owner": "TitleMatch_Data",
+      "namespace": "",
+      "name": "ReturnBelt",
+      "rva": "0x0006D7C4",
+      "row": "c4d7060000008600548b08005c480000580d",
+      "signature": "200001",
+      "body_length": 55,
+      "body_sha256": "8efc2d62ef42959ac398d67836859bbcdb22215940c4a4e401253166c540c535",
+      "opcode": "0x6F",
+      "sites": [
+        82
+      ]
+    }
+  ],
+  "unresolved_numeric_references": [
+    {
+      "token": "0x0A0006D7",
+      "opcode": "0x6F",
+      "site": 14,
+      "scope": "numeric MemberRef only"
+    },
+    {
+      "token": "0x0A0006D8",
+      "opcode": "0x28",
+      "site": 27,
+      "scope": "numeric MemberRef only"
+    },
+    {
+      "token": "0x0A0006D9",
+      "opcode": "0x28",
+      "site": 89,
+      "scope": "numeric MemberRef only"
+    },
+    {
+      "token": "0x1B0000DD",
+      "opcode": "0xFE16",
+      "site": 106,
+      "scope": "numeric TypeSpec only"
+    },
+    {
+      "token": "0x0A00011F",
+      "opcode": "0x6F",
+      "site": 112,
+      "scope": "numeric MemberRef only"
+    }
+  ],
+  "branches": [
+    {
+      "site": 20,
+      "opcode": "0x38",
+      "delta": 62,
+      "target": 87
+    },
+    {
+      "site": 40,
+      "opcode": "0x40",
+      "delta": 5,
+      "target": 50
+    },
+    {
+      "site": 45,
+      "opcode": "0xDD",
+      "delta": 37,
+      "target": 87
+    },
+    {
+      "site": 76,
+      "opcode": "0x39",
+      "delta": 6,
+      "target": 87
+    },
+    {
+      "site": 94,
+      "opcode": "0x3A",
+      "delta": -74,
+      "target": 25
+    },
+    {
+      "site": 99,
+      "opcode": "0xDD",
+      "delta": 14,
+      "target": 118
+    }
+  ],
+  "eh": {
+    "kind": 1,
+    "size_bytes": 16,
+    "flags": 2,
+    "try_start": 20,
+    "try_length": 84,
+    "handler_start": 104,
+    "handler_length": 14,
+    "class_token_or_filter": 0
+  },
+  "source_claim": "Two 119-byte original DLCInitializer helper methods have matching 118-byte suffixes, distinct first instruction raw literals 2/5, matching source branch targets and finally handlers, exact referenced field and direct-callee MethodDefs. No observed belt removal, collection content, or interpreted external MemberRef/TypeSpec semantics.",
+  "limits": [
+    "Original MethodDef rows, entire IL, all direct source operand sites, direct callee body hashes and original 16-byte exception sections are proven from matching DLL bytes, not gameplay execution.",
+    "The numeric 2 and 5 are original IL constants passed along the IsDLCBelonging call chain, not proof of corresponding Steam product names, owned entitlements or runtime contents.",
+    "MemberRef 0x0A0006D7, 0x0A0006D8, 0x0A0006D9, 0x0A00011F and TypeSpec 0x1B0000DD are only bounded numeric operand identities here; independently resolving their targets remains open.",
+    "The ReturnBelt call is confirmed in original source, but its runtime effects, iterated data, or observed installed DLC/belt changes are not established.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
