@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0317",
+  "status": "PROVEN_DLL",
+  "claim": "Original retail DLL DLC.DLCManager static constructor .cctor MethodDef 0x0600103E is an exact 24-byte method which constructs a length-13 DLCEnum array, duplicates it, loads original compiler-generated <PrivateImplementationDetails> FieldDef 0x0400B701 handle, calls System.Runtime.CompilerServices.RuntimeHelpers.InitializeArray MemberRef 0x0A0001E5 and stores DLCManager.DLCNums FieldDef 0x04000C47. Original FieldRVA 0x007A02A0 record provides EXACT 52 raw little-endian bytes encoding the ordered 13 integer values [0,2,3,1,4,5,6,7,8,9,10,11,12]. This closes original-source numeric DLCNums ordering used by FACT-0316 without inferring DLC product labels, successful .cctor execution, loaded Steam account or game runtime behavior.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original 8,171,008-byte Assembly-CSharp(3).dll SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; original DLCManager .cctor MethodDef row/header and full 24-byte IL SHA 8ca0c184830d4bd1c886027f88bf427716e08d6cfaee02bd6f6dda7abd487e7e; original DLCEnum TypeDef 0x02000172, compiler-generated FieldDef 0x0400B701, RuntimeHelpers.InitializeArray MemberRef 0x0A0001E5 with exact TypeRef parent, target DLCManager.DLCNums FieldDef 0x04000C47, FieldRVA metadata 0x007A02A0 and 52 raw bytes SHA 2b64958ef4f7fa24bdb93d6afb8c9ea588032054e1ef4871d5314e6a3cb0fb20. Witness canonical/witnesses/CAP-R6-001/dlc_manager_static_dlcnums_source.summary.json; original DLL prover tools/prove_dlc_manager_static_dlcnums_source.py.",
+      "observation": "Exact original initializer bytecode, FieldRVA raw data and numeric ordering only."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0317 DLCManager..cctor 0x0600103E",
+      "to": "FACT-0316 DLCManager.Update 0x0600103D",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original .cctor stsfld DLCManager.DLCNums 0x04000C47 IL+18; FACT-0316 Update loads the SAME static FieldDef at IL+0 and iterates its values."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original MethodDef, FieldDef, TypeDef, TypeRef, MemberRef, FieldRVA record and exact 52 raw initialized data bytes establish only source-authored DLCNums numeric ordering; do not attach product names.",
+    "External RuntimeHelpers.InitializeArray library behavior, class initialisation timing and actual observed in-game array contents are outside this fact; static IL and FieldRVA raw contents are source proof only.",
+    "Raw integer values are original DLCEnum inputs to DLCManager.Update, not Steam AppId_t values and not proof of DLC ownership, download or successful install/uninstall.",
+    "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historical asset decode vault remain open; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}

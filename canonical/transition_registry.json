@@ -6104,6 +6104,35 @@
         "External Steamworks owner/installed/downloaded results are NOT known or asserted; bytecode proves only branch topology and call chain.",
         "Original resources.assets parent SHA, actual loaded fprwaza binding and historical original retail decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_DLC_MANAGER_STATIC_DLCNUMS_SOURCE_V1",
+      "fact_id": "FACT-0317",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original retail DLCManager .cctor exact 24-byte IL constructs DLCEnum[13] from compiler-generated FieldRVA 52-byte data: [0,2,3,1,4,5,6,7,8,9,10,11,12]; original TypeDef, FieldDefs, RuntimeHelpers.InitializeArray MemberRef and data SHA pinned. Numeric order only, runtime unknown.",
+      "summary": "canonical/witnesses/CAP-R6-001/dlc_manager_static_dlcnums_source.summary.json",
+      "source_windows": [
+        [
+          "0x0600103E",
+          "0x0000",
+          "0x0018"
+        ],
+        [
+          "FieldRVA:0x007A02A0",
+          "0x0000",
+          "0x0034"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original MethodDef, FieldDef, TypeDef, TypeRef, MemberRef, FieldRVA record and exact 52 raw initialized data bytes establish only source-authored DLCNums numeric ordering; do not attach product names.",
+        "External RuntimeHelpers.InitializeArray library behavior, class initialisation timing and actual observed in-game array contents are outside this fact; static IL and FieldRVA raw contents are source proof only.",
+        "Raw integer values are original DLCEnum inputs to DLCManager.Update, not Steam AppId_t values and not proof of DLC ownership, download or successful install/uninstall.",
+        "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historical asset decode vault remain open; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
