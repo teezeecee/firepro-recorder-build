@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_DELETE_EDIT_SKILL_INFO_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001156",
+    "owner": "SkillInfoManager",
+    "name": "DeleteEditSkillInfo",
+    "row": "4895060000008600d98608009f490000f20c",
+    "rva": "0x00069548",
+    "signature": "20010108",
+    "header": "133002005e0000003a000011",
+    "body_length": 94,
+    "body_sha256": "5d0241e10e14b98a6e9c29e0e85bfcf3e2f8fabe21785c746088a29591a5d7a0",
+    "body_hex": "160a3827000000027bdb0e0004066f9906000a034011000000027bdb0e0004066f5607000a38150000000617580a06027bdb0e00046f9b06000a3fc8ffffff027bda0e0004036f5207000a390d000000027bda0e0004036f5707000a262a",
+    "has_exception_section": false
+  },
+  "fields": [
+    {
+      "token": "0x04000EDB",
+      "owner": "SkillInfoManager",
+      "name": "skillIDList",
+      "row": "0600d54c0100cc090000",
+      "signature": "061512090111a9dc",
+      "sites": [
+        8,
+        26,
+        48
+      ],
+      "opcode": "ldfld"
+    },
+    {
+      "token": "0x04000EDA",
+      "owner": "SkillInfoManager",
+      "name": "skillInfoList",
+      "row": "0600c74c0100250c0000",
+      "signature": "061512590211a9dc1286f8",
+      "sites": [
+        64,
+        81
+      ],
+      "opcode": "ldfld"
+    }
+  ],
+  "memberrefs": [
+    {
+      "token": "0x0A000699",
+      "name": "get_Item",
+      "row": "6c0600001b51060092490000",
+      "signature": "2001130008",
+      "class_coded": 1644,
+      "sites": [
+        14
+      ],
+      "opcode": "callvirt"
+    },
+    {
+      "token": "0x0A000756",
+      "name": "RemoveAt",
+      "row": "6c0600002d5106009f490000",
+      "signature": "20010108",
+      "class_coded": 1644,
+      "sites": [
+        32
+      ],
+      "opcode": "callvirt"
+    },
+    {
+      "token": "0x0A00069B",
+      "name": "get_Count",
+      "row": "6c060000f55206005e490000",
+      "signature": "200008",
+      "class_coded": 1644,
+      "sites": [
+        53
+      ],
+      "opcode": "callvirt"
+    },
+    {
+      "token": "0x0A000752",
+      "name": "ContainsKey",
+      "row": "dc070000395e0600274d0000",
+      "signature": "2001021300",
+      "class_coded": 2012,
+      "sites": [
+        70
+      ],
+      "opcode": "callvirt"
+    },
+    {
+      "token": "0x0A000757",
+      "name": "Remove",
+      "row": "dc07000019540600274d0000",
+      "signature": "2001021300",
+      "class_coded": 2012,
+      "sites": [
+        87
+      ],
+      "opcode": "callvirt"
+    }
+  ],
+  "branches": [
+    {
+      "site": 2,
+      "opcode": "0x38",
+      "relative": 39,
+      "target": 46,
+      "meaning": "initial_jump_to_loop_test"
+    },
+    {
+      "site": 20,
+      "opcode": "0x40",
+      "relative": 17,
+      "target": 42,
+      "meaning": "unequal_ID_skip_remove"
+    },
+    {
+      "site": 37,
+      "opcode": "0x38",
+      "relative": 21,
+      "target": 63,
+      "meaning": "exit_loop_after_first_match"
+    },
+    {
+      "site": 58,
+      "opcode": "0x3F",
+      "relative": -56,
+      "target": 7,
+      "meaning": "continue_if_index_below_count"
+    },
+    {
+      "site": 75,
+      "opcode": "0x39",
+      "relative": 13,
+      "target": 93,
+      "meaning": "skip_dictionary_Remove_when_key_absent"
+    }
+  ],
+  "semantics": {
+    "list_start_index_site": 0,
+    "loop_test_site": 46,
+    "compare_argument_site": 19,
+    "remove_list_site": 32,
+    "exit_loop_after_remove_site": 37,
+    "increment_index_window": [
+      42,
+      46
+    ],
+    "contains_key_site": 70,
+    "conditional_branch_site": 75,
+    "remove_dictionary_site": 87,
+    "discard_remove_boolean_site": 92,
+    "return_site": 93
+  },
+  "direct_callers": [
+    {
+      "token": "0x06005F5E",
+      "owner": "ToolSettingInfo",
+      "name": "DeleteSaveList",
+      "size": 194,
+      "sha": "ffd4a4c501848508cf0cccbecea2d5fbb56670affe32b85de121c747fa750e84",
+      "sites": [
+        145
+      ]
+    },
+    {
+      "token": "0x06005F63",
+      "owner": "ToolSettingInfo",
+      "name": "AddSelectSkillData",
+      "size": 564,
+      "sha": "4e7b1ab00b8a748e94344f8616bf726451bf343876b5698b15800f57409b1adf",
+      "sites": [
+        325
+      ]
+    },
+    {
+      "token": "0x06005F65",
+      "owner": "ToolSettingInfo",
+      "name": "DeletePreviewDummyData",
+      "size": 48,
+      "sha": "e26811ca7c71b8f110fa20b2b72b90c65c1ca23e6ddbd4e390afd81145b988a5",
+      "sites": [
+        21
+      ]
+    },
+    {
+      "token": "0x06005F66",
+      "owner": "ToolSettingInfo",
+      "name": "AddSubscribeSkillData",
+      "size": 368,
+      "sha": "79c5f0acc99655ba2ffb582a9e14e391a54451f4bf75ab9894a0d316399b7c58",
+      "sites": [
+        160
+      ]
+    },
+    {
+      "token": "0x06005F67",
+      "owner": "ToolSettingInfo",
+      "name": "DeleteSkillData",
+      "size": 139,
+      "sha": "eb2a78b1a003e9d0b157ae903dfcddc417589d0c334c2ede04c1449b27b3641e",
+      "sites": [
+        90
+      ]
+    }
+  ],
+  "limits": [
+    "The original method's search removes only the first list position whose value matches the supplied ID before exiting the loop; no claim is made that duplicates cannot exist.",
+    "Dictionary removal is conditioned on the original ContainsKey result; this proves a code branch, not whether the entry was populated or any execution succeeded.",
+    "No authored DLC records, successful editor action, live downloaded content or match outcome is established.",
+    "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
