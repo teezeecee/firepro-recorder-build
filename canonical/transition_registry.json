@@ -5887,6 +5887,30 @@
         "Original names and caller sites do not establish downloaded content availability, authored entries, user interface results or actual match behavior.",
         "Original Unity resources.assets parent SHA, actual loaded fprwaza binding and historical decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_DELETE_EDIT_SKILL_INFO_SOURCE_V1",
+      "fact_id": "FACT-0309",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SkillInfoManager.DeleteEditSkillInfo 0x06001156 94-byte IL searches skillIDList and removes first matching position, then uses skillInfoList.ContainsKey before conditional Remove. Five exact source ToolSettingInfo callers; original method, fields, references, branch targets and parent hashes verified. Authored values and successful runtime outcome not established.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_delete_edit_skill_info_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001156",
+          "0x0000",
+          "0x005E"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The original method's search removes only the first list position whose value matches the supplied ID before exiting the loop; no claim is made that duplicates cannot exist.",
+        "Dictionary removal is conditioned on the original ContainsKey result; this proves a code branch, not whether the entry was populated or any execution succeeded.",
+        "No authored DLC records, successful editor action, live downloaded content or match outcome is established.",
+        "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

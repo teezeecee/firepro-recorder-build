@@ -1,0 +1,70 @@
+{
+  "fact_id": "FACT-0309",
+  "status": "PROVEN_DLL",
+  "claim": "Original SkillInfoManager.DeleteEditSkillInfo MethodDef 0x06001156 RVA 0x00069548 has complete original 94-byte IL SHA256 5d0241e10e14b98a6e9c29e0e85bfcf3e2f8fabe21785c746088a29591a5d7a0. It initializes a local index to 0 and checks each original skillIDList field 0x04000EDB position through get_Item MemberRef 0x0A000699 against the supplied ID. If a matching ID is found, RemoveAt MemberRef 0x0A000756 is called on that position and original unconditional branch at IL+37 exits the loop. Otherwise it increments the index and repeats while index is below get_Count MemberRef 0x0A00069B. After leaving the list loop it checks original skillInfoList field 0x04000EDA with ContainsKey MemberRef 0x0A000752; if present it invokes Remove MemberRef 0x0A000757 on that ID and discards its Boolean result. Five original ToolSettingInfo direct callvirt sites target this method: DeleteSaveList +145, AddSelectSkillData +325, DeletePreviewDummyData +21, AddSubscribeSkillData +160 and DeleteSkillData +90. Exact source branches and metadata are established, not whether a runtime entry existed or removal succeeded.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact original retail Assembly-CSharp(3).dll 8,171,008 bytes SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, MethodDef 0x06001156 row 4895060000008600d98608009f490000f20c, RVA 0x00069548, full 94-byte IL SHA 5d0241e10e14b98a6e9c29e0e85bfcf3e2f8fabe21785c746088a29591a5d7a0; two exact FieldDef rows, five original MemberRef rows, five source branch sites, original five ToolSettingInfo caller method full-body hashes and call offsets. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_delete_edit_skill_info_source.summary.json.",
+      "observation": "Original list search/remove, dictionary conditional remove and direct source caller edges. No populated values or successful execution asserted."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Original ToolSettingInfo.DeleteSaveList 0x06005F5E",
+      "to": "FACT-0309 SkillInfoManager.DeleteEditSkillInfo 0x06001156",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete 194-byte method IL SHA ffd4a4c501848508cf0cccbecea2d5fbb56670affe32b85de121c747fa750e84, direct callvirt at offset 145."
+        }
+      ]
+    },
+    {
+      "from": "Original ToolSettingInfo.AddSelectSkillData 0x06005F63",
+      "to": "FACT-0309 SkillInfoManager.DeleteEditSkillInfo 0x06001156",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete 564-byte method IL SHA 4e7b1ab00b8a748e94344f8616bf726451bf343876b5698b15800f57409b1adf, direct callvirt at offset 325."
+        }
+      ]
+    },
+    {
+      "from": "Original ToolSettingInfo.DeletePreviewDummyData 0x06005F65",
+      "to": "FACT-0309 SkillInfoManager.DeleteEditSkillInfo 0x06001156",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete 48-byte method IL SHA e26811ca7c71b8f110fa20b2b72b90c65c1ca23e6ddbd4e390afd81145b988a5, direct callvirt at offset 21."
+        }
+      ]
+    },
+    {
+      "from": "Original ToolSettingInfo.AddSubscribeSkillData 0x06005F66",
+      "to": "FACT-0309 SkillInfoManager.DeleteEditSkillInfo 0x06001156",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete 368-byte method IL SHA 79c5f0acc99655ba2ffb582a9e14e391a54451f4bf75ab9894a0d316399b7c58, direct callvirt at offset 160."
+        }
+      ]
+    },
+    {
+      "from": "Original ToolSettingInfo.DeleteSkillData 0x06005F67",
+      "to": "FACT-0309 SkillInfoManager.DeleteEditSkillInfo 0x06001156",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete 139-byte method IL SHA eb2a78b1a003e9d0b157ae903dfcddc417589d0c334c2ede04c1449b27b3641e, direct callvirt at offset 90."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The original method's search removes only the first list position whose value matches the supplied ID before exiting the loop; no claim is made that duplicates cannot exist.",
+    "Dictionary removal is conditioned on the original ContainsKey result; this proves a code branch, not whether the entry was populated or any execution succeeded.",
+    "No authored DLC records, successful editor action, live downloaded content or match outcome is established.",
+    "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
