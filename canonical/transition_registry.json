@@ -6159,6 +6159,31 @@
         "The 13 switch cases and its default all branch to one common SaveData.dlcVersion[index] = 1 source operation; this is not proof that its memory write was executed or succeeded.",
         "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding, and historical retail decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_DLC_UNINSTALL_UNINSTALL_SOURCE_V1",
+      "fact_id": "FACT-0319",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact original DLCUninstall.UnInstall 266-byte IL: 13-case raw numeric switch, SaveData.GetInst, 13 array-zero assignments, original pair of DLCInitializer helper calls, bounded callee/field metadata and all 14 common return branches; no observed DLC outcomes.",
+      "summary": "canonical/witnesses/CAP-R6-001/dlc_uninstall_uninstall_source.summary.json",
+      "source_windows": [
+        [
+          "0x0600103F",
+          "0x0000",
+          "0x010A"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original retail source MethodDef metadata, full IL, switch and 13 array-index writes are established. Execution of the branch paths and removal of installed DLC are not demonstrated.",
+        "The source's raw 13 numeric switch labels are not product titles and do not establish Steam ownership, user save data, or DLC content presence.",
+        "DLCInitializer helper bodies are identified and whole-body hashes match the original DLL; internal helper side effects require their own retail-source analysis.",
+        "The default switch target jumps to the final ret without an array store. Each of the 13 case arms stores raw numeric zero into SaveData.dlcVersion at its corresponding original numeric index.",
+        "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

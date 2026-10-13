@@ -1,0 +1,61 @@
+{
+  "fact_id": "FACT-0319",
+  "status": "PROVEN_DLL",
+  "claim": "Matching 8,171,008-byte original retail DLL DLC.DLCUninstall.UnInstall MethodDef 0x0600103F contains exact complete 266-byte IL. Source calls SaveData.GetInst, dispatches raw DLCEnum input by 13-case switch (0 through 12), makes separate original helper calls to DLCInitializer.UninstallDLC_StoryMode_NJPW1 on case 2 and DLCInitializer.UninstallDLC_Stardom on case 5, and each numeric case writes zero to SaveData.dlcVersion[case index] before returning; default branches to return. Complete header/body, method/callee/field metadata, 13 switch targets, 13 write-site positions and 14 shared-return branch targets are byte-pinned. This establishes original source flow only, not DLC removal outcomes.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original Assembly-CSharp(3).dll SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; DLCUninstall.UnInstall MethodDef 0x0600103F RVA 0x0005FE08 row 08fe0500000096000a78080092960100180c; complete IL SHA256 a87eff2157f87edf42c77dfcada6729792ec2805451fc4ee525f727e21f32917; full original source witness canonical/witnesses/CAP-R6-001/dlc_uninstall_uninstall_source.summary.json and exact original DLL prover tools/prove_dlc_uninstall_uninstall_source.py.",
+      "observation": "Original uninstall source control flow, not retail execution"
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0316 DLCManager.Update 0x0600103D",
+      "to": "FACT-0319 DLCUninstall.UnInstall 0x0600103F",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0316 original Update 114-byte IL direct call at +95 to MethodDef 0x0600103F, which this fact independently proves with original 266-byte body."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0319 DLCUninstall.UnInstall 0x0600103F",
+      "to": "SaveData.GetInst 0x06005174",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original direct call at IL+0 to 0x06005174; exact original MethodDef row, owner, signature and complete callee body SHA256 2e12171cc208596025d626b80263f5597a296cc70ab5856f40c8660292702f40."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0319 DLCUninstall.UnInstall 0x0600103F",
+      "to": "DLCInitializer.UninstallDLC_StoryMode_NJPW1 0x06001039",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original direct call at IL+97 to 0x06001039; exact original MethodDef row, owner, signature and complete callee body SHA256 342e7808a8cc0d8040ec2c42735322a55598691aea004c43787a1fc2170959e3."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0319 DLCUninstall.UnInstall 0x0600103F",
+      "to": "DLCInitializer.UninstallDLC_Stardom 0x0600103B",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original direct call at IL+144 to 0x0600103B; exact original MethodDef row, owner, signature and complete callee body SHA256 b3ba85c039bbb47900fcaa9332a3f24fed7a9fa75bf017d1da7e496cdafedc82."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original retail source MethodDef metadata, full IL, switch and 13 array-index writes are established. Execution of the branch paths and removal of installed DLC are not demonstrated.",
+    "The source's raw 13 numeric switch labels are not product titles and do not establish Steam ownership, user save data, or DLC content presence.",
+    "DLCInitializer helper bodies are identified and whole-body hashes match the original DLL; internal helper side effects require their own retail-source analysis.",
+    "The default switch target jumps to the final ret without an array store. Each of the 13 case arms stores raw numeric zero into SaveData.dlcVersion at its corresponding original numeric index.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}
