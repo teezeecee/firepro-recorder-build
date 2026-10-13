@@ -6133,6 +6133,32 @@
         "Raw integer values are original DLCEnum inputs to DLCManager.Update, not Steam AppId_t values and not proof of DLC ownership, download or successful install/uninstall.",
         "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historical asset decode vault remain open; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_DLC_INSTALL_INSTALL_SOURCE_V1",
+      "fact_id": "FACT-0318",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original retail DLCInstall.Install complete 242-byte IL source flow with original SaveData guard, raw 3->2 dependency, raw 9 StoryWork/StorySaveDataManager branch, DLCInitializer dual helpers, 13-way switch and common version-field write. Five FieldDefs, four MethodDefs, seven callsites, all branch targets and callee hashes source pinned; no execution outcome.",
+      "summary": "canonical/witnesses/CAP-R6-001/dlc_install_install_source.summary.json",
+      "source_windows": [
+        [
+          "0x0600103C",
+          "0x0000",
+          "0x00F2"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "All claims concern byte-exact original retail DLL source instructions, metadata, call sites and branch targets, NOT successful game execution or DLC installation.",
+        "SaveData.IsDLCInstalled is referenced twice; the input at the second call uses raw numeric DLC index 2 only when the original input equals raw numeric 3. DLC product-name labels and authored entitlement values are not established by this source.",
+        "The story-specific branch compares raw numeric index 9 and touches StoryWork and StorySaveDataManager fields. Actual story-save contents, scenario outcome, and retail gameplay effects are NOT established.",
+        "Both original helper methods are owned by DLCInitializer rather than DLCInstall. Their full bodies are identity-pinned by SHA only; interpreting their internal behavior requires separate source facts.",
+        "The 13 switch cases and its default all branch to one common SaveData.dlcVersion[index] = 1 source operation; this is not proof that its memory write was executed or succeeded.",
+        "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding, and historical retail decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
