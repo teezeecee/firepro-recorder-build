@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0321",
+  "status": "PROVEN_DLL",
+  "claim": "Matching retail Assembly-CSharp(3).dll source TitleMatch_Data.ReturnBelt MethodDef 0x060011B1 RVA 0x0006D7C4 contains exact 55-byte original IL. The source initializes a local counter to zero, jumps to a loop test using raw numeric bound four, conditionally branches back on original opcode 0x3F to process four source counter values (0,1,2,3), and on each iteration writes the matching counter index into four TitleMatch_Data arrays: wrestlerID and CtrlNo each receive numeric -1 via stelem.i4, Costume numeric 0 via stelem.i4, IsSecond numeric 0 via stelem.i1. Four original FieldDef metadata identities, four exact field operand sites, four array write sites and both original branch displacements/targets are proven from original bytes. This closes the immediate source callee boundary of FACT-0320 without claiming successful execution, any actual game belt return or saved state outcome.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original retail Assembly-CSharp(3).dll 8,171,008 bytes SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, ReturnBelt MethodDef 0x060011B1 original row c4d7060000008600548b08005c480000580d, RVA 0x0006D7C4, complete 55-byte IL SHA256 8efc2d62ef42959ac398d67836859bbcdb22215940c4a4e401253166c540c535, exact source witness canonical/witnesses/CAP-R6-001/title_match_data_return_belt_source.summary.json, matching DLL validator tools/prove_title_match_data_return_belt_source.py.",
+      "observation": "Original source-controlled four-array bounded reset loop, not runtime observation"
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0320 DLCInitializer.UninstallDLC_StoryMode_NJPW1 0x06001039 and UninstallDLC_Stardom 0x0600103B",
+      "to": "TitleMatch_Data.ReturnBelt 0x060011B1",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0320 both original methods IL+82 direct callvirt token 0x060011B1. This fact source-proves complete callee IL and four original array FieldDefs."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original retail MethodDef row, owner, signature, header, complete 55-byte IL and all exact FieldDef bytes and source sites are proven; not retail runtime behavior.",
+    "Four array references are written per original bounded source loop. The less-than source condition compares to raw numeric 4; array dimensions, array presence and successful writes at runtime are not established.",
+    "The four original array store opcodes and constant values are source-pinned: two negative-one stelem.i4 and one zero stelem.i4 and one zero stelem.i1. Any higher-level belt ownership or gameplay return meaning is not established.",
+    "The method has no direct call opcode in its original 55-byte body. It is reached as a source callee from FACT-0320; whether retail ever invokes the chain in a given session is not observed.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

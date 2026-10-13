@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_TITLE_MATCH_DATA_RETURN_BELT_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x060011B1",
+    "owner": "TitleMatch_Data",
+    "namespace": "",
+    "name": "ReturnBelt",
+    "rva": "0x0006D7C4",
+    "row": "c4d7060000008600548b08005c480000580d",
+    "signature": "200001",
+    "header": "13300300370000003a000011",
+    "body_length": 55,
+    "body_hex": "160a3828000000027bda0f000406159e027bdb0f000406159e027bdc0f000406169e027bdd0f000406169c0617580a061a3fd1ffffff2a",
+    "body_sha256": "8efc2d62ef42959ac398d67836859bbcdb22215940c4a4e401253166c540c535"
+  },
+  "fields": [
+    {
+      "token": "0x04000FDA",
+      "owner": "TitleMatch_Data",
+      "namespace": "",
+      "name": "wrestlerID",
+      "row": "060096560100ad0b0000",
+      "signature": "061d1187b8",
+      "site": 8,
+      "index_site": 13,
+      "value_site": 14,
+      "value": -1,
+      "value_opcode": "0x15",
+      "store_site": 15,
+      "store_opcode": "0x9E"
+    },
+    {
+      "token": "0x04000FDB",
+      "owner": "TitleMatch_Data",
+      "namespace": "",
+      "name": "CtrlNo",
+      "row": "0600a15601000f0d0000",
+      "signature": "061d119074",
+      "site": 17,
+      "index_site": 22,
+      "value_site": 23,
+      "value": -1,
+      "value_opcode": "0x15",
+      "store_site": 24,
+      "store_opcode": "0x9E"
+    },
+    {
+      "token": "0x04000FDC",
+      "owner": "TitleMatch_Data",
+      "namespace": "",
+      "name": "Costume",
+      "row": "0600a85601008d030000",
+      "signature": "061d08",
+      "site": 26,
+      "index_site": 31,
+      "value_site": 32,
+      "value": 0,
+      "value_opcode": "0x16",
+      "store_site": 33,
+      "store_opcode": "0x9E"
+    },
+    {
+      "token": "0x04000FDD",
+      "owner": "TitleMatch_Data",
+      "namespace": "",
+      "name": "IsSecond",
+      "row": "0600b056010084090000",
+      "signature": "061d02",
+      "site": 35,
+      "index_site": 40,
+      "value_site": 41,
+      "value": 0,
+      "value_opcode": "0x16",
+      "store_site": 42,
+      "store_opcode": "0x9C"
+    }
+  ],
+  "branches": [
+    {
+      "site": 2,
+      "opcode": "0x38",
+      "delta": 40,
+      "target": 47,
+      "note": "unconditional initial loop-condition jump"
+    },
+    {
+      "site": 49,
+      "opcode": "0x3F",
+      "delta": -47,
+      "target": 7,
+      "note": "original signed less-than branch, literal bound 4"
+    }
+  ],
+  "loop": {
+    "init_sites": [
+      0,
+      1
+    ],
+    "init_hex": "160a",
+    "loop_body_start": 7,
+    "loop_update_start": 43,
+    "loop_update_hex": "0617580a",
+    "loop_test_start": 47,
+    "loop_test_hex": "061a3fd1ffffff",
+    "return_site": 54,
+    "return_opcode": "0x2A",
+    "source_index_values": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "limits": [
+    "Original retail MethodDef row, owner, signature, header, complete 55-byte IL and all exact FieldDef bytes and source sites are proven; not retail runtime behavior.",
+    "Four array references are written per original bounded source loop. The less-than source condition compares to raw numeric 4; array dimensions, array presence and successful writes at runtime are not established.",
+    "The four original array store opcodes and constant values are source-pinned: two negative-one stelem.i4 and one zero stelem.i4 and one zero stelem.i1. Any higher-level belt ownership or gameplay return meaning is unproven.",
+    "The method has no direct call opcode in its original 55-byte body. It is reached as a source callee from FACT-0320; whether retail ever invokes the chain in a given session is not observed.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

@@ -30,7 +30,7 @@ assert bb[0][1:]==bb[1][1:] and bb[0][0]==0x18 and bb[1][0]==0x1b
 assert len(w["fields"])==4 and len(w["direct_callees"])==3
 assert len(w["unresolved_numeric_references"])==5 and len(w["branches"])==6
 ids=[x["family_id"] for x in reg["families"]];facts=[x["fact_id"] for x in reg["families"]]
-assert len(reg["families"])==319 and len(set(ids))==len(ids) and len(set(facts))==len(facts)
-assert reg["families"][-1]["fact_id"]=="FACT-0320" and reg["families"][-1]["runtime_eligible"] is False
+assert len(reg["families"])>=319 and len(set(ids))==len(ids) and len(set(facts))==len(facts)
+assert next(x for x in reg["families"] if x["fact_id"]=="FACT-0320")["runtime_eligible"] is False
 assert reg["runtime_unlocked"] is False
 print("DLC INITIALIZER UNINSTALL BELT HELPERS SOURCE SUMMARY: PASS")

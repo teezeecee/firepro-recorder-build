@@ -6214,6 +6214,31 @@
         "The ReturnBelt call is confirmed in original source, but its runtime effects, iterated data, or observed installed DLC/belt changes are not established.",
         "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_TITLE_MATCH_DATA_RETURN_BELT_SOURCE_V1",
+      "fact_id": "FACT-0321",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Exact original TitleMatch_Data.ReturnBelt 55-byte IL, MethodDef identity and header, four FieldDef array identities, typed reset constants/opcodes and two loop branch targets; no observed runtime belt return.",
+      "summary": "canonical/witnesses/CAP-R6-001/title_match_data_return_belt_source.summary.json",
+      "source_windows": [
+        [
+          "0x060011B1",
+          "0x0000",
+          "0x0037"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original retail MethodDef row, owner, signature, header, complete 55-byte IL and all exact FieldDef bytes and source sites are proven; not retail runtime behavior.",
+        "Four array references are written per original bounded source loop. The less-than source condition compares to raw numeric 4; array dimensions, array presence and successful writes at runtime are not established.",
+        "The four original array store opcodes and constant values are source-pinned: two negative-one stelem.i4 and one zero stelem.i4 and one zero stelem.i1. Any higher-level belt ownership or gameplay return meaning is unproven.",
+        "The method has no direct call opcode in its original 55-byte body. It is reached as a source callee from FACT-0320; whether retail ever invokes the chain in a given session is not observed.",
+        "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
