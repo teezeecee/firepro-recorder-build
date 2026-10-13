@@ -1,0 +1,49 @@
+{
+  "fact_id": "FACT-0308",
+  "status": "PROVEN_DLL",
+  "claim": "The original matching retail SkillInfoManager.AddEditSkillInfo MethodDef 0x06001155, RVA 0x0006952D, has exact 26-byte tiny-header IL SHA256 5247ca8b5a5a77282d7d4c4e42bf8c2d1714e0b535b3d946db506ff7d4dcd2a4. It loads original instance field skillInfoList 0x04000EDA, then method arguments 2 and 1, and calls Add MemberRef 0x0A000754 at IL+8. Next it loads original instance field skillIDList 0x04000EDB and argument 2, calls second Add MemberRef 0x0A0006A0 at IL+20, and returns. The source contains neither a successful mutation guarantee nor exception handling in this method. Exactly three original ToolSettingInfo direct callvirt sites target AddEditSkillInfo: AddSelectSkillData at IL+530, AddPreviewDummyData at IL+74 and AddSubscribeSkillData at IL+338. This proves original collection update instructions and caller edges, not authored DLC entries or runtime/editor outcomes.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact original 8,171,008-byte retail DLL SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6. Original MethodDef 0x06001155 row 2d95060000008600c886080010a10100f00c RVA 0x0006952D, full 26-byte IL SHA 5247ca8b5a5a77282d7d4c4e42bf8c2d1714e0b535b3d946db506ff7d4dcd2a4; original FieldDefs 0x04000EDA/0x04000EDB and MemberRefs 0x0A000754/0x0A0006A0 with verified metadata and instruction operands; original caller complete method SHA identities and sites 530,74,338. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_add_edit_skill_info_source.summary.json.",
+      "observation": "Original source instruction and three direct caller identities; authored data and runtime outcome not established."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Original ToolSettingInfo.AddSelectSkillData 0x06005F63",
+      "to": "FACT-0308 SkillInfoManager.AddEditSkillInfo 0x06001155",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Entire original caller IL 564 bytes SHA 4e7b1ab00b8a748e94344f8616bf726451bf343876b5698b15800f57409b1adf; exact callvirt site 530."
+        }
+      ]
+    },
+    {
+      "from": "Original ToolSettingInfo.AddPreviewDummyData 0x06005F64",
+      "to": "FACT-0308 SkillInfoManager.AddEditSkillInfo 0x06001155",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Entire original caller IL 95 bytes SHA 3575a5292cdca005ff334253b98d7d9869db96b645eaa7b721a059d553816b1e; exact callvirt site 74."
+        }
+      ]
+    },
+    {
+      "from": "Original ToolSettingInfo.AddSubscribeSkillData 0x06005F66",
+      "to": "FACT-0308 SkillInfoManager.AddEditSkillInfo 0x06001155",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Entire original caller IL 368 bytes SHA 79c5f0acc99655ba2ffb582a9e14e391a54451f4bf75ab9894a0d316399b7c58; exact callvirt site 338."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Method establishes two source Add calls in sequence, not atomicity, recovery after an exception, or a successful runtime collection mutation.",
+    "Original names and caller sites do not establish downloaded content availability, authored entries, user interface results or actual match behavior.",
+    "Original Unity resources.assets parent SHA, actual loaded fprwaza binding and historical decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

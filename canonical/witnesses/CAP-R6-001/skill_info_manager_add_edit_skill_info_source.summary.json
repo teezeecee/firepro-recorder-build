@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_ADD_EDIT_SKILL_INFO_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001155",
+    "owner": "SkillInfoManager",
+    "name": "AddEditSkillInfo",
+    "rva": "0x0006952D",
+    "row": "2d95060000008600c886080010a10100f00c",
+    "signature": "2002011286f808",
+    "header": "6a",
+    "code_bytes": 26,
+    "code_sha256": "5247ca8b5a5a77282d7d4c4e42bf8c2d1714e0b535b3d946db506ff7d4dcd2a4",
+    "body_hex": "027bda0e000404036f5407000a027bdb0e0004046fa006000a2a"
+  },
+  "fields": [
+    {
+      "token": "0x04000EDA",
+      "owner": "SkillInfoManager",
+      "name": "skillInfoList",
+      "row": "0600c74c0100250c0000",
+      "signature": "061512590211a9dc1286f8",
+      "site": 1,
+      "opcode": "ldfld"
+    },
+    {
+      "token": "0x04000EDB",
+      "owner": "SkillInfoManager",
+      "name": "skillIDList",
+      "row": "0600d54c0100cc090000",
+      "signature": "061512090111a9dc",
+      "site": 14,
+      "opcode": "ldfld"
+    }
+  ],
+  "memberrefs": [
+    {
+      "token": "0x0A000754",
+      "name": "Add",
+      "row": "dc070000e00c0600b6550000",
+      "signature": "20020113001301",
+      "class_coded": 2012,
+      "site": 8,
+      "opcode": "callvirt"
+    },
+    {
+      "token": "0x0A0006A0",
+      "name": "Add",
+      "row": "6c060000e00c06001d490000",
+      "signature": "2001011300",
+      "class_coded": 1644,
+      "site": 20,
+      "opcode": "callvirt"
+    }
+  ],
+  "method_flow": {
+    "first_field_load": 1,
+    "first_arg_id_site": 6,
+    "first_arg_data_site": 7,
+    "first_add": 8,
+    "second_field_load": 14,
+    "second_arg_id_site": 19,
+    "second_add": 20,
+    "return_site": 25,
+    "method_has_exception_section": false
+  },
+  "direct_callers": [
+    {
+      "token": "0x06005F63",
+      "owner": "ToolSettingInfo",
+      "name": "AddSelectSkillData",
+      "body_bytes": 564,
+      "body_sha256": "4e7b1ab00b8a748e94344f8616bf726451bf343876b5698b15800f57409b1adf",
+      "opcode": "callvirt",
+      "sites": [
+        530
+      ]
+    },
+    {
+      "token": "0x06005F64",
+      "owner": "ToolSettingInfo",
+      "name": "AddPreviewDummyData",
+      "body_bytes": 95,
+      "body_sha256": "3575a5292cdca005ff334253b98d7d9869db96b645eaa7b721a059d553816b1e",
+      "opcode": "callvirt",
+      "sites": [
+        74
+      ]
+    },
+    {
+      "token": "0x06005F66",
+      "owner": "ToolSettingInfo",
+      "name": "AddSubscribeSkillData",
+      "body_bytes": 368,
+      "body_sha256": "79c5f0acc99655ba2ffb582a9e14e391a54451f4bf75ab9894a0d316399b7c58",
+      "opcode": "callvirt",
+      "sites": [
+        338
+      ]
+    }
+  ],
+  "limits": [
+    "Method establishes two source Add calls in sequence, not atomicity, recovery after an exception, or a successful runtime collection mutation.",
+    "Original names and caller sites do not establish downloaded content availability, authored entries, user interface results or actual match behavior.",
+    "Original Unity resources.assets parent SHA, actual loaded fprwaza binding and historical decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
