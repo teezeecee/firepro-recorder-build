@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0310",
+  "status": "PROVEN_DLL",
+  "claim": "Original SkillInfoManager.SettingEditSkillInfo MethodDef 0x06001154 has complete 93-byte retail IL SHA256 b2a4a0805df0835f9a97ee1c20ce72da547e1a1288113b6909b2950e86978233. The original code checks ToolSettingInfo.inst against null using original op_Inequality, initializes index zero, and for each index below original GetRegistSkillInfoCount obtains GetRegistSkillInfo and GetCliendID, calls skillInfoList.Add(clientID,skillInfo), then skillIDList.Add(clientID), and increments. Two original <StartingLoad>c__Iterator1.MoveNext direct callvirt sites at offsets 589 and 754. This proves source control flow, not successful loading, data validity, or runtime editor behavior.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original 8,171,008-byte SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, complete MethodDef 0x06001154 RVA 0x000694C4 IL 93-byte SHA256 b2a4a0805df0835f9a97ee1c20ce72da547e1a1288113b6909b2950e86978233, exact original FieldDefs/MemberRefs/MethodDef targets, three branch sites and complete original iterator caller IL SHA. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_setting_edit_skill_info_source.summary.json.",
+      "observation": "Original registered-skill enumeration, client-ID reads, dictionary/list Add calls and two direct caller sites; authored records or successful execution not asserted."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Original <StartingLoad>c__Iterator1.MoveNext 0x060076C1",
+      "to": "FACT-0310 SkillInfoManager.SettingEditSkillInfo 0x06001154",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete 809-byte iterator MoveNext IL SHA f670514ca29a6c6c42e74fe35c9c73449d0b03114c3a4520b2fff9449ff32a79, callvirt at original IL+589 and +754."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The source checks the ToolSettingInfo.inst field through the original op_Inequality call; it does not establish an instantiated object in a live run.",
+    "The original loop obtains GetRegistSkillInfo and GetCliendID values by index and makes two Add calls for each iteration; it does not prove valid or unique IDs, authored entries, successful mutations, or atomicity.",
+    "Two direct callvirt sites in original <StartingLoad>c__Iterator1.MoveNext prove source reachability, not execution order or successful loading in any observed run.",
+    "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

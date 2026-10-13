@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_SETTING_EDIT_SKILL_INFO_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001154",
+    "owner": "SkillInfoManager",
+    "name": "SettingEditSkillInfo",
+    "row": "c494060000008600b38608005c480000f00c",
+    "rva": "0x000694C4",
+    "signature": "200001",
+    "header": "133003005d00000018030011",
+    "body_length": 93,
+    "body_sha256": "b2a4a0805df0835f9a97ee1c20ce72da547e1a1288113b6909b2950e86978233",
+    "body_hex": "7ec291000414280f00000a394c000000160a38350000007ec2910004066f6e5f00060b7ec2910004066f715f00060c027bda0e000408076f5407000a027bdb0e0004086fa006000a0617580a067ec29100046f6d5f00063fbbffffff2a",
+    "has_exception_section": false
+  },
+  "fields": [
+    {
+      "token": "0x040091C2",
+      "owner": "ToolSettingInfo",
+      "name": "inst",
+      "row": "160006220100c5410000",
+      "signature": "0612af40",
+      "sites": [
+        0,
+        23,
+        35,
+        77
+      ],
+      "opcode": "ldsfld"
+    },
+    {
+      "token": "0x04000EDA",
+      "owner": "SkillInfoManager",
+      "name": "skillInfoList",
+      "row": "0600c74c0100250c0000",
+      "signature": "061512590211a9dc1286f8",
+      "sites": [
+        48
+      ],
+      "opcode": "ldfld"
+    },
+    {
+      "token": "0x04000EDB",
+      "owner": "SkillInfoManager",
+      "name": "skillIDList",
+      "row": "0600d54c0100cc090000",
+      "signature": "061512090111a9dc",
+      "sites": [
+        61
+      ],
+      "opcode": "ldfld"
+    }
+  ],
+  "memberrefs": [
+    {
+      "token": "0x0A00000F",
+      "name": "op_Inequality",
+      "row": "d100000088500600b6480000",
+      "signature": "00020212691269",
+      "class_coded": 209,
+      "sites": [
+        6
+      ],
+      "opcode": "call"
+    },
+    {
+      "token": "0x0A000754",
+      "name": "Add",
+      "row": "dc070000e00c0600b6550000",
+      "signature": "20020113001301",
+      "class_coded": 2012,
+      "sites": [
+        55
+      ],
+      "opcode": "callvirt"
+    },
+    {
+      "token": "0x0A0006A0",
+      "name": "Add",
+      "row": "6c060000e00c06001d490000",
+      "signature": "2001011300",
+      "class_coded": 1644,
+      "sites": [
+        67
+      ],
+      "opcode": "callvirt"
+    }
+  ],
+  "methoddef_calls": [
+    {
+      "token": "0x06005F6E",
+      "owner": "ToolSettingInfo",
+      "name": "GetRegistSkillInfo",
+      "size": 39,
+      "sha": "cc758ad25ca2d0bee6e7370643ae9775014be3b5a4f5ff239f675073d3f399af",
+      "sites": [
+        29
+      ]
+    },
+    {
+      "token": "0x06005F71",
+      "owner": "ToolSettingInfo",
+      "name": "GetCliendID",
+      "size": 44,
+      "sha": "366cbbe807b4b910ae02968d5d3326bfdb2f626177007801079c380822f2f62d",
+      "sites": [
+        41
+      ]
+    },
+    {
+      "token": "0x06005F6D",
+      "owner": "ToolSettingInfo",
+      "name": "GetRegistSkillInfoCount",
+      "size": 12,
+      "sha": "e47062b9d1f6cb0bdb6c4966fcbbd27e69f19abe0bdd2ce8a38e3481b82ccf77",
+      "sites": [
+        82
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "site": 11,
+      "opcode": "0x39",
+      "relative": 76,
+      "target": 92,
+      "meaning": "skip_when_original_Unity_object_inequality_test_false"
+    },
+    {
+      "site": 18,
+      "opcode": "0x38",
+      "relative": 53,
+      "target": 76,
+      "meaning": "initial_jump_to_count"
+    },
+    {
+      "site": 87,
+      "opcode": "0x3F",
+      "relative": -69,
+      "target": 23,
+      "meaning": "continue_while_index_below_count"
+    }
+  ],
+  "semantics": {
+    "index_init": [
+      16,
+      18
+    ],
+    "registration_info_lookup_site": 29,
+    "client_id_lookup_site": 41,
+    "dictionary_add_site": 55,
+    "list_add_site": 67,
+    "index_increment": [
+      72,
+      76
+    ],
+    "count_site": 82,
+    "ret_site": 92
+  },
+  "direct_callers": [
+    {
+      "token": "0x060076C1",
+      "owner": "<StartingLoad>c__Iterator1",
+      "name": "MoveNext",
+      "size": 809,
+      "sha": "f670514ca29a6c6c42e74fe35c9c73449d0b03114c3a4520b2fff9449ff32a79",
+      "sites": [
+        589,
+        754
+      ],
+      "opcode": "callvirt"
+    }
+  ],
+  "limits": [
+    "The source checks the ToolSettingInfo.inst field through the original op_Inequality call; it does not establish an instantiated object in a live run.",
+    "The original loop obtains GetRegistSkillInfo and GetCliendID values by index and makes two Add calls for each iteration; it does not prove valid or unique IDs, authored entries, successful mutations, or atomicity.",
+    "Two direct callvirt sites in original <StartingLoad>c__Iterator1.MoveNext prove source reachability, not execution order or successful loading in any observed run.",
+    "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
