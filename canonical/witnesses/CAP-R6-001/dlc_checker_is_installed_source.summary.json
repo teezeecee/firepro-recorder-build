@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DLC_CHECKER_IS_INSTALLED_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001035",
+    "owner": "DLCChecker",
+    "namespace": "DLC",
+    "name": "IsInstalled",
+    "rva": "0x0005F832",
+    "row": "32f80500000096007477080077960100130c",
+    "signature": "0001021185c8",
+    "header": "32",
+    "body_length": 12,
+    "body_hex": "7eec640004026fc95100062a",
+    "body_sha256": "751c2af209156c99f29d82417a6389b8a4309208ecc1e2329baeaa5b53428adf"
+  },
+  "field": {
+    "token": "0x040064EC",
+    "owner": "SaveData",
+    "name": "inst",
+    "row": "160006220100413a0000",
+    "signature": "0612a938",
+    "site": 0,
+    "opcode": "0x7E"
+  },
+  "callee": {
+    "token": "0x060051C9",
+    "owner": "SaveData",
+    "namespace": "",
+    "name": "IsDLCInstalled",
+    "rva": "0x00316C6C",
+    "row": "6c6c310000008600f3540a00129b01002e3c",
+    "signature": "2001021185c8",
+    "body_length": 45,
+    "body_sha256": "d353bf6e7046434074ecca1c5a62cb8cd9ec636500659fc5b9083f2943c7d841",
+    "site": 6,
+    "opcode": "0x6F"
+  },
+  "source_operands": {
+    "read_static_inst": [
+      0,
+      5
+    ],
+    "load_input_dlc": [
+      5,
+      6
+    ],
+    "callvirt_is_dlc_installed": [
+      6,
+      11
+    ],
+    "return": [
+      11,
+      12
+    ]
+  },
+  "limits": [
+    "Static SaveData.inst is read as a source field; this proves neither the singleton is initialized nor that it is non-null at runtime.",
+    "Callvirt to SaveData.IsDLCInstalled forwards the input DLCEnum; it does not independently establish ownership, installed DLC, successful return or a nonthrowing execution.",
+    "The original SaveData.IsDLCInstalled body is source-pinned by FACT-0312; no new runtime outcomes, authored DLC values, Steam account state or source asset contents are demonstrated.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original retail decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer remain locked."
+  ]
+}
