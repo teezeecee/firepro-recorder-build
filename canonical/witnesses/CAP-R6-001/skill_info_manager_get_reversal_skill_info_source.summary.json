@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_GET_REVERSAL_SKILL_INFO_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001165",
+    "owner": "SkillInfoManager",
+    "name": "GetReversalSkillInfo",
+    "rva": "0x00069A0B",
+    "metadata_row_hex": "0b9a060000008600cf87080083a10100020d",
+    "signature_hex": "20011286f811a978",
+    "header_hex": "82",
+    "code_bytes": 32,
+    "code_sha256": "ec43cd4bcfc8640c0148a10719b8bb4455d349ce3cfc4d6801ff897dceebbd90",
+    "il_hex": "03163c02000000142a031f793f02000000142a027bdc0e0004036f5907000a2a"
+  },
+  "field": {
+    "token": "0x04000EDC",
+    "owner": "SkillInfoManager",
+    "name": "skillInfoList_Reversal",
+    "metadata_row_hex": "0100e14c0100310c0000",
+    "signature_hex": "06151209011286f8",
+    "ldfld_il": 20
+  },
+  "memberref": {
+    "token": "0x0A000759",
+    "name": "get_Item",
+    "metadata_row_hex": "e40700001b51060092490000",
+    "signature_hex": "2001130008",
+    "class_coded": 2020,
+    "callvirt_il": 26
+  },
+  "bounds": {
+    "lower": 0,
+    "upper": 121,
+    "branches": [
+      {
+        "opcode": "0x3C",
+        "il": 2,
+        "relative": 2,
+        "target": 9,
+        "guard": "negative_id"
+      },
+      {
+        "opcode": "0x3F",
+        "il": 12,
+        "relative": 2,
+        "target": 19,
+        "guard": "above_121"
+      }
+    ],
+    "negative_null_site": 7,
+    "above_null_site": 17,
+    "null_il": "142a",
+    "lookup_site": 19,
+    "lookup_hex": "027bdc0e0004036f5907000a2a"
+  },
+  "direct_callers": [
+    {
+      "token": "0x060048F3",
+      "owner": "MatchEvaluation",
+      "name": "GetWinningTechName",
+      "body_bytes": 226,
+      "body_sha256": "083c61e749890413bbc9c21092b1f227f9c67bd22bd18f90ef5a2fe7e9f2a35d",
+      "opcode": "callvirt",
+      "sites": [
+        151
+      ]
+    },
+    {
+      "token": "0x06004946",
+      "owner": "MatchMisc",
+      "name": "CheckReversal_Grapple",
+      "body_bytes": 314,
+      "body_sha256": "e4908b0cba3939db08b08e5cda0c4dac5811010fc1c193a2284069a3dd00dd2d",
+      "opcode": "callvirt",
+      "sites": [
+        189,
+        301
+      ]
+    },
+    {
+      "token": "0x06004EE4",
+      "owner": "Player",
+      "name": "ProcessBlock",
+      "body_bytes": 654,
+      "body_sha256": "3d499950306c655ffd406b581fe5ac664e2c6ec34b64845b1375393b67d98353",
+      "opcode": "callvirt",
+      "sites": [
+        180
+      ]
+    },
+    {
+      "token": "0x06004EF3",
+      "owner": "Player",
+      "name": "ProcessGrapple_OverTheTopRope",
+      "body_bytes": 487,
+      "body_sha256": "fd2d88b27c2c4281f90f28aa6b933bc32451d9d87b89859f4f7e67730ada42f6",
+      "opcode": "callvirt",
+      "sites": [
+        181
+      ]
+    }
+  ],
+  "limits": [
+    "The original source bounds check does not establish whether each key from 0 through 121 exists in the reversal dictionary; a successful get_Item for any key is not observed here.",
+    "Original code-level field labels and caller operands do not prove authored reversal table contents, move results, animation transitions, or a match outcome.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

@@ -5795,6 +5795,29 @@
         "Names, method signatures and ContainsKey/get_Count operands prove only source control flow; unknown authored skill IDs and actual game lookup outcomes must not be inferred.",
         "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historic decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_GET_REVERSAL_SKILL_INFO_SOURCE_V1",
+      "fact_id": "FACT-0305",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SkillInfoManager.GetReversalSkillInfo MethodDef 0x06001165 exact complete 32-byte IL: null for IDs below zero or above 121, otherwise direct dictionary get_Item on original skillInfoList_Reversal. Original metadata, two branches, field/MemberRef operands and five callvirt sites across four retail methods source checked. Dictionary population, actual reversal outcomes and authored resource values not established.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_get_reversal_skill_info_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001165",
+          "0x0000",
+          "0x0020"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The original source bounds check does not establish whether each key from 0 through 121 exists in the reversal dictionary; a successful get_Item for any key is not observed here.",
+        "Original code-level field labels and caller operands do not prove authored reversal table contents, move results, animation transitions, or a match outcome.",
+        "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
