@@ -5911,6 +5911,30 @@
         "No authored DLC records, successful editor action, live downloaded content or match outcome is established.",
         "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_SETTING_EDIT_SKILL_INFO_SOURCE_V1",
+      "fact_id": "FACT-0310",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SkillInfoManager.SettingEditSkillInfo 0x06001154 complete 93-byte IL guards ToolSettingInfo.inst then loops over registered skill slots, calls GetRegistSkillInfo and GetCliendID per index, adds values to skillInfoList and skillIDList, increments, and compares against GetRegistSkillInfoCount. Two exact original <StartingLoad>c__Iterator1.MoveNext callvirt sites source-proven. Actual loaded entries and successful edits remain unknown.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_setting_edit_skill_info_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001154",
+          "0x0000",
+          "0x005D"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The source checks the ToolSettingInfo.inst field through the original op_Inequality call; it does not establish an instantiated object in a live run.",
+        "The original loop obtains GetRegistSkillInfo and GetCliendID values by index and makes two Add calls for each iteration; it does not prove valid or unique IDs, authored entries, successful mutations, or atomicity.",
+        "Two direct callvirt sites in original <StartingLoad>c__Iterator1.MoveNext prove source reachability, not execution order or successful loading in any observed run.",
+        "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
