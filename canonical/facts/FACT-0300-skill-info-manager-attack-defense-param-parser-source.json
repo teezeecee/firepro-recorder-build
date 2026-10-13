@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0300",
+  "status": "PROVEN_DLL",
+  "claim": "The original SHA-matched SkillInfoManager.Parse_AtkPrmType MethodDef 0x0600115E and Parse_DefPrmType MethodDef 0x0600115F each have their own original metadata identities and return signatures but share exactly the same complete 71-byte IL SHA b880353ace277a63dc022fd274fd82f039b4e543d30d102c4ecbca57acf9970f as the previously proved FACT-0298 Parse_SkillType MethodDef 0x0600115A. Each checks IsNullOrEmpty on its first string and returns numeric 0 for empty; otherwise checks Substring(2,1) against original #US literal space, returning 0 on mismatch; on match parses Int32.Parse(Substring(0,2)) within a source small System.Object catch returning 0 for caught exceptions. The initial Substring is outside the catch. Their four direct calls from original ParseSkillParam 0x06001153 occur at IL offsets 280/298 for attack type, and 316/334 for defense type. No authored resource rows or gameplay effects established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original matching 8,171,008-byte Assembly-CSharp(3).dll SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6. Original 0x0600115E MethodDef RVA 0x000697F0 row f0970600000091005b87080049a10100fc0c signature 00011187a00e, original 0x0600115F RVA 0x00069854 row 54980600000091006c87080057a10100fd0c signature 00011187a40e. Each 71-byte IL SHA b880353ace277a63dc022fd274fd82f039b4e543d30d102c4ecbca57acf9970f and original small EH bytes 0110000000002800153d0008c2000001; source witness canonical/witnesses/CAP-R6-001/skill_info_manager_attack_defense_param_parser_source.summary.json.",
+      "observation": "Exact original IL identity and direct caller sites from original DLL; neither authored database content nor runtime outcomes claimed."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0295 original ParseSkillParam MethodDef 0x06001153 source IL",
+      "to": "FACT-0300 original attack/defense helpers 0x0600115E and 0x0600115F",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original caller 1,396-byte IL SHA 96f871227fbcdc6b6851eb5e15fb221dfe1a9a4b58693ea8961f5c5156c0c95b; exact direct calls: 0x0600115E at IL offsets 280 and 298, 0x0600115F at IL offsets 316 and 334."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original DLL instructions show the shared parsing method body; they do not establish authored skill text contents, enum member labels or actual retail gameplay results.",
+    "In both original methods, String.Substring(2,1) occurs before the small System.Object catch range; a nonempty input too short for that call does not have a source-proven zero fallback.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza asset binding and historic decoded vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

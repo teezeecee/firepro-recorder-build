@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_ATTACK_DEFENSE_PARAM_SHARED_IL_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "methods": [
+    {
+      "token": "0x0600115E",
+      "owner": "SkillInfoManager",
+      "name": "Parse_AtkPrmType",
+      "rva": "0x000697F0",
+      "row": "f0970600000091005b87080049a10100fc0c",
+      "signature": "00011187a00e",
+      "header": "1b300300470000001c030011",
+      "parent_call_sites": [
+        280,
+        298
+      ]
+    },
+    {
+      "token": "0x0600115F",
+      "owner": "SkillInfoManager",
+      "name": "Parse_DefPrmType",
+      "rva": "0x00069854",
+      "row": "54980600000091006c87080057a10100fd0c",
+      "signature": "00011187a40e",
+      "header": "1b300300470000001d030011",
+      "parent_call_sites": [
+        316,
+        334
+      ]
+    }
+  ],
+  "body": {
+    "length": 71,
+    "sha256": "b880353ace277a63dc022fd274fd82f039b4e543d30d102c4ecbca57acf9970f",
+    "hex": "02281500000a3902000000162a0218176f1800000a726f0400706f0c03000a3a02000000162a160a0216186f1800000a28de06000a0a060bdd0800000026160bdd00000000072a"
+  },
+  "sibling": {
+    "token": "0x0600115A",
+    "name": "Parse_SkillType",
+    "fact_id": "FACT-0298"
+  },
+  "exception": {
+    "hex": "0110000000002800153d0008c2000001",
+    "try_offset": 40,
+    "try_length": 21,
+    "handler_offset": 61,
+    "handler_length": 8,
+    "catch_type": "0x010000C2"
+  },
+  "literal": {
+    "token": "0x7000046F",
+    "value": " ",
+    "original_heap_bytes": "03200000"
+  },
+  "limits": [
+    "First Substring(2,1) occurs outside original catch.",
+    "Authored asset values and enum labels not established.",
+    "Retail asset-parent identity and loaded fprwaza binding remain unresolved; runtime/viewer LOCKED."
+  ]
+}
