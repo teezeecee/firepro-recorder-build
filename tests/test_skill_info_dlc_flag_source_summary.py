@@ -14,7 +14,7 @@ for m in w["methods"]:
     assert len(b)==m["body_length"] and hashlib.sha256(b).hexdigest()==m["body_sha256"]
 assert [x["sites"] for x in w["direct_callers"]]==[[21],[62],[119],[86],[1]]
 assert [x["token"] for x in w["fields"]]==["0x04000ED4","0x040064EC"]
-assert len(reg["families"])==310 and len({x["family_id"] for x in reg["families"]})==310
+assert len(reg["families"])>=310 and len({x["family_id"] for x in reg["families"]})==len(reg["families"])
 assert sum(x["fact_id"]=="FACT-0311" for x in reg["families"])==1
 assert next(x for x in reg["families"] if x["fact_id"]=="FACT-0311")["runtime_eligible"] is False
 assert reg["runtime_unlocked"] is False

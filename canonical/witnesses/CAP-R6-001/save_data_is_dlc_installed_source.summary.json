@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SAVE_DATA_IS_DLC_INSTALLED_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x060051C9",
+    "owner": "SaveData",
+    "namespace": "",
+    "name": "IsDLCInstalled",
+    "row": "6c6c310000008600f3540a00129b01002e3c",
+    "rva": "0x00316C6C",
+    "signature": "2001021185c8",
+    "header": "b6",
+    "body_length": 45,
+    "body_hex": "0328331000063a02000000162a027b0c6500040394391100000003194008000000021828c95100062a172a162a",
+    "body_sha256": "d353bf6e7046434074ecca1c5a62cb8cd9ec636500659fc5b9083f2943c7d841"
+  },
+  "field": {
+    "token": "0x0400650C",
+    "owner": "SaveData",
+    "name": "dlcVersion",
+    "row": "0600de1304008d030000",
+    "signature": "061d08",
+    "site": 14,
+    "opcode": "0x7B"
+  },
+  "calls": [
+    {
+      "site": 1,
+      "opcode": "0x28",
+      "target": "0x06001033",
+      "owner": "DLCChecker",
+      "namespace": "DLC",
+      "name": "IsOwner",
+      "row": "dcf70500000096005f77080077960100110c",
+      "signature": "0001021185c8",
+      "body_length": 39,
+      "body_sha256": "1aef92c709ae4ad954e979dec831bd361ef6546059f6ddf914fe9fa352bae5cc"
+    },
+    {
+      "site": 35,
+      "opcode": "0x28",
+      "target": "0x060051C9",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "IsDLCInstalled",
+      "row": "6c6c310000008600f3540a00129b01002e3c",
+      "signature": "2001021185c8",
+      "body_length": 45,
+      "body_sha256": "d353bf6e7046434074ecca1c5a62cb8cd9ec636500659fc5b9083f2943c7d841"
+    }
+  ],
+  "branches": [
+    {
+      "site": 6,
+      "opcode": "0x3A",
+      "relative": 2,
+      "target": 13,
+      "meaning": "if_DLCChecker_IsOwner_true_enter_save_flag_check"
+    },
+    {
+      "site": 21,
+      "opcode": "0x39",
+      "relative": 17,
+      "target": 43,
+      "meaning": "if_dlcVersion_at_input_index_zero_return_false"
+    },
+    {
+      "site": 28,
+      "opcode": "0x40",
+      "relative": 8,
+      "target": 41,
+      "meaning": "if_input_index_not_equal_numeric_3_return_true"
+    }
+  ],
+  "semantics": {
+    "is_owner_call": 1,
+    "owner_false_return": [
+      11,
+      12
+    ],
+    "array_field": 14,
+    "element_read": 20,
+    "absent_version_branch": 21,
+    "index_3_compare": [
+      26,
+      28
+    ],
+    "recursive_index_2_call": 35,
+    "recursive_return": 40,
+    "installed_true_return": [
+      41,
+      42
+    ],
+    "version_false_return": [
+      43,
+      44
+    ]
+  },
+  "direct_callers": [
+    {
+      "token": "0x06001035",
+      "owner": "DLCChecker",
+      "namespace": "DLC",
+      "name": "IsInstalled",
+      "body_length": 12,
+      "body_sha256": "751c2af209156c99f29d82417a6389b8a4309208ecc1e2329baeaa5b53428adf",
+      "sites": [
+        6
+      ],
+      "opcode": "0x6F"
+    },
+    {
+      "token": "0x06001145",
+      "owner": "SkillInfo",
+      "namespace": "",
+      "name": "CheckValidationDLCMove",
+      "body_length": 65,
+      "body_sha256": "c956c68dd2c8c5ee156bf69ee702993d2cb95118f32a6afc74699bf83aadfdf4",
+      "sites": [
+        39
+      ],
+      "opcode": "0x6F"
+    }
+  ],
+  "limits": [
+    "This source proves a call to DLCChecker.IsOwner, not the internal meaning, account state or actual truth of the ownership result. That callee's 39-byte body is pinned by hash for call-target identity only.",
+    "Source loads dlcVersion with an index read; no actual contents, length, successful access, or installed DLC state is proven.",
+    "The numeric index 3 special case recursively invokes the same method with numeric index 2; it is a source branch, not proof of any authored DLC dependency beyond this code path.",
+    "The two pinned caller witnesses are not represented as an exhaustive callgraph of every retail user of IsDLCInstalled.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

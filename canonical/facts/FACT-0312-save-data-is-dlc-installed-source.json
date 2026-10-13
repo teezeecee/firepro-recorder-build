@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0312",
+  "status": "PROVEN_DLL",
+  "claim": "Original retail SaveData.IsDLCInstalled MethodDef 0x060051C9 RVA 0x00316C6C has complete 45-byte tiny-header IL SHA256 d353bf6e7046434074ecca1c5a62cb8cd9ec636500659fc5b9083f2943c7d841. It first calls DLC.DLCChecker.IsOwner for the input DLC index; when that call returns false it returns false. It then checks SaveData.dlcVersion[index] and returns false for zero. If the indexed value is nonzero and index equals numeric 3 it recursively calls IsDLCInstalled(2) and returns that value; otherwise it returns true. Original source branches, field metadata, call target identity and direct caller sites from DLCChecker.IsInstalled and SkillInfo.CheckValidationDLCMove are pinned. These are code paths only, not verified installed DLC or authored asset values.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original 8,171,008-byte Assembly-CSharp(3).dll SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; complete original 45-byte MethodDef 0x060051C9 IL, exact metadata row/header/body SHA, original FieldDef 0x0400650C, DLCChecker.IsOwner 0x06001033 call at IL+1, self call +35, three branch sites +6/+21/+28 and two full original caller IL hashes in witness canonical/witnesses/CAP-R6-001/save_data_is_dlc_installed_source.summary.json.",
+      "observation": "Original DLC ownership guard, stored version index read and exceptional numeric 3-to-2 recursion; no loaded array values or actual ownership established."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0311 SkillInfo.CheckValidationDLCMove 0x06001145",
+      "to": "FACT-0312 SaveData.IsDLCInstalled 0x060051C9",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete 65-byte caller IL SHA c956c68dd2c8c5ee156bf69ee702993d2cb95118f32a6afc74699bf83aadfdf4, direct callvirt IL+39."
+        }
+      ]
+    },
+    {
+      "from": "DLC.DLCChecker.IsInstalled 0x06001035",
+      "to": "FACT-0312 SaveData.IsDLCInstalled 0x060051C9",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete 12-byte caller IL SHA 751c2af209156c99f29d82417a6389b8a4309208ecc1e2329baeaa5b53428adf direct callvirt IL+6."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "This source proves a call to DLCChecker.IsOwner, not the internal meaning, account state or actual truth of the ownership result. That callee's 39-byte body is pinned by hash for call-target identity only.",
+    "Source loads dlcVersion with an index read; no actual contents, length, successful access, or installed DLC state is proven.",
+    "The numeric index 3 special case recursively invokes the same method with numeric index 2; it is a source branch, not proof of any authored DLC dependency beyond this code path.",
+    "The two pinned caller witnesses are not represented as an exhaustive callgraph of every retail user of IsDLCInstalled.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
