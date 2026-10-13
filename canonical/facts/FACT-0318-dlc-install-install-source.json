@@ -1,0 +1,72 @@
+{
+  "fact_id": "FACT-0318",
+  "status": "PROVEN_DLL",
+  "claim": "Matching original retail DLC.DLCInstall.Install (MethodDef 0x0600103C) has exact complete 242-byte IL at RVA 0x0005FC70. It obtains SaveData.inst and returns early under an IsDLCInstalled branch; raw DLCEnum index 3 takes an additional IsDLCInstalled(raw 2) check. For raw index 9 the source sets StoryWork.storyScenario to numeric 2, obtains StorySaveDataManager.GetStoryData, tests StoryWork.m_root_clear, and calls DLCInitializer.AddDLCPromotersAndStables and DLCInitializer.AddDLCWrestlers through bounded call sites. Other paths also call these two DLCInitializer methods. A 13-way original switch and default converge on SaveData.dlcVersion[input index] = numeric 1. This fact pins complete method metadata/header/IL, five FieldDefs, four unique MethodDefs and seven call sites, exact conditional/switch/branch targets and full callee body identities from matching retail source. It makes NO claims about successful DLC installation, interpreted DLC product names, actual story state, or game runtime outcomes.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original 8,171,008-byte Assembly-CSharp(3).dll SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6. DLCInstall.Install MethodDef 0x0600103C RVA 0x0005FC70 header 13300300f2000000a9020011, 242-byte complete IL SHA256 87a63cf5e6c3c3bcf200ad2a8fdac1ee49bc3c25ec68121c8fcc7332d21f3305, original fields/callees and branch targets source-pinned in canonical/witnesses/CAP-R6-001/dlc_install_install_source.summary.json with prover tools/prove_dlc_install_install_source.py.",
+      "observation": "Original source-controlled installation flow only, not observed installation"
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0316 DLCManager.Update 0x0600103D",
+      "to": "FACT-0318 DLCInstall.Install 0x0600103C",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "FACT-0316 original complete 114-byte DLCManager.Update direct call to 0x0600103C at IL+67; this fact now independently source-proves entire 242-byte target."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0318 DLCInstall.Install 0x0600103C",
+      "to": "SaveData.IsDLCInstalled 0x060051C9",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original call sites IL+8, IL+28, complete original callee body SHA256 d353bf6e7046434074ecca1c5a62cb8cd9ec636500659fc5b9083f2943c7d841; callee ownership verified in original TypeDef metadata."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0318 DLCInstall.Install 0x0600103C",
+      "to": "StorySaveDataManager.GetStoryData 0x06003C24",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original call sites IL+58, complete original callee body SHA256 564cd017b6b587e05dc90b0c95294394b6d0d874e7c59dee6c493fa3182cb611; callee ownership verified in original TypeDef metadata."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0318 DLCInstall.Install 0x0600103C",
+      "to": "DLCInitializer.AddDLCPromotersAndStables 0x06001037",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original call sites IL+76, IL+93, complete original callee body SHA256 607e4da63d5f365419ef55735e10fa4004e09188b243ab7346eecb72fc136927; callee ownership verified in original TypeDef metadata."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0318 DLCInstall.Install 0x0600103C",
+      "to": "DLCInitializer.AddDLCWrestlers 0x06001038",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original call sites IL+82, IL+99, complete original callee body SHA256 f2fc5e12578a6065fe8202f6a90d766295a7035a0f1597ec51bd33222a6e3985; callee ownership verified in original TypeDef metadata."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "All claims concern byte-exact original retail DLL source instructions, metadata, call sites and branch targets, NOT successful game execution or DLC installation.",
+    "SaveData.IsDLCInstalled is referenced twice; the input at the second call uses raw numeric DLC index 2 only when the original input equals raw numeric 3. DLC product-name labels and authored entitlement values are not established by this source.",
+    "The story-specific branch compares raw numeric index 9 and touches StoryWork and StorySaveDataManager fields. Actual story-save contents, scenario outcome, and retail gameplay effects are NOT established.",
+    "Both original helper methods are owned by DLCInitializer rather than DLCInstall. Their full bodies are identity-pinned by SHA only; interpreting their internal behavior requires separate source facts.",
+    "The 13 switch cases and its default all branch to one common SaveData.dlcVersion[index] = 1 source operation; this is not proof that its memory write was executed or succeeded.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding, and historical retail decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}

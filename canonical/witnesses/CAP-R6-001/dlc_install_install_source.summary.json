@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DLC_INSTALL_INSTALL_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x0600103C",
+    "owner": "DLCInstall",
+    "namespace": "DLC",
+    "name": "Install",
+    "rva": "0x0005FC70",
+    "row": "70fc0500000096000278080092960100170c",
+    "signature": "0001011185c8",
+    "header": "13300300f2000000a9020011",
+    "body_length": 242,
+    "body_hex": "7eec6400040a06026fc951000639010000002a0219400d00000006186fc95100063a010000002a021f09402d0000001880564800047e7d4900046f243c00060b077b5a480004390c000000022837100006022838100006380c00000002283710000602283810000602450d000000050000000a0000000f00000014000000190000001e00000023000000280000002d00000032000000370000003c000000410000003841000000383c00000038370000003832000000382d00000038280000003823000000381e00000038190000003814000000380f000000380a00000038050000003800000000067b0c65000402179e2a",
+    "body_sha256": "87a63cf5e6c3c3bcf200ad2a8fdac1ee49bc3c25ec68121c8fcc7332d21f3305"
+  },
+  "fields": [
+    {
+      "token": "0x040064EC",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "inst",
+      "row": "160006220100413a0000",
+      "signature": "0612a938",
+      "site": 0,
+      "opcode": "0x7E"
+    },
+    {
+      "token": "0x04004856",
+      "owner": "StoryWork",
+      "namespace": "",
+      "name": "storyScenario",
+      "row": "160072ff02006b0c0000",
+      "signature": "06119cd0",
+      "site": 48,
+      "opcode": "0x80"
+    },
+    {
+      "token": "0x0400497D",
+      "owner": "StorySaveDataManager",
+      "namespace": "",
+      "name": "inst",
+      "row": "160006220100012a0000",
+      "signature": "06129d3c",
+      "site": 53,
+      "opcode": "0x7E"
+    },
+    {
+      "token": "0x0400485A",
+      "owner": "StoryWork",
+      "namespace": "",
+      "name": "m_root_clear",
+      "row": "0600a8ff020008000000",
+      "signature": "0602",
+      "site": 65,
+      "opcode": "0x7B"
+    },
+    {
+      "token": "0x0400650C",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "dlcVersion",
+      "row": "0600de1304008d030000",
+      "signature": "061d08",
+      "site": 233,
+      "opcode": "0x7B"
+    }
+  ],
+  "callees": [
+    {
+      "token": "0x060051C9",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "IsDLCInstalled",
+      "rva": "0x00316C6C",
+      "row": "6c6c310000008600f3540a00129b01002e3c",
+      "signature": "2001021185c8",
+      "body_length": 45,
+      "body_sha256": "d353bf6e7046434074ecca1c5a62cb8cd9ec636500659fc5b9083f2943c7d841",
+      "sites": [
+        8,
+        28
+      ],
+      "opcode": "0x6F"
+    },
+    {
+      "token": "0x06003C24",
+      "owner": "StorySaveDataManager",
+      "namespace": "",
+      "name": "GetStoryData",
+      "rva": "0x0023A1BD",
+      "row": "bda1230000008600c6ad090041790200932b",
+      "signature": "2000129cd4",
+      "body_length": 12,
+      "body_sha256": "564cd017b6b587e05dc90b0c95294394b6d0d874e7c59dee6c493fa3182cb611",
+      "sites": [
+        58
+      ],
+      "opcode": "0x6F"
+    },
+    {
+      "token": "0x06001037",
+      "owner": "DLCInitializer",
+      "namespace": "",
+      "name": "AddDLCPromotersAndStables",
+      "rva": "0x0005F8DC",
+      "row": "dcf80500000096008977080092960100150c",
+      "signature": "0001011185c8",
+      "body_length": 342,
+      "body_sha256": "607e4da63d5f365419ef55735e10fa4004e09188b243ab7346eecb72fc136927",
+      "sites": [
+        76,
+        93
+      ],
+      "opcode": "0x28"
+    },
+    {
+      "token": "0x06001038",
+      "owner": "DLCInitializer",
+      "namespace": "",
+      "name": "AddDLCWrestlers",
+      "rva": "0x0005FA5C",
+      "row": "5cfa050000009600a377080092960100160c",
+      "signature": "0001011185c8",
+      "body_length": 202,
+      "body_sha256": "f2fc5e12578a6065fe8202f6a90d766295a7035a0f1597ec51bd33222a6e3985",
+      "sites": [
+        82,
+        99
+      ],
+      "opcode": "0x28"
+    }
+  ],
+  "conditional_branches": [
+    {
+      "site": 13,
+      "opcode": "0x39",
+      "delta": 1,
+      "target": 19
+    },
+    {
+      "site": 21,
+      "opcode": "0x40",
+      "delta": 13,
+      "target": 39
+    },
+    {
+      "site": 33,
+      "opcode": "0x3A",
+      "delta": 1,
+      "target": 39
+    },
+    {
+      "site": 42,
+      "opcode": "0x40",
+      "delta": 45,
+      "target": 92
+    },
+    {
+      "site": 70,
+      "opcode": "0x39",
+      "delta": 12,
+      "target": 87
+    },
+    {
+      "site": 87,
+      "opcode": "0x38",
+      "delta": 12,
+      "target": 104
+    }
+  ],
+  "switch": {
+    "site": 105,
+    "opcode": "0x45",
+    "case_count": 13,
+    "relative_deltas": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65
+    ],
+    "targets": [
+      167,
+      172,
+      177,
+      182,
+      187,
+      192,
+      197,
+      202,
+      207,
+      212,
+      217,
+      222,
+      227
+    ],
+    "fallthrough_target": 162
+  },
+  "common_target_branches": [
+    {
+      "site": 162,
+      "opcode": "0x38",
+      "delta": 65,
+      "target": 232
+    },
+    {
+      "site": 167,
+      "opcode": "0x38",
+      "delta": 60,
+      "target": 232
+    },
+    {
+      "site": 172,
+      "opcode": "0x38",
+      "delta": 55,
+      "target": 232
+    },
+    {
+      "site": 177,
+      "opcode": "0x38",
+      "delta": 50,
+      "target": 232
+    },
+    {
+      "site": 182,
+      "opcode": "0x38",
+      "delta": 45,
+      "target": 232
+    },
+    {
+      "site": 187,
+      "opcode": "0x38",
+      "delta": 40,
+      "target": 232
+    },
+    {
+      "site": 192,
+      "opcode": "0x38",
+      "delta": 35,
+      "target": 232
+    },
+    {
+      "site": 197,
+      "opcode": "0x38",
+      "delta": 30,
+      "target": 232
+    },
+    {
+      "site": 202,
+      "opcode": "0x38",
+      "delta": 25,
+      "target": 232
+    },
+    {
+      "site": 207,
+      "opcode": "0x38",
+      "delta": 20,
+      "target": 232
+    },
+    {
+      "site": 212,
+      "opcode": "0x38",
+      "delta": 15,
+      "target": 232
+    },
+    {
+      "site": 217,
+      "opcode": "0x38",
+      "delta": 10,
+      "target": 232
+    },
+    {
+      "site": 222,
+      "opcode": "0x38",
+      "delta": 5,
+      "target": 232
+    },
+    {
+      "site": 227,
+      "opcode": "0x38",
+      "delta": 0,
+      "target": 232
+    }
+  ],
+  "source_tail": {
+    "start": 232,
+    "hex": "067b0c65000402179e2a",
+    "meaning": "source_assign_dlcVersion_at_input_index_numeric_one"
+  },
+  "limits": [
+    "All claims concern byte-exact original retail DLL source instructions, metadata, call sites and branch targets, NOT successful game execution or DLC installation.",
+    "SaveData.IsDLCInstalled is referenced twice; the input at the second call uses raw numeric DLC index 2 only when the original input equals raw numeric 3. DLC product-name labels and authored entitlement values are not established by this source.",
+    "The story-specific branch compares raw numeric index 9 and touches StoryWork and StorySaveDataManager fields. Actual story-save contents, scenario outcome, and retail gameplay effects are NOT established.",
+    "Both original helper methods are owned by DLCInitializer rather than DLCInstall. Their full bodies are identity-pinned by SHA only; interpreting their internal behavior requires separate source facts.",
+    "The 13 switch cases and its default all branch to one common SaveData.dlcVersion[index] = 1 source operation; this is not proof that its memory write was executed or succeeded.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding, and historical retail decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}
