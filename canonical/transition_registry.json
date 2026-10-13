@@ -5935,6 +5935,46 @@
         "Two direct callvirt sites in original <StartingLoad>c__Iterator1.MoveNext prove source reachability, not execution order or successful loading in any observed run.",
         "Original Unity resources.assets parent SHA, retail-loaded fprwaza binding and historical decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_DLC_FLAG_SOURCE_V1",
+      "fact_id": "FACT-0311",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original 4 SkillInfo DLC-flag methods source-pinned, with original 16-position IsDLCMove loop versus 13-position validation, first-ID and list loops. Exact branches, metadata, original IsDLCInstalled caller and direct source users proven. Authored DLC bytes, actual installation and game/runtime results unknown.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_dlc_flag_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001145",
+          "0x0000",
+          "0x0041"
+        ],
+        [
+          "0x06001146",
+          "0x0000",
+          "0x0024"
+        ],
+        [
+          "0x06001147",
+          "0x0000",
+          "0x003B"
+        ],
+        [
+          "0x06001148",
+          "0x0000",
+          "0x0024"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The four exact loops use fixed index bounds in source; no claim of actual backing-array length, installed DLC configuration, or successful index access is established.",
+        "CheckValidationDLCMove source permits success when no DLC position is flagged or when one of first 13 enabled slots passes IsDLCInstalled. This is not proof that all required DLC are installed.",
+        "GetDLCList has no proven direct MethodDef call sites in the audited source search; no claim about runtime reachability or returned values is made.",
+        "Neither authored DLC flag bytes nor downloaded parts/animation data are available from this original DLL code alone.",
+        "Original Unity parent resources.assets SHA, retail-loaded fprwaza binding and historical original decoded asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
