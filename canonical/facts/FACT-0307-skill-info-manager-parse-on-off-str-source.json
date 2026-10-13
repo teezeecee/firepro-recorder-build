@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0307",
+  "status": "PROVEN_DLL",
+  "claim": "Original retail SkillInfoManager.ParseOnOffStr MethodDef 0x06001157 (RVA 0x000695B4) has full 67-byte original IL SHA256 77607445fb73ba8e63dd6942efbc0d6c9a14bdccc5b30df74bdb17d28eefc426. It calls String.IsNullOrEmpty through MemberRef 0x0A000015 and returns numeric 0 for null/empty. Otherwise it compares the supplied string to the original #US literals '0', 'ON', and 'OFF' through String.Equals MemberRef 0x0A00030C at IL+17/35/53; matching 'ON' returns numeric 1, matching '0' or 'OFF' returns 0, other inputs return 0. All four original long branches at IL+6/22/40/58 target 27/29/47/65 respectively. Exact original SkillInfoManager._parseSkillInfoList MethodDef 0x0600114C has a single direct call at IL+206. This proves the source helper's literal comparisons and parser call edge, not actual authored TextAsset rows or gameplay values.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact SHA-matched original 8,171,008-byte retail Assembly-CSharp(3).dll SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; MethodDef 0x06001157, RVA 0x000695B4, raw MethodDef row b495060000009100bc82080052590000f30c, original 67-byte IL SHA 77607445fb73ba8e63dd6942efbc0d6c9a14bdccc5b30df74bdb17d28eefc426, original MemberRef tokens 0x0A000015/0x0A00030C, three exact original #US heap records (0, ON, OFF), four branch offsets and return bytes, original _parseSkillInfoList caller full 340-byte IL SHA 2f78bbd6d050643687d7e543342cfb305148877f9635555d54879dfa1825f6f4, direct call IL+206. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_parse_on_off_str_source.summary.json.",
+      "observation": "Original string-to-numeric parser and exact caller; no authored data content established."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Original SkillInfoManager._parseSkillInfoList 0x0600114C",
+      "to": "FACT-0307 SkillInfoManager.ParseOnOffStr 0x06001157",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original full 340-byte caller IL SHA 2f78bbd6d050643687d7e543342cfb305148877f9635555d54879dfa1825f6f4; one exact call instruction at IL+206 to MethodDef 0x06001157."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original exact string comparisons and return ordinals do not establish which values occur in authored DataBase/SkillInfo TextAsset rows or any runtime-import success.",
+    "The source compares the three literal strings with String.Equals and returns 0 for null, empty, unmatched, '0', or 'OFF'; no other normalization or case conversion occurs in this method.",
+    "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historical decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

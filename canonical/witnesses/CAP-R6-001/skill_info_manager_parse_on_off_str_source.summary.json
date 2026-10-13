@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_PARSE_ON_OFF_STR_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x06001157",
+    "owner": "SkillInfoManager",
+    "name": "ParseOnOffStr",
+    "rva": "0x000695B4",
+    "row": "b495060000009100bc82080052590000f30c",
+    "signature": "0001080e",
+    "header": "133002004300000000000000",
+    "body_length": 67,
+    "body_sha256": "77607445fb73ba8e63dd6942efbc0d6c9a14bdccc5b30df74bdb17d28eefc426",
+    "body_hex": "02281500000a3a100000000272a10600706f0c03000a3902000000162a02726d8400706f0c03000a3902000000172a0272738400706f0c03000a3902000000162a162a"
+  },
+  "memberrefs": [
+    {
+      "token": "0x0A000015",
+      "name": "IsNullOrEmpty",
+      "opcode": "call",
+      "row": "f9050000f350060070490000",
+      "signature": "0001020e",
+      "class_coded": 1529,
+      "sites": [
+        1
+      ]
+    },
+    {
+      "token": "0x0A00030C",
+      "name": "Equals",
+      "opcode": "callvirt",
+      "row": "f9050000875b0600e44f0000",
+      "signature": "2001020e",
+      "class_coded": 1529,
+      "sites": [
+        17,
+        35,
+        53
+      ]
+    }
+  ],
+  "literals": [
+    {
+      "text": "0",
+      "token": "0x700006A1",
+      "heap_record_hex": "03300000",
+      "ldstr_site": 12,
+      "equals_site": 17,
+      "branch_site": 22,
+      "return_site": 27,
+      "return_ordinal": 0
+    },
+    {
+      "text": "ON",
+      "token": "0x7000846D",
+      "heap_record_hex": "054f004e0000",
+      "ldstr_site": 30,
+      "equals_site": 35,
+      "branch_site": 40,
+      "return_site": 45,
+      "return_ordinal": 1
+    },
+    {
+      "text": "OFF",
+      "token": "0x70008473",
+      "heap_record_hex": "074f004600460000",
+      "ldstr_site": 48,
+      "equals_site": 53,
+      "branch_site": 58,
+      "return_site": 63,
+      "return_ordinal": 0
+    }
+  ],
+  "branches": [
+    {
+      "site": 6,
+      "opcode": "0x3A",
+      "relative": 16,
+      "target": 27,
+      "source": "null_or_empty"
+    },
+    {
+      "site": 22,
+      "opcode": "0x39",
+      "relative": 2,
+      "target": 29,
+      "source": "not_literal_0"
+    },
+    {
+      "site": 40,
+      "opcode": "0x39",
+      "relative": 2,
+      "target": 47,
+      "source": "not_literal_ON"
+    },
+    {
+      "site": 58,
+      "opcode": "0x39",
+      "relative": 2,
+      "target": 65,
+      "source": "not_literal_OFF"
+    }
+  ],
+  "returns": {
+    "null_or_empty": {
+      "site": 27,
+      "hex": "162a",
+      "value": 0
+    },
+    "default": {
+      "site": 65,
+      "hex": "162a",
+      "value": 0
+    }
+  },
+  "caller": {
+    "token": "0x0600114C",
+    "owner": "SkillInfoManager",
+    "name": "_parseSkillInfoList",
+    "body_length": 340,
+    "body_sha256": "2f78bbd6d050643687d7e543342cfb305148877f9635555d54879dfa1825f6f4",
+    "opcode": "call",
+    "call_sites": [
+      206
+    ]
+  },
+  "limits": [
+    "Original exact string comparisons and return ordinals do not establish which values occur in authored DataBase/SkillInfo TextAsset rows or any runtime-import success.",
+    "The source compares the three literal strings with String.Equals and returns 0 for null, empty, unmatched, '0', or 'OFF'; no other normalization or case conversion occurs in this method.",
+    "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historical decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
