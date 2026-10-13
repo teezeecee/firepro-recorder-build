@@ -1,0 +1,39 @@
+{
+  "fact_id": "FACT-0304",
+  "status": "PROVEN_DLL",
+  "claim": "In the exact matching retail DLL, original SkillInfoManager.GetSkillNum MethodDef 0x06001162 is 12-byte tiny-header IL SHA 47bbead6721a30ac1bf862e5658acbd85d89535f998c61fa9ea44016c8b25b6c, loading field SkillInfoManager.skillInfoList and calling its get_Count MemberRef 0x0A000758 before returning. Original SkillInfoManager.IsValidSkillID MethodDef 0x06001163 is complete 21-byte tiny-header IL SHA 9fe678f08e9083c8b36482f038cd33969c3d78bfb5ea3cc4c47db02cf9b01992: it loads the same field and its first argument, invokes ContainsKey MemberRef 0x0A000752, then returns numeric Boolean 1 for true / 0 for false through a long brfalse target 19. Three original callvirt instructions to IsValidSkillID are present in SkillDataMan._loadPackedSkillData IL+91/141/201; another in SkillDataMan_Craft.InitSkillData IL+1941. No original authored key entries, collection counts or actual gameplay outcomes proven.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact original 8,171,008-byte Assembly-CSharp(3).dll SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; MethodDefs 0x06001162 row c799060000008600a78708005e490000000d at RVA 0x000699C7 and 0x06001163 row d499060000008600b387080073a10100000d at RVA 0x000699D4; 12/21-byte complete IL SHA 47bbead6721a30ac1bf862e5658acbd85d89535f998c61fa9ea44016c8b25b6c / 9fe678f08e9083c8b36482f038cd33969c3d78bfb5ea3cc4c47db02cf9b01992; field metadata 0x04000EDA, MemberRefs 0x0A000758 and 0x0A000752, exact original branch and four caller operands. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_skill_count_validity_source.summary.json.",
+      "observation": "Complete raw source method bodies, source metadata, control branch and caller-site bytes verified, without any claim of loaded dictionary contents."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Original SkillDataMan._loadPackedSkillData 0x06005257",
+      "to": "FACT-0304 SkillInfoManager.IsValidSkillID 0x06001163",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete caller IL 354 bytes SHA 9a502219cf3c64f9b5971f6b3ccaa74b719c1f5477c61a980806bc6e2d4f0545, exact callvirt offsets 91,141,201."
+        }
+      ]
+    },
+    {
+      "from": "Original SkillDataMan_Craft.InitSkillData 0x060068CE",
+      "to": "FACT-0304 SkillInfoManager.IsValidSkillID 0x06001163",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original complete caller IL 2138 bytes SHA 2279211fe1a28bb61cec8955d4e0ac052dafc50335385473b2ff0072d898e5ce, exact callvirt offsets 1941."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Both methods read original skillInfoList field, but neither establishes any populated dictionary, count value, key validity in a retail match, or runtime asset load.",
+    "Names, method signatures and ContainsKey/get_Count operands prove only source control flow; unknown authored skill IDs and actual game lookup outcomes are not established by these methods.",
+    "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historic decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

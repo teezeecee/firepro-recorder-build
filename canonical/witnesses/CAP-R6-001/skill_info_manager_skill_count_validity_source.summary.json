@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_SKILL_INFO_MANAGER_SKILL_COUNT_VALIDITY_LOOKUPS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "methods": [
+    {
+      "token": "0x06001162",
+      "owner": "SkillInfoManager",
+      "name": "GetSkillNum",
+      "row": "c799060000008600a78708005e490000000d",
+      "rva": "0x000699C7",
+      "signature": "200008",
+      "header": "32",
+      "body_hex": "027bda0e00046f5807000a2a",
+      "body_length": 12,
+      "body_sha256": "47bbead6721a30ac1bf862e5658acbd85d89535f998c61fa9ea44016c8b25b6c",
+      "call_site": 6,
+      "memberref_token": "0x0A000758"
+    },
+    {
+      "token": "0x06001163",
+      "owner": "SkillInfoManager",
+      "name": "IsValidSkillID",
+      "row": "d499060000008600b387080073a10100000d",
+      "rva": "0x000699D4",
+      "signature": "20010211a9dc",
+      "header": "56",
+      "body_hex": "027bda0e0004036f5207000a3902000000172a162a",
+      "body_length": 21,
+      "body_sha256": "9fe678f08e9083c8b36482f038cd33969c3d78bfb5ea3cc4c47db02cf9b01992",
+      "call_site": 7,
+      "memberref_token": "0x0A000752"
+    }
+  ],
+  "source_field": {
+    "token": "0x04000EDA",
+    "owner": "SkillInfoManager",
+    "name": "skillInfoList",
+    "row": "0600c74c0100250c0000",
+    "signature": "061512590211a9dc1286f8",
+    "load_site": 1
+  },
+  "memberrefs": [
+    {
+      "token": "0x0A000758",
+      "row": "dc070000f55206005e490000",
+      "name": "get_Count",
+      "signature": "200008",
+      "call_site": 6,
+      "method_token": "0x06001162"
+    },
+    {
+      "token": "0x0A000752",
+      "row": "dc070000395e0600274d0000",
+      "name": "ContainsKey",
+      "signature": "2001021300",
+      "call_site": 7,
+      "method_token": "0x06001163"
+    }
+  ],
+  "validity_branches": {
+    "conditional_site": 12,
+    "opcode": "0x39",
+    "relative": 2,
+    "false_target": 19,
+    "true_site": 17,
+    "true_hex": "172a",
+    "false_site": 19,
+    "false_hex": "162a"
+  },
+  "direct_callers": [
+    {
+      "token": "0x06005257",
+      "owner": "SkillDataMan",
+      "name": "_loadPackedSkillData",
+      "body_length": 354,
+      "body_sha256": "9a502219cf3c64f9b5971f6b3ccaa74b719c1f5477c61a980806bc6e2d4f0545",
+      "call_sites": [
+        91,
+        141,
+        201
+      ],
+      "opcode": "callvirt",
+      "callee_token": "0x06001163"
+    },
+    {
+      "token": "0x060068CE",
+      "owner": "SkillDataMan_Craft",
+      "name": "InitSkillData",
+      "body_length": 2138,
+      "body_sha256": "2279211fe1a28bb61cec8955d4e0ac052dafc50335385473b2ff0072d898e5ce",
+      "call_sites": [
+        1941
+      ],
+      "opcode": "callvirt",
+      "callee_token": "0x06001163"
+    }
+  ],
+  "limits": [
+    "Both methods read original skillInfoList field, but neither establishes any populated dictionary, count value, key validity in a retail match, or runtime asset load.",
+    "Names, method signatures and ContainsKey/get_Count operands prove only source control flow; unknown authored skill IDs and actual game lookup outcomes must not be inferred.",
+    "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historic decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
