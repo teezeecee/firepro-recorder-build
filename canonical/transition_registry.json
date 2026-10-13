@@ -5864,6 +5864,29 @@
         "The source compares the three literal strings with String.Equals and returns 0 for null, empty, unmatched, '0', or 'OFF'; no other normalization or case conversion occurs in this method.",
         "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historical decoded retail asset vault remain OPEN; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "DLL_SKILL_INFO_MANAGER_ADD_EDIT_SKILL_INFO_SOURCE_V1",
+      "fact_id": "FACT-0308",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original 26-byte SkillInfoManager.AddEditSkillInfo MethodDef 0x06001155 invokes dictionary Add on skillInfoList with ID and skill info, then list Add on skillIDList with ID. Exact original MethodDef, fields, MemberRefs, instructions and three ToolSettingInfo direct callvirt sites verified. Runtime success, authored entries and editor/gameplay results not established.",
+      "summary": "canonical/witnesses/CAP-R6-001/skill_info_manager_add_edit_skill_info_source.summary.json",
+      "source_windows": [
+        [
+          "0x06001155",
+          "0x0000",
+          "0x001A"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Method establishes two source Add calls in sequence, not atomicity, recovery after an exception, or a successful runtime collection mutation.",
+        "Original names and caller sites do not establish downloaded content availability, authored entries, user interface results or actual match behavior.",
+        "Original Unity resources.assets parent SHA, actual loaded fprwaza binding and historical decoded retail asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
