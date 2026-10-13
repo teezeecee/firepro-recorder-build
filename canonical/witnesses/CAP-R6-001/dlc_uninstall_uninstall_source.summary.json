@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DLC_UNINSTALL_UNINSTALL_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x0600103F",
+    "owner": "DLCUninstall",
+    "namespace": "DLC",
+    "name": "UnInstall",
+    "rva": "0x0005FE08",
+    "row": "08fe0500000096000a78080092960100180c",
+    "signature": "0001011185c8",
+    "header": "133003000a010000ab020011",
+    "body_length": 266,
+    "body_hex": "28745100060a02450d00000005000000130000002100000034000000420000005000000063000000710000007f0000008d0000009c000000ab000000ba00000038c4000000067b0c65000416169e38b6000000067b0c65000417169e38a80000002839100006067b0c65000418169e3895000000067b0c65000419169e3887000000067b0c6500041a169e3879000000283b100006067b0c6500041b169e3866000000067b0c6500041c169e3858000000067b0c6500041d169e384a000000067b0c6500041e169e383c000000067b0c6500041f09169e382d000000067b0c6500041f0a169e381e000000067b0c6500041f0b169e380f000000067b0c6500041f0c169e38000000002a",
+    "body_sha256": "a87eff2157f87edf42c77dfcada6729792ec2805451fc4ee525f727e21f32917"
+  },
+  "fields": [
+    {
+      "token": "0x0400650C",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "dlcVersion",
+      "row": "0600de1304008d030000",
+      "signature": "061d08",
+      "sites": [
+        70,
+        84,
+        103,
+        117,
+        131,
+        150,
+        164,
+        178,
+        192,
+        206,
+        221,
+        236,
+        251
+      ],
+      "opcode": "0x7B"
+    }
+  ],
+  "callees": [
+    {
+      "token": "0x06005174",
+      "owner": "SaveData",
+      "namespace": "",
+      "name": "GetInst",
+      "rva": "0x003149C8",
+      "row": "c8493100000096003b7f0800e8da0200ed3b",
+      "signature": "000012a938",
+      "body_length": 6,
+      "body_sha256": "2e12171cc208596025d626b80263f5597a296cc70ab5856f40c8660292702f40",
+      "site": 0,
+      "opcode": "0x28"
+    },
+    {
+      "token": "0x06001039",
+      "owner": "DLCInitializer",
+      "namespace": "",
+      "name": "UninstallDLC_StoryMode_NJPW1",
+      "rva": "0x0005FB44",
+      "row": "44fb050000009600b3770800e3a50000170c",
+      "signature": "000001",
+      "body_length": 119,
+      "body_sha256": "342e7808a8cc0d8040ec2c42735322a55598691aea004c43787a1fc2170959e3",
+      "site": 97,
+      "opcode": "0x28"
+    },
+    {
+      "token": "0x0600103B",
+      "owner": "DLCInitializer",
+      "namespace": "",
+      "name": "UninstallDLC_Stardom",
+      "rva": "0x0005FBDC",
+      "row": "dcfb050000009600ed770800e3a50000170c",
+      "signature": "000001",
+      "body_length": 119,
+      "body_sha256": "b3ba85c039bbb47900fcaa9332a3f24fed7a9fa75bf017d1da7e496cdafedc82",
+      "site": 144,
+      "opcode": "0x28"
+    }
+  ],
+  "switch": {
+    "site": 7,
+    "opcode": "0x45",
+    "case_count": 13,
+    "relative_deltas": [
+      5,
+      19,
+      33,
+      52,
+      66,
+      80,
+      99,
+      113,
+      127,
+      141,
+      156,
+      171,
+      186
+    ],
+    "fallthrough_target": 64,
+    "targets": [
+      69,
+      83,
+      97,
+      116,
+      130,
+      144,
+      163,
+      177,
+      191,
+      205,
+      220,
+      235,
+      250
+    ]
+  },
+  "common_return_branches": [
+    {
+      "site": 64,
+      "opcode": "0x38",
+      "delta": 196,
+      "target": 265
+    },
+    {
+      "site": 78,
+      "opcode": "0x38",
+      "delta": 182,
+      "target": 265
+    },
+    {
+      "site": 92,
+      "opcode": "0x38",
+      "delta": 168,
+      "target": 265
+    },
+    {
+      "site": 111,
+      "opcode": "0x38",
+      "delta": 149,
+      "target": 265
+    },
+    {
+      "site": 125,
+      "opcode": "0x38",
+      "delta": 135,
+      "target": 265
+    },
+    {
+      "site": 139,
+      "opcode": "0x38",
+      "delta": 121,
+      "target": 265
+    },
+    {
+      "site": 158,
+      "opcode": "0x38",
+      "delta": 102,
+      "target": 265
+    },
+    {
+      "site": 172,
+      "opcode": "0x38",
+      "delta": 88,
+      "target": 265
+    },
+    {
+      "site": 186,
+      "opcode": "0x38",
+      "delta": 74,
+      "target": 265
+    },
+    {
+      "site": 200,
+      "opcode": "0x38",
+      "delta": 60,
+      "target": 265
+    },
+    {
+      "site": 215,
+      "opcode": "0x38",
+      "delta": 45,
+      "target": 265
+    },
+    {
+      "site": 230,
+      "opcode": "0x38",
+      "delta": 30,
+      "target": 265
+    },
+    {
+      "site": 245,
+      "opcode": "0x38",
+      "delta": 15,
+      "target": 265
+    },
+    {
+      "site": 260,
+      "opcode": "0x38",
+      "delta": 0,
+      "target": 265
+    }
+  ],
+  "index_write_sites": [
+    {
+      "index": 0,
+      "case_target": 69,
+      "field_site": 70,
+      "value": 0
+    },
+    {
+      "index": 1,
+      "case_target": 83,
+      "field_site": 84,
+      "value": 0
+    },
+    {
+      "index": 2,
+      "case_target": 97,
+      "field_site": 103,
+      "value": 0
+    },
+    {
+      "index": 3,
+      "case_target": 116,
+      "field_site": 117,
+      "value": 0
+    },
+    {
+      "index": 4,
+      "case_target": 130,
+      "field_site": 131,
+      "value": 0
+    },
+    {
+      "index": 5,
+      "case_target": 144,
+      "field_site": 150,
+      "value": 0
+    },
+    {
+      "index": 6,
+      "case_target": 163,
+      "field_site": 164,
+      "value": 0
+    },
+    {
+      "index": 7,
+      "case_target": 177,
+      "field_site": 178,
+      "value": 0
+    },
+    {
+      "index": 8,
+      "case_target": 191,
+      "field_site": 192,
+      "value": 0
+    },
+    {
+      "index": 9,
+      "case_target": 205,
+      "field_site": 206,
+      "value": 0
+    },
+    {
+      "index": 10,
+      "case_target": 220,
+      "field_site": 221,
+      "value": 0
+    },
+    {
+      "index": 11,
+      "case_target": 235,
+      "field_site": 236,
+      "value": 0
+    },
+    {
+      "index": 12,
+      "case_target": 250,
+      "field_site": 251,
+      "value": 0
+    }
+  ],
+  "ret_site": 265,
+  "limits": [
+    "Original retail source MethodDef metadata, full IL, switch and 13 array-index writes are established. Execution of the branch paths and removal of installed DLC are not demonstrated.",
+    "The source's raw 13 numeric switch labels are not product titles and do not establish Steam ownership, user save data, or DLC content presence.",
+    "DLCInitializer helper bodies are identified and whole-body hashes match the original DLL; internal helper side effects require their own retail-source analysis.",
+    "The default switch target jumps to the final ret without an array store. Each of the 13 case arms stores raw numeric zero into SaveData.dlcVersion at its corresponding original numeric index.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical original decode vault remain unresolved; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}
