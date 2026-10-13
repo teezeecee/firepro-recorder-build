@@ -1,0 +1,59 @@
+{
+  "fact_id": "FACT-0305",
+  "status": "PROVEN_DLL",
+  "claim": "Original SkillInfoManager.GetReversalSkillInfo MethodDef 0x06001165 (RVA 0x00069A0B) has a complete 32-byte original IL body SHA256 ec43cd4bcfc8640c0148a10719b8bb4455d349ce3cfc4d6801ff897dceebbd90. It returns null when argument1 is less than zero or greater than the source literal numeric 121, using original blt and bgt instructions at IL+2 and IL+12. For other inputs it loads original SkillInfoManager.skillInfoList_Reversal FieldDef 0x04000EDC and passes argument1 to get_Item MemberRef 0x0A000759 at IL+26 before returning the result, without a ContainsKey check in this method. Five original callvirt operands to this method occur across MatchEvaluation.GetWinningTechName, MatchMisc.CheckReversal_Grapple (twice), Player.ProcessBlock and Player.ProcessGrapple_OverTheTopRope. This establishes original lookup instructions, not dictionary population or actual reversal outcomes.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact original SHA-matched 8,171,008-byte Assembly-CSharp(3).dll, SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, MethodDef 0x06001165 original metadata row 0b9a060000008600cf87080083a10100020d RVA 0x00069A0B; full 32-byte IL SHA ec43cd4bcfc8640c0148a10719b8bb4455d349ce3cfc4d6801ff897dceebbd90, original FieldDef 0x04000EDC row 0100e14c0100310c0000, original MemberRef 0x0A000759 row e40700001b51060092490000; exact two branches, two ldnull;ret exits, and five original caller sites. Witness canonical/witnesses/CAP-R6-001/skill_info_manager_get_reversal_skill_info_source.summary.json.",
+      "observation": "Original method byte identity, bound comparisons, lookup operand and direct call sites; does not establish authored reversal entries."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "Original MatchEvaluation.GetWinningTechName 0x060048F3",
+      "to": "FACT-0305 SkillInfoManager.GetReversalSkillInfo 0x06001165",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact original caller complete 226-byte IL SHA 083c61e749890413bbc9c21092b1f227f9c67bd22bd18f90ef5a2fe7e9f2a35d; callvirt IL offsets 151."
+        }
+      ]
+    },
+    {
+      "from": "Original MatchMisc.CheckReversal_Grapple 0x06004946",
+      "to": "FACT-0305 SkillInfoManager.GetReversalSkillInfo 0x06001165",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact original caller complete 314-byte IL SHA e4908b0cba3939db08b08e5cda0c4dac5811010fc1c193a2284069a3dd00dd2d; callvirt IL offsets 189, 301."
+        }
+      ]
+    },
+    {
+      "from": "Original Player.ProcessBlock 0x06004EE4",
+      "to": "FACT-0305 SkillInfoManager.GetReversalSkillInfo 0x06001165",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact original caller complete 654-byte IL SHA 3d499950306c655ffd406b581fe5ac664e2c6ec34b64845b1375393b67d98353; callvirt IL offsets 180."
+        }
+      ]
+    },
+    {
+      "from": "Original Player.ProcessGrapple_OverTheTopRope 0x06004EF3",
+      "to": "FACT-0305 SkillInfoManager.GetReversalSkillInfo 0x06001165",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Exact original caller complete 487-byte IL SHA fd2d88b27c2c4281f90f28aa6b933bc32451d9d87b89859f4f7e67730ada42f6; callvirt IL offsets 181."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The original source bounds check does not establish whether each key from 0 through 121 exists in the reversal dictionary; a successful get_Item for any key is not observed here.",
+    "Original code-level field labels and caller operands do not prove authored reversal table contents, move results, animation transitions, or a match outcome.",
+    "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain OPEN. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
