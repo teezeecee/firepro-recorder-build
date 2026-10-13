@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DLL_DLC_MANAGER_STATIC_DLCNUMS_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "dll": {
+    "size_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "method": {
+    "token": "0x0600103E",
+    "owner": "DLCManager",
+    "namespace": "DLC",
+    "name": ".cctor",
+    "rva": "0x0005FDEE",
+    "row": "eefd05000000911891bc0700e3a50000180c",
+    "signature": "000001",
+    "header": "62",
+    "body_length": 24,
+    "body_hex": "1f0d8d7201000225d001b7000428e501000a80470c00042a",
+    "body_sha256": "8ca0c184830d4bd1c886027f88bf427716e08d6cfaee02bd6f6dda7abd487e7e"
+  },
+  "array_type": {
+    "token": "0x02000172",
+    "name": "DLCEnum",
+    "namespace": "",
+    "row": "01010000ce120000000000004503270c3610",
+    "site": 2,
+    "opcode": "0x8D"
+  },
+  "initializer_field": {
+    "token": "0x0400B701",
+    "owner": "<PrivateImplementationDetails>",
+    "namespace": "",
+    "name": "$field-BA88CCFD24442C3EAB660FE7A69B528B27EA82DB",
+    "row": "33017ba406007da90000",
+    "signature": "0611b5e0",
+    "site": 8,
+    "opcode": "0xD0"
+  },
+  "initialize_array": {
+    "token": "0x0A0001E5",
+    "name": "InitializeArray",
+    "owner_type_token": "0x010000F9",
+    "owner_name": "RuntimeHelpers",
+    "owner_namespace": "System.Runtime.CompilerServices",
+    "type_ref_row": "0a002e620600b1500600",
+    "member_row": "c90700003d6206009b580000",
+    "member_class_coded": 1993,
+    "member_signature": "0002011283851183e9",
+    "site": 13,
+    "opcode": "0x28"
+  },
+  "target_field": {
+    "token": "0x04000C47",
+    "owner": "DLCManager",
+    "namespace": "DLC",
+    "name": "DLCNums",
+    "row": "3100a5360100120a0000",
+    "signature": "061d1185c8",
+    "site": 18,
+    "opcode": "0x80"
+  },
+  "field_rva": {
+    "field_token": "0x0400B701",
+    "row": "a0027a0001b7",
+    "rva": "0x007A02A0",
+    "byte_length": 52,
+    "raw_hex": "000000000200000003000000010000000400000005000000060000000700000008000000090000000a0000000b0000000c000000",
+    "raw_sha256": "2b64958ef4f7fa24bdb93d6afb8c9ea588032054e1ef4871d5314e6a3cb0fb20",
+    "raw_int32_le": [
+      0,
+      2,
+      3,
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "array_new_count": 13,
+  "limits": [
+    "Original MethodDef, FieldDef, TypeDef, TypeRef, MemberRef, FieldRVA record and exact 52 raw initialized data bytes establish only source-authored DLCNums numeric ordering; do not attach product names.",
+    "External RuntimeHelpers.InitializeArray library behavior, class initialisation timing and actual observed in-game array contents are outside this fact; static IL and FieldRVA raw contents are source proof only.",
+    "Raw integer values are original DLCEnum inputs to DLCManager.Update, not Steam AppId_t values and not proof of DLC ownership, download or successful install/uninstall.",
+    "Original Unity resources.assets parent SHA, actually loaded fprwaza binding and historical asset decode vault remain open; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}
