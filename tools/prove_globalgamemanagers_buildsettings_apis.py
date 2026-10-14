@@ -19,7 +19,7 @@ def verify(path,w):
     ck((len(raw),hashlib.sha256(raw).hexdigest())==(f["size_bytes"],f["sha256"]),"exact raw file identity")
     metadata_size,file_size,version,data_offset,reserved=struct.unpack_from(">IIIII",raw,0)
     ck((metadata_size,file_size,version,data_offset,reserved)==(1379,len(raw),17,4096,0),"original v17 file header")
-    o=20; stop=raw.index(b"\\x00",o)
+    o=20; stop=raw.index(bytes((0,)),o)
     unity_version=raw[o:stop].decode("ascii")
     o=stop+1
     platform=struct.unpack_from("<i",raw,o)[0];o+=4
