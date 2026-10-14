@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GRAPHICSSETTINGS_SHADER_POINTERS_TIERS_SOURCE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 30,
+    "type_index": 6,
+    "path_id": 7,
+    "relative_offset": 62176,
+    "absolute_offset": 66272,
+    "bytes": 562,
+    "sha256": "6edfe78d3eeabc9e45d18cb65c55b7499fc4301e8716c160cdd129ba53f1502d"
+  },
+  "builtin_shader_settings": [
+    {
+      "name": "Deferred",
+      "offset": 0,
+      "mode": 1,
+      "file_id": 3,
+      "path_id": 69
+    },
+    {
+      "name": "DeferredReflections",
+      "offset": 16,
+      "mode": 1,
+      "file_id": 3,
+      "path_id": 74
+    },
+    {
+      "name": "ScreenSpaceShadows",
+      "offset": 32,
+      "mode": 1,
+      "file_id": 3,
+      "path_id": 64
+    },
+    {
+      "name": "LegacyDeferred",
+      "offset": 48,
+      "mode": 1,
+      "file_id": 3,
+      "path_id": 63
+    },
+    {
+      "name": "DepthNormals",
+      "offset": 64,
+      "mode": 1,
+      "file_id": 3,
+      "path_id": 62
+    },
+    {
+      "name": "MotionVectors",
+      "offset": 80,
+      "mode": 1,
+      "file_id": 3,
+      "path_id": 75
+    },
+    {
+      "name": "LightHalo",
+      "offset": 96,
+      "mode": 1,
+      "file_id": 3,
+      "path_id": 105
+    },
+    {
+      "name": "LensFlare",
+      "offset": 112,
+      "mode": 1,
+      "file_id": 3,
+      "path_id": 102
+    }
+  ],
+  "always_included_shaders": {
+    "count_field_offset": 128,
+    "count": 28,
+    "pointers": [
+      {
+        "offset": 132,
+        "file_id": 3,
+        "path_id": 7
+      },
+      {
+        "offset": 144,
+        "file_id": 3,
+        "path_id": 15104
+      },
+      {
+        "offset": 156,
+        "file_id": 3,
+        "path_id": 15105
+      },
+      {
+        "offset": 168,
+        "file_id": 3,
+        "path_id": 15106
+      },
+      {
+        "offset": 180,
+        "file_id": 3,
+        "path_id": 10770
+      },
+      {
+        "offset": 192,
+        "file_id": 3,
+        "path_id": 10782
+      },
+      {
+        "offset": 204,
+        "file_id": 1,
+        "path_id": 14
+      },
+      {
+        "offset": 216,
+        "file_id": 1,
+        "path_id": 6
+      },
+      {
+        "offset": 228,
+        "file_id": 1,
+        "path_id": 7
+      },
+      {
+        "offset": 240,
+        "file_id": 1,
+        "path_id": 12
+      },
+      {
+        "offset": 252,
+        "file_id": 1,
+        "path_id": 13
+      },
+      {
+        "offset": 264,
+        "file_id": 1,
+        "path_id": 9
+      },
+      {
+        "offset": 276,
+        "file_id": 1,
+        "path_id": 11
+      },
+      {
+        "offset": 288,
+        "file_id": 1,
+        "path_id": 5
+      },
+      {
+        "offset": 300,
+        "file_id": 1,
+        "path_id": 10
+      },
+      {
+        "offset": 312,
+        "file_id": 1,
+        "path_id": 8
+      },
+      {
+        "offset": 324,
+        "file_id": 1,
+        "path_id": 4
+      },
+      {
+        "offset": 336,
+        "file_id": 3,
+        "path_id": 16000
+      },
+      {
+        "offset": 348,
+        "file_id": 3,
+        "path_id": 19
+      },
+      {
+        "offset": 360,
+        "file_id": 3,
+        "path_id": 65
+      },
+      {
+        "offset": 372,
+        "file_id": 3,
+        "path_id": 66
+      },
+      {
+        "offset": 384,
+        "file_id": 3,
+        "path_id": 67
+      },
+      {
+        "offset": 396,
+        "file_id": 3,
+        "path_id": 19
+      },
+      {
+        "offset": 408,
+        "file_id": 3,
+        "path_id": 9000
+      },
+      {
+        "offset": 420,
+        "file_id": 3,
+        "path_id": 9001
+      },
+      {
+        "offset": 432,
+        "file_id": 3,
+        "path_id": 9002
+      },
+      {
+        "offset": 444,
+        "file_id": 3,
+        "path_id": 9003
+      },
+      {
+        "offset": 456,
+        "file_id": 3,
+        "path_id": 68
+      }
+    ]
+  },
+  "preloaded_shaders": {
+    "count_field_offset": 468,
+    "count": 0
+  },
+  "sprite_default_material": {
+    "offset": 472,
+    "file_id": 1,
+    "path_id": 2
+  },
+  "custom_render_pipeline": {
+    "offset": 484,
+    "file_id": 0,
+    "path_id": 0
+  },
+  "transparency": {
+    "mode_offset": 496,
+    "mode": 0,
+    "axis_offset": 500,
+    "axis_float32": [
+      0,
+      0,
+      1
+    ]
+  },
+  "tiers": [
+    {
+      "name": "Tier1",
+      "offset": 512,
+      "renderingPath": 1,
+      "hdrMode": 1,
+      "realtimeGICPUUsage": 25,
+      "useCascadedShadowMaps": 1,
+      "enableLPPV": 1,
+      "useHDR": 1,
+      "padding": 0
+    },
+    {
+      "name": "Tier2",
+      "offset": 528,
+      "renderingPath": 1,
+      "hdrMode": 1,
+      "realtimeGICPUUsage": 25,
+      "useCascadedShadowMaps": 1,
+      "enableLPPV": 1,
+      "useHDR": 1,
+      "padding": 0
+    },
+    {
+      "name": "Tier3",
+      "offset": 544,
+      "renderingPath": 1,
+      "hdrMode": 1,
+      "realtimeGICPUUsage": 50,
+      "useCascadedShadowMaps": 1,
+      "enableLPPV": 1,
+      "useHDR": 1,
+      "padding": 0
+    }
+  ],
+  "lighting": {
+    "offset": 560,
+    "m_LightsUseLinearIntensity": 0,
+    "m_LightsUseColorTemperature": 0
+  },
+  "schema_reference": {
+    "release": "Unity 2017.1.0f1",
+    "class_id": 30,
+    "url": "https://github.com/AssetRipper/TypeTreeDumps/blob/main/StructsDump/release/2017.1.0f1.dump",
+    "note": "The named sequence and field sizes align with the entire original 562-byte serialized object."
+  },
+  "limits": [
+    "Source PPtr file_id and path_id values are preserved numerically; no external asset or exact shader identity has been resolved from these pointers.",
+    "GraphicsSettings are project-authored source fields; no observed rendering path or active shader draw is asserted.",
+    "The tier3 realtimeGICPUUsage field value is 50 versus 25 for tier1 and tier2; all three hdrMode values are 1.",
+    "Unity built-in GPU render target formats, depth-8 allocation, pixel arithmetic and per-session active device are separate unresolved evidence.",
+    "SOURCE_CONSOLIDATION_V1 keeps runtime and viewer locked."
+  ]
+}

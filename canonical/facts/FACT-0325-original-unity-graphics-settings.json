@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0325",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Original retail Unity 5.6.5p3 extensionless globalgamemanagers contains a 562-byte ClassID30 GraphicsSettings object PathID7 SHA256 6edfe78d3eeabc9e45d18cb65c55b7499fc4301e8716c160cdd129ba53f1502d. Complete structured byte parse identifies eight built-in shader settings with numeric external file and path references, exactly 28 always-included shader pointers, zero preloaded shader-variant collections, a sprite-default material reference, a null custom-render-pipeline reference, transparency sort mode0 and axis (0,0,1), three graphics tier records and two final lighting flags. Tier1 and Tier2 have original realtimeGICPUUsage=25 and Tier3 has 50, while all three hdrMode values are 1. These are precise build-source settings and references, not direct evidence of assets at the pointer destinations or which shader executed in a match.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original user-uploaded extensionless globalgamemanagers full raw SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; Unity v17 ObjectInfo PathID7 TypeIndex6 ClassID30 data-relative 62176, absolute 0x102E0..0x10512 (562 bytes), body SHA256 6edfe78d3eeabc9e45d18cb65c55b7499fc4301e8716c160cdd129ba53f1502d; complete pointer and field dataset in canonical/witnesses/GGM-001/graphics_settings_full_object.summary.json; deterministic original raw-file parser tools/prove_globalgamemanagers_graphics_settings.py",
+      "observation": "Original full GraphicsSettings serialized source record including exact field boundaries and numeric pointers."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "The named field sequence is corroborated by Unity 2017.1 release ClassID30 TypeTree; original Unity 5.6.5p3 object ID and full length and source hash are verified independently.",
+    "Original Shader/Material PPtr numeric identities do not establish target asset content until source dependency mappings and original target serialized assets are separately proved.",
+    "Configuration data do not measure runtime-selected Direct3D device, shader execution or output pixels.",
+    "No change to SOURCE_CONSOLIDATION_V1; runtime/viewer remain locked."
+  ]
+}
