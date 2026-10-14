@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_BUILDSETTINGS_GRAPHICS_APIS_ORDER_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "file": {
+    "filename": "globalgamemanagers",
+    "size_bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "metadata_size": 1379,
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "build_settings": {
+    "class_id": 141,
+    "type_index": 10,
+    "path_id": 11,
+    "data_start": 62944,
+    "file_offset": 67040,
+    "size_bytes": 55660,
+    "sha256": "003559802f791e7293ffbc71e830d5aef20e7882fe5e45de8fdf2db034d39a6f",
+    "scenes": 61,
+    "first_scene": "Assets/Scenes/Menu/Scene_Title.unity",
+    "last_scene": "Assets/Scenes/Menu/Scene_Workshop_PublishTechnicCraft.unity",
+    "preloaded_plugins": [
+      "AudioPluginMsHRTF",
+      "AudioPluginOculusSpatializer",
+      "libAudioPluginOculusSpatializer"
+    ],
+    "enabled_vr_devices": 0,
+    "build_tags": 0,
+    "version": "5.6.5p3",
+    "runtime_class_hashes": {
+      "offset": 3472,
+      "count": 154,
+      "record_bytes": 20
+    },
+    "script_hashes": {
+      "offset": 6556,
+      "count": 1534,
+      "record_bytes": 32
+    },
+    "graphics_api_field": {
+      "offset": 55648,
+      "absolute_offset": 122688,
+      "count": 2,
+      "ordered_numeric_values": [
+        2,
+        1
+      ],
+      "field_hex": "020000000200000001000000",
+      "end_offset": 55660
+    }
+  },
+  "graphics_device_enum_source": {
+    "source": "https://github.com/Unity-Technologies/UnityCsReference/blob/master/Runtime/Export/Graphics/GraphicsEnums.cs",
+    "numeric_map": {
+      "1": "Direct3D9",
+      "2": "Direct3D11"
+    },
+    "unity56_api": "https://docs.unity.cn/560/Documentation/ScriptReference/Rendering.GraphicsDeviceType.html",
+    "selection_order": "https://docs.huihoo.com/unity/5.5/Documentation/ScriptReference/PlayerSettings.SetGraphicsAPIs.html"
+  },
+  "limits": [
+    "BuildSettings stores the ordered candidate APIs, not a per-run active graphics device measurement.",
+    "Field labels are cross-checked against Unity 2017.1 release TypeTree ClassID 141; exact original 5.6.5p3 object boundaries and source bytes are independently verified.",
+    "Renderer remains locked under SOURCE_CONSOLIDATION_V1."
+  ]
+}

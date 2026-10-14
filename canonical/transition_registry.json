@@ -6239,6 +6239,29 @@
         "The method has no direct call opcode in its original 55-byte body. It is reached as a source callee from FACT-0320; whether retail ever invokes the chain in a given session is not observed.",
         "Original Unity resources.assets parent SHA, actual retail-loaded fprwaza binding and historical decoded asset vault remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_BUILDSETTINGS_GRAPHICS_APIS_ORDER_V1",
+      "fact_id": "FACT-0322",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Original Unity 5.6.5p3 BuildSettings class141 PathID11 full serialized record and final ordered m_GraphicsAPIs signed integer vector [2,1] with independent numeric enum mapping; no observed runtime device selection.",
+      "summary": "canonical/witnesses/GGM-001/buildsettings_graphics_apis.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x1DF40",
+          "0x1DF4C"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Build candidate graphics API order is source-verified, but which graphics device became active in any specific game session has not been measured.",
+        "Actual Unity 5.6.5p3 GPU allocation for the source requested depth 8, temporary render-target sampling, channel precision and end-to-end pixel equivalence remain open.",
+        "Full original retail decode vault provenance and wrestler animation/mechanics consolidation remain incomplete; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

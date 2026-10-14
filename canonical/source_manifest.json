@@ -47,6 +47,19 @@
       "raw_required": true,
       "member_count": 5,
       "note": "Fresh raw ZIP re-ingested 2026-09-30. CRC PASS. metadata.json declares lean-retail-oracle-r4, observational_only=true, and pins the canonical DLL hash. Use only as raw structural evidence after direct mining."
+    },
+    {
+      "source_id": "GGM-001",
+      "kind": "RAW_RETAIL_BINARY",
+      "filename": "globalgamemanagers",
+      "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+      "availability": "VERIFIED_LOCAL_BYTES",
+      "canonical_eligible": true,
+      "raw_required": true,
+      "git_storage": "HASH_AND_EXTRACTED_FACTS_ONLY",
+      "size_bytes": 5002540,
+      "unity_version": "5.6.5p3",
+      "note": "Original extensionless globalgamemanagers supplied 2026-10-14 from FireProWrestlingW_Data. Raw file and BuildSettings object hash were independently verified. Source-only fact; raw proprietary bytes stay outside Git."
     }
   ]
 }

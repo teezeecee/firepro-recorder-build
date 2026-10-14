@@ -32,3 +32,13 @@ python tools/ingest_sources.py --dll <Assembly-CSharp.dll> --vault <vault.zip> -
 The tool verifies byte hashes and recorder metadata, rejects unsafe ZIPs, inventories raw members and writes a local JSON report. Raw proprietary files remain outside Git.
 
 A source becomes `canonical_eligible=true` only after raw ingestion succeeds. Derived audits and old summaries never flip that bit.
+
+## Additional original retail manager source: GGM-001
+
+The separately uploaded extensionless `globalgamemanagers` was read and hashed directly on 2026-10-14: 5,002,540 bytes, SHA-256 `04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c`. This is a verified source from Unity 5.6.5p3; it is not the historical missing decode vault. `GGM-001` is registered in `canonical/source_manifest.json` and stays local-only. To re-prove the exact original BuildSettings object and Graphics API candidate order, use:
+
+```
+python tools/prove_globalgamemanagers_buildsettings_apis.py --globalgamemanagers "<path-to-original>/globalgamemanagers"
+```
+
+The prover reads only, checks original file and object checksums, parses the entire BuildSettings data structure and verifies the final ordered vector at its exact declared object boundary. It does not force a graphics mode, patch the game, validate live GPU output or unlock the runtime.
