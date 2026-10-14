@@ -6285,6 +6285,29 @@
         "Original game script-driven quality changes and renderer pixel equality are not yet source/measurement-closed.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_TIMEMANAGER_FOUR_TIMESTEP_SOURCE_V1",
+      "fact_id": "FACT-0324",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Exact original Unity TimeManager ClassID5 PathID8 full sixteen bytes, with all four original float32 fields and build time configuration.",
+      "summary": "canonical/witnesses/GGM-001/time_manager_four_timestep_fields.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x10518",
+          "0x10528"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Serialized Unity time configuration is not observational evidence of live fixed updates or Fire Pro AI/animation update cadence.",
+        "Cannot use these four engine scalar values as a substitute for authored move timing and state transitions.",
+        "Runtime/viewer remain locked under SOURCE_CONSOLIDATION_V1."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
