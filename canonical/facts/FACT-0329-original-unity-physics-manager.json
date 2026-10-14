@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0329",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Original retail Unity 5.6.5p3 globalgamemanagers contains ClassID55 PhysicsManager PathID10 exactly 180 bytes at absolute 0x10528..0x105DC, SHA256 aee33b29cb1fc9509840314307946f501e9b0a2d77d08bd5af55b5020b8124eb. The first three little-endian float32 source values are X=0, Y approximately -9.81, Z=0, Unity 3D project gravity configuration. Bytes 12..51 are preserved exactly without field-name claims. Bytes 52..179 form 32 consecutive source 32-bit bitmask entries, all 0xffffffff (each of 32 bits set), consistent with Unity's layer collision matrix. This is a source configuration proof, not evidence of retail wrestler collision behavior, gameplay floor geometry, or physics API invocation.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original unmodified 5,002,540-byte globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, Unity v17 TypeIndex9 ClassID55 PathID10 original ObjectInfo relative62760 absolute0x10528..0x105DC 180 bytes SHA256 aee33b29cb1fc9509840314307946f501e9b0a2d77d08bd5af55b5020b8124eb; exact 52-byte prefix 4ce2d33897ebfe5526baf3fd894cd884709743ff9bdbb793480a47d3b8927cc3; 128-byte layer-mask matrix e9175db65a9789096ca9cb5524d3abc2107df03e3c9ba3af1aca628f9c5d3bd2. See canonical/witnesses/GGM-001/physics_manager_180_bytes.summary.json and raw-source tools/prove_globalgamemanagers_physics_manager.py.",
+      "observation": "Entire original 3D PhysicsManager authored configuration, gravity source words and exact all-bits-set collision matrix."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "3D PhysicsManager serialized project defaults are not evidence of any particular simulated retail physics behavior or hit-test mechanism.",
+    "Other 40 authored configuration bytes have no promoted version-specific semantic interpretation.",
+    "No actual walkable polygon, ring collision, sprite asset, SFX or game rule data proven; runtime/viewer LOCKED."
+  ]
+}

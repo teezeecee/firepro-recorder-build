@@ -6400,6 +6400,29 @@
         "Remaining navigation-agent bytes lack original per-version field proof.",
         "Original shader parent asset provenance remains absent; runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_PHYSICSMANAGER_FULL_180_BYTES_V1",
+      "fact_id": "FACT-0329",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Exact original 180-byte Unity ClassID55 PhysicsManager PathID10 with explicit gravity float32 words, 40 additional uninterpreted source bytes, and 32 original 0xffffffff 32-bit layer mask words.",
+      "summary": "canonical/witnesses/GGM-001/physics_manager_180_bytes.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x10528",
+          "0x105DC"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Project-authored Unity 3D Physics Manager gravity/mask settings do not establish retail wrestler collider usage, physics engine stepping or level geometry.",
+        "Additional 40 bytes have no original Unity 5.6 class layout field-name proof.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
