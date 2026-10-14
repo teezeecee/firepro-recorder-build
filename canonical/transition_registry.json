@@ -6354,6 +6354,29 @@
         "Actual render target allocation, depth8 fallback, Direct3D device selection and sampled GPU output still lack evidence.",
         "Retail animation/mechanics consolidated source and original decode vault remain incomplete; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_AUDIOMANAGER_40B_SOURCE_V1",
+      "fact_id": "FACT-0327",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Original Unity 5.6.5p3 ClassID11 AudioManager PathID4 exact forty-byte body, eight numeric prefix slots and unnamed trailing bytes.",
+      "summary": "canonical/witnesses/GGM-001/audio_manager_40_bytes.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x9080",
+          "0x90A8"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Audio source configuration is not live audio engine output.",
+        "Original SFX and sound driver assets remain separately unresolved.",
+        "Shader target parent source remains missing; SOURCE_CONSOLIDATION_V1 renderer/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

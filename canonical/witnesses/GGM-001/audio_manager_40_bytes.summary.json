@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_AUDIOMANAGER_40B_SOURCE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 11,
+    "type_index": 3,
+    "path_id": 4,
+    "relative_offset": 32896,
+    "absolute_offset": 36992,
+    "bytes": 40,
+    "sha256": "7b8e89f69aab237735f238fc30c95e4add48be924111a19db016e57181066010",
+    "hex": "0000803f0000803f0000803f02000000000000000000000000020000200000000000000000010000"
+  },
+  "scalar_prefix": [
+    {
+      "field": "m_Volume",
+      "offset": 0,
+      "struct_type": "f",
+      "value": 1
+    },
+    {
+      "field": "Rolloff Scale",
+      "offset": 4,
+      "struct_type": "f",
+      "value": 1
+    },
+    {
+      "field": "Doppler Factor",
+      "offset": 8,
+      "struct_type": "f",
+      "value": 1
+    },
+    {
+      "field": "Default Speaker Mode",
+      "offset": 12,
+      "struct_type": "i",
+      "value": 2
+    },
+    {
+      "field": "m_SampleRate",
+      "offset": 16,
+      "struct_type": "i",
+      "value": 0
+    },
+    {
+      "field": "m_DSPBufferSize",
+      "offset": 20,
+      "struct_type": "i",
+      "value": 0
+    },
+    {
+      "field": "m_VirtualVoiceCount",
+      "offset": 24,
+      "struct_type": "i",
+      "value": 512
+    },
+    {
+      "field": "m_RealVoiceCount",
+      "offset": 28,
+      "struct_type": "i",
+      "value": 32
+    }
+  ],
+  "unnamed_tail": {
+    "offset": 32,
+    "bytes": 8,
+    "hex": "0000000000010000",
+    "as_raw_uint32": [
+      0,
+      256
+    ]
+  },
+  "limits": [
+    "First eight numeric source slots corroborated by near-era Unity AudioManager schema; final 8 bytes retained raw with no field-name assertion.",
+    "Original authored Unity audio configuration is not observed runtime device/sample rate, active mix, audible SFX or precise Fire Pro sounds.",
+    "Renderer/viewer stay LOCKED under SOURCE_CONSOLIDATION_V1."
+  ]
+}

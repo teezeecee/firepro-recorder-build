@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0327",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Original Unity 5.6.5p3 globalgamemanagers includes the exact ClassID11 AudioManager PathID4 forty-byte source object at 0x9080..0x90A8, SHA256 7b8e89f69aab237735f238fc30c95e4add48be924111a19db016e57181066010. Its first 32 bytes are three float32 scalar values [1,1,1] and five little-endian int32 values [2,0,0,512,32]; near-era Unity AudioManager field sequence corroborates labels volume, rolloff, Doppler, speaker mode, sample rate, DSP buffer size, virtual and real voice count. Remaining exact 8 bytes 0000000000010000 are preserved without speculative field names. No live audio use or SFX is proved.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original raw globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, serialized v17 metadata ClassID11 TypeIndex3 PathID4 data-relative32896 absolute0x9080 exact40 bytes, body SHA256 7b8e89f69aab237735f238fc30c95e4add48be924111a19db016e57181066010; witness canonical/witnesses/GGM-001/audio_manager_40_bytes.summary.json; local full-original-source verifier tools/prove_globalgamemanagers_audio_manager.py",
+      "observation": "Exact original Unity authored audio configuration bytes and bounded numeric prefix."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Final 8 source bytes are explicitly unlabelled; neither shader export ZIP nor Unity source settings prove sound emitted in match.",
+    "No runtime audio device/sample rate/buffering/playback identity measured.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer remain LOCKED."
+  ]
+}
