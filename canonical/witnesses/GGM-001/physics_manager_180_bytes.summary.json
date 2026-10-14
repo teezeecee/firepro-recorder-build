@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_PHYSICSMANAGER_FULL_180_BYTES_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 55,
+    "class_name": "PhysicsManager",
+    "type_index": 9,
+    "path_id": 10,
+    "relative_offset": 62760,
+    "absolute_offset": 66856,
+    "bytes": 180,
+    "sha256": "aee33b29cb1fc9509840314307946f501e9b0a2d77d08bd5af55b5020b8124eb"
+  },
+  "gravity": {
+    "offset": 0,
+    "bytes": 12,
+    "component_type": "float32_le",
+    "words_hex": [
+      "00000000",
+      "c3f51cc1",
+      "00000000"
+    ],
+    "components_f32_round6": [
+      0,
+      -9.81,
+      0
+    ]
+  },
+  "other_configuration": {
+    "offset": 12,
+    "bytes": 40,
+    "hex": "000000000000000000000000000000400ad7a33b0ad7233c06000000010000000001000120000000",
+    "sha256": null,
+    "note": "Keep exact original binary configuration words without guessing field names until original Unity5.6 layout is independently corroborated."
+  },
+  "prefix": {
+    "offset": 0,
+    "bytes": 52,
+    "sha256": "4ce2d33897ebfe5526baf3fd894cd884709743ff9bdbb793480a47d3b8927cc3",
+    "hex": "00000000c3f51cc100000000000000000000000000000000000000400ad7a33b0ad7233c06000000010000000001000120000000"
+  },
+  "layer_collision_matrix": {
+    "offset": 52,
+    "bytes": 128,
+    "rows": 32,
+    "per_row_bytes": 4,
+    "word_unsigned": 4294967295,
+    "all_rows_enabled_bits": 32,
+    "sha256": "e9175db65a9789096ca9cb5524d3abc2107df03e3c9ba3af1aca628f9c5d3bd2",
+    "entries": [
+      {
+        "layer": 0,
+        "offset": 52,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 1,
+        "offset": 56,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 2,
+        "offset": 60,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 3,
+        "offset": 64,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 4,
+        "offset": 68,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 5,
+        "offset": 72,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 6,
+        "offset": 76,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 7,
+        "offset": 80,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 8,
+        "offset": 84,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 9,
+        "offset": 88,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 10,
+        "offset": 92,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 11,
+        "offset": 96,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 12,
+        "offset": 100,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 13,
+        "offset": 104,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 14,
+        "offset": 108,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 15,
+        "offset": 112,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 16,
+        "offset": 116,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 17,
+        "offset": 120,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 18,
+        "offset": 124,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 19,
+        "offset": 128,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 20,
+        "offset": 132,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 21,
+        "offset": 136,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 22,
+        "offset": 140,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 23,
+        "offset": 144,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 24,
+        "offset": 148,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 25,
+        "offset": 152,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 26,
+        "offset": 156,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 27,
+        "offset": 160,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 28,
+        "offset": 164,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 29,
+        "offset": 168,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 30,
+        "offset": 172,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      },
+      {
+        "layer": 31,
+        "offset": 176,
+        "unsigned_le": 4294967295,
+        "hex": "ffffffff"
+      }
+    ]
+  },
+  "limits": [
+    "Original Unity 5.6.5p3 project PhysicsManager authored 3D physics settings do not prove any Rigidbody or Collider is used for specific Fire Pro gameplay, wrestling hits, ring collision hulls, stage movement or exact physics execution.",
+    "Each all-ones matrix word means the source has all 32 bits set; do not infer all live GameObject layers or contact pairs exist.",
+    "Remaining 40 bytes are exact retained raw bytes, without speculative field names or gameplay interpretations.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
