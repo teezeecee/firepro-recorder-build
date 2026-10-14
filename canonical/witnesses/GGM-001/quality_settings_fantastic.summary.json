@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_QUALITYSETTINGS_SINGLE_FANTASTIC_PROFILE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "size_bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_file_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "quality_settings": {
+    "class_id": 47,
+    "type_index": 11,
+    "path_id": 12,
+    "data_relative_offset": 118608,
+    "absolute_offset": 122704,
+    "size_bytes": 116,
+    "sha256": "a8f6e6746e116cbb31aa002ce0919dafde04f73712f6d2f056cfcd6ab68df382",
+    "full_body_hex": "00000000010000000900000046616e74617374696300000004000000020000000200000001000000040000000000164300000040abaaaa3e8988883dcccc4c3eeeeeee3e040000000000000002000000020000000101010100000000000000400000000000100000020000000400000000000000",
+    "fields": {
+      "m_CurrentQuality": 0,
+      "m_QualitySettings_count": 1,
+      "name": "Fantastic",
+      "pixelLightCount": 4,
+      "shadows": 2,
+      "shadowResolution": 2,
+      "shadowProjection": 1,
+      "shadowCascades": 4,
+      "shadowDistance": 150,
+      "shadowNearPlaneOffset": 2,
+      "shadowCascade2Split_bits": "abaaaa3e",
+      "shadowCascade4Split_bits": [
+        "8988883d",
+        "cccc4c3e",
+        "eeeeee3e"
+      ],
+      "blendWeights": 4,
+      "textureQuality": 0,
+      "anisotropicTextures": 2,
+      "antiAliasing": 2,
+      "softParticles": 1,
+      "softVegetation": 1,
+      "realtimeReflectionProbes": 1,
+      "billboardsFaceCameraPosition": 1,
+      "vSyncCount": 0,
+      "lodBias": 2,
+      "maximumLODLevel": 0,
+      "particleRaycastBudget": 4096,
+      "asyncUploadTimeSlice": 2,
+      "asyncUploadBufferSize": 4,
+      "m_StrippedMaximumLODLevel": 0
+    }
+  },
+  "layout_provenance": [
+    "Original Unity 5.6.5p3 raw object boundaries, ID and original 116 bytes",
+    "Unity 2017.1 ClassID47 type tree field order; later shadowmaskMode and resolutionScalingFixedDPIFactor fields excluded from original 5.6 shape",
+    "Unity 5.6 public QualitySettings manual lists original properties",
+    "Unity 2017.1 release notes explicitly introduced shadowmaskMode after 5.6"
+  ],
+  "references": [
+    "https://github.com/AssetRipper/TypeTreeDumps/blob/main/StructsDump/release/2017.1.0f1.dump",
+    "https://docs.unity.cn/560/Documentation/ScriptReference/QualitySettings.html",
+    "https://activation.unity3d.com/releases/editor/whats-new/2017.1.0"
+  ],
+  "limits": [
+    "Exactly one authored quality profile and source current index zero are proven for this built game file; runtime code or user settings may change quality.",
+    "Numeric antiAliasing=2 defines the configured 2x MSAA request; hardware, rendering paths and output do not necessarily use it.",
+    "This source fact does not measure selected GPU, pixel output or actual shader usage.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer remains locked."
+  ]
+}

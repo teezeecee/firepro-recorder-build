@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0323",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Exact original retail Unity 5.6.5p3 globalgamemanagers ClassID47 QualitySettings PathID12 is a 116-byte object with exactly one profile called Fantastic and source current quality index 0. The exact serialized quality fields include antiAliasing=2 (requested 2x MSAA), textureQuality=0 (full-resolution), anisotropicTextures=2 (forced), vSyncCount=0, four shadow cascades, shadowDistance=150 and lodBias=2. The original structure and byte-boundaries are proved directly from the matching original asset; runtime changes, graphics hardware operation and final pixels are separate measurements.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "User-uploaded original extensionless globalgamemanagers, SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; ClassID47 PathID12 original ObjectInfo TypeID11 data-relative 118608, absolute 0x1DF50, length116, entire body SHA256 a8f6e6746e116cbb31aa002ce0919dafde04f73712f6d2f056cfcd6ab68df382; full field offsets and raw 116-byte hex in canonical/witnesses/GGM-001/quality_settings_fantastic.summary.json; read-only original-byte verifier tools/prove_globalgamemanagers_quality_settings.py",
+      "observation": "Original serialized project quality source values, not a running Unity session."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Built-in original data settings are reproducible; actual per-run graphics quality can be changed at runtime.",
+    "2017.1 type dump is a field-order reference, with version-added fields excluded and original Unity 5.6 ClassID47 object fully consumed.",
+    "Configured MSAA=2 does not establish whether any particular sprite/render target was multisampled.",
+    "No runtime/viewer release from SOURCE_CONSOLIDATION_V1."
+  ]
+}
