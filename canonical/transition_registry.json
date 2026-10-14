@@ -6377,6 +6377,29 @@
         "Original SFX and sound driver assets remain separately unresolved.",
         "Shader target parent source remains missing; SOURCE_CONSOLIDATION_V1 renderer/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_NAVMESH_AREA_SLOTS_SOURCE_V1",
+      "fact_id": "FACT-0328",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Original Unity ClassID126 PathID16 NavMeshAreas full 360-byte object with exact 32 UTF8 area-name and f32 cost slots and a hashed uninterpreted 76-byte remainder.",
+      "summary": "canonical/witnesses/GGM-001/navmesh_areas_full.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x4C51D8",
+          "0x4C5340"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Project NavMesh area names and costs do not prove level navigation mesh, actual collision surface or AI pathing.",
+        "Remaining navigation-agent bytes lack original per-version field proof.",
+        "Original shader parent asset provenance remains absent; runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
