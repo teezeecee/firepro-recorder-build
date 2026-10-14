@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_EXTERNAL_PPTR_FILEID_TABLE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "metadata_size": 1379,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "external_reference_table": {
+    "preceding_zero_u32_offset": 904,
+    "count_field_offset": 908,
+    "count": 11,
+    "first_row_offset": 912,
+    "rows_end_offset": 1398,
+    "metadata_end_offset": 1399,
+    "trailing_metadata_byte": 0,
+    "raw_rows_with_count_sha256": "294506715aaf20cc13a28324d6561d68ace34eb6bbbcef0512e699b8d38bac08",
+    "raw_rows_count_and_trailer_sha256": "3d06d5b091be65614029898285fb11f6ccd766e4ee922e045db8d6d691ad4d62"
+  },
+  "references": [
+    {
+      "file_id": 1,
+      "start_offset": 912,
+      "end_offset": 959,
+      "asset_path": "",
+      "guid_hex": "00000000000000000000000000000000",
+      "type": 0,
+      "path": "globalgamemanagers.assets"
+    },
+    {
+      "file_id": 2,
+      "start_offset": 959,
+      "end_offset": 1012,
+      "asset_path": "",
+      "guid_hex": "00000000000000000e00000000000000",
+      "type": 0,
+      "path": "library/unity default resources"
+    },
+    {
+      "file_id": 3,
+      "start_offset": 1012,
+      "end_offset": 1063,
+      "asset_path": "",
+      "guid_hex": "00000000000000000f00000000000000",
+      "type": 0,
+      "path": "resources/unity_builtin_extra"
+    },
+    {
+      "file_id": 4,
+      "start_offset": 1063,
+      "end_offset": 1105,
+      "asset_path": "",
+      "guid_hex": "00000000000000000000000000000000",
+      "type": 0,
+      "path": "sharedassets0.assets"
+    },
+    {
+      "file_id": 5,
+      "start_offset": 1105,
+      "end_offset": 1143,
+      "asset_path": "",
+      "guid_hex": "00000000000000000000000000000000",
+      "type": 0,
+      "path": "resources.assets"
+    },
+    {
+      "file_id": 6,
+      "start_offset": 1143,
+      "end_offset": 1186,
+      "asset_path": "",
+      "guid_hex": "00000000000000000000000000000000",
+      "type": 0,
+      "path": "sharedassets49.assets"
+    },
+    {
+      "file_id": 7,
+      "start_offset": 1186,
+      "end_offset": 1228,
+      "asset_path": "",
+      "guid_hex": "00000000000000000000000000000000",
+      "type": 0,
+      "path": "sharedassets4.assets"
+    },
+    {
+      "file_id": 8,
+      "start_offset": 1228,
+      "end_offset": 1271,
+      "asset_path": "",
+      "guid_hex": "00000000000000000000000000000000",
+      "type": 0,
+      "path": "sharedassets55.assets"
+    },
+    {
+      "file_id": 9,
+      "start_offset": 1271,
+      "end_offset": 1314,
+      "asset_path": "",
+      "guid_hex": "00000000000000000000000000000000",
+      "type": 0,
+      "path": "sharedassets59.assets"
+    },
+    {
+      "file_id": 10,
+      "start_offset": 1314,
+      "end_offset": 1356,
+      "asset_path": "",
+      "guid_hex": "00000000000000000000000000000000",
+      "type": 0,
+      "path": "sharedassets2.assets"
+    },
+    {
+      "file_id": 11,
+      "start_offset": 1356,
+      "end_offset": 1398,
+      "asset_path": "",
+      "guid_hex": "00000000000000000000000000000000",
+      "type": 0,
+      "path": "sharedassets5.assets"
+    }
+  ],
+  "graphics_settings_join": {
+    "original_fact": "FACT-0325",
+    "builtin_shader_references": 8,
+    "builtin_shader_external_file_id": 3,
+    "mapped_external_path": "resources/unity_builtin_extra",
+    "sprite_default_material_external_file_id": 1,
+    "sprite_default_material_mapped_path": "globalgamemanagers.assets"
+  },
+  "limits": [
+    "External dependency strings, GUIDs, record offsets and fileID ordinal mapping are original serialized metadata; they do not verify referenced file contents or resolve any PPtr target PathID.",
+    "The builtin shader fileID3 rows map to the original dependency string resources/unity_builtin_extra; no Shader object bytes or active retail shader program are proved.",
+    "The source reference globalgamemanagers.assets is an external dependency string, not the original extensionless globalgamemanagers file's own ObjectInfo table.",
+    "Unity 5.6 retail runtime graphics API, shader execution, depth8 temporary render target behavior and pixel equivalence are not established.",
+    "SOURCE_CONSOLIDATION_V1 runtime and viewer remain LOCKED."
+  ]
+}
