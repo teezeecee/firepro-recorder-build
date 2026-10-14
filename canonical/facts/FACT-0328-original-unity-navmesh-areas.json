@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0328",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The exact original Unity 5.6.5p3 globalgamemanagers source includes ClassID126 PathID16 complete 360-byte project navigation-area settings object at absolute 0x4C51D8..0x4C5340, SHA256 c1b2a0cf6b18f63a7d2b0d73aa3085dcc03426ca7d6701b4ceecf74f589eed74. Its first 284 source bytes encode a count of 32 serialized area slots, with names Walkable, Not Walkable, Jump in slots 0..2 and 29 empty names in slots 3..31. Source float costs are respectively 1.0, 1.0, 2.0 and 1.0 for all remaining slots. The 76 trailing bytes are preserved by exact hash, with ASCII Humanoid at relative 0x160. These are authored Unity project navigation settings, not retail map polygons, routefinding execution, ring collision geometry, or wrestler locomotion.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original 5,002,540-byte globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c. Original Unity v17 ObjectInfo pathID16 / typeIndex15 / classID126, data relative 0x4C41D8, absolute 0x4C51D8..0x4C5340 length360 SHA256 c1b2a0cf6b18f63a7d2b0d73aa3085dcc03426ca7d6701b4ceecf74f589eed74. Serialized 32-entry name-length/aligned-string/float32 table source 0x0..0x11C SHA256 4f247a7e6970cdb0ea8400814ee45207ea89d4c22f8491991d5da4a1e96a4d3a; trailing 76 bytes SHA256 5b9940051c0c720d48cb18cfd97e9fa5bf9266ce1d1cd745d729480d74a8800c. Complete normalized table and object check: canonical/witnesses/GGM-001/navmesh_areas_full.summary.json, tools/prove_globalgamemanagers_navmesh_areas.py.",
+      "observation": "Exact Unity authored navmesh area names, per-area costs and the bounded remaining object bytes."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Unity NavMeshAreas source fields do not contain actual baked NavMesh walkable regions, Z heights, ring/apron hulls, slopes or movement transitions.",
+    "Trailing 76 bytes are only bounded and hashed; no speculative names or simulation meaning assigned.",
+    "Shader evidence export parent-source provenance remains unclosed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

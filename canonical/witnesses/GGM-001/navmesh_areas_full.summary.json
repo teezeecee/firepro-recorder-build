@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_NAVMESH_AREA_SLOTS_SOURCE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 126,
+    "type_index": 15,
+    "path_id": 16,
+    "relative_offset": 4997592,
+    "absolute_offset": 5001688,
+    "bytes": 360,
+    "sha256": "c1b2a0cf6b18f63a7d2b0d73aa3085dcc03426ca7d6701b4ceecf74f589eed74"
+  },
+  "areas": {
+    "count_field_offset": 0,
+    "count": 32,
+    "first_row_offset": 4,
+    "rows_end_offset": 284,
+    "array_region_sha256": "4f247a7e6970cdb0ea8400814ee45207ea89d4c22f8491991d5da4a1e96a4d3a",
+    "entries": [
+      {
+        "index": 0,
+        "start_offset": 4,
+        "end_offset": 20,
+        "name_length": 8,
+        "name": "Walkable",
+        "cost": 1
+      },
+      {
+        "index": 1,
+        "start_offset": 20,
+        "end_offset": 40,
+        "name_length": 12,
+        "name": "Not Walkable",
+        "cost": 1
+      },
+      {
+        "index": 2,
+        "start_offset": 40,
+        "end_offset": 52,
+        "name_length": 4,
+        "name": "Jump",
+        "cost": 2
+      },
+      {
+        "index": 3,
+        "start_offset": 52,
+        "end_offset": 60,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 4,
+        "start_offset": 60,
+        "end_offset": 68,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 5,
+        "start_offset": 68,
+        "end_offset": 76,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 6,
+        "start_offset": 76,
+        "end_offset": 84,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 7,
+        "start_offset": 84,
+        "end_offset": 92,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 8,
+        "start_offset": 92,
+        "end_offset": 100,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 9,
+        "start_offset": 100,
+        "end_offset": 108,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 10,
+        "start_offset": 108,
+        "end_offset": 116,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 11,
+        "start_offset": 116,
+        "end_offset": 124,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 12,
+        "start_offset": 124,
+        "end_offset": 132,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 13,
+        "start_offset": 132,
+        "end_offset": 140,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 14,
+        "start_offset": 140,
+        "end_offset": 148,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 15,
+        "start_offset": 148,
+        "end_offset": 156,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 16,
+        "start_offset": 156,
+        "end_offset": 164,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 17,
+        "start_offset": 164,
+        "end_offset": 172,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 18,
+        "start_offset": 172,
+        "end_offset": 180,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 19,
+        "start_offset": 180,
+        "end_offset": 188,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 20,
+        "start_offset": 188,
+        "end_offset": 196,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 21,
+        "start_offset": 196,
+        "end_offset": 204,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 22,
+        "start_offset": 204,
+        "end_offset": 212,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 23,
+        "start_offset": 212,
+        "end_offset": 220,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 24,
+        "start_offset": 220,
+        "end_offset": 228,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 25,
+        "start_offset": 228,
+        "end_offset": 236,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 26,
+        "start_offset": 236,
+        "end_offset": 244,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 27,
+        "start_offset": 244,
+        "end_offset": 252,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 28,
+        "start_offset": 252,
+        "end_offset": 260,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 29,
+        "start_offset": 260,
+        "end_offset": 268,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 30,
+        "start_offset": 268,
+        "end_offset": 276,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      },
+      {
+        "index": 31,
+        "start_offset": 276,
+        "end_offset": 284,
+        "name_length": 0,
+        "name": "",
+        "cost": 1
+      }
+    ]
+  },
+  "remaining_raw": {
+    "start_offset": 284,
+    "bytes": 76,
+    "sha256": "5b9940051c0c720d48cb18cfd97e9fa5bf9266ce1d1cd745d729480d74a8800c",
+    "literal_at_offset_352": "Humanoid",
+    "literal_bytes": 8
+  },
+  "limits": [
+    "Unity project navmesh area slots/cost source values are not proof of a baked NavMesh, stage collision hull, actual walkable polygons, AI route selection or Fire Pro ring/apron geometry.",
+    "The final 76 bytes are source-bound by SHA256 and length, but not mapped into inferred version-specific navigation-agent fields.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer remain LOCKED."
+  ]
+}
