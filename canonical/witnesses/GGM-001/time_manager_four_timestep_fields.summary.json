@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_TIMEMANAGER_FOUR_TIMESTEP_SOURCE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "source_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialization_version": 17,
+    "data_offset": 4096,
+    "types": 20,
+    "objects": 20
+  },
+  "object": {
+    "class_id": 5,
+    "type_index": 7,
+    "path_id": 8,
+    "relative_offset": 62744,
+    "absolute_offset": 66840,
+    "bytes": 16,
+    "sha256": "a8d974df26d17852d4ab7775f4c6487eb855195154ba29a663fa117a75b27ba0",
+    "hex": "0ad7a33cabaaaa3e0000803f8fc2f53c"
+  },
+  "fields": [
+    {
+      "field": "Fixed Timestep",
+      "offset": 0,
+      "raw_hex": "0ad7a33c",
+      "float32": 0.019999999552965164,
+      "nominal": "0.02 seconds"
+    },
+    {
+      "field": "Maximum Allowed Timestep",
+      "offset": 4,
+      "raw_hex": "abaaaa3e",
+      "float32": 0.3333333432674408,
+      "nominal": "approximately 1/3 second"
+    },
+    {
+      "field": "m_TimeScale",
+      "offset": 8,
+      "raw_hex": "0000803f",
+      "float32": 1,
+      "nominal": "unity scale"
+    },
+    {
+      "field": "Maximum Particle Timestep",
+      "offset": 12,
+      "raw_hex": "8fc2f53c",
+      "float32": 0.029999999329447746,
+      "nominal": "0.03 seconds"
+    }
+  ],
+  "schema_reference": {
+    "kind": "Unity release engine ClassID5 TimeManager TypeTree",
+    "url": "https://github.com/AssetRipper/TypeTreeDumps/blob/main/StructsDump/release/2017.1.0f1.dump",
+    "class_id": 5,
+    "declared_size": 16
+  },
+  "limits": [
+    "This is Unity built-in serialized TimeManager source configuration; no live game timing trace is measured.",
+    "A configured fixed timestep 0.02 seconds is nominally a 50 Hz fixed scheduler interval, not proof of AI logic, animation state transitions, or rendered frame cadence.",
+    "Unity may change timing dynamically or drop fixed update iterations; no per-session runtime conditions are established.",
+    "SOURCE_CONSOLIDATION_V1 remains runtime/viewer locked."
+  ]
+}

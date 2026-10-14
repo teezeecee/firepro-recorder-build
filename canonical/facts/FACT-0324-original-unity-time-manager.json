@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0324",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Original retail Unity 5.6.5p3 globalgamemanagers TimeManager ClassID5 PathID8 contains an exact 16-byte serialized source record SHA256 a8d974df26d17852d4ab7775f4c6487eb855195154ba29a663fa117a75b27ba0, comprising four ordered IEEE754 float32 configuration fields. Fixed Timestep has raw float32 value 0.019999999552965164 (nominal 0.02 seconds), Maximum Allowed Timestep is 0.3333333432674408, m_TimeScale is 1.0, and Maximum Particle Timestep is 0.029999999329447746. This is configuration data for Unity built-in time management only; no direct proof of Fire Pro AI update rate, grappling timing, authored animation bank cadence or observed per-session scheduling.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original extensionless globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, Unity 5.6.5p3 serialized ObjectInfo TypeIndex7 ClassID5 PathID8, data-relative 0xF518 and absolute 0x10518..0x10528, exact 16 source bytes 0ad7a33cabaaaa3e0000803f8fc2f53c SHA256 a8d974df26d17852d4ab7775f4c6487eb855195154ba29a663fa117a75b27ba0; bounded byte source prover tools/prove_globalgamemanagers_time_manager.py; witness canonical/witnesses/GGM-001/time_manager_four_timestep_fields.summary.json",
+      "observation": "Original embedded engine timing configuration bytes; not a live retail timing observation."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "ClassID5 TypeTree 2017.1 release provides corroborated four-field order; original object has exactly 16 bytes and metadata confirms the class identity.",
+    "Configured fixed step 0.02 seconds does not identify the scheduler used by Fire Pro's CPU or animation update path.",
+    "No active frame rate, dropped time, player AI decision rate, animation state or per-hardware update timing are established.",
+    "SOURCE_CONSOLIDATION_V1 runtime and viewer remain LOCKED."
+  ]
+}
