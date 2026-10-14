@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0322",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Original Fire Pro Wrestling World Unity 5.6.5p3 globalgamemanagers BuildSettings ClassID141 PathID11 has an exact 55,660-byte source body SHA256 003559802f791e7293ffbc71e830d5aef20e7882fe5e45de8fdf2db034d39a6f. Original full structured parse ends in a two-element m_GraphicsAPIs integer vector with exact values [2,1] in that order, at absolute file offset 0x1DF40, finishing exactly at the declared object boundary 0x1DF4C. Unity's published GraphicsDeviceType numeric enum identifies 2 as Direct3D11 and 1 as Direct3D9, so the retail build encodes Direct3D11 followed by Direct3D9 as candidates. This is a build-source ordering fact only and is not a claim that either device was active in a specific game session.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original extensionless globalgamemanagers, full-file SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; serialized version17 metadata ObjectInfo PathID11 TypeID10 -> ClassID141, BuildSettings byte window 0x105E0..0x1DF4C, exact final array bytes 0x1DF40..0x1DF4C, validated by tools/prove_globalgamemanagers_buildsettings_apis.py and canonical/witnesses/GGM-001/buildsettings_graphics_apis.summary.json",
+      "observation": "Original raw binary full-object and vector closure, not a GPU runtime observation."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "The Unity 5.6.5p3 object omits inline TypeTree names; corroborating 2017.1 ClassID141 release layout and full exact byte closure establish the final vector structure.",
+    "External Unity numeric enum reference documents source value meaning; the numeric encoded build order itself is the retail data fact.",
+    "Per-device API selection, real rendered colours, render-target depth allocation and pixel-equivalence remain open.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer stays LOCKED."
+  ]
+}
