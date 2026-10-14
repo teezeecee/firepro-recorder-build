@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0326",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The original retail Unity 5.6.5p3 extensionless globalgamemanagers, SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, carries exactly eleven serialized external-file dependency rows, with original count at 0x38C, records 0x390..0x576, and one terminal metadata zero byte at 0x576. Original external fileID1 maps to globalgamemanagers.assets, fileID2 to library/unity default resources, fileID3 to resources/unity_builtin_extra, and fileID5 to resources.assets; all eleven row paths, source offsets, GUID bytes and record type values are fully witnessed. Cross-reading FACT-0325's original GraphicsSettings numeric pointers identifies its eight built-in shader reference fileID3 entries as dependency-table references to resources/unity_builtin_extra. This establishes reference routing strings only, not the referenced Shader/Material asset bytes or which shader ran at retail.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original full raw 5,002,540-byte globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; Unity serialization v17; count u32 at 0x38C value 11; ordered unaligned external rows 0x390..0x576, rows+count SHA256 294506715aaf20cc13a28324d6561d68ace34eb6bbbcef0512e699b8d38bac08; metadata terminal 0 at 0x576, full source region 0x38C..0x577 SHA256 3d06d5b091be65614029898285fb11f6ccd766e4ee922e045db8d6d691ad4d62; all entries in canonical/witnesses/GGM-001/external_fileid_mappings.summary.json; raw prover tools/prove_globalgamemanagers_external_refs.py",
+      "observation": "Exact original serialized external dependency table, its order and link to already pinned numeric PPtrs in FACT-0325."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "The fileID order is the original Unity serialized external-file reference order; the names are raw dependency strings, not assertions that external file bytes were recovered.",
+    "Original external target files, their complete object tables and exact PPtr target shader/material content are still unresolved.",
+    "No observed retail GPU selection, shader use, rendering equivalence or pixel output is claimed.",
+    "No change to SOURCE_CONSOLIDATION_V1; runtime/viewer remain LOCKED."
+  ]
+}

@@ -6331,6 +6331,29 @@
         "Configured graphic tiers, HDR and sorting cannot substitute for runtime device/shader-pixel measurements.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer stay LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_EXTERNAL_PPTR_FILEID_TABLE_V1",
+      "fact_id": "FACT-0326",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Original Unity v17 globalgamemanagers eleven ordered external dependency fileID rows including GUID/type/string source boundaries; maps existing FACT-0325 shader pointer fileID3 to an external dependency name only.",
+      "summary": "canonical/witnesses/GGM-001/external_fileid_mappings.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x38C",
+          "0x577"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "An original dependency-table path does not prove the target file bytes, exact PathID destination Shader/Material object, or live shader selection.",
+        "Actual render target allocation, depth8 fallback, Direct3D device selection and sampled GPU output still lack evidence.",
+        "Retail animation/mechanics consolidated source and original decode vault remain incomplete; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
