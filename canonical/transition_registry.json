@@ -6308,6 +6308,29 @@
         "Cannot use these four engine scalar values as a substitute for authored move timing and state transitions.",
         "Runtime/viewer remain locked under SOURCE_CONSOLIDATION_V1."
       ]
+    },
+    {
+      "family_id": "UNITY_GRAPHICSSETTINGS_SHADER_POINTERS_TIERS_SOURCE_V1",
+      "fact_id": "FACT-0325",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Complete original Unity ClassID30 GraphicsSettings 562-byte project settings record, eight shader slots, 28 always-included PPtrs, zero preloaded variants, sprite material, sorting, three tier values, two lighting bools.",
+      "summary": "canonical/witnesses/GGM-001/graphics_settings_full_object.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x102E0",
+          "0x10512"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Numeric external shader PPtrs are not evidence of actual sprite-shader identity or their target asset content.",
+        "Configured graphic tiers, HDR and sorting cannot substitute for runtime device/shader-pixel measurements.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer stay LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
