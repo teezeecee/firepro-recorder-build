@@ -6262,6 +6262,29 @@
         "Actual Unity 5.6.5p3 GPU allocation for the source requested depth 8, temporary render-target sampling, channel precision and end-to-end pixel equivalence remain open.",
         "Full original retail decode vault provenance and wrestler animation/mechanics consolidation remain incomplete; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_QUALITYSETTINGS_SINGLE_FANTASTIC_PROFILE_V1",
+      "fact_id": "FACT-0323",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Full original 116-byte Unity 5.6 QualitySettings object, single Fantastic profile with original quality, filtering, MSAA and vSync values.",
+      "summary": "canonical/witnesses/GGM-001/quality_settings_fantastic.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x1DF50",
+          "0x1DFC4"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Configured quality profile is not an observed final graphics state; device or user changes can affect runtime.",
+        "Original game script-driven quality changes and renderer pixel equality are not yet source/measurement-closed.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
