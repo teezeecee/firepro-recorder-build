@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_ORIGINAL_FPW_FORMIDX_GETFORMDATA_BRANCH_SOURCE_INPUT_SPLIT_V1",
+  "source_ids": [
+    "RESPANEL-001",
+    "DLL-001"
+  ],
+  "original_panel": {
+    "filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+    "bytes": 330116,
+    "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+    "companion": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+    "companion_bytes": 473482,
+    "companion_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc"
+  },
+  "original_dll": {
+    "filename": "Assembly-CSharp.dll",
+    "bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "methoddef": "0x06001F17",
+    "owner": "FormDataMan",
+    "name": "GetFormData",
+    "rva": "0x0010A4D0",
+    "method_row_hex": "d0a41000000086000e0209005d0b02005516",
+    "method_signature_hex": "2003129008080808",
+    "code_bytes": 84,
+    "code_sha256": "68502418fd273429f220e8ad06717123d67e39fb6b67d5e698f11a159547270f",
+    "header_bytes": 12,
+    "branch_constants": {
+      "range_start": 37000,
+      "range_end_inclusive": 37999
+    },
+    "fielddef_tokens": {
+      "primary": "0x040026DD",
+      "block": "0x040026DE"
+    },
+    "source_windows": [
+      {
+        "name": "initial_primary_array_null_gate",
+        "start_il": "0x0000",
+        "end_exclusive_il": "0x000D",
+        "sha256": "873357b7ce3c34650b7f1f076049dbfc763208e247f3e6758fcf98d1a573dbca"
+      },
+      {
+        "name": "original_input_index_bounds",
+        "start_il": "0x000D",
+        "end_exclusive_il": "0x0024",
+        "sha256": "ce0fa6ddba4359aaa60827aa08dbba613650f0730e81e5d013d729b4e51f268d"
+      },
+      {
+        "name": "original_threshold_branches",
+        "start_il": "0x0024",
+        "end_exclusive_il": "0x003A",
+        "sha256": "8c02b65c5df019a07af3be72c209665d19b10ef1e97a63aa1993551fca861fb1"
+      },
+      {
+        "name": "block_array_reference_path",
+        "start_il": "0x003A",
+        "end_exclusive_il": "0x004B",
+        "sha256": "3979396db812d9a3319d4fdf242668a62e5e3d2ba11e5d9d4e587b336ab08c47"
+      },
+      {
+        "name": "primary_array_reference_path",
+        "start_il": "0x004B",
+        "end_exclusive_il": "0x0054",
+        "sha256": "3611f04f5fe5a430ae474b8dc6605b7110d225567b4cdd6b2f3ed922a434f9d0"
+      }
+    ]
+  },
+  "observed": {
+    "original_resource_objects": 440,
+    "total_original_form_records": 23037,
+    "source_segment_headers": 1347,
+    "regular_records": 19010,
+    "block_range_records": 4027,
+    "regular_distinct_formIdx_inputs": 6215,
+    "block_distinct_formIdx_inputs": 999,
+    "regular_source_objects": 404,
+    "block_source_objects": 179,
+    "regular_min": 100,
+    "regular_max": 36999,
+    "block_min": 37000,
+    "block_max": 37998,
+    "block_array_index_min": 0,
+    "block_array_index_max": 998,
+    "original_form_branch_rows_sha256": "be5b21ef2c8f8299dace1e14cf9f5e87dedee6515a2237627897fc8e6de480cb",
+    "prior_all_formidx_occurrence_index_sha256": "b9926f62a5eb559ca608d8b52697ca75a4f83cfe718adc492dce504aba0b6cda",
+    "prior_all_numeric_form_rows_sha256": "06c901a9d5f98eb37254b916a4916f077c1824b9bd833533ba064c50df6114bf"
+  },
+  "anchors": [
+    {
+      "index": 43501,
+      "path_id": 22222,
+      "name": "fpw_2004_0",
+      "slot": 0,
+      "form": 0,
+      "source_offset": 76,
+      "formIdx": 7542,
+      "lookup_branch": "regular",
+      "array_index_operand": 7542
+    },
+    {
+      "index": 43510,
+      "path_id": 22023,
+      "name": "fpw_2007_0",
+      "slot": 0,
+      "form": 1,
+      "source_offset": 88,
+      "formIdx": 37377,
+      "lookup_branch": "block",
+      "array_index_operand": 377
+    },
+    {
+      "index": 43940,
+      "path_id": 21624,
+      "name": "fpw_6261",
+      "slot": 1,
+      "form": 95,
+      "source_offset": 2344,
+      "formIdx": 100,
+      "lookup_branch": "regular",
+      "array_index_operand": 100
+    },
+    {
+      "index": 43940,
+      "path_id": 21624,
+      "name": "fpw_6261",
+      "slot": 1,
+      "form": 91,
+      "source_offset": 2296,
+      "formIdx": 37287,
+      "lookup_branch": "block",
+      "array_index_operand": 287
+    }
+  ],
+  "limits": [
+    "These counts classify original source-input integers against an exact DLL method's static branches. They do not verify actual runtime array length or whether any specific source value reached GetFormData in execution.",
+    "The block lookup uses the caller-provided arg2 for an array lookup. The value of that argument, blockFormIdx table materialization, selected FormData, and any art linkage remain unproven.",
+    "The original retail parent resources.assets fprform_rff object body has not been independently matched byte-for-byte against its user-supplied UABE export here. A 12.8MB packed export does not itself prove the DLL array initialization or a 320-byte runtime stride.",
+    "No actual runtime sprite parts, actor poses, time, direction, sound or AI. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
