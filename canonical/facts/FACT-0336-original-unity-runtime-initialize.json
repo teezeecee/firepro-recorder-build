@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0336",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Original Unity5.6.5p3 globalgamemanagers ClassID300 RuntimeInitializeOnLoadManager PathID20 occupies the exact original 164-byte object at 0x4C5410..0x4C54B4, SHA256 5ed10c7654fdd8699015a3f23be23f2514456de934a8614099c3957583a11860. Four exact original aligned length-prefixed UTF8 name strings appear at relative offsets 4,40,84,124: UnityEditor.Advertisements twice, UnityAdsEditor and EditorOnLoad. Nine source regions form a contiguous complete-byte partition, including five original numeric fields regions retained as unlabelled u32 arrays and full SHA256 source window digests. These strings and numeric words are original serialized Unity project metadata only and do not establish that callbacks executed in retail or Unity advertising was enabled.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original 5,002,540-byte Unity5.6.5p3 extensionless globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, serialized v17 TypeIndex17 ClassID300 PathID20 ObjectInfo data-relative4998160, file absolute0x4C5410..0x4C54B4 (164 bytes) whole object SHA256 5ed10c7654fdd8699015a3f23be23f2514456de934a8614099c3957583a11860; original contiguous full-byte nine-region digest witness canonical/witnesses/GGM-001/runtime_initialize_164_bytes.summary.json and direct source validator tools/prove_globalgamemanagers_runtime_initialize.py.",
+      "observation": "Four exact padded UTF8 strings and five bounded original numeric regions exhaust all 164 bytes with independently verified original source SHA digests."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "ClassID identifies Unity's registry type but exact Unity 5.6 field meanings for numeric slots are not proved by the available source; they remain unlabelled.",
+    "UnityEditor.Advertisements text does not demonstrate the advertising SDK running or enabled in Fire Pro World.",
+    "Source references alone do not demonstrate callbacks or code execution, nor any gameplay move, animation, referee or input logic.",
+    "No original external shader or MonoScript serialized parent object bytes have been independently validated; viewer/runtime LOCKED."
+  ]
+}
