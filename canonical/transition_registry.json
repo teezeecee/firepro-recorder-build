@@ -6538,6 +6538,29 @@
         "The list of authored assembly names does not establish active execution, game AI, or animation mapping.",
         "Source-only proof does not unlock the SOURCE_CONSOLIDATION_V1 runtime/viewer; original shader parents also unresolved."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_PLAYER_SETTINGS_COMPLETE_546_BYTE_SOURCE_V1",
+      "fact_id": "FACT-0335",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Exact original ClassID129 PlayerSettings PathID1 full 546-byte object with four preserved length-prefixed authored UTF8 strings, four unlabelled original uint32 words and a ten-part contiguous region SHA partition.",
+      "summary": "canonical/witnesses/GGM-001/player_settings_546_bytes.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x1000",
+          "0x1222"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Field-specific meaning for four unsigned values requires the original Unity serialized field layout; values alone do not prove retail display configuration.",
+        "Source project metadata strings do not prove in-match runtime behavior, user interaction or visual output.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; original target shader and MonoScript parent containers remain unresolved."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

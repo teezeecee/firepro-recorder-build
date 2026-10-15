@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_PLAYER_SETTINGS_COMPLETE_546_BYTE_SOURCE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 129,
+    "class_name": "PlayerSettings",
+    "type_index": 0,
+    "path_id": 1,
+    "relative_offset": 0,
+    "absolute_offset": 4096,
+    "bytes": 546,
+    "sha256": "29b1dc16893a24b45a5adf174363f8a0f62041ab79a41477bb95dddd789d6773"
+  },
+  "regions": [
+    {
+      "name": "header",
+      "start_offset": 0,
+      "end_offset": 36,
+      "bytes": 36,
+      "sha256": "253d9c9a9ba1f1086f4a9d3a8155fb9256d90ab17a14e897f349444b2ae00f30"
+    },
+    {
+      "name": "company_string",
+      "start_offset": 36,
+      "end_offset": 56,
+      "bytes": 20,
+      "sha256": "77e743a922b74711caeb7fd425eff098cd016a9d29f9e4cd26711b7a09677eca"
+    },
+    {
+      "name": "product_string",
+      "start_offset": 56,
+      "end_offset": 84,
+      "bytes": 28,
+      "sha256": "e9034c053719993872feb18c4797f43feada4e8ccc05de050c59e610716872e5"
+    },
+    {
+      "name": "opaque_middle_a",
+      "start_offset": 84,
+      "end_offset": 240,
+      "bytes": 156,
+      "sha256": "420c24c3b4dc5cfbf72d4c7fadad84b266c572a04b02dcc91c329b32eae37651"
+    },
+    {
+      "name": "numeric_quad",
+      "start_offset": 240,
+      "end_offset": 256,
+      "bytes": 16,
+      "sha256": "759fe621a120af4f9385621721e6a66fe85b0cfc3c7e77340ef4bf437fc490ed"
+    },
+    {
+      "name": "opaque_middle_b",
+      "start_offset": 256,
+      "end_offset": 344,
+      "bytes": 88,
+      "sha256": "fff1ce7563ea884f5bf82dae28f9a13bea06be7df8ccef420845e1b583cc6eba"
+    },
+    {
+      "name": "category_string",
+      "start_offset": 344,
+      "end_offset": 376,
+      "bytes": 32,
+      "sha256": "d52d9867edb22f51f673afddedc21fb37f92c2883e32e8ff5dec74d5524d5226"
+    },
+    {
+      "name": "opaque_middle_c",
+      "start_offset": 376,
+      "end_offset": 484,
+      "bytes": 108,
+      "sha256": "cfd355fd2271dca988b501b101cf09a195baefae12f227acc881e500e8e69d92"
+    },
+    {
+      "name": "version_string",
+      "start_offset": 484,
+      "end_offset": 492,
+      "bytes": 8,
+      "sha256": "f8c7159eb68d8f2370c501b023beceb0afc30fb6a57cc7956c6f6a2c10d000db"
+    },
+    {
+      "name": "opaque_tail",
+      "start_offset": 492,
+      "end_offset": 546,
+      "bytes": 54,
+      "sha256": "fdf015dcd323f0d9266bb0bc6e5f2b6b3ca001f4d605021f75be85130d47acd9"
+    }
+  ],
+  "strings": [
+    {
+      "region": "company_string",
+      "offset": 36,
+      "byte_length": 13,
+      "value": "spikechunsoft"
+    },
+    {
+      "region": "product_string",
+      "offset": 56,
+      "byte_length": 21,
+      "value": "FireProWrestlingWorld"
+    },
+    {
+      "region": "category_string",
+      "offset": 344,
+      "byte_length": 25,
+      "value": "public.app-category.games"
+    },
+    {
+      "region": "version_string",
+      "offset": 484,
+      "byte_length": 3,
+      "value": "1.0"
+    }
+  ],
+  "numeric_quad": {
+    "region": "numeric_quad",
+    "offset": 240,
+    "format": "four little-endian uint32 without assignment to specific serialized Unity settings fields",
+    "values": [
+      1280,
+      720,
+      960,
+      600
+    ]
+  },
+  "limits": [
+    "The four source uint32 values are not identified here as authoritative retail window, render or screen resolutions; their serialized field identities need matching Unity 5.6 layout evidence.",
+    "The original company, product, category and version strings do not prove runtime gameplay identity, storefront metadata, runtime configuration choice or installed DLC.",
+    "No original target shader or MonoScript parent serialized asset file bytes established; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}
