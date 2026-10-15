@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0339",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The previously opaque original 2,723,840-byte tail of the Unity5.6.5p3 Fire Pro ResourceManager ClassID147 PathID13 object at original object offsets [2138488,4862328) is now fully consumed as an ordered count of 65,218 parent-object dependency records. Each record is int32 parent fileID, int64 parent pathID, uint32 dependency count, then exactly that many int32 fileID / int64 pathID child references, all little endian. Exactly 140,029 child-reference occurrences across the 65,218 unique parent tuples exhaust the last byte with no remainder. All five source fileIDs, cardinalities, original regional SHA256 and eleven original-indexed record anchors are pinned. Exactly 19,731 parent numeric references and 22,107 child-reference occurrences join the separately decoded FACT-0338 ResourceManager name/PPtr table. Both tables now structurally partition the whole 4,862,328-byte original ResourceManager object, without proving external asset contents or runtime semantics.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "User-owned original extensionless globalgamemanagers 5,002,540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; Unity v17 ResourceManager ClassID147 PathID13 source object file absolute 122824 and 4,862,328 bytes SHA256 414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de; dependency section starts at object offset 2138488, count 65218, full 2723840-byte SHA256 64d856b31b479f81612b2f833ac25ac2cfaf6e84cf02bedcbe3adf06b13535fc. See canonical/witnesses/GGM-001/resource_manager_dependency_65218.summary.json and tools/prove_globalgamemanagers_resource_manager_dependencies.py for original SHA and exact 65,218-entry parse.",
+      "observation": "Every dependency record is parsed without overrun and lands exactly at the original object end. Parent/dependency PPtr pairs carry original fileID/pathID numeric values; named-source joins are exact numeric equality with FACT-0338, not proof of original referenced asset bytes."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "The dependency-reference record structure is proven by complete source byte exhaustion, but historical Unity field labels are not independently proven by an original v5.6.5p3 embedded type-tree for this ClassID.",
+    "Dependency references and resource names do not prove what objects contain, when the engine loads them, or executable retail behavior.",
+    "Intact original target serialized resources.assets/sharedassets0.assets and other external target parents remain unverified by byte-level SHA/ObjectInfo.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

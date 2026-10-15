@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_RESOURCE_MANAGER_DEPENDENCY_REFERENCES_65218_SOURCE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "related_facts": [
+    "FACT-0326",
+    "FACT-0338"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c"
+  },
+  "object": {
+    "class_id": 147,
+    "type_index": 12,
+    "path_id": 13,
+    "absolute_offset": 122824,
+    "bytes": 4862328,
+    "sha256": "414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de"
+  },
+  "preceding_container": {
+    "start": 0,
+    "end": 2138488,
+    "rows": 43941,
+    "sha256": "d4ee5f6e796f04cccc5c1b381df3f08e216e66ea7e1c85e0da034d3c5cde8394"
+  },
+  "dependent_records": {
+    "start": 2138488,
+    "end": 4862328,
+    "bytes": 2723840,
+    "sha256": "64d856b31b479f81612b2f833ac25ac2cfaf6e84cf02bedcbe3adf06b13535fc",
+    "count_offset": 0,
+    "record_count": 65218,
+    "first_record_offset": 4,
+    "record_format": "int32 parent_file_id + int64 parent_path_id + uint32 dependency_count, followed by exactly dependency_count pairs of (int32 child_file_id + int64 child_path_id); little endian; unpadded source structure",
+    "total_dependency_references": 140029,
+    "parsed_to_end_offset": 2723840,
+    "unique_parent_pairs": 65218,
+    "unique_dependency_pairs": 67564,
+    "parent_file_id_counts": {
+      "1": 2,
+      "2": 2,
+      "3": 1,
+      "4": 193,
+      "5": 65020
+    },
+    "dependency_file_id_counts": {
+      "1": 11678,
+      "2": 25,
+      "3": 10,
+      "4": 5839,
+      "5": 122477
+    },
+    "arity_counts_selected": {
+      "1": 24787,
+      "2": 20636,
+      "3": 15129,
+      "4": 1807,
+      "5": 1050,
+      "6": 502,
+      "7": 695,
+      "8": 201
+    },
+    "maximum_dependency_count": 168,
+    "resource_index_parent_matches": 19731,
+    "resource_index_dependency_occurrence_matches": 22107,
+    "self_reference_parent_records": 9,
+    "anchors": [
+      {
+        "index": 0,
+        "parent": [
+          1,
+          4
+        ],
+        "dependency_count": 2,
+        "first_dependencies": [
+          [
+            3,
+            7
+          ],
+          [
+            3,
+            6
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "parent": [
+          4,
+          24
+        ],
+        "dependency_count": 1,
+        "first_dependencies": [
+          [
+            3,
+            6
+          ]
+        ]
+      },
+      {
+        "index": 2,
+        "parent": [
+          3,
+          7
+        ],
+        "dependency_count": 1,
+        "first_dependencies": [
+          [
+            3,
+            6
+          ]
+        ]
+      },
+      {
+        "index": 3,
+        "parent": [
+          5,
+          21293
+        ],
+        "dependency_count": 1,
+        "first_dependencies": [
+          [
+            5,
+            21285
+          ]
+        ]
+      },
+      {
+        "index": 400,
+        "parent": [
+          5,
+          31048
+        ],
+        "dependency_count": 1,
+        "first_dependencies": [
+          [
+            5,
+            4973
+          ]
+        ],
+        "resource_name": "partstex/p4_farm/m_fa_4001_s_1_h"
+      },
+      {
+        "index": 11111,
+        "parent": [
+          5,
+          32194
+        ],
+        "dependency_count": 1,
+        "first_dependencies": [
+          [
+            5,
+            6115
+          ]
+        ],
+        "resource_name": "partstex/p0_face/b_fc_0019_m_3"
+      },
+      {
+        "index": 32609,
+        "parent": [
+          5,
+          65809
+        ],
+        "dependency_count": 3,
+        "first_dependencies": [
+          [
+            5,
+            55794
+          ],
+          [
+            5,
+            65268
+          ],
+          [
+            5,
+            65122
+          ]
+        ]
+      },
+      {
+        "index": 65214,
+        "parent": [
+          5,
+          57420
+        ],
+        "dependency_count": 2,
+        "first_dependencies": [
+          [
+            5,
+            66666
+          ],
+          [
+            5,
+            90199
+          ]
+        ]
+      },
+      {
+        "index": 65215,
+        "parent": [
+          5,
+          90199
+        ],
+        "dependency_count": 3,
+        "first_dependencies": [
+          [
+            5,
+            57420
+          ],
+          [
+            1,
+            1377
+          ],
+          [
+            4,
+            34
+          ]
+        ]
+      },
+      {
+        "index": 65216,
+        "parent": [
+          5,
+          64029
+        ],
+        "dependency_count": 1,
+        "first_dependencies": [
+          [
+            5,
+            53298
+          ]
+        ]
+      },
+      {
+        "index": 65217,
+        "parent": [
+          5,
+          80800
+        ],
+        "dependency_count": 2,
+        "first_dependencies": [
+          [
+            5,
+            53298
+          ],
+          [
+            1,
+            1095
+          ]
+        ]
+      }
+    ]
+  },
+  "boundaries": [
+    "All bytes of ResourceManager [0,4862328) are structurally consumed by the two source-proven tables (FACT-0338 name/PPtr index and FACT-0339 dependency record section), and original SHA identifies them.",
+    "Numeric PPtr edges are references only; no target serialized parents were independently byte-verified. They do not prove object types, texture payloads, animation timings, shader execution, move behavior, or dependency loading order.",
+    "The label dependent-assets is an interpretation of matching Unity historical serialized structure; the complete original source is decoded as positional numeric records without assuming field-name type-tree identity.",
+    "Runtime/viewer remain locked; do not commit any proprietary game file bytes."
+  ]
+}
