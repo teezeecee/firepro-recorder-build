@@ -6815,6 +6815,41 @@
         "No physical full-resource source identity rehash at object extraction; source anchor is separately verified metadata and window.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_RESOURCES_FPW6172_SINGLE_OBJECT_ORIGINAL_BYTES_V1",
+      "fact_id": "FACT-0346",
+      "source_ids": [
+        "RESOBJ-002",
+        "RESMETA-001",
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Exact original ClassID49 PathID21353 1,716-byte resources.assets object wrestleranimation/fpw_6172 SHA256 de13a6efdff9727d63542134096b056f2c680c606b7703e82b4fd6839fc30cf1, original GGM fileID5 PathID and metadata ObjectInfo joins. Byte-identical to previous UABE export. 1,696-byte RS-leading embedded opaque data and four zero trailer source bytes. Contrasted original fpw_6261 outer framing only; no RS schema or retail behavior decoded.",
+      "summary": "canonical/witnesses/RESOBJ-002/fpw_6172_exact_1716_byte_object.summary.json",
+      "source_windows": [
+        [
+          "resources.assets",
+          "0x74A866E0",
+          "0x74A86D94"
+        ],
+        [
+          "resources.assets metadata prefix",
+          "0x6C75C",
+          "0x6C770"
+        ],
+        [
+          "globalgamemanagers",
+          "0x1DFC8",
+          "0x4C1140"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Two original RS-leading opaque payloads do not determine RS field meanings or animation timing and transforms.",
+        "Physical original 3.17GB parent SHA was not rerun with bounded source extraction.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

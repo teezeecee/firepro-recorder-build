@@ -1,0 +1,28 @@
+{
+  "fact_id": "FACT-0346",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The user's original bounded read-only resource object fpw_6172 at original resources.assets absolute file window [1957193440,1957195156) is a 1,716-byte ClassID49 PathID21353 object SHA256 de13a6efdff9727d63542134096b056f2c680c606b7703e82b4fd6839fc30cf1. The original 20-byte metadata ObjectInfo row, the original GGM ResourceManager named reference index43890/fileID5, and the previous UABE export SHA agree. Its exact length-prefixed envelope contains ASCII fpw_6172, a 1696-byte opaque RS-leading embedded stream SHA256 efd723b5f26a6719d2d3d1706289c82720be9364603609661c3b198a0a59064c and four zero trailer bytes. Comparison with FACT-0345 fpw_6261 establishes matching outer envelope forms, but no RS internal format, animation timing, transitions, transforms or retail playback.",
+  "evidence": [
+    {
+      "source_id": "RESOBJ-002",
+      "locator": "User original read-only file FIREPRO_FPW_6172_ORIGINAL_OBJECT_v001.bin exact 1716 bytes SHA256 de13a6efdff9727d63542134096b056f2c680c606b7703e82b4fd6839fc30cf1; original physical byte range [1957193440,1957195156); extraction companion report declares prior exported fpw_6172-resources.assets-21353.dat identical byte for byte. Original embedded stream [16,1712) SHA256 efd723b5f26a6719d2d3d1706289c82720be9364603609661c3b198a0a59064c. Source-only witness canonical/witnesses/RESOBJ-002/fpw_6172_exact_1716_byte_object.summary.json.",
+      "observation": "Original object source bytes and opaque RS-leading embedded data framed by exact length-prefixed name/length/trailer."
+    },
+    {
+      "source_id": "RESMETA-001",
+      "locator": "Original SHA-verified 1842222-byte resources.assets metadata prefix SHA256 8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da; 20-byte ObjectInfo row [444252,444272) SHA256 6f6e7f8c1b77b01b73ceced82e68bc28f9467f3201a24fb01b639b2435f43a52, PathID21353 typeIndex4 ClassID49 relative offset1955351216 size1716 dataOffset1842224.",
+      "observation": "Original metadata numerically fixes physical source extent and class; no animation semantics."
+    },
+    {
+      "source_id": "GGM-001",
+      "locator": "Original SHA-verified 5002540-byte extensionless globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; original ResourceManager source row43890 exactly name wrestleranimation/fpw_6172, fileID5 PathID21353.",
+      "observation": "Original named resource reference independently joins to the object metadata."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "RS literal byte prefix is not an internal animation schema. No actual timing, banks, actor transforms, transitions, AI, choreography, sound or retail playback established.",
+    "Original full parent resources.assets was not rehashed during the bounded original-window probe; the older full-file SHA is an earlier local inventory.",
+    "Original proprietary bytes not committed to Git. Runtime/viewer remain LOCKED."
+  ]
+}

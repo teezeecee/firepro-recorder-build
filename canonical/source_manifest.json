@@ -101,6 +101,21 @@
       "original_parent": "resources.assets",
       "original_parent_absolute_offset": 1960380520,
       "note": "Exact original 2,376-byte object body copied read-only from user's original resources.assets after independently matching original metadata-prefix hash and PathID21624 ObjectInfo-row hash. Object and embedded 2,356-byte payload independently SHA verified 2026-10-15; original complete 3.17GB parent still not full-file-byte verified in this workflow. No original proprietary bytes in Git. No gameplay semantics asserted."
+    },
+    {
+      "source_id": "RESOBJ-002",
+      "kind": "ORIGINAL_SERIALIZED_OBJECT_BODY_WINDOW",
+      "filename": "FIREPRO_FPW_6172_ORIGINAL_OBJECT_v001.bin",
+      "sha256": "de13a6efdff9727d63542134096b056f2c680c606b7703e82b4fd6839fc30cf1",
+      "availability": "VERIFIED_LOCAL_BYTES",
+      "canonical_eligible": true,
+      "raw_required": true,
+      "git_storage": "HASH_AND_EXTRACTED_FACTS_ONLY",
+      "size_bytes": 1716,
+      "unity_version": "5.6.5p3",
+      "original_parent": "resources.assets",
+      "original_parent_absolute_offset": 1957193440,
+      "note": "Read-only exact original 1716-byte ClassID49 PathID21353 wrestleranimation/fpw_6172 object from resources.assets. Original metadata/GGM numeric joins and matching SHA of prior UABE export independently checked. Original whole 3.17GB resource file not rehashed during bounded extraction. Embedded 1696-byte RS-leading data opaque; no semantic playback, runtime/viewer LOCKED. Proprietary bytes not in Git."
     }
   ]
 }
