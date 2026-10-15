@@ -6469,6 +6469,29 @@
         "Source two-dimensional and three-dimensional collision mask defaults are not retail gameplay events.",
         "No shader parent target bytes; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_SHADER_NAME_REGISTRY_206_REFERENCES_V1",
+      "fact_id": "FACT-0332",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Original Unity ClassID94 ShaderNameRegistry full 9,561-byte source object, 206 ordered fileID/pathID UTF8 name rows and 11 FiPro/ entries, archived in lossless compressed row JSON and proven by original-object SHA.",
+      "summary": "canonical/witnesses/GGM-001/shader_name_registry_206.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x90A8",
+          "0xB601"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original fileID/pathID name mappings do not establish actual Shader target bytes; external target container proof still required.",
+        "No observed retail shader invocation or rendered pixel evidence.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
