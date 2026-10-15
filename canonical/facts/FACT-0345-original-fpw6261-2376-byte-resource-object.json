@@ -1,0 +1,28 @@
+{
+  "fact_id": "FACT-0345",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The user's original 2,376-byte body of resources.assets PathID21624/ClassID49, identified by original ResourceManager name wrestleranimation/fpw_6261 (original fileID5, named reference index43940), is SHA256-exact and independently joined to the exact original 1,842,222-byte resources.assets metadata prefix ObjectInfo row (20 bytes at offset449672; typeIndex4; relativeOffset1958538296; absolute file offset1960380520; size2376), plus original GGM name/PPtr source. The actual object body begins with uint32 name length8, ASCII fpw_6261, uint32 embedded length2356, exactly 2,356 original binary bytes SHA256 4bd313481985bb951519a6173521b8276498c5a2834d8fb367eb5c75ee481c08 (first bytes ASCII RS), and ends with four zero bytes. These source bytes establish an intact, bounded retail resource data object but not the internal RS schema, animation behavior, rendering, or playback timing.",
+  "evidence": [
+    {
+      "source_id": "RESOBJ-001",
+      "locator": "Original exact user-owned resource object body [1960380520,1960382896) in original resources.assets; bounded original uploaded file FIREPRO_FPW_6261_ORIGINAL_OBJECT_v001.bin 2376 bytes SHA256 8ff30c94fc26ca7b914352dbf6b2a5add12429f36f14ac1450619cb0000f8401; exact object section [0,16) name+length, byte payload [16,2372) SHA256 4bd313481985bb951519a6173521b8276498c5a2834d8fb367eb5c75ee481c08, four terminal zero bytes [2372,2376). Original-source read-only prover tools/prove_original_fpw_6261_object.py and witness canonical/witnesses/RESOBJ-001/fpw_6261_exact_2376_byte_object.summary.json.",
+      "observation": "Original binary byte identity, ASCII object name, length-prefixed embedded bytes and terminal 4-byte zero region."
+    },
+    {
+      "source_id": "RESMETA-001",
+      "locator": "Original resources.assets source metadata prefix 1842222 bytes SHA256 8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da; exact ObjectInfo row [449672,449692) SHA256 d927a3ca057dcecbd20b2b6e27db4376dd0634ab46b82fd02303ad858bc2d98b; PathID21624, typeIndex4 original ClassID49, relativeOffset1958538296, size2376, original declared dataOffset1842224; original declared object absolute offset1960380520.",
+      "observation": "Original source metadata resolves object body identity/physical extent, not actual animation behavior."
+    },
+    {
+      "source_id": "GGM-001",
+      "locator": "Original SHA-verified extensionless globalgamemanagers file 5002540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; ClassID147 ResourceManager object [122824,4985152); full original 43,941-name source parse finds exactly one matching numeric PPtr (fileID5,PathID21624) at resource-name record index43940, original name wrestleranimation/fpw_6261.",
+      "observation": "Original resource name numerically anchors the exact inspected body, without attributing gameplay semantics."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "RS is literal source prefix bytes, not a decoded format specification. No actor transforms, root offsets, frame timing, animation bank meaning, audio, AI or gameplay derived.",
+    "The full 3.17GB resources.assets object-container bytes were not acquired; previous whole-file inventory SHA was not rerun in the object extraction.",
+    "No proprietary original object bytes stored in Git. Runtime/viewer construction remains LOCKED."
+  ]
+}

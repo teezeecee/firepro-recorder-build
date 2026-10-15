@@ -86,6 +86,21 @@
       "size_bytes": 1842222,
       "unity_version": "5.6.5p3",
       "note": "Exact first 1,842,222 bytes read-only extracted from user's original 3,166,587,532-byte resources.assets in FireProWrestlingW_Data. Entire prefix SHA independently validated against uploaded Windows metadata probe manifest. This is a metadata-prefix source only, not original resource object payload bytes. Original whole-file inventory SHA 9f76fc6147c7423fd4a3ece8d0222e24b1acdc8f7458b7e4c1eae98677a14f14 is reported separately; no full-file hash was rechecked during extraction. No proprietary original prefix bytes in Git."
+    },
+    {
+      "source_id": "RESOBJ-001",
+      "kind": "ORIGINAL_SERIALIZED_OBJECT_BODY_WINDOW",
+      "filename": "FIREPRO_FPW_6261_ORIGINAL_OBJECT_v001.bin",
+      "sha256": "8ff30c94fc26ca7b914352dbf6b2a5add12429f36f14ac1450619cb0000f8401",
+      "availability": "VERIFIED_LOCAL_BYTES",
+      "canonical_eligible": true,
+      "raw_required": true,
+      "git_storage": "HASH_AND_EXTRACTED_FACTS_ONLY",
+      "size_bytes": 2376,
+      "unity_version": "5.6.5p3",
+      "original_parent": "resources.assets",
+      "original_parent_absolute_offset": 1960380520,
+      "note": "Exact original 2,376-byte object body copied read-only from user's original resources.assets after independently matching original metadata-prefix hash and PathID21624 ObjectInfo-row hash. Object and embedded 2,356-byte payload independently SHA verified 2026-10-15; original complete 3.17GB parent still not full-file-byte verified in this workflow. No original proprietary bytes in Git. No gameplay semantics asserted."
     }
   ]
 }

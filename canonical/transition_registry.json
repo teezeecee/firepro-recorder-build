@@ -6780,6 +6780,41 @@
         "Original full resources.assets data region absent; 2-byte header-to-data offset gap also not uploaded.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_RESOURCES_FPW6261_SINGLE_OBJECT_ORIGINAL_BYTES_V1",
+      "fact_id": "FACT-0345",
+      "source_ids": [
+        "RESOBJ-001",
+        "RESMETA-001",
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Exact original 2,376-byte resources.assets ClassID49 PathID21624 object body wrestleranimation/fpw_6261, joined byte-for-byte to original resources metadata ObjectInfo and original GGM named fileID5 PPtr; complete length-prefixed 2356-byte embedded binary and trailing source field, no decoding of RS payload behavior.",
+      "summary": "canonical/witnesses/RESOBJ-001/fpw_6261_exact_2376_byte_object.summary.json",
+      "source_windows": [
+        [
+          "resources.assets",
+          "0x74D90868",
+          "0x74D911B0"
+        ],
+        [
+          "resources.assets metadata prefix",
+          "0x6DC88",
+          "0x6DC9C"
+        ],
+        [
+          "globalgamemanagers",
+          "0x1DFC8",
+          "0x4C1140"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "One original opaque object body does not decode the RS binary format or animated playback/AI semantics.",
+        "No physical full-resource source identity rehash at object extraction; source anchor is separately verified metadata and window.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

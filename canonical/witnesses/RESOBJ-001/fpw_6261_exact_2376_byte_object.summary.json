@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_RESOURCES_FPW6261_SINGLE_OBJECT_ORIGINAL_BYTES_V1",
+  "source_ids": [
+    "RESOBJ-001",
+    "RESMETA-001",
+    "GGM-001"
+  ],
+  "object_source": {
+    "filename": "FIREPRO_FPW_6261_ORIGINAL_OBJECT_v001.bin",
+    "size_bytes": 2376,
+    "sha256": "8ff30c94fc26ca7b914352dbf6b2a5add12429f36f14ac1450619cb0000f8401",
+    "original_container": "resources.assets",
+    "physical_size_bytes": 3166587532,
+    "original_full_container_earlier_local_inventory_sha256": "9f76fc6147c7423fd4a3ece8d0222e24b1acdc8f7458b7e4c1eae98677a14f14",
+    "original_full_container_sha_rechecked_in_extraction": false,
+    "original_absolute_offset": 1960380520,
+    "original_end_exclusive": 1960382896
+  },
+  "metadata_source": {
+    "filename": "FIREPRO_RESOURCES_ORIGINAL_METADATA_v001.bin",
+    "bytes": 1842222,
+    "sha256": "8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da",
+    "metadata_objectinfo_table_start": 17212,
+    "original_objectinfo_row_offset": 449672,
+    "original_objectinfo_row_bytes": 20,
+    "original_objectinfo_row_sha256": "d927a3ca057dcecbd20b2b6e27db4376dd0634ab46b82fd02303ad858bc2d98b",
+    "data_offset": 1842224,
+    "path_id": 21624,
+    "type_index": 4,
+    "class_id": 49,
+    "object_relative_offset": 1958538296,
+    "object_byte_size": 2376
+  },
+  "original_ggm_source": {
+    "filename": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "original_resource_manager_start": 122824,
+    "original_resource_manager_end": 4985152,
+    "name_index_count": 43941,
+    "matched_index": 43940,
+    "matched_name": "wrestleranimation/fpw_6261",
+    "matched_file_id": 5,
+    "matched_path_id": 21624,
+    "matched_occurrence_count": 1,
+    "name_index_end_relative": 2138488
+  },
+  "original_object_layout": {
+    "name_length_offset": 0,
+    "name_length_u32": 8,
+    "name_bytes_start": 4,
+    "name_bytes_end": 12,
+    "name_ascii": "fpw_6261",
+    "embedded_byte_length_offset": 12,
+    "embedded_length_u32": 2356,
+    "embedded_bytes_start": 16,
+    "embedded_bytes_end": 2372,
+    "embedded_bytes_sha256": "4bd313481985bb951519a6173521b8276498c5a2834d8fb367eb5c75ee481c08",
+    "first_two_embedded_bytes_hex": "5253",
+    "first_two_embedded_bytes_ascii": "RS",
+    "terminal_four_bytes_start": 2372,
+    "terminal_four_bytes_end": 2376,
+    "terminal_four_bytes_hex": "00000000",
+    "fully_accounted_bytes": 2376
+  },
+  "limits": [
+    "The bytes establish a 2,356-byte length-prefixed embedded binary payload starting with literal ASCII RS, but do not provide a decoded opcode/choreography schema.",
+    "The recorded 4-byte zero trailer is a source byte field, not a semantic claim about its meaning.",
+    "Original full 3,166,587,532-byte resources.assets source was not rehashed during bounded window extraction; earlier local intake SHA is not a new full-file hash verification.",
+    "No animation timing, roots, transforms, rendering, AI, resource loading execution, or runtime equivalence is established. Runtime/viewer remain LOCKED."
+  ]
+}
