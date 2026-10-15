@@ -7149,6 +7149,35 @@
         "No real frame timing, world coordinates, FormData rendering or sound/AI semantics established by source field comparisons.",
         "Original TextAsset runtime parsing/materialization not witnessed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_FPW_23037_FORMIDX_SOURCE_OCCURRENCES_V1",
+      "fact_id": "FACT-0357",
+      "source_ids": [
+        "RESPANEL-001",
+        "DLL-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "All original 440 GGM-linked fpw RS resource bodies: 23037 exact 12-byte original form source inputs grouped by matching retail DLL high/low formIdx input, yielding 7214 distinct integers, 3852 singleton values, 3362 repeated values covering 19185 records; 2348 values occur across multiple original assets. Complete original GGM-keyed source location index SHA b9926f62a5eb559ca608d8b52697ca75a4f83cfe718adc492dce504aba0b6cda. No source index to sprite-parts/real runtime playback relationship established.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_23037_fpw_formidx_occurrence_index.summary.json",
+      "source_windows": [
+        [
+          "Original 440 GGM-linked fpw RS embedded objects",
+          "1347 segment source headers and 23037 exact 12-byte source forms",
+          "Complete GGM-index/resource/name/slot/form/source offset provenance"
+        ],
+        [
+          "Matching original retail DLL ParseRSFData MethodDef0x0600525F",
+          "Original byte2 high/byte3 low index numeric read in FACT-0279 and FACT-0355",
+          "Unsigned 16-bit numeric input occurrence index only"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "A literal source formIdx number is not confirmed to select any corresponding FormData/parts/textures.",
+        "Repeated number is not proven shared rendered frame, facing, mirror, actor coordinates or time.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
