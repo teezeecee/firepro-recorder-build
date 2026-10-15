@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0348",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The original SHA-verified 440-object wrestleranimation/fpw_* embedded-RS source panel has exact indexed byte relations in all 440 resource payloads: embedded byte+48 equals embedded byte+64 plus one; bytes+8..+9 exactly equal bytes+69..+70; and bytes+10..+11 exactly equal bytes+72..+73. Complete 440-row values have independently checked deterministic index SHA256 6f72f25de972c0e4f532c6031f72aa7a6e996cd5414bfcc3480581be1b4b1094. Among the 440 original source names, 65 suffixed fpw_NNNN_0/_1/_2 families contain 137 objects: 58 two-variant families and seven three-variant families, each family with equal embedded byte length, with 303 standalone names. Separately SHA-verified matching retail DLL SkillDataMan.ParseRSFData IL already records a 16-byte input read window at offsets +48..+63 and, for the first executed WrestlerAnmData entry, source byte +64 assigned to field formNum and +69/+70 assigned to fields hitSE/cheerLevel; +72/+73 belong to three cursor increments with no byte-to-field read. This is source-byte and instruction-location comparison, not proof that any particular source was loaded or that these equalities dictate playback timing.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "Original packed read-only resources.assets 440 named object bodies FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin, 330116 bytes SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53; companion GGM original-name and PathID provenance report SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc. Read-only full original 440-body/metadata/GGM prover tools/prove_original_440_fpw_rs_panel.py, then byte-relation witness canonical/witnesses/RESPANEL-001/original_440_fpw_first_record_byte_relations.summary.json and verifier tools/prove_original_fpw_first_record_byte_relations.py. Complete 440 source-key/byte relation SHA256 6f72f25de972c0e4f532c6031f72aa7a6e996cd5414bfcc3480581be1b4b1094.",
+      "observation": "Every one of 440 opaque original source payloads directly satisfies all three positional byte equalities; the 65 multi-suffix naming families have group-wise equal embedded byte lengths."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching retail Assembly-CSharp(3).dll 8171008 bytes SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; previously proved original SkillDataMan.ParseRSFData MethodDef 0x0600525F IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae, FACT-0274 16-byte array source window at arg2+48..+63, FACT-0276 first executed WrestlerAnmData entry at +64 formNum FieldDef0x04007C93, +69 hitSE FieldDef0x04007C9B, +70 cheerLevel FieldDef0x04007C9C and +71..+73 skipped cursor, FACT-0287 LoadRSFFile direct resource-load code route. Existing SHA-matched source verifiers and witness summaries cited in those facts; this fact independently checks original DLL witness identities and index maps.",
+      "observation": "Previously proven exact original parser instruction offsets coincide numerically with positions examined in source data; actual resource load, parser call and game output are not established."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0347 original 440-source panel byte identity",
+      "to": "FACT-0348 fixed relative source-byte equalities and grouped name lengths",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "FACT-0347 source-only panel witness and read-only verifier confirm all 440 source windows and individual hashes; FACT-0348 verifier recomputes all three offset equalities, source grouping, and normalized row SHA over those exact source bytes."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0274 and FACT-0276 original ParseRSFData IL offset evidence",
+      "to": "FACT-0348 byte-offset correspondence (without asserting execution)",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original matching DLL MethodDef 0x0600525F 1735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; canonical witnesses for FACT-0274/0276 specify byte windows +48..63 and first-entry +64/+69/+70/+71..73, read-only witness map cross-checked by FACT-0348 verifier."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "RS embedded format and the meanings of repeated source bytes remain OPEN; source field names in matching DLL do not prove an actual game action or timing.",
+    "First-entry parser offsets are conditional on the runtime load path, input cursor and number of loop iterations. No claim is made that the 440 original objects have all been loaded/executed in retail.",
+    "No unit of animation time, frame sequence, output pose, bank selection, root offset, AI interaction or visual rendering derived.",
+    "No original proprietary bytes committed. Runtime and viewer construction remain LOCKED."
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_FPW440_RSF_FIRST_RECORD_BYTE_RELATIONS_DLL_BRIDGE_V1",
+  "source_ids": [
+    "RESPANEL-001",
+    "DLL-001"
+  ],
+  "panel": {
+    "source_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+    "bytes": 330116,
+    "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+    "report_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+    "report_bytes": 473482,
+    "report_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc",
+    "previous_fact": "FACT-0347",
+    "existing_full_source_verifier": "tools/prove_original_440_fpw_rs_panel.py"
+  },
+  "dll": {
+    "source_id": "DLL-001",
+    "original_size": 8171008,
+    "original_sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "method": "SkillDataMan.ParseRSFData",
+    "methoddef": "0x0600525F",
+    "il_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae",
+    "source_file_route": "SkillDataMan.LoadRSFFile",
+    "source_file_route_methoddef": "0x0600525C",
+    "source_file_route_il_sha256": "7996e6e4e0d6b04bcacac4fbd8f2431bc470526c80c09533d98e626b9a86642d",
+    "already_verified_facts": [
+      "FACT-0266",
+      "FACT-0274",
+      "FACT-0276",
+      "FACT-0287"
+    ],
+    "parser_source_offsets": {
+      "initial_byte_reads": [
+        10,
+        11
+      ],
+      "anm_num_source_array": [
+        48,
+        63
+      ],
+      "first_entry_field_formNum": 64,
+      "first_entry_field_hitSE": 69,
+      "first_entry_field_cheerLevel": 70,
+      "first_entry_cursor_skips": [
+        71,
+        72,
+        73
+      ]
+    },
+    "limits": "Parser source offsets denote original code arguments and are only conditionally comparable to an extracted TextAsset's embedded bytes; not proof of specific loaded resource execution."
+  },
+  "observed": {
+    "sample_count": 440,
+    "min_embedded_bytes": 148,
+    "max_embedded_bytes": 2488,
+    "offset_48_equals_offset_64_plus_one": 440,
+    "bytes_8_9_equal_bytes_69_70": 440,
+    "bytes_10_11_equal_bytes_72_73": 440,
+    "offset48_min": 4,
+    "offset48_max": 94,
+    "offset64_min": 3,
+    "offset64_max": 93,
+    "normalized_440_byte_relation_index_sha256": "6f72f25de972c0e4f532c6031f72aa7a6e996cd5414bfcc3480581be1b4b1094",
+    "index_encoding": "JSON list, order identical to original 440 GGM name rows, each dict keys index/name/path_id/len/v48/v64/b8/b9/b10/b11/b69/b70/b72/b73, Python json.dumps(sort_keys=True,separators=(',',':')) UTF-8",
+    "variant_families": 65,
+    "two_variant_families": 58,
+    "three_variant_families": 7,
+    "total_suffixed_objects": 137,
+    "standalone_objects": 303,
+    "within_each_family_embedded_length_equal": true,
+    "variant_suffixes": [
+      "0",
+      "1",
+      "2"
+    ]
+  },
+  "anchors": [
+    {
+      "index": 43501,
+      "name": "fpw_2004_0",
+      "path_id": 22222,
+      "embedded_bytes": 448,
+      "byte_48": 20,
+      "byte_64": 19,
+      "bytes_8_9": [
+        26,
+        1
+      ],
+      "bytes_69_70": [
+        26,
+        1
+      ],
+      "bytes_10_11": [
+        105,
+        8
+      ],
+      "bytes_72_73": [
+        105,
+        8
+      ]
+    },
+    {
+      "index": 43890,
+      "name": "fpw_6172",
+      "path_id": 21353,
+      "embedded_bytes": 1696,
+      "byte_48": 45,
+      "byte_64": 44,
+      "bytes_8_9": [
+        0,
+        2
+      ],
+      "bytes_69_70": [
+        0,
+        2
+      ],
+      "bytes_10_11": [
+        98,
+        0
+      ],
+      "bytes_72_73": [
+        98,
+        0
+      ]
+    },
+    {
+      "index": 43940,
+      "name": "fpw_6261",
+      "path_id": 21624,
+      "embedded_bytes": 2356,
+      "byte_48": 94,
+      "byte_64": 93,
+      "bytes_8_9": [
+        0,
+        2
+      ],
+      "bytes_69_70": [
+        0,
+        2
+      ],
+      "bytes_10_11": [
+        97,
+        79
+      ],
+      "bytes_72_73": [
+        97,
+        79
+      ]
+    }
+  ],
+  "limits": [
+    "Byte equality and variant-length grouping are directly observed original bytes; field role names are independently original DLL metadata/instructions.",
+    "No assumption that Unity Resources.Load executed, that the TextAsset yielded a given object, that an animation array was populated, or that any on-screen move behaved a particular way.",
+    "No timing, opcode, pose/frame count, bank assignment, actor transform, AI or playback rule promoted.",
+    "No original proprietary data in Git; runtime/viewer construction remains LOCKED."
+  ]
+}
