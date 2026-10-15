@@ -133,6 +133,26 @@
       "original_companion_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
       "original_companion_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc",
       "note": "Complete 440 named wrestleranimation/fpw_* original resource object-body bounded read-only panel, SHA-verified against source metadata and GGM named fileID5 pointer rows and individual original body hashes. Companion JSON and packed source data independently verified. Excludes five larger wrestleranimation entries. All original RS payloads opaque, no timing, transform or playback semantics. Full 3.17GB original parent was not rehashed during bounded probe. Original binary and companion report NOT stored in Git. Runtime/viewer LOCKED."
+    },
+    {
+      "source_id": "RESOBJ-003",
+      "kind": "ORIGINAL_SERIALIZED_TEXTASSET_BOUNDED_SHA_WITNESS_MATCHED_TO_EXPORTED_BYTES",
+      "filename": "fprform_rff-resources.assets-22906.dat",
+      "sha256": "3d457734faf243a6efabd57756a48c82c1f27cc5a4294c567cc51804afd1ab6d",
+      "availability": "USER_ORIGINAL_PARENT_BOUNDED_SHA_REPORT_AND_VERIFIED_LOCAL_EXPORT_BYTES",
+      "canonical_eligible": true,
+      "raw_required": true,
+      "git_storage": "HASH_AND_EXTRACTED_FACTS_ONLY",
+      "size_bytes": 12800024,
+      "original_parent": "resources.assets",
+      "original_parent_declared_bytes": 3166587532,
+      "original_parent_absolute_offset": 1970578200,
+      "original_path_id": 22906,
+      "original_unity_class_id": 49,
+      "original_metadata_prefix_sha256": "8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da",
+      "user_original_bounded_probe_report": "FIREPRO_FPRFORM_ORIGINAL_SHA_WITNESS_v001.json",
+      "user_original_bounded_probe_report_sha256": "5722a99cb55b26753f6eb386084d2a297bad78e30950821807b2a2461415abe3",
+      "note": "User ran bounded read-only original resources.assets SHA probe on Windows, reporting exact PathID22906 absolute offset1970578200 12800024-byte original body SHA. Independently SHA-256-recomputed already uploaded UABE fprform_rff 12800024-byte export in local workspace, same digest. Original full 3.17GB parent file hash was NOT rechecked; original object body bytes themselves were not newly uploaded separately. Matching whole object SHA corroborated by original probe report, not direct second reading of original game install by model. TextAsset name and 12800000 embedded bytes directly inspected in matching export; runtime FormData/parser/frame semantics NOT established."
     }
   ]
 }

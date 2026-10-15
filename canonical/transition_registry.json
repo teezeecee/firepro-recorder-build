@@ -7242,6 +7242,40 @@
         "Exact DLL resource literal differs in ASCII case from GGM original lowercased name; executed Unity resource name binding remains unproved.",
         "FormData array runtime contents, sprite mapping, poses, actor transforms and timing remain unproved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_FPRFORM_RFF_SOURCE_WINDOW_SHA_EQUAL_EXPORTED_BODY_V1",
+      "fact_id": "FACT-0360",
+      "source_ids": [
+        "RESMETA-001",
+        "RESOBJ-003"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Original PathID22906 ClassID49 12800024-byte resources.assets object at offset1970578200: user-run bounded original-file probe reports SHA 3d457734faf243a6efabd57756a48c82c1f27cc5a4294c567cc51804afd1ab6d, independently full-byte rehashed prior UABE resource export matches; user original-probe JSON 1070 bytes SHA 5722a99cb55b26753f6eb386084d2a297bad78e30950821807b2a2461415abe3. Matching export Unity TextAsset name fprform_rff embeds exactly 12800000 bytes SHA ad16142531130b7ff36ead502c490be7ac639159817de45b471039c90a262d41; source-only 320-byte arithmetic divisibility not form semantics.",
+      "summary": "canonical/witnesses/RESOBJ-003/original_fprform_rff_body_sha_and_embedded_bytes.summary.json",
+      "source_windows": [
+        [
+          "Original resources.assets serialized ObjectInfo PathID22906",
+          "Metadata prefix exact ObjectInfo row SHA, original object absolute offset 1970578200 and 12800024 bytes",
+          "Original metadata SHA 8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da"
+        ],
+        [
+          "Original Windows user-run bounded SHA probe + previous uploaded UABE export",
+          "Original window reported SHA and independently rehashed complete export bytes",
+          "Matching SHA 3d457734faf243a6efabd57756a48c82c1f27cc5a4294c567cc51804afd1ab6d"
+        ],
+        [
+          "Matched exported ClassID49 serialized TextAsset envelope",
+          "Original name, 12800000-byte embedded body at offset20 and terminal padding",
+          "Embedded SHA ad16142531130b7ff36ead502c490be7ac639159817de45b471039c90a262d41"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "SHA equality is not proof of form index mapping or actual runtime Unity resource dispatch.",
+        "No ParseFormData_RFF source-based array/parts/frame record interpretation established.",
+        "No canonical runtime/viewer construction permitted before SOURCE_CONSOLIDATION_V1 prerequisite closure."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
