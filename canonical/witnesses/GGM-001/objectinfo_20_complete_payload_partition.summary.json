@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_20_OBJECTINFO_COMPLETE_PAYLOAD_PARTITION_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "related_facts": [
+    "FACT-0322",
+    "FACT-0326",
+    "FACT-0338",
+    "FACT-0339",
+    "FACT-0340"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "metadata_size": 1379,
+    "data_offset": 4096
+  },
+  "metadata": {
+    "header_bytes": 20,
+    "metadata_start": 20,
+    "metadata_end": 1399,
+    "metadata_sha256": "807261b6e9f788ede726ae68a12beb8b9fb887a5e4233306f83796c24c658605",
+    "post_metadata_zero_padding_start": 1399,
+    "post_metadata_zero_padding_end": 4096,
+    "post_metadata_padding_sha256": "966bc8c50c87fedb89fb41cf2ac8dc2f10098fec4617ff59f8c4ac48bb3d1d08",
+    "type_count": 20,
+    "class_id_order": [
+      129,
+      13,
+      78,
+      11,
+      94,
+      116,
+      30,
+      5,
+      98,
+      55,
+      141,
+      47,
+      147,
+      149,
+      155,
+      126,
+      19,
+      300,
+      301,
+      310
+    ],
+    "object_info_start": 504,
+    "object_info_end": 904,
+    "object_info_sha256": "affd2ea8a5b2fced4889c705d39c2ac369504d32201bae7aeb2648ee44c52f35",
+    "object_count": 20
+  },
+  "payload": {
+    "start": 4096,
+    "end": 5002540,
+    "length": 4998444,
+    "sha256": "5e56c7267ff6adac892537d6cfe898a7c239ba202179c4315afbe3de190b6d20",
+    "object_body_count": 20,
+    "nonempty_object_count": 17,
+    "empty_object_count": 3,
+    "empty_path_ids": [
+      9,
+      15,
+      21
+    ],
+    "sum_object_bytes": 4998401,
+    "object_bodies_in_order_sha256": "5f9f89150502cd12f21d9b17ad48989ce93fe59b9f18430bb997fbf7fdd39997",
+    "gap_count": 9,
+    "sum_gap_bytes": 43,
+    "all_gap_bytes_zero": true,
+    "gap_bytes_in_order_sha256": "859732b97382a08583d6a67f5842486505e50bee754bd9b57ac3abf81b9714f2"
+  },
+  "objects": [
+    {
+      "object_index": 0,
+      "path_id": 1,
+      "type_index": 0,
+      "class_id": 129,
+      "relative_offset": 0,
+      "absolute_offset": 4096,
+      "byte_size": 546,
+      "body_sha256": "29b1dc16893a24b45a5adf174363f8a0f62041ab79a41477bb95dddd789d6773"
+    },
+    {
+      "object_index": 1,
+      "path_id": 2,
+      "type_index": 1,
+      "class_id": 13,
+      "relative_offset": 552,
+      "absolute_offset": 4648,
+      "byte_size": 31408,
+      "body_sha256": "b83aa9d18a4a4b8c86cfe009555c077f122198ea4746f2f691bb69098020233d"
+    },
+    {
+      "object_index": 2,
+      "path_id": 3,
+      "type_index": 2,
+      "class_id": 78,
+      "relative_offset": 31960,
+      "absolute_offset": 36056,
+      "byte_size": 932,
+      "body_sha256": "d9a8f4f985a4e8c55bea8f51802214509e812bdce6dc59445b1e559d319a7e4f"
+    },
+    {
+      "object_index": 3,
+      "path_id": 4,
+      "type_index": 3,
+      "class_id": 11,
+      "relative_offset": 32896,
+      "absolute_offset": 36992,
+      "byte_size": 40,
+      "body_sha256": "7b8e89f69aab237735f238fc30c95e4add48be924111a19db016e57181066010"
+    },
+    {
+      "object_index": 4,
+      "path_id": 5,
+      "type_index": 4,
+      "class_id": 94,
+      "relative_offset": 32936,
+      "absolute_offset": 37032,
+      "byte_size": 9561,
+      "body_sha256": "4cefc714845bde7c9e66a11fafea47d8eaecd4309d2b46b3b67628ca4ae42ab2"
+    },
+    {
+      "object_index": 5,
+      "path_id": 6,
+      "type_index": 5,
+      "class_id": 116,
+      "relative_offset": 42504,
+      "absolute_offset": 46600,
+      "byte_size": 19672,
+      "body_sha256": "4638cf4462b1181129dff4454a02728020b58f94c202d2dd4ccfb69bfdcda038"
+    },
+    {
+      "object_index": 6,
+      "path_id": 7,
+      "type_index": 6,
+      "class_id": 30,
+      "relative_offset": 62176,
+      "absolute_offset": 66272,
+      "byte_size": 562,
+      "body_sha256": "6edfe78d3eeabc9e45d18cb65c55b7499fc4301e8716c160cdd129ba53f1502d"
+    },
+    {
+      "object_index": 7,
+      "path_id": 8,
+      "type_index": 7,
+      "class_id": 5,
+      "relative_offset": 62744,
+      "absolute_offset": 66840,
+      "byte_size": 16,
+      "body_sha256": "a8d974df26d17852d4ab7775f4c6487eb855195154ba29a663fa117a75b27ba0"
+    },
+    {
+      "object_index": 8,
+      "path_id": 9,
+      "type_index": 8,
+      "class_id": 98,
+      "relative_offset": 62760,
+      "absolute_offset": 66856,
+      "byte_size": 0,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "object_index": 9,
+      "path_id": 10,
+      "type_index": 9,
+      "class_id": 55,
+      "relative_offset": 62760,
+      "absolute_offset": 66856,
+      "byte_size": 180,
+      "body_sha256": "aee33b29cb1fc9509840314307946f501e9b0a2d77d08bd5af55b5020b8124eb"
+    },
+    {
+      "object_index": 10,
+      "path_id": 11,
+      "type_index": 10,
+      "class_id": 141,
+      "relative_offset": 62944,
+      "absolute_offset": 67040,
+      "byte_size": 55660,
+      "body_sha256": "003559802f791e7293ffbc71e830d5aef20e7882fe5e45de8fdf2db034d39a6f"
+    },
+    {
+      "object_index": 11,
+      "path_id": 12,
+      "type_index": 11,
+      "class_id": 47,
+      "relative_offset": 118608,
+      "absolute_offset": 122704,
+      "byte_size": 116,
+      "body_sha256": "a8f6e6746e116cbb31aa002ce0919dafde04f73712f6d2f056cfcd6ab68df382"
+    },
+    {
+      "object_index": 12,
+      "path_id": 13,
+      "type_index": 12,
+      "class_id": 147,
+      "relative_offset": 118728,
+      "absolute_offset": 122824,
+      "byte_size": 4862328,
+      "body_sha256": "414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de"
+    },
+    {
+      "object_index": 13,
+      "path_id": 14,
+      "type_index": 13,
+      "class_id": 149,
+      "relative_offset": 4981056,
+      "absolute_offset": 4985152,
+      "byte_size": 16532,
+      "body_sha256": "f4fe8dc74035736ffd35c907e01ef11d46635cec7fb0924aa4f1785b6acc8133"
+    },
+    {
+      "object_index": 14,
+      "path_id": 15,
+      "type_index": 14,
+      "class_id": 155,
+      "relative_offset": 4997592,
+      "absolute_offset": 5001688,
+      "byte_size": 0,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "object_index": 15,
+      "path_id": 16,
+      "type_index": 15,
+      "class_id": 126,
+      "relative_offset": 4997592,
+      "absolute_offset": 5001688,
+      "byte_size": 360,
+      "body_sha256": "c1b2a0cf6b18f63a7d2b0d73aa3085dcc03426ca7d6701b4ceecf74f589eed74"
+    },
+    {
+      "object_index": 16,
+      "path_id": 17,
+      "type_index": 16,
+      "class_id": 19,
+      "relative_offset": 4997952,
+      "absolute_offset": 5002048,
+      "byte_size": 208,
+      "body_sha256": "6e98836eadaeb994d979af1553accd38cdbe0e0a87d4099febf5a93982b36e04"
+    },
+    {
+      "object_index": 17,
+      "path_id": 20,
+      "type_index": 17,
+      "class_id": 300,
+      "relative_offset": 4998160,
+      "absolute_offset": 5002256,
+      "byte_size": 164,
+      "body_sha256": "5ed10c7654fdd8699015a3f23be23f2514456de934a8614099c3957583a11860"
+    },
+    {
+      "object_index": 18,
+      "path_id": 21,
+      "type_index": 18,
+      "class_id": 301,
+      "relative_offset": 4998328,
+      "absolute_offset": 5002424,
+      "byte_size": 0,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "object_index": 19,
+      "path_id": 23,
+      "type_index": 19,
+      "class_id": 310,
+      "relative_offset": 4998328,
+      "absolute_offset": 5002424,
+      "byte_size": 116,
+      "body_sha256": "09472756af261fbf6ec963005e7ecf38abf921e1c4508aa334c28da595881ab7"
+    }
+  ],
+  "alignment_gaps": [
+    {
+      "start": 4642,
+      "end": 4648,
+      "bytes": 6,
+      "hex": "000000000000"
+    },
+    {
+      "start": 36988,
+      "end": 36992,
+      "bytes": 4,
+      "hex": "00000000"
+    },
+    {
+      "start": 46593,
+      "end": 46600,
+      "bytes": 7,
+      "hex": "00000000000000"
+    },
+    {
+      "start": 66834,
+      "end": 66840,
+      "bytes": 6,
+      "hex": "000000000000"
+    },
+    {
+      "start": 67036,
+      "end": 67040,
+      "bytes": 4,
+      "hex": "00000000"
+    },
+    {
+      "start": 122700,
+      "end": 122704,
+      "bytes": 4,
+      "hex": "00000000"
+    },
+    {
+      "start": 122820,
+      "end": 122824,
+      "bytes": 4,
+      "hex": "00000000"
+    },
+    {
+      "start": 5001684,
+      "end": 5001688,
+      "bytes": 4,
+      "hex": "00000000"
+    },
+    {
+      "start": 5002420,
+      "end": 5002424,
+      "bytes": 4,
+      "hex": "00000000"
+    }
+  ],
+  "limits": [
+    "This is a complete original serialized *byte window* census, not a claim that every object field or original target object bytes have been decoded.",
+    "ClassID values and ObjectInfo positions are stored byte-for-byte; semantic Unity type associations beyond previously sourced facts are not asserted.",
+    "Three zero-length ObjectInfo bodies are genuine source byte counts, not proof that any feature or scene is absent.",
+    "None of the numeric external references establishes original bytes for resources.assets or sharedassets parent files.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

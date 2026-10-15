@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0341",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The complete original Unity 5.6.5p3 Fire Pro extensionless globalgamemanagers serialized payload [4096,5002540) of 4,998,444 bytes has an exact, non-overlapping byte partition into the 20 original ObjectInfo body windows (17 nonempty bodies totaling 4,998,401 bytes and three literal zero-byte bodies PathID9/ClassID98, PathID15/ClassID155, PathID21/ClassID301) and nine inter-object zero-padding windows totaling exactly 43 bytes. All original 20 ClassID/type-index/PathID/relative start/byte length records, every body SHA256, entire concatenated body SHA256, entire raw payload SHA256 and all nine byte-exact gap regions are source pinned. The separately SHA-verified 1,379-byte metadata starts at offset20 and is followed by exactly 2,697 zero bytes up to data offset4096. This is complete original serialized source object-boundary coverage, not semantic decoding of every object field or proof of any external serialized target bytes.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "User-owned original extensionless globalgamemanagers, 5,002,540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c. Unity5.6.5p3 serialization version17, 20 Type rows, 20 ObjectInfo entries at [504,904) SHA256 affd2ea8a5b2fced4889c705d39c2ac369504d32201bae7aeb2648ee44c52f35, source object data [4096,5002540) SHA256 5e56c7267ff6adac892537d6cfe898a7c239ba202179c4315afbe3de190b6d20, 20 body windows concatenated SHA256 5f9f89150502cd12f21d9b17ad48989ce93fe59b9f18430bb997fbf7fdd39997, nine zero-gap windows concatenated SHA256 859732b97382a08583d6a67f5842486505e50bee754bd9b57ac3abf81b9714f2, metadata 1379 bytes SHA256 807261b6e9f788ede726ae68a12beb8b9fb887a5e4233306f83796c24c658605, metadata/data padding SHA256 966bc8c50c87fedb89fb41cf2ac8dc2f10098fec4617ff59f8c4ac48bb3d1d08. Full ObjectInfo/boundary hash witness in canonical/witnesses/GGM-001/objectinfo_20_complete_payload_partition.summary.json, validated by read-only tools/prove_globalgamemanagers_object_partition.py.",
+      "observation": "Exactly 4,998,401 bytes in declared object windows and 43 bytes of zero alignment exhaust the 4,998,444-byte original serialized data segment without overlaps or remainder. Literal zero-sized entries have no data bodies in this file."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Byte-exact original ObjectInfo/body coverage is not proof that all internal fields, resource relationships or gameplay features have been decoded.",
+    "The three zero-byte body sizes do not imply corresponding Unity functionality was absent at runtime.",
+    "Original external target asset parents such as resources.assets and sharedassets0.assets have not been independently byte verified.",
+    "No renderer/viewer construction or engine behavior is promoted; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

@@ -6676,6 +6676,29 @@
         "Historical Unity class ID label does not establish networking activity or raw-header field names.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_20_OBJECTINFO_COMPLETE_PAYLOAD_PARTITION_V1",
+      "fact_id": "FACT-0341",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Exact source-verified 20 ObjectInfo metadata rows and declared bodies (4,998,401 original bytes), three true zero-byte bodies, nine all-zero alignment windows (43 bytes) partitioning the entire 4,998,444-byte original globalgamemanagers object payload with no remaining unknown byte positions.",
+      "summary": "canonical/witnesses/GGM-001/objectinfo_20_complete_payload_partition.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x1000",
+          "0x4C552C"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Source object byte-boundary coverage is not full semantic field decode.",
+        "Original external serialized asset parents still lack independently verified original source bytes and ObjectInfo.",
+        "No gameplay, rendering, animation or networking execution proven by the payload census; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
