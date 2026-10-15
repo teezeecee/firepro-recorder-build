@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_RESOURCES_FPW6172_SINGLE_OBJECT_ORIGINAL_BYTES_V1",
+  "source_ids": [
+    "RESOBJ-002",
+    "RESMETA-001",
+    "GGM-001"
+  ],
+  "object_source": {
+    "filename": "FIREPRO_FPW_6172_ORIGINAL_OBJECT_v001.bin",
+    "size_bytes": 1716,
+    "sha256": "de13a6efdff9727d63542134096b056f2c680c606b7703e82b4fd6839fc30cf1",
+    "original_absolute_offset": 1957193440,
+    "original_end_exclusive": 1957195156,
+    "physical_size_bytes": 3166587532,
+    "original_full_file_rehashed": false,
+    "original_prior_export_file": "fpw_6172-resources.assets-21353.dat",
+    "original_prior_export_sha256": "de13a6efdff9727d63542134096b056f2c680c606b7703e82b4fd6839fc30cf1"
+  },
+  "metadata_source": {
+    "filename": "FIREPRO_RESOURCES_ORIGINAL_METADATA_v001.bin",
+    "bytes": 1842222,
+    "sha256": "8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da",
+    "row_offset": 444252,
+    "row_sha256": "6f6e7f8c1b77b01b73ceced82e68bc28f9467f3201a24fb01b639b2435f43a52",
+    "data_offset": 1842224,
+    "path_id": 21353,
+    "type_index": 4,
+    "class_id": 49,
+    "relative_offset": 1955351216,
+    "object_bytes": 1716
+  },
+  "ggm_source": {
+    "filename": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "resource_manager_absolute_start": 122824,
+    "resource_manager_absolute_end": 4985152,
+    "names": 43941,
+    "name_index": 43890,
+    "name": "wrestleranimation/fpw_6172",
+    "file_id": 5,
+    "path_id": 21353
+  },
+  "payload": {
+    "name": "fpw_6172",
+    "name_len": 8,
+    "embedded_len": 1696,
+    "embedded_sha256": "efd723b5f26a6719d2d3d1706289c82720be9364603609661c3b198a0a59064c",
+    "embedded_prefix_hex": "5253",
+    "trailer_hex": "00000000",
+    "bytes_accounted": 1716
+  },
+  "comparison_prior": {
+    "fact": "FACT-0345",
+    "name": "fpw_6261",
+    "object_bytes": 2376,
+    "embedded_bytes": 2356,
+    "embedded_sha256": "4bd313481985bb951519a6173521b8276498c5a2834d8fb367eb5c75ee481c08"
+  },
+  "limits": [
+    "Opaque RS bytes have no decoded animation or playback semantics.",
+    "Original physical parent entire 3GB was not hashed during bounded extraction.",
+    "Source-only. No original proprietary bytes in Git. Runtime/viewer LOCKED."
+  ]
+}
