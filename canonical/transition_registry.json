@@ -6970,6 +6970,36 @@
         "Five larger non-fpw wrestleranimation sources excluded from this panel.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_ORIGINAL_FPW_440_FIRST_ENTRY_12_SOURCE_BYTE_AND_DLL_FIELD_MAP_V1",
+      "fact_id": "FACT-0351",
+      "source_ids": [
+        "RESPANEL-001",
+        "DLL-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "All 440 original SHA-verified fpw embedded RS byte positions +64..75 indexed in source GGM order: 5280 source bytes, 305 distinct first 12-byte source windows, full source-key SHA index, and 12 column range/cardinality/zero distribution. Matching original DLL ParseRSFData first-entry field-name source offset map proves nine unsigned byte reads at +64..70/+74..75 with three cursor skips +71..73. Seventy-five of 79 textual suffix-name sibling pairs have identical 12-byte source windows; four pair differences solely at positions +70/+72/+73. This is a conditional original code/source offset comparison, not runtime execution or animation meaning.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_440_fpw_first_entry_header_12_byte.summary.json",
+      "source_windows": [
+        [
+          "original 440 GGM-name/PathID linked fpw RS embedded source objects",
+          "source byte offsets+64..+75",
+          "440 original byte windows of length12"
+        ],
+        [
+          "original retail DLL SkillDataMan.ParseRSFData",
+          "MethodDef0x0600525F IL+0x03CC..+0x0470",
+          "first-entry only source byte read field map"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original DLL source position map does not prove that the 440 original TextAssets have been loaded or parsed at runtime.",
+        "Original source field names are not validated timing, animation pose, form transforms, sound, bank, camera or AI semantics.",
+        "Later original entry offsets are variable length and not established by the first-entry 12-byte index.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
