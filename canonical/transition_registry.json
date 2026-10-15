@@ -6850,6 +6850,42 @@
         "Physical original 3.17GB parent SHA was not rerun with bounded source extraction.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_ORIGINAL_NAMED_FPW_RS_440_OBJECT_PANEL_V1",
+      "fact_id": "FACT-0347",
+      "source_ids": [
+        "RESPANEL-001",
+        "RESMETA-001",
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "All 440 original resources.assets ClassID49 named wrestleranimation/fpw_* object bodies, 330116 bytes, completely SHA-verified and source-joined to original ResourceManager name indices43501..43940 and original 20-byte ObjectInfo rows. All 440 source envelopes verified: 303 eight-byte names with embedded-offset16, 137 ten-byte names with zero pad and offset20; embedded literal RS+little-endian u32 equal payload byte size, 431 unique payloads/9 exact duplicate pairs. Source is opaque; no gameplay or animation semantics inferred.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_440_fpw_rs_panel.summary.json",
+      "source_windows": [
+        [
+          "original resources.assets 440 non-contiguous bodies",
+          "440 source windows",
+          "330116 total object bytes"
+        ],
+        [
+          "resources.assets metadata prefix",
+          "0x000000",
+          "0x1C1C2E"
+        ],
+        [
+          "globalgamemanagers",
+          "0x1DFC8",
+          "0x4C1140"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Observed opaque RS bytes and exact source field sizes do not decode internal choreography, animation frames, transitions, root/actor transformations or runtime meaning.",
+        "Five larger wrestleranimation sources outside the fpw_ group were intentionally excluded.",
+        "Original full 3.17GB parent file SHA was not rerun by the bounded probe; only source metadata, GGM and exact packed resource bodies SHA checked.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

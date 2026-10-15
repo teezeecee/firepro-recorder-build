@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0347",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Original read-only bounded resources.assets extraction packed all 440 exact original source objects named wrestleranimation/fpw_* (330116 bytes total; packed SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53) in original GGM name order indices 43501..43940. The 440 individually SHA-checked ClassID49 objects join exactly to their original verified 20-byte resources.assets ObjectInfo source rows (metadata-prefix SHA256 8388d7e2...) and original verified globalgamemanagers ResourceManager fileID5 numeric PathIDs/names (GGM SHA256 04cf0c7...). All 440 complete original envelopes have 8-byte or 10-byte ASCII names, proper 0/2-byte alignment, little-endian embedded lengths, and four literal terminal zero bytes. All embedded bytes start literal RS followed by u32 little-endian equal to their embedded lengths (source observation only). 320768 concatenated embedded data bytes SHA256 8ca3b661...; 431 distinct embedded payload SHA values and 9 duplicate pairs. Independently previously proven fpw_6172 and fpw_6261 body bytes occur at exact matching pack windows. No RS internal format, animation timing, transforms or runtime playback semantics established.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "User uploaded FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin, exactly 330116 original copied object-body bytes SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53, and FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json 473482 report bytes SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc; every original body SHA, fully consumed envelope, RS prefix+length, and 440 indexed body windows verified by read-only prover tools/prove_original_440_fpw_rs_panel.py and canonical witness canonical/witnesses/RESPANEL-001/original_440_fpw_rs_panel.summary.json. Two original separately proven bodies PathID21353 and21624 byte-identical.",
+      "observation": "The 440 original exact bytes, fully consumed object envelopes, literal RS and four-byte embedded-size observation, duplicate embedded hashes, without assigning runtime semantics."
+    },
+    {
+      "source_id": "RESMETA-001",
+      "locator": "User verified original resources.assets metadata-prefix 1842222 bytes SHA256 8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da; original 90992 ObjectInfo index re-parsed; each of 440 original PathID rows byte-hashed, TypeIndex4 ClassID49, original physical absolute object body offset dataOffset1842224+relativeOffset, exact bounded body length.",
+      "observation": "Independent original serialized metadata proves 440 original objects' source identities, classes, declared physical extents and exact source rows."
+    },
+    {
+      "source_id": "GGM-001",
+      "locator": "Original user uploaded globalgamemanagers 5002540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; ResourceManager 43941 named PPtr records, exactly 440 contiguous named wrestleranimation/fpw_* at source indices 43501..43940 with fileID5 and corresponding original metadata PathIDs.",
+      "observation": "Independent complete original resource names and references anchor every selected physical original object."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "All 440 original envelopes and SHA values are proven bytes; RS internal schema, opcode widths/meaning, actor poses, transition timing, gameplay AI and actual retail playback are not decoded.",
+    "Full original 3.17GB resources.assets parent SHA was not rerun by the bounded read-only extractor.",
+    "Five larger wrestleranimation objects outside fpw_ group were not included; no coverage claims made for them.",
+    "No proprietary original object-body binary data committed to GitHub. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
