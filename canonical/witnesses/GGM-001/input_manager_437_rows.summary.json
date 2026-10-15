@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_INPUT_MANAGER_COMPLETE_437_AXIS_ROWS_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 13,
+    "class_name": "InputManager",
+    "type_index": 1,
+    "path_id": 2,
+    "relative_offset": 552,
+    "absolute_offset": 4648,
+    "bytes": 31408,
+    "sha256": "b83aa9d18a4a4b8c86cfe009555c077f122198ea4746f2f691bb69098020233d"
+  },
+  "table": {
+    "count_offset": 0,
+    "count": 437,
+    "first_row_offset": 4,
+    "end_offset": 31408,
+    "raw_rows_sha256": "586020cc8dcad6b1583ab0519dd29f2dac7aa4780f9268dadf6c66f91e607da3",
+    "row_format": "seven uint32-length, padded UTF8 strings, three float32 exact u32 bit words, four raw bytes, three int32 values; names and numbers preserved in original order"
+  },
+  "rows_archive": {
+    "encoding": "zlib-base64",
+    "decoded_format": "JSON UTF8 array of 437 ordered [7 strings,3 float32 raw uint32 bits,4 byte values,3 signed int32] rows",
+    "decoded_bytes": 29436,
+    "decoded_sha256": "f49f111b7836067a9f0d642ba02e21888e4ffb5bd37782c8f3095b3991fd965f",
+    "data": "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"
+  },
+  "counts": {
+    "original_row_count": 437,
+    "distinct_primary_names": 436,
+    "nonempty_string_slots": 525,
+    "rows_with_nonempty_binding_slots_3_to_6": 72,
+    "first_tail_code_counts": {
+      "0": 70,
+      "1": 6,
+      "2": 361
+    },
+    "four_byte_region_hex_counts": {
+      "00000000": 432,
+      "00010000": 5
+    }
+  },
+  "samples": [
+    {
+      "index": 0,
+      "start_offset": 4,
+      "end_offset": 72,
+      "name": "Horizontal",
+      "strings": [
+        "Horizontal",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "float32_u32_bits": [
+        0,
+        1050253722,
+        1065353216
+      ],
+      "four_bytes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "int32_tail": [
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "index": 27,
+      "start_offset": 1836,
+      "end_offset": 1904,
+      "name": "DPad_YAxis_0",
+      "strings": [
+        "DPad_YAxis_0",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "float32_u32_bits": [
+        0,
+        1050253722,
+        1065353216
+      ],
+      "four_bytes": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "int32_tail": [
+        2,
+        6,
+        0
+      ]
+    },
+    {
+      "index": 32,
+      "start_offset": 2176,
+      "end_offset": 2264,
+      "name": "TriggersR_0",
+      "strings": [
+        "TriggersR_0",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "joystick button 4"
+      ],
+      "float32_u32_bits": [
+        0,
+        1050253722,
+        1065353216
+      ],
+      "four_bytes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "int32_tail": [
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "index": 42,
+      "start_offset": 2896,
+      "end_offset": 2988,
+      "name": "Submit",
+      "strings": [
+        "Submit",
+        "",
+        "",
+        "",
+        "return",
+        "",
+        "joystick button 0"
+      ],
+      "float32_u32_bits": [
+        1148846080,
+        981668463,
+        1148846080
+      ],
+      "four_bytes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "int32_tail": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "index": 43,
+      "start_offset": 2988,
+      "end_offset": 3068,
+      "name": "Submit",
+      "strings": [
+        "Submit",
+        "",
+        "",
+        "",
+        "enter",
+        "",
+        "space"
+      ],
+      "float32_u32_bits": [
+        1148846080,
+        981668463,
+        1148846080
+      ],
+      "four_bytes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "int32_tail": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "index": 44,
+      "start_offset": 3068,
+      "end_offset": 3160,
+      "name": "Cancel",
+      "strings": [
+        "Cancel",
+        "",
+        "",
+        "",
+        "escape",
+        "",
+        "joystick button 1"
+      ],
+      "float32_u32_bits": [
+        1148846080,
+        981668463,
+        1148846080
+      ],
+      "four_bytes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "int32_tail": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "index": 309,
+      "start_offset": 21112,
+      "end_offset": 21200,
+      "name": "Joy9Button0",
+      "strings": [
+        "Joy9Button0",
+        "",
+        "",
+        "",
+        "joystick 9 button 0",
+        "",
+        ""
+      ],
+      "float32_u32_bits": [
+        0,
+        0,
+        1148846080
+      ],
+      "four_bytes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "int32_tail": [
+        0,
+        0,
+        9
+      ]
+    },
+    {
+      "index": 436,
+      "start_offset": 31316,
+      "end_offset": 31408,
+      "name": "MouseButton6",
+      "strings": [
+        "MouseButton6",
+        "Mouse Button 6",
+        "",
+        "",
+        "mouse 6",
+        "",
+        ""
+      ],
+      "float32_u32_bits": [
+        0,
+        0,
+        1148846080
+      ],
+      "four_bytes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "int32_tail": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "limits": [
+    "These are authored Unity input axis rows, not proof of in-match movement/button effects, player mapping, controller detection or runtime dispatch.",
+    "The three floats and final integer triples remain exact source values and are not interpreted as Fire Pro authored combat behavior.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; original shader target parent containers still absent."
+  ]
+}

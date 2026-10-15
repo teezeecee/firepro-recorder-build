@@ -6492,6 +6492,29 @@
         "No observed retail shader invocation or rendered pixel evidence.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_INPUT_MANAGER_COMPLETE_437_AXIS_ROWS_V1",
+      "fact_id": "FACT-0333",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Original Unity ClassID13 InputManager PathID2 complete 31,408-byte source, count 437 authored axis rows preserving all seven UTF8 strings, exact three float32 u32 bit patterns, four raw bytes and three signed integers per row.",
+      "summary": "canonical/witnesses/GGM-001/input_manager_437_rows.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x1228",
+          "0x8CD8"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Authored Unity control descriptions do not prove controller activity or Fire Pro's in-match input-to-action mapping.",
+        "No corresponding retail gameplay DLL dispatch proven by input names alone.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; shader container parents missing."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
