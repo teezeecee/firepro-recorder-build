@@ -6916,6 +6916,36 @@
         "Other five larger wrestleranimation resources and transitive runtime semantics not included.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_FPW440_RSF_16_SOURCE_BYTE_VECTOR_ORDER_AND_VARIANT_IDENTITY_V1",
+      "fact_id": "FACT-0349",
+      "source_ids": [
+        "RESPANEL-001",
+        "DLL-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Full 440 original named fpw_* SHA-verified embedded RS object bodies exhibit nondecreasing unsigned payload byte sequences at offsets+48..+63; 55 constant and 385 increasing, 273 unique 16-byte slices; payload indices+57..+63 form a constant tail for every record. All 65 filename sibling variant families share an identical 16-byte slice and source length. Source-only original retail DLL instructions in SkillDataMan.ParseRSFData conditionally read arg2+48..63 into Int32[16] and call GetAnmNum. Actual file loading, computed frame times, animation bank and poses not established.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_440_fpw_16_byte_vector_order.summary.json",
+      "source_windows": [
+        [
+          "original SHA-verified 440 bounded fpw original resources",
+          "original GGM indices43501..43940",
+          "440 source input windows offsets 48..63"
+        ],
+        [
+          "retail SkillDataMan.ParseRSFData",
+          "original MethodDef 0x0600525F",
+          "IL+0x0361..+0x039A"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Unsigned source ordering does not give chronological frame timing, authored transition data, bank mapping, or playable motion.",
+        "The original DLL's input reader and GetAnmNum call do not prove the 440 original TextAssets were each loaded or parsed in retail.",
+        "Identical 16-byte input slices across sibling suffix variants do not imply complete payload or rendered playback identity.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
