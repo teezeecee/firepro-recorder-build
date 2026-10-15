@@ -1,0 +1,59 @@
+{
+  "fact_id": "FACT-0359",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "Matching retail DLL FormDataMan.LoadFormData_RFF MethodDef0x06001F0F has exact 83-byte IL SHA256 5d2ae2977dfe90a988ef4fffae2933a16eeed22044cd87a1db7ff705cbdf8b23. Static original IL loads the exact #US string 'WrestlerAnimation/fprform_rff' (token 0x700424BE, original UTF-16 payload SHA256 61c2458402afd9c6b8aee27e7e0c6c44e9451a2c9767bc997f9963aaba5f48f3), calls a resource-load path, reads a TextAsset byte array, uses a literal 37999 in a newarr TypeDef0x02000402 instruction and stores to FormDataMan.Forms FieldDef0x040026DD, and calls original ParseFormData_RFF MethodDef0x06001F12. The exact SHA-matched original globalgamemanagers ResourceManager 43941-entry source container has resource 'wrestleranimation/fprform_rff' at index43500 (48-byte raw record SHA256 750737d6592af2a89bd546f629104372fb68ba5c71a74242098a5ed20f2fe975), PPtr fileID5 PathID22906. The independently verified original resources.assets metadata prefix binds PathID22906 to ClassID49 TypeIndex4 and original object metadata row SHA256 e045a41429562e93642cf0b0fefcc4c28a60c8308f8e1216a3a87f5d1c0814ca, declares relative offset1968735976, absolute offset1970578200 and 12800024 object bytes. The resource string labels are ASCII-case-equivalent, but retail Resources.Load case resolution, full original object body identity, parse output, actual invocation and final sprite assets are not established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original matching Assembly-CSharp.dll 8171008 bytes SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, original FormDataMan.LoadFormData_RFF MethodDef0x06001F0F exact method row 1c9e100000008100600109005c4800004d16, RVA0x00109E1C, 83-byte IL SHA256 5d2ae2977dfe90a988ef4fffae2933a16eeed22044cd87a1db7ff705cbdf8b23 and four contiguous bounded source window SHAs. Original #US token0x700424BE exact UTF-16 'WrestlerAnimation/fprform_rff'; IL+0x20 ldc.i4 37999, IL+0x25 newarr TypeDef0x02000402, IL+0x2A stfld FormDataMan.Forms 0x040026DD, IL+0x37 newobj 0x06001F1A and IL+0x3C call 0x06001F12 ParseFormData_RFF.",
+      "observation": "Static original retail loader names the RFF resource, allocates a 37999-element FormData array reference, and calls original parser. No executed load proven."
+    },
+    {
+      "source_id": "GGM-001",
+      "locator": "Entire original 5002540-byte globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c. Original ResourceManager object absolute start122824, 43941 rows; original indexed row43500 resource name 'wrestleranimation/fprform_rff' with fileID5 PathID22906, exact 48-byte row at absolute offset2241904 SHA256 750737d6592af2a89bd546f629104372fb68ba5c71a74242098a5ed20f2fe975.",
+      "observation": "A matching lowercased resource name maps to exact original PathID22906 in the original ResourceManager source container."
+    },
+    {
+      "source_id": "RESMETA-001",
+      "locator": "Entire original resources.assets 1842222-byte metadata prefix SHA256 8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da. Exact ObjectInfo row for PathID22906 at prefix offset475312, SHA256 e045a41429562e93642cf0b0fefcc4c28a60c8308f8e1216a3a87f5d1c0814ca. Original serialized type index4 ClassID49; object declared relative offset1968735976, absolute offset1970578200 from Unity DataOffset1842224, declared body size12800024.",
+      "observation": "Source metadata resolves the exact original GGM PathID to declared Unity TextAsset object class, absolute resource payload location and declared byte length, not to its unexamined raw body bytes."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0358 original DLL GetFormData array lookup paths",
+      "to": "FACT-0359 original DLL FormDataMan.LoadFormData_RFF entry method, resource string, Forms newarr and ParseFormData_RFF call",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original MethodDef0x06001F0F 83-byte IL and exact four source window hashes; original MethodDef0x06001F12 parser call."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0338 GGM original 43941 ResourceManager name/PathID entries",
+      "to": "FACT-0359 exact GGM entry43500 'wrestleranimation/fprform_rff' fileID5 PathID22906",
+      "evidence": [
+        {
+          "source_id": "GGM-001",
+          "locator": "Original globalgamemanagers ResourceManager named entry 43500, 48 original bytes SHA256 750737d6592af2a89bd546f629104372fb68ba5c71a74242098a5ed20f2fe975."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0344 original 90992 resources.assets metadata ObjectInfo rows",
+      "to": "FACT-0359 original serialized PathID22906 ClassID49 object metadata at absolute1970578200 declared12800024 bytes",
+      "evidence": [
+        {
+          "source_id": "RESMETA-001",
+          "locator": "Original metadata ObjectInfo row offset475312 SHA256 e045a41429562e93642cf0b0fefcc4c28a60c8308f8e1216a3a87f5d1c0814ca."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Static resource string matches original serialized ResourceManager entry ignoring ASCII letter case, not demonstrated actual retail Unity name-resolution behavior or successful resource load.",
+    "Original resources.assets declared object body at absolute1970578200 is not included in original metadata prefix and has not been independently compared against the separately uploaded UABE export.",
+    "No confirmed actual FormData array contents, runtime loaded sprite parts, frame rendering, world offsets, timing, sound, AI, or execution path. No original proprietary raw binary bytes committed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
