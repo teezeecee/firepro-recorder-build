@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0340",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "User-owned untouched original Unity5.6.5p3 Fire Pro globalgamemanagers ClassID149 PathID14 object has exactly 16,532 source bytes, with a 12-byte header followed by 590 ordered 28-byte rows, each 16-byte identifier + int32 fileID + int64 pathID. The 590 identifiers and numeric reference pairs are each unique. External fileID distribution: 4:6, 5:557, 7:9, 9:12, 10:1, 11:5. Exactly 534 references join names from independently proven FACT-0338 original resource index (437 interface, 90 stage, seven other); 56 do not. Entire original object, two regions and 10 indexed anchor rows source-SHA proven. The historic Unity ClassID149 name is NetworkManager, but this does not prove networking activity or byte contents of referenced external assets.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original entire extensionless globalgamemanagers 5,002,540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, serialized v17, ClassID149 TypeIndex13 PathID14 original ObjectInfo relative4981056 absolute 0x4C1140..0x4C51D4; 16532 bytes SHA256 f4fe8dc74035736ffd35c907e01ef11d46635cec7fb0924aa4f1785b6acc8133, 12-byte header SHA256 6525204815fe05e8b2d170df1b12f9a06ccc47093371ae73674734c0ac98d207, 16520-byte record block SHA256 183eef19bceef1b0279a7457d8a6e7f57e48d889e164bd43d4cd6b77e2a58d75; canonical/witnesses/GGM-001/network_manager_590_refs.summary.json and tools/prove_globalgamemanagers_network_manager_refs.py.",
+      "observation": "All 590 records sequentially consume exact object bytes, 534 numeric source joins to name references do not prove target contents or runtime execution."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "The class ID name NetworkManager comes from a historic Unity Class ID reference; no multiplayer or networking behavior is asserted.",
+    "Header float representation 15.0 is not assigned a field identity.",
+    "No object referenced by a numeric source PPtr is considered provenance-verified until its intact serialized parent SHA and ObjectInfo are checked.",
+    "Do not promote any game runtime/viewer work; SOURCE_CONSOLIDATION_V1 LOCKED."
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_NETWORK_MANAGER_590_REFERENCE_RECORDS_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "related_facts": [
+    "FACT-0326",
+    "FACT-0338"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "serialized_version": 17,
+    "unity_version": "5.6.5p3",
+    "data_offset": 4096
+  },
+  "object": {
+    "class_id": 149,
+    "class_name": "NetworkManager",
+    "type_index": 13,
+    "path_id": 14,
+    "relative_offset": 4981056,
+    "absolute_offset": 4985152,
+    "end_absolute_offset": 5001684,
+    "bytes": 16532,
+    "sha256": "f4fe8dc74035736ffd35c907e01ef11d46635cec7fb0924aa4f1785b6acc8133"
+  },
+  "record_table": {
+    "header_u32_words": [
+      0,
+      1097859072,
+      590
+    ],
+    "f32_at_object_offset_4_representation": 15.0,
+    "header_sha256": "6525204815fe05e8b2d170df1b12f9a06ccc47093371ae73674734c0ac98d207",
+    "record_count": 590,
+    "record_bytes_each": 28,
+    "records_start": 12,
+    "records_end": 16532,
+    "records_sha256": "183eef19bceef1b0279a7457d8a6e7f57e48d889e164bd43d4cd6b77e2a58d75",
+    "layout": "raw 16-byte ID, int32 fileID, int64 pathID, little-endian with no per-row padding",
+    "unique_identifiers": 590,
+    "unique_numeric_references": 590,
+    "fileid_counts": {
+      "4": 6,
+      "5": 557,
+      "7": 9,
+      "9": 12,
+      "10": 1,
+      "11": 5
+    },
+    "joined_fact0338_named_references": 534,
+    "unmatched_named_index_references": 56,
+    "matched_categories": {
+      "debug_csr_canvas": 1,
+      "font": 1,
+      "fpw_menubg_bar": 1,
+      "interface": 437,
+      "matchui": 1,
+      "stage": 90,
+      "tools": 2,
+      "weapon": 1
+    },
+    "unmatched_fileid_counts": {
+      "4": 3,
+      "5": 26,
+      "7": 9,
+      "9": 12,
+      "10": 1,
+      "11": 5
+    },
+    "anchors": [
+      {
+        "index": 0,
+        "identifier_hex": "ddce4d00d371ce4e958508bb08846f29",
+        "file_id": 5,
+        "path_id": 46527,
+        "resource_name": "interface/organizationmanagement/prefab/dialog_orggoods"
+      },
+      {
+        "index": 1,
+        "identifier_hex": "8bbb7800a5f1a749b4270fad2734edd4",
+        "file_id": 5,
+        "path_id": 52275,
+        "resource_name": "interface/onlineroom/textures/userinfo"
+      },
+      {
+        "index": 4,
+        "identifier_hex": "2d3bb7000c23214382b9f5cc174815bd",
+        "file_id": 5,
+        "path_id": 47599,
+        "resource_name": "stage/audience/audience_03_jp"
+      },
+      {
+        "index": 9,
+        "identifier_hex": "5893f302d2999b4a913b6af7f19e2286",
+        "file_id": 7,
+        "path_id": 215,
+        "resource_name": null
+      },
+      {
+        "index": 100,
+        "identifier_hex": "8bf2192b95c07e4ba254e26b8cfd8147",
+        "file_id": 5,
+        "path_id": 48181,
+        "resource_name": "interface/workshop/prefabs/dialog_referee_inputtag"
+      },
+      {
+        "index": 257,
+        "identifier_hex": "5a9e2e6bfc9ec045abf6cd09ca1ac606",
+        "file_id": 5,
+        "path_id": 46787,
+        "resource_name": "interface/story/prefabs/trainingskillitem"
+      },
+      {
+        "index": 300,
+        "identifier_hex": "21058781143b4e41ba1f5bc513e0e09d",
+        "file_id": 5,
+        "path_id": 50135,
+        "resource_name": "interface/onlineroom/prefabs/rulewindow"
+      },
+      {
+        "index": 500,
+        "identifier_hex": "6054ecd94f6b6a488b0c19eec0a6e5c0",
+        "file_id": 5,
+        "path_id": 54380,
+        "resource_name": "interface/partscraft/prefab/dialog_partscraft_inputtag"
+      },
+      {
+        "index": 588,
+        "identifier_hex": "aa048aff1fa3114ba17aec9e22b2807e",
+        "file_id": 5,
+        "path_id": 53118,
+        "resource_name": "interface/story/prefabs/messagewindow"
+      },
+      {
+        "index": 589,
+        "identifier_hex": "2e6ac5ffac25ee4292d27d170544d3da",
+        "file_id": 5,
+        "path_id": 51291,
+        "resource_name": "interface/prefab/dialog_selectcostume"
+      }
+    ]
+  },
+  "outside_object_following_padding": {
+    "offset_absolute": 5001684,
+    "length": 4,
+    "hex": "00000000"
+  },
+  "limits": [
+    "Historical Unity ClassID149 is named NetworkManager, but this does not establish that networking ran.",
+    "The object header word representing float32 15.0 is not assigned a gameplay or configuration field name.",
+    "Numeric PPtrs and joins to the FACT-0338 name table do not prove any target asset bytes.",
+    "The four bytes after the ObjectInfo boundary are not claimed to belong to the object.",
+    "Original target parent serialized resources.assets/sharedassets files remain source-unverified.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

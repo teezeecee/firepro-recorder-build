@@ -6653,6 +6653,29 @@
         "Original Unity 5.6 field labels and gameplay/loader execution relationships are not inferred from dependency-reference pairs.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_NETWORK_MANAGER_590_REFERENCE_RECORDS_V1",
+      "fact_id": "FACT-0340",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Original Unity ClassID149 source object 590 sequential 16-byte identifiers plus PPtr reference records, with 534 direct numeric joins to original name table.",
+      "summary": "canonical/witnesses/GGM-001/network_manager_590_refs.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x4C1140",
+          "0x4C51D4"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Numeric references do not establish referenced object byte identity, types or runtime behavior.",
+        "Historical Unity class ID label does not establish networking activity or raw-header field names.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
