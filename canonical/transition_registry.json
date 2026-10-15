@@ -6946,6 +6946,30 @@
         "Identical 16-byte input slices across sibling suffix variants do not imply complete payload or rendered playback identity.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_FPW440_ORIGINAL_SIBLING_PAYLOAD_BYTE_DIFF_WINDOWS_V1",
+      "fact_id": "FACT-0350",
+      "source_ids": [
+        "RESPANEL-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Every one of 79 pairwise comparisons across 65 original _0/_1/_2 fpw filename families is equal-length and shares all embedded source bytes +48..63, but original payloads differ elsewhere. Across all pair comparisons, changed byte positions by windows +0..47/+48..63/+64..75/+76 onward are respectively 128/0/7/7836; pairs with any differences are 62/0/4/79. Total 7971 pairwise changed positions. Byte-only source index; suffix gameplay or direction meaning remains unassigned.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_440_fpw_sibling_byte_diff_windows.summary.json",
+      "source_windows": [
+        [
+          "original 440 named fpw resource embedded source bodies",
+          "65 textual suffix-name families",
+          "79 equal-length pair comparisons with complete original byte offset scan"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original sibling suffixes remain textual identifiers, not established direction/bank, pose, actor transform, sound or frame timing.",
+        "Matching +48..63 vectors do not make original sibling source payloads equal, nor establish runtime playback or file loading.",
+        "Five larger non-fpw wrestleranimation sources excluded from this panel.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

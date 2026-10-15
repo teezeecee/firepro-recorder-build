@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0350",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Original SHA-verified 440-resource fpw_* panel contains 65 textual _0/_1/_2 sibling families, yielding exactly 79 source payload pair comparisons (65 _0/_1, seven _0/_2, seven _1/_2). Within each pair the original embedded payload lengths and bytes+48..+63 match exactly, yet every pair differs at other source byte positions. Complete window-based comparisons find 62 pairs differing at bytes+0..47 (128 changed byte positions across all pairs), zero pairs at +48..63 (zero changes), four pairs at +64..75 (seven changes), and 79 pairs at +76 onward (7836 changes). Total pairwise changed-byte positions 7971, minimum14 and maximum417 in a pair. A complete ordered 79-pair offset-difference index has SHA256 61ba2c2012dc91eeffe4a178ca0e4c2187a392f51c98d8cf9ce1aaf533364f81. This is a comparison of original source bytes and suffix filenames only, not identification of animation direction, motion, timing, source load execution or actor pose.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "Exact original resource pack FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53; matching companion manifest SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc; 440-source source identity previously proven FACT-0347. New SHA-pinned derived comparison witness canonical/witnesses/RESPANEL-001/original_440_fpw_sibling_byte_diff_windows.summary.json and tools/prove_original_fpw_sibling_byte_diff_windows.py.",
+      "observation": "79 original source sibling pairs have equal source data length and the same bytes+48..63 but distinct bytes after +76. Direct byte comparison finds seven additional changes at byte offsets +64..75 and 128 at +0..47 across pair comparisons."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0347 byte-exact original 440 fpw resource panel",
+      "to": "FACT-0350 complete original sibling source byte difference index",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "Original report GGM source indices 43501..43940 and identical SHA-pinned packed source body bytes; family pair name+PathID and full byte difference index."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0349 original 440 16-byte vector and sibling invariant",
+      "to": "FACT-0350 sibling pair full-source differences outside shared vector",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "Original 79 sibling pair SHA index, with zero bytes different at embedded source offsets48..63 and all 79 pairs differing at offsets76 and above."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "File-name suffixes _0, _1 and _2 are labels for source grouping here; no directional or pose semantics are assigned to suffixes.",
+    "79 pair comparisons reuse sources within the seven three-variant families; counts are not independent resource counts.",
+    "The byte windows are raw embedded source positions and not mapped to animation runtime objects, timing or form transitions.",
+    "No original source binary is added to Git; SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+  ]
+}
