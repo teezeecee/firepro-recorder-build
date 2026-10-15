@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0333",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The original Unity 5.6.5p3 globalgamemanagers ClassID13 InputManager PathID2 carries a complete 31,408-byte original source record at 0x1228..0x8CD8 with SHA256 b83aa9d18a4a4b8c86cfe009555c077f122198ea4746f2f691bb69098020233d. Its original table has exactly 437 serialized input-axis rows. Every row's seven UTF8 string slots, three exact float32 bit-pattern words, four raw bytes and three signed int32 values are preserved in a compact lossless JSON witness, together covering all 31,404 bytes after the original four-byte count. Original names include Horizontal, Vertical, Submit (twice), Cancel, controller axis/button and mouse entries. Source input configuration only, not proof of retail player input dispatch or combat move bindings.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original 5,002,540-byte extensionless Unity globalgamemanagers file SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, Unity serialized version17, ClassID13 TypeIndex1 ObjectInfo PathID2 relative552 / absolute0x1228..0x8CD8 size31408, original entire object SHA256 b83aa9d18a4a4b8c86cfe009555c077f122198ea4746f2f691bb69098020233d. Original row region [4,31408) SHA256 586020cc8dcad6b1583ab0519dd29f2dac7aa4780f9268dadf6c66f91e607da3, 437 exactly aligned rows reconstructed in witness canonical/witnesses/GGM-001/input_manager_437_rows.summary.json, original parser tools/prove_globalgamemanagers_input_manager.py.",
+      "observation": "Complete original 437 rows, seven source strings and fourteen numerical/raw bytes plus three int32 fields per row, preserved with byte-identity checks, including controller and keyboard authored text."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Original input slot names do not establish how the game's C# controller code routes them into animations or AI.",
+    "This table does not establish which devices were attached, what controls were used in a particular match, or any observed button-to-move behavior.",
+    "Shader target container bytes remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
