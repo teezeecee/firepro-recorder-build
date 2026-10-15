@@ -116,6 +116,23 @@
       "original_parent": "resources.assets",
       "original_parent_absolute_offset": 1957193440,
       "note": "Read-only exact original 1716-byte ClassID49 PathID21353 wrestleranimation/fpw_6172 object from resources.assets. Original metadata/GGM numeric joins and matching SHA of prior UABE export independently checked. Original whole 3.17GB resource file not rehashed during bounded extraction. Embedded 1696-byte RS-leading data opaque; no semantic playback, runtime/viewer LOCKED. Proprietary bytes not in Git."
+    },
+    {
+      "source_id": "RESPANEL-001",
+      "kind": "ORIGINAL_RESOURCE_OBJECT_BODY_PANEL",
+      "filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+      "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+      "availability": "VERIFIED_LOCAL_BYTES",
+      "canonical_eligible": true,
+      "raw_required": true,
+      "git_storage": "HASH_AND_EXTRACTED_FACTS_ONLY",
+      "size_bytes": 330116,
+      "unity_version": "5.6.5p3",
+      "original_parent": "resources.assets",
+      "object_count": 440,
+      "original_companion_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+      "original_companion_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc",
+      "note": "Complete 440 named wrestleranimation/fpw_* original resource object-body bounded read-only panel, SHA-verified against source metadata and GGM named fileID5 pointer rows and individual original body hashes. Companion JSON and packed source data independently verified. Excludes five larger wrestleranimation entries. All original RS payloads opaque, no timing, transform or playback semantics. Full 3.17GB original parent was not rehashed during bounded probe. Original binary and companion report NOT stored in Git. Runtime/viewer LOCKED."
     }
   ]
 }
