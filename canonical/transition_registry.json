@@ -6699,6 +6699,29 @@
         "Original external serialized asset parents still lack independently verified original source bytes and ObjectInfo.",
         "No gameplay, rendering, animation or networking execution proven by the payload census; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_NETWORK_590_RESOURCE_DEPENDENCY_INTERSECTION_V1",
+      "fact_id": "FACT-0342",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Exact original-source three-way numeric join: 590 ClassID149 PathID14 opaque identifier/PPtr rows cross-checked against 65,218 ResourceManager parent records, 140,029 child occurrences and 43,941 named resource rows; 561 both-side refs, 29 neither, 534 named among both, 1,491 outgoing and 1,602 incoming references.",
+      "summary": "canonical/witnesses/GGM-001/network_590_dependency_intersection.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x1DFC8",
+          "0x4C51D4"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original source numeric reference joins are not proof of external target asset content or runtime loading.",
+        "No networking execution or behavior proven from historical Unity ClassID label or source reference intersection.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

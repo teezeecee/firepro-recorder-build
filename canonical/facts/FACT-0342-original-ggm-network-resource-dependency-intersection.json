@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0342",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Cross-joining all 590 ordered 28-byte opaque-identifier/numeric-PPtr records of the original Unity5.6.5p3 ClassID149 PathID14 object against the fully decoded 65,218 parent and 140,029 child occurrence rows of the original ResourceManager ClassID147 PathID13 object, using exact (int32 fileID,int64 pathID) numeric equality inside the same original globalgamemanagers file, yields exactly 561 references appearing as both a parent and a child, zero parent-only, zero child-only and 29 appearing in neither. Of those 561 dual-index references, 534 also join source names in the original 43,941-entry ResourceManager name index and 27 have no name-index match. The 561 parent rows together list 1,491 outgoing references; the 561 numeric IDs appear as children 1,602 times across the complete dependency table. These byte-exact structural joins do not establish referenced external object contents, network execution, asset load order or gameplay behavior.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Exact original extensionless globalgamemanagers 5,002,540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; ClassID147 PathID13 original bytes [122824,4985152) SHA256 414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de; ClassID149 PathID14 source bytes [4985152,5001684) SHA256 f4fe8dc74035736ffd35c907e01ef11d46635cec7fb0924aa4f1785b6acc8133. Reparse all original name records 43,941; all dependency parent records 65,218 and child occurrence array elements 140,029; all 590 ClassID149 rows. Exact joint cardinalities, per-fileID distribution, per-parent arity histogram, 8 indexed cross-object anchors source-verified by read-only tools/prove_globalgamemanagers_network_dependency_intersection.py, canonical/witnesses/GGM-001/network_590_dependency_intersection.summary.json.",
+      "observation": "Exact numeric reference-pair equality exposes 561 dual-index pointers, 29 with neither index membership; zero one-sided hits; 534 of dual-index numeric refs also have an original name/PPtr table entry."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Opaque 16-byte ClassID149 identifiers are source bytes; their runtime role or network action is not assigned.",
+    "Source numeric joins do not verify target asset bytes in resources.assets, sharedassets0.assets, or another referenced parent file.",
+    "No runtime/viewer progression. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
