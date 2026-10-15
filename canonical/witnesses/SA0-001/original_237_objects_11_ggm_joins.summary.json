@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_SA0_237_OBJECTINFO_AND_GGM_11_ORIGINAL_TARGET_JOINS_V1",
+  "source_ids": [
+    "SA0-001",
+    "GGM-001"
+  ],
+  "original_files": {
+    "sharedassets0": {
+      "filename": "sharedassets0.assets",
+      "bytes": 10540984,
+      "sha256": "a306d8b262b11820dd4f24801db3ca158ce0e446f1a2f667951d83d6ec513521",
+      "unity_version": "5.6.5p3",
+      "serialized_version": 17,
+      "metadata_length": 6028,
+      "data_offset": 6048
+    },
+    "globalgamemanagers": {
+      "filename": "globalgamemanagers",
+      "bytes": 5002540,
+      "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c"
+    }
+  },
+  "metadata": {
+    "start": 20,
+    "end": 6048,
+    "sha256": "095db6e5b716caf33473f4071a5d0543086d42386e56c2e1f180d899e5c9eda9",
+    "type_count": 31,
+    "type_table_start": 37,
+    "type_table_end": 974,
+    "type_table_sha256": "b10bf1f201ae2122e2d0782aa6e93418fc32714a6550772a2313573319b2f93e",
+    "object_count": 237,
+    "objectinfo_start": 980,
+    "objectinfo_end": 5720,
+    "objectinfo_sha256": "e4d1ae504e0fd2a95419106e37f97c0129e712c2b6ad6a629d52752b2e93f16d",
+    "metadata_tail_sha256": "eba704838c62927b8c4e55bb7c2265233bb23961d81e9eba099128178f1eb8b4",
+    "class_id_order": [
+      150,
+      21,
+      28,
+      43,
+      48,
+      74,
+      83,
+      90,
+      91,
+      128,
+      152,
+      213,
+      1,
+      4,
+      222,
+      223,
+      224,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114
+    ]
+  },
+  "payload": {
+    "start": 6048,
+    "end": 10540984,
+    "bytes": 10534936,
+    "sha256": "21039c6300dc6a1816eb863597fce77a74ab83eb5d470d1bf1f39246ddfe5cbc",
+    "object_body_bytes": 10534433,
+    "objects": 237,
+    "empty_objects": 0,
+    "object_bodies_in_order_sha256": "c1d3a3b344e594efe03062b448add67c51fab9fcc08e8efd64a0530e5463b504",
+    "gap_count": 130,
+    "gap_bytes": 503,
+    "all_gaps_zero": true,
+    "gap_bytes_in_order_sha256": "561dc0533eb1201eb4bdc0a0f90a89929c8ab2ba5fd38d82474b18d3cdaec5fb",
+    "gap_length_histogram": {
+      "1": 6,
+      "3": 1,
+      "4": 121,
+      "5": 2
+    },
+    "class_id_counts": {
+      "1": 7,
+      "4": 5,
+      "21": 8,
+      "28": 12,
+      "43": 2,
+      "48": 6,
+      "74": 1,
+      "83": 1,
+      "90": 1,
+      "91": 1,
+      "114": 182,
+      "128": 1,
+      "150": 1,
+      "152": 1,
+      "213": 4,
+      "222": 1,
+      "223": 1,
+      "224": 2
+    }
+  },
+  "ggm_join": {
+    "resource_manager_object_absolute_start": 122824,
+    "resource_manager_object_bytes": 4862328,
+    "resource_name_records": 43941,
+    "original_external_file_id": 4,
+    "original_file_id4_dependency_name": "sharedassets0.assets",
+    "named_fileid4_occurrences": 11,
+    "all_path_ids_resolve": true,
+    "anchors": [
+      {
+        "resource_index": 2297,
+        "resource_name": "font/sysfont",
+        "file_id": 4,
+        "path_id": 40,
+        "class_id": 1,
+        "object_body_bytes": 47,
+        "object_body_sha256": "396b552730e5118b3698a5e79d68ff9d4c4c2e9164c7ec1c299913290734f1b3"
+      },
+      {
+        "resource_index": 2419,
+        "resource_name": "interface/common/menu_common",
+        "file_id": 4,
+        "path_id": 43,
+        "class_id": 1,
+        "object_body_bytes": 51,
+        "object_body_sha256": "609ab5ef74370cda45ce535626b041213219a2740f9f0b38e329cf92871f35c3"
+      },
+      {
+        "resource_index": 2420,
+        "resource_name": "interface/common/menu_common",
+        "file_id": 4,
+        "path_id": 6,
+        "class_id": 21,
+        "object_body_bytes": 104,
+        "object_body_sha256": "5e41e3ff23478ffa3d98e29008e019b9b36d63839a71e8ddfc5569eeee399775"
+      },
+      {
+        "resource_index": 2421,
+        "resource_name": "interface/common/menu_common",
+        "file_id": 4,
+        "path_id": 15,
+        "class_id": 28,
+        "object_body_bytes": 116,
+        "object_body_sha256": "285a467839b826fb0547286e1890a65a3492ec88bdc2fc21fe912c0a45a08545"
+      },
+      {
+        "resource_index": 2564,
+        "resource_name": "interface/movie/makerlogomat",
+        "file_id": 4,
+        "path_id": 8,
+        "class_id": 21,
+        "object_body_bytes": 772,
+        "object_body_sha256": "e931477727160b494616cf4c52ffec2b3e924eb3e8a342caeae759bba36d86ec"
+      },
+      {
+        "resource_index": 3529,
+        "resource_name": "interface/title/title_atlas",
+        "file_id": 4,
+        "path_id": 18,
+        "class_id": 28,
+        "object_body_bytes": 116,
+        "object_body_sha256": "199478e8412b6721146efa1b097ef389b3438b93d040d034636b606ada0e5171"
+      },
+      {
+        "resource_index": 3530,
+        "resource_name": "interface/title/title_atlas",
+        "file_id": 4,
+        "path_id": 44,
+        "class_id": 1,
+        "object_body_bytes": 51,
+        "object_body_sha256": "f0b1f634a856a6b043099b2d8184257e4a1069952fce42b7303bb267f4113d1d"
+      },
+      {
+        "resource_index": 3531,
+        "resource_name": "interface/title/title_atlas",
+        "file_id": 4,
+        "path_id": 7,
+        "class_id": 21,
+        "object_body_bytes": 104,
+        "object_body_sha256": "7ac8b33b8ea9866141cec8163dc137efe4c975c492a16d8ad0ad768de0f1d348"
+      },
+      {
+        "resource_index": 3620,
+        "resource_name": "interface/workshop/description2",
+        "file_id": 4,
+        "path_id": 17,
+        "class_id": 28,
+        "object_body_bytes": 116,
+        "object_body_sha256": "1cb928518990fdce1dc7045f7eb0c89e088c72b643450f46d5493d1687a9f57b"
+      },
+      {
+        "resource_index": 3621,
+        "resource_name": "interface/workshop/description2",
+        "file_id": 4,
+        "path_id": 39,
+        "class_id": 213,
+        "object_body_bytes": 344,
+        "object_body_sha256": "bffcce3ba5e7d47f8e342999d151830ac33e1e354f5d1be333d444feea79bf9b"
+      },
+      {
+        "resource_index": 39615,
+        "resource_name": "shaders/unlit - transparent colored",
+        "file_id": 4,
+        "path_id": 29,
+        "class_id": 48,
+        "object_body_bytes": 7128,
+        "object_body_sha256": "dd71aaf09be6c2251a76f0d495a8ef2798f507bcca32ff4af944b6c1345a24d3"
+      }
+    ]
+  },
+  "limits": [
+    "Original byte partitions and numeric PPtr targets prove referenced serialized object records, not texture/shader decoding or retail visual/AI/gameplay execution.",
+    "No raw Unity file is committed to Git; only source-proven hashes and derived structural witnesses.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
