@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_ORIGINAL_FPW440_RSF_CUMULATIVE_TWELVE_BYTE_BLOCK_INDEX_V1",
+  "source_ids": [
+    "RESPANEL-001",
+    "DLL-001"
+  ],
+  "original_panel": {
+    "filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+    "bytes": 330116,
+    "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+    "report_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+    "report_bytes": 473482,
+    "report_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc",
+    "prior_source_facts": [
+      "FACT-0347",
+      "FACT-0349",
+      "FACT-0351"
+    ]
+  },
+  "original_dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "methoddef": "0x0600525F",
+    "full_il_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae",
+    "first_entry_il_sha256": "7e28036b4af6f3232e543e9c4fb681e389a9cab6b52aede3a95f9d85731620a9",
+    "first_entry_field_name": "formNum",
+    "first_entry_read_source_offset": 64,
+    "prior_dll_fact": "FACT-0276",
+    "other_source_segment_execution_proven": false
+  },
+  "observed": {
+    "source_objects": 440,
+    "embedded_total_bytes": 320768,
+    "all_source_lengths_minus_64_multiple_of_12": 440,
+    "total_12_byte_blocks": 24384,
+    "total_source_segments": 1347,
+    "sum_source_header_first_byte_values": 23037,
+    "zero_step_plateau_positions": 5693,
+    "all_final_vectors_equal_total_blocks": 440,
+    "all_positive_cumulative_steps_equal_one_plus_segment_source_header_byte": 1347,
+    "max_segments_per_source": 10,
+    "min_segments_per_source": 1,
+    "min_total_blocks_per_source": 7,
+    "max_total_blocks_per_source": 202,
+    "min_segment_header_first_byte": 2,
+    "max_segment_header_first_byte": 96,
+    "number_of_nonempty_slots_by_source": {
+      "1": 55,
+      "2": 231,
+      "3": 64,
+      "4": 15,
+      "5": 4,
+      "6": 10,
+      "7": 12,
+      "8": 36,
+      "9": 4,
+      "10": 9
+    },
+    "normalized_440_source_segment_rows_sha256": "c279e823a914f4221fb3d0124db6b924bc4733da1c81f3a6684e7c44cb92edfa",
+    "normalized_1347_segment_rows_sha256": "6b5ad7b0a954a5e304ed9493a257c0caeecd91c20efe60b6d83bd9b210bede49",
+    "index_encoding": "Python json.dumps(rows,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf8'), ordered original GGM entries; each source row fields index/path_id/name/len/total_blocks/vec/segments, each segment fields slot/start_block/end_block/formNum_byte/header_source_offset"
+  },
+  "derived_index_definition": {
+    "fixed_payload_prefix_bytes": 64,
+    "fixed_block_size_bytes": 12,
+    "boundary_vector_source_start": 48,
+    "boundary_vector_source_end_exclusive": 64,
+    "slots_in_vector": 16,
+    "total_blocks": "(original_embedded_source_length - 64) // 12",
+    "active_segment_predicate": "endpoint > previous_endpoint, starting previous_endpoint = 0",
+    "segment_block_start": "previous_endpoint",
+    "segment_block_end_exclusive": "endpoint",
+    "segment_first_byte_source_position": "64 + 12 * previous_endpoint",
+    "checked_equality": "endpoint - previous_endpoint == 1 + source_byte[64 + 12 * previous_endpoint]",
+    "status": "SOURCE_BYTE_EQUALITIES_ONLY"
+  },
+  "anchors": [
+    {
+      "name": "fpw_2004_0",
+      "index": 43501,
+      "path_id": 22222,
+      "len": 448,
+      "total_blocks": 32,
+      "vec": [
+        20,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "segments": [
+        {
+          "slot": 0,
+          "start_block": 0,
+          "end_block": 20,
+          "formNum_byte": 19,
+          "header_source_offset": 64
+        },
+        {
+          "slot": 1,
+          "start_block": 20,
+          "end_block": 32,
+          "formNum_byte": 11,
+          "header_source_offset": 304
+        }
+      ]
+    },
+    {
+      "name": "fpw_6261",
+      "index": 43940,
+      "path_id": 21624,
+      "len": 2356,
+      "total_blocks": 191,
+      "vec": [
+        94,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191
+      ],
+      "segments": [
+        {
+          "slot": 0,
+          "start_block": 0,
+          "end_block": 94,
+          "formNum_byte": 93,
+          "header_source_offset": 64
+        },
+        {
+          "slot": 1,
+          "start_block": 94,
+          "end_block": 191,
+          "formNum_byte": 96,
+          "header_source_offset": 1192
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "A positive cumulative 16-vector step and the corresponding 12-byte original source segment boundary are raw byte relationships, not a verified retail GetAnmNum return value.",
+    "Original DLL field name formNum at first entry source offset +64 is independently pinned, but all 1347 original source segments are not independently proven executed parser iterations.",
+    "Each 12-byte source block is structural indexing only, not established as a rendered frame, timing quantum, bank, actor transform, or sound event.",
+    "Slot counts 1..10 are counts of positive source vector steps; the retail code may transform or validate these values in a separately unexamined method.",
+    "No original game binary/source data committed to Git; SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+  ]
+}
