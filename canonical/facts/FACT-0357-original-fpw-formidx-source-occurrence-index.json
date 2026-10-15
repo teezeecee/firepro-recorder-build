@@ -1,0 +1,44 @@
+{
+  "fact_id": "FACT-0357",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "The complete SHA-verified 440 original fpw RS TextAsset source bodies contain 23037 original 12-byte form records whose source byte positions 2/3 yield 7214 distinct unsigned big-endian formIdx source input integers through the previously verified matching retail DLL ParseRSFData reader. A full exact original source input occurrence index keyed by integer formIdx, containing every original GGM SourceIndex, PathId, resource name, source slot, within-slot form ordinal and byte source offset, has normalized SHA256 b9926f62a5eb559ca608d8b52697ca75a4f83cfe718adc492dce504aba0b6cda. Exactly 3852 distinct formIdx inputs appear once; 3362 distinct values repeat over 19185 original form records; 2348 different values occur across more than one original source object, covering 16012 source forms. Source formIdx input integer 100 occurs 858 times across 294 original resource objects, input 101 occurs 486 times across 182 original objects. This proves literal source input reference multiplicity ONLY, not the FormData identity, source runtime asset dispatch, actual graphics, pose, facing, animation playback, world coordinates or AI.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "Original complete GGM-indexed 440 source body panel FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53, companion GGM-linked 473482-byte report SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc. Every source object body SHA, embedded RS source SHA, 16-byte vector/12-byte segment boundaries and exact formIdx byte positions rechecked by read-only original-source verifier. Complete sorted 7214-value occurrence rows and 4 original anchor indexes captured in original_23037_fpw_formidx_occurrence_index.summary.json.",
+      "observation": "23037 original source form references mapped to their literal 7214 integer formIdx inputs with every exact original source location and multiplicity."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original Assembly-CSharp DLL 8171008-byte SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; SkillDataMan.ParseRSFData MethodDef0x0600525F IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae. Independently exact proven original byte[2] high-byte / byte[3] low-byte reader FACT-0279; full arithmetic and 23037 original rows source recheck FACT-0355.",
+      "observation": "Two exact retail parser source bytes are combined as unsigned big-endian formIdx numeric input, without identifying any sprite storage or runtime rendering mapping."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0353 exact 1347 segment-header bounded original 23037 12-byte source form records",
+      "to": "FACT-0357 complete 7214-key original formIdx input occurrence index",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "Complete local original 440 SHA-matched GGM/RS source bodies; each 12-byte form record original resource index/path/name, slot, ordinal and byte offset indexed exactly once."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0355 original 23037 fully DLL-derived source numeric form input rows",
+      "to": "FACT-0357 all 23037 literal source formIdx location and occurrence grouping",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Matching original DLL exact high/low byte read operations and full FACT-0355 derived 23037 numeric rows SHA 06c901a9d5f98eb37254b916a4916f077c1824b9bd833533ba064c50df6114bf."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The source name formIdx and decoded integers alone do not establish FormData asset mapping, loaded TextAsset dispatch or runtime reference identity.",
+    "Equal original 16-bit source formIdx integers do not prove equal visual pose, mirrored sprite, frames, elapsed playback time or animation transforms.",
+    "No proprietary asset/DLL bytes committed. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

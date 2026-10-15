@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FPW_23037_FORMIDX_SOURCE_OCCURRENCES_V1",
+  "source_ids": [
+    "RESPANEL-001",
+    "DLL-001"
+  ],
+  "original_panel": {
+    "filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+    "bytes": 330116,
+    "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+    "report_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+    "report_bytes": 473482,
+    "report_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc"
+  },
+  "original_dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "methoddef": "0x0600525F",
+    "method_il_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+  },
+  "observed": {
+    "source_objects": 440,
+    "source_form_records": 23037,
+    "distinct_formIdx_values": 7214,
+    "formIdx_min": 100,
+    "formIdx_max": 37998,
+    "single_occurrence_values": 3852,
+    "multiple_occurrence_values": 3362,
+    "occurrences_of_repeated_values": 19185,
+    "multiple_source_object_values": 2348,
+    "occurrences_of_multiple_source_object_values": 16012,
+    "one_source_object_values": 4866,
+    "max_occurrence_value": 100,
+    "max_occurrences": 858,
+    "max_distinct_source_objects": 294,
+    "complete_7214_value_occurrence_index_sha256": "b9926f62a5eb559ca608d8b52697ca75a4f83cfe718adc492dce504aba0b6cda",
+    "frequency_histogram_sha256": "c57c3a2a242f302ccdacc442a62441c35f683c1d8c5ebf051c0488588d930f79",
+    "prior_23037_numeric_source_rows_sha256": "06c901a9d5f98eb37254b916a4916f077c1824b9bd833533ba064c50df6114bf"
+  },
+  "anchors": [
+    {
+      "formIdx": 100,
+      "occurrences": 858,
+      "distinct_source_objects": 294,
+      "first_location": {
+        "index": 43504,
+        "path_id": 22468,
+        "name": "fpw_2005_0",
+        "slot": 0,
+        "form": 17,
+        "source_offset": 280
+      },
+      "last_location": {
+        "index": 43940,
+        "path_id": 21624,
+        "name": "fpw_6261",
+        "slot": 1,
+        "form": 95,
+        "source_offset": 2344
+      }
+    },
+    {
+      "formIdx": 101,
+      "occurrences": 486,
+      "distinct_source_objects": 182,
+      "first_location": {
+        "index": 43501,
+        "path_id": 22222,
+        "name": "fpw_2004_0",
+        "slot": 0,
+        "form": 18,
+        "source_offset": 292
+      },
+      "last_location": {
+        "index": 43932,
+        "path_id": 23153,
+        "name": "fpw_6239",
+        "slot": 1,
+        "form": 22,
+        "source_offset": 628
+      }
+    },
+    {
+      "formIdx": 4372,
+      "occurrences": 335,
+      "distinct_source_objects": 12,
+      "first_location": {
+        "index": 43685,
+        "path_id": 21471,
+        "name": "fpw_2174",
+        "slot": 1,
+        "form": 0,
+        "source_offset": 220
+      },
+      "last_location": {
+        "index": 43696,
+        "path_id": 22003,
+        "name": "fpw_2185",
+        "slot": 7,
+        "form": 6,
+        "source_offset": 1624
+      }
+    },
+    {
+      "formIdx": 37998,
+      "occurrences": 1,
+      "distinct_source_objects": 1,
+      "first_location": {
+        "index": 43867,
+        "path_id": 23234,
+        "name": "fpw_6142",
+        "slot": 1,
+        "form": 17,
+        "source_offset": 592
+      },
+      "last_location": {
+        "index": 43867,
+        "path_id": 23234,
+        "name": "fpw_6142",
+        "slot": 1,
+        "form": 17,
+        "source_offset": 592
+      }
+    }
+  ],
+  "limits": [
+    "Packed source formIdx integers are decoded original 12-byte form inputs, not demonstrated sprite parts or FormData resolution.",
+    "Repeated numeric input values across original TextAssets prove only equal integer source inputs, not shared pose/art/rendering or runtime asset load.",
+    "No verified real-time animation execution, actor root transforms, mirror semantics, direction, sound, or AI; runtime/viewer remains LOCKED."
+  ]
+}
