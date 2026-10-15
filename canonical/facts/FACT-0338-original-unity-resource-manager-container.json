@@ -1,0 +1,19 @@
+{
+  "fact_id": "FACT-0338",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Original Fire Pro Unity5.6.5p3 globalgamemanagers ResourceManager ClassID147 PathID13 has a 4,862,328-byte original object SHA256 414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de. The m_Container original first four bytes encode exactly 43,941 ordered asset-name + numeric PPtr source entries in bytes [4,2138488), source count+rows SHA256 d4ee5f6e796f04cccc5c1b381df3f08e216e66ea7e1c85e0da034d3c5cde8394. The table holds 24,973 distinct UTF8 names, 43,941 distinct numeric reference pairs, 43,930 fileID5 (=resources.assets) and 11 fileID4 (=sharedassets0.assets) according to separately source-proven original external dependency table FACT-0326. Original resource paths include partstex, wrestleranimation, weapon, sound, stage, preset data and original database asset entries, with 26 precisely counted top-level path categories and 14 original index/name/PPtr anchor records. A read-only original-file SHA/ObjectInfo/source parser reconstructs all 43,941 entries deterministically, with optional full JSON export and numeric lookup. The still-opaque trailing [2138488,4862328) 2,723,840 bytes are source-hash preserved but NOT decoded. The index does not prove target asset bytes, sprite frame data, gameplay behavior, or shader execution.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "User-owned original extensionless Unity5.6.5p3 globalgamemanagers 5,002,540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, serialized v17 TypeIndex12 ClassID147 ResourceManager ObjectInfo PathID13 original relative118728 / file absolute0x1DFC8..0x4C1140, 4,862,328 bytes SHA256 414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de. Source count43941, original row interval [4,2138488), count+rows SHA256 d4ee5f6e796f04cccc5c1b381df3f08e216e66ea7e1c85e0da034d3c5cde8394, rows-only SHA256 c47388313e6d2870a785ef9d2fac8088a984d6da2f9999ed8a66ed7d98f10f7a. Tail [2138488,4862328) SHA256 64d856b31b479f81612b2f833ac25ac2cfaf6e84cf02bedcbe3adf06b13535fc. Original exact table byte decoding, 26 category counts and 14 anchored source pairs verified by canonical/witnesses/GGM-001/resource_manager_container_43941.summary.json and tools/prove_globalgamemanagers_resource_manager_container.py. FACT-0326 original external fileID paths independently proven.",
+      "observation": "43,941 exact aligned original UTF8 names and int32+int64 references fully account for first 2,138,488 bytes; 2,723,840-byte remaining tail kept opaque by source digest. Asset-name reference anchors include uploaded wrestle part sprites and animation data without assuming target bytes."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Complete ResourceManager source object byte identity is proven but only m_Container [0,2138488) decoded; the final 2,723,840 bytes remain an opaque SHA-preserved source tail.",
+    "The original external resources.assets and sharedassets0.assets parent serialized contents are not verified, so source reference IDs are NOT target asset byte/metadata proof.",
+    "The asset name `wrestleranimation` denotes an authored resource path, not a proven animation timeline, move transition, transform, event, AI or runtime pose.",
+    "Do not promote any runtime/viewer work; SOURCE_CONSOLIDATION_V1 LOCKED."
+  ]
+}

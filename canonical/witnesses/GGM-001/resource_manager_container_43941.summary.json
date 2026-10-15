@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_RESOURCE_MANAGER_CONTAINER_43941_SOURCE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "related_facts": [
+    "FACT-0326"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 147,
+    "class_name": "ResourceManager",
+    "type_index": 12,
+    "path_id": 13,
+    "relative_offset": 118728,
+    "absolute_offset": 122824,
+    "bytes": 4862328,
+    "sha256": "414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de"
+  },
+  "container": {
+    "count_offset": 0,
+    "count": 43941,
+    "first_row_offset": 4,
+    "end_offset": 2138488,
+    "row_encoding": "u32 little-endian UTF8 byte length, exact UTF8 name bytes, 4-byte alignment zero padding, then int32 m_FileID and int64 m_PathID little endian",
+    "raw_count_and_rows_sha256": "d4ee5f6e796f04cccc5c1b381df3f08e216e66ea7e1c85e0da034d3c5cde8394",
+    "raw_rows_sha256": "c47388313e6d2870a785ef9d2fac8088a984d6da2f9999ed8a66ed7d98f10f7a",
+    "distinct_names": 24973,
+    "distinct_numeric_reference_pairs": 43941,
+    "longest_utf8_name_bytes": 76,
+    "file_id_counts": {
+      "4": 11,
+      "5": 43930
+    },
+    "file_id_external_paths": {
+      "4": "sharedassets0.assets",
+      "5": "resources.assets"
+    },
+    "category_counts": {
+      "buttonguide": 1156,
+      "database": 35,
+      "debug_csr": 2,
+      "debug_csr_canvas": 1,
+      "fightingroad": 1102,
+      "font": 3,
+      "fonts & materials": 4,
+      "fprwaza": 1,
+      "fpw_menubg_bar": 1,
+      "interface": 1475,
+      "linebreaking following characters": 1,
+      "linebreaking leading characters": 1,
+      "matchui": 65,
+      "partstex": 35365,
+      "presetcostumedata": 55,
+      "presetwrestlerdata": 319,
+      "script": 6,
+      "shaders": 37,
+      "sound": 2996,
+      "sprite assets": 1,
+      "stage": 503,
+      "style sheets": 1,
+      "tmp settings": 1,
+      "tools": 44,
+      "weapon": 321,
+      "wrestleranimation": 445
+    },
+    "first_rows": [
+      [
+        "buttonguide/g00_000",
+        5,
+        4962
+      ],
+      [
+        "buttonguide/g00_000",
+        5,
+        31037
+      ],
+      [
+        "buttonguide/g00_001",
+        5,
+        5960
+      ],
+      [
+        "buttonguide/g00_001",
+        5,
+        32040
+      ]
+    ],
+    "last_rows": [
+      [
+        "wrestleranimation/fpw_6250",
+        5,
+        21348
+      ],
+      [
+        "wrestleranimation/fpw_6251",
+        5,
+        21567
+      ],
+      [
+        "wrestleranimation/fpw_6252",
+        5,
+        22114
+      ],
+      [
+        "wrestleranimation/fpw_6261",
+        5,
+        21624
+      ]
+    ],
+    "anchors": [
+      {
+        "index": 1157,
+        "name": "database/blockformlist",
+        "file_id": 5,
+        "path_id": 23148
+      },
+      {
+        "index": 1174,
+        "name": "database/partsinfolist",
+        "file_id": 5,
+        "path_id": 21520
+      },
+      {
+        "index": 1178,
+        "name": "database/samplecostumelist",
+        "file_id": 5,
+        "path_id": 22478
+      },
+      {
+        "index": 39257,
+        "name": "presetcostumedata/wcos_036",
+        "file_id": 5,
+        "path_id": 22414
+      },
+      {
+        "index": 2303,
+        "name": "fprwaza",
+        "file_id": 5,
+        "path_id": 22804
+      },
+      {
+        "index": 43496,
+        "name": "wrestleranimation/bf_gp23_00",
+        "file_id": 5,
+        "path_id": 22480
+      },
+      {
+        "index": 43499,
+        "name": "wrestleranimation/bf_gp23_03",
+        "file_id": 5,
+        "path_id": 22371
+      },
+      {
+        "index": 39002,
+        "name": "partstex/p7_hand/b_ha_0000_m_1",
+        "file_id": 5,
+        "path_id": 13710
+      },
+      {
+        "index": 39004,
+        "name": "partstex/p7_hand/b_ha_0000_m_1_h",
+        "file_id": 5,
+        "path_id": 4393
+      },
+      {
+        "index": 27065,
+        "name": "partstex/p2_body/b_bo_0100_m_1",
+        "file_id": 5,
+        "path_id": 17736
+      },
+      {
+        "index": 27067,
+        "name": "partstex/p2_body/b_bo_0100_m_1_h",
+        "file_id": 5,
+        "path_id": 6644
+      },
+      {
+        "index": 27257,
+        "name": "partstex/p2_body/m_bo_0006_m_2",
+        "file_id": 5,
+        "path_id": 10958
+      },
+      {
+        "index": 27259,
+        "name": "partstex/p2_body/m_bo_0006_m_2_h",
+        "file_id": 5,
+        "path_id": 16813
+      },
+      {
+        "index": 3529,
+        "name": "interface/title/title_atlas",
+        "file_id": 4,
+        "path_id": 18
+      }
+    ]
+  },
+  "unparsed_tail": {
+    "start_offset": 2138488,
+    "end_offset": 4862328,
+    "bytes": 2723840,
+    "sha256": "64d856b31b479f81612b2f833ac25ac2cfaf6e84cf02bedcbe3adf06b13535fc",
+    "first_u32_raw_value": 65218,
+    "interpretation": "NOT YET DECODED: no field identity, member semantics, or asset relationships assigned"
+  },
+  "usage": {
+    "verifier": "tools/prove_globalgamemanagers_resource_manager_container.py",
+    "reconstruction": "Running the verifier with the user's original matching globalgamemanagers reconstructs every one of the 43,941 original ordered [name,file_id,path_id] rows without modifying game files; optional --export-json writes complete records, --lookup accepts original numeric fileID PathID.",
+    "restrictions": [
+      "Original m_Container entries are asset-name-to-numeric-reference source records, not the referenced actual asset bytes.",
+      "The target serialized resources.assets and sharedassets0.assets parent containers lack independent original SHA/ObjectInfo bytes. Named reference matches with user exports are index joins only, not verified child object contents.",
+      "The remaining 2,723,840 bytes in the ResourceManager object are source SHA-preserved but field-unparsed; they must not be promoted to decoded relationships.",
+      "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+    ]
+  }
+}

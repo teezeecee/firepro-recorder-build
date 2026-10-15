@@ -6607,6 +6607,29 @@
         "Unity 5.6 field names/flags require version-specific original field-layout evidence; none inferred.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; original external shader/MonoScript target parent serialized assets unresolved."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_RESOURCE_MANAGER_CONTAINER_43941_SOURCE_V1",
+      "fact_id": "FACT-0338",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Exact original Unity ClassID147 ResourceManager 4,862,328-byte source with first 2,138,488 bytes fully parsed as 43,941 original m_Container UTF8 name/PPtr entries, all-row SHA, category histogram, anchor lookup, and 2,723,840-byte opaque tail SHA.",
+      "summary": "canonical/witnesses/GGM-001/resource_manager_container_43941.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x1DFC8",
+          "0x4C1140"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "m_Container paths and numeric PPtrs do not establish contents or identity of child objects without intact external target serialized parent SHA/ObjectInfo.",
+        "Full ResourceManager tail [2138488,4862328) is only SHA-identified, not structurally decoded.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; animations/shader/retail behavior remain unproven."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
