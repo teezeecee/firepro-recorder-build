@@ -7060,6 +7060,36 @@
         "No actual original TextAsset per-resource load and ParseRSFData invocation is proven.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_ORIGINAL_FPW_79_SUFFIX_SIBLING_PAIR_3610_FORM_BYTE_DIFFERENCES_V1",
+      "fact_id": "FACT-0354",
+      "source_ids": [
+        "RESPANEL-001",
+        "DLL-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Original SHA-pinned 440 fpw embedded RS source payloads: 65 textual _0/_1/_2 sibling families, 79 name pairs with identical 16-byte cumulative vectors and form counts. Their 3610 aligned original 12-byte form source comparisons contain 1186 identical and 2424 different source records. Full 12 byte-index changed-position counts [483,1378,259,1688,1506,1515,10,581,12,364,2,38]. Original DLL source read labels map index+6 to FormDispInfo.dispFrm, source byte difference present only in 2/79 sibling pairs. No claims of mirror/direction, rendered poses, frame timing, bank or actual asset loading.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_79_sibling_pairs_3610_form_byte_differences.summary.json",
+      "source_windows": [
+        [
+          "440 source GGM-indexed named original fpw RS resource bodies",
+          "65 suffix families 79 source pairs",
+          "3610 same-slot/same-form 12-byte original records"
+        ],
+        [
+          "matching original retail DLL SkillDataMan.ParseRSFData",
+          "previous exact FormDispInfo IL source windows",
+          "field label mapping of 12 source input byte positions"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Textual suffix pairs do not prove facing direction, mirroring, coordinate transformation or authored pose equivalence.",
+        "Field name dispFrm and source byte comparisons do not prove rendered frame timing or sound behaviour.",
+        "Actual original resources TextAsset load/parse execution not demonstrated; source byte indexes alone are insufficient.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
