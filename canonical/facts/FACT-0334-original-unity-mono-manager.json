@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0334",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The original Unity 5.6.5p3 globalgamemanagers ClassID116 MonoManager PathID6 has a complete 19,672-byte original source record at absolute 0xB608..0x102E0, SHA256 4638cf4462b1181129dff4454a02728020b58f94c202d2dd4ccfb69bfdcda038. Its original serialized table has 1,613 ordered numeric MonoScript PPtrs, exactly 1,611 using fileID1 and two using fileID2, followed by 13 original assembly-name rows (one empty). The complete ordered script-reference list is archived losslessly as compressed JSON text. Original fileID1 and fileID2 map to globalgamemanagers.assets and library/unity default resources through earlier FACT-0326. This establishes reference values and original assembly strings, not target script class identities or runtime execution.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Untouched original extensionless Unity5.6.5p3 globalgamemanagers 5,002,540-byte whole SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, serialized version17, original ObjectInfo TypeIndex5 ClassID116 PathID6 data relative42504 absolute0xB608 size19672 full SHA256 4638cf4462b1181129dff4454a02728020b58f94c202d2dd4ccfb69bfdcda038. Original 1,613 script row region [4,19360) SHA256 141c602e9562bf6ee0fc88820c63f06e5e061e6e44123e474f549ac3944df290, count-and-rows SHA256 37e8fd3c4de3413475007e8613caa52164984a44af0936e0acbce71bf35da590; final assembly table [19360,19672) SHA256 2bdb9a19bcfef4a40cf8ae3a387e527df25a1cccdfa8e97b7cb05aaec274b9cb. Independent original-file prover verifies every source pointer against the archived ordered text and every assembly name against source bytes.",
+      "observation": "Exactly 1,613 ordered original fileID/pathID numeric MonoScript pointers and 13 original aligned assembly names occupy the entire source object, with no unparsed remainder."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Source script reference values do not demonstrate the class names or bytes of their target MonoScript objects; full parent container SHA and ObjectInfo target proof remain required.",
+    "Names of assemblies alone do not demonstrate loading order, active match code, controller input mapping, animation execution or AI.",
+    "No original shader target bytes verified; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

@@ -6515,6 +6515,29 @@
         "No corresponding retail gameplay DLL dispatch proven by input names alone.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; shader container parents missing."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_MONOMANAGER_SCRIPTS_ASSEMBLIES_V1",
+      "fact_id": "FACT-0334",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Complete original Unity MonoManager ClassID116 PathID6 19,672-byte serialized object: all 1,613 ordered MonoScript numeric PPtr rows, archived in compressed lossless textual integer pairs, and all 13 exact assembly-name strings.",
+      "summary": "canonical/witnesses/GGM-001/mono_manager_1613_scripts_13_assemblies.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0xB608",
+          "0x102E0"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original source fileID/pathID references do not prove target MonoScript classes or byte contents without the original serialized target container.",
+        "The list of authored assembly names does not establish active execution, game AI, or animation mapping.",
+        "Source-only proof does not unlock the SOURCE_CONSOLIDATION_V1 runtime/viewer; original shader parents also unresolved."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
