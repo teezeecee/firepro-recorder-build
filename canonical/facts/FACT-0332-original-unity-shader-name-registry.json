@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0332",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The original Unity 5.6.5p3 globalgamemanagers ClassID94 ShaderNameRegistry PathID5 contains 206 complete ordered UTF8 name and numeric fileID/pathID entries in a 9,561-byte source object at 0x90A8..0xB601, full source SHA256 4cefc714845bde7c9e66a11fafea47d8eaecd4309d2b46b3b67628ca4ae42ab2. Eleven entries have FiPro/ names, including CustomSprite and SynthesisBase/SynthesisEnd. Numeric fileID1 aliases globalgamemanagers.assets and fileID5 aliases resources.assets through original FACT-0326 external dependency strings. This identifies original source name/reference mappings, not the referenced Shader object bytes or retail execution.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "5,002,540-byte original extensionless globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, serialized v17 ClassID94 TypeIndex4 PathID5, ObjectInfo original offset0x90A8 size9561 SHA256 4cefc714845bde7c9e66a11fafea47d8eaecd4309d2b46b3b67628ca4ae42ab2. Full 206-entry reconstruction stored as a compressed textual row witness, all 206 entries checked against the source by tools/prove_globalgamemanagers_shader_name_registry.py. Source rows bytes [4,9560) SHA256 28fa1d04d95ceef1c9215fbf508a7f49f6dba42406ad247e925f2a70994ff1a3 and terminal byte0 at offset9560.",
+      "observation": "206 exact ordered numeric asset-reference/name mappings; 11 original FiPro/ records; complete names preserved as compressed JSON text witness."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Original external dependency name is not proof of the referenced shader target object's actual existence or byte contents.",
+    "The original shader export ZIP lacks verified serialized parent asset identity and must not be promoted from this index alone.",
+    "Source registry names do not show runtime selected shader, draw order, visual effects or retail animation; runtime/viewer LOCKED."
+  ]
+}

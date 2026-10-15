@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_SHADER_NAME_REGISTRY_206_REFERENCES_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "related_facts": [
+    "FACT-0326"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 94,
+    "class_name": "ShaderNameRegistry",
+    "type_index": 4,
+    "path_id": 5,
+    "absolute_offset": 37032,
+    "relative_offset": 32936,
+    "bytes": 9561,
+    "sha256": "4cefc714845bde7c9e66a11fafea47d8eaecd4309d2b46b3b67628ca4ae42ab2"
+  },
+  "table": {
+    "count_offset": 0,
+    "count": 206,
+    "first_row_offset": 4,
+    "rows_end_offset": 9560,
+    "rows_raw_sha256": "28fa1d04d95ceef1c9215fbf508a7f49f6dba42406ad247e925f2a70994ff1a3",
+    "terminal_byte_offset": 9560,
+    "terminal_byte": 0,
+    "entry_shape": "little-endian int32 fileID, int64 pathID, uint32 UTF8 byte length, UTF8 bytes, 4-byte aligned"
+  },
+  "rows_archive": {
+    "encoding": "zlib-base64",
+    "decoded_format": "JSON UTF8 of ordered [file_id,path_id,name] triples; compact separators, ensure_ascii=false",
+    "decoded_bytes": 8087,
+    "decoded_sha256": "e9114c5845a11a320a78dc626ae28ff534914f6c09dbe4fb8407a97da8c106bf",
+    "data": "eNqdWdtO4zoU/ZWIJ5CC2iS9PtJCZ5BgqCh0Rmc0Qm7jgjVuEjkJA+fhfPvZjuPYSZxLRwiEste+ettetn/+dGxnZJ+tyJqFg2UaJ+FxEzGS4LNfNsgmJtHLle+ThLznmKkR85W8vlH4Te5RJHCOa5893w7Kyo4nPtLoDa0RxYn0PDda3XwGyRuOSbxAsbTgmGPkFgViLAF3PJ4jiiLsD54YCuIIMRwk1jJNwjTJzQ3bHd8EvgDOyrjn20pZRiav13iPKJe7tgN1+0p8HweD2yDBLED0hrGQbd6Qj5nATGY1zJJiJKXzmvRyGdKQYT93MYQf++wLFPgJfySWbtoZTsfjQn/F0BFf4136+orZIw4A9oTYK06uSRxR9Ml1PNsxONwkONgT+l32jGdPxqawjjsSgIcoefsWsiOicQ6eFOAFJckyjHJfk2lNkGnnUlWYZRi8Y5bwBFOWhTC0YQw3CQp8xHzrfBPhfUoRs2KcpNEFR4xsd6QguUmvHvaa4TWK42wESfCaA0eGKuwZxsEmQnvMixz+kem5daxeBC1qz56OTOADZjCgj/hA8T4hYSAtz5vBPIQi3KlhOO5DbmkLBkMm7dlnd/gV7T/zLokHW6gq/rgjSVHTCuCaHA5pjK0VipPcVxOmycQiPcK0sDpQcgQ7rHTBZLzXOEGENjrD9HB5S2l6JEF3DUrorjR0bM/MdZWu/Ez2u3RkX73j7lw1bG79OaC94B1Z1g2frHBK8CfUxFDFse067mxc09I2lO5S6uCOXHVov+roGl25GqyfoiJ2ztPyzXVOSCLXOD37XPEvMupZizViiFL00RVUgTtpDve1blY6oc37OjKpnFLcvn6MOn8xipvwkFg3/ituX6kKVgYUZ2jYsVfgFau5z5nfj0HxUdCN35+78AP87vBREF7988TaEB/70oVhR/6KaMjFE9srtIA87rGfMhEbcBbQg2okZE9xXOLRmS8l+k/KLu9TmpCIfuYGJiYDwJCgTJIXTUsQTqKtBeWE0Dc40s03iKzz6zDdUZzZn0Lyw0YHFtCtY7PFYpFpCegqIEerFnU2bHNe2IzM11lJPhpPwJ4QCW6CV+CqA0ETpF+9fVrh39E7cC+RNCeP/bQWhNJdCGS0Uf0b4kxRqvdLYQPcnR89JPoSxrw7piKWJyC1qu3rDFE/2ZS2AKEwbVXoWAJ0aL+FX9foWisM1nUVz54Ph8P6LIWTVM7Yl5REBdLpQvJ/C7Tbhi5QXhtqYehG2R8wZla27j3s9zSNgedbC8R+W+JUB2NU66gGjRMc3GH0juPTXAgdI3LJMIKTSTkKE6BiwxCobsoQX4tGY05dXh6ihBzJv9r61O2lrtMCluetnrY5vMVBvp7UZkz7giLh/VaUupq8vzGGop3L+9jM4aeGItVKodyHO0IBle3A1a91mpsLqitT/rlh3SpLa4U3i61zBwwxcQeAqJWtYBeNEVrnDwFsvjWNuKaSMSPgAGkUhSyJLbk0XqiFfF6AW+hHHWEkDzVY87Zeg1bYDPCwLHid+antfmiQajd9AuQUILX8OrbOFPABgVel4UqN7KatiPX5dmCMpSys3DwopXx/qH+16ip3zV64SPRN9avZDPB5hrL+aJZoEXDuOp0KkFaY7PPM1T9bq7AcWf795mnpVKc9dDguqIZRYBWMpDq3v9xml5Zy+J63TYDNW/jnTlxHx7+bQM9bJ76K12FMios2E0x0bDb++eWZM3aG6vKOHwIWNGVKNi7J1CUnl00qejhQWW4foQgoIYjeA1cBXjgo9s8WzHeY9Ad+oVtNAKDyLnXFwiMU7QqWxk8DrOAc28drEsNmInsEYp7o1GgL55oQzk+hX/emRA+bHy3Sq8BnIdGY+qj0UOAqgaqjYWqLm29Lg09a4Gu0/w1oR6H5O0b6sr56+QI1eQozey9BqC595rMWe7yvwJ6n0PMqmk/nQu5pRWy05ii0Y7LmKjlMP/7pHsdv/NFBPeIIsVcWF/tWDLvgHlsrgim/Kk/ZAe3xhdIblfUqCg/vmOWvAwJePLWIILO/pXcRAYOBEa8mcNbge816M1LC4j1J6pWO394QRuEfFNyRnZz1xUos5NW6q1MlgZLKNlED4Qx7KahaO06PNjzX6L+qp+PqG4767PUKocHmqEc4WrrjbHZxNi4PMeL7pHWo673BH7CaOleBZr0yU43O35i6O7XaeO7QND2UVdfpY/Uyiz5/ORF6btGpG1gFPzd7fpbj4hlnCav7rUYchIbXPa1VK7mjHnEpdJ/1T0u6x/qn+oLf/BhCERNUoWZtXaJgcyP7kn0snF/UGxpYXZtmYd8r2J2xnxSuMu6VbDzX1DbmaeZ5psBEJgo06i65Gn1vnG05+PCSvZTHfzCOhjB+v/4HcLN00Q=="
+  },
+  "file_id_counts": {
+    "0": 104,
+    "1": 12,
+    "2": 5,
+    "3": 25,
+    "4": 6,
+    "5": 51,
+    "6": 1,
+    "7": 1,
+    "8": 1
+  },
+  "fipro_names": [
+    {
+      "index": 0,
+      "file_id": 1,
+      "path_id": 14,
+      "name": "FiPro/CustomSprite",
+      "start_offset": 4,
+      "end_offset": 40
+    },
+    {
+      "index": 1,
+      "file_id": 1,
+      "path_id": 6,
+      "name": "FiPro/CustomSprite_Additive",
+      "start_offset": 40,
+      "end_offset": 84
+    },
+    {
+      "index": 2,
+      "file_id": 1,
+      "path_id": 7,
+      "name": "FiPro/CustomSprite_HighlightMap",
+      "start_offset": 84,
+      "end_offset": 132
+    },
+    {
+      "index": 5,
+      "file_id": 1,
+      "path_id": 9,
+      "name": "FiPro/CustomSprite_SynthesisBase",
+      "start_offset": 192,
+      "end_offset": 240
+    },
+    {
+      "index": 6,
+      "file_id": 1,
+      "path_id": 11,
+      "name": "FiPro/CustomSprite_Alpha",
+      "start_offset": 240,
+      "end_offset": 280
+    },
+    {
+      "index": 7,
+      "file_id": 1,
+      "path_id": 5,
+      "name": "FiPro/Lightmapped/Transparent Cutout",
+      "start_offset": 280,
+      "end_offset": 332
+    },
+    {
+      "index": 8,
+      "file_id": 1,
+      "path_id": 10,
+      "name": "FiPro/CustomSprite_SynthesisEnd",
+      "start_offset": 332,
+      "end_offset": 380
+    },
+    {
+      "index": 9,
+      "file_id": 1,
+      "path_id": 8,
+      "name": "FiPro/CustomUI_Additive",
+      "start_offset": 380,
+      "end_offset": 420
+    },
+    {
+      "index": 10,
+      "file_id": 1,
+      "path_id": 4,
+      "name": "FiPro/Lightmapped/Decal",
+      "start_offset": 420,
+      "end_offset": 460
+    },
+    {
+      "index": 173,
+      "file_id": 5,
+      "path_id": 21305,
+      "name": "FiPro/Unlit/Unlit_Additive",
+      "start_offset": 8048,
+      "end_offset": 8092
+    },
+    {
+      "index": 175,
+      "file_id": 5,
+      "path_id": 21307,
+      "name": "FiPro/AdditiveFlare",
+      "start_offset": 8124,
+      "end_offset": 8160
+    }
+  ],
+  "external_reference_join": {
+    "1": "globalgamemanagers.assets",
+    "5": "resources.assets"
+  },
+  "limits": [
+    "The names and numeric PPtrs are the original registry's serialized source; they do not prove the referenced target shader bytes or their executable programs.",
+    "fileID1 maps to the external dependency named globalgamemanagers.assets; this is not the extensionless source object's local table.",
+    "The shader export ZIP lacks independently proven target file provenance. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
