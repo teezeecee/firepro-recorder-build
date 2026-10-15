@@ -6561,6 +6561,29 @@
         "Source project metadata strings do not prove in-match runtime behavior, user interaction or visual output.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; original target shader and MonoScript parent containers remain unresolved."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_RUNTIME_INITIALIZE_ON_LOAD_164_SOURCE_V1",
+      "fact_id": "FACT-0336",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Complete original Unity ClassID300 RuntimeInitializeOnLoadManager PathID20 full 164-byte object, four padded original UTF8 strings and five unlabelled numeric u32 regions, nine contiguous original source SHA256 segments.",
+      "summary": "canonical/witnesses/GGM-001/runtime_initialize_164_bytes.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x4C5410",
+          "0x4C54B4"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Serialized UnityEditor.Advertisements and EditorOnLoad strings are not retail callback execution traces or proof of an enabled feature.",
+        "Original Unity 5.6 field semantics for unlabelled numeric sections not established.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; original shader and MonoScript target container sources absent."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
