@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0337",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The original Unity5.6.5p3 extensionless globalgamemanagers file includes a ClassID310 UnityConnectSettings object (TypeIndex19 PathID23), full 116 source bytes at absolute 0x4C54B8..0x4C552C, SHA256 09472756af261fbf6ec963005e7ecf38abf921e1c4508aa334c28da595881ab7. Its original four-byte little-endian length prefix at object offset 16 declares 56 UTF8 bytes: https://perf-events.cloud.unity3d.com/api/events/crashes. Four contiguous SHA256-pinned byte regions, including all original numeric values left unlabelled, cover the entire serialized source object. This is Unity serialized metadata, not evidence the game enabled the crash-reporting service or connected to the endpoint.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original user-owned Unity5.6.5p3 extensionless globalgamemanagers 5,002,540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; Unity serialized v17 TypeIndex19 ClassID310 PathID23 ObjectInfo relative4998328 absolute0x4C54B8 size116, complete object SHA256 09472756af261fbf6ec963005e7ecf38abf921e1c4508aa334c28da595881ab7. Four complete contiguous region offsets and SHA256 values, original full object/source file header/type/ObjectInfo and length-prefixed URL independently checked in tools/prove_globalgamemanagers_unity_connect_settings.py.",
+      "observation": "Four hash-bounded original source regions [0,16), [16,76), [76,96), [96,116) exhaust the 116-byte serialized object; exact 56-byte URL and numeric values retained."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "No exact Unity5.6 serialized per-field type layout establishes meanings for the other integer/bit values, which remain raw source words.",
+    "Stored URL is not evidence of any network traffic, crash report upload, service being enabled, or runtime telemetry collection.",
+    "This source object does not prove combat, movement, sprite shader program, referee, or UI behavior. Missing original Shader/MonoScript parent serialized asset bytes remain unresolved; runtime/viewer LOCKED."
+  ]
+}
