@@ -1,0 +1,23 @@
+{
+  "fact_id": "FACT-0343",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The exact original Fire Pro Unity5.6.5p3 sharedassets0.assets file (10,540,984 bytes) has 31 serialized type entries and 237 object records. Its complete original 10,534,936-byte object payload partitions into 10,534,433 bytes of 237 nonempty object bodies and 503 all-zero inter-object bytes in 130 gaps, without residual or overlap. Independent byte-read of original globalgamemanagers ResourceManager source names identifies exactly 11 fileID4 resource-name/PPtr occurrences, each PathID matching an actual, byte-hashed object in this uploaded original external target file. These are object-record and reference joins, not proof that original textures, shaders, rendering, animation or combat behavior have been reconstructed.",
+  "evidence": [
+    {
+      "source_id": "SA0-001",
+      "locator": "Exact original sharedassets0.assets 10,540,984 bytes SHA256 a306d8b262b11820dd4f24801db3ca158ce0e446f1a2f667951d83d6ec513521; header bytes [0,20), original metadata [20,6048), serialized object type records [37,974), ObjectInfo [980,5720) SHA256 e4d1ae504e0fd2a95419106e37f97c0129e712c2b6ad6a629d52752b2e93f16d, original data [6048,10540984) SHA256 21039c6300dc6a1816eb863597fce77a74ab83eb5d470d1bf1f39246ddfe5cbc; all 237 records, body aggregate, all-zero gaps and 11 PathID anchors proven by tools/prove_sharedassets0_objectinfo_ggm_links.py.",
+      "observation": "31 source type entries, 237 source object records, 130 zero alignment windows 503 bytes, complete byte partition and 11 target objects."
+    },
+    {
+      "source_id": "GGM-001",
+      "locator": "Original globalgamemanagers 5,002,540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; FACT-0326 original external mapping fileID4 sharedassets0.assets, original ResourceManager ClassID147 PathID13 object [122824,4985152) with 43,941 original name/PPtr rows. Read-only original byte reparse yields exactly eleven fileID4 named entries and all 11 numeric path IDs resolve in the exact SA0-001 ObjectInfo.",
+      "observation": "Eleven raw source named references join eleven distinct original serialized SA0 object records."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Source object ClassID and numeric PathID do not establish high-level asset content semantics or prove actual renderer output.",
+    "Original resources.assets 3,166,587,532-byte parent is still present locally but its source bytes have not been independently parsed.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer remain LOCKED."
+  ]
+}

@@ -6722,6 +6722,35 @@
         "No networking execution or behavior proven from historical Unity ClassID label or source reference intersection.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_SA0_237_OBJECTINFO_AND_GGM_11_ORIGINAL_TARGET_JOINS_V1",
+      "fact_id": "FACT-0343",
+      "source_ids": [
+        "SA0-001",
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Byte-exact intact 10,540,984-byte sharedassets0.asset source: 31 serialized type entries, 237 object records, complete 10,534,936-byte payload partition and eleven original GGM-001 fileID4/PPtr source-name joins to verified original target object bodies.",
+      "summary": "canonical/witnesses/SA0-001/original_237_objects_11_ggm_joins.summary.json",
+      "source_windows": [
+        [
+          "sharedassets0.assets",
+          "0x000000",
+          "0xA0D7B8"
+        ],
+        [
+          "globalgamemanagers",
+          "0x1DFC8",
+          "0x4C1140"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "ObjectInfo and numeric reference joins do not prove interpreted image/shader bytes, object runtime state, Unity external loader execution or gameplay features.",
+        "Original resources.assets content still lacks independent direct source parse.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

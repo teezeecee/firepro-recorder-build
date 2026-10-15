@@ -60,6 +60,19 @@
       "size_bytes": 5002540,
       "unity_version": "5.6.5p3",
       "note": "Original extensionless globalgamemanagers supplied 2026-10-14 from FireProWrestlingW_Data. Raw file and BuildSettings object hash were independently verified. Source-only fact; raw proprietary bytes stay outside Git."
+    },
+    {
+      "source_id": "SA0-001",
+      "kind": "RAW_RETAIL_BINARY",
+      "filename": "sharedassets0.assets",
+      "sha256": "a306d8b262b11820dd4f24801db3ca158ce0e446f1a2f667951d83d6ec513521",
+      "availability": "VERIFIED_LOCAL_BYTES",
+      "canonical_eligible": true,
+      "raw_required": true,
+      "git_storage": "HASH_AND_EXTRACTED_FACTS_ONLY",
+      "size_bytes": 10540984,
+      "unity_version": "5.6.5p3",
+      "note": "Intact original sharedassets0.assets directly supplied 2026-10-15 from user's FireProWrestlingW_Data; exact SHA256 matches independently returned read-only Windows inventory. Serialized type/ObjectInfo/body windows examined directly; proprietary source bytes remain outside Git."
     }
   ]
 }
