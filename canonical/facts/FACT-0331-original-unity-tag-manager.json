@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0331",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The exact original Unity 5.6.5p3 globalgamemanagers carries ClassID78 TagManager PathID3 as a full 932-byte source record at absolute 0x8CD8..0x907C, SHA256 d9a8f4f985a4e8c55bea8f51802214509e812bdce6dc59445b1e559d319a7e4f. Its original serialized tables comprise 18 tag strings, 32 named-or-blank layer slots, and four sorting-layer names with numeric unique IDs. Layer indices 10-21 explicitly contain StageWall, StageWall_Player, Ring, Ring_Player, BackRope, BackRope_Player, SideCorner, SideCorner_Player, FrontRope, FrontRope_Player, FrontIronPillar and FrontIronPillar_Player. Layer 27 contains FrontCage_Player, alongside audience, UI, preview and effect layers. Original sorting-layer names are Player, Default, Stage, Dialog with preserved unsigned numeric IDs. This is source-only project configuration, not geometry, object-layer membership or observed retail collisions.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original 5,002,540-byte extensionless Unity 5.6.5p3 globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c. Original TypeIndex2 ClassID78 ObjectInfo PathID3 data-relative31960 / absolute0x8CD8..0x907C size932 SHA256 d9a8f4f985a4e8c55bea8f51802214509e812bdce6dc59445b1e559d319a7e4f. Original tag table [0,348) SHA256 3fe20c6696297a947f6b312e1e2813b8c9914b3a5213e99132c4bb3e5103d171; original layer table [348,864) SHA256 834eb1f3ab04dbd2d7b35b65c557ee12c107be4420631ed5c5848f9e0b7812c8; sorting table [864,932) SHA256 895ea77b49cb44fa0804dd397f68b14cbf19d62e5fdf46aaeb907ae61557277f. Full witness canonical/witnesses/GGM-001/tag_manager_full.summary.json and raw source prover tools/prove_globalgamemanagers_tag_manager.py.",
+      "observation": "Exact authored Unity tag names, indexed layer names, sorting-layer unique IDs, with complete object and table byte boundaries."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "These source layer slots do not prove that active retail wrestlers, ropes, posts or colliders were assigned those layers in a particular scene.",
+    "Original two-dimensional or three-dimensional physics settings do not by themselves show game-specific collisions or map geometry.",
+    "No source shader target objects or retail rendering output established; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

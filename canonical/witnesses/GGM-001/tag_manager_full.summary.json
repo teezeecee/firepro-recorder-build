@@ -1,0 +1,445 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_TAGMANAGER_COMPLETE_TABLES_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 78,
+    "class_name": "TagManager",
+    "type_index": 2,
+    "path_id": 3,
+    "relative_offset": 31960,
+    "absolute_offset": 36056,
+    "bytes": 932,
+    "sha256": "d9a8f4f985a4e8c55bea8f51802214509e812bdce6dc59445b1e559d319a7e4f"
+  },
+  "tags": {
+    "count": 18,
+    "count_offset": 0,
+    "first_row_offset": 4,
+    "end_offset": 348,
+    "sha256": "3fe20c6696297a947f6b312e1e2813b8c9914b3a5213e99132c4bb3e5103d171",
+    "entries": [
+      {
+        "index": 0,
+        "start_offset": 4,
+        "end_offset": 24,
+        "name": "PreviewFormObj0",
+        "name_byte_length": 15
+      },
+      {
+        "index": 1,
+        "start_offset": 24,
+        "end_offset": 44,
+        "name": "PreviewFormObj1",
+        "name_byte_length": 15
+      },
+      {
+        "index": 2,
+        "start_offset": 44,
+        "end_offset": 64,
+        "name": "PreviewFormObj2",
+        "name_byte_length": 15
+      },
+      {
+        "index": 3,
+        "start_offset": 64,
+        "end_offset": 84,
+        "name": "PreviewFormObj3",
+        "name_byte_length": 15
+      },
+      {
+        "index": 4,
+        "start_offset": 84,
+        "end_offset": 92,
+        "name": "Icon",
+        "name_byte_length": 4
+      },
+      {
+        "index": 5,
+        "start_offset": 92,
+        "end_offset": 108,
+        "name": "SoundManager",
+        "name_byte_length": 12
+      },
+      {
+        "index": 6,
+        "start_offset": 108,
+        "end_offset": 128,
+        "name": "PreviewFormObj4",
+        "name_byte_length": 15
+      },
+      {
+        "index": 7,
+        "start_offset": 128,
+        "end_offset": 148,
+        "name": "PreviewFormObj5",
+        "name_byte_length": 15
+      },
+      {
+        "index": 8,
+        "start_offset": 148,
+        "end_offset": 168,
+        "name": "PreviewFormObj6",
+        "name_byte_length": 15
+      },
+      {
+        "index": 9,
+        "start_offset": 168,
+        "end_offset": 188,
+        "name": "PreviewFormObj7",
+        "name_byte_length": 15
+      },
+      {
+        "index": 10,
+        "start_offset": 188,
+        "end_offset": 208,
+        "name": "PreviewFormObj8",
+        "name_byte_length": 15
+      },
+      {
+        "index": 11,
+        "start_offset": 208,
+        "end_offset": 228,
+        "name": "PreviewFormObj9",
+        "name_byte_length": 15
+      },
+      {
+        "index": 12,
+        "start_offset": 228,
+        "end_offset": 248,
+        "name": "PreviewFormObj10",
+        "name_byte_length": 16
+      },
+      {
+        "index": 13,
+        "start_offset": 248,
+        "end_offset": 268,
+        "name": "PreviewFormObj11",
+        "name_byte_length": 16
+      },
+      {
+        "index": 14,
+        "start_offset": 268,
+        "end_offset": 288,
+        "name": "PreviewFormObj12",
+        "name_byte_length": 16
+      },
+      {
+        "index": 15,
+        "start_offset": 288,
+        "end_offset": 308,
+        "name": "PreviewFormObj13",
+        "name_byte_length": 16
+      },
+      {
+        "index": 16,
+        "start_offset": 308,
+        "end_offset": 328,
+        "name": "PreviewFormObj14",
+        "name_byte_length": 16
+      },
+      {
+        "index": 17,
+        "start_offset": 328,
+        "end_offset": 348,
+        "name": "PreviewFormObj15",
+        "name_byte_length": 16
+      }
+    ]
+  },
+  "layers": {
+    "count": 32,
+    "count_offset": 348,
+    "first_row_offset": 352,
+    "end_offset": 864,
+    "sha256": "834eb1f3ab04dbd2d7b35b65c557ee12c107be4420631ed5c5848f9e0b7812c8",
+    "entries": [
+      {
+        "index": 0,
+        "start_offset": 352,
+        "end_offset": 364,
+        "name": "Default",
+        "name_byte_length": 7
+      },
+      {
+        "index": 1,
+        "start_offset": 364,
+        "end_offset": 384,
+        "name": "TransparentFX",
+        "name_byte_length": 13
+      },
+      {
+        "index": 2,
+        "start_offset": 384,
+        "end_offset": 404,
+        "name": "Ignore Raycast",
+        "name_byte_length": 14
+      },
+      {
+        "index": 3,
+        "start_offset": 404,
+        "end_offset": 408,
+        "name": "",
+        "name_byte_length": 0
+      },
+      {
+        "index": 4,
+        "start_offset": 408,
+        "end_offset": 420,
+        "name": "Water",
+        "name_byte_length": 5
+      },
+      {
+        "index": 5,
+        "start_offset": 420,
+        "end_offset": 428,
+        "name": "UI",
+        "name_byte_length": 2
+      },
+      {
+        "index": 6,
+        "start_offset": 428,
+        "end_offset": 432,
+        "name": "",
+        "name_byte_length": 0
+      },
+      {
+        "index": 7,
+        "start_offset": 432,
+        "end_offset": 436,
+        "name": "",
+        "name_byte_length": 0
+      },
+      {
+        "index": 8,
+        "start_offset": 436,
+        "end_offset": 460,
+        "name": "BackAudienceSeats",
+        "name_byte_length": 17
+      },
+      {
+        "index": 9,
+        "start_offset": 460,
+        "end_offset": 488,
+        "name": "BackAudienceSeats_Player",
+        "name_byte_length": 24
+      },
+      {
+        "index": 10,
+        "start_offset": 488,
+        "end_offset": 504,
+        "name": "StageWall",
+        "name_byte_length": 9
+      },
+      {
+        "index": 11,
+        "start_offset": 504,
+        "end_offset": 524,
+        "name": "StageWall_Player",
+        "name_byte_length": 16
+      },
+      {
+        "index": 12,
+        "start_offset": 524,
+        "end_offset": 532,
+        "name": "Ring",
+        "name_byte_length": 4
+      },
+      {
+        "index": 13,
+        "start_offset": 532,
+        "end_offset": 548,
+        "name": "Ring_Player",
+        "name_byte_length": 11
+      },
+      {
+        "index": 14,
+        "start_offset": 548,
+        "end_offset": 560,
+        "name": "BackRope",
+        "name_byte_length": 8
+      },
+      {
+        "index": 15,
+        "start_offset": 560,
+        "end_offset": 580,
+        "name": "BackRope_Player",
+        "name_byte_length": 15
+      },
+      {
+        "index": 16,
+        "start_offset": 580,
+        "end_offset": 596,
+        "name": "SideCorner",
+        "name_byte_length": 10
+      },
+      {
+        "index": 17,
+        "start_offset": 596,
+        "end_offset": 620,
+        "name": "SideCorner_Player",
+        "name_byte_length": 17
+      },
+      {
+        "index": 18,
+        "start_offset": 620,
+        "end_offset": 636,
+        "name": "FrontRope",
+        "name_byte_length": 9
+      },
+      {
+        "index": 19,
+        "start_offset": 636,
+        "end_offset": 656,
+        "name": "FrontRope_Player",
+        "name_byte_length": 16
+      },
+      {
+        "index": 20,
+        "start_offset": 656,
+        "end_offset": 676,
+        "name": "FrontIronPillar",
+        "name_byte_length": 15
+      },
+      {
+        "index": 21,
+        "start_offset": 676,
+        "end_offset": 704,
+        "name": "FrontIronPillar_Player",
+        "name_byte_length": 22
+      },
+      {
+        "index": 22,
+        "start_offset": 704,
+        "end_offset": 728,
+        "name": "FrontAudienceSeats",
+        "name_byte_length": 18
+      },
+      {
+        "index": 23,
+        "start_offset": 728,
+        "end_offset": 748,
+        "name": "FormBankPreview",
+        "name_byte_length": 15
+      },
+      {
+        "index": 24,
+        "start_offset": 748,
+        "end_offset": 764,
+        "name": "UI_Dialog",
+        "name_byte_length": 9
+      },
+      {
+        "index": 25,
+        "start_offset": 764,
+        "end_offset": 780,
+        "name": "UI_Scroll",
+        "name_byte_length": 9
+      },
+      {
+        "index": 26,
+        "start_offset": 780,
+        "end_offset": 800,
+        "name": "SkillDataPreview",
+        "name_byte_length": 16
+      },
+      {
+        "index": 27,
+        "start_offset": 800,
+        "end_offset": 820,
+        "name": "FrontCage_Player",
+        "name_byte_length": 16
+      },
+      {
+        "index": 28,
+        "start_offset": 820,
+        "end_offset": 836,
+        "name": "FrontEffect",
+        "name_byte_length": 11
+      },
+      {
+        "index": 29,
+        "start_offset": 836,
+        "end_offset": 852,
+        "name": "UI_Dialog2",
+        "name_byte_length": 10
+      },
+      {
+        "index": 30,
+        "start_offset": 852,
+        "end_offset": 860,
+        "name": "UI2",
+        "name_byte_length": 3
+      },
+      {
+        "index": 31,
+        "start_offset": 860,
+        "end_offset": 864,
+        "name": "",
+        "name_byte_length": 0
+      }
+    ]
+  },
+  "sorting_layers": {
+    "count": 4,
+    "count_offset": 864,
+    "first_row_offset": 868,
+    "end_offset": 932,
+    "sha256": "895ea77b49cb44fa0804dd397f68b14cbf19d62e5fdf46aaeb907ae61557277f",
+    "entries": [
+      {
+        "index": 0,
+        "start_offset": 868,
+        "end_offset": 884,
+        "name": "Player",
+        "name_byte_length": 6,
+        "unique_id": 4060038209
+      },
+      {
+        "index": 1,
+        "start_offset": 884,
+        "end_offset": 900,
+        "name": "Default",
+        "name_byte_length": 7,
+        "unique_id": 0
+      },
+      {
+        "index": 2,
+        "start_offset": 900,
+        "end_offset": 916,
+        "name": "Stage",
+        "name_byte_length": 5,
+        "unique_id": 1186669689
+      },
+      {
+        "index": 3,
+        "start_offset": 916,
+        "end_offset": 932,
+        "name": "Dialog",
+        "name_byte_length": 6,
+        "unique_id": 4237908709
+      }
+    ]
+  },
+  "related_facts": [
+    "FACT-0329",
+    "FACT-0330"
+  ],
+  "limits": [
+    "Original project-level tags, numbered layer names and sorting names/IDs are not evidence of individual game object membership, real collision geometry, actual contact events, rope rebound, or hit detection.",
+    "Authored source layer mask defaults recorded in FACT-0329 and FACT-0330 can be indexed by these names, but live engine usage and real contact physics remain separate.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; original shader container identity still open."
+  ]
+}
