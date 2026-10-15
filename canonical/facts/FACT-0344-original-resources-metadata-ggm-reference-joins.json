@@ -1,0 +1,24 @@
+{
+  "fact_id": "FACT-0344",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The intact original first 1,842,222 bytes of Fire Pro Unity5.6.5p3 resources.assets, verified by exact prefix SHA256, contain a complete serialized header and metadata section declaring 455 type rows (419 ClassID114 type entries), 90,992 ordered nonzero-size ObjectInfo entries with unique consecutive PathIDs, 414 script PPtr rows and four external file references. The metadata-declared 3,164,745,308-byte data span is covered by 3,164,505,552 bytes of object-size declarations and 239,756 bytes of 64,064 index-declared gaps, without any claimed verification of the corresponding missing data bytes. Independently parsing exact original globalgamemanagers 43,941 resource-name/PPtr records yields 43,930 fileID5 resource references, all 43,930 unique PathIDs present in the original uploaded resources metadata ObjectInfo table. This proves original serialized metadata and numeric cross-file reference structure only; neither full resources.assets object contents nor gameplay/shader execution is claimed.",
+  "evidence": [
+    {
+      "source_id": "RESMETA-001",
+      "locator": "Exact read-only original resources.assets header+metadata prefix [0,1842222) SHA256 8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da, Unity header metadataSize1842202, declared source length3166587532, v17 and dataOffset1842224. Original raw type table [37,17206) SHA256 b7c271438f913b94a2e8d0ce748bda9b1f4e796b86a8d3286c92390f2d0109e2, ObjectInfo [17212,1837052) SHA256 9d15d5f8280f94bad62b151ee5017db9f99985c834e9f8bbcf86693069dfc463; scripts [1837052,1842024) SHA256 1688d6a2bc204f00d5f1aacbad73c0f3d1ab34565a167644d9ec8642046f8f31; externals [1842024,1842222) SHA256 075e9eec820ec811940a13d7e5f4cd759fee06146c52c5d29ce6628a5d7bd299. Source-only summary canonical/witnesses/RESMETA-001/original_90992_objectinfo_43930_ggm_joins.summary.json and read-only metadata verifier tools/prove_resources_original_metadata_ggm_links.py.",
+      "observation": "455 original type rows, 90,992 source ObjectInfo rows, 414 source script references, four external dependencies and complete index-declared data span. No original payload bytes received."
+    },
+    {
+      "source_id": "GGM-001",
+      "locator": "Exact original globalgamemanagers 5,002,540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c. FACT-0326 maps original fileID5 to resources.assets; ClassID147 ResourceManager original byte body [122824,4985152) provides 43,941 UTF8-name/PPtr records, 43,930 with numeric fileID5, independently rejoined to exact original 90,992 ObjectInfo descriptors. Eleven byte-addressed index anchors rechecked from both original sources.",
+      "observation": "43,930 unique named target references each resolve to an exact original serialized metadata PathID. No referenced target object body content claimed."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Original resources.assets physical data bytes and 2-byte metadata/data alignment interval are not supplied; declared object lengths/gaps do not establish actual content.",
+    "Prior Windows local whole-file inventory SHA256 9f76fc6147c7423fd4a3ece8d0222e24b1acdc8f7458b7e4c1eae98677a14f14 was not rechecked during prefix extraction, and is not presented as a new complete original-byte verification.",
+    "Source names, ClassIDs and exact pointers are not full texture/animation/sound/shader decoding or retail execution evidence.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

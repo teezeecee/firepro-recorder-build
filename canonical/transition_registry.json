@@ -6751,6 +6751,35 @@
         "Original resources.assets content still lacks independent direct source parse.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_RESOURCES_METADATA_90992_OBJECTINFO_43930_GGM_LINKS_V1",
+      "fact_id": "FACT-0344",
+      "source_ids": [
+        "RESMETA-001",
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Exact 1,842,222-byte original resources.assets metadata-prefix source with 455 type records, 90,992 ObjectInfo descriptors, 414 script PPtrs, four external refs and 43,930 original GGM fileID5 numeric PathID joins. No original resource object body bytes, padding content or retail runtime proved.",
+      "summary": "canonical/witnesses/RESMETA-001/original_90992_objectinfo_43930_ggm_joins.summary.json",
+      "source_windows": [
+        [
+          "resources.assets metadata prefix",
+          "0x000000",
+          "0x1C1C2E"
+        ],
+        [
+          "globalgamemanagers",
+          "0x1DFC8",
+          "0x4C1140"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Serialized reference metadata does not include target object bodies, pixel data, motion behavior or evidence of execution.",
+        "Original full resources.assets data region absent; 2-byte header-to-data offset gap also not uploaded.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

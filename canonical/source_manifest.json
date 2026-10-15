@@ -73,6 +73,19 @@
       "size_bytes": 10540984,
       "unity_version": "5.6.5p3",
       "note": "Intact original sharedassets0.assets directly supplied 2026-10-15 from user's FireProWrestlingW_Data; exact SHA256 matches independently returned read-only Windows inventory. Serialized type/ObjectInfo/body windows examined directly; proprietary source bytes remain outside Git."
+    },
+    {
+      "source_id": "RESMETA-001",
+      "kind": "ORIGINAL_SERIALIZED_METADATA_PREFIX",
+      "filename": "FIREPRO_RESOURCES_ORIGINAL_METADATA_v001.bin",
+      "sha256": "8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da",
+      "availability": "VERIFIED_LOCAL_BYTES",
+      "canonical_eligible": true,
+      "raw_required": true,
+      "git_storage": "HASH_AND_EXTRACTED_FACTS_ONLY",
+      "size_bytes": 1842222,
+      "unity_version": "5.6.5p3",
+      "note": "Exact first 1,842,222 bytes read-only extracted from user's original 3,166,587,532-byte resources.assets in FireProWrestlingW_Data. Entire prefix SHA independently validated against uploaded Windows metadata probe manifest. This is a metadata-prefix source only, not original resource object payload bytes. Original whole-file inventory SHA 9f76fc6147c7423fd4a3ece8d0222e24b1acdc8f7458b7e4c1eae98677a14f14 is reported separately; no full-file hash was rechecked during extraction. No proprietary original prefix bytes in Git."
     }
   ]
 }
