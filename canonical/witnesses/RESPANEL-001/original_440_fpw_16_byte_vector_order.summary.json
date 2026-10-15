@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_FPW440_RSF_16_SOURCE_BYTE_VECTOR_ORDER_AND_VARIANT_IDENTITY_V1",
+  "source_ids": [
+    "RESPANEL-001",
+    "DLL-001"
+  ],
+  "original_panel": {
+    "filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+    "bytes": 330116,
+    "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+    "report_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+    "report_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc",
+    "previous_source_fact": "FACT-0347",
+    "previous_source_prover": "tools/prove_original_440_fpw_rs_panel.py"
+  },
+  "original_dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "bytes": 8171008,
+    "original_method": "SkillDataMan.ParseRSFData",
+    "original_methoddef": "0x0600525F",
+    "full_il_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae",
+    "verified_prior_fact": "FACT-0274",
+    "source_byte_start": 48,
+    "source_byte_end_exclusive": 64,
+    "source_byte_count": 16,
+    "IL_read_window_sha256": "9341a572133ddfaaab1be56708be076289f15ca2c03a3845073a1e78c396b690",
+    "original_16_array_type": "System.Int32[]",
+    "original_16_array_target": "SkillDataMan.GetAnmNum 0x06005265",
+    "original_result_field": "SkillData.anmNum 0x04007C54",
+    "runtime_linkage_proven": false
+  },
+  "observed": {
+    "source_objects": 440,
+    "full_16_byte_vectors_non_decreasing": 440,
+    "full_16_byte_vectors_constant": 55,
+    "full_16_byte_vectors_some_increase": 385,
+    "byte_offsets_57_to_63_constant_within_each_vector": 440,
+    "distinct_16_byte_vectors": 273,
+    "original_vec48_63_concatenated_sha256": "69a4dc4d349e75d5d011e41ea18d9e801fad19851a7424d4b937062edfcaa295",
+    "indexed_440_vec_rows_sha256": "4798483892af5369892ecf0ecdd62f1a12ad43aa7f6cfe05df36f33d7d2be6d0",
+    "indexed_row_encoding": "Python json.dumps(records,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf8') with records in original GGM source-name order and fields index,path_id,name,len,vec,v64",
+    "min_vec_first": 4,
+    "max_vec_first": 94,
+    "min_vec_maximum": 7,
+    "max_vec_maximum": 202,
+    "suffixed_family_count": 65,
+    "suffixed_variant_count": 137,
+    "suffixed_two_variant_families": 58,
+    "suffixed_three_variant_families": 7,
+    "all_65_families_have_identical_16_byte_vectors": true,
+    "all_65_families_have_equal_embedded_source_length": true,
+    "first_source_byte_equals_source_byte64_plus_one_count": 440
+  },
+  "anchors": [
+    {
+      "index": 43501,
+      "name": "fpw_2004_0",
+      "path_id": 22222,
+      "embedded_bytes": 448,
+      "vector": [
+        20,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "source_byte64": 19
+    },
+    {
+      "index": 43890,
+      "name": "fpw_6172",
+      "path_id": 21353,
+      "embedded_bytes": 1696,
+      "vector": [
+        45,
+        91,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136
+      ],
+      "source_byte64": 44
+    },
+    {
+      "index": 43940,
+      "name": "fpw_6261",
+      "path_id": 21624,
+      "embedded_bytes": 2356,
+      "vector": [
+        94,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191,
+        191
+      ],
+      "source_byte64": 93
+    }
+  ],
+  "limits": [
+    "These ordered numeric byte sequences are extracted source data only, not animation timing or rendered motion.",
+    "Existing retail DLL instruction metadata proves the parser's conditional 16-byte input array read and GetAnmNum call, but not that it parsed every original TextAsset here or its resulting computed values.",
+    "Within-family identity applies only to source input slice 48..63, and does not mean variant resources have identical complete RS payloads or behavior.",
+    "No original raw game data in Git and runtime/viewer remain LOCKED."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0349",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "In the 440 byte-exact original named fpw_* embedded RS source payloads already proven in FACT-0347, the 16 original unsigned bytes at embedded payload indices +48 through +63 form a nondecreasing sequence in all 440. Fifty-five of those 16-byte vectors are constant, 385 have one or more increases; in every one of 440, byte positions +57 through +63 are mutually equal. There are 273 distinct 16-byte byte vectors, concatenated original 7040 bytes SHA256 69a4dc4d349e75d5d011e41ea18d9e801fad19851a7424d4b937062edfcaa295; full normalized indexed 440-row SHA256 4798483892af5369892ecf0ecdd62f1a12ad43aa7f6cfe05df36f33d7d2be6d0. In all 65 original _0/_1/_2 variant families (58 pairs, seven triples, 137 source objects), every variant has an exactly identical 16-byte slice at +48..+63 and equal total embedded-source length. Earlier matching original retail DLL evidence FACT-0274 proves the code conditionally fills a System.Int32[16] using unsigned input byte reads at relative argument offsets +48..+63 and calls SkillDataMan.GetAnmNum; this establishes compatible source index positions, not that the original resource vectors are observed execution-time argument values or represent animation durations.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "Read-only source body pack FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin 330116 bytes SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53 and original metadata/GGM-backed report SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc; previous exact 440-body source verifier tools/prove_original_440_fpw_rs_panel.py. New witness canonical/witnesses/RESPANEL-001/original_440_fpw_16_byte_vector_order.summary.json and tools/prove_original_fpw_16_byte_vector_order.py reproduce complete normalized source-index SHA256 4798483892af5369892ecf0ecdd62f1a12ad43aa7f6cfe05df36f33d7d2be6d0 and joined 7040-byte sequence SHA256 69a4dc4d349e75d5d011e41ea18d9e801fad19851a7424d4b937062edfcaa295.",
+      "observation": "440 original 16-byte sequences have nondecreasing numerical values and common per-sequence last-seven-byte plateau. Sibling filename-variant groups contain equal 16-byte source slices."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching original retail Assembly-CSharp(3).dll 8171008 bytes SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, prior independently proved FACT-0274 original SkillDataMan.ParseRSFData MethodDef0x0600525F IL+0x0361..+0x0399 SHA256 9341a572133ddfaaab1be56708be076289f15ca2c03a3845073a1e78c396b690; original int32[16] filled with unsigned input bytes at arg2+48..+63, passed to GetAnmNum MethodDef0x06005265 and stored in SkillData.anmNum FieldDef0x04007C54. Original witness canonical/witnesses/CAP-R6-001/skill_data_man_rsf_sixteen_anmnum_source_loop.summary.json and prior DLL verifier. This new source check compares offsets only.",
+      "observation": "Original source code contains a conditional contiguous sixteen-byte read window that aligns numerically with the indexed source bytes, without proving resource load execution or numeric meanings."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0347 original 440 object resource panel source integrity",
+      "to": "FACT-0349 440 native sixteen-byte vector ordering/variant identities",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "FACT-0347 440 original Unity ObjectInfo/GGM joined byte-exact source pack, SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53; new 440-source indexed vector digest and complete per-byte checks in tools/prove_original_fpw_16_byte_vector_order.py."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0274 original retail DLL 16-element byte-to-int32 input loop",
+      "to": "FACT-0349 original source vector position matches code reader window as a source-location comparison",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original SkillDataMan.ParseRSFData MethodDef 0x0600525F, matching 57-byte IL read segment SHA256 9341a572133ddfaaab1be56708be076289f15ca2c03a3845073a1e78c396b690; FACT-0274 witness original array read offsets +48..+63."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Nondecreasing unsigned bytes and repeated tail values are direct source observations and do not establish absolute frame numbers, time intervals, transitions, or animation duration.",
+    "The original DLL GetAnmNum call is proved as a MethodDef operand but its returned value for a given RS TextAsset is not computed or promoted by this fact.",
+    "Identical slices within a 65-family group do not mean sibling payloads, rendered character poses or source metadata have identical contents.",
+    "No original proprietary retail asset bytes committed to Git. Runtime/viewer SOURCE_CONSOLIDATION_V1 remains LOCKED."
+  ]
+}
