@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_ORIGINAL_FPW_79_SIBLING_3610_FORM_NUMERIC_SOURCE_DIFFERENCES_V1",
+  "source_ids": [
+    "RESPANEL-001",
+    "DLL-001"
+  ],
+  "original_panel": {
+    "filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+    "bytes": 330116,
+    "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+    "report_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+    "report_bytes": 473482,
+    "report_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc"
+  },
+  "original_dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "methoddef": "0x0600525F",
+    "method_il_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae"
+  },
+  "observed": {
+    "source_objects": 440,
+    "sibling_families": 65,
+    "sibling_pair_count": 79,
+    "aligned_form_comparisons": 3610,
+    "same_numeric_forms": 1186,
+    "different_numeric_forms": 2424,
+    "total_numeric_field_changes": 7681,
+    "full_3610_numeric_change_index_sha256": "2b5a11a77149e6b0c19f004166ab367de41fca341661665f38f3ee9dbc3380da",
+    "numeric_fields_changed_form_counts": {
+      "center_x": 483,
+      "center_y": 1378,
+      "formIdx": 1688,
+      "offset_x_x2": 1506,
+      "offset_y_x2": 1515,
+      "dispFrm": 10,
+      "formPri": 528,
+      "ringPri": 71,
+      "flags_initial": 12,
+      "flags_final": 147,
+      "dir_LR_bit": 165,
+      "dir_UD_bit": 66,
+      "altitude_bits": 70,
+      "ringVibration": 2,
+      "seID": 2,
+      "seLevel": 38,
+      "effectID_initial": 0
+    },
+    "numeric_fields_changed_pair_incidence": {
+      "center_x": 44,
+      "center_y": 79,
+      "formIdx": 79,
+      "offset_x_x2": 78,
+      "offset_y_x2": 78,
+      "dispFrm": 2,
+      "formPri": 40,
+      "ringPri": 3,
+      "flags_initial": 5,
+      "flags_final": 21,
+      "dir_LR_bit": 28,
+      "dir_UD_bit": 16,
+      "altitude_bits": 12,
+      "ringVibration": 1,
+      "seID": 1,
+      "seLevel": 16,
+      "effectID_initial": 0
+    },
+    "parent_raw_comparison_rows_sha256": "e0391e475eedb4da3a6199ea7267499d6d6c3f1c5bf8afbde986bde00e36b65a",
+    "parent_all_23037_numeric_rows_sha256": "06c901a9d5f98eb37254b916a4916f077c1824b9bd833533ba064c50df6114bf"
+  },
+  "anchors": [
+    {
+      "family": "fpw_2004",
+      "name_a": "fpw_2004_0",
+      "name_b": "fpw_2004_1",
+      "forms": 30,
+      "same": 1,
+      "fields_change_counts": {
+        "center_x": 16,
+        "center_y": 22,
+        "formIdx": 18,
+        "offset_x_x2": 23,
+        "offset_y_x2": 23,
+        "dir_LR_bit": 1,
+        "dir_UD_bit": 1
+      }
+    },
+    {
+      "family": "fpw_6048",
+      "name_a": "fpw_6048_0",
+      "name_b": "fpw_6048_1",
+      "forms": 49,
+      "same": 0,
+      "fields_change_counts": {
+        "center_x": 4,
+        "center_y": 26,
+        "formIdx": 25,
+        "offset_x_x2": 35,
+        "offset_y_x2": 29,
+        "dispFrm": 4,
+        "dir_LR_bit": 14,
+        "dir_UD_bit": 1,
+        "altitude_bits": 17,
+        "seID": 2,
+        "seLevel": 2
+      }
+    },
+    {
+      "family": "fpw_6161",
+      "name_a": "fpw_6161_0",
+      "name_b": "fpw_6161_1",
+      "forms": 104,
+      "same": 44,
+      "fields_change_counts": {
+        "center_x": 11,
+        "center_y": 24,
+        "formIdx": 36,
+        "offset_x_x2": 26,
+        "dispFrm": 6,
+        "flags_final": 24
+      }
+    }
+  ],
+  "limits": [
+    "Textual suffix sibling source comparisons are not evidence of actual runtime facing or mirroring.",
+    "Changed source-named dispFrm fields do not establish actual frame durations or animation playback.",
+    "No actual retail source loading, FormData part mapping, root transform, sound execution or AI proven; runtime/viewer LOCKED."
+  ]
+}
