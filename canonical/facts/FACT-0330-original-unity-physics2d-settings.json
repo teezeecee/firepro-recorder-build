@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0330",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The original retail Unity 5.6.5p3 extensionless globalgamemanagers includes ClassID19 Physics2DSettings PathID17 as one complete 208-byte original serialized object, absolute 0x4C5340..0x4C5410, SHA256 6e98836eadaeb994d979af1553accd38cdbe0e0a87d4099febf5a93982b36e04. Its first 8 bytes encode two little-endian float32 values [0, approximately -9.81], matching the Unity Physics 2D project gravity vector. The following 72 bytes are preserved exactly as raw source, including a u32 literal 32 at offset 76 without assigning field names not corroborated by the original Unity 5.6 schema. Its last 128 bytes contain exactly 32 consecutive original uint32 layer collision mask words, each 0xffffffff. This establishes authored 2D engine physics configuration only, not which physics engine or collision representation drives Fire Pro combat, arena motion or other runtime gameplay.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original exact 5,002,540-byte Unity v17 globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; original TypeDef ClassID19 TypeIndex16, ObjectInfo PathID17 relative 4997952 absolute 0x4C5340..0x4C5410 208 bytes SHA256 6e98836eadaeb994d979af1553accd38cdbe0e0a87d4099febf5a93982b36e04; first8 gravity region SHA256 077b92aecc42d606fd3c740ce7a54c80f4d8e3a5c2b760a74b806fcb2904c502, exact 72 bytes config SHA256 98678e92b71be575f34f9f7024b798d3d55b028a94161ac9655c5e06c0ac0226, final128 matrix SHA256 e9175db65a9789096ca9cb5524d3abc2107df03e3c9ba3af1aca628f9c5d3bd2. Complete pinned summary canonical/witnesses/GGM-001/physics2d_settings_208_bytes.summary.json and original-raw checker tools/prove_globalgamemanagers_physics2d_settings.py.",
+      "observation": "Exact original Physics2DSettings complete source bytes, x/y gravity vector and all-bits-set 32-entry collision mask source table."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "Project-authored Physics2DSettings are not direct proof of game physics calculations, wrestling hit detection, active scene colliders or collision geometry.",
+    "The middle 72 bytes retain literal source bytes but are not assigned Unity-version field meanings lacking corroboration.",
+    "No shader parent asset provenance established; SOURCE_CONSOLIDATION_V1 runtime/viewer remain LOCKED."
+  ]
+}

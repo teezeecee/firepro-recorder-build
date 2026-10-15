@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_PHYSICS2DSETTINGS_208B_SOURCE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 19,
+    "class_name": "Physics2DSettings",
+    "type_index": 16,
+    "path_id": 17,
+    "relative_offset": 4997952,
+    "absolute_offset": 5002048,
+    "bytes": 208,
+    "sha256": "6e98836eadaeb994d979af1553accd38cdbe0e0a87d4099febf5a93982b36e04"
+  },
+  "gravity_2d": {
+    "offset": 0,
+    "bytes": 8,
+    "component_type": "float32_le",
+    "words_hex": [
+      "00000000",
+      "c3f51cc1"
+    ],
+    "components_f32_approx": [
+      0,
+      -9.81
+    ],
+    "region_sha256": "077b92aecc42d606fd3c740ce7a54c80f4d8e3a5c2b760a74b806fcb2904c502"
+  },
+  "remaining_settings": {
+    "offset": 8,
+    "bytes": 72,
+    "exact_hex": "00000000000000000000000008000000030000000000803fcdcc4c3e000000410000c8420000b443cdcc4c3e0000403f0000003f0ad7233c000000400ad7233c0101000120000000",
+    "sha256": "98678e92b71be575f34f9f7024b798d3d55b028a94161ac9655c5e06c0ac0226",
+    "source_u32_at_offset_76": 32,
+    "interpretation": "All 72 bytes are exact and preserved without version-specific field promotion; the last u32 in this span is literally 32."
+  },
+  "layer_collision_matrix": {
+    "offset": 80,
+    "bytes": 128,
+    "entry_count": 32,
+    "entry_width": 4,
+    "all_mask_words_unsigned": 4294967295,
+    "exact_sha256": "e9175db65a9789096ca9cb5524d3abc2107df03e3c9ba3af1aca628f9c5d3bd2",
+    "entries": [
+      {
+        "index": 0,
+        "offset": 80,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 1,
+        "offset": 84,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 2,
+        "offset": 88,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 3,
+        "offset": 92,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 4,
+        "offset": 96,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 5,
+        "offset": 100,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 6,
+        "offset": 104,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 7,
+        "offset": 108,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 8,
+        "offset": 112,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 9,
+        "offset": 116,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 10,
+        "offset": 120,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 11,
+        "offset": 124,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 12,
+        "offset": 128,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 13,
+        "offset": 132,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 14,
+        "offset": 136,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 15,
+        "offset": 140,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 16,
+        "offset": 144,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 17,
+        "offset": 148,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 18,
+        "offset": 152,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 19,
+        "offset": 156,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 20,
+        "offset": 160,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 21,
+        "offset": 164,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 22,
+        "offset": 168,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 23,
+        "offset": 172,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 24,
+        "offset": 176,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 25,
+        "offset": 180,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 26,
+        "offset": 184,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 27,
+        "offset": 188,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 28,
+        "offset": 192,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 29,
+        "offset": 196,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 30,
+        "offset": 200,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      },
+      {
+        "index": 31,
+        "offset": 204,
+        "hex": "ffffffff",
+        "unsigned_le": 4294967295
+      }
+    ]
+  },
+  "limits": [
+    "Authored Unity Physics2DSettings project configuration is not evidence of actual Rigidbody2D or Collider2D usage, any wrestling hit-test code, game physics simulation, ring/apron collision hulls, or retail locomotion.",
+    "The 72 source configuration bytes are preserved exactly, but field boundaries and field names other than gravity and the mask table require a verified original Unity 5.6 type layout.",
+    "All 32 collision-mask words contain source bit 1 in every position; this does not establish that the retail game used all layers or had those layer collision pairs in any scene.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
