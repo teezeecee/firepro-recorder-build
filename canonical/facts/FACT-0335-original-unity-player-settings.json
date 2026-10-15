@@ -1,0 +1,18 @@
+{
+  "fact_id": "FACT-0335",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The original Unity 5.6.5p3 globalgamemanagers ClassID129 PlayerSettings PathID1 is a complete 546-byte source object at file absolute 0x1000..0x1222 with whole SHA256 29b1dc16893a24b45a5adf174363f8a0f62041ab79a41477bb95dddd789d6773. Four exact original aligned UTF8 string entries contain spikechunsoft, FireProWrestlingWorld, public.app-category.games and 1.0 at object offsets 36, 56, 344 and 484 respectively; four source little-endian uint32 values at object offsets 240..256 are 1280, 720, 960 and 600, preserved without assigning them to undocumented field names. Ten consecutive source regions from offset0 to 546 retain original region SHA256 boundaries and account for every byte of the original object, including opaque regions.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original 5,002,540-byte extensionless Unity5.6.5p3 globalgamemanagers SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, Unity serialized version17, TypeIndex0 ClassID129 ObjectInfo PathID1 data-relative0 / absolute 0x1000..0x1222 size546, whole body SHA256 29b1dc16893a24b45a5adf174363f8a0f62041ab79a41477bb95dddd789d6773. Ten contiguous regions with exact original source SHA digests, 4 length-prefixed aligned UTF8 strings and four unlabelled uint32 words independently verified by tools/prove_globalgamemanagers_player_settings.py.",
+      "observation": "Exactly verified source-only player settings text, four original integer words and ten contiguous hash-bounded sections with no unaccounted source bytes."
+    }
+  ],
+  "chain_edges": [],
+  "limits": [
+    "The four raw little-endian 32-bit words are not established as runtime renderer dimensions, camera settings, monitor resolution or execution parameters.",
+    "Authored Unity player settings do not prove Fire Pro combat, save format, DLC, match state, or actual user-visible configuration.",
+    "Missing original external shader/MonoScript target containers still require independent identity and original ObjectInfo before target decoding; runtime/viewer remain LOCKED."
+  ]
+}
