@@ -7207,6 +7207,41 @@
         "No caller-provided special block argument value established for any source form.",
         "No fprform_rff export-to-live-array byte or sprite parts mapping established; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_FPRFORM_RFF_LOADER_GGM_TEXTASSET_OBJECT_JOIN_V1",
+      "fact_id": "FACT-0359",
+      "source_ids": [
+        "DLL-001",
+        "GGM-001",
+        "RESMETA-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Exact original DLL 83-byte FormDataMan.LoadFormData_RFF method SHA 5d2ae2977dfe90a988ef4fffae2933a16eeed22044cd87a1db7ff705cbdf8b23 holds resource name WrestlerAnimation/fprform_rff, 37999 FormData array allocation and call to ParseFormData_RFF. Original GGM ResourceManager entry43500 wrestleranimation/fprform_rff resolves fileID5 PathID22906, 48-byte row SHA 750737d6592af2a89bd546f629104372fb68ba5c71a74242098a5ed20f2fe975. Original resources.assets metadata ObjectInfo PathID22906 ClassID49 declares original body12800024 bytes at absolute1970578200, ObjectInfo row SHA e045a41429562e93642cf0b0fefcc4c28a60c8308f8e1216a3a87f5d1c0814ca. Does NOT prove original full object body equivalence or loader runtime execution/sprite content.",
+      "summary": "canonical/witnesses/RESMETA-001/original_fprform_rff_ggm_loader_join.summary.json",
+      "source_windows": [
+        [
+          "Original retail DLL FormDataMan.LoadFormData_RFF MethodDef0x06001F0F",
+          "Exact 83-byte IL + #US0x700424BE + Forms FieldDef0x040026DD + ParseFormData_RFF call",
+          "Full original IL SHA 5d2ae2977dfe90a988ef4fffae2933a16eeed22044cd87a1db7ff705cbdf8b23"
+        ],
+        [
+          "Original globalgamemanagers ResourceManager complete container",
+          "Named entry43500 fileID5 PathID22906, original 48-byte source row",
+          "Raw name/reference row SHA 750737d6592af2a89bd546f629104372fb68ba5c71a74242098a5ed20f2fe975"
+        ],
+        [
+          "Original resources.assets 1842222-byte metadata prefix",
+          "Original ObjectInfo PathID22906 TypeIndex4 ClassID49 size12800024 absolute offset1970578200",
+          "Row SHA e045a41429562e93642cf0b0fefcc4c28a60c8308f8e1216a3a87f5d1c0814ca"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No SHA verified original PathID22906 serialized object payload bytes and no retail parser output.",
+        "Exact DLL resource literal differs in ASCII case from GGM original lowercased name; executed Unity resource name binding remains unproved.",
+        "FormData array runtime contents, sprite mapping, poses, actor transforms and timing remain unproved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

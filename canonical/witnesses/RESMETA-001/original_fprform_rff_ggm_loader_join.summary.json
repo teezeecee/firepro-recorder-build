@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FORMDATA_RFF_RESOURCE_LOADER_GGM_OBJECT_JOIN_V1",
+  "source_ids": [
+    "DLL-001",
+    "GGM-001",
+    "RESMETA-001"
+  ],
+  "original_dll": {
+    "source_id": "DLL-001",
+    "filename": "Assembly-CSharp.dll",
+    "bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "loader": {
+      "owner": "FormDataMan",
+      "method": "LoadFormData_RFF",
+      "token": "0x06001F0F",
+      "rva": "0x00109E1C",
+      "methoddef_row_hex": "1c9e100000008100600109005c4800004d16",
+      "method_header_hex": "133003005300000088070011",
+      "body_bytes": 83,
+      "body_sha256": "5d2ae2977dfe90a988ef4fffae2933a16eeed22044cd87a1db7ff705cbdf8b23",
+      "windows": [
+        {
+          "name": "resource_path_textasset_source",
+          "start": 0,
+          "end": 32,
+          "sha256": "78ae6165be71475686b54642a6a65f29a11d0b9da30ec1f071d504a1093d618c"
+        },
+        {
+          "name": "formdata_array_allocation",
+          "start": 32,
+          "end": 48,
+          "sha256": "4b1cfc828bc410284aad6450dc47c1355e2cccfb57e4131fd7ff5d20529f69de"
+        },
+        {
+          "name": "call_parser_start",
+          "start": 48,
+          "end": 67,
+          "sha256": "11833b09cccc219ae74932c4d420dbe7cfa306e9a71f7593131ebba8fe721493"
+        },
+        {
+          "name": "loader_tail",
+          "start": 67,
+          "end": 83,
+          "sha256": "164b0ba7cdfa54a6656727287a4061aefaae9f4ced5082cd53afba63de16fa73"
+        }
+      ],
+      "resource_name_user_string": {
+        "token": "0x700424BE",
+        "offset_in_user_string_heap": 271550,
+        "utf16le_data_length": 59,
+        "utf16le_data_sha256": "61c2458402afd9c6b8aee27e7e0c6c44e9451a2c9767bc997f9963aaba5f48f3",
+        "text": "WrestlerAnimation/fprform_rff"
+      },
+      "instructions": {
+        "ldstr_il_offset": 6,
+        "form_array_length_constant_il_offset": 32,
+        "form_array_length_constant": 37999,
+        "newarr_il_offset": 37,
+        "newarr_type_token": "0x02000402",
+        "forms_stfld_il_offset": 42,
+        "forms_field_token": "0x040026DD",
+        "parser_constructor_il_offset": 55,
+        "parser_constructor_token": "0x06001F1A",
+        "parse_call_il_offset": 60,
+        "parse_call_token": "0x06001F12"
+      }
+    }
+  },
+  "original_ggm": {
+    "source_id": "GGM-001",
+    "filename": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "resource_manager_offset": 122824,
+    "resource_manager_bytes": 4862328,
+    "record_count": 43941,
+    "entry": {
+      "index": 43500,
+      "resource_name": "wrestleranimation/fprform_rff",
+      "file_id": 5,
+      "path_id": 22906,
+      "record_relative_offset": 2119080,
+      "record_absolute_offset": 2241904,
+      "record_bytes": 48,
+      "record_sha256": "750737d6592af2a89bd546f629104372fb68ba5c71a74242098a5ed20f2fe975"
+    }
+  },
+  "original_metadata_prefix": {
+    "source_id": "RESMETA-001",
+    "filename": "FIREPRO_RESOURCES_ORIGINAL_METADATA_v001.bin",
+    "bytes": 1842222,
+    "sha256": "8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da",
+    "unity_version": "5.6.5p3",
+    "data_offset": 1842224,
+    "objectinfo_count": 90992,
+    "object": {
+      "path_id": 22906,
+      "objectinfo_row_offset": 475312,
+      "objectinfo_row_sha256": "e045a41429562e93642cf0b0fefcc4c28a60c8308f8e1216a3a87f5d1c0814ca",
+      "class_id": 49,
+      "type_index": 4,
+      "payload_relative_offset": 1968735976,
+      "payload_absolute_offset": 1970578200,
+      "declared_body_bytes": 12800024
+    }
+  },
+  "observed": {
+    "loader_il_bytes": 83,
+    "static_form_array_allocation_length_operand": 37999,
+    "source_literal": "WrestlerAnimation/fprform_rff",
+    "original_resource_manager_name": "wrestleranimation/fprform_rff",
+    "ascii_casefold_name_equal": true,
+    "original_ggm_index": 43500,
+    "original_external_file_id": 5,
+    "original_resources_path_id": 22906,
+    "original_serialized_class_id": 49,
+    "original_serialized_object_declared_bytes": 12800024,
+    "original_serialized_object_declared_absolute_offset": 1970578200
+  },
+  "limits": [
+    "The loader method is statically present in a matching original DLL; no runtime invocation or successful Unity Resources.Load is observed.",
+    "The DLL literal and original GGM resource name match under ASCII lowercasing; case matching by the retail Unity resource loader is not proven from this evidence.",
+    "The original serialized metadata row declares location and size for PathID22906 but contains no bytes of that original 12,800,024-byte object body. The original object body has not been independently read and SHA-matched here.",
+    "A separately supplied UABE fprform_rff export matches declared length; original-body byte equality, its internal record layout, successful runtime Forms initialization and sprite or art links remain unverified.",
+    "Static 37999 array-size operand and ParseFormData_RFF call do not establish actual loaded FormData values or runtime execution. Source-only; runtime/viewer LOCKED."
+  ]
+}
