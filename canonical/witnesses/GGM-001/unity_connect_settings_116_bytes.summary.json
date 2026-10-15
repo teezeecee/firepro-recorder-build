@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_UNITY_CONNECT_SETTINGS_116_BYTE_SOURCE_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 310,
+    "class_name": "UnityConnectSettings",
+    "type_index": 19,
+    "path_id": 23,
+    "relative_offset": 4998328,
+    "absolute_offset": 5002424,
+    "bytes": 116,
+    "sha256": "09472756af261fbf6ec963005e7ecf38abf921e1c4508aa334c28da595881ab7"
+  },
+  "regions": [
+    {
+      "name": "leading_numeric",
+      "start_offset": 0,
+      "end_offset": 16,
+      "bytes": 16,
+      "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "unlabelled_u32": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "crash_url",
+      "start_offset": 16,
+      "end_offset": 76,
+      "bytes": 60,
+      "sha256": "8c4e99da07f4b072cb1473996bd4ad604ad03869bc12fda4b491e9872da2e41f",
+      "string_length": 56,
+      "text": "https://perf-events.cloud.unity3d.com/api/events/crashes"
+    },
+    {
+      "name": "trailing_numeric_a",
+      "start_offset": 76,
+      "end_offset": 96,
+      "bytes": 20,
+      "sha256": "1ed4fb3c6bd6cbad09be39eca920bd5e184674f788e911896c760ab2ec78e372",
+      "unlabelled_u32": [
+        0,
+        0,
+        256,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "trailing_numeric_b",
+      "start_offset": 96,
+      "end_offset": 116,
+      "bytes": 20,
+      "sha256": "2e1b01f02f421bbcef114896ffe7fac6d728f25103c3f1a3a75f61fc3a8036d0",
+      "unlabelled_u32": [
+        256,
+        4294967295,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "embedded_url": {
+    "object_offset": 16,
+    "length_prefix_u32": 56,
+    "bytes_start": 20,
+    "bytes_end": 76,
+    "value": "https://perf-events.cloud.unity3d.com/api/events/crashes"
+  },
+  "limits": [
+    "This URL is an original UnityConnectSettings serialized string and does not prove that the game contacted the endpoint or uploaded any crash reports.",
+    "Class name follows the Unity ClassID 310 mapping; no exact Unity 5.6 per-field layout is used to interpret the unlabelled original numeric values.",
+    "The external Shader and MonoScript target serialized parent containers are still not independently established; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+  ]
+}
