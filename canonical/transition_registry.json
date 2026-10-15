@@ -7178,6 +7178,35 @@
         "Repeated number is not proven shared rendered frame, facing, mirror, actor coordinates or time.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_FPW_FORMIDX_GETFORMDATA_SOURCE_BRANCH_SPLIT_V1",
+      "fact_id": "FACT-0358",
+      "source_ids": [
+        "DLL-001",
+        "RESPANEL-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Exact matching original DLL FormDataMan.GetFormData 84-byte IL source SHA 68502418fd273429f220e8ad06717123d67e39fb6b67d5e698f11a159547270f establishes primary-array null and input range gates, original input 37000..37999 block branch selecting secondary array by caller arg2 plus input-37000, other inputs primary array; all 23037 original GGM-indexed fpw formIdx source values classify into 19010 regular and 4027 special block-range input records, complete source group row SHA be5b21ef2c8f8299dace1e14cf9f5e87dedee6515a2237627897fc8e6de480cb. Source-input classification only, no actual loaded sprite array/parts/pose.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_23037_formidx_getformdata_branch_source_split.summary.json",
+      "source_windows": [
+        [
+          "Original matching DLL MethodDef0x06001F17 FormDataMan.GetFormData",
+          "Complete original 84-byte body; null/bounds/37000 and 37999 branches; primary and secondary array fields",
+          "Method body SHA 68502418fd273429f220e8ad06717123d67e39fb6b67d5e698f11a159547270f"
+        ],
+        [
+          "Original 440 GGM-linked fpw RS TextAsset source objects",
+          "All 1347 original segment headers and 23037 original source formIdx byte2..3 values",
+          "19010 regular, 4027 special block-range source inputs"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No observed runtime source TextAsset parsing/materialization or concrete FormDataMan table contents.",
+        "No caller-provided special block argument value established for any source form.",
+        "No fprform_rff export-to-live-array byte or sprite parts mapping established; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

@@ -1,0 +1,44 @@
+{
+  "fact_id": "FACT-0358",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "Original matching retail DLL FormDataMan.GetFormData MethodDef0x06001F17 RVA0x0010A4D0 is exactly 84 IL bytes SHA256 68502418fd273429f220e8ad06717123d67e39fb6b67d5e698f11a159547270f. Its direct IL tests primary field0x040026DD for null, returns null if null or if arg1 is negative or outside primary-array length, then dispatches arg1 >=37000 and <=37999 to field0x040026DE indexed by caller-provided arg2, followed by [arg1-37000]; all other input arg1 integers return primary field0x040026DD[arg1]. Independently SHA-checked 440 original GGM-linked fpw RS objects yield 23,037 source packed formIdx numeric inputs matched to exact ParseRSFData bytes2..3: 19,010 inputs in [100,36999] across 404 original source objects, and 4,027 inputs in [37000,37998] across 179 original source objects. Both groups include 6,215 and 999 distinct integers respectively. The full location-indexed 23,037 source input/group/array-index operand rows have SHA256 be5b21ef2c8f8299dace1e14cf9f5e87dedee6515a2237627897fc8e6de480cb. This is direct DLL static branch and original source input classification, NOT evidence that these objects were loaded, that the caller's arg2 has any particular value, that a returned FormData existed, or that graphic parts/sprites/time/directions/AI were resolved.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Exact original matching 8,171,008-byte Assembly-CSharp SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, prior FACT-0280 exact FormDataMan.GetFormData MethodDef0x06001F17 method row signature and invocation from ParseRSFData; original GetFormData method body 84 bytes SHA256 68502418fd273429f220e8ad06717123d67e39fb6b67d5e698f11a159547270f, five independently rehashed complete contiguous IL source regions, verified branch opcodes at IL+0x0006,0x000F,0x001D,0x002A,0x0035, fields at IL+0x0001/0x0016/0x003B/0x004C, constants 37000 and 37999, and two separate array output paths.",
+      "observation": "Specific source method checks primary-array/null/index range; branch 37000..37999 selects secondary array indexed by arg2 then [input-37000]; remaining valid input selects primary [input]."
+    },
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "Original SHA-pinned complete 440 GGM-linked fpw source panel 330116 bytes SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53 and 473482-byte GGM panel report SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc. Original 1347 RS segment bounded source forms and previously proven DLL byte2..3 big-endian formIdx input; full original 23037 source form reference branch classification SHA256 be5b21ef2c8f8299dace1e14cf9f5e87dedee6515a2237627897fc8e6de480cb.",
+      "observation": "Classified all 23037 original source formIdx inputs, original GGM index/PathID/name/slot/form/source offset, numeric input and computed branch operand by exact retail DLL numeric thresholds."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0280 original retail ParseRSFData call to FormDataMan.GetFormData",
+      "to": "FACT-0358 direct original GetFormData 84-byte IL null/bounds/threshold/primary and block array lookup path",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original exact GetFormData MethodDef0x06001F17 signature/row FACT-0280 and new full original 84-byte body SHA plus five continuous IL window SHAs."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0357 exact 23037 original source formIdx numeric source-location index",
+      "to": "FACT-0358 complete 19010 ordinary / 4027 block-range source input grouping by original GetFormData thresholds",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "All original 440 SHA-pinned GGM-linked resource source bytes and original source index; full 23037 classified source row SHA be5b21ef2c8f8299dace1e14cf9f5e87dedee6515a2237627897fc8e6de480cb."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Static GetFormData IL does not prove GetFormData executed for any specific original `fpw_*` source. Primary FormData array runtime length and contents, special block array initialization, arg2 runtime values and selected FormData remain unknown.",
+    "The original UABE fprform_rff export cannot be treated as a demonstrated initialized FormData array or sprite mapping without separate source-proven retail loader and byte/record indexes.",
+    "No firsthand game runtime graphics, pose, animation timing, mirror, coordinates, sound or AI established. No proprietary source bytes committed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
