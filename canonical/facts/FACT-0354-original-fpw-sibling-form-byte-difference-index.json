@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0354",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "The exact original SHA-verified 440 named fpw_* RS resource panel contains 65 textual _0/_1/_2 sibling families and 79 distinct pairwise comparisons (65 0/1, seven 0/2, seven 1/2). In every one of the 79 pairs the 16-byte cumulative source vector and slot-wise source form counts are identical, allowing 3610 unambiguous source-position-aligned comparisons of 12-byte original form records. Exactly 1186 paired form records are byte-identical and 2424 differ in one or more source byte columns; all 79 source sibling pairs have some form differences. Aggregate numbers of changed byte positions for the 12 original per-form input indices 0..11 are [483,1378,259,1688,1506,1515,10,581,12,364,2,38], with pair counts displaying any change by column [44,79,44,79,78,78,2,41,5,42,1,16]. Seventy-five pairs have identical first 12-byte segment-header sources; four do not. The SHA256 of a complete original keyed 79-pair summary index is 094a628a4fba8605641eb5d0730b8112aebf715a603400ea6437d745af9fc2d2 and the SHA256 of all 3610 individual aligned-form source comparison records is e0391e475eedb4da3a6199ea7267499d6d6c3f1c5bf8afbde986bde00e36b65a. Separately already proven retail DLL FormDispInfo source byte reader locations label offset6 dispFrm, offset0..1 centerPos, offset2..3 formIdx, offset4..5 formOfsPos, etc. Only two of 79 filename sibling pairs differ in any form offset6 byte; this is a source-byte invariant, not proof of timing identity, direction/mirror mapping or playback equivalence.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "Original 440 SHA-verified named fpw TextAsset source pack 330116 bytes SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53, original 473482-byte GGM-linked manifest SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc; prior FACT-0347/0350/0352/0353. All 79 pair and 3610 source-form comparison digest witnesses and SHA-verifying read-only original source prover canonical/witnesses/RESPANEL-001/original_79_sibling_pairs_3610_form_byte_differences.summary.json and tools/prove_original_fpw_sibling_form_byte_differences.py.",
+      "observation": "Every source family pair has exact equal source 16-byte vectors and slot-wise form record cardinality; original source form byte comparison yields 3610 aligned records, 2424 distinct form comparisons, 1186 identical comparisons, with field-column changes counted at all 12 original source indices."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Previously SHA-pinned matching retail DLL 8171008 bytes SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; original SkillDataMan.ParseRSFData MethodDef0x0600525F full IL SHA256 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae and FACT-0278/0279/0281/0282/0283/0284/0285 verified FormDispInfo byte-reader windows. Static test ensures original DLL metadata witness field map for dispFrm source byte index6 and preceding source input byte-reader span.",
+      "observation": "Retail DLL original form source input position+6 is written to FormDispInfo.dispFrm, but equal values do not directly prove equal authored display duration, runtime frame progress or on-screen motion."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0352 exact source cumulative twelve-byte boundaries and FACT-0353 all form-block identities",
+      "to": "FACT-0354 3610 same-slot/same-form original sibling source comparisons",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "Original SHA-pinned 440 source resource bytes, GGM names, PathIDs, and exact suffix-family 16-vector and per-slot form equality; full per-pair and per-form SHA-indexed comparison rows."
+        }
+      ]
+    },
+    {
+      "from": "Previously source-verified original DLL FormDispInfo byte input field offsets",
+      "to": "FACT-0354 field-column reporting by established source byte read positions only",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original 1735-byte full parser IL and prior source witnesses confirming exact source form byte ordering and original metadata field-name ownership, particularly FACT-0281 dispFrm input at source form byte +6."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Textual sibling suffixes do not establish animation directions, mirror rules, direction bank association, actor facing or any rendering transformation.",
+    "Values at FormDispInfo.dispFrm source input index6 cannot be promoted to true runtime frame length or identical timing without transitive retail playback proof.",
+    "Source byte comparisons of every corresponding form record are not evidence that these original 440 TextAssets all execute under the actual retail engine.",
+    "No original game content/asset binaries copied into Git, and SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+  ]
+}

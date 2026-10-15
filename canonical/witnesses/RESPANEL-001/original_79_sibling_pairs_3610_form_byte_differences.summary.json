@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_ORIGINAL_FPW_79_SUFFIX_SIBLING_PAIR_3610_FORM_BYTE_DIFFERENCES_V1",
+  "source_ids": [
+    "RESPANEL-001",
+    "DLL-001"
+  ],
+  "original_panel": {
+    "filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+    "bytes": 330116,
+    "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+    "report_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+    "report_bytes": 473482,
+    "report_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc",
+    "prior_facts": [
+      "FACT-0347",
+      "FACT-0350",
+      "FACT-0352",
+      "FACT-0353"
+    ]
+  },
+  "original_dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "methoddef": "0x0600525F",
+    "method_il_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae",
+    "prior_source_facts": [
+      "FACT-0278",
+      "FACT-0279",
+      "FACT-0281",
+      "FACT-0282",
+      "FACT-0283",
+      "FACT-0284",
+      "FACT-0285"
+    ],
+    "input_byte_to_source_label": [
+      {
+        "offset": 0,
+        "label": "centerPos signed input x"
+      },
+      {
+        "offset": 1,
+        "label": "centerPos signed input y"
+      },
+      {
+        "offset": 2,
+        "label": "formIdx high byte"
+      },
+      {
+        "offset": 3,
+        "label": "formIdx low byte"
+      },
+      {
+        "offset": 4,
+        "label": "formOfsPos signed input x"
+      },
+      {
+        "offset": 5,
+        "label": "formOfsPos signed input y"
+      },
+      {
+        "offset": 6,
+        "label": "dispFrm unsigned input"
+      },
+      {
+        "offset": 7,
+        "label": "priority packed input"
+      },
+      {
+        "offset": 8,
+        "label": "initial flags input"
+      },
+      {
+        "offset": 9,
+        "label": "supplementary flags/direction/altitude packed input"
+      },
+      {
+        "offset": 10,
+        "label": "ringVibration and flags input"
+      },
+      {
+        "offset": 11,
+        "label": "seID and seLevel packed input"
+      }
+    ],
+    "direct_retail_runtime_asset_selection_proven": false
+  },
+  "observed": {
+    "source_objects": 440,
+    "sibling_families": 65,
+    "sibling_pair_count": 79,
+    "two_member_families": 58,
+    "three_member_families": 7,
+    "pair_suffix_counts": {
+      "0_1": 65,
+      "0_2": 7,
+      "1_2": 7
+    },
+    "aligned_form_pair_comparisons": 3610,
+    "identical_aligned_form_pairs": 1186,
+    "different_aligned_form_pairs": 2424,
+    "all_sibling_pair_form_counts_aligned": 79,
+    "all_sibling_pair_vectors_equal": 79,
+    "all_sibling_pairs_have_at_least_one_different_form": 79,
+    "sibling_pairs_with_same_first_12_byte_header": 75,
+    "sibling_pairs_with_different_first_12_byte_header": 4,
+    "original_byte_offsets_with_form_pair_differences": [
+      483,
+      1378,
+      259,
+      1688,
+      1506,
+      1515,
+      10,
+      581,
+      12,
+      364,
+      2,
+      38
+    ],
+    "sibling_pairs_with_any_differences_in_each_form_byte_offset": [
+      44,
+      79,
+      44,
+      79,
+      78,
+      78,
+      2,
+      41,
+      5,
+      42,
+      1,
+      16
+    ],
+    "pair_comparison_min_form_count": 10,
+    "pair_comparison_max_form_count": 182,
+    "indexed_79_pair_summary_sha256": "094a628a4fba8605641eb5d0730b8112aebf715a603400ea6437d745af9fc2d2",
+    "indexed_3610_aligned_form_comparison_sha256": "e0391e475eedb4da3a6199ea7267499d6d6c3f1c5bf8afbde986bde00e36b65a",
+    "pair_row_encoding": "Python json.dumps(pair_rows,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf8'); sorted family and suffix names; per-pair fields family,name_a,name_b,path_a,path_b,form_comparisons,identical_forms,changed_forms,column_changed_counts,segment_form_counts,first_header_equal",
+    "form_row_encoding": "Python json.dumps(form_rows,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf8'); sorted family/name pair, source vector slot, and within-segment form index; per-aligned-form fields family,name_a,name_b,slot,form,source_offset,changed_byte_offsets,raw_equal"
+  },
+  "anchors": [
+    {
+      "family": "fpw_2004",
+      "name_a": "fpw_2004_0",
+      "name_b": "fpw_2004_1",
+      "path_a": 22222,
+      "path_b": 21484,
+      "form_comparisons": 30,
+      "identical_forms": 1,
+      "changed_forms": 29,
+      "column_changed_counts": [
+        16,
+        22,
+        14,
+        18,
+        23,
+        23,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "segment_form_counts": [
+        [
+          0,
+          19
+        ],
+        [
+          1,
+          11
+        ]
+      ],
+      "first_header_equal": true
+    },
+    {
+      "family": "fpw_6161",
+      "name_a": "fpw_6161_0",
+      "name_b": "fpw_6161_1",
+      "path_a": 21372,
+      "path_b": 23119,
+      "form_comparisons": 104,
+      "identical_forms": 44,
+      "changed_forms": 60,
+      "column_changed_counts": [
+        11,
+        24,
+        0,
+        36,
+        26,
+        0,
+        6,
+        0,
+        0,
+        24,
+        0,
+        0
+      ],
+      "segment_form_counts": [
+        [
+          0,
+          15
+        ],
+        [
+          1,
+          15
+        ],
+        [
+          2,
+          15
+        ],
+        [
+          3,
+          15
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          6,
+          11
+        ],
+        [
+          7,
+          11
+        ]
+      ],
+      "first_header_equal": true
+    }
+  ],
+  "limits": [
+    "These records compare matching original 12-byte source-form positions across textually suffixed file names only, NOT a verified relationship of runtime animation direction or mirroring.",
+    "Original DLL source field names are matched to original raw source offsets. Differences in these bytes do not prove how retail renders, translates, rotates or times the corresponding records.",
+    "Aligned source vectors and form counts were checked for each sibling pair; equal form source records do not establish identical playback because other original data may differ.",
+    "No original proprietary source bodies or individual original form record bytes are committed to Git; runtime/viewer remains LOCKED."
+  ]
+}
