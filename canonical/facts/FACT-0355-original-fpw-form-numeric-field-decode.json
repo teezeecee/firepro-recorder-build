@@ -1,0 +1,44 @@
+{
+  "fact_id": "FACT-0355",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "The 440 original GGM-linked named fpw_* embedded RS source objects, completely source-body SHA verified, contain exactly 23037 source form records of 12 bytes each after 1347 independently byte-bounded segment header blocks. Applying only independently source-verified matching retail DLL SkillDataMan.ParseRSFData FormDispInfo input instructions to these original source bytes yields 23037 deterministic numeric *source-input decode* rows, not runtime object observations. Each original 12-byte form maps signed8 first two bytes to centerPos component inputs; (byte2 << 8)|byte3 to formIdx input; signed8 byte4 and byte5 each multiplied by 2 to formOfsPos inputs; byte6 to dispFrm; byte7 bits6..7 to formPri and bits3..5 to ringPri; byte8 initializes flags; byte9 conditional bit tests OR original masks 0x400,0x800,0x100 into flags and select source-labelled dir_LR/dir_UD bits and 3-bit altitude; byte10 bit5 ORs 0x200 into flags and bit3..4 supplies ringVibration; byte11 low6 bits supplies seID and high2 supplies seLevel; original effectID initialized with literal -1. The ordered 23037 decoded original source rows (GGM index/PathID/name/slot/form/source_offset and all 17 decoded numeric values) have SHA256 06c901a9d5f98eb37254b916a4916f077c1824b9bd833533ba064c50df6114bf, and independently previously proved concatenated raw source form bytes SHA256 93807a1a2d1208e693ef225d80598f3d1fb70f58d2a132d63fd052c97668ba18. Original numeric distributions include 7214 distinct formIdx inputs (100..37998), 43 distinct dispFrm inputs (1..90, zero absent), signed8 center_x -81..71, center_y -52..52, and doubled signed form offsets x -172..210, y -216..164. This is a reproducible *byte/parser arithmetic bridge* only: no specific retail asset runtime load, actual played frame count, pose transformation, coordinate units, sound output or gameplay effect established.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "Original user-supplied complete 440-object SHA-pinned pack FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin size330116 SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53; matching original GGM-linked report size473482 SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc. Source boundaries and form-offset provenance previously FACT-0352/0353. Read-only complete source-byte verifier tools/prove_original_fpw_23037_form_numeric_fields.py recomputes original 23037 decoded numeric rows and SHA/column distributions recorded in canonical/witnesses/RESPANEL-001/original_23037_fpw_form_numeric_fields.summary.json.",
+      "observation": "Original source bytes independently recalculated offline into all 23037 index/pathID/name/offset-keyed numeric form input fields with a fixed complete-row SHA and per-field distinct/min/max/zero distributions."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Original matching retail Assembly-CSharp DLL 8171008 bytes SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, original SkillDataMan.ParseRSFData MethodDef 0x0600525F full IL SHA256 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; prior exact original instruction/metadata windows FACT-0278, FACT-0279, FACT-0281, FACT-0282, FACT-0283, FACT-0284, FACT-0285, all seven summary witness source SHA and source byte counts statically cross-checked in new verifier and test.",
+      "observation": "Matching original retail DLL source instructions prove signed8, x2 float, big-endian unsigned index, shifts/masks, literal initialization and field-write order used by the source input arithmetic decoder, not downstream rendering/behavior."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0353 full original 23037 packed source form blocks with exact offsets",
+      "to": "FACT-0355 complete per-form original source input numeric decode and SHA-indexed distribution",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "Complete previously SHA-checked 440 original GGM-linked fpw byte bodies, source 16-byte cumulative slot vectors, 1347 segment header blocks and all 23037 original 12-byte source blocks; new full decoded row index SHA 06c901a9d5f98eb37254b916a4916f077c1824b9bd833533ba064c50df6114bf."
+        }
+      ]
+    },
+    {
+      "from": "Original retail DLL verified seven FormDispInfo reader IL windows FACT-0278/0279/0281..0285",
+      "to": "FACT-0355 original-byte conditional numeric source parser operation mapping",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "MethodDef0x0600525F original full IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; seven independently source-verified original IL SHA windows for signed centre, dual-byte formIdx, signed offset times two/dispFrm, priority, two flag masks, dir/altitude, ring vibration and sound fields."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "No source artifact execution at retail runtime is observed; decoded rows are not actual emitted WrestlerAnmData or FormDispInfo runtime instances.",
+    "Numerical source inputs named direction/altitude/dispFrm/formIdx do not establish actor facing, pose, absolute display frames, time units, source FormData parts mapping, world coordinates or sprite orientation.",
+    "Raw game source binary bodies are not committed to Git; only derived SHA witnesses, read-only verifier and regression. SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+  ]
+}

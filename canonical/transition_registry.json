@@ -7090,6 +7090,36 @@
         "Actual original resources TextAsset load/parse execution not demonstrated; source byte indexes alone are insufficient.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_FPW_440_RSF_23037_SOURCE_FORM_NUMERIC_FIELD_DECODE_V1",
+      "fact_id": "FACT-0355",
+      "source_ids": [
+        "RESPANEL-001",
+        "DLL-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "All 23037 exact original 12-byte fpw packed form source blocks from 440 SHA-pinned original RS resource objects decoded offline with exact original retail DLL FormDispInfo signed-byte, big-endian index, x2 signed offset, priority, flag bit OR, source-direction-labelled and sound ID masks. GGM index/PathID/name/slot/form/source offset + 17 numeric input columns, complete 23037-record index SHA 06c901a9d5f98eb37254b916a4916f077c1824b9bd833533ba064c50df6114bf; all 17 field distributions source-verified. No retail runtime source selection, visuals, geometry units, duration or gameplay behavior proven.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_23037_fpw_form_numeric_fields.summary.json",
+      "source_windows": [
+        [
+          "Original 440 GGM-linked fpw RS embedded resource bytes",
+          "Original +48..63 cumulative vector and +64 onward 12-byte aligned source-form blocks",
+          "23037 form source records"
+        ],
+        [
+          "Matching retail DLL SkillDataMan.ParseRSFData MethodDef0x0600525F",
+          "Prior exact IL+0x04A6..+0x069E FormDispInfo source reader windows",
+          "Twelve source bytes decoded to typed metadata-labelled numeric inputs"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Exact source-input arithmetic does not prove actual loading/parsing of 440 TextAssets or emitting these runtime values.",
+        "Retail source field metadata names do not establish physical coordinate units, actor pose transforms, bank selection, animation frame duration, sound output or AI.",
+        "Source formIdx integers do not resolve to actual FormData sprite-parts assets without separately proven original lookup dependencies.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
