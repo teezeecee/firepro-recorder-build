@@ -6446,6 +6446,29 @@
         "The 72-byte remaining scalar fields lack proven original version field layout; preserve hex only.",
         "No 2D world collision geometry, grappling reaction, character AI, shader identity or runtime/viewer source equivalence unlocked."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_TAGMANAGER_COMPLETE_TABLES_V1",
+      "fact_id": "FACT-0331",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Exact original ClassID78 TagManager 932-byte authored Unity object, 18 tag entries, 32 indexed layer entries, four sorting-layer names with unique IDs and complete SHA-256 bounded source tables.",
+      "summary": "canonical/witnesses/GGM-001/tag_manager_full.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x8CD8",
+          "0x907C"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No actual wrestler scene colliders, ring geometry, active GameObject layer assignment or contact behavior established.",
+        "Source two-dimensional and three-dimensional collision mask defaults are not retail gameplay events.",
+        "No shader parent target bytes; SOURCE_CONSOLIDATION_V1 viewer/runtime LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
