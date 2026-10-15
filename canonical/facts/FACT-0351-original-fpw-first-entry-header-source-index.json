@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0351",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "The 440 completely SHA-verified original named fpw_* embedded RS source payloads have a bounded 12-byte first-entry source window at embedded positions +64..+75. All 440 original GGM-name/PathID-indexed window values are enumerated by a reproducible digest SHA256 93abc0c9dc1ff9c90490637d222b414615c4ec2c28951f51c098285389f2bf4c and concatenated original 5280 source bytes SHA256 c2cea392b5a818ceaa850d26be900d62cec321bcd571ceb58fe468ef76935fb3; 305 distinct 12-byte windows. Of 79 source-name suffix sibling comparisons in 65 families, 75 pairs have identical full first 12 bytes; only fpw_2006_0/_1, fpw_2006_0/_2, fpw_2011_0/_1 and fpw_6053_0/_1 differ within +64..+75, solely at original offsets +70/+72/+73 as indexed. Matching originally verified DLL-001 SkillDataMan.ParseRSFData IL first-entry read sequence conditionally reads +64..70 into nine source-named field targets together with +74..75, while advancing without a byte-to-field read at +71..73. The original indexed byte distributions and exact prior original DLL metadata field map are checked without asserting that the 440 TextAssets were loaded, parsed, or played in the retail runtime.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "User original SHA-verified 330116-byte full packed 440 fpw resource panel FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53 and original 473482-byte manifest SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc, FACT-0347 provenance. New source-only full 440 first-entry offset index SHA, 12-byte concatenated SHA, source field byte statistics and pairwise sibling window check in canonical/witnesses/RESPANEL-001/original_440_fpw_first_entry_header_12_byte.summary.json and tools/prove_original_fpw_first_entry_header_12_byte.py.",
+      "observation": "All 440 original embedded offset+64..+75 windows measured, SHA-indexed, with 305 unique windows; 75 of 79 source suffix-family pairs match the entire 12-byte source window, four pairs have a total of seven changed positions inside it."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Original matching 8171008-byte SHA-pinned Assembly-CSharp DLL 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, FACT-0276 SkillDataMan.ParseRSFData MethodDef0x0600525F 1735-byte IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae; exact IL+0x03CC..+0x046F SHA 7e28036b4af6f3232e543e9c4fb681e389a9cab6b52aede3a95f9d85731620a9; existing canonical/witnesses/CAP-R6-001/skill_data_man_rsf_anm_entry_fields_cursor_gap.summary.json. Original first-entry field-name read offset map and three skipped offsets checked by static test and read-only prover.",
+      "observation": "Original matching DLL IL records nine positional unsigned source-byte-to-field writes and three cursor increments without reads, with exact field names and first-entry-relative positions. No actual per-resource invocation observed."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0347 fully verified 440 original GGM-linked fpw resource byte bodies",
+      "to": "FACT-0351 reproducible original 440 first-entry +64..+75 source byte index and aggregate data distribution",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "FACT-0347 exact source body/manifest hashes and original GGM order, new full 440-entry source byte-index and concatenated SHA-256 witness."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0276 original retail parser first executed entry 9 unsigned reads and 3 skipped bytes",
+      "to": "FACT-0351 conditional source window position and original metadata field-label correspondence",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Source-verified matching original DLL FACT-0276 first-entry field IL+0x03CC..+0x046F source SHA 7e28036b4af6f3232e543e9c4fb681e389a9cab6b52aede3a95f9d85731620a9 and canonical full original field index witness; source index comparison only."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Conditional source-byte and original parser field-name correspondence does not establish actual Unity resource load execution, actor action, frame duration, sound, collision, screen position or pose.",
+    "The window +64..+75 is only for the first executed entry; the original nested parser has variable-length subsequent input offsets.",
+    "Three bytes at +71..+73 are cursor increments without corresponding first-entry field stores in the verified DLL window.",
+    "All 440 original proprietary source payloads remain outside Git; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
