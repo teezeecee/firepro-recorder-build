@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_MONOMANAGER_SCRIPTS_ASSEMBLIES_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "related_facts": [
+    "FACT-0326"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17,
+    "data_offset": 4096,
+    "type_count": 20,
+    "object_count": 20
+  },
+  "object": {
+    "class_id": 116,
+    "class_name": "MonoManager",
+    "type_index": 5,
+    "path_id": 6,
+    "relative_offset": 42504,
+    "absolute_offset": 46600,
+    "bytes": 19672,
+    "sha256": "4638cf4462b1181129dff4454a02728020b58f94c202d2dd4ccfb69bfdcda038"
+  },
+  "script_reference_table": {
+    "count": 1613,
+    "count_offset": 0,
+    "first_row_offset": 4,
+    "end_offset": 19360,
+    "row_size": 12,
+    "row_shape": "little-endian signed int32 m_FileID and signed int64 m_PathID",
+    "rows_sha256": "141c602e9562bf6ee0fc88820c63f06e5e061e6e44123e474f549ac3944df290",
+    "count_and_rows_sha256": "37e8fd3c4de3413475007e8613caa52164984a44af0936e0acbce71bf35da590",
+    "file_id_counts": {
+      "1": 1611,
+      "2": 2
+    },
+    "unique_numeric_reference_pairs": 1613,
+    "first_rows": [
+      [
+        2,
+        11998
+      ],
+      [
+        2,
+        12001
+      ],
+      [
+        1,
+        748
+      ],
+      [
+        1,
+        1099
+      ],
+      [
+        1,
+        1213
+      ],
+      [
+        1,
+        1467
+      ]
+    ],
+    "last_rows": [
+      [
+        1,
+        572
+      ],
+      [
+        1,
+        698
+      ],
+      [
+        1,
+        156
+      ],
+      [
+        1,
+        1036
+      ],
+      [
+        1,
+        1383
+      ],
+      [
+        1,
+        311
+      ]
+    ]
+  },
+  "script_references_archive": {
+    "encoding": "bz2-base64",
+    "decoded_format": "UTF8 JSON array of exactly 1613 ordered [file_id,path_id] integer pairs; compact separators",
+    "decoded_bytes": 13450,
+    "decoded_sha256": "80901fe9813cfebd3fe7a976fa2d2a6d53280ed1459222171872a54030b06ec6",
+    "data": "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"
+  },
+  "assembly_name_table": {
+    "count_offset": 19360,
+    "count": 13,
+    "first_row_offset": 19364,
+    "end_offset": 19672,
+    "sha256": "2bdb9a19bcfef4a40cf8ae3a387e527df25a1cccdfa8e97b7cb05aaec274b9cb",
+    "names": [
+      "UnityEngine.dll",
+      "",
+      "Assembly-CSharp-firstpass.dll",
+      "Assembly-CSharp.dll",
+      "UnityEngine.UI.dll",
+      "UnityEngine.Networking.dll",
+      "uCPf.dll",
+      "System.Windows.Forms.dll",
+      "uAudio.dll",
+      "Ionic.Zip.Unity.dll",
+      "Rewired_Core.dll",
+      "Rewired_Windows_Lib.dll",
+      "TextMeshPro-5.6-1.0.56-Runtime.dll"
+    ],
+    "entries": [
+      {
+        "index": 0,
+        "start_offset": 19364,
+        "end_offset": 19384,
+        "name": "UnityEngine.dll",
+        "utf8_byte_length": 15
+      },
+      {
+        "index": 1,
+        "start_offset": 19384,
+        "end_offset": 19388,
+        "name": "",
+        "utf8_byte_length": 0
+      },
+      {
+        "index": 2,
+        "start_offset": 19388,
+        "end_offset": 19424,
+        "name": "Assembly-CSharp-firstpass.dll",
+        "utf8_byte_length": 29
+      },
+      {
+        "index": 3,
+        "start_offset": 19424,
+        "end_offset": 19448,
+        "name": "Assembly-CSharp.dll",
+        "utf8_byte_length": 19
+      },
+      {
+        "index": 4,
+        "start_offset": 19448,
+        "end_offset": 19472,
+        "name": "UnityEngine.UI.dll",
+        "utf8_byte_length": 18
+      },
+      {
+        "index": 5,
+        "start_offset": 19472,
+        "end_offset": 19504,
+        "name": "UnityEngine.Networking.dll",
+        "utf8_byte_length": 26
+      },
+      {
+        "index": 6,
+        "start_offset": 19504,
+        "end_offset": 19516,
+        "name": "uCPf.dll",
+        "utf8_byte_length": 8
+      },
+      {
+        "index": 7,
+        "start_offset": 19516,
+        "end_offset": 19544,
+        "name": "System.Windows.Forms.dll",
+        "utf8_byte_length": 24
+      },
+      {
+        "index": 8,
+        "start_offset": 19544,
+        "end_offset": 19560,
+        "name": "uAudio.dll",
+        "utf8_byte_length": 10
+      },
+      {
+        "index": 9,
+        "start_offset": 19560,
+        "end_offset": 19584,
+        "name": "Ionic.Zip.Unity.dll",
+        "utf8_byte_length": 19
+      },
+      {
+        "index": 10,
+        "start_offset": 19584,
+        "end_offset": 19604,
+        "name": "Rewired_Core.dll",
+        "utf8_byte_length": 16
+      },
+      {
+        "index": 11,
+        "start_offset": 19604,
+        "end_offset": 19632,
+        "name": "Rewired_Windows_Lib.dll",
+        "utf8_byte_length": 23
+      },
+      {
+        "index": 12,
+        "start_offset": 19632,
+        "end_offset": 19672,
+        "name": "TextMeshPro-5.6-1.0.56-Runtime.dll",
+        "utf8_byte_length": 34
+      }
+    ]
+  },
+  "external_reference_join": {
+    "1": "globalgamemanagers.assets",
+    "2": "library/unity default resources"
+  },
+  "limits": [
+    "Original numeric MonoScript pointers are exact but do not prove the referenced objects' class names or bodies without original target serialized containers.",
+    "Authored assembly names do not establish in-match scripts, classes executed, runtime ordering, or gameplay ownership.",
+    "Original shader target parent containers remain unresolved; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
