@@ -6630,6 +6630,29 @@
         "Full ResourceManager tail [2138488,4862328) is only SHA-identified, not structurally decoded.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; animations/shader/retail behavior remain unproven."
       ]
+    },
+    {
+      "family_id": "UNITY_GGM_RESOURCE_MANAGER_DEPENDENCY_REFERENCES_65218_SOURCE_V1",
+      "fact_id": "FACT-0339",
+      "source_ids": [
+        "GGM-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Read-only exact full raw source reconstruction of 65,218 ordered ResourceManager parent-PPtr plus variable-count child-PPtr records over original object tail, 140,029 ordered child occurrences and 19,731 exact numeric joins with the source-name index.",
+      "summary": "canonical/witnesses/GGM-001/resource_manager_dependency_65218.summary.json",
+      "source_windows": [
+        [
+          "globalgamemanagers",
+          "0x228140",
+          "0x4C1140"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original external target serialized parent assets require independent original source SHA/ObjectInfo, no target asset bytes proven.",
+        "Original Unity 5.6 field labels and gameplay/loader execution relationships are not inferred from dependency-reference pairs.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
