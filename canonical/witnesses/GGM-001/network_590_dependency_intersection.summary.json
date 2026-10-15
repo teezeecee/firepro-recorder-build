@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_GGM_NETWORK_590_RESOURCE_DEPENDENCY_INTERSECTION_V1",
+  "source_ids": [
+    "GGM-001"
+  ],
+  "related_facts": [
+    "FACT-0338",
+    "FACT-0339",
+    "FACT-0340",
+    "FACT-0341"
+  ],
+  "original_file": {
+    "name": "globalgamemanagers",
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "unity_version": "5.6.5p3",
+    "serialized_version": 17
+  },
+  "source_objects": {
+    "resource_manager": {
+      "class_id": 147,
+      "path_id": 13,
+      "offset": 122824,
+      "bytes": 4862328,
+      "sha256": "414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de",
+      "name_index_records": 43941,
+      "name_index_bytes": 2138488,
+      "dependency_records": 65218,
+      "dependency_region_sha256": "64d856b31b479f81612b2f833ac25ac2cfaf6e84cf02bedcbe3adf06b13535fc",
+      "dependency_region_bytes": 2723840
+    },
+    "class149": {
+      "class_id": 149,
+      "path_id": 14,
+      "offset": 4985152,
+      "bytes": 16532,
+      "sha256": "f4fe8dc74035736ffd35c907e01ef11d46635cec7fb0924aa4f1785b6acc8133",
+      "rows": 590,
+      "header_bytes": 12,
+      "row_bytes": 28
+    }
+  },
+  "join": {
+    "cross_index_key": "original little-endian (signed int32 external fileID, signed int64 pathID) numeric pair exact equality; no target object bytes implied",
+    "total_class149_references": 590,
+    "both_parent_and_child": 561,
+    "parent_only": 0,
+    "child_only": 0,
+    "neither": 29,
+    "both_with_resource_name": 534,
+    "both_without_resource_name": 27,
+    "neither_with_resource_name": 0,
+    "neither_without_resource_name": 29,
+    "both_by_file_id": {
+      "4": 4,
+      "5": 557
+    },
+    "neither_by_file_id": {
+      "4": 2,
+      "7": 9,
+      "9": 12,
+      "10": 1,
+      "11": 5
+    },
+    "total_outgoing_occurrences_for_joined_parents": 1491,
+    "total_incoming_occurrences_for_joined_references": 1602,
+    "named_parent_outgoing_occurrences": 1437,
+    "named_reference_incoming_occurrences": 1538,
+    "outgoing_arity_counts": {
+      "1": 109,
+      "2": 260,
+      "3": 64,
+      "4": 38,
+      "5": 44,
+      "6": 26,
+      "7": 18,
+      "8": 2
+    },
+    "both_named_categories": {
+      "debug_csr_canvas": 1,
+      "font": 1,
+      "fpw_menubg_bar": 1,
+      "interface": 437,
+      "matchui": 1,
+      "stage": 90,
+      "tools": 2,
+      "weapon": 1
+    },
+    "unique_class149_identifiers": 590,
+    "unique_class149_numeric_references": 590,
+    "anchors": [
+      {
+        "index": 0,
+        "id_hex": "ddce4d00d371ce4e958508bb08846f29",
+        "file_id": 5,
+        "path_id": 46527,
+        "resource_name": "interface/organizationmanagement/prefab/dialog_orggoods",
+        "relation": "both",
+        "outgoing_count": 2,
+        "incoming_occurrences": 2,
+        "first_outgoing": [
+          [
+            5,
+            63400
+          ],
+          [
+            5,
+            81951
+          ]
+        ]
+      },
+      {
+        "index": 9,
+        "id_hex": "5893f302d2999b4a913b6af7f19e2286",
+        "file_id": 7,
+        "path_id": 215,
+        "resource_name": null,
+        "relation": "neither",
+        "outgoing_count": 0,
+        "incoming_occurrences": 0,
+        "first_outgoing": []
+      },
+      {
+        "index": 58,
+        "id_hex": "12a8ef19d77942489401eec1321c5beb",
+        "file_id": 4,
+        "path_id": 41,
+        "resource_name": null,
+        "relation": "neither",
+        "outgoing_count": 0,
+        "incoming_occurrences": 0,
+        "first_outgoing": []
+      },
+      {
+        "index": 133,
+        "id_hex": "ae79bb37a909664d8256de1648059898",
+        "file_id": 5,
+        "path_id": 50928,
+        "resource_name": "interface/onlineroom/prefabs/matching",
+        "relation": "both",
+        "outgoing_count": 8,
+        "incoming_occurrences": 8,
+        "first_outgoing": [
+          [
+            5,
+            77565
+          ],
+          [
+            5,
+            74494
+          ],
+          [
+            5,
+            84601
+          ]
+        ]
+      },
+      {
+        "index": 228,
+        "id_hex": "1d6ab65dde385f4abb1f54b0d16ede0a",
+        "file_id": 4,
+        "path_id": 46,
+        "resource_name": null,
+        "relation": "neither",
+        "outgoing_count": 0,
+        "incoming_occurrences": 0,
+        "first_outgoing": []
+      },
+      {
+        "index": 476,
+        "id_hex": "eb0c91ceed3d6742b665f5b67a7c697b",
+        "file_id": 5,
+        "path_id": 49246,
+        "resource_name": "interface/onlineroom/prefabs/dropdownitem",
+        "relation": "both",
+        "outgoing_count": 7,
+        "incoming_occurrences": 35,
+        "first_outgoing": [
+          [
+            5,
+            76956
+          ],
+          [
+            5,
+            73624
+          ],
+          [
+            5,
+            86150
+          ]
+        ]
+      },
+      {
+        "index": 517,
+        "id_hex": "bb6efbe0828de7428de85574df7b47ae",
+        "file_id": 5,
+        "path_id": 52457,
+        "resource_name": "interface/onlinemenu/prefabs/roomlistitem",
+        "relation": "both",
+        "outgoing_count": 8,
+        "incoming_occurrences": 8,
+        "first_outgoing": [
+          [
+            5,
+            77969
+          ],
+          [
+            5,
+            86510
+          ],
+          [
+            5,
+            86462
+          ]
+        ]
+      },
+      {
+        "index": 589,
+        "id_hex": "2e6ac5ffac25ee4292d27d170544d3da",
+        "file_id": 5,
+        "path_id": 51291,
+        "resource_name": "interface/prefab/dialog_selectcostume",
+        "relation": "both",
+        "outgoing_count": 2,
+        "incoming_occurrences": 2,
+        "first_outgoing": [
+          [
+            5,
+            62288
+          ],
+          [
+            5,
+            82147
+          ]
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "Exact numeric reference equality inside one original serialized file does not prove external asset bytes, runtime load order, networking execution, rendered output or game mechanics.",
+    "No original external resources.assets/sharedassets parent SHA/ObjectInfo verified; source reference strings are not asset content.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
