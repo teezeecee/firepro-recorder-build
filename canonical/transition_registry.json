@@ -7000,6 +7000,36 @@
         "Later original entry offsets are variable length and not established by the first-entry 12-byte index.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_ORIGINAL_FPW440_RSF_CUMULATIVE_TWELVE_BYTE_BLOCK_INDEX_V1",
+      "fact_id": "FACT-0352",
+      "source_ids": [
+        "RESPANEL-001",
+        "DLL-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Original complete SHA-verified 440 named fpw resource source payloads: all have +64 to EOF source length divisible by 12; source 16-byte vectors at +48..63 end at exact total 12-byte source block count; 1347 positive cumulative steps whose each length equals 1 plus first source byte at the indexed block start; 5693 zero-step slots; 24384 total source blocks. Source byte-only segmentation, with conditional matching original DLL first-entry +64 formNum field write, not runtime parsing, actual animation or timing.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_440_fpw_cumulative_twelve_byte_blocks.summary.json",
+      "source_windows": [
+        [
+          "original complete 440 named fpw RS embedded resources",
+          "source vectors at +48..+63 and source bytes +64 onward",
+          "24384 aligned 12-byte source blocks across 440 files"
+        ],
+        [
+          "original DLL SkillDataMan.ParseRSFData MethodDef0x0600525F",
+          "IL+0x03CC..+0x0470",
+          "first-entry source byte+64 field write only"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Exact packed source block indexing is not a retail runtime GetAnmNum output or executed parsing proof.",
+        "Source segment counts and 12-byte alignment do not establish rendered frames, animation time units, root transforms, banks, directions, audio or AI.",
+        "First-entry original DLL field names do not certify all later original source segments were read or selected.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

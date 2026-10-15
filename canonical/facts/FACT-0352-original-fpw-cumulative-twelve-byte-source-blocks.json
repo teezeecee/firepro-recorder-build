@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0352",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "Every one of the 440 SHA-verified original named fpw_* embedded RS source payloads has a 64-byte initial window followed by an exact multiple of 12 bytes: 24384 twelve-byte source blocks in total. In every source, the final unsigned byte of the 16-byte source vector at offsets +48..+63 exactly equals (embedded payload byte length minus 64) divided by 12. Each strictly positive cumulative vector increment defines a source-block span starting at the preceding vector value (initially zero), and for all 1347 positive increments the step value is exactly 1 plus the original source byte located at offset 64 + 12 * preceding vector value; equal consecutive vector values yield zero source-block span. All 440 source blocks are accounted for with zero mismatches, 5693 zero-step vector positions, and original-indexed source rows SHA256 c279e823a914f4221fb3d0124db6b924bc4733da1c81f3a6684e7c44cb92edfa and flattened 1347 block-span rows SHA256 6b5ad7b0a954a5e304ed9493a257c0caeecd91c20efe60b6d83bd9b210bede49. The matching original DLL separately proves that its first executed WrestlerAnmData entry reads relative input offset+64 to source-named field formNum, but does not establish GetAnmNum outputs or a runtime loading/parsing/playback association for these particular source payloads. These are exact original byte boundaries, not invented animation frames or transform/timing semantics.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "Original exact 330116-byte full 440 source object pack SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53, original companion GGM-name/PathID manifest SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc. Prior original source FACT-0347/0349/0351, new full original source indexing witness canonical/witnesses/RESPANEL-001/original_440_fpw_cumulative_twelve_byte_blocks.summary.json and bounded read-only verifier tools/prove_original_fpw_cumulative_twelve_byte_blocks.py.",
+      "observation": "440/440 original embedded source byte streams partition at offset+64 into 12-byte blocks; all 440 last vector entries equal total blocks; all 1347 positive vector steps equal one plus the byte at the corresponding indexed block boundary."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Original matching 8171008-byte DLL SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6. FACT-0276 original SkillDataMan.ParseRSFData MethodDef 0x0600525F IL+0x03CC..+0x046F SHA256 7e28036b4af6f3232e543e9c4fb681e389a9cab6b52aede3a95f9d85731620a9; existing canonical/witnesses/CAP-R6-001/skill_data_man_rsf_anm_entry_fields_cursor_gap.summary.json, first entry unsigned byte+64 to field formNum. Separate original 16-byte read source FACT-0274.",
+      "observation": "Matching original retail parser first-entry source offset+64 is written to the original metadata field named WrestlerAnmData.formNum; no validation that all 1347 source spans correspond to executed code entries."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0347 byte-exact original 440 named fpw RS resource source bodies",
+      "to": "FACT-0352 complete byte-exact cumulative 12-byte source block segmentation for all 440 objects",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "Previously SHA-pinned original 440 packed source bodies and named GGM index, plus new 440 indexed cumulative boundary and 1347 span digest matching exact resource bytes."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0276 original retail ParseRSFData first entry source byte+64 field-write metadata",
+      "to": "FACT-0352 conditionally matching first source-span leading byte offset only",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Independently proven source IL window +0x03CC..+0x046F, direct source byte +64 to source-named formNum field; no assertion of actual runtime-loaded original TextAsset or later segment iteration."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Source-only cumulative block boundaries are not assigned animation duration, frame ordering, bank direction, actor pose, root transformation or AI semantics.",
+    "Original retail DLL GetAnmNum MethodDef0x06005265 return values for any original resource are not proved here; source vector slot counts are not runtime loop iteration counts.",
+    "First-entry offset+64 original DLL field name formNum has original metadata provenance, but no guarantee that every successive original source block is executed or parsed.",
+    "Original asset payloads remain outside Git, and SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+  ]
+}
