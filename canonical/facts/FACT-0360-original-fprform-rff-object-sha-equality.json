@@ -1,0 +1,48 @@
+{
+  "fact_id": "FACT-0360",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "For original Unity resources.assets GGM-mapped ClassID49 PathID22906 declared 12800024-byte TextAsset body at zero-indexed absolute offset1970578200 (exact original metadata ObjectInfo row hash e045a41429562e93642cf0b0fefcc4c28a60c8308f8e1216a3a87f5d1c0814ca), the user's read-only Windows bounded-original-file SHA report states full original object SHA256 3d457734faf243a6efabd57756a48c82c1f27cc5a4294c567cc51804afd1ab6d. Independently the already uploaded fprform_rff-resources.assets-22906.dat UABE export is 12800024 bytes and its complete bytes hash exactly to the same SHA256. The full user probe JSON itself has SHA256 5722a99cb55b26753f6eb386084d2a297bad78e30950821807b2a2461415abe3. Original source metadata prefix hash is rechecked 8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da. From the matching UABE original-body export: 11-byte UTF8 TextAsset name fprform_rff, zero alignment byte, 12800000-byte embedded data at exact object offset20 SHA256 ad16142531130b7ff36ead502c490be7ac639159817de45b471039c90a262d41, four terminal zero bytes. The embedded length is arithmetically divisible into 40000 windows of 320 bytes, NOT proof that ParseFormData_RFF uses 320-byte per-form records or that any runtime tables loaded.",
+  "evidence": [
+    {
+      "source_id": "RESMETA-001",
+      "locator": "SHA-verified original 1,842,222-byte resources.assets metadata prefix 8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da, exact 20-byte ObjectInfo row for PathID22906 at offset475312 SHA e045a41429562e93642cf0b0fefcc4c28a60c8308f8e1216a3a87f5d1c0814ca. ObjectInfo declares serialized ClassID49 relative offset1968735976, original absolute offset1970578200, full body bytes12800024.",
+      "observation": "Original serialized source metadata fixes the exact parent window and object identity used by read-only Windows bounded SHA probe."
+    },
+    {
+      "source_id": "RESOBJ-003",
+      "locator": "New uploaded original parent bounded SHA report FIREPRO_FPRFORM_ORIGINAL_SHA_WITNESS_v001.json 1070 bytes SHA 5722a99cb55b26753f6eb386084d2a297bad78e30950821807b2a2461415abe3 reports original window body SHA 3d457734faf243a6efabd57756a48c82c1f27cc5a4294c567cc51804afd1ab6d. Existing previously uploaded UABE TextAsset export fprform_rff-resources.assets-22906.dat directly rehashed here, same whole-body SHA and 12800024 bytes. Export original serialized object wrapper bounds checked to embedded data 12800000 bytes SHA ad16142531130b7ff36ead502c490be7ac639159817de45b471039c90a262d41.",
+      "observation": "User-probed original body hash equals independently hashed existing UABE export, with verified TextAsset wrapper and payload byte boundaries; 320-byte divisibility is arithmetic only."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0359 original resource loader name to original resources ObjectInfo PathID22906",
+      "to": "FACT-0360 user-run exact original PathID22906 body SHA256 and independently hashed previously uploaded UABE export",
+      "evidence": [
+        {
+          "source_id": "RESMETA-001",
+          "locator": "Original serialized PathID22906 ObjectInfo row/class/absolute offset/size. The Windows bounded original parent-file read report uses the same byte window."
+        },
+        {
+          "source_id": "RESOBJ-003",
+          "locator": "Exact 1070-byte SHA-pinned probe JSON and independently 12800024-byte SHA-pinned exported resource object; both original-claim/export SHA fields match."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0360 whole-object SHA match",
+      "to": "FACT-0360 directly inspected named TextAsset serialized wrapper and embedded 12800000 bytes",
+      "evidence": [
+        {
+          "source_id": "RESOBJ-003",
+          "locator": "Matched UABE object bytes 0..24 include original name fprform_rff and 12800000-byte data count. Embedded bytes source offset20 to 12800020 SHA ad16142531130b7ff36ead502c490be7ac639159817de45b471039c90a262d41; final four object bytes zero."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original SHA is independently matched to export digest, but the original full 3.17GB parent SHA was not recalculated; the separate original object bytes were read by user-run local script, not fetched from user's drive by this service.",
+    "No proof of what each 320-byte window represents or how FormDataMan.ParseFormData_RFF populates arrays, parts, positions, facing or timing. Numeric divisibility is not an animation decode.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED; original binary content remains outside Git."
+  ]
+}

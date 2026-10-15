@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FPRFORM_RFF_OBJECT_SHA_REPORT_AND_MATCHED_UABE_EXPORT_V1",
+  "source_ids": [
+    "RESMETA-001",
+    "RESOBJ-003"
+  ],
+  "user_original_probe_report": {
+    "filename": "FIREPRO_FPRFORM_ORIGINAL_SHA_WITNESS_v001.json",
+    "bytes": 1070,
+    "sha256": "5722a99cb55b26753f6eb386084d2a297bad78e30950821807b2a2461415abe3",
+    "checkpoint": "FACT-0359-to-FACT-0360 source-byte verification only",
+    "source": "original resources.assets bounded read",
+    "reported_parent_file_length": 3166587532,
+    "original_parent_full_file_sha_rechecked": false,
+    "metadata_prefix_bytes": 1842222,
+    "metadata_prefix_sha256": "8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da",
+    "unity_class_id": 49,
+    "path_id": 22906,
+    "object_absolute_offset": 1970578200,
+    "object_bytes": 12800024,
+    "reported_original_object_sha256": "3d457734faf243a6efabd57756a48c82c1f27cc5a4294c567cc51804afd1ab6d",
+    "reported_previous_uabe_sha256": "3d457734faf243a6efabd57756a48c82c1f27cc5a4294c567cc51804afd1ab6d",
+    "reported_equal": true,
+    "reported_further_upload_needed": false,
+    "reported_runtime_mapping_proven": false
+  },
+  "original_metadata_prefix": {
+    "filename": "FIREPRO_RESOURCES_ORIGINAL_METADATA_v001.bin",
+    "bytes": 1842222,
+    "sha256": "8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da",
+    "objectinfo_row_offset": 475312,
+    "objectinfo_row_sha256": "e045a41429562e93642cf0b0fefcc4c28a60c8308f8e1216a3a87f5d1c0814ca",
+    "objectinfo_row": {
+      "path_id": 22906,
+      "payload_relative_offset": 1968735976,
+      "declared_body_bytes": 12800024,
+      "type_index": 4
+    },
+    "unity_class_id": 49,
+    "data_offset": 1842224
+  },
+  "matching_export": {
+    "filename": "fprform_rff-resources.assets-22906.dat",
+    "size_bytes": 12800024,
+    "sha256": "3d457734faf243a6efabd57756a48c82c1f27cc5a4294c567cc51804afd1ab6d",
+    "textasset_wrapper": {
+      "name_utf8": "fprform_rff",
+      "name_length": 11,
+      "name_length_field_offset": 0,
+      "name_bytes_start": 4,
+      "name_bytes_end_exclusive": 15,
+      "alignment_byte_at_15": 0,
+      "embedded_data_size_field_offset": 16,
+      "embedded_data_length": 12800000,
+      "embedded_data_start": 20,
+      "embedded_data_end_exclusive": 12800020,
+      "embedded_data_sha256": "ad16142531130b7ff36ead502c490be7ac639159817de45b471039c90a262d41",
+      "trailing_bytes_hex": "00000000",
+      "first_24_bytes_sha256": "c899c52a31363b7e5349f53cd880fb6539602ff356d02ea6a7c6f7c1ab58b981"
+    }
+  },
+  "observed": {
+    "original_and_export_digest_match": true,
+    "source_320_byte_divisibility": 40000,
+    "source_320_byte_interpretation_proven": false,
+    "full_parent_sha_rechecked": false,
+    "original_file_name": "resources.assets",
+    "original_serialized_object_identity": "PathID22906/ClassID49",
+    "new_large_original_upload_required": false
+  },
+  "limits": [
+    "Original object SHA is reported by user-run original-file bounded Windows probe; this response separately rehashes the available UABE exported object bytes. Two different sources corroborate equality by digest, but user original full parent 3.17GB has not been independently rehashed in this turn.",
+    "Matching exported Unity TextAsset wrapper proves named 12800000 embedded bytes, not its 320-byte data semantic record width, parsed FormData contents, sprite mapping or success of Unity Resources.Load.",
+    "No original raw object byte upload is needed for source-byte comparison. No runtime graphics, movement, facing, timing, audio or AI behavior established. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
