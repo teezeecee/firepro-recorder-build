@@ -6886,6 +6886,36 @@
         "Original full 3.17GB parent file SHA was not rerun by the bounded probe; only source metadata, GGM and exact packed resource bodies SHA checked.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_FPW440_RSF_FIRST_RECORD_BYTE_RELATIONS_DLL_BRIDGE_V1",
+      "fact_id": "FACT-0348",
+      "source_ids": [
+        "RESPANEL-001",
+        "DLL-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Original 440 named fpw_* SHA-verified embedded RS byte streams have exact fixed-index relations across all 440 original payloads: byte48=byte64+1, bytes8..9=bytes69..70, bytes10..11=bytes72..73. Original DLL ParseRSFData source instructions read an input16-array from +48..63 and for the first executed entry read +64/+69/+70 into named fields formNum/hitSE/cheerLevel and skip +71..73. Sixty-five original suffix-variant name families of size two or three have equal within-family embedded length. No runtime, gameplay or temporal meaning.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_440_fpw_first_record_byte_relations.summary.json",
+      "source_windows": [
+        [
+          "original 440 packed fpw resource objects",
+          "GGM indices43501..43940",
+          "330116 source body bytes"
+        ],
+        [
+          "original DLL SkillDataMan.ParseRSFData",
+          "IL +0x0361..+0x046F",
+          "proven source offsets48..75"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Source byte equalities do not establish animation frame count, timing, actor transformations or rendered states.",
+        "The original DLL input-window mapping remains conditional on Unity asset byte loading and parser invocation with the corresponding source instance.",
+        "Other five larger wrestleranimation resources and transitive runtime semantics not included.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
