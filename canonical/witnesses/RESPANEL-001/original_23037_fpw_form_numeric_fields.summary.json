@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_FPW_440_RSF_23037_SOURCE_FORM_NUMERIC_FIELD_DECODE_V1",
+  "source_ids": [
+    "RESPANEL-001",
+    "DLL-001"
+  ],
+  "original_panel": {
+    "filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+    "bytes": 330116,
+    "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+    "report_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+    "report_bytes": 473482,
+    "report_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc",
+    "original_index_prior_facts": [
+      "FACT-0347",
+      "FACT-0352",
+      "FACT-0353"
+    ]
+  },
+  "original_dll": {
+    "source_id": "DLL-001",
+    "file_bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "methoddef": "0x0600525F",
+    "method_il_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae",
+    "reader_windows": [
+      {
+        "witness": "skill_data_man_rsf_form_center_pos_signed_vector2.summary.json",
+        "start_il": "0x04A6",
+        "end_exclusive_il": "0x04CC",
+        "il_sha256": "ef544099c322e46d4aee931555bad28a1b6beffb1f8a75be14f74efd7361997c",
+        "source_bytes_advanced": 2
+      },
+      {
+        "witness": "skill_data_man_rsf_form_index_dual_word_read.summary.json",
+        "start_il": "0x04CC",
+        "end_exclusive_il": "0x04F1",
+        "il_sha256": "8588bd8b25ff5e6e65b25ec5c33cfecb3fbaf75bc36ffacc6583334b38a3573b",
+        "source_bytes_advanced": 2
+      },
+      {
+        "witness": "skill_data_man_rsf_form_offset_pos_and_disp_frame.summary.json",
+        "start_il": "0x0530",
+        "end_exclusive_il": "0x0570",
+        "il_sha256": "c104bc32de801488e4bec4a92f56d4f948f6a1c258d82114f4bd04a98cc79158",
+        "source_bytes_advanced": 3
+      },
+      {
+        "witness": "skill_data_man_rsf_form_priorities_and_initial_flags.summary.json",
+        "start_il": "0x0570",
+        "end_exclusive_il": "0x05A1",
+        "il_sha256": "78bf425b69801c4c958d960905d88d7fd243294def1891207fc7883b6ac2ab66",
+        "source_bytes_advanced": 2
+      },
+      {
+        "witness": "skill_data_man_rsf_form_flag_bit_or_updates.summary.json",
+        "start_il": "0x05A1",
+        "end_exclusive_il": "0x05FE",
+        "il_sha256": "c9c9f67cafdde8edf5443e35c6a54823ee42a7578715dfe019392ff90e8fd2b6",
+        "source_bytes_advanced": 1
+      },
+      {
+        "witness": "skill_data_man_rsf_form_direction_bits_and_altitude.summary.json",
+        "start_il": "0x05FE",
+        "end_exclusive_il": "0x0641",
+        "il_sha256": "9fa1cfe167f8cf98d33726a5e246fc22c9501001df4bed430a1205d512501916",
+        "source_bytes_advanced": 0
+      },
+      {
+        "witness": "skill_data_man_rsf_form_sound_effect_fields.summary.json",
+        "start_il": "0x0641",
+        "end_exclusive_il": "0x069E",
+        "il_sha256": "9676632c4efd1721c279ace3496f80d84e077f0cf4b1e06a430ff3def3248765",
+        "source_bytes_advanced": 2
+      }
+    ],
+    "prior_dll_facts": [
+      "FACT-0278",
+      "FACT-0279",
+      "FACT-0281",
+      "FACT-0282",
+      "FACT-0283",
+      "FACT-0284",
+      "FACT-0285"
+    ],
+    "specific_original_textasset_load_or_playback_proven": false
+  },
+  "numeric_decoder": {
+    "original_source_form_record_bytes": 12,
+    "operation_scope": "Original retail DLL instruction-sequence integer/signed conversion and flag bit-operation mapping applied offline to independently verified source bytes. Not an executed game runtime.",
+    "signed_byte_rule": "b - 256 when b >= 128 else b",
+    "field_formulas": {
+      "center_x": "signed8(b[0])",
+      "center_y": "signed8(b[1])",
+      "formIdx": "(b[2] << 8) | b[3]",
+      "offset_x_x2": "2 * signed8(b[4])",
+      "offset_y_x2": "2 * signed8(b[5])",
+      "dispFrm": "b[6]",
+      "formPri": "(b[7] >> 6) & 3",
+      "ringPri": "(b[7] >> 3) & 7",
+      "flags_initial": "b[8]",
+      "flags_final": "b[8] | (0x400 if b[9]&1 else 0) | (0x800 if b[9]&2 else 0) | (0x100 if b[9]&4 else 0) | (0x200 if b[10]&32 else 0)",
+      "dir_LR_bit": "1 if b[9]&8 else 0",
+      "dir_UD_bit": "1 if b[9]&128 else 0",
+      "altitude_bits": "(b[9] >> 4) & 7",
+      "ringVibration": "(b[10] >> 3) & 3",
+      "seID": "b[11] & 63",
+      "seLevel": "(b[11] >> 6) & 3",
+      "effectID_initial": "-1 (original explicit parser literal, not a 12-byte source input)"
+    }
+  },
+  "observed": {
+    "source_objects": 440,
+    "segment_header_blocks": 1347,
+    "form_record_count": 23037,
+    "form_source_bytes": 276444,
+    "distinct_packed_formIdx_values": 7214,
+    "original_concatenated_23037_form_raw_bytes_sha256": "93807a1a2d1208e693ef225d80598f3d1fb70f58d2a132d63fd052c97668ba18",
+    "full_original_23037_decoded_numeric_rows_sha256": "06c901a9d5f98eb37254b916a4916f077c1824b9bd833533ba064c50df6114bf",
+    "normalized_row_encoding": "Python json.dumps(rows,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf8'); one GGM-index ordered row per form with original index,path_id,name,slot,form,source_offset and all 17 numeric_decoder.field_formulas values",
+    "numeric_field_distributions": {
+      "center_x": {
+        "distinct": 94,
+        "min": -81,
+        "max": 71,
+        "zero": 11427
+      },
+      "center_y": {
+        "distinct": 60,
+        "min": -52,
+        "max": 52,
+        "zero": 17961
+      },
+      "formIdx": {
+        "distinct": 7214,
+        "min": 100,
+        "max": 37998,
+        "zero": 0
+      },
+      "offset_x_x2": {
+        "distinct": 173,
+        "min": -172,
+        "max": 210,
+        "zero": 7074
+      },
+      "offset_y_x2": {
+        "distinct": 149,
+        "min": -216,
+        "max": 164,
+        "zero": 9138
+      },
+      "dispFrm": {
+        "distinct": 43,
+        "min": 1,
+        "max": 90,
+        "zero": 0
+      },
+      "formPri": {
+        "distinct": 4,
+        "min": 0,
+        "max": 3,
+        "zero": 21137
+      },
+      "ringPri": {
+        "distinct": 7,
+        "min": 0,
+        "max": 7,
+        "zero": 21880
+      },
+      "flags_initial": {
+        "distinct": 25,
+        "min": 0,
+        "max": 200,
+        "zero": 14685
+      },
+      "flags_final": {
+        "distinct": 46,
+        "min": 0,
+        "max": 2304,
+        "zero": 10406
+      },
+      "dir_LR_bit": {
+        "distinct": 2,
+        "min": 0,
+        "max": 1,
+        "zero": 15064
+      },
+      "dir_UD_bit": {
+        "distinct": 2,
+        "min": 0,
+        "max": 1,
+        "zero": 18548
+      },
+      "altitude_bits": {
+        "distinct": 7,
+        "min": 0,
+        "max": 6,
+        "zero": 20440
+      },
+      "ringVibration": {
+        "distinct": 4,
+        "min": 0,
+        "max": 3,
+        "zero": 22489
+      },
+      "seID": {
+        "distinct": 35,
+        "min": 0,
+        "max": 53,
+        "zero": 19493
+      },
+      "seLevel": {
+        "distinct": 4,
+        "min": 0,
+        "max": 3,
+        "zero": 22145
+      },
+      "effectID_initial": {
+        "distinct": 1,
+        "min": -1,
+        "max": -1,
+        "zero": 0
+      }
+    }
+  },
+  "anchors": [
+    {
+      "altitude_bits": 0,
+      "center_x": -5,
+      "center_y": 0,
+      "dir_LR_bit": 0,
+      "dir_UD_bit": 0,
+      "dispFrm": 4,
+      "effectID_initial": -1,
+      "flags_final": 72,
+      "flags_initial": 72,
+      "form": 0,
+      "formIdx": 7542,
+      "formPri": 0,
+      "index": 43501,
+      "name": "fpw_2004_0",
+      "offset_x_x2": -12,
+      "offset_y_x2": -22,
+      "path_id": 22222,
+      "ringPri": 0,
+      "ringVibration": 0,
+      "seID": 0,
+      "seLevel": 0,
+      "slot": 0,
+      "source_offset": 76
+    },
+    {
+      "altitude_bits": 0,
+      "center_x": 60,
+      "center_y": 0,
+      "dir_LR_bit": 0,
+      "dir_UD_bit": 0,
+      "dispFrm": 6,
+      "effectID_initial": -1,
+      "flags_final": 0,
+      "flags_initial": 0,
+      "form": 0,
+      "formIdx": 11321,
+      "formPri": 0,
+      "index": 43890,
+      "name": "fpw_6172",
+      "offset_x_x2": -26,
+      "offset_y_x2": -20,
+      "path_id": 21353,
+      "ringPri": 0,
+      "ringVibration": 0,
+      "seID": 0,
+      "seLevel": 0,
+      "slot": 0,
+      "source_offset": 76
+    },
+    {
+      "altitude_bits": 0,
+      "center_x": 0,
+      "center_y": 0,
+      "dir_LR_bit": 0,
+      "dir_UD_bit": 0,
+      "dispFrm": 1,
+      "effectID_initial": -1,
+      "flags_final": 256,
+      "flags_initial": 0,
+      "form": 95,
+      "formIdx": 100,
+      "formPri": 0,
+      "index": 43940,
+      "name": "fpw_6261",
+      "offset_x_x2": 0,
+      "offset_y_x2": 0,
+      "path_id": 21624,
+      "ringPri": 0,
+      "ringVibration": 0,
+      "seID": 0,
+      "seLevel": 0,
+      "slot": 1,
+      "source_offset": 2344
+    }
+  ],
+  "limits": [
+    "The reported 23037 decoded source form rows are arithmetic reconstruction from raw source bytes and previously pinned original DLL instructions, not an observation of executed retail game objects.",
+    "Original metadata field names such as FormDispInfo.dir_LR, formOfsPos, dispFrm, seID, altitude, and effectID are source identifiers, not evidence of screen directions, spatial units, frame durations, sound playback or animation state.",
+    "The final flags values are bitwise results of the original parser code already source-proven, not verified visual flag semantics.",
+    "A source formIdx two-byte value is not a proven sprite, FormDataMan lookup result or rendering source association.",
+    "No proprietary source bytes or original DLL copied to Git. SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+  ]
+}
