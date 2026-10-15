@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0356",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "Across the exact original 440 SHA-verified GGM-linked fpw RS resource objects, 65 suffix families form 79 textually matched sibling name pairs. Their exact 16-byte source vectors align 3610 matching-slot/matching-form original 12-byte records. Applying only previously source-verified matching retail DLL ParseRSFData FormDispInfo arithmetic yields 3610 pairwise comparisons of 17 decoded source-input numeric fields, with 1186 identical and 2424 different numeric records, exactly corresponding to the previously source-proven raw record equality split. The complete original-pair 3610-row changed-field index SHA256 is 2b5a11a77149e6b0c19f004166ab367de41fca341661665f38f3ee9dbc3380da. Across these forms, original byte6 sourced dispFrm input differs in 10 records across only fpw_6048_0/_1 and fpw_6161_0/_1 sibling pairs; formIdx inputs differ in 1688 records across all 79 suffix pairs; center_x differs in 483, center_y 1378, offset_x_x2 1506 and offset_y_x2 1515 comparisons. Numeric source equality/difference and field labels are NOT proofs of runtime mirroring, directions, rendered frames, sprite-part mappings, timing, coordinate transforms or AI.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "Original SHA-verified complete 440-object source panel FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin 330116 bytes SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53 and original GGM-linked companion report 473482 bytes SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc. New read-only verifier recomputes 79 original source suffix pair alignments and all 3610 original form pair differences; all 17 per-field comparisons and pair-incidence distributions and three source anchors stored in canonical/witnesses/RESPANEL-001/original_3610_sibling_numeric_source_differences.summary.json.",
+      "observation": "3610 original aligned source form comparisons; 1186 numeric identical; 2424 numeric changed; all 17 field-level difference counts verified from original resources."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching retail Assembly-CSharp DLL size8171008 SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6, original SkillDataMan.ParseRSFData MethodDef0x0600525F full IL SHA 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae. Previous exact IL windows FACT-0278/0279/0281/0282/0283/0284/0285 and source-byte arithmetic FACT-0355 are independently rechecked by parent full-source provers.",
+      "observation": "Numeric source input field conversions and bit extraction are borrowed only from previously proven matched DLL reader operations, not from labels or unsupported playback semantics."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0354 SHA-checked original 3610 aligned suffix-sibling raw 12-byte form comparisons",
+      "to": "FACT-0356 identical source-aligned 3610 record numeric differences",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "New original raw comparison rows rehashed against FACT-0354 full 3610 record source SHA e0391e475eedb4da3a6199ea7267499d6d6c3f1c5bf8afbde986bde00e36b65a."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0355 original 23037 FormDispInfo source byte arithmetic validated against retail DLL",
+      "to": "FACT-0356 per-field numeric change comparisons for 79 original sibling pairs",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original parser MethodDef 0x0600525F exact confirmed reader operations; new local full original numeric prover rechecks 23037 source form records and 17 field labels before pairwise comparison."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Suffix pairs are textual comparisons with known source boundaries only; no asserted mirrored sprites, actor facing, orientation, animation equivalence or bank selection.",
+    "The source field dispFrm is a parsed numeric input, not proven elapsed frames or playback duration. No runtime materialization of the 440 original assets observed.",
+    "The 17 source fields contain raw flags, direction-labelled bits and indices, but no resolution to actual FormData art, coordinate units, root positions or AI decisions.",
+    "No proprietary original bytes committed. SOURCE_CONSOLIDATION_V1 runtime/viewer stays LOCKED."
+  ]
+}

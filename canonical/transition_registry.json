@@ -7120,6 +7120,35 @@
         "Source formIdx integers do not resolve to actual FormData sprite-parts assets without separately proven original lookup dependencies.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_ORIGINAL_FPW_79_SIBLING_3610_FORM_NUMERIC_SOURCE_DIFFERENCES_V1",
+      "fact_id": "FACT-0356",
+      "source_ids": [
+        "RESPANEL-001",
+        "DLL-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Original SHA-pinned 440 GGM-linked fpw RS sources: 65 textual sibling families form 79 aligned pairs / 3610 form pair comparisons; using previously DLL-proven input reader, 1186 decoded 17-field source numeric records pair-equal and 2424 differ, exact agreement with raw comparison equality. All 17 original numeric field-level difference and pair-incidence counts, 3610-row SHA256 2b5a11a77149e6b0c19f004166ab367de41fca341661665f38f3ee9dbc3380da. Only 10 dispFrm field comparisons across 2 sibling pairs differ; no playback, direction, coordinate or mirror semantics proven.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_3610_sibling_numeric_source_differences.summary.json",
+      "source_windows": [
+        [
+          "Original 440 SHA-pinned GGM-linked fpw RS objects",
+          "79 suffix sibling source pairs; 3610 same-slot/same-form 12-byte source records",
+          "Full raw byte comparison digest matched to FACT-0354"
+        ],
+        [
+          "Original matching retail DLL ParseRSFData 12-byte FormDispInfo reader",
+          "FACT-0355 exact 17 source input arithmetic values",
+          "3610 aligned pairwise numeric source field differences only"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No original runtime animation facing/mirror or actor orientation established from textual sibling suffixes.",
+        "No real frame timing, world coordinates, FormData rendering or sound/AI semantics established by source field comparisons.",
+        "Original TextAsset runtime parsing/materialization not witnessed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
