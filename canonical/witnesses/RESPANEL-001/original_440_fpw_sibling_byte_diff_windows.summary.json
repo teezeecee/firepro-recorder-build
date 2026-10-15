@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_FPW440_ORIGINAL_SIBLING_PAYLOAD_BYTE_DIFF_WINDOWS_V1",
+  "source_ids": [
+    "RESPANEL-001"
+  ],
+  "original_panel": {
+    "filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+    "bytes": 330116,
+    "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+    "report_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+    "report_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc",
+    "prior_source_fact": "FACT-0347"
+  },
+  "observed": {
+    "source_objects": 440,
+    "sibling_families": 65,
+    "pairwise_comparisons": 79,
+    "pairs_0_1": 65,
+    "pairs_0_2": 7,
+    "pairs_1_2": 7,
+    "all_pairs_equal_source_length": 79,
+    "all_pairs_not_identical": 79,
+    "all_pairs_equal_offset48_63": 79,
+    "range_labels": [
+      "0_47",
+      "48_63",
+      "64_75",
+      "76_plus"
+    ],
+    "pairs_with_changes": [
+      62,
+      0,
+      4,
+      79
+    ],
+    "total_changed_bytes_by_range": [
+      128,
+      0,
+      7,
+      7836
+    ],
+    "total_changed_bytes_all_pairs": 7971,
+    "min_pair_changed_bytes": 14,
+    "max_pair_changed_bytes": 417,
+    "min_first_changed_index": 9,
+    "max_last_changed_index": 1283,
+    "normalized_79_pair_rows_sha256": "61ba2c2012dc91eeffe4a178ca0e4c2187a392f51c98d8cf9ce1aaf533364f81",
+    "row_encoding": "Python json.dumps(rows,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf8'); sorted family and suffix name; fields family,name_a,name_b,path_a,path_b,len,diff_count,window_diffs,first_diff,last_diff,offsets_sha256"
+  },
+  "windows": [
+    {
+      "start": 0,
+      "end_exclusive": 48
+    },
+    {
+      "start": 48,
+      "end_exclusive": 64
+    },
+    {
+      "start": 64,
+      "end_exclusive": 76
+    },
+    {
+      "start": 76,
+      "end_exclusive": null
+    }
+  ],
+  "anchors": [
+    {
+      "family": "fpw_2004",
+      "name_a": "fpw_2004_0",
+      "name_b": "fpw_2004_1",
+      "path_a": 22222,
+      "path_b": 21484,
+      "len": 448,
+      "diff_count": 118,
+      "window_diffs": [
+        1,
+        0,
+        0,
+        117
+      ],
+      "first_diff": 12,
+      "last_diff": 436
+    },
+    {
+      "family": "fpw_6160",
+      "name_a": "fpw_6160_0",
+      "name_b": "fpw_6160_1",
+      "path_a": 21356,
+      "path_b": 21526,
+      "len": 2344,
+      "diff_count": 417,
+      "window_diffs": [
+        0,
+        0,
+        0,
+        417
+      ],
+      "first_diff": 77,
+      "last_diff": 1283
+    }
+  ],
+  "limits": [
+    "Byte differences among textually suffixed source names do not establish direction, intended animation variant semantics, frame timing, transform, pose, or runtime selection.",
+    "Equal 16-byte source slices do not establish identical complete source payloads, even for equal-length siblings.",
+    "The original parent resource source joins were previously established by FACT-0347; this source-only comparison uses the exact same independently SHA-checked 440-object pack and companion manifest.",
+    "No original proprietary asset bytes committed, no execution claim, and SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+  ]
+}
