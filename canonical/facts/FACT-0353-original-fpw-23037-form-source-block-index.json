@@ -1,0 +1,45 @@
+{
+  "fact_id": "FACT-0353",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "From the previously exact SHA-pinned 440 named original fpw_* resource source bodies, cumulative block boundaries at embedded +48..+63 partition 24384 12-byte source blocks into 1347 nonempty raw segments. Each segment's first 12-byte block is followed by exactly the unsigned segment leading byte number of additional 12-byte blocks. Across the complete 440-source GGM-indexed panel this yields 23037 source-form blocks (276444 original bytes), with 15571 distinct 12-byte source patterns and 7214 distinct unsigned big-endian two-byte values at form-block-relative offsets +2..+3 (minimum100 maximum37998). The entire concatenated original form-block byte sequence SHA256 is 93807a1a2d1208e693ef225d80598f3d1fb70f58d2a132d63fd052c97668ba18; complete 440-source index rows SHA256 74e5ed2b12e07ba33463f7ec11e743889ce5e91afe967094b8940751cdbb79c9; indexed 23037 per-form provenance rows SHA256 23b2891ea046ae01b8187044c19a86da9efbc0e24e9ec33ec25a4e3ac36f0f91. Matching prior independently SHA-verified original retail DLL SkillDataMan.ParseRSFData source IL proves exactly twelve advancing input bytes per nested FormDispInfo entry, in byte order: two signed centerPos bytes; two unsigned big-endian formIdx bytes; two signed formOfsPos bytes (multiplied by 2.0f); one unsigned dispFrm byte; priority byte; initial flags byte; additional flags/direction byte; two sound/control bytes. This is exact source layout and independently proven DLL read-order alignment, not evidence the 440 resources were loaded and parsed in retail execution, or that these byte blocks signify displayed animation frame durations, pixels or sprite transformations.",
+  "evidence": [
+    {
+      "source_id": "RESPANEL-001",
+      "locator": "User's exact original 330116-byte full resource source panel FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin SHA256 0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53 and original GGM-linked 473482-byte companion SHA256 034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc, previous FACT-0347/0352. New normalized 440-source plus 23037-form indexed sha proofs in canonical/witnesses/RESPANEL-001/original_440_fpw_23037_form_source_blocks.summary.json and read-only original resource verifier tools/prove_original_fpw_23037_form_source_blocks.py.",
+      "observation": "Exact original indexed 440-source bytes yield 1347 segment-leading 12-byte blocks and 23037 complete 12-byte following form source blocks; each block has unique GGM source/PathID, source slot, within-slot form number and original byte offset."
+    },
+    {
+      "source_id": "DLL-001",
+      "locator": "Matching retail Assembly-CSharp DLL 8171008-byte SHA256 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; original SkillDataMan.ParseRSFData MethodDef0x0600525F 1735-byte IL SHA256 09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae. Independently pinned byte-read windows: FACT-0278 (+0x04A6..04CB), FACT-0279 (+0x04CC..04F0), FACT-0281 (+0x0530..056F), FACT-0282 (+0x0570..05A0), FACT-0283 (+0x05A1..05FD), FACT-0284 (+0x05FE..0640 no further read), FACT-0285 (+0x0641..069D). Existing exact DLL witness summary files under canonical/witnesses/CAP-R6-001; new static verifier checks source hashes, read counts and 12-byte layout.",
+      "observation": "Previous SHA-checked original DLL windows account for contiguous per-form input bytes in order: 2 centerPos, 2 formIdx, 3 formOfsPos/dispFrm, 2 priorities/flags, 1 further flags byte, 0 further bytes during direction/altitude assignments, 2 final sound/control source bytes. Twelve advancing bytes total per nested form entry."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0352 original 1347 source segments and exact twelve-byte block boundaries",
+      "to": "FACT-0353 23037 individually source-keyed original form-block rows",
+      "evidence": [
+        {
+          "source_id": "RESPANEL-001",
+          "locator": "Original source panel and report exact SHA identities; full original +48..63 cumulative slots and 12-byte step invariant; new source index digest for every one of 23037 12-byte form bodies and 440 resource rows."
+        }
+      ]
+    },
+    {
+      "from": "Original retail DLL FACT-0278/0279/0281/0282/0283/0284/0285 FormDispInfo byte reads and cursor flow",
+      "to": "FACT-0353 byte-offset layout alignment for each source 12-byte form block",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original matching Parser MethodDef0x0600525F full SHA, seven independently source-verified nested form reader IL windows and prior original source metadata field name tokens; read counts 2+2+3+2+1+0+2 = 12."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The 23037-form record count is an original packed source index, not an observed execution-time animation frame or number of actual rendered poses.",
+    "Original source field name formIdx does not provide a proven visual form selection, sprite-parts lookup result, screen coordinate system or active motion semantics.",
+    "Original source reads and byte format do not establish the runtime load and parser invocation of any individual fpw TextAsset.",
+    "Raw proprietary original resource bytes are kept outside Git and SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+  ]
+}

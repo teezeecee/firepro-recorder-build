@@ -7030,6 +7030,36 @@
         "First-entry original DLL field names do not certify all later original source segments were read or selected.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "UNITY_ORIGINAL_FPW440_RSF_23037_TWELVE_BYTE_FORM_SOURCE_RECORDS_V1",
+      "fact_id": "FACT-0353",
+      "source_ids": [
+        "RESPANEL-001",
+        "DLL-001"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "From the original SHA-verified 440 named fpw packed source objects, cumulative 12-byte block boundaries yield 1347 source headers and 23037 individual 12-byte source form records, 276444 bytes. Exactly 15571 distinct raw 12-byte form block patterns and 7214 distinct unsigned byte[2]<<8|byte[3] values. Source-keyed full 440 object and 23037 form SHA witness indexes. Seven previously proven original DLL FormDispInfo IL spans source-read exactly 12 bytes per form; original field name/byte-offset bridge only, not executed parsing, rendered frames or timing.",
+      "summary": "canonical/witnesses/RESPANEL-001/original_440_fpw_23037_form_source_blocks.summary.json",
+      "source_windows": [
+        [
+          "440 original GGM/PathID linked fpw embedded RS resources",
+          "cumulative source vectors +48..63 and all +64 onward aligned 12-byte original source blocks",
+          "23037 form blocks with 1347 preceding segment headers"
+        ],
+        [
+          "original matching SkillDataMan.ParseRSFData",
+          "prior verified original IL +0x04A6..+0x069E",
+          "seven original form-reader source windows read 12 bytes per form"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "23037 source blocks indexed do not establish 23037 rendered frames, retail playback timing or currently loaded asset instances.",
+        "Source field labels and byte operations are pinned original DLL metadata only; actual FormDataMan asset resolution, sprite part transforms and direction system are not established.",
+        "No actual original TextAsset per-resource load and ParseRSFData invocation is proven.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer remains LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

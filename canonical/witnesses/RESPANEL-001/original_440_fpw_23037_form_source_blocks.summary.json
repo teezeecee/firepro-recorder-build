@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "dataset_id": "UNITY_ORIGINAL_FPW440_RSF_23037_TWELVE_BYTE_FORM_SOURCE_RECORDS_V1",
+  "source_ids": [
+    "RESPANEL-001",
+    "DLL-001"
+  ],
+  "original_panel": {
+    "filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.bin",
+    "bytes": 330116,
+    "sha256": "0fdcac6e1b83c237de0b7f867cff3d61f7d97831efe08be9e4dcece346ba5b53",
+    "report_filename": "FIREPRO_ORIGINAL_FPW_RS_PANEL_v001.json",
+    "report_bytes": 473482,
+    "report_sha256": "034dada3887209542c37d9cf704345868661564b0e7a6b758f4b58e7a99c0cfc",
+    "prior_facts": [
+      "FACT-0347",
+      "FACT-0352"
+    ]
+  },
+  "original_dll": {
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "methoddef": "0x0600525F",
+    "method_il_sha256": "09000cc6b6e149540eb76d0865d8dd3aadcab1cd6bf8493286db768377c18cae",
+    "form_reader_windows": [
+      {
+        "bytes": [
+          0,
+          1
+        ],
+        "source_field": "FormDispInfo.centerPos",
+        "bytes_consumed": 2,
+        "first_byte_role": "signed center x",
+        "second_byte_role": "signed center y",
+        "fact": "FACT-0278",
+        "dll_witness": "skill_data_man_rsf_form_center_pos_signed_vector2.summary.json",
+        "il_start": "0x04A6",
+        "il_end": "0x04CC",
+        "il_sha256": "ef544099c322e46d4aee931555bad28a1b6beffb1f8a75be14f74efd7361997c"
+      },
+      {
+        "bytes": [
+          2,
+          3
+        ],
+        "source_field": "FormDispInfo.formIdx",
+        "bytes_consumed": 2,
+        "original_operation": "(unsigned byte[2] << 8) OR unsigned byte[3], then conv.u2",
+        "fact": "FACT-0279",
+        "dll_witness": "skill_data_man_rsf_form_index_dual_word_read.summary.json",
+        "il_start": "0x04CC",
+        "il_end": "0x04F1",
+        "il_sha256": "8588bd8b25ff5e6e65b25ec5c33cfecb3fbaf75bc36ffacc6583334b38a3573b"
+      },
+      {
+        "bytes": [
+          4,
+          5,
+          6
+        ],
+        "source_field": "FormDispInfo.formOfsPos, FormDispInfo.dispFrm",
+        "bytes_consumed": 3,
+        "original_operation": "signed offset source bytes[4,5] independently converted then multiplied by 2.0f; unsigned byte[6] stored in dispFrm",
+        "fact": "FACT-0281",
+        "dll_witness": "skill_data_man_rsf_form_offset_pos_and_disp_frame.summary.json",
+        "il_start": "0x0530",
+        "il_end": "0x0570",
+        "il_sha256": "c104bc32de801488e4bec4a92f56d4f948f6a1c258d82114f4bd04a98cc79158"
+      },
+      {
+        "bytes": [
+          7,
+          8
+        ],
+        "source_field": "FormDispInfo.formPri, ringPri, flags",
+        "bytes_consumed": 2,
+        "original_operation": "priority packing from source byte[7], initial flags source byte[8]",
+        "fact": "FACT-0282",
+        "dll_witness": "skill_data_man_rsf_form_priorities_and_initial_flags.summary.json",
+        "il_start": "0x0570",
+        "il_end": "0x05A1",
+        "il_sha256": "78bf425b69801c4c958d960905d88d7fd243294def1891207fc7883b6ac2ab66"
+      },
+      {
+        "bytes": [
+          9
+        ],
+        "source_field": "FormDispInfo.flags",
+        "bytes_consumed": 1,
+        "original_operation": "new source byte[9] retained in local4, low flag bits conditionally OR into flags",
+        "fact": "FACT-0283",
+        "dll_witness": "skill_data_man_rsf_form_flag_bit_or_updates.summary.json",
+        "il_start": "0x05A1",
+        "il_end": "0x05FE",
+        "il_sha256": "c9c9f67cafdde8edf5443e35c6a54823ee42a7578715dfe019392ff90e8fd2b6"
+      },
+      {
+        "bytes": [],
+        "source_field": "FormDispInfo.dir_LR, dir_UD, altitude",
+        "bytes_consumed": 0,
+        "original_operation": "source byte[9] local4 reused; no new source input consumed in this IL region",
+        "fact": "FACT-0284",
+        "dll_witness": "skill_data_man_rsf_form_direction_bits_and_altitude.summary.json",
+        "il_start": "0x05FE",
+        "il_end": "0x0641",
+        "il_sha256": "9fa1cfe167f8cf98d33726a5e246fc22c9501001df4bed430a1205d512501916"
+      },
+      {
+        "bytes": [
+          10,
+          11
+        ],
+        "source_field": "FormDispInfo.flags, ringVibration, seID, seLevel, effectID",
+        "bytes_consumed": 2,
+        "original_operation": "two additional source-byte reads; packed flags and SE fields, effectID initialized -1",
+        "fact": "FACT-0285",
+        "dll_witness": "skill_data_man_rsf_form_sound_effect_fields.summary.json",
+        "il_start": "0x0641",
+        "il_end": "0x069E",
+        "il_sha256": "9676632c4efd1721c279ace3496f80d84e077f0cf4b1e06a430ff3def3248765"
+      }
+    ],
+    "form_loop_prior_facts": [
+      "FACT-0277",
+      "FACT-0278",
+      "FACT-0279",
+      "FACT-0280",
+      "FACT-0281",
+      "FACT-0282",
+      "FACT-0283",
+      "FACT-0284",
+      "FACT-0285",
+      "FACT-0286"
+    ],
+    "source_layout_reader_input_bytes_per_form": 12,
+    "specific_440_resource_executions_proven": false
+  },
+  "observed": {
+    "source_objects": 440,
+    "source_segments": 1347,
+    "total_twelve_byte_source_blocks": 24384,
+    "source_form_records": 23037,
+    "source_form_bytes": 276444,
+    "all_source_segments_first_block_plus_form_records": 1347,
+    "distinct_form_record_raw_12_byte_patterns": 15571,
+    "distinct_two_byte_big_endian_source_values_at_form_relative_2_3": 7214,
+    "minimum_two_byte_big_endian_source_value_at_form_relative_2_3": 100,
+    "maximum_two_byte_big_endian_source_value_at_form_relative_2_3": 37998,
+    "concat_original_form_source_bytes_sha256": "93807a1a2d1208e693ef225d80598f3d1fb70f58d2a132d63fd052c97668ba18",
+    "normalized_440_source_rows_sha256": "74e5ed2b12e07ba33463f7ec11e743889ce5e91afe967094b8940751cdbb79c9",
+    "normalized_23037_form_rows_sha256": "23b2891ea046ae01b8187044c19a86da9efbc0e24e9ec33ec25a4e3ac36f0f91",
+    "source_rows_encoding": "Python json.dumps(source_rows,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf8'), sorted GGM index; each source row keys index,path_id,name,len,segments,total_form_rows; each segment keys slot,source_offset,form_count,form_block_count,raw_12byte_header_sha256,form_body_sha256",
+    "form_rows_encoding": "Python json.dumps(form_rows,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf8'), sorted GGM source, slot, form index; each row keys index,path_id,name,slot,form,source_offset,raw_sha256",
+    "form_record_byte_column_stats": [
+      {
+        "byte_offset": 0,
+        "distinct_unsigned_values": 94,
+        "minimum": 0,
+        "maximum": 255,
+        "zero_value_count": 11427
+      },
+      {
+        "byte_offset": 1,
+        "distinct_unsigned_values": 60,
+        "minimum": 0,
+        "maximum": 255,
+        "zero_value_count": 17961
+      },
+      {
+        "byte_offset": 2,
+        "distinct_unsigned_values": 135,
+        "minimum": 0,
+        "maximum": 148,
+        "zero_value_count": 1487
+      },
+      {
+        "byte_offset": 3,
+        "distinct_unsigned_values": 256,
+        "minimum": 0,
+        "maximum": 255,
+        "zero_value_count": 78
+      },
+      {
+        "byte_offset": 4,
+        "distinct_unsigned_values": 173,
+        "minimum": 0,
+        "maximum": 255,
+        "zero_value_count": 7074
+      },
+      {
+        "byte_offset": 5,
+        "distinct_unsigned_values": 149,
+        "minimum": 0,
+        "maximum": 255,
+        "zero_value_count": 9138
+      },
+      {
+        "byte_offset": 6,
+        "distinct_unsigned_values": 43,
+        "minimum": 1,
+        "maximum": 90,
+        "zero_value_count": 0
+      },
+      {
+        "byte_offset": 7,
+        "distinct_unsigned_values": 25,
+        "minimum": 0,
+        "maximum": 216,
+        "zero_value_count": 19808
+      },
+      {
+        "byte_offset": 8,
+        "distinct_unsigned_values": 25,
+        "minimum": 0,
+        "maximum": 200,
+        "zero_value_count": 14685
+      },
+      {
+        "byte_offset": 9,
+        "distinct_unsigned_values": 52,
+        "minimum": 0,
+        "maximum": 220,
+        "zero_value_count": 10066
+      },
+      {
+        "byte_offset": 10,
+        "distinct_unsigned_values": 5,
+        "minimum": 0,
+        "maximum": 32,
+        "zero_value_count": 22485
+      },
+      {
+        "byte_offset": 11,
+        "distinct_unsigned_values": 73,
+        "minimum": 0,
+        "maximum": 199,
+        "zero_value_count": 19314
+      }
+    ],
+    "nonzero_field_byte_group_counts": {
+      "signed_centers_nonzero": 12423,
+      "signed_offsets_nonzero": 16869,
+      "nonzero_dispFrm": 23037,
+      "nonzero_priorities": 3229,
+      "nonzero_flags": 8352,
+      "nonzero_direction_flags": 12971,
+      "nonzero_sound_field10": 552,
+      "nonzero_sound_field11": 3723
+    }
+  },
+  "anchors": [
+    {
+      "name": "fpw_2004_0",
+      "index": 43501,
+      "path_id": 22222,
+      "first_form_source_offset": 76,
+      "first_form_sha256": "55374d2add43f682dcd98ccae82de6e388aa0e82a596184eb0564ad00ff85cb8",
+      "first_form_two_byte_value": 7542,
+      "segment0_form_count": 19
+    },
+    {
+      "name": "fpw_6172",
+      "index": 43890,
+      "path_id": 21353,
+      "first_form_source_offset": 76,
+      "first_form_sha256": "feb58f293e4fdefc1cbf5769a2123f442e17d89a79fd861d3e376579fefedb02",
+      "first_form_two_byte_value": 11321,
+      "segment0_form_count": 44
+    },
+    {
+      "name": "fpw_6261",
+      "index": 43940,
+      "path_id": 21624,
+      "first_form_source_offset": 76,
+      "first_form_sha256": "cc410062fe014b018d35c468d859f1060e3ad312cce7bae84e8ccb89795cdfdb",
+      "first_form_two_byte_value": 108,
+      "segment0_form_count": 93
+    }
+  ],
+  "limits": [
+    "This source block/field-offset map is corroboration of exact raw bytes and previously verified retail DLL source instructions, not evidence of any specific Unity asset execution or renderer output.",
+    "The word form in labels comes from original DLL metadata; 23037 original twelve-byte source records are not independently observed animation frames or time steps.",
+    "Original center coordinates, offsets and flags use decoded source operations, but neither world-axis alignment, artist pose transformations, direction bank, hitbox calibration nor timing is established.",
+    "Original formIdx source integers are untyped packed values at a proven parser byte window and are not proven sprite resources or rendered image references.",
+    "Source bytes remain only in original user's private panel; no raw proprietary resource stream is committed to Git and SOURCE_CONSOLIDATION_V1 runtime/viewer stays LOCKED."
+  ]
+}
