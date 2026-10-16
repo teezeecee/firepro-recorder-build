@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FACE_TEXTURE2D_CRN_PACKED_CONTAINER_V1",
+  "source_ids": [
+    "RESOBJECT-001"
+  ],
+  "parent_fact": "FACT-0371",
+  "source_texture": {
+    "resource_name": "partstex/p0_face/b_fc_0000_m_1",
+    "class_id": 28,
+    "path_id": 15464,
+    "original_bytes": 54592,
+    "sha256": "ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583",
+    "original_vault_path": "03_Original_Bounded_Source_Bytes/FIREPRO_FACT0370_FACE_TEXTURE2D_PATHID15464.bin"
+  },
+  "private_witness": {
+    "repository": "teezeecee/firepro-retail-evidence-vault",
+    "path": "01_Private_Witnesses/FIREPRO_FACT0372_ORIGINAL_FACE_CRN_CONTAINER_WITNESS_v001.json",
+    "bytes": 2931,
+    "sha256": "1c7f7930af56c6829d146389bdf7ae6f6c4ba2194edcf6c450f4bad825ef6b0e",
+    "git_blob_sha1": "200b521c0169af9a296a5fc8e5ce68c94f955d34",
+    "committed_to_public_git": false
+  },
+  "unity_fields": {
+    "width": 532,
+    "height": 700,
+    "texture_format_numeric": 29,
+    "texture_format_name": "DXT5Crunched",
+    "complete_image_size": 54497,
+    "encoded_data_size_field_at76": 54497,
+    "encoded_object_offset": 80,
+    "encoded_object_end_exclusive": 54577,
+    "tail_zero_bytes": 15
+  },
+  "crn_header": {
+    "header_offset_in_object": 80,
+    "signature_hex": "48 78",
+    "header_size": 74,
+    "header_crc16_hex": "e7b8",
+    "data_size": 54497,
+    "data_crc16_hex": "02ff",
+    "width": 532,
+    "height": 700,
+    "levels": 1,
+    "faces": 1,
+    "crn_format": 2,
+    "crn_format_name": "cCRNFmtDXT5",
+    "flags": 0,
+    "reserved": 0,
+    "userdata0": 0,
+    "userdata1": 0
+  },
+  "crn_regions": {
+    "color_endpoints": {
+      "offset": 74,
+      "size": 1221,
+      "entry_count": 1164,
+      "end": 1295
+    },
+    "color_selectors": {
+      "offset": 1295,
+      "size": 6469,
+      "entry_count": 3331,
+      "end": 7764
+    },
+    "alpha_endpoints": {
+      "offset": 7764,
+      "size": 459,
+      "entry_count": 974,
+      "end": 8223
+    },
+    "alpha_selectors": {
+      "offset": 8223,
+      "size": 2385,
+      "entry_count": 976,
+      "end": 10608
+    },
+    "tables": {
+      "offset": 10608,
+      "size": 2099,
+      "end": 12707
+    },
+    "mip0": {
+      "offset": 12707,
+      "size": 41790,
+      "end": 54497
+    }
+  },
+  "contiguous_sections_from_header_to_data_end": true,
+  "external_format_sources": [
+    "https://github.com/BinomialLLC/crunch/blob/master/inc/crn_decomp.h",
+    "https://github.com/BinomialLLC/crunch/blob/master/inc/crnlib.h",
+    "https://docs.unity.com/en-us/engine/6000.3/script-reference/unityengine/textureformat/dxt5crunched"
+  ],
+  "limitations": [
+    "Only original per-object byte header/section reads were independently performed; CRC16 fields were read but not validated or recomputed.",
+    "The CRN payload has not been transcoded into DXT5 blocks or pixel/alpha output, and no image was rendered.",
+    "Original objects and private CRN witness are never committed to the public canonical repository.",
+    "No general sprite atlas or animation-state mapping established; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0372",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Original SHA-pinned retail Texture2D PathID15464 body contains at object offset80 a self-consistent packed Crunch/CRN Hx header of 74 bytes, exactly 54,497-byte compressed container with big-endian header width532 height700 one mip/facial image, CRN format enum2 = DXT5, and four contiguous palette byte sections, entropy tables and one 41,790-byte encoded level region. Its enclosing original Unity TextureFormat29 means DXT5Crunched. Source header section offsets, sizes and entry counts partition [74,54497) without gaps. No bitmap, decoded pixels or actual runtime sprite have been established.",
+  "evidence": [
+    {
+      "source_id": "RESOBJECT-001",
+      "locator": "Exact original ClassID28 Texture2D PathID15464 object 54,592 bytes SHA256 ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583 preserved only in private vault; embedded compressed [80,54577) previously verified SHA256 1dde001e0c8b0409d0fa453193fedbef5f0bb174916ec0e474269b6b930ebd06. Private new parsed CRN witness 01_Private_Witnesses/FIREPRO_FACT0372_ORIGINAL_FACE_CRN_CONTAINER_WITNESS_v001.json 2,931 bytes SHA256 1c7f7930af56c6829d146389bdf7ae6f6c4ba2194edcf6c450f4bad825ef6b0e git blob 200b521c0169af9a296a5fc8e5ce68c94f955d34. CRN format/field mapping cross-checked against publicly documented CRN header and Unity DXT5Crunched enum.",
+      "observation": "Original byte values: signature 48 78, header_size74, data_size54497, dimensions532x700, levels1 faces1 format2; color endpoint 74..1295, color selector 1295..7764, alpha endpoint 7764..8223, alpha selector 8223..10608, entropy table 10608..12707, one encoded level 12707..54497. Original object has 15 zero bytes after compressed payload."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0370 original Texture2D width/height and numeric format29 and FACT-0371 original Sprite indexed geometry",
+      "to": "FACT-0372 internal original Texture2D packed CRN header and contiguous encoded palette/table/level section boundaries",
+      "evidence": [
+        {
+          "source_id": "RESOBJECT-001",
+          "locator": "Original private Texture2D object PathID15464 exact SHA, read-only big-endian CRN header offsets and private incremental witness git blob."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Compressed texture layout is a source-proven container structure; neither header CRC nor data CRC has been recomputed; no pixel decode has occurred.",
+    "Format mapping DXT5Crunched is supported by published Unity format29 and Crunch enum2 definitions; it does not prove actual shader/display output.",
+    "No private binaries or complete source payload in public Git; only source-derived metadata and a read-only re-prover.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
