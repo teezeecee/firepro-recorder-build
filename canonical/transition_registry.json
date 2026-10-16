@@ -7506,6 +7506,35 @@
         "No original successful Unity resource load or final rendered pixels established.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_PARTSTEX_NAMED_TEXTURE2D_SPRITE_OBJECTINFO_JOINS_V1",
+      "fact_id": "FACT-0369",
+      "source_ids": [
+        "GGM-001",
+        "RESMETA-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Original SHA-matched GGM-001 ResourceManager named partstex/ entries join to original RESMETA-001 resources.assets metadata ObjectInfo PathIDs and ClassIDs: 35,365 named references, 17,686 distinct names, 17,686 ClassID28 and 17,679 ClassID213, with seven Texture2D-only p2_body highlight names. Exact eleven-folder census and normalized whole join SHA. Not original pixel data, sprite internal links or runtime resolution.",
+      "summary": "canonical/witnesses/RESMETA-001/original_partstex_named_texture_sprite_object_joins.summary.json",
+      "source_windows": [
+        [
+          "Original GGM-001 ResourceManager source body",
+          "43,941 source [name,fileID,pathID] rows, 35,365 partstex/ numeric links",
+          "414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de"
+        ],
+        [
+          "Original RESMETA-001 ObjectInfo type+PathID table",
+          "All 35,365 source references joined to original ClassID28/213 ObjectInfo records",
+          "9d15d5f8280f94bad62b151ee5017db9f99985c834e9f8bbcf86693069dfc463"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Exact original PathID associations do not provide resource object pixel contents or Sprite internals.",
+        "Original Unity mixed-case path-loading behavior and actual rendered texture selection are not proven.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
