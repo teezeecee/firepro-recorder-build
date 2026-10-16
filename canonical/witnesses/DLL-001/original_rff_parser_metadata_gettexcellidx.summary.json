@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_RFF_FORMPARTS_FIELD_NAMES_AND_GETTEXCELLIDX_ROUTING_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "witness": {
+    "filename": "FIREPRO_FACT0362_PARSER_METADATA_WITNESS_v001.json",
+    "bytes": 15404,
+    "sha256": "57162e6cf907b6f3747b03c5c910080319f4a944f0195ce4555940a7152013c3",
+    "schema_version": 1,
+    "status": "ORIGINAL_SOURCE_METADATA_WITNESS_ONLY_NOT_CANONICAL_FACT",
+    "parent_canonical_fact": "FACT-0361",
+    "requested_frontier": "FACT-0362"
+  },
+  "original_dll": {
+    "filename": "Assembly-CSharp.dll",
+    "bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "parser_token": "0x06001F12",
+    "parser_il_bytes": 1153,
+    "parser_il_sha256": "f8cd8fc00b94298c4d9949c461f5ab0e0f2c736befed5eb9305e5f39a10e1b01"
+  },
+  "metadata_resolution": {
+    "requested": 23,
+    "resolved": 23,
+    "unresolved": 0,
+    "fields": [
+      {
+        "token": "0x040026C0",
+        "owner": "FormPartsData",
+        "name": "texKind",
+        "field_type": "PartsTexEnum",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026C1",
+        "owner": "FormPartsData",
+        "name": "cellIdx",
+        "field_type": "System.Int32",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026C2",
+        "owner": "FormPartsData",
+        "name": "flags",
+        "field_type": "FormPartsData+FormPartsFlags",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026C3",
+        "owner": "FormPartsData",
+        "name": "brightness",
+        "field_type": "System.Int32",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026C4",
+        "owner": "FormPartsData",
+        "name": "pri",
+        "field_type": "System.Int32",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026C5",
+        "owner": "FormPartsData",
+        "name": "ang",
+        "field_type": "System.Single",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026C6",
+        "owner": "FormPartsData",
+        "name": "pos",
+        "field_type": "UnityEngine.Vector2[]",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026C7",
+        "owner": "FormPartsData",
+        "name": "scale",
+        "field_type": "System.Single[]",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026CB",
+        "owner": "FormData",
+        "name": "partsNum",
+        "field_type": "System.Int32",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026CC",
+        "owner": "FormData",
+        "name": "formPartsList",
+        "field_type": "FormPartsData[]",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026DD",
+        "owner": "FormDataMan",
+        "name": "Forms",
+        "field_type": "FormData[]",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026E9",
+        "owner": "FormDataMan+ParseFormDataParams",
+        "name": "bin",
+        "field_type": "System.Byte[]",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x040026EA",
+        "owner": "FormDataMan+ParseFormDataParams",
+        "name": "output",
+        "field_type": "FormData[]",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x0A000059",
+        "owner": "UnityEngine.Vector2",
+        "name": "x",
+        "field_type": "System.Single",
+        "member_kind": "Field"
+      },
+      {
+        "token": "0x0A00005A",
+        "owner": "UnityEngine.Vector2",
+        "name": "y",
+        "field_type": "System.Single",
+        "member_kind": "Field"
+      }
+    ],
+    "types": [
+      {
+        "token": "0x0100000C",
+        "name": "Vector2",
+        "type_full_name": "UnityEngine.Vector2"
+      },
+      {
+        "token": "0x010000CE",
+        "name": "Single",
+        "type_full_name": "System.Single"
+      },
+      {
+        "token": "0x02000400",
+        "name": "FormPartsData",
+        "type_full_name": "FormPartsData"
+      },
+      {
+        "token": "0x02000402",
+        "name": "FormData",
+        "type_full_name": "FormData"
+      },
+      {
+        "token": "0x02000404",
+        "name": "ParseFormDataParams",
+        "type_full_name": "FormDataMan+ParseFormDataParams"
+      }
+    ],
+    "constructors": [
+      {
+        "token": "0x06001F08",
+        "owner": "FormPartsData",
+        "name": ".ctor",
+        "parameters": []
+      },
+      {
+        "token": "0x06001F0B",
+        "owner": "FormData",
+        "name": ".ctor",
+        "parameters": []
+      }
+    ]
+  },
+  "get_tex_cell_idx": {
+    "token": "0x06001F18",
+    "owner": "FormDataMan",
+    "name": "GetTexCellIdx",
+    "is_static": true,
+    "return_type": "System.Void",
+    "parameters": [
+      {
+        "name": "char_idx",
+        "type": "System.Int32"
+      },
+      {
+        "name": "tex_kind",
+        "type": "PartsTexEnum&"
+      },
+      {
+        "name": "cell_idx",
+        "type": "System.Int32&"
+      }
+    ],
+    "il_bytes": 412,
+    "il_sha256": "fa82ffc9e97c358e5e770ced915611b73550d15c5ea39fd7713ed1a726e3f5ec",
+    "windows": [
+      {
+        "start": 0,
+        "end": 51,
+        "name": "negative_and_first_table",
+        "sha256": "f102228248323d6cf62bd6f8efdb7405c40076d5c55be8f81e4cb782d3d84977"
+      },
+      {
+        "start": 51,
+        "end": 144,
+        "name": "table_ranges_two_to_four",
+        "sha256": "e470ad6e0fd00ebf57a9b9ccb1afaa812d453ad66fa7aba02ac3f68bae7e0a7e"
+      },
+      {
+        "start": 144,
+        "end": 246,
+        "name": "table_ranges_five_to_seven",
+        "sha256": "72685117e874702f0307ca8b2e0c34d99d3f688654abbe52cce6650691186278"
+      },
+      {
+        "start": 246,
+        "end": 318,
+        "name": "table_ranges_eight_to_nine",
+        "sha256": "8a2a18f241fcfcc7ad00148db6097c03d42829f6cc925a47571c5efdd324052f"
+      },
+      {
+        "start": 318,
+        "end": 412,
+        "name": "fallback_and_four_special_indices",
+        "sha256": "bf009da486c6f4f8c0425cec8dc5c8aa37ae2d2c478b747501869bdd38bbe963"
+      }
+    ],
+    "negative_case": {
+      "char_idx_max": 0,
+      "tex_kind_value": -1,
+      "cell_idx_value": -1
+    },
+    "bands": [
+      {
+        "char_idx_start": 1,
+        "char_idx_end": 42,
+        "tex_kind_value": 0,
+        "lookup_field_token": "0x040026E0",
+        "lookup_index_base": 1
+      },
+      {
+        "char_idx_start": 43,
+        "char_idx_end": 93,
+        "tex_kind_value": 1,
+        "lookup_field_token": "0x040026E1",
+        "lookup_index_base": 43
+      },
+      {
+        "char_idx_start": 94,
+        "char_idx_end": 143,
+        "tex_kind_value": 2,
+        "lookup_field_token": "0x040026E2",
+        "lookup_index_base": 94
+      },
+      {
+        "char_idx_start": 144,
+        "char_idx_end": 194,
+        "tex_kind_value": 3,
+        "lookup_field_token": "0x040026E3",
+        "lookup_index_base": 144
+      },
+      {
+        "char_idx_start": 195,
+        "char_idx_end": 238,
+        "tex_kind_value": 4,
+        "lookup_field_token": "0x040026E4",
+        "lookup_index_base": 195
+      },
+      {
+        "char_idx_start": 239,
+        "char_idx_end": 286,
+        "tex_kind_value": 5,
+        "lookup_field_token": "0x040026E5",
+        "lookup_index_base": 239
+      },
+      {
+        "char_idx_start": 287,
+        "char_idx_end": 360,
+        "tex_kind_value": 6,
+        "lookup_field_token": "0x040026E6",
+        "lookup_index_base": 287
+      },
+      {
+        "char_idx_start": 361,
+        "char_idx_end": 455,
+        "tex_kind_value": 7,
+        "lookup_field_token": "0x040026E7",
+        "lookup_index_base": 361
+      },
+      {
+        "char_idx_start": 456,
+        "char_idx_end": 573,
+        "tex_kind_value": 8,
+        "lookup_field_token": "0x040026E8",
+        "lookup_index_base": 456
+      }
+    ],
+    "other_case": {
+      "char_idx_min": 574,
+      "tex_kind_value": 9,
+      "cell_idx_formula": "char_idx - 574"
+    },
+    "special_cases": [
+      {
+        "char_idx": 621,
+        "tex_kind_value": 10,
+        "cell_idx_value": 0
+      },
+      {
+        "char_idx": 622,
+        "tex_kind_value": 11,
+        "cell_idx_value": 0
+      },
+      {
+        "char_idx": 623,
+        "tex_kind_value": 12,
+        "cell_idx_value": 0
+      },
+      {
+        "char_idx": 624,
+        "tex_kind_value": 13,
+        "cell_idx_value": 0
+      }
+    ],
+    "original_lookup_array_contents_proven": false,
+    "static_lookup_field_tokens_naming_proven": false,
+    "original_instruction_structure": {
+      "initial_output_defaults": "-1,-1",
+      "range_checks": "signed bge lower-bound progression",
+      "table_fields": "0x040026E0..0x040026E8 read using ldsfld -> ldelem.i4",
+      "separate_exact_special_tests": "47,48,49,50 after subtraction of 574"
+    },
+    "limits": [
+      "Source token names, types and helper branch/constant instructions are established by original matching DLL reflection and exact original IL SHA; no method execution was performed.",
+      "Nine ldsfld lookup table field tokens 0x040026E0..E8 appear in helper but their original names, contents and lengths were not included in this witness.",
+      "Numeric texKind and cellIdx output routing is static source behavior; it is not yet proven texture identity, rendered sprite selection, frame timing or runtime successful load.",
+      "No original proprietary DLL bytes or helper IL hex stored in Git; source-only. Runtime/viewer remains LOCKED under SOURCE_CONSOLIDATION_V1."
+    ]
+  }
+}
