@@ -7276,6 +7276,35 @@
         "No ParseFormData_RFF source-based array/parts/frame record interpretation established.",
         "No canonical runtime/viewer construction permitted before SOURCE_CONSOLIDATION_V1 prerequisite closure."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_FORMDATA_RFF_PARSER_20X16_STATIC_SOURCE_STRIDE_V1",
+      "fact_id": "FACT-0361",
+      "source_ids": [
+        "DLL-001",
+        "RESOBJ-003"
+      ],
+      "scope": "CORROBORATED_MULTI_SOURCE",
+      "definition": "Exact original 1153-byte FormDataMan.ParseFormData_RFF IL SHA f8cd8fc00b94298c4d9949c461f5ab0e0f2c736befed5eb9305e5f39a10e1b01 establishes 20 nested entries per outer FormData and 13 original byte reads plus explicit 3-byte cursor skip per entry: 16-byte entry / 320-byte record. With preceding verified loader 37999-element array, original outer condition array.Length-1 traverses 37998 records = 12159360 source bytes; verified embedded resource holds 12800000. Remaining 640640 source bytes (2002 width-320 windows) have no proven interpretation.",
+      "summary": "canonical/witnesses/DLL-001/original_fprform_rff_parser_il_stride.summary.json",
+      "source_windows": [
+        [
+          "Original matching DLL-001 parser MethodDef0x06001F12",
+          "Complete 1153-byte original IL in privately uploaded source witness, SHA/windows, 13 byte reads and loop branches",
+          "f8cd8fc00b94298c4d9949c461f5ab0e0f2c736befed5eb9305e5f39a10e1b01"
+        ],
+        [
+          "Original SHA-matched RESOBJ-003 embedded TextAsset",
+          "Exact 12800000-byte source payload corroborates width arithmetically, without rendering or execution",
+          "ad16142531130b7ff36ead502c490be7ac639159817de45b471039c90a262d41"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No executed Resources.Load, populated FormData results or concrete sprite/pose identities established.",
+        "Static numeric unpacking and field tokens do not prove rendered coordinates/transforms, orientation or timeline.",
+        "Unknown semantics of 2002 trailing 320-byte source windows; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

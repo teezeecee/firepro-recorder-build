@@ -1,0 +1,46 @@
+{
+  "fact_id": "FACT-0361",
+  "status": "CORROBORATED_MULTI_SOURCE",
+  "claim": "Matching original DLL-001 FormDataMan.ParseFormData_RFF MethodDef0x06001F12, 1153-byte source IL SHA f8cd8fc00b94298c4d9949c461f5ab0e0f2c736befed5eb9305e5f39a10e1b01, has an outer loop over array.Length-1 and a 20-entry inner loop. Each inner entry reads exactly 13 original source bytes via ldelem.u1 and explicitly skips three further bytes, giving a source-proven 16-byte entry and 320-byte outer record. The original loader FACT-0359 allocates 37999 elements; this parser path conditionally constructs 37998 outer records, 12159360 bytes. The SHA-matched original RFF embedded resource FACT-0360 contains 12800000 bytes (40000 x 320), leaving an arithmetic remainder of 640640 bytes (2002 windows) beyond this path's iteration count, whose purpose is not established. Parser statically allocates 20 per-form entries, five two-component numeric elements and five Single modifiers per entry. No retail execution, array values, graphics or animation semantics are claimed.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original user-run parser probe JSON exact 4035 bytes SHA16e824d32f431db59ece4ef6618064ba84a422671a449430d5744298b8852e71; matching original Assembly-CSharp.dll 8171008 bytes SHA9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; method token0x06001F12 1153 IL bytes SHA f8cd8fc00b94298c4d9949c461f5ab0e0f2c736befed5eb9305e5f39a10e1b01, five contiguous source-window SHA checks and loop/ldelem offsets",
+      "observation": "Static original parser bounds, exactly 20 slots, 13 source byte loads plus cursor += 3 per slot, source-derived 320-byte record and packed numeric field operations, without executing retail."
+    },
+    {
+      "source_id": "RESOBJ-003",
+      "locator": "FACT-0360 original-to-export matched PathID22906 ClassID49 TextAsset SHA 3d457734faf243a6efabd57756a48c82c1f27cc5a4294c567cc51804afd1ab6d; embedded 12800000 bytes SHA ad16142531130b7ff36ead502c490be7ac639159817de45b471039c90a262d41",
+      "observation": "Now corroborates original static parser 320-byte stride with exact original embedded source length; original bytes not repeated in Git."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0359 SHA-matched original loader array size 37999 and ParseFormData_RFF call",
+      "to": "FACT-0361 original ParseFormData_RFF 1153-byte IL, 37998 outer iterations and 20 x 16 source cursor stride",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original MethodDef0x06001F12 full IL SHA, loop branches IL+0x001C/0x005C/0x0462/0x047B, 13 ldelem.u1 read offsets and explicit IL+0x0454..0x0457 three-byte source cursor skip"
+        }
+      ]
+    },
+    {
+      "from": "FACT-0360 original RFF resource whole serialized object identity",
+      "to": "FACT-0361 source-proven 320-byte parse stride compared arithmetically with exact 12800000-byte embedded payload",
+      "evidence": [
+        {
+          "source_id": "RESOBJ-003",
+          "locator": "Exact embedded source SHA/length in FACT-0360; 37998 x 320 = 12159360, 12800000 - 12159360 = 640640"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The original 1153-byte parser method body is observed through user-run read-only .NET reflection, with DLL identity and parent loader exact SHA checked; it was not executed.",
+    "Original record width 320 is source-proven from 20 inner iterations, 13 byte loads and an explicit three-byte skip, not merely from resource length divisibility.",
+    "The branch arithmetic assumes the already proven loader creates 37999 array elements. Actual runtime invocation, successful Resources.Load, populated FormData objects, identity of external MemberRefs, visual frame IDs, transforms, timing and AI are not established by this static source.",
+    "The 2002 unused 320-byte windows are an arithmetic remainder from this particular static loader/parser path; no claim is made about purpose, use by other loaders or actual runtime consumption.",
+    "Proprietary original raw DLL, RFF payload and full IL hex remain outside Git. Runtime/viewer LOCKED under SOURCE_CONSOLIDATION_V1."
+  ]
+}
