@@ -1,0 +1,40 @@
+{
+  "fact_id": "FACT-0369",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "A fresh SHA-verified join of original globalgamemanagers ResourceManager name/PPtr bytes and original resources.assets metadata ObjectInfo bytes establishes exactly 35,365 original named 'partstex/' source references to fileID5, representing 17,686 distinct resource names. All source numeric PathIDs match original ObjectInfo rows; the matching source ClassIDs are exactly 17,686 Texture2D (28) and 17,679 Sprite (213), paired one of each for 17,679 names. Seven original p2_body highlight names have Texture2D records only in this original resource table. Eleven source folders and their exact class counts are SHA-pinned. This refines already proven FACT-0344 numeric 43,930-fileID5 joins with actual source names/ClassIDs; it does not claim image pixel data, internal Sprite geometry, successful Unity resource loads or rendered results.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Matching original globalgamemanagers 5002540 bytes SHA256 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c; original ResourceManager body at absolute122824 bytes4862328 SHA256 414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de; direct original ordered m_Container 43941 name+PPtr source rows.",
+      "observation": "35,365 original source entries have 'partstex/' names and fileID5, with 17,686 unique names and recorded original numeric PathIDs."
+    },
+    {
+      "source_id": "RESMETA-001",
+      "locator": "Original resources.assets header/metadata prefix bytes1842222 SHA256 8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da; original 90,992 ObjectInfo records [17212,1837052) SHA256 9d15d5f8280f94bad62b151ee5017db9f99985c834e9f8bbcf86693069dfc463. Private derived witness FIREPRO_FACT0369_ORIGINAL_PARTSTEX_NAMED_OBJECT_JOIN_WITNESS_v001.json bytes7985 SHA256 d1d8ae039e936bee2cbdad48f6a3ed1607157acc28341401e7dfdc9fb1c0ae4d, public read-only source verifier and source-only summary.",
+      "observation": "Every named fileID5 Partstex numeric source reference is checked against exact metadata PathID, ClassID, offset and serialized size. 17,686 ClassID28 and 17,679 ClassID213; eleven folder counts and seven singleton names proven."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0368 original PartsInfoManager code-defined nine folder names and PartsTex/ name construction",
+      "to": "FACT-0369 original ResourceManager 11 lowercase partstex source-name groups and exact Unity ObjectInfo ClassID/PathID associations",
+      "evidence": [
+        {
+          "source_id": "GGM-001",
+          "locator": "Original ResourceManager name/PPtr rows [0,2138488) SHA-pinned source index."
+        },
+        {
+          "source_id": "RESMETA-001",
+          "locator": "Original resources.assets metadata ObjectInfo [17212,1837052) SHA-pinned ClassID-index join."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The complete 3.17 GB original resources.assets payload was not uploaded in this witness; source metadata alone does not prove object pixel contents.",
+    "Matching resource name on one Texture2D and one Sprite does not prove internal Sprite texture-reference fields or renderer selection.",
+    "Case-normalization behavior between original DLL mixed-case path construction and original lowercase resource entries is not established.",
+    "FACT-0344 already proved the ObjectInfo table count and numeric GGM join; those results are not presented as newly discovered.",
+    "No new original binaries, full IL or art committed. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_PARTSTEX_NAMED_TEXTURE2D_SPRITE_OBJECTINFO_JOIN_V1",
+  "source_ids": [
+    "GGM-001",
+    "RESMETA-001"
+  ],
+  "parent_fact": "FACT-0368",
+  "previous_object_table_fact": "FACT-0344",
+  "private_witness": {
+    "filename": "FIREPRO_FACT0369_ORIGINAL_PARTSTEX_NAMED_OBJECT_JOIN_WITNESS_v001.json",
+    "bytes": 7985,
+    "sha256": "d1d8ae039e936bee2cbdad48f6a3ed1607157acc28341401e7dfdc9fb1c0ae4d",
+    "committed_to_git": false
+  },
+  "original_globalgamemanagers": {
+    "bytes": 5002540,
+    "sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "resource_manager_absolute_offset": 122824,
+    "resource_manager_bytes": 4862328,
+    "resource_manager_sha256": "414f1fba01d63bf13a63d82d9b7dbb7fd6223616deb4a57cb3a2ac1f8cbaf9de",
+    "container_count": 43941,
+    "container_source_end_offset": 2138488
+  },
+  "original_resources_metadata": {
+    "filename": "FIREPRO_RESOURCES_ORIGINAL_METADATA_v001.bin",
+    "bytes": 1842222,
+    "sha256": "8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da",
+    "type_count": 455,
+    "object_count": 90992,
+    "object_table_begin": 17212,
+    "object_table_end": 1837052,
+    "object_table_sha256": "9d15d5f8280f94bad62b151ee5017db9f99985c834e9f8bbcf86693069dfc463",
+    "class_texture2d": 28,
+    "class_sprite": 213
+  },
+  "partstex": {
+    "name_prefix": "partstex/",
+    "file_id": 5,
+    "source_named_references": 35365,
+    "distinct_names": 17686,
+    "texture2d_refs": 17686,
+    "sprite_refs": 17679,
+    "dual_class_names": 17679,
+    "texture2d_only_names": 7,
+    "folder_counts": [
+      {
+        "folder": "bloodparts",
+        "texture2d_count": 7,
+        "sprite_count": 7
+      },
+      {
+        "folder": "p0_face",
+        "texture2d_count": 9820,
+        "sprite_count": 9820
+      },
+      {
+        "folder": "p1_chest",
+        "texture2d_count": 1760,
+        "sprite_count": 1760
+      },
+      {
+        "folder": "p2_body",
+        "texture2d_count": 2820,
+        "sprite_count": 2813
+      },
+      {
+        "folder": "p3_uarm",
+        "texture2d_count": 510,
+        "sprite_count": 510
+      },
+      {
+        "folder": "p4_farm",
+        "texture2d_count": 514,
+        "sprite_count": 514
+      },
+      {
+        "folder": "p5_shin",
+        "texture2d_count": 526,
+        "sprite_count": 526
+      },
+      {
+        "folder": "p6_thigh",
+        "texture2d_count": 1624,
+        "sprite_count": 1624
+      },
+      {
+        "folder": "p7_hand",
+        "texture2d_count": 32,
+        "sprite_count": 32
+      },
+      {
+        "folder": "p8_foot",
+        "texture2d_count": 66,
+        "sprite_count": 66
+      },
+      {
+        "folder": "poisonedparts",
+        "texture2d_count": 7,
+        "sprite_count": 7
+      }
+    ],
+    "texture2d_only_exact_names": [
+      "partstex/p2_body/m_bo_5000_f_2_h",
+      "partstex/p2_body/m_bo_5000_f_3_h",
+      "partstex/p2_body/m_bo_5000_f_4_h",
+      "partstex/p2_body/m_bo_5000_f_5_h",
+      "partstex/p2_body/m_bo_5000_f_6_h",
+      "partstex/p2_body/m_bo_5000_f_7_h",
+      "partstex/p2_body/m_bo_5000_f_8_h"
+    ],
+    "normalized_join_sha256": "17ba83df617b5c30f98bd88122db42dc5f4af53beee6aaa4311dc54dfa2598a1",
+    "normalized_join_encoding": "utf8 JSON array of source-order objects with keys sorted, compact commas/colons, ensure_ascii=False; columns index,name,file_id,path_id,class_id,relative_offset,byte_size"
+  },
+  "limits": [
+    "FACT-0344 already established 90,992 ObjectInfo and all 43,930 resources.assets numeric fileID5 joins; this fact is only the new named PartsTex ClassID/PathID classification.",
+    "Original resources.assets payload bytes not present in prefix, so pixels and Sprite body-to-texture links remain unproven.",
+    "Original ResourceManager spellings are lower-case while DLL construction uses mixed-case spellings; successful Unity case normalization or resource loading is not established.",
+    "No loaded image, renderer output or runtime behavior is promoted. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
