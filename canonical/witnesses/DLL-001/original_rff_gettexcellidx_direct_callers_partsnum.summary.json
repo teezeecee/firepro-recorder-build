@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_RFF_GETTEXCELLIDX_TWO_DIRECT_CALLS_PARTSNUM_NONPOSITIVE_COUNTER_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "private_witness": {
+    "filename": "FIREPRO_FACT0365_DIRECT_ORIGINAL_CALLSITE_WITNESS_v001.json",
+    "bytes": 8135,
+    "sha256": "991538b496eb302b5599beb255f4bab814adce1aa36149b62e98b5815a0b4e81",
+    "committed_to_git": false
+  },
+  "original_dll": {
+    "bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "methoddef_rows_scanned": 30862
+  },
+  "called_method_token": "0x06001F18",
+  "called_method_name": "GetTexCellIdx",
+  "called_method_il_sha256": "fa82ffc9e97c358e5e770ced915611b73550d15c5ea39fd7713ed1a726e3f5ec",
+  "direct_call_opcode": "call 0x06001F18",
+  "method_bodies": [
+    {
+      "token": "0x06001F0E",
+      "name": "LoadFormData",
+      "bytes": 1490,
+      "sha256": "5747096d106c5675819802c73c18f531fc76377c1731e1aa038f72c33a8706e0",
+      "call_opcode_offset": 302
+    },
+    {
+      "token": "0x06001F12",
+      "name": "ParseFormData_RFF",
+      "bytes": 1153,
+      "sha256": "f8cd8fc00b94298c4d9949c461f5ab0e0f2c736befed5eb9305e5f39a10e1b01",
+      "call_opcode_offset": 169
+    }
+  ],
+  "source_windows": [
+    {
+      "method": "LoadFormData",
+      "name": "call_site",
+      "start": 287,
+      "end": 307,
+      "sha256": "0777f410abae6256f797f74a4054415a3eaf582e2e91ed4b51b76302a8fa45f7"
+    },
+    {
+      "method": "ParseFormData_RFF",
+      "name": "call_site",
+      "start": 154,
+      "end": 174,
+      "sha256": "9f8623be5e81a495ebce1dabe6a745cdf63f4aa49e56b6c73a20e3ec020ab855"
+    },
+    {
+      "method": "ParseFormData_RFF",
+      "name": "counter_zero_init",
+      "start": 86,
+      "end": 89,
+      "sha256": "14bb58315b2fdae4d0e7a3834184213fe79ccd7346a13fd64c99ab64bb1d5560"
+    },
+    {
+      "method": "ParseFormData_RFF",
+      "name": "post_lookup_conditional_increment",
+      "start": 174,
+      "end": 193,
+      "sha256": "a67d44596f97237b6162efd90102ec650f4469fa7e7e63213ecbf027f0d3745a"
+    },
+    {
+      "method": "ParseFormData_RFF",
+      "name": "partsNum_store",
+      "start": 1127,
+      "end": 1136,
+      "sha256": "4324001a622b4c78c001d52850cc7fe08040d61eece28731ef0ee7e6c8cce827"
+    }
+  ],
+  "source_field_tokens": {
+    "texKind": "0x040026C0",
+    "cellIdx": "0x040026C1",
+    "partsNum": "0x040026CB"
+  },
+  "observed_parser_counter": {
+    "local_index": 6,
+    "initializer_il_offset": 86,
+    "initialize_value": 0,
+    "lookup_call_opcode_offset": 169,
+    "compare_and_branch_offset": 174,
+    "bgt_opcode_offset": 182,
+    "bgt_relative_offset": 6,
+    "bgt_target_offset": 193,
+    "fallthrough_offset": 187,
+    "fallthrough_operation": "local6=local6+1 when FormPartsData.cellIdx <= 0",
+    "parts_num_store_il_offset": 1127,
+    "parts_num_destination": "FormData.partsNum"
+  },
+  "limits": [
+    "Direct call-byte scans target original MethodDef IL byte streams; no proof about delegate, reflection or indirect callers.",
+    "Observed integer comparison and local increment are source-level instructions; the actual behavior of downstream part displays is not proven.",
+    "Neither game method nor original static constructor executed; no original proprietary IL body stored in Git.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

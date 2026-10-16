@@ -7389,6 +7389,34 @@
         "No original running Unity dispatch, animation frame output or draw transform established.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_RFF_GETTEXCELLIDX_CONSUMERS_NONPOSITIVE_PARTSNUM_COUNTER_V1",
+      "fact_id": "FACT-0365",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original matching retail DLL MethodDef0x06001F0E LoadFormData and MethodDef0x06001F12 ParseFormData_RFF each directly call GetTexCellIdx 0x06001F18 and pass references to FormPartsData.texKind and cellIdx. RFF parser tests produced cellIdx >0 to bypass, increments local6 for cellIdx<=0, and writes local6 to FormData.partsNum. Source byte windows independently hash-pinned. No conclusion as to drawing of cells or semantics of unobserved indirect calls.",
+      "summary": "canonical/witnesses/DLL-001/original_rff_gettexcellidx_direct_callers_partsnum.summary.json",
+      "source_windows": [
+        [
+          "Original DLL LoadFormData full 1490 IL source",
+          "Direct GetTexCellIdx call offset302 and FormPartsData reference field setup",
+          "5747096d106c5675819802c73c18f531fc76377c1731e1aa038f72c33a8706e0"
+        ],
+        [
+          "Original DLL ParseFormData_RFF full 1153 IL source",
+          "Direct GetTexCellIdx call offset169, branch on cellIdx and local6 count stored to FormData.partsNum",
+          "f8cd8fc00b94298c4d9949c461f5ab0e0f2c736befed5eb9305e5f39a10e1b01"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The source count and call sites do not establish exact sprite image identities or live Unity draw behavior.",
+        "The 573 lookup integer entries and -1 values still require independent display consumer semantics.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
