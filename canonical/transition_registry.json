@@ -7305,6 +7305,34 @@
         "Static numeric unpacking and field tokens do not prove rendered coordinates/transforms, orientation or timeline.",
         "Unknown semantics of 2002 trailing 320-byte source windows; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_RFF_FORMPARTSDATA_GETTEXCELLIDX_METADATA_ROUTING_V1",
+      "fact_id": "FACT-0362",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original DLL token reflection SHA-pinned 23/23 requested field/type/method tokens defines FormPartsData texKind/cellIdx/flags/brightness/pri/ang/pos/scale, FormData partsNum/formPartsList; original 412-byte MethodDef0x06001F18 GetTexCellIdx maps char_idx <=0 to (-1,-1), inputs 1..573 through nine static per-range int lookup arrays (kind0..8), other >=574 to kind9 and char_idx-574 with four special 621..624 values producing kind10..13 and cell_idx0. Names/table contents for nine backing arrays not yet source-demonstrated.",
+      "summary": "canonical/witnesses/DLL-001/original_rff_parser_metadata_gettexcellidx.summary.json",
+      "source_windows": [
+        [
+          "User original SHA-verified DLL reflection panel",
+          "23 token resolutions FormPartsData/FormData fields, parser and GetTexCellIdx method signatures",
+          "57162e6cf907b6f3747b03c5c910080319f4a944f0195ce4555940a7152013c3"
+        ],
+        [
+          "GetTexCellIdx original MethodDef 0x06001F18",
+          "Complete 412-byte original IL five contiguous windows and source-derived numeric routing",
+          "fa82ffc9e97c358e5e770ced915611b73550d15c5ea39fd7713ed1a726e3f5ec"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Exact field and branch metadata do not establish nine integer lookup arrays' contents or actual cell image identities.",
+        "Neither parser/loader live execution nor drawn form/sprite transforms and temporal animation proven.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
