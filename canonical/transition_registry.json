@@ -7478,6 +7478,34 @@
         "No original successful method invocation or animation timeline observed.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_PARTSTEX_NINE_FOLDER_RESOURCE_NAME_ROUTING_V1",
+      "fact_id": "FACT-0368",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "SHA-verified original PartsInfoManager .cctor initializes nine literal folders and nine two-character code keys in PartsTexTypeTbl, with original GetPartsTexKind substring(2,2) and original GetPartsFileName constructing PartsTex/<folder>/<filename>; original GetHighlightPartsFileName appends _h. Six original full-method IL SHA pins, eight bounded source IL windows and original literal token keys. No actual Texture2D PathID or loaded pixels established.",
+      "summary": "canonical/witnesses/DLL-001/original_partstex_nine_folder_name_routing.summary.json",
+      "source_windows": [
+        [
+          "Original PartsInfoManager .cctor MethodDef0x060010E0",
+          "Nine folder strings, nine category codes and seven base-type keys",
+          "8840f9706a193479d93889095882683e942573d8263d172994a731ca9c31a171"
+        ],
+        [
+          "Original GetPartsFileName MethodDef0x060010CD",
+          "Literal PartsTex/ + nine-part folder + / + supplied filename when code valid",
+          "622c6cf892d770288857ba4d066c19b5e4e8dc5d04f4f9a88cb23a93e22094cb"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Actual original resources.assets name/PathID/Texture2D correspondence still requires an independent byte-level source match.",
+        "No original successful Unity resource load or final rendered pixels established.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_PARTSTEX_NINE_DIR_TWO_CHAR_FILE_ROUTING_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "private_witness": {
+    "filename": "FIREPRO_FACT0368_ORIGINAL_PARTSTEX_FOLDER_ROUTING_WITNESS_v001.json",
+    "bytes": 9371,
+    "sha256": "3bf8a3440a378d9b4831302cd5c27a5816e7080d71e400b77859e637f4ffb66c",
+    "committed_to_git": false
+  },
+  "original_dll": {
+    "bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "methods": [
+    {
+      "token": "0x060010E0",
+      "owner": "PartsInfoManager",
+      "name": ".cctor",
+      "il_length": 308,
+      "il_sha256": "8840f9706a193479d93889095882683e942573d8263d172994a731ca9c31a171"
+    },
+    {
+      "token": "0x060010CA",
+      "owner": "PartsInfoManager",
+      "name": "GetPartsTexKind",
+      "il_length": 40,
+      "il_sha256": "b36264288abdc7c2dfab6de60a2489eecf39ebc2bfde84262bb41c2f8dcad3cd"
+    },
+    {
+      "token": "0x060010CD",
+      "owner": "PartsInfoManager",
+      "name": "GetPartsFileName",
+      "il_length": 42,
+      "il_sha256": "622c6cf892d770288857ba4d066c19b5e4e8dc5d04f4f9a88cb23a93e22094cb"
+    },
+    {
+      "token": "0x060010CE",
+      "owner": "PartsInfoManager",
+      "name": "GetHighlightPartsFileName",
+      "il_length": 28,
+      "il_sha256": "218495fef8e5e9bdae9eaca300620db3aa3d5766b35c6a8a4ee7b3620e31d107"
+    },
+    {
+      "token": "0x060010CB",
+      "owner": "PartsInfoManager",
+      "name": "GetBaseTexType",
+      "il_length": 54,
+      "il_sha256": "5a9bb3d24835b4f3410eb03c8578ac2de82d60340523e6072c00157364b6aee9"
+    },
+    {
+      "token": "0x060010C3",
+      "owner": "PartsInfoManager",
+      "name": "GetPartsTexKindFromTag",
+      "il_length": 126,
+      "il_sha256": "14bf3e17c1fff77235eee53787ce1578cf69c3077af063fb4e103fb3ec369533"
+    }
+  ],
+  "source_windows": [
+    {
+      "method": ".cctor",
+      "name": "folder_array",
+      "start": 6,
+      "end": 91,
+      "sha256": "a8ab641180459de97d6919e9c35760900b70e92c602b5a3bde14f93b6cdc81ec"
+    },
+    {
+      "method": ".cctor",
+      "name": "base_map",
+      "start": 91,
+      "end": 187,
+      "sha256": "964745b3076c43b73b1b51f2627f48c28dd75e6c466c532c8346b66b4f46576e"
+    },
+    {
+      "method": ".cctor",
+      "name": "category_map",
+      "start": 187,
+      "end": 308,
+      "sha256": "402f8c6a071f8db591a337d7e20eb33e2d30dbdf64ea53b4840302763953995d"
+    },
+    {
+      "method": "GetPartsTexKind",
+      "name": "substring",
+      "start": 0,
+      "end": 40,
+      "sha256": "b36264288abdc7c2dfab6de60a2489eecf39ebc2bfde84262bb41c2f8dcad3cd"
+    },
+    {
+      "method": "GetPartsFileName",
+      "name": "resource_path",
+      "start": 0,
+      "end": 42,
+      "sha256": "622c6cf892d770288857ba4d066c19b5e4e8dc5d04f4f9a88cb23a93e22094cb"
+    },
+    {
+      "method": "GetHighlightPartsFileName",
+      "name": "highlight_path",
+      "start": 0,
+      "end": 28,
+      "sha256": "218495fef8e5e9bdae9eaca300620db3aa3d5766b35c6a8a4ee7b3620e31d107"
+    },
+    {
+      "method": "GetBaseTexType",
+      "name": "base_lookup",
+      "start": 11,
+      "end": 44,
+      "sha256": "254d71aa38d47f32ce28648128515f054f4c279c4913fd5fcd3979af5bc8075c"
+    },
+    {
+      "method": "GetPartsTexKindFromTag",
+      "name": "tag_names",
+      "start": 0,
+      "end": 80,
+      "sha256": "a133264a49da16815689d4dbf5ef303d0aaf44c030f1591148b548a11f10ac81"
+    }
+  ],
+  "source_mapping": [
+    {
+      "index": 0,
+      "filename_code": "fc",
+      "folder": "P0_FACE",
+      "tag": "face"
+    },
+    {
+      "index": 1,
+      "filename_code": "ch",
+      "folder": "P1_CHEST",
+      "tag": "chest"
+    },
+    {
+      "index": 2,
+      "filename_code": "bo",
+      "folder": "P2_BODY",
+      "tag": "body"
+    },
+    {
+      "index": 3,
+      "filename_code": "ua",
+      "folder": "P3_UARM",
+      "tag": "uarm"
+    },
+    {
+      "index": 4,
+      "filename_code": "fa",
+      "folder": "P4_FARM",
+      "tag": "farm"
+    },
+    {
+      "index": 5,
+      "filename_code": "sh",
+      "folder": "P5_SHIN",
+      "tag": "shin"
+    },
+    {
+      "index": 6,
+      "filename_code": "th",
+      "folder": "P6_THIGH",
+      "tag": "thigh"
+    },
+    {
+      "index": 7,
+      "filename_code": "ha",
+      "folder": "P7_HAND",
+      "tag": "hand"
+    },
+    {
+      "index": 8,
+      "filename_code": "fo",
+      "folder": "P8_FOOT",
+      "tag": "foot"
+    }
+  ],
+  "base_prefixes": [
+    "s",
+    "m",
+    "l",
+    "d",
+    "f",
+    "b",
+    "k"
+  ],
+  "folder_string_tokens": [
+    "0x70007FC8",
+    "0x70007FD8",
+    "0x70007FEA",
+    "0x70007FFA",
+    "0x7000800A",
+    "0x7000801A",
+    "0x7000802A",
+    "0x7000803C",
+    "0x7000804C"
+  ],
+  "category_string_tokens": [
+    "0x70008074",
+    "0x7000807A",
+    "0x70008080",
+    "0x70008086",
+    "0x7000808C",
+    "0x70008092",
+    "0x70008098",
+    "0x7000809E",
+    "0x700080A4"
+  ],
+  "original_field_tokens": {
+    "PartsFileFolderName": "0x04000E22",
+    "BaseTypeTbl": "0x04000E23",
+    "PartsTexTypeTbl": "0x04000E24"
+  },
+  "code_sites": {
+    "cctor_store_offsets": [
+      86,
+      182,
+      302
+    ],
+    "category_substring": {
+      "start": 2,
+      "length": 2,
+      "opcode_offset": 3
+    },
+    "filename": {
+      "kind_method": "0x060010CA",
+      "resource_prefix": "PartsTex/",
+      "separator": "/",
+      "join_opcode_offset": 34,
+      "kind_negative_guard": true
+    },
+    "highlight_suffix": "_h",
+    "base_type_substring": {
+      "start": 10,
+      "length": 1
+    }
+  },
+  "limits": [
+    "No original resources.assets PathID or Texture2D asset byte association is shown by static DLL source.",
+    "Only original category/folder/source string routing is proven, not a successful Unity resource load or visual render.",
+    "Original full private IL and DLL stay outside public Git. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
