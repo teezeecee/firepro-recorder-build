@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FACE_CRN_CRC16_INTEGRITY_V1",
+  "source_ids": [
+    "RESOBJECT-001"
+  ],
+  "parent_fact": "FACT-0372",
+  "original_texture": {
+    "name": "partstex/p0_face/b_fc_0000_m_1",
+    "path_id": 15464,
+    "class_id": 28,
+    "original_bytes": 54592,
+    "sha256": "ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583",
+    "private_vault_path": "03_Original_Bounded_Source_Bytes/FIREPRO_FACT0370_FACE_TEXTURE2D_PATHID15464.bin"
+  },
+  "encoded_container": {
+    "object_offset": 80,
+    "bytes": 54497,
+    "object_end_exclusive": 54577,
+    "format": "DXT5Crunched",
+    "crn_format": 2
+  },
+  "crc16_algorithm": {
+    "source": "https://github.com/BinomialLLC/crunch/blob/master/inc/crn_decomp.h",
+    "initial_register": 65535,
+    "final_xor": 65535,
+    "vector_text": "123456789",
+    "vector_hex": "d64e"
+  },
+  "checks": {
+    "header": {
+      "encoded_span": [
+        6,
+        74
+      ],
+      "object_span": [
+        86,
+        154
+      ],
+      "stored_field_encoded_span": [
+        4,
+        6
+      ],
+      "stored_hex": "e7b8",
+      "calculated_hex": "e7b8",
+      "match": true
+    },
+    "data": {
+      "encoded_span": [
+        74,
+        54497
+      ],
+      "object_span": [
+        154,
+        54577
+      ],
+      "stored_field_encoded_span": [
+        10,
+        12
+      ],
+      "stored_hex": "02ff",
+      "calculated_hex": "02ff",
+      "match": true
+    }
+  },
+  "private_witness": {
+    "repository": "teezeecee/firepro-retail-evidence-vault",
+    "path": "01_Private_Witnesses/FIREPRO_FACT0373_ORIGINAL_FACE_CRN_CRC16_WITNESS_v001.json",
+    "bytes": 1394,
+    "git_blob_sha1": "1054be1b7f37fa71b479a7c42631155e9c73f782",
+    "committed_to_public_git": false
+  },
+  "source_observation": "Original object SHA-256 independently recomputed; both CRC16 segments recomputed from private original bytes and matched stored big-endian fields.",
+  "decoded_pixels": false,
+  "runtime_eligible": false,
+  "limits": [
+    "Only original packed CRN byte checks; DXT5 transcoding/pixel texture and Unity display not validated.",
+    "Public CI checks derived summary/test vector without reproducing private source bytes; local verifier can independently recompute both original source CRCs.",
+    "Runtime and viewer LOCKED."
+  ]
+}

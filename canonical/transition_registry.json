@@ -7621,6 +7621,33 @@
         "No original transcoded DXT5 data/pixel image/alpha or rendered Sprite and animation pipeline verified.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_FACE_CRN_CRC16_INTEGRITY_V1",
+      "fact_id": "FACT-0373",
+      "source_ids": [
+        "RESOBJECT-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Original SHA-pinned retail face Texture2D Crunch DXT5 compressed-container header and data CRC16 fields independently verified against source bytes (E7B8 / 02FF) using Binomial Crunch's CRC16 implementation; no transcoded pixels or runtime behavior.",
+      "summary": "canonical/witnesses/RESOBJECT-001/original_face_crn_crc16_integrity.summary.json",
+      "source_windows": [
+        [
+          "Original Texture2D PathID15464 54,592-byte body and CRN container [80,54577)",
+          "Original body and embedded CRN SHA-256 anchored private original source",
+          "ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583"
+        ],
+        [
+          "Original CRN CRC16 header bytes [86,154), payload bytes [154,54577)",
+          "Original header CRC16 E7B8 and data CRC16 02FF both independently recalculated",
+          "ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No CRN-to-BC3 transcoding or decoded image, original renderer orientation, shader or animation.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
