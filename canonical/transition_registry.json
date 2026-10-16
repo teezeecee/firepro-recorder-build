@@ -7535,6 +7535,36 @@
         "Original Unity mixed-case path-loading behavior and actual rendered texture selection are not proven.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_FACE_TEXTURE2D_SPRITE_SOURCE_BODY_INTERNAL_PPTR_V1",
+      "fact_id": "FACT-0370",
+      "source_ids": [
+        "GGM-001",
+        "RESMETA-001",
+        "RESOBJECT-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Two original face resource object bodies exact SHA-linked via original Source ResourceManager and ObjectInfo metadata: original Texture2D PathID15464 width532 height700 numeric fmt29; original Sprite PathID41553 rect 532x700 with direct internal fileID0 PathID15464 source pointer into exact Texture2D. Body SHAs and verified original source GGM/meta SHA-pins; no reconstructed art/renderer.",
+      "summary": "canonical/witnesses/RESOBJECT-001/original_face_texture2d_sprite_body_pointer.summary.json",
+      "source_windows": [
+        [
+          "Original Sprite PathID41553 internal pointer",
+          "Original body int32 at offset80 fileID0 + int64 at offset84 PathID15464",
+          "c60b80fd04bd90c4aa9007a7a85baf0eba5804163762c99165a1708ccb52397c"
+        ],
+        [
+          "Original Texture2D PathID15464 metadata + source body",
+          "Original body 54,592 bytes, int32 width532 height700 format29 and data length54497",
+          "ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No original texture pixel decode or original Unity rendered Sprite frame has been verified.",
+        "Per-instance atlas/move animation pipeline and shader execution not proven.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
