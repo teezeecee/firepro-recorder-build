@@ -7333,6 +7333,34 @@
         "Neither parser/loader live execution nor drawn form/sprite transforms and temporal animation proven.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_RFF_NINE_STATIC_PART_CELL_TABLE_INITIALIZER_V1",
+      "fact_id": "FACT-0363",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original DLL 9 FormDataMan static Int32[] CellIdxTbl fields named Face/Chest/Belly/UpperArm/ForeArm/Shin/Thigh/Hand/Foot. Source original .cctor 208-byte MethodDef0x06001F19 SHA 2562856d53a75ed59fdb2bc6d6788f03308cad38175f0a38a8331c3a06d0c131 allocates 42+51+50+51+44+48+74+95+118=573 Int32 slots in nine exact 23-byte IL blocks; ldtoken FieldDef0x0400B7AA/AB/AC/AB/AD/AE/AF/B0/B1, call MemberRef0x0A0001E5, stsfld original nine destination fields. Source table values, memory layout, rendering not established.",
+      "summary": "canonical/witnesses/DLL-001/original_rff_static_cell_tables_initializer.summary.json",
+      "source_windows": [
+        [
+          "Original SHA-matched DLL user metadata report",
+          "9 named static fields, original .cctor IL and GetTexCellIdx field-reference locations",
+          "1bb4096dea965f7df0c3a68081f9087ff266f0e138e51572114d928987a53c1d"
+        ],
+        [
+          "Original FormDataMan .cctor MethodDef0x06001F19",
+          "208 exact IL bytes / 9 contiguous 23-byte per-field blocks and ret",
+          "2562856d53a75ed59fdb2bc6d6788f03308cad38175f0a38a8331c3a06d0c131"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No original initialized array values or FieldRVA backing bytes recovered.",
+        "No visual sprites, timing, animation transform or successful retail execution proven.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."

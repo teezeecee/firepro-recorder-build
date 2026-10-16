@@ -1,0 +1,31 @@
+{
+  "fact_id": "FACT-0363",
+  "status": "PROVEN_DLL",
+  "claim": "Original matching Fire Pro retail DLL FormDataMan fields FieldDef0x040026E0..E8 are nine static Int32[] CellIdxTbl_Face, Chest, Belly, UpperArm, ForeArm, Shin, Thigh, Hand, Foot. Original FormDataMan .cctor MethodDef0x06001F19 contains exactly 208 IL bytes SHA 2562856d53a75ed59fdb2bc6d6788f03308cad38175f0a38a8331c3a06d0c131: nine contiguous 23-byte blocks each allocate an Int32 array of 42,51,50,51,44,48,74,95,118 respectively, duplicate it, ldtoken an original embedded source-data FieldDef, call MemberRef0x0A0001E5 and stsfld into the nine named arrays, then ret. Sum 573 allocated integer entries. Original data tokens are 0x0400B7AA,AB,AC,AB,AD,AE,AF,B0,B1, including repeated AB for Chest/UpperArm. Original helper GetTexCellIdx directly loads each table. No actual array values, FieldRVA bytes, runtime method execution or sprite identities established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original user-run bounded read-only SHA-checked DLL metadata witness FIREPRO_FACT0363_TEXTURE_CELL_TABLE_WITNESS_v001.json 23696 bytes SHA 1bb4096dea965f7df0c3a68081f9087ff266f0e138e51572114d928987a53c1d; original Assembly-CSharp.dll exact 8171008 SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; nine original resolved FieldDef token rows, complete .cctor MethodDef0x06001F19 208-byte IL SHA 2562856d53a75ed59fdb2bc6d6788f03308cad38175f0a38a8331c3a06d0c131 and nine contiguous 23-byte source-window SHAs; original helper MethodDef0x06001F18 412-byte IL SHA fa82ffc9e97c358e5e770ced915611b73550d15c5ea39fd7713ed1a726e3f5ec.",
+      "observation": "Original lookup field metadata, exact nine static allocation counts, literal source FieldDef operands, initializer-call operand and destination stores; no initialized values observed."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0362 original helper GetTexCellIdx nine table loads FieldDef0x040026E0..E8",
+      "to": "FACT-0363 original matching DLL field names and FormDataMan .cctor nine static table construction instructions",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original GetTexCellIdx ldsfld 9 source tokens and original .cctor 208-byte IL exact source opcodes nine stsfld to the same tokens; full source SHA 2562856d53a75ed59fdb2bc6d6788f03308cad38175f0a38a8331c3a06d0c131."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Read-only original DLL metadata and original IL byte witness; original static initialization was not executed.",
+    "The source establishes nine array allocations, element counts, literal source-data field tokens and an initializer-call token; none of the 573 integer values or backing FieldRVA bytes was extracted.",
+    "Referenced initializer MemberRef 0x0A0001E5 and source-data FieldDef token bytes need independent source resolution before any table-value claim.",
+    "The original part names do not establish sprite art, actual rendered frame selection or animation transforms.",
+    "No proprietary DLL or table binary bytes committed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

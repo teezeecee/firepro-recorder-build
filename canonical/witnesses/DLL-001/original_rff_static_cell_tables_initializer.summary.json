@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FORMDATAMAN_RFF_9_STATIC_CELL_TABLE_FIELD_ALLOCATIONS_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "witness": {
+    "filename": "FIREPRO_FACT0363_TEXTURE_CELL_TABLE_WITNESS_v001.json",
+    "bytes": 23696,
+    "sha256": "1bb4096dea965f7df0c3a68081f9087ff266f0e138e51572114d928987a53c1d"
+  },
+  "original_dll": {
+    "dll_size_bytes": 8171008,
+    "dll_sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6",
+    "parser_token": "0x06001F12",
+    "parser_il_bytes": 1153,
+    "parser_il_sha256": "f8cd8fc00b94298c4d9949c461f5ab0e0f2c736befed5eb9305e5f39a10e1b01",
+    "helper_token": "0x06001F18",
+    "helper_il_bytes": 412,
+    "helper_il_sha256": "fa82ffc9e97c358e5e770ced915611b73550d15c5ea39fd7713ed1a726e3f5ec"
+  },
+  "fields": [
+    {
+      "token": "0x040026E0",
+      "name": "CellIdxTbl_Face",
+      "owner": "FormDataMan",
+      "type": "System.Int32[]",
+      "is_static": true
+    },
+    {
+      "token": "0x040026E1",
+      "name": "CellIdxTbl_Chest",
+      "owner": "FormDataMan",
+      "type": "System.Int32[]",
+      "is_static": true
+    },
+    {
+      "token": "0x040026E2",
+      "name": "CellIdxTbl_Belly",
+      "owner": "FormDataMan",
+      "type": "System.Int32[]",
+      "is_static": true
+    },
+    {
+      "token": "0x040026E3",
+      "name": "CellIdxTbl_UpperArm",
+      "owner": "FormDataMan",
+      "type": "System.Int32[]",
+      "is_static": true
+    },
+    {
+      "token": "0x040026E4",
+      "name": "CellIdxTbl_ForeArm",
+      "owner": "FormDataMan",
+      "type": "System.Int32[]",
+      "is_static": true
+    },
+    {
+      "token": "0x040026E5",
+      "name": "CellIdxTbl_Shin",
+      "owner": "FormDataMan",
+      "type": "System.Int32[]",
+      "is_static": true
+    },
+    {
+      "token": "0x040026E6",
+      "name": "CellIdxTbl_Thigh",
+      "owner": "FormDataMan",
+      "type": "System.Int32[]",
+      "is_static": true
+    },
+    {
+      "token": "0x040026E7",
+      "name": "CellIdxTbl_Hand",
+      "owner": "FormDataMan",
+      "type": "System.Int32[]",
+      "is_static": true
+    },
+    {
+      "token": "0x040026E8",
+      "name": "CellIdxTbl_Foot",
+      "owner": "FormDataMan",
+      "type": "System.Int32[]",
+      "is_static": true
+    }
+  ],
+  "initializer": {
+    "metadata_token": "0x06001F19",
+    "il_bytes": 208,
+    "sha256": "2562856d53a75ed59fdb2bc6d6788f03308cad38175f0a38a8331c3a06d0c131",
+    "type_element_token": "0x010000D7",
+    "initializer_memberref_token": "0x0A0001E5",
+    "total_elements": 573,
+    "blocks": [
+      {
+        "index": 0,
+        "field_name": "CellIdxTbl_Face",
+        "size": 42,
+        "dest_token": "0x040026E0",
+        "original_data_field_token": "0x0400B7AA",
+        "il_start": 0,
+        "il_end": 23,
+        "sha256": "74cf2331362ba223cc98852e8c41a71718ecbe13bd5c21577c8e8a11a10d7e08"
+      },
+      {
+        "index": 1,
+        "field_name": "CellIdxTbl_Chest",
+        "size": 51,
+        "dest_token": "0x040026E1",
+        "original_data_field_token": "0x0400B7AB",
+        "il_start": 23,
+        "il_end": 46,
+        "sha256": "a2143fa710795c89502114eeb798a70e286cfb6081e5177af8f64462e8096931"
+      },
+      {
+        "index": 2,
+        "field_name": "CellIdxTbl_Belly",
+        "size": 50,
+        "dest_token": "0x040026E2",
+        "original_data_field_token": "0x0400B7AC",
+        "il_start": 46,
+        "il_end": 69,
+        "sha256": "278a441cf42437bb50880045465da346d8301bf0ada9a14fed9c7a55b324118c"
+      },
+      {
+        "index": 3,
+        "field_name": "CellIdxTbl_UpperArm",
+        "size": 51,
+        "dest_token": "0x040026E3",
+        "original_data_field_token": "0x0400B7AB",
+        "il_start": 69,
+        "il_end": 92,
+        "sha256": "882adcc5700376904c5d6a806243b94a69dd0210b8e55580ece11bd0eeda95bb"
+      },
+      {
+        "index": 4,
+        "field_name": "CellIdxTbl_ForeArm",
+        "size": 44,
+        "dest_token": "0x040026E4",
+        "original_data_field_token": "0x0400B7AD",
+        "il_start": 92,
+        "il_end": 115,
+        "sha256": "92099128f3820499640b4510770ba942031d826d67a0063081e0b4b4502fafb8"
+      },
+      {
+        "index": 5,
+        "field_name": "CellIdxTbl_Shin",
+        "size": 48,
+        "dest_token": "0x040026E5",
+        "original_data_field_token": "0x0400B7AE",
+        "il_start": 115,
+        "il_end": 138,
+        "sha256": "2d525abf6d2f7febf76211fc274b6f59859801d16e617b3428514a5ebc7b10d7"
+      },
+      {
+        "index": 6,
+        "field_name": "CellIdxTbl_Thigh",
+        "size": 74,
+        "dest_token": "0x040026E6",
+        "original_data_field_token": "0x0400B7AF",
+        "il_start": 138,
+        "il_end": 161,
+        "sha256": "e8c280bf0e834b70d0c6dda49346319248b15fe772bb2fd205e977aa9f18dee7"
+      },
+      {
+        "index": 7,
+        "field_name": "CellIdxTbl_Hand",
+        "size": 95,
+        "dest_token": "0x040026E7",
+        "original_data_field_token": "0x0400B7B0",
+        "il_start": 161,
+        "il_end": 184,
+        "sha256": "2d3186e5824c867a2afffc1fe5e5fa77d43ba25f490ab7ec0be51298d768ee16"
+      },
+      {
+        "index": 8,
+        "field_name": "CellIdxTbl_Foot",
+        "size": 118,
+        "dest_token": "0x040026E8",
+        "original_data_field_token": "0x0400B7B1",
+        "il_start": 184,
+        "il_end": 207,
+        "sha256": "7f94182ca255869ddf40c774294d97b5602c700695090d29462c5d66c10c9611"
+      }
+    ]
+  },
+  "source_method_scan": {
+    "declared_methods_scanned": 14,
+    "direct_field_opcode_methods": [
+      {
+        "token": "0x06001F18",
+        "name": "GetTexCellIdx",
+        "il_sha256": "fa82ffc9e97c358e5e770ced915611b73550d15c5ea39fd7713ed1a726e3f5ec",
+        "opcode": "ldsfld"
+      },
+      {
+        "token": "0x06001F19",
+        "name": ".cctor",
+        "il_sha256": "2562856d53a75ed59fdb2bc6d6788f03308cad38175f0a38a8331c3a06d0c131",
+        "opcode": "stsfld"
+      }
+    ]
+  },
+  "limits": [
+    "Read-only original DLL metadata and original IL byte witness; original static initialization was not executed.",
+    "The source establishes nine array allocations, element counts, literal source-data field tokens and an initializer-call token; none of the 573 integer values or backing FieldRVA bytes was extracted.",
+    "Referenced initializer MemberRef 0x0A0001E5 and source-data FieldDef token bytes need independent source resolution before any table-value claim.",
+    "The original part names do not establish sprite art, actual rendered frame selection or animation transforms.",
+    "No proprietary DLL or table binary bytes committed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
