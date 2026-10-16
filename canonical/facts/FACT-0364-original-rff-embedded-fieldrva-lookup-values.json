@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0364",
+  "status": "PROVEN_DLL",
+  "claim": "Original exact SHA-verified retail DLL 8,171,008 bytes has eight distinct FieldRVA-backed static source fields 0x0400B7AA..B1 at FieldRVA rows 175..182. The original FormDataMan .cctor's nine RuntimeHelpers.InitializeArray assignments reuse 0x0400B7AB for Chest and UpperArm. Eight verified little-endian signed Int32 windows contain 42,51,50,44,48,74,95,118 entries (522 unique backing slots) and exactly nine destination arrays with 573 allocated slots. Original integers and -1 values were read from pinned source windows; eight independent SHA-256 window digests and source RVAs are in the witness summary. These are file-level integer lookup values, not visual sprite identities or executed rendering behavior.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Direct original upload Assembly-CSharp(3).dll original SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6; read-only PE/CLI metadata FieldRVA table rows 175..182 at file offset 6248884, eight original RVAs 0x7A7618..0x7A7C70, eight source window SHA-256 hashes and 522 signed integer source slots. Original 20,618-byte private witness SHA 991eba96ea2ce4c16ffdfac8823808ab9c3001a8831153c7110da6beabe002d6.",
+      "observation": "Exact raw source numeric field values and embedded source offsets read without CLR execution; the full source arrays are only retained in private local witness."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0363 original FormDataMan .cctor nine FieldDef tokens in exact 208-byte source IL",
+      "to": "FACT-0364 original binary FieldRVA table and SHA-verified signed integer windows backing each cctor source token",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Prior original cctor witness SHA 1bb4096dea965f7df0c3a68081f9087ff266f0e138e51572114d928987a53c1d; direct matching 8171008-byte original DLL hash and FieldRVA rows 175..182, source bytes SHA windows in original_rff_fieldrva_int32_tables.summary.json."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Static initializer instructions and backing data were read from original file bytes, but original method execution was not observed.",
+    "Observed -1 numeric values have no independently proven display or error-handling semantics.",
+    "Neither texture artwork identities, rendered cell mapping, runtime invocation nor animation transforms have been proven.",
+    "No original binaries or embedded table values committed to Git; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

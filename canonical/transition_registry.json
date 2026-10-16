@@ -7361,6 +7361,34 @@
         "No visual sprites, timing, animation transform or successful retail execution proven.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_RFF_EMBEDDED_FIELDRVA_INT32_LOOKUP_SOURCE_V1",
+      "fact_id": "FACT-0364",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Matching original DLL PE/CLI metadata FieldRVA rows175..182 pin eight original embedded signed Int32 source data blocks with exact RVAs, file offsets, byte-window SHA-256 digests and 522 distinct backing entries. Nine static destination tables allocate 573 slots because Chest and UpperArm both reference the same 51-entry backing FieldDef. Original MemberRef0x0A0001E5 is RuntimeHelpers.InitializeArray. No semantic interpretation of -1 values or actual rendered art and timing is proven.",
+      "summary": "canonical/witnesses/DLL-001/original_rff_fieldrva_int32_tables.summary.json",
+      "source_windows": [
+        [
+          "Original SHA-verified DLL PE metadata and FieldRVA table",
+          "Eight FieldDef and FieldRVA source records, metadata file offset 6248884 and eight pinned RVA-file mappings",
+          "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+        ],
+        [
+          "Original embedded signed Int32 data windows",
+          "Eight byte-window digests; 522 distinct slots, 573 destination slots with shared Chest/UpperArm original source",
+          "991eba96ea2ce4c16ffdfac8823808ab9c3001a8831153c7110da6beabe002d6"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No sprite or texture art identity from numeric table values alone.",
+        "No original running Unity dispatch, animation frame output or draw transform established.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
