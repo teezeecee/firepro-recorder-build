@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0373",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "The exact SHA-256 pinned original retail face Texture2D PathID15464 contains a 54,497-byte Crunch DXT5 encoded container whose stored header CRC16 E7B8 and stored data CRC16 02FF both equal independent recalculations using Binomial Crunch's published CRC16 algorithm. Header checks bytes [6,74), and data checks bytes [74,54497) relative to the encoded container. The independent algorithm test vector 123456789 yields D64E. Only compressed source integrity is established, not a decoded bitmap, sprite display or animation.",
+  "evidence": [
+    {
+      "source_id": "RESOBJECT-001",
+      "locator": "Original private vault exact Texture2D PathID15464 54,592-byte source SHA256 ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583, encoded CRN [object 80,54577); independently recalculated header CRC16 over object [86,154) => E7B8 equals stored big-endian bytes [84,86), and data CRC16 over object [154,54577) => 02FF equals stored bytes [90,92). Original private corroborating witness 01_Private_Witnesses/FIREPRO_FACT0373_ORIGINAL_FACE_CRN_CRC16_WITNESS_v001.json git blob SHA1 1054be1b7f37fa71b479a7c42631155e9c73f782. Published Binomial Crunch algorithm test vector verifies implementation.",
+      "observation": "Two original CRN checksum fields independently reproduced, without decompressing the compressed data."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0372 original exact 54,497-byte CRN source container and its stored checksum fields",
+      "to": "FACT-0373 independently recomputed matching CRC16 header and payload integrity values",
+      "evidence": [
+        {
+          "source_id": "RESOBJECT-001",
+          "locator": "SHA-pinned original Texture2D ClassID28 PathID15464 private source bounded bytes [80,54577), header CRC source span [86,154), data CRC source span [154,54577) and private CRC witness exact Git blob."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Crunch CRC16 equality verifies compressed payload integrity for this one original Texture2D, not a cryptographic identity independent from the SHA-256 anchor.",
+    "No Crunch transcoding, decompressed BC3 blocks, image pixels, texture orientation, shader effect, actual sprite display, or movement/animation state established.",
+    "Original proprietary texture bytes remain private; public repository contains only derived source metadata and an optional local original-byte verifier.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
