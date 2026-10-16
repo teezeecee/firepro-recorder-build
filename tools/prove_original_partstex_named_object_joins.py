@@ -26,6 +26,7 @@ def prove(ggm_path,meta_path,s):
         p+=16;types.append(cls)
     ck(p==17206,'type table bounds')
     count=struct.unpack_from('<I',m,p)[0];p=(p+3)&~3
+    p+=4
     ck((count,p)==(b['object_count'],b['object_table_begin']),'original object header')
     end=p+20*count
     ck(end==b['object_table_end'] and sha(m[p:end])==b['object_table_sha256'],'source ObjectInfo SHA')

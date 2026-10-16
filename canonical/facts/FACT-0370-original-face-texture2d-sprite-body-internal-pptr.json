@@ -1,0 +1,41 @@
+{
+  "fact_id": "FACT-0370",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Exact user-owned original resources.assets bounded Texture2D PathID15464 (54,592 bytes) and Sprite PathID41553 (8,268 bytes) were extracted with a local whole-parent SHA256 recheck, rehashed independently against their exact uploaded byte manifests, and cross-joined to SHA-verified original globalgamemanagers ResourceManager name records 3861/3862 plus original resources.assets ObjectInfo metadata. Both object bodies begin with source name b_fc_0000_m_1. The Texture2D original i32 fields record width532, height700, image size54497 and numeric format29. The original Sprite source floats give rectangle (0,0,532,700), pixels-per-unit100, pivot (0.5,0.5), and critically an original internal numeric texture PPtr fileID0 / PathID15464 at byte offsets80/84 pointing to the extracted original Texture2D object. This is direct original-byte internal linkage, not just name-table coincidence. A small FACT-0369 source verifier alignment defect is repaired without changing its original source evidence, numeric findings or promoted fact.",
+  "evidence": [
+    {
+      "source_id": "GGM-001",
+      "locator": "Original globalgamemanagers 5,002,540 bytes SHA 04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c, ResourceManager original source rows 3861/3862 both name partstex/p0_face/b_fc_0000_m_1, fileID5 target PathIDs15464 and41553.",
+      "observation": "Exact retail resource-name to original two-object name/PPtr association."
+    },
+    {
+      "source_id": "RESMETA-001",
+      "locator": "Original resources.assets metadata prefix 1,842,222 bytes SHA 8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da; original ObjectInfo indexed rows PathID15464 ClassID28 and PathID41553 ClassID213 source byte offsets and lengths in summary.",
+      "observation": "Source index identifies exact bounded locations and original Unity ClassIDs."
+    },
+    {
+      "source_id": "RESOBJECT-001",
+      "locator": "Original user-run full resources.assets SHA rechecked 9f76fc6147c7423fd4a3ece8d0222e24b1acdc8f7458b7e4c1eae98677a14f14, private uploaded extraction manifest SHA 487da3fd508677fa66f9dc6649d0f5aee30a9e0765e146178e3be6c43634cd94; original body SHAs ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583 and c60b80fd04bd90c4aa9007a7a85baf0eba5804163762c99165a1708ccb52397c; private directly parsed witness SHA 733811d07968ce771ff7e4dd078044e6331a7f54b3b13dc57518e5bd6fe212f2.",
+      "observation": "Exact Sprite body field at offset0x50 integer fileID0 and at offset0x54 int64 pathID15464 matches original extracted Texture2D metadata; original rectangle/dimensions and numeric texture fields source-visible."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0369 original named Texture2D ClassID28 PathID15464 and Sprite ClassID213 PathID41553",
+      "to": "FACT-0370 original Sprite body directly contains internal numeric PPtr fileID0/pathID15464 resolving to exact original Texture2D object body",
+      "evidence": [
+        {
+          "source_id": "RESOBJECT-001",
+          "locator": "Sprite body original bytes at offsets80..91 and Texture2D body original SHA-pinned 54,592 bytes."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Model session did not rehash the 3.17GB original full parent; exact full-parent recheck was executed on user Windows and recorded in uploaded manifest. Model did rehash both exact extracted object bodies and original GGM/metadata sources.",
+    "Numeric format 29 is not claimed as a decoded image, nor is the sprite mesh/vertices, UV animation or displayed output decoded.",
+    "No original game binaries, assets pixels or original raw object blobs committed to Git.",
+    "FACT-0369 proof script byte alignment repaired only as tooling correction; original 0369 source claim unchanged.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

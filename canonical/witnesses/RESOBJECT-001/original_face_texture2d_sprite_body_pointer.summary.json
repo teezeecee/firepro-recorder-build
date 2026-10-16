@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FACE_TEXTURE2D_SPRITE_BODIES_DIRECT_PPTR_V1",
+  "source_ids": [
+    "GGM-001",
+    "RESMETA-001",
+    "RESOBJECT-001"
+  ],
+  "parent_fact": "FACT-0369",
+  "private_witness": {
+    "filename": "FIREPRO_FACT0370_ORIGINAL_FACE_PAIR_PARSED_WITNESS_v001.json",
+    "bytes": 3718,
+    "sha256": "733811d07968ce771ff7e4dd078044e6331a7f54b3b13dc57518e5bd6fe212f2",
+    "committed_to_git": false
+  },
+  "original_gamedata": {
+    "globalgamemanagers_bytes": 5002540,
+    "globalgamemanagers_sha256": "04cf0c7a5ef858ce68ff5b00b7281ded8fc5b4efe84539d26c21799a4044c22c",
+    "resources_metadata_bytes": 1842222,
+    "resources_metadata_sha256": "8388d7e2401172e5ee1139f617afeac8a68aaeb64383bc076098a922e45151da",
+    "resources_original_full_parent_bytes": 3166587532,
+    "resources_original_full_parent_sha256": "9f76fc6147c7423fd4a3ece8d0222e24b1acdc8f7458b7e4c1eae98677a14f14",
+    "full_hash_scope": "The complete 3.17GB full-file SHA was rechecked by the local user extraction script and recorded in its uploaded manifest; model-side verifier rehashes extracted bodies, GGM and metadata prefix, not the whole parent."
+  },
+  "source_object_names": {
+    "resource_name": "partstex/p0_face/b_fc_0000_m_1",
+    "object_name": "b_fc_0000_m_1",
+    "resource_manager_row_indices": [
+      3861,
+      3862
+    ],
+    "external_source_file_id": 5
+  },
+  "private_source_extraction_manifest": {
+    "filename": "FIREPRO_FACT0370_FACE_PAIR_READONLY_WITNESS_v001.json",
+    "bytes": 2390,
+    "sha256": "487da3fd508677fa66f9dc6649d0f5aee30a9e0765e146178e3be6c43634cd94"
+  },
+  "source_objects": [
+    {
+      "path_id": 15464,
+      "source_class_id": 28,
+      "source_type_index": 1,
+      "metadata_data_relative_offset": 1481649504,
+      "original_file_absolute_offset": 1483491728,
+      "byte_count": 54592,
+      "sha256": "ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583",
+      "private_filename": "FIREPRO_FACT0370_FACE_TEXTURE2D_PATHID15464.bin"
+    },
+    {
+      "path_id": 41553,
+      "source_class_id": 213,
+      "source_type_index": 10,
+      "metadata_data_relative_offset": 3136257928,
+      "original_file_absolute_offset": 3138100152,
+      "byte_count": 8268,
+      "sha256": "c60b80fd04bd90c4aa9007a7a85baf0eba5804163762c99165a1708ccb52397c",
+      "private_filename": "FIREPRO_FACT0370_FACE_SPRITE_PATHID41553.bin"
+    }
+  ],
+  "source_windows": [
+    {
+      "object": "Texture2D",
+      "start": 0,
+      "end": 96,
+      "sha256": "19dc3929ecbbc146d40f9ba47efc76c2de51bc1917d787cc55ecac2a05dd5c90"
+    },
+    {
+      "object": "Texture2D",
+      "start": 80,
+      "end": 54577,
+      "sha256": "1dde001e0c8b0409d0fa453193fedbef5f0bb174916ec0e474269b6b930ebd06"
+    },
+    {
+      "object": "Sprite",
+      "start": 0,
+      "end": 96,
+      "sha256": "c565551b0482f31fc99c423b64340ab9a4974e7dc84ba6aaa6a9f3a2be80cac9"
+    }
+  ],
+  "texture2d_observations": {
+    "name_at_byte4": "b_fc_0000_m_1",
+    "width_i32_at20": 532,
+    "height_i32_at24": 700,
+    "complete_image_size_i32_at28": 54497,
+    "texture_format_numeric_i32_at32": 29,
+    "raw_payload_length_i32_at76": 54497,
+    "raw_payload_begin": 80,
+    "raw_payload_end_exclusive": 54577,
+    "trailing_zero_bytes": 15
+  },
+  "sprite_observations": {
+    "name_at_byte4": "b_fc_0000_m_1",
+    "rect_xywh_f32_at20_24_28_32": [
+      0,
+      0,
+      532,
+      700
+    ],
+    "pixels_per_unit_f32_at60": 100,
+    "pivot_xy_f32_at64_68": [
+      0.5,
+      0.5
+    ],
+    "internal_texture_pptr_i32_fileid_at80": 0,
+    "internal_texture_pptr_i64_pathid_at84": 15464,
+    "linked_original_texture_object_pathid": 15464
+  },
+  "prover_repair": {
+    "prior_fact": "FACT-0369",
+    "path": "tools/prove_original_partstex_named_object_joins.py",
+    "issue": "The original FACT-0369 helper reads the original ObjectInfo count at byte17206 but did not advance past the count: after the current 4-byte alignment, adding p+=4 reaches the correct original ObjectInfo row start 17212; source data and conclusions unchanged.",
+    "source_data_affected": false,
+    "source_fact_values_changed": false
+  },
+  "limits": [
+    "The original object payload bytes remain private, outside public Git.",
+    "Internal numeric Sprite PPtr resolves to the original Texture2D PathID15464; no Unity runtime lookup or actual displayed frame is claimed.",
+    "Numeric texture-format 29 and byte-count 54497 are witnessed values, not decoded image pixels.",
+    "No general sprite pipeline or animation semantics are promoted.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
