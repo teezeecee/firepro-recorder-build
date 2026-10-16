@@ -14,7 +14,14 @@ assert s["parent_fact"]=="FACT-0373" and s["independent_verification"]["result_s
 assert s["independent_verification"]["independent_rgba_decoder_crosscheck"] is True
 assert len(s["original_samples"])==4
 assert [x["path_id"] for x in s["original_samples"]]==[390,1407,6308,15464]
+expected_hashes={
+    390:("2b55d3322b898d05325c66aa14ed20b026c917a9fde6a5bf04a4e35f80a4ccf5","1f5c5d240ae9247d580a4ba03c0859c2affb938bf952ed836380282400b3e19a"),
+    1407:("7256181b9f9bc3f6cebc023aad65d76d9ae166c0258bff2a8871117483ea8119","e5585be8a71910c1aa8a20f236e36c515a33ff49a8836b45fb4fad6f230eccd9"),
+    6308:("ca7bc85370a132196d5f62d71c06c78882bb54da5ec0a8164b398e7be1d44e99","9ff264df30464c677063e4afacc6b3e7ed90d53c724e4ccceac418bc44b4372e"),
+    15464:("fe0665dd5ca35fca3bc7ed540ce75a9add287a4001a1e1704e4d9fb5a982c309","2f6aeb23095771c7965dbe81f58aec255541c4efbf62cc8da225fdf05ca9401a")
+}
 for x in s["original_samples"]:
+    assert (x["bc_sha256"],x["decoded_rgba_sha256"])==expected_hashes[x["path_id"]]
     fmt=x["block_format"]
     assert fmt in ("BC1","BC3")
     n=((x["width"]+3)//4)*((x["height"]+3)//4)*(8 if fmt=="BC1" else 16)
