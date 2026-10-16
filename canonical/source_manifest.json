@@ -176,6 +176,27 @@
       "user_original_bounded_probe_report": "FIREPRO_FPRFORM_ORIGINAL_SHA_WITNESS_v001.json",
       "user_original_bounded_probe_report_sha256": "5722a99cb55b26753f6eb386084d2a297bad78e30950821807b2a2461415abe3",
       "note": "User ran bounded read-only original resources.assets SHA probe on Windows, reporting exact PathID22906 absolute offset1970578200 12800024-byte original body SHA. Independently SHA-256-recomputed already uploaded UABE fprform_rff 12800024-byte export in local workspace, same digest. Original full 3.17GB parent file hash was NOT rechecked; original object body bytes themselves were not newly uploaded separately. Matching whole object SHA corroborated by original probe report, not direct second reading of original game install by model. TextAsset name and 12800000 embedded bytes directly inspected in matching export; runtime FormData/parser/frame semantics NOT established."
+    },
+    {
+      "source_id": "TEXTSAMPLE-001",
+      "kind": "ORIGINAL_BOUNDED_UNITY_TEXTURE2D_AND_EXTERNAL_RESOURCES_STREAM_SAMPLE_ARCHIVE",
+      "filename": "FIREPRO_BOUNDED_TEXTURE_ORIGINAL_SAMPLES_v001.zip",
+      "sha256": "91e3318af50899b4c1b3310f0d09aecf7269247302b558a9a4267c2e0689dd2f",
+      "size_bytes": 143441,
+      "availability": "INDEPENDENTLY_VERIFIED_ORIGINAL_SHA_AND_PRIVATE_GITHUB_BYTES",
+      "canonical_eligible": true,
+      "raw_required": true,
+      "git_storage": "PRIVATE_GITHUB_ONLY_ORIGINAL_BYTES",
+      "private_repository": "teezeecee/firepro-retail-evidence-vault",
+      "private_archive_path": "FIREPRO_BOUNDED_TEXTURE_ORIGINAL_SAMPLES_v001.zip",
+      "private_archive_blob_sha1": "8f109777275c16d2a3d3ffd5fbe2fce4962814ec",
+      "original_parent": "resources.assets",
+      "original_parent_full_sha256_reported": "9f76fc6147c7423fd4a3ece8d0222e24b1acdc8f7458b7e4c1eae98677a14f14",
+      "original_external_parent": "resources.assets.resS",
+      "sample_texture2d_original_objects": 10,
+      "sample_external_resS_slices": 5,
+      "unity_version": "5.6.5p3",
+      "note": "Exactly SHA-pinned original user-uploaded 143,441-byte ZIP independently SHA256 recomputed after private GitHub readback; original 10 Texture2D object members and 5 external .resS bounded slices previously 10/10 and 5/5 SHA-checked. Private only; complete parent files are not reproduced or rehashed independently by this derived-source fact. CRN source and pixel decoding performed in private GitHub Actions, with only derived result hashes and source-only summaries publicly eligible. Runtime/viewer LOCKED."
     }
   ]
 }

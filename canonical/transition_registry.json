@@ -7648,6 +7648,44 @@
         "No CRN-to-BC3 transcoding or decoded image, original renderer orientation, shader or animation.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_FOUR_CRN_NATIVE_BCN_RGBA_V1",
+      "fact_id": "FACT-0374",
+      "source_ids": [
+        "TEXTSAMPLE-001",
+        "RESOBJECT-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Four original SHA-pinned DXT1Crunched/DXT5Crunched retail samples native-transcoded into exact BC1/BC3 block buffers (SHA-pinned) and independently full-RGBA reconstructed identically by custom block decoder and Pillow DDS. No retail shader/Sprite orientation/animation asserted.",
+      "summary": "canonical/witnesses/TEXTSAMPLE-001/original_four_crn_native_to_bcn_exact_rgba.summary.json",
+      "source_windows": [
+        [
+          "Original CRN PathID390 532x700 BC1",
+          "Original source hash and native BC/RGBA SHA pinned privately; BC bytes 186200",
+          "5ccd54f9b795487533bb5b17b798bf55f059c58253a68d6e8bdb5f1505daf4c6"
+        ],
+        [
+          "Original CRN PathID1407 68x68 BC3",
+          "Original source hash and native BC/RGBA SHA pinned privately; BC bytes 4624",
+          "f66c8853040e097008e654fa0181bebbcca6977d01b7cc38e6257bdd20e39dae"
+        ],
+        [
+          "Original CRN PathID6308 16x16 BC1",
+          "Original source hash and native BC/RGBA SHA pinned privately; BC bytes 128",
+          "ec8a77efac062fad7e394078e7b65dde9bd5a3c261c39c474d2edf4862fff248"
+        ],
+        [
+          "Original CRN PathID15464 532x700 BC3",
+          "Original source hash and native BC/RGBA SHA pinned privately; BC bytes 372400",
+          "1dde001e0c8b0409d0fa453193fedbef5f0bb174916ec0e474269b6b930ebd06"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "Original Unity texture orientation, shader, Sprite mesh UVs and compositing are not established.",
+        "No full retail image renderer/animation verified; runtime and viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
