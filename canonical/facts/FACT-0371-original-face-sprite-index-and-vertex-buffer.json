@@ -1,0 +1,29 @@
+{
+  "fact_id": "FACT-0371",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Exact user-uploaded and SHA-verified original Unity Sprite ClassID213 PathID41553 object b_fc_0000_m_1 contains an original indexed 1,470-byte source span [156,1626), which reads as 735 little-endian uint16 values and exactly 245 consecutive triangle index triples; every index lies in 0..326, all 327 vertex IDs occur, no triple repeats an index and all 245 XY signed triangle cross products are negative. The original 327-entry count at offset1632 and 6,540-byte count at offset1672 identify original contiguous [1676,8216) body span as 327 records of 20 bytes (five float32 values). The first two floats in each record vary within exact byte-derived XY bounds, while the last three float32 words of every record are zero. Source byte digests pin indexed data, descriptor, vertex region and an uninterpreted 52-byte end region, without asserting texture coordinates, a displayed sprite or runtime animation.",
+  "evidence": [
+    {
+      "source_id": "RESOBJECT-001",
+      "locator": "Exact user-supplied original Sprite body PathID41553 ClassID213, 8,268 bytes SHA256 c60b80fd04bd90c4aa9007a7a85baf0eba5804163762c99165a1708ccb52397c; indexed source [156,1626) SHA256 31f31415e592042ebb57fc46c8ede8f283b6887c84772cdbe174d76d4dfa0367, descriptor [1628,1676) SHA256 d80618f1b8756df63ed10f4e30b4e35b84e6c1f78f19ac2aaf327a97c3207465, vertex records [1676,8216) SHA256 ef909c51d7090ffbe3ccf3237e450852071071e0e86acc3dcbe0da2ee99ee6b9, final [8216,8268) SHA256 8e456f039bef03edbe86332ea16406d0e17ecb34ff1f801c9d2b883fd4ae7056. Private full parsed witness FIREPRO_FACT0371_ORIGINAL_FACE_SPRITE_MESH_WITNESS_v001.json 4539 bytes SHA256 532d70b807369caf7d132622997b193665ccad5b851dfd1c365f34b8ca6e8a5d.",
+      "observation": "The index array, number of used vertex IDs, 245 triangle winding directions, 327 five-float vertex records and region partitions are reproduced deterministically from original source bytes."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0370 directly verified original Sprite PathID41553 with an internal reference to original Texture2D PathID15464",
+      "to": "FACT-0371 exact original Sprite body indexed geometry and vertex record source spans and numeric topology",
+      "evidence": [
+        {
+          "source_id": "RESOBJECT-001",
+          "locator": "Original 8,268-byte Sprite SHA and four offset-bounded raw region SHA256 digests; read-only packed-binary geometry verifier."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The 327 source records and 245 triangle triples are directly verified numeric structure. Their interpretation as a complete Unity GPU mesh or its final draw state is not asserted.",
+    "TypeTree-specific semantics for two descriptor/trailer regions, UV mapping, shader output, pixel decode and move pose remain outside this observation.",
+    "Original Sprite/Texture2D bytes and private witness are not stored in Git. SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
