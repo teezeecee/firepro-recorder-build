@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FACE_SPRITE_327_VERTEX_245_TRIANGLE_SOURCE_V1",
+  "source_ids": [
+    "RESOBJECT-001"
+  ],
+  "parent_fact": "FACT-0370",
+  "private_witness": {
+    "filename": "FIREPRO_FACT0371_ORIGINAL_FACE_SPRITE_MESH_WITNESS_v001.json",
+    "bytes": 4539,
+    "sha256": "532d70b807369caf7d132622997b193665ccad5b851dfd1c365f34b8ca6e8a5d",
+    "committed_to_git": false
+  },
+  "source_sprite": {
+    "name": "partstex/p0_face/b_fc_0000_m_1",
+    "original_class_id": 213,
+    "original_path_id": 41553,
+    "bytes": 8268,
+    "sha256": "c60b80fd04bd90c4aa9007a7a85baf0eba5804163762c99165a1708ccb52397c"
+  },
+  "source_texture": {
+    "original_class_id": 28,
+    "original_path_id": 15464,
+    "bytes": 54592,
+    "sha256": "ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583"
+  },
+  "regions": {
+    "index_byte_count_field_offset": 152,
+    "index_byte_count": 1470,
+    "index_buffer_start": 156,
+    "index_buffer_end": 1626,
+    "index_raw_sha256": "31f31415e592042ebb57fc46c8ede8f283b6887c84772cdbe174d76d4dfa0367",
+    "index_padding_start": 1626,
+    "index_padding_end": 1628,
+    "index_padding_zero_bytes": 2,
+    "descriptor_start": 1628,
+    "descriptor_end": 1676,
+    "descriptor_sha256": "d80618f1b8756df63ed10f4e30b4e35b84e6c1f78f19ac2aaf327a97c3207465",
+    "vertex_count_offset": 1632,
+    "vertex_count": 327,
+    "vertex_bytes_field_offset": 1672,
+    "vertex_byte_count": 6540,
+    "vertex_buffer_start": 1676,
+    "vertex_buffer_end": 8216,
+    "vertex_raw_sha256": "ef909c51d7090ffbe3ccf3237e450852071071e0e86acc3dcbe0da2ee99ee6b9",
+    "tail_start": 8216,
+    "tail_end": 8268,
+    "tail_byte_count": 52,
+    "tail_sha256": "8e456f039bef03edbe86332ea16406d0e17ecb34ff1f801c9d2b883fd4ae7056"
+  },
+  "geometry": {
+    "index_encoding": "735 little-endian unsigned 16-bit integers in source order, consecutive triples",
+    "index_count": 735,
+    "triangle_count": 245,
+    "minimum_index": 0,
+    "maximum_index": 326,
+    "unique_index_count": 327,
+    "all_vertex_ids_0_to_326_referenced": true,
+    "degenerate_index_triplets": 0,
+    "signed_xy_cross_signs": {
+      "negative": 245,
+      "positive": 0,
+      "zero": 0
+    },
+    "vertex_encoding": "327 consecutive 20-byte records; each is exactly five little-endian float32 values",
+    "vertex_count": 327,
+    "vertex_stride_bytes": 20,
+    "vertex_float32_count": 1635,
+    "trailing_three_float32_components_all_zero": true,
+    "xy_min_max_float32": [
+      -2.440000057220459,
+      2.0799999237060547,
+      -3.440000057220459,
+      3.259999990463257
+    ],
+    "first_6_triplets": [
+      [
+        326,
+        325,
+        324
+      ],
+      [
+        323,
+        324,
+        325
+      ],
+      [
+        322,
+        324,
+        323
+      ],
+      [
+        319,
+        322,
+        323
+      ],
+      [
+        320,
+        322,
+        319
+      ],
+      [
+        321,
+        320,
+        319
+      ]
+    ],
+    "last_6_triplets": [
+      [
+        9,
+        8,
+        7
+      ],
+      [
+        6,
+        5,
+        3
+      ],
+      [
+        4,
+        3,
+        5
+      ],
+      [
+        0,
+        3,
+        4
+      ],
+      [
+        1,
+        3,
+        0
+      ],
+      [
+        2,
+        1,
+        0
+      ]
+    ]
+  },
+  "limits": [
+    "This is a direct byte and numeric mesh-structure witness, not proof of full Unity Sprite TypeTree field labels.",
+    "The 48-byte descriptor and 52-byte trailer are SHA-bounded without assigning render-field semantics.",
+    "The vertex records contain three exact zero-valued float32 components after the XY pair; this does not establish actual texture UV mapping.",
+    "Texture pixel decoding, shader behavior and the original displayed Sprite remain outside this source claim.",
+    "Original source bodies and the private decoded witness are not in Git; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

@@ -7565,6 +7565,34 @@
         "Per-instance atlas/move animation pipeline and shader execution not proven.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_FACE_SPRITE_327_VERTEX_245_TRIANGLE_MESH_SOURCE_V1",
+      "fact_id": "FACT-0371",
+      "source_ids": [
+        "RESOBJECT-001"
+      ],
+      "scope": "PROVEN_PACKED_DATA",
+      "definition": "Original SHA-pinned Sprite PathID41553 body reveals 1470 indexed bytes decoding into 735 uint16 values/245 nondegenerate consistently oriented XY triangles over all 327 original five-float vertex records; exact source geometry and bounded descriptor/trailer SHA digests. No proven GPU buffer, UV, displayed texture or runtime behavior.",
+      "summary": "canonical/witnesses/RESOBJECT-001/original_face_sprite_triangle_mesh_source.summary.json",
+      "source_windows": [
+        [
+          "Original Sprite PathID41553 triangle-index buffer",
+          "Raw [156,1626) 1470 bytes, 735 uint16 source-order triangle indices",
+          "31f31415e592042ebb57fc46c8ede8f283b6887c84772cdbe174d76d4dfa0367"
+        ],
+        [
+          "Original Sprite PathID41553 packed vertex records",
+          "Raw [1676,8216) 6540 bytes, 327 stride20 five-float records",
+          "ef909c51d7090ffbe3ccf3237e450852071071e0e86acc3dcbe0da2ee99ee6b9"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "The original Sprite TypeTree complete field roles, including UV mapping and geometry draw state, are not established by this source structure.",
+        "Original texture format29 payload decode, shader and animation gameplay execution remain outside scope.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
