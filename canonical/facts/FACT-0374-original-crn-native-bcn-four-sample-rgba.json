@@ -1,0 +1,47 @@
+{
+  "fact_id": "FACT-0374",
+  "status": "PROVEN_PACKED_DATA",
+  "claim": "Four independently SHA-verified original retail Crunch Texture2D samples, PathIDs390 (DXT1Crunched wrestler), 1407 (DXT5Crunched weapon), 6308 (DXT1Crunched gradient), and 15464 (DXT5Crunched face), are successfully transcoded by the exact pinned Binomial Crunch standalone native crnd_unpack_begin/crnd_unpack_level v1.04 source to conventional BC1/BC3 blocks. Every original CRN source header/data CRC16 matches, every native output block count equals its original image dimensions, native block SHA256 values are pinned, and two independent pixel decoders (custom BC1/BC3 and Pillow DDS) yield byte-for-byte identical RGBA for all four full first mips. This establishes recovered source-image pixel data and NOT Unity retail rendered orientation, shader, full Sprite layer assembly, or animation behavior.",
+  "evidence": [
+    {
+      "source_id": "TEXTSAMPLE-001",
+      "locator": "Private immutable original 143,441-byte 17-member Texture2D sample ZIP SHA256 91e3318af50899b4c1b3310f0d09aecf7269247302b558a9a4267c2e0689dd2f: original object PathIDs390,1407,6308 and external resS slices for1407/6308 SHA-checked. Private native source reprover tools/crn_validation/run_native.py and native crn_to_bc.cpp at private Actions run #38938242286 SUCCESS, input source Blob SHA1 8f109777275c16d2a3d3ffd5fbe2fce4962814ec. Private derived 3,585-ish byte result d0ef4bd9c7b4f27e922d95e7a29598d3737e64de source hashes and four native block/RGBA hashes. Published standalone Binomial Crunch source commit 36479bc697be19168daafbf15f47f3c60ccec004."
+    },
+    {
+      "source_id": "RESOBJECT-001",
+      "locator": "Original SHA-pinned private Texture2D ClassID28 PathID15464 54,592-byte retail object SHA256 ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583; embedded 54,497-byte CRN SHA256 1dde001e0c8b0409d0fa453193fedbef5f0bb174916ec0e474269b6b930ebd06. Private native run #38938242286 proves BC3 SHA256 fe0665dd5ca35fca3bc7ed540ce75a9add287a4001a1e1704e4d9fb5a982c309; 532×700 RGBA SHA256 2f6aeb23095771c7965dbe81f58aec255541c4efbf62cc8da225fdf05ca9401a."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0373 SHA-pinned original Crunch source integrity and all four original bounded Texture2D samples",
+      "to": "FACT-0374 native CRN v1.04 transcode into exact-size BC1/BC3 block buffers with pinned SHA256",
+      "evidence": [
+        {
+          "source_id": "TEXTSAMPLE-001",
+          "locator": "Private original archive SHA, three original CRN samples with CRC+SHA, compiled pinned upstream Crunch source and private Actions #38938242286; resulting BC1/BC3 block length/SHA256 for each sample."
+        },
+        {
+          "source_id": "RESOBJECT-001",
+          "locator": "Original private face Texture2D source SHA + original CRN CRC, private native BC3 buffer SHA256 in same four-source run."
+        }
+      ]
+    },
+    {
+      "from": "FACT-0374 original transcode BC1/BC3 binary block buffers",
+      "to": "FACT-0374 independent custom bit-exact BC decoder and Pillow DDS entire first-mip RGBA arrays identical",
+      "evidence": [
+        {
+          "source_id": "TEXTSAMPLE-001",
+          "locator": "Private v001 native proof Python source in private GitHub tools/crn_validation/run_native.py, independent decoders entire RGBA exact parity True for PathIDs 390/1407/6308/15464; private proof report Git blob d0ef4bd9c7b4f27e922d95e7a29598d3737e64de"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Transcoding and independent full pixel reconstruction are proven only for four bounded original images, not all 19,625 images or the retail renderer.",
+    "No Unity texture upload orientation, shader pass, color blend, Sprite UV atlas, costume layering, or animation pose/timing validated.",
+    "Private original source pixels/blocks not included in public repo, only hashes and reproducible private proof.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

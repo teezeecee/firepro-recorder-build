@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FOUR_CRN_NATIVE_TO_BCN_EXACT_RGBA_V1",
+  "source_ids": [
+    "TEXTSAMPLE-001",
+    "RESOBJECT-001"
+  ],
+  "parent_fact": "FACT-0373",
+  "original_samples_archive": {
+    "name": "FIREPRO_BOUNDED_TEXTURE_ORIGINAL_SAMPLES_v001.zip",
+    "bytes": 143441,
+    "sha256": "91e3318af50899b4c1b3310f0d09aecf7269247302b558a9a4267c2e0689dd2f",
+    "private_git_blob_sha1": "8f109777275c16d2a3d3ffd5fbe2fce4962814ec"
+  },
+  "original_face_texture": {
+    "path_id": 15464,
+    "source_sha256": "ad4013b603dbf5f1ba1b1bb5bce6dcdd03c6cc3be3e1dc55a8b09fb4fa099583"
+  },
+  "independent_verification": {
+    "private_repository": "teezeecee/firepro-retail-evidence-vault",
+    "private_result_path": "06_Texture_Format_Census/FIREPRO_CRN_NATIVE_TRANSCODE_RESULT_v001.json",
+    "private_result_blob_sha1": "d0ef4bd9c7b4f27e922d95e7a29598d3737e64de",
+    "original_source_pipeline": "tools/crn_validation/run_native.py",
+    "native_transcoder": "tools/crn_validation/crn_to_bc.cpp",
+    "upstream_project": "BinomialLLC/crunch",
+    "upstream_commit": "36479bc697be19168daafbf15f47f3c60ccec004",
+    "successful_private_action_run": 38938242286,
+    "run_head_commit": "d6e2f6a5750b60159ce3ed02b750d1557e2e8e10",
+    "result_status": "SOURCE_TRANSCODE_PASS",
+    "independent_rgba_decoder_crosscheck": true
+  },
+  "original_samples": [
+    {
+      "path_id": 390,
+      "width": 532,
+      "height": 700,
+      "original_crn_sha256": "5ccd54f9b795487533bb5b17b798bf55f059c58253a68d6e8bdb5f1505daf4c6",
+      "crc16_header": "2bf7",
+      "crc16_data": "58ea",
+      "block_format": "BC1",
+      "bc_bytes": 186200,
+      "bc_sha256": "2b55d3322b898d05325c66aa14ed20b026c917a9fde6a5bf04a4e35f80a4ccf5",
+      "decoded_rgba_bytes": 1489600,
+      "decoded_rgba_sha256": "1f5c5d240ae9247d580a4ba03c0859c2affb938bf952ed836380282400b3e19a",
+      "independent_decoder_exact_full_rgba_match": true
+    },
+    {
+      "path_id": 1407,
+      "width": 68,
+      "height": 68,
+      "original_crn_sha256": "f66c8853040e097008e654fa0181bebbcca6977d01b7cc38e6257bdd20e39dae",
+      "crc16_header": "d0b6",
+      "crc16_data": "8f5c",
+      "block_format": "BC3",
+      "bc_bytes": 4624,
+      "bc_sha256": "7256181b9f9bc3f6cebc023aad65d76d9ae166c0258bff2a8871117483ea8119",
+      "decoded_rgba_bytes": 18496,
+      "decoded_rgba_sha256": "e5585be8a71910c1aa8a20f236e36c515a33ff49a8836b45fb4fad6f230eccd9",
+      "independent_decoder_exact_full_rgba_match": true
+    },
+    {
+      "path_id": 6308,
+      "width": 16,
+      "height": 16,
+      "original_crn_sha256": "ec8a77efac062fad7e394078e7b65dde9bd5a3c261c39c474d2edf4862fff248",
+      "crc16_header": "f2bc",
+      "crc16_data": "b6ae",
+      "block_format": "BC1",
+      "bc_bytes": 128,
+      "bc_sha256": "ca7bc85370a132196d5f62d71c06c78882bb54da5ec0a8164b398e7be1d44e99",
+      "decoded_rgba_bytes": 1024,
+      "decoded_rgba_sha256": "9ff264df30464c677063e4afacc6b3e7ed90d53c724e4ccceac418bc44b4372e",
+      "independent_decoder_exact_full_rgba_match": true
+    },
+    {
+      "path_id": 15464,
+      "width": 532,
+      "height": 700,
+      "original_crn_sha256": "1dde001e0c8b0409d0fa453193fedbef5f0bb174916ec0e474269b6b930ebd06",
+      "crc16_header": "e7b8",
+      "crc16_data": "02ff",
+      "block_format": "BC3",
+      "bc_bytes": 372400,
+      "bc_sha256": "fe0665dd5ca35fca3bc7ed540ce75a9add287a4001a1e1704e4d9fb5a982c309",
+      "decoded_rgba_bytes": 1489600,
+      "decoded_rgba_sha256": "2f6aeb23095771c7965dbe81f58aec255541c4efbf62cc8da225fdf05ca9401a",
+      "independent_decoder_exact_full_rgba_match": true
+    }
+  ],
+  "runtime_eligible": false,
+  "limitations": [
+    "Native Binomial v1.04 transcode generated BC1/BC3 output, with independent custom and Pillow BC decoders matching full first-mip RGBA exactly.",
+    "Rgba pixels are decoder outputs, NOT verified retail Unity vertical orientation, shader blends, Sprite UV/geometry mapping or final displayed graphics.",
+    "No gameplay animation timing/poses or rendering integration; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED.",
+    "Full resources.assets parent and external .resS not copied to public canonical. Original sample source ZIP and raw Texture2D are stored privately."
+  ]
+}
