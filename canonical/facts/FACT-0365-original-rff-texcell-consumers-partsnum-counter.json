@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0365",
+  "status": "PROVEN_DLL",
+  "claim": "In the exact matching original DLL source, the GetTexCellIdx MethodDef0x06001F18 direct call opcode occurs in original FormDataMan.LoadFormData MethodDef0x06001F0E at IL offset302 and ParseFormData_RFF MethodDef0x06001F12 at offset169. Both pass references to FormPartsData.texKind FieldDef0x040026C0 and cellIdx FieldDef0x040026C1. After its call, the RFF parser loads cellIdx, branches past a local6 increment if cellIdx >0, increments local6 if cellIdx <=0, and stores local6 into FormData.partsNum FieldDef0x040026CB. Original LoadFormData 1490 IL bytes SHA 5747096d106c5675819802c73c18f531fc76377c1731e1aa038f72c33a8706e0; RFF parser 1153 bytes SHA f8cd8fc00b94298c4d9949c461f5ab0e0f2c736befed5eb9305e5f39a10e1b01. This proves a source-level consumer count rule, not displayed image identity.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "User-owned original Assembly-CSharp(3).dll size 8171008, SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6. Private direct SHA-pinned original MethodDef IL source witness FIREPRO_FACT0365_DIRECT_ORIGINAL_CALLSITE_WITNESS_v001.json 8135 bytes SHA 991538b496eb302b5599beb255f4bab814adce1aa36149b62e98b5815a0b4e81; complete original 1490/1153 IL byte method digests and five source-window digests recorded in summary.",
+      "observation": "Original two direct calls, the parser source comparison branch and storage of local counter in the FormData.partsNum field; 30,862 original method bodies bounded byte-scanned for the direct call encoding."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0362 original GetTexCellIdx lookup branches and FormPartsData field metadata; FACT-0364 original static source lookup integer windows",
+      "to": "FACT-0365 original two static consumers and RFF parser cellIdx<=0 local count stored in FormData.partsNum",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original GetTexCellIdx token 0x06001F18; original LoadFormData call IL offset302, ParseFormData_RFF call IL offset169; original RFF parser source windows 174..193 conditional local6 increment and 1127..1136 partsNum store; exact SHA digests summary."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only direct original MethodDef call opcode instances were scanned; no conclusion concerning indirect or reflected invocation.",
+    "The <=0 comparison increments a parser counter in original static IL, but its intended visual use has not been established.",
+    "The original DLL was read as SHA-verified bytes; neither retail execution nor actual art selection or timing is proven.",
+    "No proprietary original IL hex, binary, or texture table values committed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}
