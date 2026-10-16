@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_PARTSTEX_RESOURCE_LOAD_RECT_AND_SPRITE_CREATE_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "private_witness": {
+    "filename": "FIREPRO_FACT0367_ORIGINAL_TEXTURE_SPRITE_SOURCE_WITNESS_v001.json",
+    "bytes": 6408,
+    "sha256": "4baae14ee4f6be0c9bb720b2503f0af6199937e96f0cda435c1ab746568b1e85",
+    "committed_to_git": false
+  },
+  "original_dll": {
+    "bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "source_methods": [
+    {
+      "token": "0x060010CD",
+      "owner": "PartsInfoManager",
+      "name": "GetPartsFileName",
+      "il_length": 42,
+      "il_sha256": "622c6cf892d770288857ba4d066c19b5e4e8dc5d04f4f9a88cb23a93e22094cb"
+    },
+    {
+      "token": "0x060010CE",
+      "owner": "PartsInfoManager",
+      "name": "GetHighlightPartsFileName",
+      "il_length": 28,
+      "il_sha256": "218495fef8e5e9bdae9eaca300620db3aa3d5766b35c6a8a4ee7b3620e31d107"
+    },
+    {
+      "token": "0x060010D0",
+      "owner": "PartsInfoManager",
+      "name": "LoadPartsTex",
+      "il_length": 147,
+      "il_sha256": "f4e046b7b7314cd74113940978803606b24ce4de9968619e7aeca732631740ac"
+    },
+    {
+      "token": "0x06001F23",
+      "owner": "FormRenderer",
+      "name": "LoadPartsTex",
+      "il_length": 40,
+      "il_sha256": "ce7dc9cadc9fb7793c857d8e3d38372fed829368c6b8445d7c00c6f010dc2bea"
+    },
+    {
+      "token": "0x06001F28",
+      "owner": "FormRenderer",
+      "name": "CalcPartsRect",
+      "il_length": 170,
+      "il_sha256": "e1f38ce6d09dfd9310e9b227974f28a089fe66913a11f9a9f4f05ef841d4398a"
+    },
+    {
+      "token": "0x06001F20",
+      "owner": "FormRenderer",
+      "name": "InitSprite",
+      "il_length": 481,
+      "il_sha256": "77c6fa96be5fac369840db3462cf8291e5319624fdcb9deb10672f63b948b874"
+    }
+  ],
+  "source_windows": [
+    {
+      "method": "GetPartsFileName",
+      "name": "resource_name_prefix",
+      "start": 16,
+      "end": 42,
+      "sha256": "d53946c931dbf17ecee7eb057475ecab77e82272bb0dea91a714c5bb24ef949a"
+    },
+    {
+      "method": "GetHighlightPartsFileName",
+      "name": "highlight_suffix",
+      "start": 0,
+      "end": 28,
+      "sha256": "218495fef8e5e9bdae9eaca300620db3aa3d5766b35c6a8a4ee7b3620e31d107"
+    },
+    {
+      "method": "LoadPartsTex",
+      "name": "craft_png_branch",
+      "start": 0,
+      "end": 101,
+      "sha256": "8f30d63d59c993563173ab53dfac6dfd566ab5161d6385e183799f1077260f98"
+    },
+    {
+      "method": "LoadPartsTex",
+      "name": "unity_resources_branch",
+      "start": 101,
+      "end": 147,
+      "sha256": "3c2a665a34febb12f464023614db8b3409318b641b67aa178b67dcf7475f5030"
+    },
+    {
+      "method": "FormRenderer.LoadPartsTex",
+      "name": "texture_source_store",
+      "start": 0,
+      "end": 40,
+      "sha256": "ce7dc9cadc9fb7793c857d8e3d38372fed829368c6b8445d7c00c6f010dc2bea"
+    },
+    {
+      "method": "CalcPartsRect",
+      "name": "dimensions_source",
+      "start": 0,
+      "end": 74,
+      "sha256": "07d3b1dea357112180b75664d2db069fd9a9ba208087ae597372cf223bbadc43"
+    },
+    {
+      "method": "InitSprite",
+      "name": "texture_sprite_create_assign",
+      "start": 339,
+      "end": 433,
+      "sha256": "5566419133352309b2f41c60195b5c6c873ec0708acafafc504f7dbc3805f21b"
+    }
+  ],
+  "original_user_strings": [
+    {
+      "method": "0x060010CD",
+      "il_offset": 16,
+      "token": "0x70007FAE",
+      "value": "PartsTex/"
+    },
+    {
+      "method": "0x060010CD",
+      "il_offset": 28,
+      "token": "0x70000299",
+      "value": "/"
+    },
+    {
+      "method": "0x060010CE",
+      "il_offset": 17,
+      "token": "0x70007FC2",
+      "value": "_h"
+    },
+    {
+      "method": "0x060010D0",
+      "il_offset": 16,
+      "token": "0x7000726C",
+      "value": ".png"
+    }
+  ],
+  "original_member_refs": [
+    {
+      "token": "0x0A0006DA",
+      "name": "Load",
+      "owner": "UnityEngine.Resources",
+      "signature_sha256": "a48f3ae02b6141887ef89bb4f0a10ace8b6370a6169e47fcb9f8a103ec4ad193"
+    },
+    {
+      "token": "0x0A0009CA",
+      "name": "Create",
+      "owner": "UnityEngine.Sprite",
+      "signature_sha256": "17f37125db6bf8fe59b0eeb04d2098d8988c88a842aecfd21a0509b5d7cfd3d6"
+    },
+    {
+      "token": "0x0A0002AD",
+      "name": "set_sprite",
+      "owner": "UnityEngine.SpriteRenderer",
+      "signature_sha256": "aea4f0925444e5bc40e7bf81ea5492e68d1a1f65bbd96bf1fda1a86233a8dd4c"
+    }
+  ],
+  "original_instruction_sites": {
+    "parts_info_load": {
+      "png_string_offset": 16,
+      "craft_path_call_offset": 34,
+      "paint_image_call_offset": 41,
+      "regular_parts_name_call_offset": 105,
+      "unity_resources_load_offset": 120
+    },
+    "form_renderer_load": {
+      "parts_tex_field_offset": 1,
+      "parts_info_load_call_offset": 15,
+      "parts_tex_set_offset": 20
+    },
+    "init_sprite": {
+      "parts_tex_field_offset": 344,
+      "parts_tex_get_offset": 357,
+      "parts_rectangle_call_offset": 372,
+      "sprite_create_offset": 422,
+      "sprite_renderer_set_offset": 427
+    },
+    "calc_parts_rect": {
+      "tex_size_field_offsets": [
+        0,
+        18
+      ],
+      "cell_size_field_offsets": [
+        36,
+        54
+      ]
+    }
+  },
+  "limits": [
+    "All evidence is read-only matching original DLL metadata, IL and string-heap data; methods were not invoked.",
+    "The loader has a craft .png branch and a Unity Resources.Load branch; actual resource availability and loaded texture bytes have not been observed.",
+    "Sprite.Create and SpriteRenderer.set_sprite source instructions prove original sprite construction and assignment code, not successful visual output or a particular resource PathID.",
+    "No private IL body or proprietary user asset bytes are included in Git. SOURCE_CONSOLIDATION_V1 runtime/viewer remain LOCKED."
+  ]
+}
