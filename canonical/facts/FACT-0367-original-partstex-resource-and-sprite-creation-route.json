@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0367",
+  "status": "PROVEN_DLL",
+  "claim": "Matching original retail DLL source proves a concrete texture-sprite code path. PartsInfoManager.GetPartsFileName MethodDef0x060010CD uses source strings 'PartsTex/' and '/', GetHighlightPartsFileName MethodDef0x060010CE uses '_h'; PartsInfoManager.LoadPartsTex MethodDef0x060010D0 checks '.png', calls GetCraftPartsFilePath/Pnt_PaintToolIO.LoadImageData on its craft branch, and GetPartsFileName/UnityEngine.Resources.Load on its resource branch. FormRenderer.LoadPartsTex MethodDef0x06001F23 calls PartsInfoManager.LoadPartsTex and sets partsTex; FormRenderer.InitSprite MethodDef0x06001F20 obtains partsTex and calculates the rectangle via CalcPartsRect MethodDef0x06001F28, then calls original UnityEngine.Sprite.Create and SpriteRenderer.set_sprite. Exact six method-body SHAs, seven byte-window SHAs, four source strings, Unity member references and IL opcode sites prove the source relationships. No specific rendered asset or playback execution is established.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "User-owned original Assembly-CSharp(3).dll 8,171,008 bytes SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6. Direct private original-source FIREPRO_FACT0367_ORIGINAL_TEXTURE_SPRITE_SOURCE_WITNESS_v001.json 6408 bytes SHA 4baae14ee4f6be0c9bb720b2503f0af6199937e96f0cda435c1ab746568b1e85, six method full-IL hashes, seven original byte-window hashes, original #US strings and member reference signature SHA values.",
+      "observation": "Proven source call and field operands connecting original resource/craft texture loader through FormRenderer sprite creation, rectangle computation and Unity SpriteRenderer.set_sprite."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0366 original FormRenderer part kind, texture/cell index, and part rectangle calculations",
+      "to": "FACT-0367 exact original texture loading names, dual loader branches, FormRenderer partsTex store, sprite rectangle creation and assignment",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original MethodDef0x060010D0 call sites 34/41 and 105/120; FormRenderer MethodDef0x06001F23 call site15 and partsTex field0x04002728; FormRenderer.InitSprite MethodDef0x06001F20 calls CalcPartsRect at372, Unity Sprite.Create at422, SpriteRenderer.set_sprite at427; original seven byte-window hashes in summary."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The source establishes possible code pathways without proving any original runtime call succeeded.",
+    "No specific resource TextAsset/Texture2D PathID, exact visual sprite atlas, selected cell pixels or rendered animation has been identified.",
+    "Original Unity resource or craft PNG loading success, missing resource behavior and highlight output still require separate original source or captured evidence.",
+    "No proprietary DLL bytes or complete original IL committed; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

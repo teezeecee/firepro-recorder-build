@@ -7450,6 +7450,34 @@
         "No live Unity execution, animation timing or per-part draw/output semantics established.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_PARTSTEX_RESOURCE_LOAD_AND_SPRITE_CREATE_SOURCE_V1",
+      "fact_id": "FACT-0367",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original PartsInfoManager chooses source craft-PNG and Unity Resources texture loader branches using original #US strings PartsTex/, /, _h and .png. Original FormRenderer.LoadPartsTex stores loader result and InitSprite uses partsTex, CalcPartsRect, UnityEngine.Sprite.Create and SpriteRenderer.set_sprite. Six SHA-pinned original IL methods, seven original source windows, four literal strings and original resolved Unity member references; no observed loaded bytes or rendered pixels.",
+      "summary": "canonical/witnesses/DLL-001/original_parts_texture_loading_sprite_creation.summary.json",
+      "source_windows": [
+        [
+          "PartsInfoManager original GetPartsFileName/GetHighlightPartsFileName/LoadPartsTex",
+          "Exact source string tokens, craft PNG and Unity Resources load branch",
+          "f4e046b7b7314cd74113940978803606b24ce4de9968619e7aeca732631740ac"
+        ],
+        [
+          "FormRenderer original LoadPartsTex, CalcPartsRect, InitSprite",
+          "partsTex storage and sprite create / SpriteRenderer sprite assignment source calls",
+          "77c6fa96be5fac369840db3462cf8291e5319624fdcb9deb10672f63b948b874"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No confirmed per-texture Resource PathID, actual loaded pixel bytes, or original Unity rendered frame from this IL.",
+        "No original successful method invocation or animation timeline observed.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
