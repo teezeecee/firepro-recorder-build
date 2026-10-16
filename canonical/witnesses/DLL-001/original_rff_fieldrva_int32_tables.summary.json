@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FORMDATAMAN_RFF_EIGHT_EMBEDDED_FIELDRVA_INT32_TABLES_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "original_dll": {
+    "bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "parent_original_witness": {
+    "name": "FIREPRO_FACT0363_TEXTURE_CELL_TABLE_WITNESS_v001.json",
+    "bytes": 23696,
+    "sha256": "1bb4096dea965f7df0c3a68081f9087ff266f0e138e51572114d928987a53c1d",
+    "cctor_method_token": "0x06001F19",
+    "cctor_il_sha256": "2562856d53a75ed59fdb2bc6d6788f03308cad38175f0a38a8331c3a06d0c131"
+  },
+  "private_source_report": {
+    "name": "FIREPRO_FACT0364_DIRECT_ORIGINAL_RVA_WITNESS_v001.json",
+    "bytes": 20618,
+    "sha256": "991eba96ea2ce4c16ffdfac8823808ab9c3001a8831153c7110da6beabe002d6",
+    "committed_to_repository": false
+  },
+  "metadata": {
+    "member_ref_token": "0x0A0001E5",
+    "member_ref_name": "InitializeArray",
+    "member_ref_owner": "System.Runtime.CompilerServices.RuntimeHelpers",
+    "member_ref_signature_hex": "0002011283851183e9",
+    "int32_typeref_token": "0x010000D7",
+    "int32_typeref_name": "System.Int32",
+    "fieldrva_table_row_count": 570,
+    "fieldrva_table_file_offset": 6247840,
+    "first_fieldrva_record_file_offset": 6248884,
+    "row_size": 6
+  },
+  "embedded_sources": [
+    {
+      "source_field_token": "0x0400B7AA",
+      "fieldrva_row": 175,
+      "rva": 8025624,
+      "file_offset": 8012312,
+      "byte_count": 168,
+      "element_count": 42,
+      "minus_one_count": 7,
+      "min": -1,
+      "max": 34,
+      "sha256": "3907984860f89b34837205544989013169af4204bf0a71bac226fe87b017c8c9"
+    },
+    {
+      "source_field_token": "0x0400B7AB",
+      "fieldrva_row": 176,
+      "rva": 8025792,
+      "file_offset": 8012480,
+      "byte_count": 204,
+      "element_count": 51,
+      "minus_one_count": 5,
+      "min": -1,
+      "max": 48,
+      "sha256": "3397d5d5943dfc61d5972efb31bf44ed82ff2233e80378eeaa0efc33b2fce63c"
+    },
+    {
+      "source_field_token": "0x0400B7AC",
+      "fieldrva_row": 177,
+      "rva": 8026000,
+      "file_offset": 8012688,
+      "byte_count": 200,
+      "element_count": 50,
+      "minus_one_count": 5,
+      "min": -1,
+      "max": 47,
+      "sha256": "4b1bdb37c915fd9b4596379a96e23339b3d35defb2485c9ddf3f78168e11f774"
+    },
+    {
+      "source_field_token": "0x0400B7AD",
+      "fieldrva_row": 178,
+      "rva": 8026200,
+      "file_offset": 8012888,
+      "byte_count": 176,
+      "element_count": 44,
+      "minus_one_count": 5,
+      "min": -1,
+      "max": 41,
+      "sha256": "c7aa1b83ec31578604c92dc1106bae5d923b5539295647ab0e0be1b769a2172f"
+    },
+    {
+      "source_field_token": "0x0400B7AE",
+      "fieldrva_row": 179,
+      "rva": 8026376,
+      "file_offset": 8013064,
+      "byte_count": 192,
+      "element_count": 48,
+      "minus_one_count": 5,
+      "min": -1,
+      "max": 45,
+      "sha256": "0d843ab2baab0af12d52a143fb6600e946a42fc239c9ca65b89829a24b727785"
+    },
+    {
+      "source_field_token": "0x0400B7AF",
+      "fieldrva_row": 180,
+      "rva": 8026568,
+      "file_offset": 8013256,
+      "byte_count": 296,
+      "element_count": 74,
+      "minus_one_count": 6,
+      "min": -1,
+      "max": 73,
+      "sha256": "567fdee60e2f9862b2af141d8f459764d731431d89b7cab417b8360390aa234c"
+    },
+    {
+      "source_field_token": "0x0400B7B0",
+      "fieldrva_row": 181,
+      "rva": 8026864,
+      "file_offset": 8013552,
+      "byte_count": 380,
+      "element_count": 95,
+      "minus_one_count": 15,
+      "min": -1,
+      "max": 87,
+      "sha256": "48dcc3de9166507d48e0e2c09a540081e26ed11e83e43250c8a45ce4a18a57a6"
+    },
+    {
+      "source_field_token": "0x0400B7B1",
+      "fieldrva_row": 182,
+      "rva": 8027248,
+      "file_offset": 8013936,
+      "byte_count": 472,
+      "element_count": 118,
+      "minus_one_count": 15,
+      "min": -1,
+      "max": 108,
+      "sha256": "c07ad126b7d7873109993591bcf4d3c3287165751dee052eaf0180d84a6cabde"
+    }
+  ],
+  "nine_destination_arrays": [
+    {
+      "name": "Face",
+      "lookup_field_token": "0x040026E0",
+      "source_field_token": "0x0400B7AA",
+      "element_count": 42
+    },
+    {
+      "name": "Chest",
+      "lookup_field_token": "0x040026E1",
+      "source_field_token": "0x0400B7AB",
+      "element_count": 51
+    },
+    {
+      "name": "Belly",
+      "lookup_field_token": "0x040026E2",
+      "source_field_token": "0x0400B7AC",
+      "element_count": 50
+    },
+    {
+      "name": "UpperArm",
+      "lookup_field_token": "0x040026E3",
+      "source_field_token": "0x0400B7AB",
+      "element_count": 51
+    },
+    {
+      "name": "ForeArm",
+      "lookup_field_token": "0x040026E4",
+      "source_field_token": "0x0400B7AD",
+      "element_count": 44
+    },
+    {
+      "name": "Shin",
+      "lookup_field_token": "0x040026E5",
+      "source_field_token": "0x0400B7AE",
+      "element_count": 48
+    },
+    {
+      "name": "Thigh",
+      "lookup_field_token": "0x040026E6",
+      "source_field_token": "0x0400B7AF",
+      "element_count": 74
+    },
+    {
+      "name": "Hand",
+      "lookup_field_token": "0x040026E7",
+      "source_field_token": "0x0400B7B0",
+      "element_count": 95
+    },
+    {
+      "name": "Foot",
+      "lookup_field_token": "0x040026E8",
+      "source_field_token": "0x0400B7B1",
+      "element_count": 118
+    }
+  ],
+  "decoded_element_slots": 573,
+  "unique_backing_entries": 522,
+  "limitations": [
+    "Original matching DLL bytes were parsed as file data only; no DLL code or static initializer was run.",
+    "The eight raw signed integer arrays are preserved in a private downloadable original-source witness, not in this public Git repository.",
+    "-1 is an observed numeric value; display meaning, art identities and missing-image behavior are not established.",
+    "SOURCE_CONSOLIDATION_V1 runtime/viewer remain LOCKED."
+  ]
+}
