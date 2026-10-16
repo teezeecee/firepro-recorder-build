@@ -1,0 +1,30 @@
+{
+  "fact_id": "FACT-0366",
+  "status": "PROVEN_DLL",
+  "claim": "Original SHA-verified Fire Pro DLL FormRenderer.SetPartsObj MethodDef0x06001F55 (1710 IL bytes) consumes FormPartsData.texKind FieldDef0x040026C0, calls FormRenderer.TexKind2PartsKind MethodDef0x06001F3E (281 IL bytes), and branches past an early ret when partsKind is nonnegative. The same method reads texKind and FormPartsData.cellIdx FieldDef0x040026C1 and calls FormRenderer.CalcPartsOffset MethodDef0x06001F29 (196 IL bytes). CalcPartsOffset reads source static TexSizeTbl and CellSizeTbl FieldDefs0x0400271D/1E twice each. Exact original method-body SHA-256 hashes, seven byte-window digests and direct opcode/metadata tokens anchor this source-only consumer bridge. It does not establish rendered sprite or texture identity.",
+  "evidence": [
+    {
+      "source_id": "DLL-001",
+      "locator": "Original private matching user DLL Assembly-CSharp(3).dll exactly 8171008 bytes SHA 9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6. Private witness FIREPRO_FACT0366_FORMRENDERER_ORIGINAL_IL_WITNESS_v001.json 8393 bytes SHA 9805fba6920b9ba2cc0e40f9a4f8b92a22cc8b5966c057ba5f287e7236de6ec5. Original FormRenderer SetPartsObj/CalcPartsOffset/TexKind2PartsKind complete IL method hashes and seven source windows in original_formrenderer_part_source_consumers.summary.json.",
+      "observation": "Direct original source-level FormRenderer calls and field loads connecting texKind/cellIdx to part-kind conversion and offset arithmetic; early conditional return and static size-table reads."
+    }
+  ],
+  "chain_edges": [
+    {
+      "from": "FACT-0362 original GetTexCellIdx output fields texKind/cellIdx, FACT-0365 original parser assignments",
+      "to": "FACT-0366 original FormRenderer.SetPartsObj reads these same FormPartsData fields and invokes parts-kind and offset helper methods",
+      "evidence": [
+        {
+          "source_id": "DLL-001",
+          "locator": "Original FieldDef operands 0x040026C0 and 0x040026C1 in SetPartsObj IL offsets 144/150 and 163/169; calls to MethodDef0x06001F3E at offset7 and 0x06001F29 at offset155, all pinned by entire method SHA."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Source metadata and exact IL establish direct FormRenderer part-object setup dependencies only, not a proven final texture-cell asset or sprite sheet identity.",
+    "No original Unity method was executed, and rendered pixels, animation transitions and timeline are not established by static IL.",
+    "Meaning of -1 or 0 in original lookup arrays must be separately proven from actual downstream original instructions.",
+    "No original proprietary DLL, IL body or table values committed to Git; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

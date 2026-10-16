@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ORIGINAL_FORMRENDERER_TEXKIND_CELLIDX_PART_KIND_AND_OFFSET_SOURCE_V1",
+  "source_ids": [
+    "DLL-001"
+  ],
+  "private_witness": {
+    "filename": "FIREPRO_FACT0366_FORMRENDERER_ORIGINAL_IL_WITNESS_v001.json",
+    "bytes": 8393,
+    "sha256": "9805fba6920b9ba2cc0e40f9a4f8b92a22cc8b5966c057ba5f287e7236de6ec5",
+    "committed_to_git": false
+  },
+  "original_dll": {
+    "bytes": 8171008,
+    "sha256": "9c03b15486322ace5f35f6a56629cf44534e148f044d5f43b3b796d7dd794fb6"
+  },
+  "source_method_bodies": [
+    {
+      "token": "0x06001F55",
+      "name": "SetPartsObj",
+      "owner": "FormRenderer",
+      "il_length": 1710,
+      "il_sha256": "05d8c0cd32553ee68f15a4feff51b958e558ea2f6fb6cda9339c559d63cd2aca"
+    },
+    {
+      "token": "0x06001F29",
+      "name": "CalcPartsOffset",
+      "owner": "FormRenderer",
+      "il_length": 196,
+      "il_sha256": "a4a21ffb998c423237d3e3de82fb1ede4af3140a12a0d626c22b77ef488a1c8d"
+    },
+    {
+      "token": "0x06001F3E",
+      "name": "TexKind2PartsKind",
+      "owner": "FormRenderer",
+      "il_length": 281,
+      "il_sha256": "9e76f61246e27da3a0a690a249dc2c1339ad4870c5cc6e89ae4bffb08da8aec7"
+    }
+  ],
+  "original_fields": [
+    {
+      "token": "0x040026C0",
+      "name": "texKind"
+    },
+    {
+      "token": "0x040026C1",
+      "name": "cellIdx"
+    },
+    {
+      "token": "0x0400271D",
+      "name": "TexSizeTbl"
+    },
+    {
+      "token": "0x0400271E",
+      "name": "CellSizeTbl"
+    },
+    {
+      "token": "0x0400272D",
+      "name": "partsUsed"
+    }
+  ],
+  "source_windows": [
+    {
+      "method": "SetPartsObj",
+      "name": "initial_parts_kind_guard",
+      "start": 0,
+      "end": 21,
+      "sha256": "a87a4859bf1486d9556519158bf92acca98aaabe8d59fc623de9d84847a84b9d"
+    },
+    {
+      "method": "SetPartsObj",
+      "name": "source_two_fields_calc_offset",
+      "start": 140,
+      "end": 162,
+      "sha256": "3e7a313d220a7c0dec1a42a465bfd2c6845b35b60e53a9fe965eda0ea8b109e2"
+    },
+    {
+      "method": "SetPartsObj",
+      "name": "source_cellidx_second_read",
+      "start": 160,
+      "end": 181,
+      "sha256": "cc80f197f1653e198f4311f68ff464a165cab57137bcbeca2fd3856a27eed422"
+    },
+    {
+      "method": "CalcPartsOffset",
+      "name": "tables_source_reads",
+      "start": 0,
+      "end": 72,
+      "sha256": "2711c53baefdfdbc0f03644240e7c1d3023d51746258a69f6305ce8607a35551"
+    },
+    {
+      "method": "CalcPartsOffset",
+      "name": "arithmetic_and_return",
+      "start": 72,
+      "end": 196,
+      "sha256": "4818f9936d37ae003bcd1812029ff18414dba61f6e668a159002d2f423413a1e"
+    },
+    {
+      "method": "TexKind2PartsKind",
+      "name": "switch_source",
+      "start": 0,
+      "end": 53,
+      "sha256": "a33f6252421f73e51d811c1304ca3bc2e9e8b184fc64c3303167d2d9a556da6a"
+    },
+    {
+      "method": "TexKind2PartsKind",
+      "name": "late_parts_kind_return",
+      "start": 243,
+      "end": 281,
+      "sha256": "3b2708e3d444bb9c99fc8de62d1ae27bde323cbd448ef4d3832102e0dd7f9048"
+    }
+  ],
+  "source_instructions": {
+    "setpartsobj": {
+      "initial_texkind_load_opcode_offset": 2,
+      "texkind_to_parts_kind_call_offset": 7,
+      "parts_kind_bge_offset": 15,
+      "ret_for_negative_parts_kind_offset": 20,
+      "calc_offset_texkind_field_opcode_offset": 144,
+      "calc_offset_cellidx_field_opcode_offset": 150,
+      "calc_offset_method_call_opcode_offset": 155,
+      "second_texkind_load_offset": 163,
+      "second_cellidx_load_offset": 169,
+      "parts_scaling_center_call_offset": 178
+    },
+    "calcpartsoffset": {
+      "texsize_table_load_offsets": [
+        0,
+        18
+      ],
+      "cellsize_table_load_offsets": [
+        36,
+        54
+      ]
+    },
+    "texkind2partskind": {
+      "switch_opcode_offset": 3,
+      "switch_target_count": 9
+    }
+  },
+  "limits": [
+    "Read-only original SHA-verified DLL IL and metadata inspection; game methods were not invoked.",
+    "Source-level FormRenderer part-kind check and calculation link do not prove visual texture identity, image pixels, layering correctness, or animation timing.",
+    "Observed integer cell indices -1/0 and positive values are not assigned display meanings without separate consumer proof.",
+    "Complete original IL bytes remain in private local user witness, not Git; SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+  ]
+}

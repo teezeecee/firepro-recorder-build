@@ -7417,6 +7417,39 @@
         "The 573 lookup integer entries and -1 values still require independent display consumer semantics.",
         "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
       ]
+    },
+    {
+      "family_id": "ORIGINAL_FORMRENDERER_RFF_PART_KIND_OFFSET_CONSUMER_V1",
+      "fact_id": "FACT-0366",
+      "source_ids": [
+        "DLL-001"
+      ],
+      "scope": "PROVEN_DLL",
+      "definition": "Original SHA-matched FormRenderer.SetPartsObj source consumes FormPartsData.texKind and cellIdx; directly calls FormRenderer.TexKind2PartsKind (nine-case switch) and CalcPartsOffset (TexSizeTbl/CellSizeTbl field loads) after a nonnegative parts-kind guard. Full IL body SHAs and seven bounded source window SHAs corroborate the field and MethodDef tokens. No proven selected texture asset, actual rendered pose or runtime invocation.",
+      "summary": "canonical/witnesses/DLL-001/original_formrenderer_part_source_consumers.summary.json",
+      "source_windows": [
+        [
+          "Original FormRenderer.SetPartsObj MethodDef 0x06001F55",
+          "1710-byte SHA-pinned IL with source texKind/cellIdx loads, helper calls, early return guard",
+          "05d8c0cd32553ee68f15a4feff51b958e558ea2f6fb6cda9339c559d63cd2aca"
+        ],
+        [
+          "Original FormRenderer.CalcPartsOffset MethodDef 0x06001F29",
+          "196-byte SHA-pinned IL with direct TexSizeTbl and CellSizeTbl loads",
+          "a4a21ffb998c423237d3e3de82fb1ede4af3140a12a0d626c22b77ef488a1c8d"
+        ],
+        [
+          "Original FormRenderer.TexKind2PartsKind MethodDef 0x06001F3E",
+          "281-byte SHA-pinned IL with original nine-way switch source",
+          "9e76f61246e27da3a0a690a249dc2c1339ad4870c5cc6e89ae4bffb08da8aec7"
+        ]
+      ],
+      "runtime_eligible": false,
+      "semantic_promotion_blockers": [
+        "No source-proven final sprite/texture identity nor rendered image from source calculations.",
+        "No live Unity execution, animation timing or per-part draw/output semantics established.",
+        "SOURCE_CONSOLIDATION_V1 runtime/viewer LOCKED."
+      ]
     }
   ],
   "note": "Registry entries may preserve raw transition witnesses before semantic closure. Runtime remains locked; raw labels are not treated as gameplay definitions."
